@@ -20,13 +20,12 @@ const resource = fetchCategories();
 const ProductsAdd = () => {
     const { translate } = useTranslation();
     const { control, watch } = useForm<FormCategoryValues>();
-
     const categoryValue = watch(formCategoryField.category);
+
+    const items = resource.categories.read();
 
     const categories = useMemo(() => {
         let result: DropdownItemObject[] = [];
-        const items = resource.categories.read();
-
         if (items) {
             return items?.map(({ category }) => ({
                 id: category,
@@ -35,7 +34,7 @@ const ProductsAdd = () => {
         }
 
         return result;
-    }, [translate]);
+    }, [items, translate]);
 
     return (
         <>
