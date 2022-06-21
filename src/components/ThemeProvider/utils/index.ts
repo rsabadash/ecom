@@ -1,0 +1,1 @@
+export { getSystemColorSchema } from './getSystemColorSchema';

@@ -1,0 +1,19 @@
+.heading-1 {
+    font-size: var(--font-size-head-1);
+    line-height: var(--line-height-head-1);
+}
+
+.heading-2 {
+    font-size: var(--font-size-head-2);
+    line-height: var(--line-height-head-2);
+}
+
+.heading-3 {
+    font-size: var(--font-size-head-3);
+    line-height: var(--line-height-head-3);
+}
+
+.heading-4 {
+    font-size: var(--font-size-head-4);
+    line-height: var(--line-height-head-4);
+}

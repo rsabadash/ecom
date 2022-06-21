@@ -1,0 +1,15 @@
+.foreground {
+    border: var(--border);
+    box-shadow: var(--shadow-5);
+    border-radius: var(--radius-large);
+    background-color: var(--foreground);
+}
+
+.section {
+    margin-top: 32px;
+    padding: 32px;
+}
+
+.section__placeholder {
+    text-align: center;
+}

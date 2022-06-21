@@ -1,0 +1,9 @@
+:root {
+    --grid-column-min-width: '320px';
+}
+
+.gridAutoFit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-column-min-width), 100%), 1fr));
+    gap: 1rem;
+}

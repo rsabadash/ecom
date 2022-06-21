@@ -1,0 +1,9 @@
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top__heading {
+    margin-right: 24px;
+}

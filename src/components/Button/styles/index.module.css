@@ -1,0 +1,67 @@
+.button {
+    color: var(--text);
+    border-radius: var(--radius-regular);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition);
+    outline: none;
+    min-width: 150px;
+}
+
+.button a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.button:focus-within,
+.button:focus-visible {
+    box-shadow: var(--input-box-shadow-focus);
+}
+
+.button_s {
+    font-size: var(--font-size-regular);
+    line-height: var(--line-height-regular);
+    padding: 8px 12px;
+}
+
+.button_l {
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-large);
+    padding: 10px 16px;
+}
+
+.button_xl {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-xl);
+    padding: 14px 24px;
+}
+
+.button_regular {
+    color: var(--background-dark-900);
+    background-color: var(--button-regular-background);
+}
+
+.button_regular a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.button_primary {
+    background-color: var(--primary-900);
+}
+
+.button_primary:hover {
+    background-color: var(--primary-800);
+}
+
+.button_success {
+    background-color: var(--success-900);
+}
+
+.button_warning {
+    background-color: var(--warning-900);
+}
+
+.button_danger {
+    background-color: var(--danger-900);
+}

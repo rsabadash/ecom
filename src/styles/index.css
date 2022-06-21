@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Inter';
+    src: local('Inter'),
+         url('../fonts/Inter/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Montserrat Medium';
+    src: local('Montserrat Medium'),
+         url('../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', serif;
+}
