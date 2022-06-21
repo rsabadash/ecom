@@ -37,7 +37,7 @@
 }
 
 .button_regular {
-    color: var(--background-dark-900);
+    color: var(--background-900);
     background-color: var(--button-regular-background);
 }
 

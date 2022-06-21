@@ -18,20 +18,6 @@
     --foreground-dark-300: rgba(255, 255, 255, 0.08);
     --foreground-dark-200: rgba(255, 255, 255, 0.05);
     --foreground-dark-100: rgba(255, 255, 255, 0.03);
-
-    --border-dark: 1px solid var(--foreground-dark-400);
-
-    --input-dark-background: var(--foreground-dark-100);
-    --input-dark-background-absolute-hack: #303445; /*to avoid color transparency on absolutely positioned elements */
-    --input-dark-hover: var(--foreground-dark-400);
-
-    --button-regular-dark-background: var(--foreground-dark-900);
-
-    --label-dark-color: var(--foreground-dark-800);
-
-    --scrollbar-dark-thumb: var(--foreground-dark-700);
-
-    --menu-dark-hover: var(--foreground-dark-200);
 }
 
 /*@media(prefers-color-scheme: dark) {*/
@@ -40,16 +26,25 @@
 /*}*/
 
 [data-theme="dark"] {
-    --background: var(--background-dark-900);
-    --foreground: var(--foreground-dark-100);
-    --text: var(--foreground-dark-900);
-    --text-disabled: var(--foreground-dark-600);
-    --border: var(--border-dark);
-    --input-background: var(--input-dark-background);
-    --input-background-absolute-hack: var(--input-dark-background-absolute-hack);
-    --input-hover: var(--input-dark-hover);
-    --button-regular-background: var(--button-regular-dark-background);
-    --label-color: var(--label-dark-color);
-    --scrollbar-thumb: var(--scrollbar-dark-thumb);
-    --menu-hover: var(--menu-dark-hover);
+    --background-900: rgba(41, 45, 63, 1);
+    --background-800: rgba(41, 45, 63, 0.72);
+    --background-700: rgba(41, 45, 63, 0.48);
+    --background-600: rgba(41, 45, 63, 0.32);
+    --background-500: rgba(41, 45, 63, 0.19);
+    --background-400: rgba(41, 45, 63, 0.13);
+    --background-300: rgba(41, 45, 63, 0.08);
+    --background-200: rgba(41, 45, 63, 0.05);
+    --background-100: rgba(41, 45, 63, 0.03);
+
+    --foreground-900: rgba(255, 255, 255, 1);
+    --foreground-800: rgba(255, 255, 255, 0.72);
+    --foreground-700: rgba(255, 255, 255, 0.48);
+    --foreground-600: rgba(255, 255, 255, 0.32);
+    --foreground-500: rgba(255, 255, 255, 0.19);
+    --foreground-400: rgba(255, 255, 255, 0.13);
+    --foreground-300: rgba(255, 255, 255, 0.08);
+    --foreground-200: rgba(255, 255, 255, 0.05);
+    --foreground-100: rgba(255, 255, 255, 0.03);
+
+    --input-background-absolute-hack: #303445; /*to avoid color transparency on absolutely positioned elements */
 }
