@@ -46,29 +46,12 @@
     --shadow-1: 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 1px 1px rgba(0, 0, 0, 0.08);
     --shadow-0: none;
 
-    --background: var(--background-900);
-    --foreground: var(--foreground-100);
-
-    --text: var(--foreground-900);
-    --text-disabled: var(--foreground-600);
-
-    --border: 1px solid var(--foreground-400);
-
     --sidebar-widh: 250px;
 
     --scrollbar-width: 4px;
-    --scrollbar-thumb: var(--foreground-700);
-
-    --menu-hover: var(--foreground-200);
-
-    --label-color: var(--foreground-800);
 
     --input-height: 48px;
-    --input-background: var(--foreground-100);
-    --input-hover: var(--foreground-400);
     --input-box-shadow-focus: var(--primary-700) 0 0 0 0.2em;
-
-    --button-regular-background: var(--foreground-900);
 
     --transition: 0.15s ease-in-out 0s;
 
@@ -100,4 +83,26 @@
     --line-height-head-3: 48px;
     --font-size-head-4: 28px;
     --line-height-head-4: 40px;
+}
+
+[data-theme="dark"],
+[data-theme="light"] {
+    --background: var(--background-900);
+    --foreground: var(--foreground-100);
+
+    --text: var(--foreground-900);
+    --text-disabled: var(--foreground-600);
+
+    --border: 1px solid var(--foreground-400);
+
+    --scrollbar-thumb: var(--foreground-700);
+
+    --menu-hover: var(--foreground-200);
+
+    --label-color: var(--foreground-800);
+
+    --input-background: var(--foreground-100);
+    --input-hover: var(--foreground-400);
+
+    --button-regular-background: var(--foreground-900);
 }
