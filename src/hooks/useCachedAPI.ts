@@ -1,11 +1,20 @@
 import useSWR from 'swr'
 import { useAPI } from './useAPI';
 
-export const useCachedAPI = <D>(url: string) => {
+type UseCachedAPIOptions = {
+    shouldFetch?: boolean;
+};
+
+const defaultOptions: UseCachedAPIOptions = {
+    shouldFetch: true
+};
+
+export const useCachedAPI = <D>(url: string, options: UseCachedAPIOptions = defaultOptions) => {
     const { GET } = useAPI();
+    const fetchUrl = options.shouldFetch ? { url } : null;
 
     return useSWR<D>(
-        { url },
+        fetchUrl,
         GET,
         {
             suspense: true,

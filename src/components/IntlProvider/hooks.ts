@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { TranslationContext } from './TranslationProvider';
 import { TranslationContextValue } from './types';
 
-export const useTranslation = () => {
+export const useTranslation = (): TranslationContextValue => {
     const context = useContext<TranslationContextValue>(TranslationContext);
 
     if (context === undefined) {

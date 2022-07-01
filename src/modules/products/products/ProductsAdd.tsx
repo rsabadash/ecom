@@ -1,61 +1,56 @@
-import { lazy, Suspense, useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import Top from '../../layouts/Top';
-import DropdownAdapter from '../../components/FormAdapter/Dropdown';
-import { useTranslation } from '../../components/IntlProvider';
-import { fetchCategories } from './api';
-import { DropdownItemObject } from '../../components/Form/Dropdown';
-import { Section } from '../../components/Section';
-import { MapCategoryToComponent,FormCategoryValues } from './types';
+import Top from '../../../layouts/Top';
+import DropdownAdapter from '../../../components/FormAdapter/Dropdown';
+import { useTranslation } from '../../../components/IntlProvider';
+import { DropdownItemObject } from '../../../components/Form/Dropdown';
+import { ForegroundSection } from '../../../components/Foreground';
+import { CategoriesResponse, FormCategoryValues } from './types';
 import { formCategoryField } from './constants';
-
-const ComicsCategory = lazy(() => import('./categories').then(module => ({ default: module.ComicsCategory })));
-
-const mapCategoryToComponent: MapCategoryToComponent = {
-    comics: <ComicsCategory />
-};
-
-const resource = fetchCategories();
+import { mapCategoryToComponent } from './utils';
+import { useCachedAPI } from '../../../hooks';
+import { endpoint } from '../../../common/constants/api';
 
 const ProductsAdd = () => {
     const { translate } = useTranslation();
     const { control, watch } = useForm<FormCategoryValues>();
     const categoryValue = watch(formCategoryField.category);
 
-    const items = resource.categories.read();
+    const { data } = useCachedAPI<CategoriesResponse[]>(endpoint.categories);
 
     const categories = useMemo(() => {
         let result: DropdownItemObject[] = [];
-        if (items) {
-            return items?.map(({ category }) => ({
+        if (data) {
+            return data?.map(({ category }) => ({
                 id: category,
                 value: translate(`category.${category}`)
             }));
         }
 
         return result;
-    }, [items, translate]);
+    }, [data, translate]);
 
     return (
         <>
             <Top headingText={translate('products.add')}></Top>
-            <Section>
+            <ForegroundSection>
                 <DropdownAdapter
+                    required
                     name={formCategoryField.category}
                     control={control}
                     items={categories}
                     label={translate('category')}
                     placeholder={translate('category.choose')}
                 />
-            </Section>
+            </ForegroundSection>
 
-            <Section placeholder={translate('category.noProduct')}>
+            <ForegroundSection placeholder={translate('category.noProduct')}>
                 {categoryValue && (
                     <Suspense>
-                        {mapCategoryToComponent[categoryValue.id]}
+                        {mapCategoryToComponent()[categoryValue.id]}
                     </Suspense>
                 )}
-            </Section>
+            </ForegroundSection>
         </>
     );
 };

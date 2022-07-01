@@ -1,3 +1,41 @@
-.table__header {
+.table__foreground {
+    margin-top: 32px;
+}
 
+.table__header {
+    display: flex;
+    color: var(--foreground-700);
+    font-size: var(--font-size-regular);
+    line-height: var(--line-height-regular);
+    border-bottom: var(--border);
+}
+
+.table__headerItem {
+    padding: 16px;
+}
+
+.table__body a {
+    text-decoration: none;
+    color: var(--text);
+}
+
+.table__row {
+    display: flex;
+    color: var(--text);
+    font-size: var(--font-size-regular);
+    line-height: var(--line-height-regular);
+    border-bottom: var(--border);
+    cursor: pointer;
+}
+
+.table__row:hover {
+    background-color: var(--hover);
+}
+
+.table__row:last-child {
+    border-bottom: none;
+}
+
+.table__rowItem {
+    padding: 16px;
 }

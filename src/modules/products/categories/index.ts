@@ -1,1 +1,0 @@
-export { ComicsCategory } from './ComicsCategory';

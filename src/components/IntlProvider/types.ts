@@ -4,6 +4,10 @@ export type Language = ValuesOfObject<typeof languages>;
 
 export type Locale = keyof typeof localeToLanguageMap;
 
+export type Translation = {
+    [key in Language]: string;
+};
+
 export type TranslationProviderProps = {
     language: Language;
     setLanguage: (language: Language) => void;

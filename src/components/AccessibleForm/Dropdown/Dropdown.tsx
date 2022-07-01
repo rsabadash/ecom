@@ -1,47 +1,60 @@
 import { forwardRef } from 'react';
-import Dropdown  from '../../Form/Dropdown';
+import Dropdown  from '../../Form/Dropdown/Dropdown';
 import { AccessibleDropdownProps } from './types';
 import AccessibleLabel from '../Label';
+import ReadOnlyField from '../ReadOnlyField';
+import { useTranslation } from '../../IntlProvider';
+import { getReadOnlyValue } from './utils';
 
 const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>((
     {
         name,
-        items,
         value,
+        items,
+        customItems,
         placeholder,
+        required,
+        disabled,
         open,
         multiselect,
-        sendValue,
-        disabled,
-        required,
-        label,
         onBlur,
         onChange,
+        itemValueGetter,
+        readOnly,
+        label
     },
     ref
 ) => {
+    const { language } = useTranslation();
+    const readOnlyValue = readOnly ? getReadOnlyValue({ value, language }) : '';
+
     return (
         <div>
             <AccessibleLabel
                 label={label}
                 htmlFor={name}
                 required={required}
+                readOnly={readOnly}
             />
-            <Dropdown
-                ref={ref}
-                name={name}
-                items={items}
-                value={value}
-                placeholder={placeholder}
-                open={open}
-                multiselect={multiselect}
-                sendValue={sendValue}
-                required={required}
-                disabled={disabled}
-                onBlur={onBlur}
-                onChange={onChange}
-                ariaLabelledBy={name}
-            />
+            {readOnly
+                ? <ReadOnlyField value={readOnlyValue} />
+                : <Dropdown
+                    name={name}
+                    value={value}
+                    items={items}
+                    customItems={customItems}
+                    placeholder={placeholder}
+                    required={required}
+                    disabled={disabled}
+                    open={open}
+                    multiselect={multiselect}
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    itemValueGetter={itemValueGetter}
+                    ariaLabelledBy={name}
+                    ref={ref}
+                />
+            }
         </div>
     );
 });

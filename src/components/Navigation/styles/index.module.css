@@ -12,10 +12,11 @@
 }
 
 .navigation__itemLink:hover {
-    background-color: var(--menu-hover);
+    background-color: var(--hover);
 }
 
 .navigation__itemLink_active,
 .navigation__itemLink_active:hover {
-    background-color: var(--primary-700);
+    /*background-color: var(--primary-700);*/
+    background-color: var(--hover);
 }

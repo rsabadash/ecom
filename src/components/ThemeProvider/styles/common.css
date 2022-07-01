@@ -97,7 +97,7 @@
 
     --scrollbar-thumb: var(--foreground-700);
 
-    --menu-hover: var(--foreground-200);
+    --hover: var(--foreground-200);
 
     --label-color: var(--foreground-800);
 

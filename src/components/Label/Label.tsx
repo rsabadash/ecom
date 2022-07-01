@@ -8,7 +8,7 @@ const Label: FC<PropsWithChildren<LabelProps>> = (
         labelId,
         htmlFor,
         labelClassName,
-        children,
+        children
     }
 ) => {
     return (

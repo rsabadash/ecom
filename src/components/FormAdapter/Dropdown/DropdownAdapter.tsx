@@ -7,14 +7,16 @@ const DropdownAdapter = <FormValues,>(
     {
         name,
         items,
-        disabled,
-        required,
-        open,
+        customItems,
         placeholder,
+        required,
+        disabled,
+        open,
         multiselect,
-        sendValue,
+        itemValueGetter,
+        readOnly,
         label,
-        control,
+        control
     }: DropdownAdapterProps<FormValues>
 ) => {
     const {
@@ -30,15 +32,17 @@ const DropdownAdapter = <FormValues,>(
         <AccessibleDropdown
             name={fieldName}
             value={fieldValues}
-            onChange={onChange}
-            onBlur={onBlur}
             items={items}
-            disabled={disabled}
-            required={required}
-            open={open}
+            customItems={customItems}
             placeholder={placeholder}
+            required={required}
+            disabled={disabled}
+            open={open}
             multiselect={multiselect}
-            sendValue={sendValue}
+            onBlur={onBlur}
+            onChange={onChange}
+            itemValueGetter={itemValueGetter}
+            readOnly={readOnly}
             label={label}
         />
     );

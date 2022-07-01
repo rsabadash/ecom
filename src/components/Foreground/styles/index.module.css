@@ -5,11 +5,11 @@
     background-color: var(--foreground);
 }
 
-.section {
+.foregroundSection {
     margin-top: 32px;
     padding: 32px;
 }
 
-.section__placeholder {
+.foregroundSection__placeholder {
     text-align: center;
 }

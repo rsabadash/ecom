@@ -6,11 +6,13 @@ import { InputValue } from '../../Form/Input';
 const InputAdapter = <FormValues,>(
     {
         name,
-        disabled,
-        required,
-        placeholder,
-        label,
         type,
+        placeholder,
+        required,
+        disabled,
+        valueGetter,
+        readOnly,
+        label,
         control,
     }: InputAdapterProps<FormValues>
 ) => {
@@ -26,14 +28,16 @@ const InputAdapter = <FormValues,>(
     return (
         <AccessibleInput
             name={fieldName}
-            value={fieldValues}
-            onChange={onChange}
-            onBlur={onBlur}
-            disabled={disabled}
-            required={required}
-            label={label}
-            placeholder={placeholder}
             type={type}
+            value={fieldValues}
+            placeholder={placeholder}
+            required={required}
+            disabled={disabled}
+            onBlur={onBlur}
+            onChange={onChange}
+            valueGetter={valueGetter}
+            label={label}
+            readOnly={readOnly}
         />
     );
 };

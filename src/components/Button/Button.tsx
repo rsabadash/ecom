@@ -10,8 +10,8 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (
         size = DEFAULT_BUTTON_SIZE,
         variant = DEFAULT_BUTTON_VARIANT,
         disabled,
-        children,
-        onClick
+        onClick,
+        children
     }
 ) => {
     const handleButtonClick = (): void => {
@@ -20,7 +20,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (
         }
 
         onClick && onClick();
-    }
+    };
 
     return (
         <button

@@ -4,4 +4,5 @@ export type AccessibleLabelProps = {
     label: ReactNode;
     htmlFor: string;
     required?: boolean;
+    readOnly?: boolean;
 };

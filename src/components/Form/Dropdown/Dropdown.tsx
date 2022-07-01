@@ -1,35 +1,36 @@
 import { forwardRef, KeyboardEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { EventKeys } from './enums';
+import { LIST_CONTROL_ID, DEFAULT_FOCUS_INDEX } from './constants';
 import { DropdownItemId, DropdownItem, DropdownProps, DropdownValue } from './types';
 import { useOutsideElementClick } from '../../../hooks';
-import classes from './styles/index.module.css';
 import { useTranslation } from '../../IntlProvider';
-
-const LIST_CONTROL_ID = Date.now().toString();
-const DEFAULT_FOCUS_INDEX = -1;
+import classes from './styles/index.module.css';
 
 const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     {
         name,
-        value= null,
+        value ,
         items = [],
+        customItems,
         placeholder,
         required,
         disabled,
         open,
         multiselect,
         // invalid,
-        sendValue,
         // onBlur,
         onChange,
+        itemValueGetter,
         ariaLabel,
         ariaLabelledBy,
         ariaDescribedBy
     },
     ref
 ) => {
-    const hasEmptyItem = !required && !multiselect;
+    const dropdownItems = customItems || items;
+    const useCustomValueGetter = customItems && itemValueGetter
+    const hasEmptyItem = !required;
 
     const [isOpen, setIsOpen] = useState(() => open || false);
     const [isKeyboardControl, setIsKeyboardControl] = useState(false);
@@ -54,16 +55,18 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     });
 
     const getItemValue = (item?: DropdownValue, getId?: boolean): string | null => {
-        if (!item) {
+        const dropdownItem = useCustomValueGetter ? itemValueGetter(item) : item;
+
+        if (!dropdownItem) {
             return null;
         }
 
-        if (typeof item === 'string') {
-            return item;
+        if (typeof dropdownItem === 'string') {
+            return dropdownItem;
         }
 
-        if (Array.isArray(item)) {
-            return item.reduce<string>((acc, dropdownItem, index) => {
+        if (Array.isArray(dropdownItem)) {
+            return dropdownItem.reduce<string>((acc, dropdownItem, index) => {
                 if (index === 0) {
                     acc += getItemValue(dropdownItem, getId)
                 } else {
@@ -74,7 +77,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             }, '');
         }
 
-        return getId ? item.id : item.value;
+        return getId ? dropdownItem.id : dropdownItem.value;
     };
 
     const getInitialFocusIndex = (): number => {
@@ -88,7 +91,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             }
 
             const itemId = getItemValue(item, true);
-            const index = items.findIndex((item) => getItemValue(item, true) === itemId)
+            const index = dropdownItems.findIndex((item) => getItemValue(item, true) === itemId)
 
             return index !== -1 ? index : DEFAULT_FOCUS_INDEX;
         }
@@ -115,7 +118,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     }, [isOpen, focusIndex]);
 
     const setFocusData = (index: number): void => {
-        const id = getItemValue(items[index], true);
+        const id = getItemValue(dropdownItems[index], true);
         setFocusItemId(id);
         setFocusIndex(index);
     };
@@ -154,10 +157,10 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const initMultiUnSelection = (item: DropdownItem): void => {
-        const isValueArray = Array.isArray(value);
+        const notLastItemUnselected = Array.isArray(value) && value.length > 1;
         const idValue = getItemValue(item, true);
 
-        if (isValueArray) {
+        if (notLastItemUnselected) {
             const filteredValue = value.filter((current) => getItemValue(current, true) !== idValue);
 
             return onChange(filteredValue);
@@ -189,14 +192,14 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         }
     };
 
-    const defineIndex = (key: EventKeys) => {
+    const defineIndex = (key: EventKeys): number => {
         const keyIndexPair = {
             [EventKeys.Home]: 0,
-            [EventKeys.End]: items.length - 1,
-            [EventKeys.ArrowDown]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === items.length - 1 ? 0 : focusIndex + 1,
-            [EventKeys.ArrowUp]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === 0 ? items.length - 1 : focusIndex - 1,
-            [EventKeys.PageDown]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === items.length - 1 ? 0 : focusIndex + 1,
-            [EventKeys.PageUp]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === 0 ? items.length - 1 : focusIndex - 1,
+            [EventKeys.End]: dropdownItems.length - 1,
+            [EventKeys.ArrowDown]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === dropdownItems.length - 1 ? 0 : focusIndex + 1,
+            [EventKeys.ArrowUp]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === 0 ? dropdownItems.length - 1 : focusIndex - 1,
+            [EventKeys.PageDown]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === dropdownItems.length - 1 ? 0 : focusIndex + 1,
+            [EventKeys.PageUp]: focusIndex === DEFAULT_FOCUS_INDEX || focusIndex === 0 ? dropdownItems.length - 1 : focusIndex - 1,
             [EventKeys.Escape]: DEFAULT_FOCUS_INDEX,
             [EventKeys.Tab]: DEFAULT_FOCUS_INDEX,
             [EventKeys.Enter]: DEFAULT_FOCUS_INDEX,
@@ -208,6 +211,10 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const handleDropdownKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
+        if (disabled) {
+            return;
+        }
+
         const key = e.key as EventKeys;
         const index = defineIndex(key);
 
@@ -226,12 +233,11 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             }
 
             if (key === EventKeys.Enter) {
-                const currentItem = items[focusIndex];
+                const currentItem = dropdownItems[focusIndex];
                 const id = getItemValue(currentItem, true);
 
                 if (id) {
                     const isSelected = checkIsSelected(id);
-
                     handleListItemClick(currentItem, isSelected);
                 }
 
@@ -263,6 +269,13 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
 
     const viewValue = getItemValue(value);
 
+    const dropdownClassName = clsx(
+        classes.dropdown,
+        {
+            [classes.dropdown_noValue]: !viewValue
+        }
+    );
+
     return (
         <div className={classes.dropdownWrapper}>
             <div
@@ -281,7 +294,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
                 onClick={handleDropdownClick}
                 onKeyDown={handleDropdownKeyDown}
                 ref={dropdownButtonRef}
-                className={clsx(classes.dropdown, { [classes.dropdown_noValue]: !viewValue })}
+                className={dropdownClassName}
             >
                 {viewValue || placeholder}
             </div>
@@ -314,7 +327,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
                                 {translate('reset')}
                             </li>
                         )}
-                        {items.map((item, index) => {
+                        {dropdownItems.map((item, index) => {
                             const idValue = getItemValue(item, true);
                             const itemValue = getItemValue(item);
                             const isSelected = !!idValue && checkIsSelected(idValue);

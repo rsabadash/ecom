@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { isFunction } from '../utils';
 
 export type UseOutsideElementClickProps = {
 	dependency: boolean;
@@ -13,7 +12,7 @@ type ReturnType = {
 export const useOutsideElementClick = ({ dependency, handleClick }: UseOutsideElementClickProps): ReturnType => {
 	const currentElement = useRef<null | HTMLElement>(null);
 
-	const setCurrentElement = useCallback((element: null | HTMLElement) => {
+	const setCurrentElement = useCallback((element: null | HTMLElement): void => {
 		currentElement.current = element;
 	}, []);
 
@@ -27,7 +26,7 @@ export const useOutsideElementClick = ({ dependency, handleClick }: UseOutsideEl
 			return;
 		}
 
-		if (!isFunction(handleClick)) {
+		if (typeof handleClick !== 'function') {
 			console.warn('You should pass callback function.');
 			return;
 		}

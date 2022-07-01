@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { MenuItems, NavData } from './types';
-import classes from './styles/index.module.css';
 import { routes } from '../../common/constants/routes';
 import { TranslateFn } from '../IntlProvider';
+import classes from './styles/index.module.css';
 
 export const isNavLinkActive = (navData: NavData): string | undefined => {
     return clsx(classes.navigation__itemLink,{ [classes.navigation__itemLink_active]: navData.isActive });

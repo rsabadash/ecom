@@ -16,11 +16,11 @@ export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({ child
     const defaultTheme = usePreferredTheme(themeStorage);
     const [theme, setTheme] = useState<Theme>(() => defaultTheme);
 
-    useLayoutEffect(() => {
+    useLayoutEffect((): void => {
         document.body.dataset.theme = theme;
     }, [theme]);
 
-    useEffect(() => {
+    useEffect((): void => {
         const savedTheme = themeStorage.getTheme<Theme>(THEME_STORAGE_KEY);
         
         if (!savedTheme) {

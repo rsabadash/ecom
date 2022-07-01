@@ -9,14 +9,10 @@ export const attributes = {
     'attributes.publishingHouse.choose': 'Оберіть видавництво',
     'attributes.language': 'Мова',
     'attributes.language.choose': 'Оберіть мову',
-    'attributes.language.uk': 'Українська',
-    'attributes.language.en': 'Англійська',
     'attributes.format': 'Формат',
     'attributes.format.choose': 'Оберіть формат',
     'attributes.cover': 'Обкладинка',
     'attributes.cover.choose': 'Оберіть тип обкладинки',
-    'attributes.cover.soft': 'М\'яка',
-    'attributes.cover.hard': 'Тверда',
     'attributes.pages': 'Сторіки',
     'attributes.pages.fillIn': 'Введіть кількість сторінок',
     'attributes.year': 'Рік',
@@ -25,9 +21,7 @@ export const attributes = {
     'attributes.description.fillIn': 'Введіть опис',
     'attributes.condition': 'Стан',
     'attributes.condition.choose': 'Оберіть стан',
-    'attributes.condition.new': 'Новий',
-    'attributes.condition.used': 'Вживаний',
-    
+
     'attributes.preorder': 'Передзамовлення',
 
     'availability': 'Наявність',

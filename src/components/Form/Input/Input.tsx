@@ -1,12 +1,14 @@
 import { forwardRef } from 'react';
 import { InputProps } from './types';
+import { serializeValue } from './utils';
+import { DEFAULT_INPUT_TYPE } from './constants';
 import classes from './styles/index.module.css';
 
 const Input = forwardRef<HTMLInputElement, InputProps>((
     {
         id,
         name,
-        type,
+        type = DEFAULT_INPUT_TYPE,
         value,
         placeholder,
         invalid,
@@ -16,17 +18,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
         ariaLabelledBy,
         ariaDescribedBy,
         onBlur,
-        onChange
+        onChange,
+        valueGetter
     },
     ref
 ) => {
+    const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
+
     return (
         <input
             ref={ref}
             id={id || name}
             name={name}
             type={type}
-            value={value || ''}
+            value={currentValue}
             disabled={disabled}
             placeholder={placeholder}
             onBlur={onBlur}

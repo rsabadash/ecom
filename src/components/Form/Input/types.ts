@@ -5,8 +5,8 @@ export type InputValue = string;
 export type InputProps = {
     id?: string;
     name: string;
-    type: 'text';
-    value?: InputValue;
+    type?: 'text';
+    value?: null | InputValue;
     placeholder?: string;
     invalid?: boolean;
     required?: boolean;
@@ -16,4 +16,5 @@ export type InputProps = {
     ariaDescribedBy?: string;
     onBlur?: FocusEventHandler;
     onChange?: ChangeEventHandler;
+    valueGetter?: (value: any) => InputValue;
 };
