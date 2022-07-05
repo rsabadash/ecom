@@ -8,12 +8,12 @@ export const getReadOnlyValue = (args: GetReadOnlyValueArgs): string => {
     }
 
     if (value) {
-        if (typeof value === 'string') {
-            return value;
+        if (typeof value === 'string' || typeof value === 'number') {
+            return value.toString();
         }
 
         if ('value' in value) {
-            return value.value;
+            return value.value.toString();
         }
 
         return value[language];

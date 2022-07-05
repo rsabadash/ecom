@@ -61,8 +61,8 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             return null;
         }
 
-        if (typeof dropdownItem === 'string') {
-            return dropdownItem;
+        if (typeof dropdownItem === 'string' || typeof dropdownItem === 'number') {
+            return dropdownItem.toString();
         }
 
         if (Array.isArray(dropdownItem)) {
@@ -77,7 +77,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             }, '');
         }
 
-        return getId ? dropdownItem.id : dropdownItem.value;
+        return getId ? dropdownItem.id : dropdownItem.value.toString();
     };
 
     const getInitialFocusIndex = (): number => {

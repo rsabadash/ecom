@@ -9,7 +9,7 @@ type CommonOptions = {
 
 export type GetAction = <R>(options: CommonOptions) => Promise<R>;
 
-export const GET = async <R>(options: CommonOptions): Promise<R> => {
+export const GET: GetAction = async <R>(options: CommonOptions): Promise<R> => {
     const response = await fetch(`${HOST}${options.url}`, {
         method: 'GET',
         headers: {
@@ -31,9 +31,32 @@ type PostOptions<D> = CommonOptions & {
 
 export type PostAction = <R, D = Record<string, unknown>>(options: PostOptions<D>) => Promise<R>
 
-export const POST = async <R, D = Record<string, unknown>>(options: PostOptions<D>): Promise<R> => {
+export const POST: PostAction = async <R, D = Record<string, unknown>>(options: PostOptions<D>): Promise<R> => {
     const response = await fetch(`${HOST}${options.url}`, {
         method: 'POST',
+        headers: {
+            'Accept-Language': LocalStorageService.getItem<Language>(LOCALE_STORAGE_KEY) || DEFAULT_LANGUAGE,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(options.data)
+    });
+
+    if (response.ok) {
+        return await response.json() as Promise<R>;
+    } else {
+        throw new Error(String(response.status));
+    }
+};
+
+type PatchOptions<D> = CommonOptions & {
+    data: D;
+};
+
+export type PatchAction = <R, D = Record<string, unknown>>(options: PatchOptions<D>) => Promise<R>
+
+export const PATCH: PatchAction = async <R, D = Record<string, unknown>>(options: PatchOptions<D>): Promise<R> => {
+    const response = await fetch(`${HOST}${options.url}`, {
+        method: 'PATCH',
         headers: {
             'Accept-Language': LocalStorageService.getItem<Language>(LOCALE_STORAGE_KEY) || DEFAULT_LANGUAGE,
             'Content-Type': 'application/json'

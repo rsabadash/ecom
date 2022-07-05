@@ -10,7 +10,7 @@ const ForegroundSection: FC<PropsWithChildren<ForegroundSectionProps>> = (
     }
 ) => {
     return (
-        <section className={clsx(classes.foregroundSection, classes.section)}>
+        <section className={clsx(classes.foreground, classes.foregroundSection)}>
             {children || <div className={classes.foregroundSection__placeholder}>{placeholder}</div>}
         </section>
     );

@@ -9,8 +9,7 @@ import Button from '../../../../components/Button';
 import { ComicsAttributes, ComicsCategoryFormValues, ComicsNewEntity } from './types';
 import { CategoryProps } from '../types';
 import { formFields } from './constants';
-import { POST } from '../../../../utils/api';
-import { useCachedAPI } from '../../../../hooks';
+import { useAPI, useCachedAPI } from '../../../../hooks';
 import { ComicsProduct } from '../../products/types';
 import { endpoint, query } from '../../../../common/constants/api';
 import { Translation } from '../../../../components/IntlProvider';
@@ -24,9 +23,11 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
         onSubmitError
     }
 ) => {
+    const { POST, PATCH } = useAPI();
     const { language: userLanguage, translate } = useTranslation();
 
     const formValues = formData ? formData : {};
+    const shouldUpdateProduct = Object.keys(formValues).length > 0;
 
     const {
         control,
@@ -60,7 +61,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
         condition,
         label,
         character,
-        genre
+        genre,
+        year
     } = attributes || {};
 
     const getTranslatedInputValue = (value: undefined | Translation): string => {
@@ -103,24 +105,30 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
             };
 
             try {
-                await POST({ url: '/api/v1/products', data: newEntityData });
+                if (shouldUpdateProduct) {
+                    await PATCH({ url: endpoint.products, data: newEntityData });
+                } else {
+                    await POST({ url: endpoint.products, data: newEntityData });
+                }
 
                 onSubmitSuccess && onSubmitSuccess();
             } catch (_) {
                 onSubmitError && onSubmitError();
             }
         }
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
             <GridAutoFit>
                 <InputAdapter
                     required
+                    //TODO Temporary do not update
+                    disabled
                     readOnly={readOnly}
                     name={formFields.title}
-                    placeholder={translate('attributes.title.fillIn')}
                     valueGetter={getTranslatedInputValue}
+                    placeholder={translate('attributes.title.fillIn')}
                     label={translate('attributes.title')}
                     control={control}
                 />
@@ -146,7 +154,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         required
                         readOnly={readOnly}
                         name={formFields.publishingHouse}
-                        items={publishingHouse?.cases}
+                        items={publishingHouse}
                         placeholder={translate('attributes.publishingHouse.choose')}
                         label={translate('attributes.publishingHouse')}
                         control={control}
@@ -155,7 +163,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         required
                         readOnly={readOnly}
                         name={formFields.label}
-                        items={label?.cases}
+                        items={label}
                         placeholder={translate('attributes.label.choose')}
                         label={translate('attributes.label')}
                         control={control}
@@ -166,7 +174,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         required
                         readOnly={readOnly}
                         name={formFields.language}
-                        customItems={language?.translations}
+                        customItems={language}
                         itemValueGetter={getTranslatedDropdownValue}
                         placeholder={translate('attributes.language.choose')}
                         label={translate('attributes.language')}
@@ -176,7 +184,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         required
                         readOnly={readOnly}
                         name={formFields.format}
-                        items={format?.cases}
+                        items={format}
                         placeholder={translate('attributes.format.choose')}
                         label={translate('attributes.format')}
                         control={control}
@@ -187,7 +195,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         required
                         readOnly={readOnly}
                         name={formFields.cover}
-                        customItems={cover?.translations}
+                        customItems={cover}
                         itemValueGetter={getTranslatedDropdownValue}
                         placeholder={translate('attributes.cover.choose')}
                         label={translate('attributes.cover')}
@@ -197,7 +205,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         required
                         readOnly={readOnly}
                         name={formFields.condition}
-                        customItems={condition?.translations}
+                        customItems={condition}
                         itemValueGetter={getTranslatedDropdownValue}
                         placeholder={translate('attributes.condition.choose')}
                         label={translate('attributes.condition')}
@@ -213,10 +221,11 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         label={translate('attributes.pages')}
                         control={control}
                     />
-                    <InputAdapter
+                    <DropdownAdapter
                         required
                         readOnly={readOnly}
                         name={formFields.year}
+                        items={year}
                         placeholder={translate('attributes.year.fillIn')}
                         label={translate('attributes.year')}
                         control={control}
@@ -226,7 +235,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     multiselect
                     readOnly={readOnly}
                     name={formFields.screenwriter}
-                    customItems={screenwriter?.translations}
+                    customItems={screenwriter}
                     itemValueGetter={getTranslatedDropdownValue}
                     placeholder={translate('attributes.screenwriter.choose')}
                     label={translate('attributes.screenwriter')}
@@ -236,7 +245,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     multiselect
                     readOnly={readOnly}
                     name={formFields.artist}
-                    customItems={artist?.translations}
+                    customItems={artist}
                     itemValueGetter={getTranslatedDropdownValue}
                     placeholder={translate('attributes.artist.choose')}
                     label={translate('attributes.artist')}
@@ -246,7 +255,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     multiselect
                     readOnly={readOnly}
                     name={formFields.character}
-                    customItems={character?.translations}
+                    customItems={character}
                     itemValueGetter={getTranslatedDropdownValue}
                     placeholder={translate('attributes.character.choose')}
                     label={translate('attributes.character')}
@@ -257,7 +266,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     multiselect
                     readOnly={readOnly}
                     name={formFields.genre}
-                    customItems={genre?.translations}
+                    customItems={genre}
                     itemValueGetter={getTranslatedDropdownValue}
                     placeholder={translate('attributes.genre.choose')}
                     label={translate('attributes.genre')}
@@ -284,6 +293,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                 <div className={classes.descriptionField}>
                     <InputAdapter
                         required
+                        //TODO Temporary do not update
+                        disabled
                         readOnly={readOnly}
                         name={formFields.description}
                         valueGetter={getTranslatedInputValue}
@@ -296,7 +307,9 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
             {
                 !readOnly && (
                     <div className={classes.actionButtonWrapper}>
-                        <Button variant="primary" type="submit">{translate('add')}</Button>
+                        <Button variant="primary" type="submit">
+                            {shouldUpdateProduct ? translate('update') : translate('add')}
+                        </Button>
                     </div>
                 )
             }

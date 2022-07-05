@@ -6,11 +6,10 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { useCachedAPI } from '../../../hooks';
 import { Product } from './types';
 import Table, { TableColumn } from '../../../components/Table';
-import { Translation } from '../../../components/IntlProvider';
 import { endpoint } from '../../../common/constants/api';
 
 const Products = () => {
-    const { language, translate } = useTranslation();
+    const { translate } = useTranslation();
 
     const { data = [] } = useCachedAPI<Product[]>(endpoint.products);
 
@@ -18,7 +17,7 @@ const Products = () => {
         {
             title: translate('attributes.title'),
             key: 'title',
-            valueGetter: (title: Translation) => title[language],
+            // valueGetter: (title: Translation) => title[language],
             width: '70%'
         },
         {

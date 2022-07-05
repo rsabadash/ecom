@@ -1,8 +1,8 @@
 export type DropdownItemId = string;
 
-export type DropdownItemValue = string;
+export type DropdownItemValue = string | number;
 
-export type DropdownItemObject<V extends string = DropdownItemValue, I extends string = DropdownItemId> = {
+export type DropdownItemObject<V extends string | number = DropdownItemValue, I extends string = DropdownItemId> = {
     id: I;
     value: V;
 };

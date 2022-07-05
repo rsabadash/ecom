@@ -1,5 +1,4 @@
 import { attributeLanguage, attributeCover, attributeCondition } from './constants';
-import { AttributeItem } from '../types';
 import { Translation } from '../../../../components/IntlProvider';
 import { ComicsProduct } from '../../products/types';
 
@@ -32,15 +31,15 @@ export type ComicsCategoryFormValues = {
 export type ComicsNewEntity = Omit<ComicsProduct, '_id' | 'category'>;
 
 export type ComicsAttributes = {
-    screenwriter: AttributeItem;
-    artist: AttributeItem;
-    publishingHouse: AttributeItem;
-    language: AttributeItem<AttributeLanguage>;
-    format: AttributeItem;
-    cover: AttributeItem<AttributeCover>;
-    year: AttributeItem<number>;
-    condition: AttributeItem<AttributeCondition>;
-    label: AttributeItem;
-    character: AttributeItem;
-    genre: AttributeItem;
+    screenwriter: Translation[];
+    artist: Translation[];
+    publishingHouse: string[];
+    language: AttributeLanguage[];
+    format: string[];
+    cover: AttributeCover[];
+    year: number[];
+    condition: AttributeCondition[];
+    label: string[];
+    character: Translation[];
+    genre: Translation[];
 };
