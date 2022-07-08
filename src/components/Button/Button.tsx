@@ -9,13 +9,13 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (
         type = DEFAULT_BUTTON_TYPE,
         size = DEFAULT_BUTTON_SIZE,
         variant = DEFAULT_BUTTON_VARIANT,
-        disabled,
+        isDisabled,
         onClick,
         children
     }
 ) => {
     const handleButtonClick = (): void => {
-        if (disabled) {
+        if (isDisabled) {
             return;
         }
 
@@ -25,7 +25,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (
     return (
         <button
             type={type}
-            disabled={disabled}
+            disabled={isDisabled}
             onClick={handleButtonClick}
             className={clsx(classes.button, classes[`button_${size}`], classes[`button_${variant}`])}
         >

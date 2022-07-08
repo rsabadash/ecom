@@ -8,12 +8,12 @@ const AccessibleLabel: FC<AccessibleLabelProps> = (
     {
         label,
         htmlFor,
-        required,
-        readOnly
+        isRequired,
+        isReadOnly
     }
 ) => {
     const { translate } = useTranslation();
-    const itemLabel = required && !readOnly ? `${label} (${translate('required').toLowerCase()})` : label;
+    const itemLabel = isRequired && !isReadOnly ? `${label} (${translate('required').toLowerCase()})` : label;
 
     return (
         <Label htmlFor={htmlFor} labelClassName={classes.accessibleLabel}>

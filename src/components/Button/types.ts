@@ -4,6 +4,6 @@ export type ButtonProps = {
     type?: ValuesOfObject<typeof buttonType>;
     size?: ValuesOfObject<typeof buttonSize>;
     variant?: ValuesOfObject<typeof buttonVariant>;
-    disabled?: boolean;
+    isDisabled?: boolean;
     onClick?: () => void;
 };

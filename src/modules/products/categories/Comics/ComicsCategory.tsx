@@ -13,12 +13,13 @@ import { useAPI, useCachedAPI } from '../../../../hooks';
 import { ComicsProduct } from '../../products/types';
 import { endpoint, query } from '../../../../common/constants/api';
 import { Translation } from '../../../../components/IntlProvider';
+import MultiLanguage from '../../../../components/FormAdapter/MultiLanguageInput/MultiLanguage';
 import classes from '../styles/comicsCategory.module.css';
 
 const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     {
         formData,
-        readOnly,
+        isReadOnly,
         onSubmitSuccess,
         onSubmitError
     }
@@ -27,6 +28,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     const { language: userLanguage, translate } = useTranslation();
 
     const formValues = formData ? formData : {};
+
     const shouldUpdateProduct = Object.keys(formValues).length > 0;
 
     const {
@@ -41,14 +43,14 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     }, [isSubmitSuccessful, reset]);
 
     useEffect(() => {
-        if (readOnly) {
+        if (isReadOnly) {
             resetFormValues();
         }
-    }, [readOnly, resetFormValues])
+    }, [isReadOnly, resetFormValues])
     
     const { data: attributes } = useCachedAPI<ComicsAttributes>(
         `${endpoint.attributes}?${query.category}=${categories.comics}`,
-        { shouldFetch: !readOnly }
+        { shouldFetch: !isReadOnly }
     );
 
     const {
@@ -65,13 +67,9 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
         year
     } = attributes || {};
 
-    const getTranslatedInputValue = (value: undefined | Translation): string => {
-        return value ? value[userLanguage] : '';
-    };
-
-    const getTranslatedDropdownValue = (item: null | string | string[] | Translation | Translation[]): undefined | string | string[] => {
+    const getTranslatedDropdownValue = (item: null | string | string[] | Translation | Translation[]): null | string | string[] => {
         if (!item) {
-            return undefined;
+            return null;
         }
 
         if (Array.isArray(item)) {
@@ -82,21 +80,13 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     };
 
     const handleFormSubmit = async (values: ComicsCategoryFormValues): Promise<void> => {
-        if (attributes && !readOnly) {
+        if (attributes && !isReadOnly) {
             const newEntityData: ComicsNewEntity = {
                 ...values,
-                title: {
-                    uk: values.title,
-                    en: ''
-                },
                 screenwriter: values.screenwriter ? values.screenwriter : null,
                 artist: values.artist ? values.artist : null,
                 pages: Number(values.pages),
                 year: Number(values.year),
-                description: {
-                    uk: values.description,
-                    en: ''
-                },
                 quantity: Number(values.quantity),
                 preorder: false,
                 character: values.character ? values.character : null,
@@ -121,28 +111,27 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
             <GridAutoFit>
-                <InputAdapter
-                    required
-                    //TODO Temporary do not update
-                    disabled
-                    readOnly={readOnly}
-                    name={formFields.title}
-                    valueGetter={getTranslatedInputValue}
-                    placeholder={translate('attributes.title.fillIn')}
-                    label={translate('attributes.title')}
-                    control={control}
-                />
+                <MultiLanguage>
+                    <InputAdapter
+                        isRequired
+                        isReadOnly={isReadOnly}
+                        name={formFields.title}
+                        placeholder={translate('attributes.title.fillIn')}
+                        label={translate('attributes.title')}
+                        control={control}
+                    />
+                </MultiLanguage>
                 <GridAutoFit gridColumnMinWidth={150}>
                     <InputAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.price}
                         placeholder={translate('attributes.price.fillIn')}
                         label={translate('attributes.price')}
                         control={control}
                     />
                     <InputAdapter
-                        readOnly={readOnly}
+                        isReadOnly={isReadOnly}
                         name={formFields.discountPrice}
                         placeholder={translate('attributes.price.discount.fillIn')}
                         label={translate('attributes.price.discount')}
@@ -151,8 +140,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                 </GridAutoFit>
                 <GridAutoFit gridColumnMinWidth={150}>
                     <DropdownAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.publishingHouse}
                         items={publishingHouse}
                         placeholder={translate('attributes.publishingHouse.choose')}
@@ -160,8 +149,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         control={control}
                     />
                     <DropdownAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.label}
                         items={label}
                         placeholder={translate('attributes.label.choose')}
@@ -171,8 +160,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                 </GridAutoFit>
                 <GridAutoFit gridColumnMinWidth={150}>
                     <DropdownAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.language}
                         customItems={language}
                         itemValueGetter={getTranslatedDropdownValue}
@@ -181,8 +170,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         control={control}
                     />
                     <DropdownAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.format}
                         items={format}
                         placeholder={translate('attributes.format.choose')}
@@ -192,8 +181,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                 </GridAutoFit>
                 <GridAutoFit gridColumnMinWidth={150}>
                     <DropdownAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.cover}
                         customItems={cover}
                         itemValueGetter={getTranslatedDropdownValue}
@@ -202,8 +191,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                         control={control}
                     />
                     <DropdownAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.condition}
                         customItems={condition}
                         itemValueGetter={getTranslatedDropdownValue}
@@ -214,16 +203,16 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                 </GridAutoFit>
                 <GridAutoFit gridColumnMinWidth={150}>
                     <InputAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.pages}
                         placeholder={translate('attributes.pages.fillIn')}
                         label={translate('attributes.pages')}
                         control={control}
                     />
                     <DropdownAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.year}
                         items={year}
                         placeholder={translate('attributes.year.fillIn')}
@@ -232,8 +221,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     />
                 </GridAutoFit>
                 <DropdownAdapter
-                    multiselect
-                    readOnly={readOnly}
+                    hasMultiselect
+                    isReadOnly={isReadOnly}
                     name={formFields.screenwriter}
                     customItems={screenwriter}
                     itemValueGetter={getTranslatedDropdownValue}
@@ -242,8 +231,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     control={control}
                 />
                 <DropdownAdapter
-                    multiselect
-                    readOnly={readOnly}
+                    hasMultiselect
+                    isReadOnly={isReadOnly}
                     name={formFields.artist}
                     customItems={artist}
                     itemValueGetter={getTranslatedDropdownValue}
@@ -252,8 +241,8 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     control={control}
                 />
                 <DropdownAdapter
-                    multiselect
-                    readOnly={readOnly}
+                    hasMultiselect
+                    isReadOnly={isReadOnly}
                     name={formFields.character}
                     customItems={character}
                     itemValueGetter={getTranslatedDropdownValue}
@@ -262,9 +251,9 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     control={control}
                 />
                 <DropdownAdapter
-                    required
-                    multiselect
-                    readOnly={readOnly}
+                    isRequired
+                    hasMultiselect
+                    isReadOnly={isReadOnly}
                     name={formFields.genre}
                     customItems={genre}
                     itemValueGetter={getTranslatedDropdownValue}
@@ -274,16 +263,16 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                 />
                 <GridAutoFit gridColumnMinWidth={150}>
                     <InputAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.quantity}
                         placeholder={translate('attributes.quantity.fillIn')}
                         label={translate('attributes.quantity')}
                         control={control}
                     />
                     <InputAdapter
-                        required
-                        readOnly={readOnly}
+                        isRequired
+                        isReadOnly={isReadOnly}
                         name={formFields.isbn}
                         placeholder={translate('attributes.isbn.fillIn')}
                         label="ISBN"
@@ -291,21 +280,20 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     />
                 </GridAutoFit>
                 <div className={classes.descriptionField}>
-                    <InputAdapter
-                        required
-                        //TODO Temporary do not update
-                        disabled
-                        readOnly={readOnly}
-                        name={formFields.description}
-                        valueGetter={getTranslatedInputValue}
-                        placeholder={translate('attributes.description.fillIn')}
-                        label={translate('attributes.description')}
-                        control={control}
-                    />
+                    <MultiLanguage>
+                        <InputAdapter
+                            isRequired
+                            isReadOnly={isReadOnly}
+                            name={formFields.description}
+                            placeholder={translate('attributes.description.fillIn')}
+                            label={translate('attributes.description')}
+                            control={control}
+                        />
+                    </MultiLanguage>
                 </div>
             </GridAutoFit>
             {
-                !readOnly && (
+                !isReadOnly && (
                     <div className={classes.actionButtonWrapper}>
                         <Button variant="primary" type="submit">
                             {shouldUpdateProduct ? translate('update') : translate('add')}

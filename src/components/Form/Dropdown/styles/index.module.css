@@ -43,8 +43,8 @@
 }
 
 .dropdownList {
-    padding: 0 4px 0 0;
-    max-height: 150px;
+    padding: 0 8px 0 0;
+    max-height: 200px;
     overflow: auto;
 }
 

@@ -13,30 +13,30 @@ const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>
         items,
         customItems,
         placeholder,
-        required,
-        disabled,
-        open,
-        multiselect,
+        isRequired,
+        isDisabled,
+        isOpen,
+        hasMultiselect,
         onBlur,
         onChange,
         itemValueGetter,
-        readOnly,
+        isReadOnly,
         label
     },
     ref
 ) => {
     const { language } = useTranslation();
-    const readOnlyValue = readOnly ? getReadOnlyValue({ value, language }) : '';
+    const readOnlyValue = isReadOnly ? getReadOnlyValue({ value, language }) : '';
 
     return (
         <div>
             <AccessibleLabel
                 label={label}
                 htmlFor={name}
-                required={required}
-                readOnly={readOnly}
+                isRequired={isRequired}
+                isReadOnly={isReadOnly}
             />
-            {readOnly
+            {isReadOnly
                 ? <ReadOnlyField value={readOnlyValue} />
                 : <Dropdown
                     name={name}
@@ -44,10 +44,10 @@ const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>
                     items={items}
                     customItems={customItems}
                     placeholder={placeholder}
-                    required={required}
-                    disabled={disabled}
-                    open={open}
-                    multiselect={multiselect}
+                    isRequired={isRequired}
+                    isDisabled={isDisabled}
+                    isOpen={isOpen}
+                    hasMultiselect={hasMultiselect}
                     onBlur={onBlur}
                     onChange={onChange}
                     itemValueGetter={itemValueGetter}

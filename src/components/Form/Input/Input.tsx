@@ -12,8 +12,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
         value,
         placeholder,
         invalid,
-        required,
-        disabled,
+        isRequired,
+        isDisabled,
         ariaLabel,
         ariaLabelledBy,
         ariaDescribedBy,
@@ -32,11 +32,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
             name={name}
             type={type}
             value={currentValue}
-            disabled={disabled}
+            required={isRequired}
+            disabled={isDisabled}
             placeholder={placeholder}
             onBlur={onBlur}
             onChange={onChange}
-            aria-required={required} // could be avoidable, but in this case used, cause React doesn't show require attribute and voice doesn't announce that field is required
+            aria-required={isRequired} // could be avoidable, but in this case used, cause React doesn't show require attribute and voice doesn't announce that field is isRequired
             aria-invalid={invalid} // if value invalid
             aria-label={ariaLabel} // if other description absent
             aria-labelledby={ariaLabelledBy} // which element has a label for an input

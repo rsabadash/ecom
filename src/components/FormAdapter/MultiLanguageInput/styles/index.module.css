@@ -1,0 +1,23 @@
+.multiLanguageWrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.multiLanguage {
+    flex: 1;
+}
+
+.multiLanguage_active__uk .multiLanguage__item_uk,
+.multiLanguage_active__en .multiLanguage__item_en {
+    display: block;
+}
+
+.multiLanguage__item {
+    display: none;
+}
+
+.multiLanguage__dropdown {
+    min-width: 76px;
+    text-align: center;
+}

@@ -10,7 +10,7 @@ export type AttributeItem<Case = string> = {
 
 export type CategoryProps<D> = {
     formData?: D;
-    readOnly?: boolean;
+    isReadOnly?: boolean;
     onSubmitSuccess?: () => void;
     onSubmitError?: () => void;
 };

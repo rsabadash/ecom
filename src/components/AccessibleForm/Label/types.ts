@@ -3,6 +3,6 @@ import { ReactNode } from 'react';
 export type AccessibleLabelProps = {
     label: ReactNode;
     htmlFor: string;
-    required?: boolean;
-    readOnly?: boolean;
+    isRequired?: boolean;
+    isReadOnly?: boolean;
 };

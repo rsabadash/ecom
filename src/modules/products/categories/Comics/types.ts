@@ -7,7 +7,7 @@ export type AttributeCover = ValuesOfObject<typeof attributeCover>;
 export type AttributeCondition = ValuesOfObject<typeof attributeCondition>;
 
 export type ComicsCategoryFormValues = {
-    title: string;
+    title: Translation;
     screenwriter: null | Translation[];
     artist: null | Translation[];
     publishingHouse: string;
@@ -17,7 +17,7 @@ export type ComicsCategoryFormValues = {
     pages: string;
     isbn: string;
     year: string;
-    description: string;
+    description: Translation;
     condition: Translation;
     quantity: string;
     preorder: boolean;

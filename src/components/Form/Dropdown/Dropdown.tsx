@@ -14,10 +14,10 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         items = [],
         customItems,
         placeholder,
-        required,
-        disabled,
-        open,
-        multiselect,
+        isOpen,
+        isRequired,
+        isDisabled,
+        hasMultiselect,
         // invalid,
         // onBlur,
         onChange,
@@ -30,19 +30,19 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
 ) => {
     const dropdownItems = customItems || items;
     const useCustomValueGetter = customItems && itemValueGetter
-    const hasEmptyItem = !required;
+    const hasEmptyItem = !isRequired;
 
-    const [isOpen, setIsOpen] = useState(() => open || false);
+    const [isOpenInternal, setIsOpenInternal] = useState(() => isOpen || false);
     const [isKeyboardControl, setIsKeyboardControl] = useState(false);
 
     const { translate } = useTranslation();
 
     const closeDropdown = (): void => {
-        setIsOpen(false);
+        setIsOpenInternal(false);
     };
 
     const toggleDropdownList = (): void => {
-        setIsOpen((prevIsOpen) => !prevIsOpen);
+        setIsOpenInternal((prevIsOpen) => !prevIsOpen);
     };
 
     const handleOutsideDropdownClick = (): void => {
@@ -50,7 +50,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const { setCurrentElement } = useOutsideElementClick({
-        dependency: isOpen,
+        dependency: isOpenInternal,
         handleClick: handleOutsideDropdownClick
     });
 
@@ -112,10 +112,10 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     }, [setCurrentElement]);
 
     useLayoutEffect(() => {
-        if (isOpen && focusIndex !== DEFAULT_FOCUS_INDEX && listRef.current) {
+        if (isOpenInternal && focusIndex !== DEFAULT_FOCUS_INDEX && listRef.current) {
             listRef.current.children[focusIndex].scrollIntoView({ block: 'center' });
         }
-    }, [isOpen, focusIndex]);
+    }, [isOpenInternal, focusIndex]);
 
     const setFocusData = (index: number): void => {
         const id = getItemValue(dropdownItems[index], true);
@@ -124,12 +124,12 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const handleDropdownClick = (): void => {
-        if (disabled) {
+        if (isDisabled) {
             return;
         }
 
         toggleDropdownList();
-    }
+    };
 
     const initMultiSelection = (item: DropdownItem): void => {
         if (value) {
@@ -149,7 +149,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const initSelection = (item: DropdownItem): void => {
-        if (multiselect) {
+        if (hasMultiselect) {
             initMultiSelection(item);
         } else {
             initSingleSelection(item);
@@ -170,14 +170,15 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const initSingleUnSelection = (): void => {
-        if (!required) {
+        if (!isRequired) {
             onChange(null);
         }
+
         closeDropdown();
     };
 
     const initUnSelection = (item: DropdownItem): void => {
-        if (multiselect) {
+        if (hasMultiselect) {
             initMultiUnSelection(item);
         } else {
             closeDropdown();
@@ -211,7 +212,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const handleDropdownKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
-        if (disabled) {
+        if (isDisabled) {
             return;
         }
 
@@ -219,7 +220,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         const index = defineIndex(key);
 
         if (index !== DEFAULT_FOCUS_INDEX) {
-            if (!isOpen) {
+            if (!isOpenInternal) {
                 handleDropdownClick();
             }
 
@@ -227,7 +228,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             return setFocusData(index);
         }
 
-        if (isOpen) {
+        if (isOpenInternal) {
             if (key === EventKeys.Escape || key === EventKeys.Tab) {
                 return closeDropdown();
             }
@@ -245,7 +246,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             }
         }
 
-        if (!isOpen) {
+        if (!isOpenInternal) {
             if (key === EventKeys.Enter || key === EventKeys.Space) {
                 handleDropdownClick();
                 setIsKeyboardControl(true);
@@ -281,10 +282,10 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             <div
                 role="combobox"
                 tabIndex={0}
-                aria-disabled={disabled}
-                aria-required={required}
+                aria-disabled={isDisabled}
+                aria-required={isRequired}
                 aria-haspopup="listbox"
-                aria-expanded={isOpen}
+                aria-expanded={isOpenInternal}
                 aria-controls={LIST_CONTROL_ID}
                 aria-activedescendant={focusItemId || undefined}
                 aria-label={ariaLabel} // if other description absent
@@ -298,13 +299,13 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             >
                 {viewValue || placeholder}
             </div>
-            {isOpen && (
+            {isOpenInternal && (
                 <div className={classes.dropdownListWrapper}>
                     <ul
                         id={LIST_CONTROL_ID}
                         role="listbox"
                         aria-labelledby={ariaLabelledBy}
-                        aria-multiselectable={multiselect}
+                        aria-multiselectable={hasMultiselect}
                         onMouseMove={handleListMouseMove}
                         ref={listRef}
                         className={classes.dropdownList}
@@ -349,7 +350,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
                                     className={dropdownListItemClass}
                                 >
                                     {itemValue}
-                                    {multiselect && isSelected && (<span> 🗸</span>)}
+                                    {hasMultiselect && isSelected && (<span> 🗸</span>)}
                                 </li>
                             )
                         })}

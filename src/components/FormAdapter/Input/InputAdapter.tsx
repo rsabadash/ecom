@@ -8,10 +8,10 @@ const InputAdapter = <FormValues,>(
         name,
         type,
         placeholder,
-        required,
-        disabled,
+        isRequired,
+        isDisabled,
         valueGetter,
-        readOnly,
+        isReadOnly,
         label,
         control,
     }: InputAdapterProps<FormValues>
@@ -23,21 +23,21 @@ const InputAdapter = <FormValues,>(
         control,
     });
 
-    const fieldValues = value as InputValue;
+    const fieldValue = value as InputValue;
 
     return (
         <AccessibleInput
             name={fieldName}
             type={type}
-            value={fieldValues}
+            value={fieldValue}
             placeholder={placeholder}
-            required={required}
-            disabled={disabled}
+            isRequired={isRequired}
+            isDisabled={isDisabled}
             onBlur={onBlur}
             onChange={onChange}
             valueGetter={valueGetter}
             label={label}
-            readOnly={readOnly}
+            isReadOnly={isReadOnly}
         />
     );
 };

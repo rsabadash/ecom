@@ -12,36 +12,36 @@ const AccessibleInput = forwardRef<HTMLInputElement, AccessibleInputProps>((
         type,
         value,
         placeholder,
-        required,
-        disabled,
+        isRequired,
+        isDisabled,
         onBlur,
         onChange,
         valueGetter,
-        readOnly,
+        isReadOnly,
         label
     },
     ref
 ) => {
     const { language } = useTranslation();
-    const readOnlyValue = readOnly ? getReadOnlyValue({ value, language }) : '';
+    const readOnlyValue = isReadOnly ? getReadOnlyValue({ value, language }) : '';
 
     return (
         <div>
             <AccessibleLabel
                 label={label}
                 htmlFor={name}
-                required={required}
-                readOnly={readOnly}
+                isRequired={isRequired}
+                isReadOnly={isReadOnly}
             />
-            {readOnly
+            {isReadOnly
                 ? <ReadOnlyField value={readOnlyValue} />
                 : <Input
                     name={name}
                     type={type}
                     value={value}
                     placeholder={placeholder}
-                    required={required}
-                    disabled={disabled}
+                    isRequired={isRequired}
+                    isDisabled={isDisabled}
                     onBlur={onBlur}
                     onChange={onChange}
                     valueGetter={valueGetter}

@@ -35,7 +35,7 @@ const ProductsAdd = () => {
             <Top headingText={translate('products.add')}></Top>
             <ForegroundSection>
                 <DropdownAdapter
-                    required
+                    isRequired
                     name={formCategoryField.category}
                     control={control}
                     items={categories}

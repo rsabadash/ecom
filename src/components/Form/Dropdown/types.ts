@@ -1,17 +1,17 @@
 export type DropdownItemId = string;
 
-export type DropdownItemValue = string | number;
+export type DropdownItemValue<V = string | number> = V extends undefined ? string | number : V;
 
-export type DropdownItemObject<V extends string | number = DropdownItemValue, I extends string = DropdownItemId> = {
+export type DropdownItemObject<V = DropdownItemValue, I = DropdownItemId> = {
     id: I;
     value: V;
 };
 
-export type DropdownItemPrimitive = DropdownItemValue;
+export type DropdownItemPrimitive<V = DropdownItemValue> = DropdownItemValue<V>;
 
-export type DropdownItem = DropdownItemObject | DropdownItemPrimitive;
+export type DropdownItem<V = DropdownItemValue> = DropdownItemObject<V> | DropdownItemPrimitive<V>;
 
-export type DropdownValue = null | DropdownItem | DropdownItem[];
+export type DropdownValue<V = DropdownItemValue> = null | DropdownItem<V> | DropdownItem<V>[];
 
 export type DropdownProps = {
     name: string;
@@ -19,14 +19,14 @@ export type DropdownProps = {
     items?: DropdownItem[];
     customItems?: any[];
     placeholder?: string;
-    required?: boolean;
-    disabled?: boolean;
-    open?: boolean;
+    isRequired?: boolean;
+    isDisabled?: boolean;
+    isOpen?: boolean;
     invalid?: boolean;
-    multiselect?: boolean;
+    hasMultiselect?: boolean;
     onBlur?: () => void;
     onChange: (value: DropdownValue) => void;
-    itemValueGetter?: (item: any) => string | string[] | undefined;
+    itemValueGetter?: (item: any) => string | string[] | null;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     ariaDescribedBy?: string;

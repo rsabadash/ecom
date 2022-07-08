@@ -9,8 +9,8 @@ export type InputProps = {
     value?: null | InputValue;
     placeholder?: string;
     invalid?: boolean;
-    required?: boolean;
-    disabled?: boolean;
+    isRequired?: boolean;
+    isDisabled?: boolean;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     ariaDescribedBy?: string;

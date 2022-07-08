@@ -6,7 +6,7 @@ export type AccessibleDropdownProps =
     Omit<DropdownProps, 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'> &
     Pick<AccessibleLabelProps, 'label'> &
     {
-        readOnly?: boolean
+        isReadOnly?: boolean
     };
 
 export type GetReadOnlyValueArgs = {

@@ -6,7 +6,7 @@ export type AccessibleInputProps =
     Omit<InputProps, 'id' | 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'> &
     Pick<AccessibleLabelProps, 'label'> &
     {
-        readOnly?: boolean
+        isReadOnly?: boolean
     };
 
 export type GetReadOnlyValueArgs = {
