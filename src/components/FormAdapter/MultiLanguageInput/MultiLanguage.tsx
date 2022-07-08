@@ -31,6 +31,7 @@ const MultiLanguageInput: FC<PropsWithChildren<{}>> = (
 
                         return (
                             <div
+                                key={language}
                                 className={clsx(classes.multiLanguage__item, classes[`multiLanguage__item_${language}`])}
                             >
                                 {cloneElement(component, { ...component.props, name: languagePostfixName })}
