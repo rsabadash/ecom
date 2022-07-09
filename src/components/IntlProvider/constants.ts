@@ -8,10 +8,7 @@ export const languages = {
     en: 'en'
 } as const;
 
-export const SUPPORTED_LANGUAGES = [
-    languages.uk,
-    languages.en
-];
+export const SUPPORTED_LANGUAGES = Object.values(languages);
 
 export const DEFAULT_LANGUAGE = languages.uk;
 

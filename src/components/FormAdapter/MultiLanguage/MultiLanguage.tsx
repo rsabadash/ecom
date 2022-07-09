@@ -4,7 +4,7 @@ import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, Language } from '../../IntlProvi
 import Dropdown, { DropdownValue } from '../../Form/Dropdown';
 import classes from './styles/index.module.css';
 
-const MultiLanguageInput: FC<PropsWithChildren<{}>> = (
+const MultiLanguage: FC<PropsWithChildren<{}>> = (
     {
         children
     }
@@ -42,7 +42,7 @@ const MultiLanguageInput: FC<PropsWithChildren<{}>> = (
                     }
                 })}
             </div>
-            {!isReadOnly && (
+            {!isReadOnly && SUPPORTED_LANGUAGES.length > 1 &&  (
                 <div className={classes.multiLanguage__dropdown}>
                     <Dropdown
                         isRequired
@@ -57,4 +57,4 @@ const MultiLanguageInput: FC<PropsWithChildren<{}>> = (
     );
 };
 
-export default MultiLanguageInput;
+export { MultiLanguage };

@@ -13,7 +13,7 @@ import { useAPI, useCachedAPI } from '../../../../hooks';
 import { ComicsProduct } from '../../products/types';
 import { endpoint, query } from '../../../../common/constants/api';
 import { Translation } from '../../../../components/IntlProvider';
-import MultiLanguage from '../../../../components/FormAdapter/MultiLanguageInput/MultiLanguage';
+import { MultiLanguageInput } from '../../../../components/FormAdapter/MultiLanguage';
 import classes from '../styles/comicsCategory.module.css';
 
 const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
@@ -111,16 +111,14 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
             <GridAutoFit>
-                <MultiLanguage>
-                    <InputAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.title}
-                        placeholder={translate('attributes.title.fillIn')}
-                        label={translate('attributes.title')}
-                        control={control}
-                    />
-                </MultiLanguage>
+                <MultiLanguageInput
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.title}
+                    placeholder={translate('attributes.title.fillIn')}
+                    label={translate('attributes.title')}
+                    control={control}
+                />
                 <GridAutoFit gridColumnMinWidth={150}>
                     <InputAdapter
                         isRequired
@@ -280,16 +278,14 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     />
                 </GridAutoFit>
                 <div className={classes.descriptionField}>
-                    <MultiLanguage>
-                        <InputAdapter
-                            isRequired
-                            isReadOnly={isReadOnly}
-                            name={formFields.description}
-                            placeholder={translate('attributes.description.fillIn')}
-                            label={translate('attributes.description')}
-                            control={control}
-                        />
-                    </MultiLanguage>
+                    <MultiLanguageInput
+                        isRequired
+                        isReadOnly={isReadOnly}
+                        name={formFields.description}
+                        placeholder={translate('attributes.description.fillIn')}
+                        label={translate('attributes.description')}
+                        control={control}
+                    />
                 </div>
             </GridAutoFit>
             {

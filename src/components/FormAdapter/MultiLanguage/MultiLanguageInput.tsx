@@ -56,7 +56,7 @@ const MultiLanguageInput = <FormValues,>(
                     );
                 })}
             </div>
-            {!isReadOnly && (
+            {!isReadOnly && SUPPORTED_LANGUAGES.length > 1 && (
                 <div className={classes.multiLanguage__dropdown}>
                     <Dropdown
                         isRequired
@@ -71,4 +71,4 @@ const MultiLanguageInput = <FormValues,>(
     );
 };
 
-export default MultiLanguageInput;
+export { MultiLanguageInput };
