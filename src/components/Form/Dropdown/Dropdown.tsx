@@ -15,6 +15,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         customItems,
         placeholder,
         isOpen,
+        isReadOnly,
         isRequired,
         isDisabled,
         hasMultiselect,
@@ -29,9 +30,12 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     ref
 ) => {
     const dropdownItems = customItems || items;
-    const useCustomValueGetter = customItems && itemValueGetter
+    const hasItems = dropdownItems?.length > 0;
     const hasEmptyItem = !isRequired;
-
+    const useCustomValueGetter = !!itemValueGetter;
+    const isActive = !isDisabled && !isReadOnly;
+    const isListInitialized = isActive && hasItems;
+    
     const [isOpenInternal, setIsOpenInternal] = useState(() => isOpen || false);
     const [isKeyboardControl, setIsKeyboardControl] = useState(false);
 
@@ -39,6 +43,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
 
     const closeDropdown = (): void => {
         setIsOpenInternal(false);
+        setIsKeyboardControl(false);
     };
 
     const toggleDropdownList = (): void => {
@@ -54,7 +59,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         handleClick: handleOutsideDropdownClick
     });
 
-    const getItemValue = (item?: DropdownValue, getId?: boolean): string | null => {
+    const getItemValue = (item?: DropdownValue, getId?: boolean): DropdownItemId | null => {
         const dropdownItem = useCustomValueGetter ? itemValueGetter(item) : item;
 
         if (!dropdownItem) {
@@ -99,11 +104,27 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         return DEFAULT_FOCUS_INDEX;
     };
 
-    const [focusIndex, setFocusIndex] = useState<number>(() => getInitialFocusIndex());
-    const [focusItemId, setFocusItemId] = useState<DropdownItemId | null>(() => getItemValue(value, true));
+    const getInitialFocusId = (): DropdownItemId | null => {
+        return getItemValue(value, true);
+    };
+    
+    const [focusIndex, setFocusIndex] = useState<number>(DEFAULT_FOCUS_INDEX);
+    const [focusItemId, setFocusItemId] = useState<DropdownItemId | null>(null);
 
     const listRef = useRef<HTMLUListElement>(null);
     const dropdownButtonRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (isListInitialized) {
+            if (isKeyboardControl) {
+                setFocusIndex(() => getInitialFocusIndex());
+                setFocusItemId(() => getInitialFocusId());
+            } else {
+                setFocusIndex(DEFAULT_FOCUS_INDEX);
+                setFocusItemId(null);
+            }
+        }
+    }, [isListInitialized, isKeyboardControl]);
 
     useEffect(() => {
         if (dropdownButtonRef.current) {
@@ -124,7 +145,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const handleDropdownClick = (): void => {
-        if (isDisabled) {
+        if (!isActive) {
             return;
         }
 
@@ -212,7 +233,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const handleDropdownKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
-        if (isDisabled) {
+        if (!isActive) {
             return;
         }
 
@@ -269,11 +290,13 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
     };
 
     const viewValue = getItemValue(value);
+    const placeholderValue = isReadOnly ? '' : placeholder;
 
     const dropdownClassName = clsx(
         classes.dropdown,
         {
-            [classes.dropdown_noValue]: !viewValue
+            [classes.dropdown_noValue]: !viewValue,
+            [classes.dropdown_readOnly]: isReadOnly,
         }
     );
 
@@ -281,7 +304,6 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         <div className={classes.dropdownWrapper}>
             <div
                 role="combobox"
-                tabIndex={0}
                 aria-disabled={isDisabled}
                 aria-required={isRequired}
                 aria-haspopup="listbox"
@@ -296,10 +318,11 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
                 onKeyDown={handleDropdownKeyDown}
                 ref={dropdownButtonRef}
                 className={dropdownClassName}
+                tabIndex={isReadOnly ? -1 : 0}
             >
-                {viewValue || placeholder}
+                {viewValue || placeholderValue}
             </div>
-            {isOpenInternal && (
+            {isOpenInternal && isListInitialized && (
                 <div className={classes.dropdownListWrapper}>
                     <ul
                         id={LIST_CONTROL_ID}
@@ -310,7 +333,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
                         ref={listRef}
                         className={classes.dropdownList}
                     >
-                        {/*TODO keyboard navigation*/}
+                        {/*TODO keyboard navigation for empty item*/}
                         {hasEmptyItem && (
                             <li
                                 role="option"

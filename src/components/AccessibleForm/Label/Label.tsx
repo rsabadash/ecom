@@ -8,8 +8,8 @@ const AccessibleLabel: FC<AccessibleLabelProps> = (
     {
         label,
         htmlFor,
-        isRequired,
-        isReadOnly
+        isReadOnly,
+        isRequired
     }
 ) => {
     const { translate } = useTranslation();

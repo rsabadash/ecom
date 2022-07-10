@@ -8,10 +8,10 @@ const InputAdapter = <FormValues,>(
         name,
         type,
         placeholder,
+        isReadOnly,
         isRequired,
         isDisabled,
         valueGetter,
-        isReadOnly,
         label,
         control,
     }: InputAdapterProps<FormValues>
@@ -31,13 +31,13 @@ const InputAdapter = <FormValues,>(
             type={type}
             value={fieldValue}
             placeholder={placeholder}
+            isReadOnly={isReadOnly}
             isRequired={isRequired}
             isDisabled={isDisabled}
             onBlur={onBlur}
             onChange={onChange}
             valueGetter={valueGetter}
             label={label}
-            isReadOnly={isReadOnly}
         />
     );
 };

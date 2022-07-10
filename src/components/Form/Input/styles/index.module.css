@@ -22,3 +22,17 @@
 .input::placeholder {
     color: var(--text-disabled);
 }
+
+.input_readOnly {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    height: auto;
+    padding: 0;
+    cursor: default;
+    user-select: none;
+}
+
+.input_readOnly::selection {
+    background: transparent; /* Prevent auto-highlighting text on focus (only visual impact) */
+}

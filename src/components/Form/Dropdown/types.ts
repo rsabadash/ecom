@@ -19,6 +19,7 @@ export type DropdownProps = {
     items?: DropdownItem[];
     customItems?: any[];
     placeholder?: string;
+    isReadOnly?: boolean;
     isRequired?: boolean;
     isDisabled?: boolean;
     isOpen?: boolean;

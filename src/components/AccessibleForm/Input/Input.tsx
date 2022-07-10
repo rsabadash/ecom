@@ -2,9 +2,6 @@ import { forwardRef } from 'react';
 import Input  from '../../Form/Input';
 import { AccessibleInputProps } from './types';
 import AccessibleLabel from '../Label';
-import ReadOnlyField from '../ReadOnlyField';
-import { useTranslation } from '../../IntlProvider';
-import { getReadOnlyValue } from './utils';
 
 const AccessibleInput = forwardRef<HTMLInputElement, AccessibleInputProps>((
     {
@@ -12,42 +9,37 @@ const AccessibleInput = forwardRef<HTMLInputElement, AccessibleInputProps>((
         type,
         value,
         placeholder,
+        isReadOnly,
         isRequired,
         isDisabled,
         onBlur,
         onChange,
         valueGetter,
-        isReadOnly,
         label
     },
     ref
 ) => {
-    const { language } = useTranslation();
-    const readOnlyValue = isReadOnly ? getReadOnlyValue({ value, language }) : '';
-
     return (
         <div>
             <AccessibleLabel
                 label={label}
                 htmlFor={name}
-                isRequired={isRequired}
                 isReadOnly={isReadOnly}
+                isRequired={isRequired}
             />
-            {isReadOnly
-                ? <ReadOnlyField value={readOnlyValue} />
-                : <Input
-                    name={name}
-                    type={type}
-                    value={value}
-                    placeholder={placeholder}
-                    isRequired={isRequired}
-                    isDisabled={isDisabled}
-                    onBlur={onBlur}
-                    onChange={onChange}
-                    valueGetter={valueGetter}
-                    ref={ref}
-                />
-            }
+            <Input
+                name={name}
+                type={type}
+                value={value}
+                placeholder={placeholder}
+                isReadOnly={isReadOnly}
+                isRequired={isRequired}
+                isDisabled={isDisabled}
+                onBlur={onBlur}
+                onChange={onChange}
+                valueGetter={valueGetter}
+                ref={ref}
+            />
         </div>
     );
 });

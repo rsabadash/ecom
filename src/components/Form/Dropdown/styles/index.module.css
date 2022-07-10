@@ -29,6 +29,15 @@
     color: var(--text-disabled);
 }
 
+.dropdown_readOnly {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    height: auto;
+    padding: 0;
+    cursor: default;
+}
+
 .dropdownListWrapper {
     background-color: var(--input-background-absolute-hack);
     border: var(--border);

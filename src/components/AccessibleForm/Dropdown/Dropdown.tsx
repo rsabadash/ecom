@@ -2,9 +2,6 @@ import { forwardRef } from 'react';
 import Dropdown  from '../../Form/Dropdown/Dropdown';
 import { AccessibleDropdownProps } from './types';
 import AccessibleLabel from '../Label';
-import ReadOnlyField from '../ReadOnlyField';
-import { useTranslation } from '../../IntlProvider';
-import { getReadOnlyValue } from './utils';
 
 const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>((
     {
@@ -25,36 +22,31 @@ const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>
     },
     ref
 ) => {
-    const { language } = useTranslation();
-    const readOnlyValue = isReadOnly ? getReadOnlyValue({ value, language }) : '';
-
     return (
         <div>
             <AccessibleLabel
                 label={label}
                 htmlFor={name}
-                isRequired={isRequired}
                 isReadOnly={isReadOnly}
+                isRequired={isRequired}
             />
-            {isReadOnly
-                ? <ReadOnlyField value={readOnlyValue} />
-                : <Dropdown
-                    name={name}
-                    value={value}
-                    items={items}
-                    customItems={customItems}
-                    placeholder={placeholder}
-                    isRequired={isRequired}
-                    isDisabled={isDisabled}
-                    isOpen={isOpen}
-                    hasMultiselect={hasMultiselect}
-                    onBlur={onBlur}
-                    onChange={onChange}
-                    itemValueGetter={itemValueGetter}
-                    ariaLabelledBy={name}
-                    ref={ref}
-                />
-            }
+            <Dropdown
+                name={name}
+                value={value}
+                items={items}
+                customItems={customItems}
+                placeholder={placeholder}
+                isReadOnly={isReadOnly}
+                isRequired={isRequired}
+                isDisabled={isDisabled}
+                isOpen={isOpen}
+                hasMultiselect={hasMultiselect}
+                onBlur={onBlur}
+                onChange={onChange}
+                itemValueGetter={itemValueGetter}
+                ariaLabelledBy={name}
+                ref={ref}
+            />
         </div>
     );
 });

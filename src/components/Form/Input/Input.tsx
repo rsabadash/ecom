@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import clsx from 'clsx';
 import { InputProps } from './types';
 import { serializeValue } from './utils';
 import { DEFAULT_INPUT_TYPE } from './constants';
@@ -12,6 +13,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
         value,
         placeholder,
         invalid,
+        isReadOnly,
         isRequired,
         isDisabled,
         ariaLabel,
@@ -25,6 +27,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
 ) => {
     const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
 
+    const inputClassName = clsx(
+        classes.input,
+        {
+            [classes.input_readOnly]: isReadOnly
+        }
+    );
+
     return (
         <input
             ref={ref}
@@ -32,9 +41,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
             name={name}
             type={type}
             value={currentValue}
+            readOnly={isReadOnly}
             required={isRequired}
             disabled={isDisabled}
-            placeholder={placeholder}
+            placeholder={isReadOnly ? '' : placeholder}
             onBlur={onBlur}
             onChange={onChange}
             aria-required={isRequired} // could be avoidable, but in this case used, cause React doesn't show require attribute and voice doesn't announce that field is isRequired
@@ -43,7 +53,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
             aria-labelledby={ariaLabelledBy} // which element has a label for an input
             aria-describedby={ariaDescribedBy || placeholder} // which element describe input
             autoComplete="off"
-            className={classes.input}
+            className={inputClassName}
+            tabIndex={isReadOnly ? -1 : 0}
         />
     );
 });

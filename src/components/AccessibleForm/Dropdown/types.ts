@@ -1,15 +1,6 @@
-import { DropdownProps, DropdownValue } from '../../Form/Dropdown';
+import { DropdownProps } from '../../Form/Dropdown';
 import { AccessibleLabelProps } from '../Label';
-import { Language, Translation } from '../../IntlProvider';
 
 export type AccessibleDropdownProps =
     Omit<DropdownProps, 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'> &
-    Pick<AccessibleLabelProps, 'label'> &
-    {
-        isReadOnly?: boolean
-    };
-
-export type GetReadOnlyValueArgs = {
-    value: undefined | DropdownValue | Translation | Translation[];
-    language: Language;
-};
+    Pick<AccessibleLabelProps, 'label'>;

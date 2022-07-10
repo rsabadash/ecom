@@ -9,12 +9,12 @@ const DropdownAdapter = <FormValues,>(
         items,
         customItems,
         placeholder,
+        isReadOnly,
         isRequired,
         isDisabled,
         isOpen,
         hasMultiselect,
         itemValueGetter,
-        isReadOnly,
         label,
         control
     }: DropdownAdapterProps<FormValues>
@@ -35,6 +35,7 @@ const DropdownAdapter = <FormValues,>(
             items={items}
             customItems={customItems}
             placeholder={placeholder}
+            isReadOnly={isReadOnly}
             isRequired={isRequired}
             isDisabled={isDisabled}
             isOpen={isOpen}
@@ -42,7 +43,6 @@ const DropdownAdapter = <FormValues,>(
             onBlur={onBlur}
             onChange={onChange}
             itemValueGetter={itemValueGetter}
-            isReadOnly={isReadOnly}
             label={label}
         />
     );
