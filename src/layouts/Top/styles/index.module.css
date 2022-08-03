@@ -1,9 +1,16 @@
 .top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .top__heading {
-    margin-right: 24px;
+    margin-right: auto;
+}
+
+.top__buttons {
+    display: flex;
+    gap: 1rem;
 }

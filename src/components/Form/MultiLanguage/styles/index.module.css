@@ -1,6 +1,5 @@
 .multiLanguageWrapper {
     display: flex;
-    align-items: flex-end;
     gap: 12px;
 }
 
@@ -17,7 +16,7 @@
     display: none;
 }
 
-.multiLanguage__dropdown {
+.multiLanguage__switcher {
     min-width: 76px;
     text-align: center;
 }

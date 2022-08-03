@@ -1,26 +1,34 @@
-import { forwardRef } from 'react';
-import Input  from '../../Form/Input';
+import { FC } from 'react';
+import Input from '../../Form/Input';
 import { AccessibleInputProps } from './types';
 import AccessibleLabel from '../Label';
+import Description from '../Description';
+import classes from './styles/index.module.css';
 
-const AccessibleInput = forwardRef<HTMLInputElement, AccessibleInputProps>((
+const AccessibleInput: FC<AccessibleInputProps> = (
     {
         name,
         type,
         value,
         placeholder,
+        isValid,
         isReadOnly,
         isRequired,
         isDisabled,
         onBlur,
         onChange,
         valueGetter,
+        formatValue,
+        errorMessage,
+        isDescriptionHidden,
         label
-    },
-    ref
+    }
 ) => {
+    const descriptionType = errorMessage ? 'error' : undefined;
+    const descriptionMessage = errorMessage ? errorMessage : placeholder;
+
     return (
-        <div>
+        <div className={classes.accessibleFieldWrapper}>
             <AccessibleLabel
                 label={label}
                 htmlFor={name}
@@ -31,19 +39,20 @@ const AccessibleInput = forwardRef<HTMLInputElement, AccessibleInputProps>((
                 name={name}
                 type={type}
                 value={value}
-                placeholder={placeholder}
+                isValid={isValid}
                 isReadOnly={isReadOnly}
                 isRequired={isRequired}
                 isDisabled={isDisabled}
                 onBlur={onBlur}
                 onChange={onChange}
                 valueGetter={valueGetter}
-                ref={ref}
+                formatValue={formatValue}
             />
+            {!isDescriptionHidden && descriptionMessage && (
+                <Description type={descriptionType} message={descriptionMessage} />
+            )}
         </div>
     );
-});
-
-AccessibleInput.displayName = 'AccessibleInput';
+};
 
 export default AccessibleInput;

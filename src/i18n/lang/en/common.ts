@@ -4,5 +4,8 @@ export const common = {
     'add': 'Add',
     'update': 'Update',
     'edit': 'Edit',
-    'cancel': 'Cancel'
+    'cancel': 'Cancel',
+
+    'uk.adjective': 'Ukrainian',
+    'en.adjective': 'English',
 };

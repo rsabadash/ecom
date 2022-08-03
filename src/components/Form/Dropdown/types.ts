@@ -23,7 +23,7 @@ export type DropdownProps = {
     isRequired?: boolean;
     isDisabled?: boolean;
     isOpen?: boolean;
-    invalid?: boolean;
+    isValid?: boolean;
     hasMultiselect?: boolean;
     onBlur?: () => void;
     onChange: (value: DropdownValue) => void;

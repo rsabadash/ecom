@@ -4,7 +4,7 @@
 
 .dropdown {
     background-color: var(--input-background);
-    border: var(--border);
+    border: 1px solid var(--border);
     color: var(--text);
     border-radius: var(--radius-regular);
     height: var(--input-height);
@@ -15,7 +15,6 @@
     transition: box-shadow var(--transition);
     width: 100%;
     cursor: pointer;
-
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -29,6 +28,15 @@
     color: var(--text-disabled);
 }
 
+.dropdown_invalid {
+    border: 1px solid var(--border-error);
+}
+
+.dropdown_invalid:focus-visible {
+    border: 1px solid var(--border);
+    box-shadow: var(--input-box-shadow-error-focus);
+}
+
 .dropdown_readOnly {
     border: none;
     border-radius: 0;
@@ -40,7 +48,7 @@
 
 .dropdownListWrapper {
     background-color: var(--input-background-absolute-hack);
-    border: var(--border);
+    border: 1px solid var(--border);
     box-shadow: var(--shadow-5);
     border-radius: var(--radius-large);
     padding: 12px 4px 12px 12px;

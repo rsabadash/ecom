@@ -1,4 +1,4 @@
-.descriptionField {
+.fullWidthField {
     grid-column: 1 / -1;
     grid-row: span 1;
 }

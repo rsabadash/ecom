@@ -17,7 +17,6 @@ const Products = () => {
         {
             title: translate('attributes.title'),
             key: 'title',
-            // valueGetter: (title: Translation) => title[language],
             width: '70%'
         },
         {

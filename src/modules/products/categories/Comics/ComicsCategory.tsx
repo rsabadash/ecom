@@ -1,5 +1,7 @@
 import { FC, useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { useTranslation } from '../../../../components/IntlProvider';
 import DropdownAdapter from '../../../../components/FormAdapter/Dropdown';
 import InputAdapter from '../../../../components/FormAdapter/Input';
@@ -13,8 +15,42 @@ import { useAPI, useCachedAPI } from '../../../../hooks';
 import { ComicsProduct } from '../../products/types';
 import { endpoint, query } from '../../../../common/constants/api';
 import { Translation } from '../../../../components/IntlProvider';
-import { MultiLanguageInput } from '../../../../components/FormAdapter/MultiLanguage';
+import {
+    MultiLanguageInputAdapter,
+    MultiLanguageTextboxAdapter
+} from '../../../../components/FormAdapter/MultiLanguage';
+import { allTranslationsRequired, mainTranslationRequired } from '../../../../validations/translations';
 import classes from '../styles/comicsCategory.module.css';
+
+const schema = yup.object().shape({
+    title: yup.object().shape(mainTranslationRequired({
+        uk: 'attributes.title.uk.error.required'
+    })),
+    price: yup.number().required('attributes.price.error.required'),
+    publishingHouse: yup.string().required('attributes.publishingHouse.error.required'),
+    label: yup.string().required('attributes.label.error.required'),
+    language: yup.object().shape(allTranslationsRequired({
+        uk: 'attributes.language.error.required',
+        en: 'attributes.language.error.required'
+    })),
+    format: yup.string().required('attributes.format.error.required'),
+    cover: yup.object().shape(allTranslationsRequired({
+        uk: 'attributes.cover.error.required',
+        en: 'attributes.cover.error.required'
+    })),
+    condition: yup.object().shape(allTranslationsRequired({
+        uk: 'attributes.condition.error.required',
+        en: 'attributes.condition.error.required'
+    })),
+    pages: yup.number().required('attributes.pages.error.required'),
+    year: yup.number().required('attributes.year.error.required'),
+    genre: yup.array().of(yup.string()).required('attributes.genre.error.required'),
+    quantity: yup.number().required('attributes.quantity.error.required'),
+    isbn: yup.string().required('attributes.isbn.error.required'),
+    description: yup.object().shape(mainTranslationRequired({
+        uk: 'attributes.description.uk.error.required'
+    }))
+}).required();
 
 const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     {
@@ -28,7 +64,6 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     const { language: userLanguage, translate } = useTranslation();
 
     const formValues = formData ? formData : {};
-
     const shouldUpdateProduct = Object.keys(formValues).length > 0;
 
     const {
@@ -36,7 +71,10 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
         handleSubmit,
         reset,
         formState: { isSubmitSuccessful }
-    } = useForm<ComicsCategoryFormValues>({ defaultValues: formValues });
+    } = useForm<ComicsCategoryFormValues>({
+        defaultValues: formValues,
+        resolver: yupResolver(schema)
+    });
 
     const resetFormValues = useCallback(() => {
         !isSubmitSuccessful && reset();
@@ -109,123 +147,127 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     };
 
     return (
-        <form onSubmit={handleSubmit(handleFormSubmit)}>
+        <form noValidate onSubmit={handleSubmit(handleFormSubmit)}>
             <GridAutoFit>
-                <MultiLanguageInput
+                <div className={classes.fullWidthField}>
+                    <MultiLanguageInputAdapter
+                        isRequired
+                        isReadOnly={isReadOnly}
+                        name={formFields.title}
+                        placeholder={translate('attributes.title.fillIn')}
+                        label={translate('attributes.title')}
+                        control={control}
+                    />
+                </div>
+                <InputAdapter
                     isRequired
                     isReadOnly={isReadOnly}
-                    name={formFields.title}
-                    placeholder={translate('attributes.title.fillIn')}
-                    label={translate('attributes.title')}
+                    name={formFields.price}
+                    type="number"
+                    placeholder={translate('attributes.price.fillIn')}
+                    label={translate('attributes.price')}
+                    isDescriptionHidden={isReadOnly}
                     control={control}
                 />
-                <GridAutoFit gridColumnMinWidth={150}>
-                    <InputAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.price}
-                        placeholder={translate('attributes.price.fillIn')}
-                        label={translate('attributes.price')}
-                        control={control}
-                    />
-                    <InputAdapter
-                        isReadOnly={isReadOnly}
-                        name={formFields.discountPrice}
-                        placeholder={translate('attributes.price.discount.fillIn')}
-                        label={translate('attributes.price.discount')}
-                        control={control}
-                    />
-                </GridAutoFit>
-                <GridAutoFit gridColumnMinWidth={150}>
-                    <DropdownAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.publishingHouse}
-                        items={publishingHouse}
-                        placeholder={translate('attributes.publishingHouse.choose')}
-                        label={translate('attributes.publishingHouse')}
-                        control={control}
-                    />
-                    <DropdownAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.label}
-                        items={label}
-                        placeholder={translate('attributes.label.choose')}
-                        label={translate('attributes.label')}
-                        control={control}
-                    />
-                </GridAutoFit>
-                <GridAutoFit gridColumnMinWidth={150}>
-                    <DropdownAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.language}
-                        customItems={language}
-                        itemValueGetter={getTranslatedDropdownValue}
-                        placeholder={translate('attributes.language.choose')}
-                        label={translate('attributes.language')}
-                        control={control}
-                    />
-                    <DropdownAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.format}
-                        items={format}
-                        placeholder={translate('attributes.format.choose')}
-                        label={translate('attributes.format')}
-                        control={control}
-                    />
-                </GridAutoFit>
-                <GridAutoFit gridColumnMinWidth={150}>
-                    <DropdownAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.cover}
-                        customItems={cover}
-                        itemValueGetter={getTranslatedDropdownValue}
-                        placeholder={translate('attributes.cover.choose')}
-                        label={translate('attributes.cover')}
-                        control={control}
-                    />
-                    <DropdownAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.condition}
-                        customItems={condition}
-                        itemValueGetter={getTranslatedDropdownValue}
-                        placeholder={translate('attributes.condition.choose')}
-                        label={translate('attributes.condition')}
-                        control={control}
-                    />
-                </GridAutoFit>
-                <GridAutoFit gridColumnMinWidth={150}>
-                    <InputAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.pages}
-                        placeholder={translate('attributes.pages.fillIn')}
-                        label={translate('attributes.pages')}
-                        control={control}
-                    />
-                    <DropdownAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.year}
-                        items={year}
-                        placeholder={translate('attributes.year.fillIn')}
-                        label={translate('attributes.year')}
-                        control={control}
-                    />
-                </GridAutoFit>
+                <InputAdapter
+                    isReadOnly={isReadOnly}
+                    name={formFields.discountPrice}
+                    placeholder={translate('attributes.price.discount.fillIn')}
+                    label={translate('attributes.price.discount')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <DropdownAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.publishingHouse}
+                    items={publishingHouse}
+                    placeholder={translate('attributes.publishingHouse.select')}
+                    label={translate('attributes.publishingHouse')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <DropdownAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.label}
+                    items={label}
+                    placeholder={translate('attributes.label.select')}
+                    label={translate('attributes.label')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <DropdownAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.language}
+                    customItems={language}
+                    itemValueGetter={getTranslatedDropdownValue}
+                    placeholder={translate('attributes.language.select')}
+                    label={translate('attributes.language')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <DropdownAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.format}
+                    items={format}
+                    placeholder={translate('attributes.format.select')}
+                    label={translate('attributes.format')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <DropdownAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.cover}
+                    customItems={cover}
+                    itemValueGetter={getTranslatedDropdownValue}
+                    placeholder={translate('attributes.cover.select')}
+                    label={translate('attributes.cover')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <DropdownAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.condition}
+                    customItems={condition}
+                    itemValueGetter={getTranslatedDropdownValue}
+                    placeholder={translate('attributes.condition.select')}
+                    label={translate('attributes.condition')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <InputAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.pages}
+                    placeholder={translate('attributes.pages.fillIn')}
+                    label={translate('attributes.pages')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <DropdownAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.year}
+                    items={year}
+                    placeholder={translate('attributes.year.fillIn')}
+                    label={translate('attributes.year')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
                 <DropdownAdapter
                     hasMultiselect
                     isReadOnly={isReadOnly}
                     name={formFields.screenwriter}
                     customItems={screenwriter}
                     itemValueGetter={getTranslatedDropdownValue}
-                    placeholder={translate('attributes.screenwriter.choose')}
+                    placeholder={translate('attributes.screenwriter.select')}
                     label={translate('attributes.screenwriter')}
+                    isDescriptionHidden={isReadOnly}
                     control={control}
                 />
                 <DropdownAdapter
@@ -234,8 +276,9 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     name={formFields.artist}
                     customItems={artist}
                     itemValueGetter={getTranslatedDropdownValue}
-                    placeholder={translate('attributes.artist.choose')}
+                    placeholder={translate('attributes.artist.select')}
                     label={translate('attributes.artist')}
+                    isDescriptionHidden={isReadOnly}
                     control={control}
                 />
                 <DropdownAdapter
@@ -244,8 +287,9 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     name={formFields.character}
                     customItems={character}
                     itemValueGetter={getTranslatedDropdownValue}
-                    placeholder={translate('attributes.character.choose')}
+                    placeholder={translate('attributes.character.select')}
                     label={translate('attributes.character')}
+                    isDescriptionHidden={isReadOnly}
                     control={control}
                 />
                 <DropdownAdapter
@@ -255,30 +299,31 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     name={formFields.genre}
                     customItems={genre}
                     itemValueGetter={getTranslatedDropdownValue}
-                    placeholder={translate('attributes.genre.choose')}
+                    placeholder={translate('attributes.genre.select')}
                     label={translate('attributes.genre')}
+                    isDescriptionHidden={isReadOnly}
                     control={control}
                 />
-                <GridAutoFit gridColumnMinWidth={150}>
-                    <InputAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.quantity}
-                        placeholder={translate('attributes.quantity.fillIn')}
-                        label={translate('attributes.quantity')}
-                        control={control}
-                    />
-                    <InputAdapter
-                        isRequired
-                        isReadOnly={isReadOnly}
-                        name={formFields.isbn}
-                        placeholder={translate('attributes.isbn.fillIn')}
-                        label="ISBN"
-                        control={control}
-                    />
-                </GridAutoFit>
-                <div className={classes.descriptionField}>
-                    <MultiLanguageInput
+                <InputAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.quantity}
+                    placeholder={translate('attributes.quantity.fillIn')}
+                    label={translate('attributes.quantity')}
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <InputAdapter
+                    isRequired
+                    isReadOnly={isReadOnly}
+                    name={formFields.isbn}
+                    placeholder={translate('attributes.isbn.fillIn')}
+                    label="ISBN"
+                    isDescriptionHidden={isReadOnly}
+                    control={control}
+                />
+                <div className={classes.fullWidthField}>
+                    <MultiLanguageTextboxAdapter
                         isRequired
                         isReadOnly={isReadOnly}
                         name={formFields.description}

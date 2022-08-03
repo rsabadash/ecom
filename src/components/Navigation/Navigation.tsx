@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from '../IntlProvider';
 import { getMenuItems, isNavLinkActive } from './utils';
+import classes from './styles/index.module.css';
 
 const Navigation = () => {
     const { translate } = useTranslation();
@@ -10,8 +11,8 @@ const Navigation = () => {
 
     return (
         <nav aria-label="Main">
-            <ul role="menubar">
-                {menuItems.map(({ title, path, items }, index) => {
+            <ul role="menubar" className={classes.navigation__list}>
+                {menuItems.map(({ title, path, items }) => {
                     const hasSubItems = items && items.length > 0;
 
                     return (

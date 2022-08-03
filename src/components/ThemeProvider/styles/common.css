@@ -52,6 +52,7 @@
 
     --input-height: 48px;
     --input-box-shadow-focus: var(--primary-700) 0 0 0 0.2em;
+    --input-box-shadow-error-focus: var(--danger-900) 0 0 0 0.2em;
 
     --transition: 0.15s ease-in-out 0s;
 
@@ -63,7 +64,7 @@
 
     --font-size-tiny: 10px;
     --line-height-tiny: 16px;
-    --letter-spasing-tiny: 0.2px;
+    --letter-spacing-tiny: 0.2px;
     --font-size-small: 12px;
     --line-height-small: 20px;
     --font-size-regular: 14px;
@@ -83,6 +84,9 @@
     --line-height-head-3: 48px;
     --font-size-head-4: 28px;
     --line-height-head-4: 40px;
+
+    --text-error: var(--danger-800);
+    --border-error: var(--danger-900);
 }
 
 [data-theme="dark"],
@@ -93,7 +97,7 @@
     --text: var(--foreground-900);
     --text-disabled: var(--foreground-600);
 
-    --border: 1px solid var(--foreground-400);
+    --border: var(--foreground-400);
 
     --scrollbar-thumb: var(--foreground-700);
 
@@ -105,4 +109,6 @@
     --input-hover: var(--foreground-400);
 
     --button-regular-background: var(--foreground-900);
+
+    --text-description: var(--foreground-800);
 }

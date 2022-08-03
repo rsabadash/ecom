@@ -1,15 +1,18 @@
-import { forwardRef } from 'react';
+import { FC } from 'react';
 import Dropdown  from '../../Form/Dropdown/Dropdown';
 import { AccessibleDropdownProps } from './types';
 import AccessibleLabel from '../Label';
+import Description from '../Description';
+import classes from './styles/index.module.css';
 
-const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>((
+const AccessibleDropdown: FC<AccessibleDropdownProps> = (
     {
         name,
         value,
         items,
         customItems,
         placeholder,
+        isValid,
         isRequired,
         isDisabled,
         isOpen,
@@ -18,12 +21,16 @@ const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>
         onChange,
         itemValueGetter,
         isReadOnly,
+        errorMessage,
+        isDescriptionHidden,
         label
-    },
-    ref
+    }
 ) => {
+    const descriptionType = errorMessage ? 'error' : undefined;
+    const descriptionMessage = errorMessage ? errorMessage : placeholder;
+
     return (
-        <div>
+        <div className={classes.accessibleFieldWrapper}>
             <AccessibleLabel
                 label={label}
                 htmlFor={name}
@@ -35,7 +42,7 @@ const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>
                 value={value}
                 items={items}
                 customItems={customItems}
-                placeholder={placeholder}
+                isValid={isValid}
                 isReadOnly={isReadOnly}
                 isRequired={isRequired}
                 isDisabled={isDisabled}
@@ -45,12 +52,12 @@ const AccessibleDropdown = forwardRef<HTMLInputElement, AccessibleDropdownProps>
                 onChange={onChange}
                 itemValueGetter={itemValueGetter}
                 ariaLabelledBy={name}
-                ref={ref}
             />
+            {!isDescriptionHidden && descriptionMessage && (
+                <Description type={descriptionType} message={descriptionMessage} />
+            )}
         </div>
     );
-});
-
-AccessibleDropdown.displayName = 'AccessibleDropdown';
+};
 
 export default AccessibleDropdown;

@@ -40,7 +40,7 @@ const ProductsAdd = () => {
                     control={control}
                     items={categories}
                     label={translate('category')}
-                    placeholder={translate('category.choose')}
+                    placeholder={translate('category.select')}
                 />
             </ForegroundSection>
 

@@ -5,4 +5,5 @@ export type AccessibleLabelProps = {
     htmlFor: string;
     isReadOnly?: boolean;
     isRequired?: boolean;
+    labelClassName?: string;
 };

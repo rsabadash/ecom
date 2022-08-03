@@ -1,4 +1,4 @@
-import { forwardRef, KeyboardEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { FC, KeyboardEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { EventKeys } from './enums';
 import { LIST_CONTROL_ID, DEFAULT_FOCUS_INDEX } from './constants';
@@ -7,7 +7,7 @@ import { useOutsideElementClick } from '../../../hooks';
 import { useTranslation } from '../../IntlProvider';
 import classes from './styles/index.module.css';
 
-const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
+const Dropdown: FC<DropdownProps> = (
     {
         name,
         value ,
@@ -15,19 +15,18 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         customItems,
         placeholder,
         isOpen,
+        isValid,
         isReadOnly,
         isRequired,
         isDisabled,
         hasMultiselect,
-        // invalid,
         // onBlur,
         onChange,
         itemValueGetter,
         ariaLabel,
         ariaLabelledBy,
         ariaDescribedBy
-    },
-    ref
+    }
 ) => {
     const dropdownItems = customItems || items;
     const hasItems = dropdownItems?.length > 0;
@@ -297,6 +296,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
         {
             [classes.dropdown_noValue]: !viewValue,
             [classes.dropdown_readOnly]: isReadOnly,
+            [classes.dropdown_invalid]: !isValid
         }
     );
 
@@ -382,14 +382,11 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>((
             )}
             <input
                 value={viewValue || ''}
-                ref={ref}
                 name={name}
                 type="hidden"
             />
         </div>
     );
-});
-
-Dropdown.displayName = 'Dropdown';
+};
 
 export default Dropdown;

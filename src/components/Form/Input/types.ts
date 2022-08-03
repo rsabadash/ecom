@@ -1,14 +1,16 @@
-import { ChangeEventHandler, FocusEventHandler } from 'react';
+import { FocusEventHandler } from 'react';
 
 export type InputValue = string;
+
+export type InputFormValue = string | number | null | undefined;
 
 export type InputProps = {
     id?: string;
     name: string;
-    type?: 'text';
+    type?: 'text' | 'number';
     value?: null | InputValue;
     placeholder?: string;
-    invalid?: boolean;
+    isValid?: boolean;
     isReadOnly?: boolean;
     isRequired?: boolean;
     isDisabled?: boolean;
@@ -16,6 +18,8 @@ export type InputProps = {
     ariaLabelledBy?: string;
     ariaDescribedBy?: string;
     onBlur?: FocusEventHandler;
-    onChange?: ChangeEventHandler;
+    onChange?: (value: InputFormValue) => void;
     valueGetter?: (value: any) => InputValue;
+    formatValue?: (value: any) => InputFormValue;
+    inputClassName?: string;
 };

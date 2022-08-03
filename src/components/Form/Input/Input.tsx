@@ -1,18 +1,18 @@
-import { forwardRef } from 'react';
+import { ChangeEvent, FC } from 'react';
 import clsx from 'clsx';
 import { InputProps } from './types';
-import { serializeValue } from './utils';
+import { commonFormatValue, serializeValue } from './utils';
 import { DEFAULT_INPUT_TYPE } from './constants';
 import classes from './styles/index.module.css';
 
-const Input = forwardRef<HTMLInputElement, InputProps>((
+const Input: FC<InputProps> = (
     {
         id,
         name,
         type = DEFAULT_INPUT_TYPE,
         value,
         placeholder,
-        invalid,
+        isValid,
         isReadOnly,
         isRequired,
         isDisabled,
@@ -21,22 +21,33 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
         ariaDescribedBy,
         onBlur,
         onChange,
-        valueGetter
-    },
-    ref
+        valueGetter,
+        formatValue,
+        inputClassName
+    }
 ) => {
     const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
 
-    const inputClassName = clsx(
+    const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+            const value = e.target.value;
+            const formattedValue = formatValue ? formatValue(value) : commonFormatValue(value, type);
+
+            onChange(formattedValue);
+        }
+    };
+
+    const inputClassNames = clsx(
         classes.input,
         {
-            [classes.input_readOnly]: isReadOnly
-        }
+            [classes.input_readOnly]: isReadOnly,
+            [classes.input_invalid]: !isValid
+        },
+        inputClassName
     );
 
     return (
         <input
-            ref={ref}
             id={id || name}
             name={name}
             type={type}
@@ -46,19 +57,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
             disabled={isDisabled}
             placeholder={isReadOnly ? '' : placeholder}
             onBlur={onBlur}
-            onChange={onChange}
+            onChange={handleOnChange}
             aria-required={isRequired} // could be avoidable, but in this case used, cause React doesn't show require attribute and voice doesn't announce that field is isRequired
-            aria-invalid={invalid} // if value invalid
+            aria-invalid={isValid} // if value invalid
             aria-label={ariaLabel} // if other description absent
             aria-labelledby={ariaLabelledBy} // which element has a label for an input
             aria-describedby={ariaDescribedBy || placeholder} // which element describe input
             autoComplete="off"
-            className={inputClassName}
+            className={inputClassNames}
             tabIndex={isReadOnly ? -1 : 0}
         />
     );
-});
-
-Input.displayName = 'Input';
+};
 
 export default Input;

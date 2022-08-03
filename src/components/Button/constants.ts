@@ -3,7 +3,8 @@ export const buttonVariant = {
     primary: 'primary',
     success: 'success',
     warning: 'warning',
-    danger: 'danger'
+    danger: 'danger',
+    theme: 'theme'
 } as const;
 
 export const buttonSize = {

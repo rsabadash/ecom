@@ -3,20 +3,21 @@
 }
 
 .mainWrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: var(--aside-width) auto;
+    grid-template-areas: "aside main";
     direction: ltr;
     height: 100%;
 }
 
 .aside {
-    border-right: var(--border);
+    border-right: 1px solid var(--border);
     background-color: var(--foreground);
     box-shadow: var(--shadow-5);
-    width: var(--aside-width);
     height: 100%;
     flex: 0 0 auto;
     padding: 24px 16px;
-    position: fixed;
+    grid-area: aside;
 }
 
 .aside__logo {
@@ -24,8 +25,13 @@
     margin-bottom: 56px;
 }
 
-.mainContent {
+.main {
     padding: 64px 80px;
     width: 100%;
-    margin-left: var(--aside-width);
+    grid-area: main;
+}
+
+.content {
+    max-width: 1400px;
+    margin: 0 auto;
 }

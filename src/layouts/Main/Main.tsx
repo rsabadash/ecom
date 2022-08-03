@@ -13,8 +13,10 @@ const Main: FC<PropsWithChildren<{}>> = (
                 <div className={classes.aside__logo}></div>
                 <Navigation />
             </aside>
-            <main className={classes.mainContent}>
-                {children}
+            <main className={classes.main}>
+                <div className={classes.content}>
+                    {children}
+                </div>
             </main>
         </div>
     );

@@ -1,3 +1,7 @@
+.navigation__list {
+    list-style: none;
+}
+
 .navigation__itemLink {
     width: 100%;
     display: block;
@@ -8,7 +12,7 @@
     cursor: pointer;
     text-decoration: none;
     color: var(--text);
-    transition: background-color 0.15s ease-in-out 0s
+    transition: background-color 0.15s ease-in-out 0s;
 }
 
 .navigation__itemLink:hover {

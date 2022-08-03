@@ -1,2 +1,2 @@
-export { MultiLanguage } from './MultiLanguage';
-export { MultiLanguageInput } from './MultiLanguageInput';
+export { MultiLanguageInputAdapter } from './MultiLanguageInputAdapter';
+export { MultiLanguageTextboxAdapter } from './MultiLanguageTextboxAdapter';
