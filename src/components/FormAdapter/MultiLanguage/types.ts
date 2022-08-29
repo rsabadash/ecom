@@ -1,4 +1,4 @@
-import { Control, FieldError, Path } from 'react-hook-form';
+import { Control, Path } from 'react-hook-form';
 import { InputAdapterProps } from '../Input';
 import { TextboxAdapterProps } from '../Textbox';
 import { Language, TranslateFn } from '../../IntlProvider';
@@ -26,10 +26,3 @@ export type GetPlaceholderArgs = {
 };
 
 export type GetPlaceholderReturn = undefined | string;
-
-export type GetErrorMessageArgs = {
-    error: FieldError;
-    translate: TranslateFn;
-};
-
-export type GetErrorMessageReturn = undefined | string;

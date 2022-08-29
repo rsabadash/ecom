@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 import { MultiLanguageItemProps } from './types';
-import classes from './styles/index2.module.css';
+import classes from './styles/index.module.css';
 
 const MultiLanguageItem: FC<MultiLanguageItemProps> = (
     {

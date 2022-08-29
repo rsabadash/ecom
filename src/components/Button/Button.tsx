@@ -12,6 +12,9 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (
         isDisabled,
         onClick,
         children,
+        ariaLabel,
+        ariaExpanded,
+        ariaControls,
         className,
     }
 ) => {
@@ -28,6 +31,9 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (
             type={type}
             disabled={isDisabled}
             onClick={handleButtonClick}
+            aria-label={ariaLabel}
+            aria-expanded={ariaExpanded}
+            aria-controls={ariaControls}
             className={clsx(classes.button, className, classes[`button_${size}`], classes[`button_${variant}`])}
         >
             {children}

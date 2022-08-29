@@ -8,4 +8,6 @@ export const common = {
 
     'uk.adjective': 'Ukrainian',
     'en.adjective': 'English',
+
+    'translations.field': 'Translations for the {field} field'
 };

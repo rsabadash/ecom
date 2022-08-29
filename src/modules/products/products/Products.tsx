@@ -5,8 +5,9 @@ import { routes } from '../../../common/constants/routes';
 import { useTranslation } from '../../../components/IntlProvider';
 import { useCachedAPI } from '../../../hooks';
 import { Product } from './types';
-import Table, { TableColumn } from '../../../components/Table';
+import Table, { TableColumn, RowCustomRenderArgs } from '../../../components/Table';
 import { endpoint } from '../../../common/constants/api';
+import { TABLE_ID } from './constants';
 
 const Products = () => {
     const { translate } = useTranslation();
@@ -34,17 +35,19 @@ const Products = () => {
 
     return (
         <>
-            <Top headingText={translate('products')}>
+            <Top headingId={TABLE_ID} headingText={translate('products')}>
                 <Button variant="primary">
-                    <Link to={routes.productsAdd}>{translate('products.add')}</Link>
+                    <Link tabIndex={-1} to={routes.productsAdd}>{translate('products.add')}</Link>
                 </Button>
             </Top>
             <Table
                 items={data}
                 columns={columns}
-                rowCustomRender={(row, { _id }: Product) => (
-                    <Link key={_id} to={`${routes.products}/${_id}`}>{row}</Link>
+                tableLabeledBy={TABLE_ID}
+                rowCustomRender={({ row, item, rowProps }: RowCustomRenderArgs<Product>) => (
+                    <Link key={item._id} to={`${routes.products}/${item._id}`} {...rowProps}>{row}</Link>
                 )}
+                isRowLinkInteractive
             />
         </>
     );

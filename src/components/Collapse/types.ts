@@ -3,11 +3,13 @@ import { ReactNode } from 'react';
 export type CollapseProps = {
     header: ReactNode;
     body: ReactNode;
-    forceOpen?: boolean;
-    isInitiallyOpen?: boolean;
+    forceExpand?: boolean;
+    isInitiallyExpand?: boolean;
     isToggleHidden?: boolean;
-    onOpenFinished?: () => void;
-    onCloseFinished?: () => void;
+    onExpandFinished?: () => void;
+    onCollapseFinished?: () => void;
+    ariaLabel: string;
+    ariaControls: string;
     headerClassName?: string;
     bodyClassName?: string;
 };

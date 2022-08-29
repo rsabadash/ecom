@@ -7,8 +7,24 @@ export type TableColumn = {
     valueGetter?: (value: any) => ReactNode;
 };
 
+export type TableBodyRowProps = {
+    tabIndex: -1 | 0;
+    className: string;
+    role: 'row';
+    ['aria-rowindex']: number;
+};
+
+export type RowCustomRenderArgs<I = any> = {
+    row: ReactNode;
+    item: I;
+    rowProps: TableBodyRowProps;
+};
+
 export type TableProps = {
+    tableLabeledBy?: string;
     items: Record<string, any>[];
     columns: TableColumn[];
-    rowCustomRender?: (row: ReactNode, item: any) => ReactNode;
+    rowCustomRender?: (args: RowCustomRenderArgs) => ReactNode;
+    isRowInteractive?: boolean;
+    isRowLinkInteractive?: boolean;
 };

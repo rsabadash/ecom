@@ -8,4 +8,6 @@ export const common = {
 
     'uk.adjective': 'української',
     'en.adjective': 'англійської',
+
+    'translations.field': 'Переклади для поля {field}'
 };

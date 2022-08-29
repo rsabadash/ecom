@@ -15,7 +15,6 @@
     text-decoration: none;
 }
 
-/*.button:focus-within,*/
 .button:focus-visible {
     box-shadow: var(--input-box-shadow-focus);
 }
@@ -53,11 +52,6 @@
 .button_regular {
     color: var(--background-900);
     background-color: var(--button-regular-background);
-}
-
-.button_regular a {
-    color: var(--text);
-    text-decoration: none;
 }
 
 .button_primary {

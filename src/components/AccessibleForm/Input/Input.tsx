@@ -26,6 +26,7 @@ const AccessibleInput: FC<AccessibleInputProps> = (
 ) => {
     const descriptionType = errorMessage ? 'error' : undefined;
     const descriptionMessage = errorMessage ? errorMessage : placeholder;
+    const describedById = `${name}Description`;
 
     return (
         <div className={classes.accessibleFieldWrapper}>
@@ -43,13 +44,14 @@ const AccessibleInput: FC<AccessibleInputProps> = (
                 isReadOnly={isReadOnly}
                 isRequired={isRequired}
                 isDisabled={isDisabled}
+                ariaDescribedBy={describedById}
                 onBlur={onBlur}
                 onChange={onChange}
                 valueGetter={valueGetter}
                 formatValue={formatValue}
             />
             {!isDescriptionHidden && descriptionMessage && (
-                <Description type={descriptionType} message={descriptionMessage} />
+                <Description id={describedById} type={descriptionType} message={descriptionMessage} />
             )}
         </div>
     );

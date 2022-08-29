@@ -1,4 +1,4 @@
-import {FC, useEffect, useRef} from 'react';
+import { FC, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { TextboxProps } from './types';
 import classes from './styles/index.module.css';
@@ -58,13 +58,12 @@ const Textbox: FC<TextboxProps> = (
                 disabled={isDisabled}
                 placeholder={isReadOnly ? '' : placeholder}
                 aria-required={isRequired} // could be avoidable, but in this case used, cause React doesn't show require attribute and voice doesn't announce that field is isRequired
-                aria-invalid={isValid} // if value invalid
+                aria-invalid={!isValid} // if value invalid
                 aria-label={ariaLabel} // if other description absent
                 aria-labelledby={ariaLabelledBy} // which element has a label for an input
                 aria-describedby={ariaDescribedBy || placeholder} // which element describe input
                 onBlur={onBlur}
                 onChange={onChange}
-                // rows={10}
                 className={textboxClassName}
                 tabIndex={isReadOnly ? -1 : 0}
                 // @ts-ignore

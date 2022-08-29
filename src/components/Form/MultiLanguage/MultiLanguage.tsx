@@ -3,13 +3,15 @@ import { SUPPORTED_LANGUAGES } from '../../IntlProvider';
 import { MultiLanguageProps } from './types';
 import Collapse from '../../Collapse';
 import { MultiLanguageItem } from './MultilanguageItem';
-import classes from './styles/index2.module.css';
+import classes from './styles/index.module.css';
 
 const MultiLanguage: FC<MultiLanguageProps> = (
     {
         name,
-        forceOpen,
+        forceExpand,
         isReadOnly,
+        ariaLabel,
+        ariaControls,
         renderComponent,
     }
 ) => {
@@ -17,9 +19,12 @@ const MultiLanguage: FC<MultiLanguageProps> = (
     const hiddenLanguages = SUPPORTED_LANGUAGES.slice(1);
 
     return (
-        <div className={classes.multiLanguage}>
+        <div>
             <Collapse
-                forceOpen={forceOpen}
+                isInitiallyExpand
+                forceExpand={forceExpand}
+                ariaLabel={ariaLabel}
+                ariaControls={ariaControls}
                 isToggleHidden={isReadOnly}
                 header={<MultiLanguageItem name={name} language={firstLanguage} renderComponent={renderComponent} />}
                 body={

@@ -1,3 +1,5 @@
+import { EventKeys } from '../../../common/enums/events';
+
 export type DropdownItemId = string;
 
 export type DropdownItemValue<V = string | number> = V extends undefined ? string | number : V;
@@ -32,3 +34,5 @@ export type DropdownProps = {
     ariaLabelledBy?: string;
     ariaDescribedBy?: string;
 };
+
+export type KeyIndexMap = Partial<{ [key in EventKeys]: number }>;

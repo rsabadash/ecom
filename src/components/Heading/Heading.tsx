@@ -6,6 +6,7 @@ import classes from './styles/index.module.css';
 
 const Heading: FC<PropsWithChildren<HeadingProps>> = (
     {
+        id,
         level = DEFAULT_LEVEL,
         fontSize = DEFAULT_FONT_SIZE,
         classNameHeading,
@@ -15,7 +16,7 @@ const Heading: FC<PropsWithChildren<HeadingProps>> = (
     const HeadingTag = levelTagMap[level];
 
     return (
-        <HeadingTag className={clsx(classes[`heading-${fontSize}`], classNameHeading)}>
+        <HeadingTag id={id} className={clsx(classes[`heading-${fontSize}`], classNameHeading)}>
             {children}
         </HeadingTag>
     );

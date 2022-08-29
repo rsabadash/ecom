@@ -1,5 +1,10 @@
 .navigation__list {
     list-style: none;
+    border-radius: var(--radius-regular);
+}
+
+.navigation__item {
+    border-radius: var(--radius-regular);
 }
 
 .navigation__itemLink {
@@ -12,15 +17,19 @@
     cursor: pointer;
     text-decoration: none;
     color: var(--text);
-    transition: background-color 0.15s ease-in-out 0s;
+    transition: background-color var(--transition), box-shadow var(--transition);
 }
 
 .navigation__itemLink:hover {
     background-color: var(--hover);
 }
 
-.navigation__itemLink_active,
-.navigation__itemLink_active:hover {
-    /*background-color: var(--primary-700);*/
+.navigation__itemLink:focus-visible {
+    outline: none;
+    box-shadow: var(--input-box-shadow-focus);
+    background-color: var(--hover);
+}
+
+.navigation__itemLink_active {
     background-color: var(--hover);
 }

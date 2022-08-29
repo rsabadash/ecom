@@ -1,12 +1,14 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 import { DescriptionProps } from './types';
+import { typeToAriaLiveMapper } from './constatns';
 import classes from './styles/index.module.css';
 
 const Description: FC<DescriptionProps> = (
     {
-        message,
+        id,
         type,
+        message,
         descriptionClassName
     }
 ) => {
@@ -18,8 +20,10 @@ const Description: FC<DescriptionProps> = (
         descriptionClassName
     );
 
+    const ariaLiveType = type && typeToAriaLiveMapper[type] ? typeToAriaLiveMapper[type] : typeToAriaLiveMapper.default;
+
     return (
-        <div className={descriptionClassNames}>
+        <div id={id} className={descriptionClassNames} aria-live={ariaLiveType}>
             {message}
         </div>
     )

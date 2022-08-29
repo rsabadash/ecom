@@ -28,6 +28,7 @@ const AccessibleDropdown: FC<AccessibleDropdownProps> = (
 ) => {
     const descriptionType = errorMessage ? 'error' : undefined;
     const descriptionMessage = errorMessage ? errorMessage : placeholder;
+    const describedById = `${name}Description`;
 
     return (
         <div className={classes.accessibleFieldWrapper}>
@@ -48,13 +49,14 @@ const AccessibleDropdown: FC<AccessibleDropdownProps> = (
                 isDisabled={isDisabled}
                 isOpen={isOpen}
                 hasMultiselect={hasMultiselect}
+                ariaDescribedBy={describedById}
                 onBlur={onBlur}
                 onChange={onChange}
                 itemValueGetter={itemValueGetter}
                 ariaLabelledBy={name}
             />
             {!isDescriptionHidden && descriptionMessage && (
-                <Description type={descriptionType} message={descriptionMessage} />
+                <Description id={describedById} type={descriptionType} message={descriptionMessage} />
             )}
         </div>
     );

@@ -28,12 +28,18 @@ const MultiLanguageInputAdapter = <FormValues,>(
         ? !!errors[name]
         : Object.keys(errors).some((errorLanguage) => errorLanguage === DEFAULT_LANGUAGE);
 
+    const ariaLabelValue = translate('translations.field', {
+        field: typeof label === 'string' ? label : name
+    });
+
     return (
         <div>
             <MultiLanguage
                 name={name}
-                forceOpen={hasMultiLanguageError}
+                forceExpand={hasMultiLanguageError}
                 isReadOnly={isReadOnly}
+                ariaLabel={ariaLabelValue}
+                ariaControls={`${name}Controls`}
                 renderComponent={({ language, languagePostfixName }) => (
                     <InputAdapter
                         name={(languagePostfixName as Path<FormValues>)}

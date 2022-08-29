@@ -1,12 +1,6 @@
-import clsx from 'clsx';
-import { MenuItems, NavData } from './types';
+import { MenuItems } from './types';
 import { routes } from '../../common/constants/routes';
 import { TranslateFn } from '../IntlProvider';
-import classes from './styles/index.module.css';
-
-export const isNavLinkActive = (navData: NavData): string | undefined => {
-    return clsx(classes.navigation__itemLink,{ [classes.navigation__itemLink_active]: navData.isActive });
-};
 
 export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
     return [
@@ -16,7 +10,15 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
         },
         {
             title: translateFn('menu.products'),
-            path: routes.products
+            path: routes.products,
+            // items: [
+            //     {
+            //         title: 'Статистика'
+            //     },
+            //     {
+            //         title: 'Склад'
+            //     }
+            // ]
         }
     ];
 }

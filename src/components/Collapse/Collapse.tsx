@@ -10,38 +10,40 @@ const Collapse: FC<CollapseProps> = (
     {
         header,
         body,
-        forceOpen,
-        isInitiallyOpen = false,
+        forceExpand,
+        isInitiallyExpand = false,
         isToggleHidden,
-        onOpenFinished,
-        onCloseFinished,
+        onExpandFinished,
+        onCollapseFinished,
+        ariaLabel,
+        ariaControls,
         headerClassName,
         bodyClassName,
     }
 ) => {
-    const [isOpen, setIsOpen] = useState(() => isInitiallyOpen);
+    const [isExpand, setIsExpand] = useState(false);
     const collapseBodyRef = useRef<null | HTMLDivElement>(null);
 
-    const openFinishedCallback = useCallback(() => {
-        onOpenFinished && onOpenFinished();
+    const expandFinishedCallback = useCallback(() => {
+        onExpandFinished && onExpandFinished();
 
         if (collapseBodyRef.current) {
             collapseBodyRef.current.style.overflow = 'unset';
-            collapseBodyRef.current.removeEventListener('transitionend', openFinishedCallback);
+            collapseBodyRef.current.removeEventListener('transitionend', expandFinishedCallback);
         }
-    }, [onOpenFinished]);
+    }, [onExpandFinished]);
 
-    const closeFinishedCallback = useCallback(() => {
-        onCloseFinished && onCloseFinished();
+    const collapseFinishedCallback = useCallback(() => {
+        onCollapseFinished && onCollapseFinished();
 
         if (collapseBodyRef.current) {
-            collapseBodyRef.current.removeEventListener('transitionend', closeFinishedCallback);
+            collapseBodyRef.current.removeEventListener('transitionend', collapseFinishedCallback);
         }
-    }, [onCloseFinished]);
+    }, [onCollapseFinished]);
 
     const expand = useCallback(() => {
         if (collapseBodyRef.current) {
-            collapseBodyRef.current.addEventListener('transitionend', openFinishedCallback);
+            collapseBodyRef.current.addEventListener('transitionend', expandFinishedCallback);
 
             requestAnimationFrame(() => {
                 if (collapseBodyRef.current) {
@@ -52,11 +54,11 @@ const Collapse: FC<CollapseProps> = (
                 }
             });
         }
-    }, [openFinishedCallback]);
+    }, [expandFinishedCallback]);
 
     const collapse = useCallback(() => {
         if (collapseBodyRef.current) {
-            collapseBodyRef.current.addEventListener('transitionend', closeFinishedCallback);
+            collapseBodyRef.current.addEventListener('transitionend', collapseFinishedCallback);
 
             requestAnimationFrame(() => {
                 if (collapseBodyRef.current) {
@@ -69,33 +71,27 @@ const Collapse: FC<CollapseProps> = (
                 }
             });
         }
-    }, [closeFinishedCallback]);
+    }, [collapseFinishedCallback]);
 
-    const toggleCollapse = () => {
-        if (isOpen) {
-            collapse();
-        } else {
-            expand();
-        }
-
-        setIsOpen((prevIsOpen) => !prevIsOpen);
+    const toggleCollapse = (): void => {
+        setIsExpand((prevIsOpen) => !prevIsOpen);
     };
 
     useLayoutEffect(() => {
-        if (!isInitiallyOpen) {
-            collapse();
-        } else {
-            expand();
+        if (isInitiallyExpand) {
+            // initialize initial state by use effect to force transition event
+            // if set "isInitiallyExpand" directly to the setState it will not trigger transition event
+            setIsExpand(true);
         }
-    }, [collapse, expand]);
+    }, [isInitiallyExpand])
 
     useLayoutEffect(() => {
-        if (forceOpen) {
+        if (forceExpand || isExpand) {
             expand();
         } else {
             collapse();
         }
-    }, [forceOpen, collapse, expand]);
+    }, [isExpand, forceExpand, collapse, expand]);
 
     const headerClassNames = clsx(classes.collapse__header, headerClassName);
     const bodyClassNames = clsx(classes.collapse__body, bodyClassName);
@@ -105,12 +101,18 @@ const Collapse: FC<CollapseProps> = (
             <div className={headerClassNames}>
                 <div className={classes.collapse__headerContent}>{header}</div>
                 {!isToggleHidden && (
-                    <Button className={classes.collapse__switcher} onClick={toggleCollapse}>
-                        {isOpen ? <ChevronUpLogo /> : <ChevronDownLogo />}
+                    <Button
+                        onClick={toggleCollapse}
+                        ariaLabel={ariaLabel}
+                        ariaExpanded={isExpand}
+                        ariaControls={ariaControls}
+                        className={classes.collapse__switcher}
+                    >
+                        {isExpand ? <ChevronUpLogo /> : <ChevronDownLogo />}
                     </Button>
                 )}
             </div>
-            <div className={bodyClassNames} ref={collapseBodyRef}>{body}</div>
+            <div id={ariaControls} className={bodyClassNames} ref={collapseBodyRef}>{body}</div>
         </div>
     );
 };

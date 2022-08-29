@@ -6,5 +6,8 @@ export type ButtonProps = {
     variant?: ValuesOfObject<typeof buttonVariant>;
     isDisabled?: boolean;
     onClick?: () => void;
+    ariaLabel?: string;
+    ariaExpanded?: boolean;
+    ariaControls?: string;
     className?: string;
 };
