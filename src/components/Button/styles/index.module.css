@@ -1,5 +1,6 @@
 .button {
     color: var(--text);
+    text-decoration: none;
     border-radius: var(--radius-regular);
     border: none;
     cursor: pointer;

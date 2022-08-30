@@ -1,10 +1,10 @@
 import { Suspense, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Top, { TopButtons } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
 import { mapCategoryToComponent } from './utils';
 import { Product } from './types';
-import Button from '../../../components/Button';
+import Button, { ButtonLink } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { ForegroundSection } from '../../../components/Foreground';
 import { endpoint } from '../../../common/constants/api';
@@ -26,9 +26,9 @@ const ProductDetail = () => {
             <Top headingText={data?.title[language]}>
                 <TopButtons>
                     {isReadOnly && (
-                        <Button variant="primary">
-                            <Link to={routes.productsAdd}>{translate('products.add')}</Link>
-                        </Button>
+                        <ButtonLink variant="primary" to={routes.productsAdd}>
+                            {translate('products.add')}
+                        </ButtonLink>
                     )}
                     <Button variant="primary" onClick={handleButtonClick}>
                         {!isReadOnly ? translate('cancel') : translate('edit')}

@@ -1,3 +1,4 @@
+import { LinkProps } from 'react-router-dom';
 import { buttonSize, buttonType, buttonVariant } from './constants';
 
 export type ButtonProps = {
@@ -11,3 +12,5 @@ export type ButtonProps = {
     ariaControls?: string;
     className?: string;
 };
+
+export type ButtonLinkProps = LinkProps & Omit<ButtonProps, 'type'>;
