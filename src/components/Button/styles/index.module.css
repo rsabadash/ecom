@@ -56,6 +56,7 @@
 }
 
 .button_primary {
+    color: var(--button-variant-text);
     background-color: var(--primary-900);
 }
 
@@ -64,14 +65,17 @@
 }
 
 .button_success {
+    color: var(--button-variant-text);
     background-color: var(--success-900);
 }
 
 .button_warning {
+    color: var(--button-variant-text);
     background-color: var(--warning-900);
 }
 
 .button_danger {
+    color: var(--button-variant-text);
     background-color: var(--danger-900);
 }
 

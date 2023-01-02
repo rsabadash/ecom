@@ -46,5 +46,7 @@
     --foreground-200: rgba(255, 255, 255, 0.05);
     --foreground-100: rgba(255, 255, 255, 0.03);
 
+    --button-variant-text: var(--foreground-900);
+
     --input-background-absolute-hack: #303445; /*to avoid color transparency on absolutely positioned elements */
 }
