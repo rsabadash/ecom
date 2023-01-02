@@ -9,7 +9,7 @@ const Textbox: FC<TextboxProps> = (
         name,
         value,
         placeholder,
-        isValid,
+        isValid= true,
         isReadOnly,
         isRequired,
         isDisabled,

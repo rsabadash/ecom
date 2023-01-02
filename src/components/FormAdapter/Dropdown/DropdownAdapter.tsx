@@ -33,11 +33,7 @@ const DropdownAdapter = <FormValues,>(
     const { translate } = useTranslation();
 
     const fieldValues = value as DropdownItem;
-    const fieldErrorMessage = error
-        ? errorFormatter
-            ? errorFormatter(error)
-            : error?.message && translate(error.message)
-        : undefined;
+    const fieldErrorMessage = error && errorFormatter ? errorFormatter(error) : error?.message && translate(error.message);
 
     return (
         <AccessibleDropdown

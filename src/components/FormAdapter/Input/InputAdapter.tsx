@@ -31,11 +31,7 @@ const InputAdapter = <FormValues,>(
     const { translate } = useTranslation();
 
     const fieldValue = value as InputValue;
-    const fieldErrorMessage = error
-        ? errorFormatter
-            ? errorFormatter(error)
-            : error?.message && translate(error.message)
-        : undefined;
+    const fieldErrorMessage = error && errorFormatter ? errorFormatter(error) : error?.message && translate(error.message);
 
     return (
         <AccessibleInput

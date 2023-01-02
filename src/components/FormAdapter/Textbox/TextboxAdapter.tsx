@@ -28,11 +28,7 @@ const TextboxAdapter = <FormValues,>(
     const { translate } = useTranslation();
 
     const fieldValue = value as TextboxValue;
-    const fieldErrorMessage = error
-        ? errorFormatter
-            ? errorFormatter(error)
-            : error?.message && translate(error.message)
-        : undefined;
+    const fieldErrorMessage = error && errorFormatter ? errorFormatter(error) : error?.message && translate(error.message);
 
     return (
         <AccessibleTextbox
