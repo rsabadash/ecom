@@ -1,7 +1,7 @@
 import { FC, useCallback, useLayoutEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { CollapseProps } from './types';
-import Button from '../Button';
+import { Button } from '../Button';
 import { ReactComponent as ChevronDownLogo } from '../../assets/icons/ChevronDown.svg';
 import { ReactComponent as ChevronUpLogo } from '../../assets/icons/ChevronUp.svg';
 import classes from './styles/index.module.css';
@@ -117,4 +117,4 @@ const Collapse: FC<CollapseProps> = (
     );
 };
 
-export default Collapse;
+export { Collapse };

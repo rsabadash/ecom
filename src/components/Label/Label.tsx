@@ -22,4 +22,4 @@ const Label: FC<PropsWithChildren<LabelProps>> = (
     );
 };
 
-export default Label;
+export { Label };

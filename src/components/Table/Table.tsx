@@ -1,5 +1,5 @@
 import { FC, KeyboardEvent, useCallback, useLayoutEffect, useRef, useState } from 'react';
-import Foreground from '../Foreground';
+import { Foreground } from '../Foreground';
 import { TableBodyRowProps, TableProps } from './types';
 import { INDEX_ABSENCE_FOCUS, INITIAL_FOCUS_INDEX } from './constants';
 import { EventKeys } from '../../common/enums/events';
@@ -150,4 +150,4 @@ const Table: FC<TableProps> = (
     );
 };
 
-export default Table;
+export { Table };

@@ -12,7 +12,7 @@ export const ThemeContext = createContext<ThemeContextValue>({
     switchTheme: () => null
 });
 
-export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({ children, themeStorage, useUserAgentTheming }) => {
+const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({ children, themeStorage, useUserAgentTheming }) => {
     const defaultTheme = usePreferredTheme(themeStorage);
     const [theme, setTheme] = useState<Theme>(() => defaultTheme);
 
@@ -52,4 +52,4 @@ export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({ child
     );
 };
 
-export default ThemeProvider;
+export { ThemeProvider };

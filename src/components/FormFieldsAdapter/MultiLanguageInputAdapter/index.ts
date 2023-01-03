@@ -1,0 +1,1 @@
+export { MultiLanguageInputAdapter } from './MultiLanguageInputAdapter';

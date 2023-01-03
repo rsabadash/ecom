@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
-import Top from '../../../layouts/Top';
+import { Top } from '../../../layouts/Top';
 import { ButtonLink } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';
 import { useTranslation } from '../../../components/IntlProvider';
 import { useCachedAPI } from '../../../hooks';
 import { Product } from './types';
-import Table, { TableColumn, RowCustomRenderArgs } from '../../../components/Table';
-// import Table, { TableColumn, RowCustomRenderArgs } from '../../../components/Table';
+import { Table, TableColumn, RowCustomRenderArgs } from '../../../components/Table';
 import { endpoint } from '../../../common/constants/api';
 import { TABLE_ID } from './constants';
 

@@ -1,10 +1,10 @@
 import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Top, { TopButtons } from '../../../layouts/Top';
+import { Top, TopButtons } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
 import { mapCategoryToComponent } from './utils';
 import { Product } from './types';
-import Button, { ButtonLink } from '../../../components/Button';
+import { Button, ButtonLink } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { ForegroundSection } from '../../../components/Foreground';
 import { endpoint } from '../../../common/constants/api';

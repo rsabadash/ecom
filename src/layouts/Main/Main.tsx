@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react';
-import Navigation from '../../components/Navigation';
+import { Navigation } from '../../components/Navigation';
 import classes from './styles/index.module.css';
 
 const Main: FC<PropsWithChildren<{}>> = (
@@ -22,4 +22,4 @@ const Main: FC<PropsWithChildren<{}>> = (
     );
 };
 
-export default Main;
+export { Main };

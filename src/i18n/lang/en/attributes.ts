@@ -33,7 +33,7 @@ export const attributes = {
     'attributes.year.fillIn': 'Fill in the year of production',
     'attributes.year.error.required': 'The year of production is required',
 
-    'attributes.description': 'Description',
+    'attributes.description': 'FieldDescription',
     'attributes.description.fillIn': 'Fill in the description in {language}',
     'attributes.description.uk.error.required': 'The description in Ukrainian is required',
 

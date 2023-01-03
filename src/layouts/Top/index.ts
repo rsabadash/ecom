@@ -1,2 +1,2 @@
-export { default } from './Top';
+export { Top } from './Top';
 export { TopButtons } from './TopButtons';

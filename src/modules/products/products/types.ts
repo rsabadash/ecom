@@ -1,4 +1,4 @@
-import { DropdownItemObject } from '../../../components/Form/Dropdown';
+import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { Categories } from '../categories/types';
 import { Translation } from '../../../components/IntlProvider';
 

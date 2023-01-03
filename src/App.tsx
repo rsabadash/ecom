@@ -1,5 +1,5 @@
-import Router from './components/Router';
-import Main from './layouts/Main';
+import { Router } from './components/Router';
+import { Main } from './layouts/Main';
 
 const App = () => {
     return (

@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react';
-import Heading from '../../components/Heading';
+import { Heading } from '../../components/Heading';
 import { TopProps } from './types';
 import classes from './styles/index.module.css';
 
@@ -18,4 +18,4 @@ const Top: FC<PropsWithChildren<TopProps>> = (
     );
 };
 
-export default Top;
+export { Top };

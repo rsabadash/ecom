@@ -34,4 +34,4 @@ const CustomIntlProvider: FC<PropsWithChildren<{}>> = (
     );
 };
 
-export default CustomIntlProvider;
+export { CustomIntlProvider };

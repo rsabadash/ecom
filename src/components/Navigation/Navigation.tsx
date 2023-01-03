@@ -1,4 +1,4 @@
-import {KeyboardEvent, useCallback, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import { KeyboardEvent, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import { EventKeys } from '../../common/enums/events';
@@ -158,4 +158,4 @@ const Navigation = () => {
     );
 };
 
-export default Navigation;
+export { Navigation };

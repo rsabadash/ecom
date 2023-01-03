@@ -22,4 +22,4 @@ const Heading: FC<PropsWithChildren<HeadingProps>> = (
     );
 };
 
-export default Heading;
+export { Heading };

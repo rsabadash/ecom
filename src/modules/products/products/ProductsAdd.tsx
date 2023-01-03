@@ -1,9 +1,9 @@
 import { Suspense, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import Top from '../../../layouts/Top';
-import DropdownAdapter from '../../../components/FormAdapter/Dropdown';
+import { Top } from '../../../layouts/Top';
+import { DropdownAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { DropdownItemObject } from '../../../components/Form/Dropdown';
+import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { ForegroundSection } from '../../../components/Foreground';
 import { CategoriesResponse, FormCategoryValues } from './types';
 import { formCategoryField } from './constants';

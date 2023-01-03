@@ -16,4 +16,4 @@ const Foreground: FC<PropsWithChildren<ForegroundProps>> = (
     );
 };
 
-export default Foreground;
+export { Foreground };

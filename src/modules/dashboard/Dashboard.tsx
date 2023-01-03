@@ -1,6 +1,5 @@
 import { useTranslation} from '../../components/IntlProvider';
-import Top from '../../layouts/Top';
-// import Editor from '../../components/Form/Editor/Editor';
+import { Top } from '../../layouts/Top';
 
 const Dashboard = () => {
     const { translate } = useTranslation();
@@ -8,7 +7,6 @@ const Dashboard = () => {
     return (
         <>
             <Top headingText={translate('dashboard')} />
-            {/*<Editor />*/}
         </>
     );
 };

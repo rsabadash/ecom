@@ -41,4 +41,4 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (
     );
 };
 
-export default Button;
+export { Button };

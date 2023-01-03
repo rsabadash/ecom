@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
 import App from './App';
-import ThemeProvider from './components/ThemeProvider';
-import IntlProvider from './components/IntlProvider';
+import { ThemeProvider } from './components/ThemeProvider';
+import { IntlProvider } from './components/IntlProvider';
 import { themeStorage } from './utils';
 
 const root = ReactDOM.createRoot(

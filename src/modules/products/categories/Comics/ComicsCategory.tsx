@@ -3,11 +3,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from '../../../../components/IntlProvider';
-import DropdownAdapter from '../../../../components/FormAdapter/Dropdown';
-import InputAdapter from '../../../../components/FormAdapter/Input';
+import {
+    DropdownAdapter,
+    InputAdapter,
+    MultiLanguageInputAdapter,
+    MultiLanguageTextboxAdapter
+} from '../../../../components/FormFieldsAdapter';
 import { GridAutoFit } from '../../../../layouts/Grid';
 import { categories } from '../constants';
-import Button from '../../../../components/Button';
+import { Button } from '../../../../components/Button';
 import { ComicsAttributes, ComicsCategoryFormValues, ComicsNewEntity } from './types';
 import { CategoryProps } from '../types';
 import { formFields } from './constants';
@@ -15,10 +19,6 @@ import { useAPI, useCachedAPI } from '../../../../hooks';
 import { ComicsProduct } from '../../products/types';
 import { endpoint, query } from '../../../../common/constants/api';
 import { Translation } from '../../../../components/IntlProvider';
-import {
-    MultiLanguageInputAdapter,
-    MultiLanguageTextboxAdapter
-} from '../../../../components/FormAdapter/MultiLanguage';
 import { allTranslationsRequired, mainTranslationRequired } from '../../../../validations/translations';
 import classes from '../styles/comicsCategory.module.css';
 
