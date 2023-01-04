@@ -44,7 +44,10 @@ const schema = yup.object().shape({
     })),
     pages: yup.number().required('attributes.pages.error.required'),
     year: yup.number().required('attributes.year.error.required'),
-    genre: yup.array().of(yup.string()).required('attributes.genre.error.required'),
+    genre: yup.array().of(yup.object().shape(allTranslationsRequired({
+        uk: 'attributes.genre.error.required',
+        en: 'attributes.genre.error.required'
+    }))).required('attributes.genre.error.required'),
     quantity: yup.number().required('attributes.quantity.error.required'),
     isbn: yup.string().required('attributes.isbn.error.required'),
     description: yup.object().shape(mainTranslationRequired({
@@ -65,7 +68,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
 
     const formValues = formData ? formData : {};
     const shouldUpdateProduct = Object.keys(formValues).length > 0;
-
+    console.log(formValues);
     const {
         control,
         handleSubmit,
