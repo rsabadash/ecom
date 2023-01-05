@@ -1,0 +1,7 @@
+.fieldLabel {
+    cursor: pointer;
+}
+
+.fieldLabel_error {
+    color: var(--text-error);
+}
