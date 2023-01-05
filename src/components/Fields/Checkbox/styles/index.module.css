@@ -1,0 +1,53 @@
+.checkboxWrapper {
+    position: relative;
+}
+
+.checkboxCheckMark {
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+}
+
+.checkbox {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-small);
+    background-color: var(--input-background);
+    border: 2px solid var(--border);
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow var(--transition), background-color var(--transition);
+}
+
+.checkbox:focus-visible {
+    box-shadow: var(--input-box-shadow-focus);
+}
+
+.checkbox_checked {
+    background-color: var(--primary-900);
+}
+
+.checkbox_invalid {
+    border: 2px solid var(--border-error);
+}
+
+.checkbox_invalid:focus-visible {
+    box-shadow: var(--input-box-shadow-error-focus);
+}
+
+.checkbox_readOnly {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0;
+    cursor: default;
+    user-select: none;
+}
+
+.checkbox_readOnly:focus-visible {
+    box-shadow: none;
+}

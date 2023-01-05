@@ -56,6 +56,7 @@
 
     --transition: 0.15s ease-in-out 0s;
 
+    --radius-small: 8px;
     --radius-regular: 12px;
     --radius-large: 16px;
 
