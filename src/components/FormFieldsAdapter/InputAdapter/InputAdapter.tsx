@@ -1,10 +1,10 @@
-import { useController } from 'react-hook-form';
+import { FieldValues, useController } from 'react-hook-form';
 import { InputAdapterProps } from './types';
 import { InputFormField } from '../../FormFields';
 import { InputValue } from '../../Fields/Input';
 import { useTranslation} from '../../IntlProvider';
 
-const InputAdapter = <FormValues,>(
+const InputAdapter = <FormValues extends FieldValues>(
     {
         name,
         type,
@@ -14,7 +14,7 @@ const InputAdapter = <FormValues,>(
         isDisabled,
         valueGetter,
         formatValue,
-        errorFormatter,
+        formatError,
         isDescriptionHidden,
         label,
         control,
@@ -26,12 +26,14 @@ const InputAdapter = <FormValues,>(
     } = useController<FormValues>({
         name,
         control,
+        // @ts-ignore
+        defaultValue: null
     });
 
     const { translate } = useTranslation();
 
     const fieldValue = value as InputValue;
-    const fieldErrorMessage = error && errorFormatter ? errorFormatter(error) : error?.message && translate(error.message);
+    const fieldErrorMessage = error && formatError ? formatError(error) : error?.message && translate(error.message);
 
     return (
         <InputFormField

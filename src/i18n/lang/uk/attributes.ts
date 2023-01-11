@@ -1,6 +1,6 @@
 export const attributes = {
     'attributes.title': 'Заголовок',
-    'attributes.title.fillIn': 'Введіть заголовок для {language} мови',
+    'attributes.title.fillIn': 'Введіть заголовок {language} мовою',
     'attributes.title.uk.error.required': 'Заголовок для української мови є обов\'язковим',
 
     'attributes.screenwriter': 'Сценарист',
@@ -34,7 +34,7 @@ export const attributes = {
     'attributes.year.error.required': 'Рік виготовлення є обов\'язковим',
 
     'attributes.description': 'Опис',
-    'attributes.description.fillIn': 'Введіть опис для {language} мови',
+    'attributes.description.fillIn': 'Введіть опис {language} мовою',
     'attributes.description.uk.error.required': 'Опис для української мови є обов\'язковим',
 
     'attributes.condition': 'Стан',

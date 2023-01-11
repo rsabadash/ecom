@@ -1,10 +1,10 @@
-import { useController } from 'react-hook-form';
+import { FieldValues, useController } from 'react-hook-form';
 import { useTranslation } from '../../IntlProvider';
 import { CheckboxFormField } from '../../FormFields';
 import { CheckboxAdapterProps } from './types';
 import { CheckboxValue } from '../../Fields/Checkbox/types';
 
-const CheckboxAdapter = <FormValues,>(
+const CheckboxAdapter = <FormValues extends FieldValues>(
     {
         name,
         placeholder,
@@ -37,7 +37,7 @@ const CheckboxAdapter = <FormValues,>(
             name={fieldName}
             isChecked={fieldValue}
             placeholder={placeholder}
-            isValid={false}
+            isValid={!fieldErrorMessage}
             isReadOnly={isReadOnly}
             isRequired={isRequired}
             isDisabled={isDisabled}

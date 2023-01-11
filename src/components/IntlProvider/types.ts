@@ -1,21 +1,31 @@
-import { languages, localeToLanguageMap } from './constants';
+import {DEFAULT_LANGUAGE, languages, localeToLanguageMap} from './constants';
 
 export type Language = ValuesOfObject<typeof languages>;
 
 export type Locale = keyof typeof localeToLanguageMap;
 
-export type Translation = {
-    [key in Language]: string;
+export type DefaultLanguage = typeof DEFAULT_LANGUAGE;
+
+export type TranslationRequired = {
+    [key in DefaultLanguage]: string
+}
+
+export type TranslationsOptional = {
+    [key in Language]?: string;
 };
+
+export type Translations = TranslationRequired & TranslationsOptional;
+
+export type TranslationsAllRequired = Required<Translations>;
 
 export type TranslationProviderProps = {
     language: Language;
     setLanguage: (language: Language) => void;
 };
 
-export type TranslateValue = string;
+export type TranslateMessage = string;
 export type TranslatePlaceholders = Record<string, string>;
-export type TranslateFn = (value: TranslateValue, placeholders?: TranslatePlaceholders) => string;
+export type TranslateFn = (value: TranslateMessage, placeholders?: TranslatePlaceholders) => string;
 
 export type TranslationContextValue = {
     language: Language;

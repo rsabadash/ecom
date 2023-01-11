@@ -1,6 +1,6 @@
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { Categories } from '../categories/types';
-import { Translation } from '../../../components/IntlProvider';
+import { Translations } from '../../../components/IntlProvider';
 
 export type CategoriesResponse = {
     category: Categories;
@@ -16,23 +16,23 @@ export type MapCategoryToComponent = {
 
 export type ComicsProduct = {
     _id: string;
-    title: Translation;
-    screenwriter: null | Translation[];
-    artist: null | Translation[];
+    title: Translations;
+    screenwriter: null | Translations[];
+    artist: null | Translations[];
     publishingHouse: string;
-    language: Translation;
+    language: Translations;
     format: string;
-    cover: Translation;
+    cover: Translations;
     pages: number;
     isbn: string;
     year: number;
-    description: Translation;
-    condition: Translation;
+    description: Translations;
+    condition: Translations;
     quantity: number;
     preorder: boolean;
     label: string;
-    character: null | Translation[];
-    genre: Translation[];
+    character: null | Translations[];
+    genre: Translations[];
     price: number;
     discountPrice: null | number;
     category: 'comics';

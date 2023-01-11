@@ -7,6 +7,10 @@ export type TableColumn = {
     valueGetter?: (value: any) => ReactNode;
 };
 
+export type TableColumnGeneric<K> = Omit<TableColumn, 'key'> & {
+    key: keyof K;
+};
+
 export type TableBodyRowProps = {
     tabIndex: -1 | 0;
     className: string;

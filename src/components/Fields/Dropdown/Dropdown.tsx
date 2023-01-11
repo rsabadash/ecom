@@ -199,12 +199,14 @@ const Dropdown: FC<DropdownProps> = (
             return onChange(filteredValue);
         }
 
-        onChange(null);
+        onChange([]);
     };
 
     const initSingleUnSelection = (): void => {
         if (!isRequired) {
-            onChange(null);
+            const emptyValue = hasMultiselect ? [] : null;
+
+            onChange(emptyValue);
         }
 
         closeDropdown();

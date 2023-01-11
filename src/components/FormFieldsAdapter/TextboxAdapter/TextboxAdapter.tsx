@@ -1,17 +1,17 @@
-import { useController } from 'react-hook-form';
+import { FieldValues, useController } from 'react-hook-form';
 import { TextboxAdapterProps } from './types';
 import { TextboxFormField } from '../../FormFields';
 import { TextboxValue } from '../../Fields/Textbox';
 import { useTranslation } from '../../IntlProvider';
 
-const TextboxAdapter = <FormValues,>(
+const TextboxAdapter = <FormValues extends FieldValues>(
     {
         name,
         placeholder,
         isReadOnly,
         isRequired,
         isDisabled,
-        errorFormatter,
+        formatError,
         isDescriptionHidden,
         label,
         control,
@@ -23,12 +23,14 @@ const TextboxAdapter = <FormValues,>(
     } = useController<FormValues>({
         name,
         control,
+        // @ts-ignore
+        defaultValue: null
     });
 
     const { translate } = useTranslation();
 
     const fieldValue = value as TextboxValue;
-    const fieldErrorMessage = error && errorFormatter ? errorFormatter(error) : error?.message && translate(error.message);
+    const fieldErrorMessage = error && formatError ? formatError(error) : error?.message && translate(error.message);
 
     return (
         <TextboxFormField

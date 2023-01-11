@@ -20,7 +20,8 @@ const FieldLabel: FC<FieldLabelProps> = (
     const fieldLabelClassNames = clsx(
         classes.fieldLabel,
         {
-            [classes.fieldLabel_error]: !isValid
+            [classes.fieldLabel_error]: !isValid,
+            [classes.fieldLabel_readOnly]: isReadOnly
         }
     );
 

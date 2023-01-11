@@ -4,7 +4,7 @@
 
 .dropdown {
     background-color: var(--input-background);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     color: var(--text);
     border-radius: var(--radius-regular);
     height: var(--input-height);
@@ -29,7 +29,7 @@
 }
 
 .dropdown_invalid {
-    border: 1px solid var(--border-error);
+    border: 2px solid var(--border-error);
 }
 
 .dropdown_invalid:focus-visible {
@@ -47,7 +47,7 @@
 
 .dropdownListWrapper {
     background-color: var(--input-background-absolute-hack);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     box-shadow: var(--shadow-5);
     border-radius: var(--radius-large);
     padding: 12px 4px 12px 12px;

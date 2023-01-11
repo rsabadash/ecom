@@ -1,18 +1,21 @@
-import { Path, useFormState } from 'react-hook-form';
+import { FieldValues, Path, useFormState } from 'react-hook-form';
 import { MultiLanguageTextboxAdapterProps } from './types';
-import { getPlaceholder } from './utils';
+import { addLanguageToTranslation } from '../utils';
 import { TextboxAdapter } from '../TextboxAdapter';
 import { MultiLanguage } from '../../Fields/MultiLanguage';
 import { DEFAULT_LANGUAGE, useTranslation } from '../../IntlProvider';
 
-const MultiLanguageTextboxAdapter = <FormValues,>(
+const MultiLanguageTextboxAdapter = <FormValues extends FieldValues>(
     {
         name,
-        placeholder,
+        placeholderTranslation,
         isReadOnly,
         isRequired,
         isDisabled,
-        isRequiredAllLanguage,
+        isToggleHidden,
+        isInitiallyExpand,
+        isDescriptionHidden,
+        isRequiredAllLanguages,
         label,
         control,
     }: MultiLanguageTextboxAdapterProps<FormValues>
@@ -20,10 +23,8 @@ const MultiLanguageTextboxAdapter = <FormValues,>(
     const { translate } = useTranslation();
     const { errors } = useFormState<FormValues>({ control });
 
-    const hasMultiLanguageError = isRequiredAllLanguage
-        // @ts-ignore
-        ? !!errors[name]
-        : Object.keys(errors).some((errorLanguage) => errorLanguage === DEFAULT_LANGUAGE);
+    // @ts-ignore
+    const hasMultiLanguageError = errors[name] && Object.keys(errors[name]).some((errorLanguage) => errorLanguage !== DEFAULT_LANGUAGE);
 
     const ariaLabelValue = translate('translations.field', {
         field: typeof label === 'string' ? label : name
@@ -33,18 +34,20 @@ const MultiLanguageTextboxAdapter = <FormValues,>(
         <div>
             <MultiLanguage
                 name={name}
+                isInitiallyExpand={isInitiallyExpand}
                 forceExpand={hasMultiLanguageError}
-                isReadOnly={isReadOnly}
+                isToggleHidden={isToggleHidden}
                 ariaLabel={ariaLabelValue}
                 ariaControls={`${name}Controls`}
                 renderComponent={({ languagePostfixName, language }) => (
                     <TextboxAdapter
                         name={(languagePostfixName as Path<FormValues>)}
-                        placeholder={getPlaceholder({ placeholder, language, translate })}
+                        placeholder={addLanguageToTranslation({ translation: placeholderTranslation, language, translate })}
                         isReadOnly={isReadOnly}
-                        isRequired={isRequiredAllLanguage || (DEFAULT_LANGUAGE === language && isRequired)}
+                        isRequired={isRequiredAllLanguages || (DEFAULT_LANGUAGE === language && isRequired)}
                         isDisabled={isDisabled}
-                        isDescriptionHidden={isReadOnly}
+                        formatError={(error) => addLanguageToTranslation({ translation: error.message, language, translate })}
+                        isDescriptionHidden={isDescriptionHidden}
                         label={label}
                         control={control}
                     />

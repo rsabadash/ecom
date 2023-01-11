@@ -9,6 +9,10 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
             path: routes.dashboard
         },
         {
+            title: translateFn('menu.categories'),
+            path: routes.categories
+        },
+        {
             title: translateFn('menu.products'),
             path: routes.products,
             // items: [

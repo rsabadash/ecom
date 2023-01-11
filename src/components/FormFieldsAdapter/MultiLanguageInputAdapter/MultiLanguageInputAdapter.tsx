@@ -1,21 +1,24 @@
-import { Path, useFormState } from 'react-hook-form';
+import { FieldValues, Path, useFormState } from 'react-hook-form';
 import { MultiLanguageInputAdapterProps } from './types';
-import { getPlaceholder } from './utils';
+import { addLanguageToTranslation } from '../utils';
 import { InputAdapter } from '../InputAdapter';
 import { MultiLanguage } from '../../Fields/MultiLanguage';
 import { DEFAULT_LANGUAGE, useTranslation } from '../../IntlProvider';
 
-const MultiLanguageInputAdapter = <FormValues,>(
+const MultiLanguageInputAdapter = <FormValues extends FieldValues>(
     {
         name,
         type,
-        placeholder,
+        placeholderTranslation,
         isReadOnly,
         isRequired,
         isDisabled,
         valueGetter,
         formatValue,
-        isRequiredAllLanguage,
+        isToggleHidden,
+        isInitiallyExpand,
+        isDescriptionHidden,
+        isRequiredAllLanguages,
         label,
         control,
     }: MultiLanguageInputAdapterProps<FormValues>
@@ -23,10 +26,8 @@ const MultiLanguageInputAdapter = <FormValues,>(
     const { translate } = useTranslation();
     const { errors } = useFormState<FormValues>({ control });
 
-    const hasMultiLanguageError = isRequiredAllLanguage
-        // @ts-ignore
-        ? !!errors[name]
-        : Object.keys(errors).some((errorLanguage) => errorLanguage === DEFAULT_LANGUAGE);
+    // @ts-ignore
+    const hasMultiLanguageError = errors[name] && Object.keys(errors[name]).some((errorLanguage) => errorLanguage !== DEFAULT_LANGUAGE);
 
     const ariaLabelValue = translate('translations.field', {
         field: typeof label === 'string' ? label : name
@@ -37,20 +38,22 @@ const MultiLanguageInputAdapter = <FormValues,>(
             <MultiLanguage
                 name={name}
                 forceExpand={hasMultiLanguageError}
-                isReadOnly={isReadOnly}
+                isInitiallyExpand={isInitiallyExpand}
+                isToggleHidden={isToggleHidden}
                 ariaLabel={ariaLabelValue}
                 ariaControls={`${name}Controls`}
                 renderComponent={({ language, languagePostfixName }) => (
                     <InputAdapter
                         name={(languagePostfixName as Path<FormValues>)}
                         type={type}
-                        placeholder={getPlaceholder({ placeholder, language, translate })}
+                        placeholder={addLanguageToTranslation({ translation: placeholderTranslation, language, translate })}
                         isReadOnly={isReadOnly}
-                        isRequired={isRequiredAllLanguage || (DEFAULT_LANGUAGE === language && isRequired)}
+                        isRequired={isRequiredAllLanguages || (DEFAULT_LANGUAGE === language && isRequired)}
                         isDisabled={isDisabled}
                         valueGetter={valueGetter}
                         formatValue={formatValue}
-                        isDescriptionHidden={isReadOnly}
+                        formatError={(error) => addLanguageToTranslation({ translation: error.message, language, translate })}
+                        isDescriptionHidden={isDescriptionHidden}
                         label={label}
                         control={control}
                     />

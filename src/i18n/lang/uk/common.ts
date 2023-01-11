@@ -6,8 +6,8 @@ export const common = {
     'edit': 'Редагувати',
     'cancel': 'Відмінити',
 
-    'uk.adjective': 'української',
-    'en.adjective': 'англійської',
+    'uk.adjective': 'українськю',
+    'en.adjective': 'англійською',
 
     'translations.field': 'Переклади для поля {field}'
 };

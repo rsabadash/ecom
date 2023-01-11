@@ -1,2 +1,2 @@
 export { Table } from './Table';
-export type { TableColumn, RowCustomRenderArgs } from './types';
+export type { TableColumn, TableColumnGeneric, RowCustomRenderArgs } from './types';

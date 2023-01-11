@@ -1,6 +1,6 @@
 .input {
     background-color: var(--input-background);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     color: var(--text);
     border-radius: var(--radius-regular);
     height: var(--input-height);
@@ -25,7 +25,7 @@
 }
 
 .input_invalid {
-    border: 1px solid var(--border-error);
+    border: 2px solid var(--border-error);
 }
 
 .input_invalid:focus-visible {

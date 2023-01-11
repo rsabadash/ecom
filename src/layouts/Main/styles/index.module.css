@@ -11,7 +11,7 @@
 }
 
 .aside {
-    border-right: 1px solid var(--border);
+    border-right: 2px solid var(--border);
     background-color: var(--foreground);
     box-shadow: var(--shadow-5);
     height: 100%;

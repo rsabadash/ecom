@@ -1,5 +1,7 @@
 .checkboxWrapper {
+    --checkboxHeight: 24px;
     position: relative;
+    height: var(--checkboxHeight);
 }
 
 .checkboxCheckMark {
@@ -14,7 +16,7 @@
     appearance: none;
     /* creating a custom design */
     width: 24px;
-    height: 24px;
+    height: var(--checkboxHeight);
     border-radius: var(--radius-small);
     background-color: var(--input-background);
     border: 2px solid var(--border);
@@ -41,8 +43,7 @@
 
 .checkbox_readOnly {
     border: none;
-    border-radius: 0;
-    background-color: transparent;
+    background-color: var(--foreground-400);
     padding: 0;
     cursor: default;
     user-select: none;
