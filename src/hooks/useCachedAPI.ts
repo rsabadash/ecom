@@ -5,7 +5,7 @@ type UseCachedAPIOptions = {
     shouldFetch?: boolean;
 };
 
-const defaultOptions: UseCachedAPIOptions = {
+const defaultOptions: Required<UseCachedAPIOptions> = {
     shouldFetch: true
 };
 

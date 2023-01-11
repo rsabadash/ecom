@@ -1,4 +1,4 @@
-.accessibleFieldWrapper {
+.formFieldWrapper {
     display: grid;
     gap: 4px;
     grid-template-rows: auto;

@@ -24,7 +24,6 @@ export const GET: GetAction = async <R>(options: CommonOptions): Promise<R> => {
     }
 };
 
-
 type PostOptions<D> = CommonOptions & {
     data: D;
 };
@@ -70,6 +69,30 @@ export const PATCH: PatchAction = async <R, D = Record<string, unknown>>(options
         throw new Error(String(response.status));
     }
 };
+
+type DeleteOptions<D> = CommonOptions & {
+    data: D;
+};
+export type DeleteAction = <R, D = Record<string, unknown>>(options: DeleteOptions<D>) => Promise<R>
+
+export const DELETE: PostAction = async <R, D = Record<string, unknown>>(options: DeleteOptions<D>): Promise<R> => {
+    const response = await fetch(`${HOST}${options.url}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept-Language': LocalStorageService.getItem<Language>(LOCALE_STORAGE_KEY) || DEFAULT_LANGUAGE,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(options.data)
+    });
+
+    if (response.ok) {
+        return await response.json() as Promise<R>;
+    } else {
+        throw new Error(String(response.status));
+    }
+};
+
+
 
 export type WrapPromiseResult<R> = { read(): R | undefined };
 

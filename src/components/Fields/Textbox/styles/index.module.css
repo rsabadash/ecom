@@ -1,6 +1,6 @@
 .textboxWrapper {
     background-color: var(--input-background);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     border-radius: var(--radius-regular);
     padding: 12px 4px 12px 0;
 }
@@ -10,11 +10,11 @@
 }
 
 .textboxWrapper_invalid {
-    border: 1px solid var(--border-error);
+    border: 2px solid var(--border-error);
 }
 
 .textboxWrapper_invalid:focus-within {
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     box-shadow: var(--input-box-shadow-error-focus);
 }
 

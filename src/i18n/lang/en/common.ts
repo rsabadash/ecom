@@ -1,5 +1,5 @@
 export const common = {
-    'required': 'Обов\'язкове',
+    'required': 'Required',
     'reset': 'Reset',
     'add': 'Add',
     'update': 'Update',

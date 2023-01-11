@@ -1,8 +1,3 @@
-.fullWidthField {
-    grid-column: 1 / -1;
-    grid-row: span 1;
-}
-
 .actionButtonWrapper {
     text-align: right;
     margin-top: 2rem;

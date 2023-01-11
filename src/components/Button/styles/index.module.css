@@ -7,7 +7,6 @@
     transition: background-color var(--transition);
     outline: none;
     display: flex;
-    flex: 1 0 auto;
     align-items: center;
 }
 

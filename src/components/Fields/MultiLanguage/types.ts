@@ -10,7 +10,8 @@ export type RenderComponentArgs = {
 export type MultiLanguageProps = {
     name: string;
     forceExpand?: boolean;
-    isReadOnly?: boolean;
+    isInitiallyExpand?: boolean;
+    isToggleHidden?: boolean;
     ariaLabel: string;
     ariaControls: string;
     renderComponent: (args: RenderComponentArgs) => ReactNode;

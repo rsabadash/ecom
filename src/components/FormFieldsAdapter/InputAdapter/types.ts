@@ -1,14 +1,14 @@
-import { Control, FieldError, Path } from 'react-hook-form';
+import { Control, FieldError, FieldValues, Path } from 'react-hook-form';
 import { InputFormFieldProps } from '../../FormFields';
 
-type AdapterProps<FormValues> = {
+type AdapterProps<FormValues extends FieldValues> = {
     name: Path<FormValues>,
     control: Control<FormValues>;
 };
 
-export type InputAdapterProps<FormValues> =
+export type InputAdapterProps<FormValues extends FieldValues> =
     Omit<InputFormFieldProps, 'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'>
     & AdapterProps<FormValues>
     & {
-        errorFormatter?: (error: FieldError) => undefined | string;
+        formatError?: (error: FieldError) => undefined | string;
     };

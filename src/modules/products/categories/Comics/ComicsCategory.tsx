@@ -9,7 +9,7 @@ import {
     MultiLanguageInputAdapter,
     MultiLanguageTextboxAdapter
 } from '../../../../components/FormFieldsAdapter';
-import { GridAutoFit } from '../../../../layouts/Grid';
+import { GridAutoFit, GridFullWidth } from '../../../../layouts/Grid';
 import { categories } from '../constants';
 import { Button } from '../../../../components/Button';
 import { ComicsAttributes, ComicsCategoryFormValues, ComicsNewEntity } from './types';
@@ -18,7 +18,7 @@ import { formFields } from './constants';
 import { useAPI, useCachedAPI } from '../../../../hooks';
 import { ComicsProduct } from '../../products/types';
 import { endpoint, query } from '../../../../common/constants/api';
-import { Translation } from '../../../../components/IntlProvider';
+import { TranslationsAllRequired } from '../../../../components/IntlProvider';
 import { allTranslationsRequired, mainTranslationRequired } from '../../../../validations/translations';
 import classes from '../styles/comicsCategory.module.css';
 
@@ -68,7 +68,7 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
 
     const formValues = formData ? formData : {};
     const shouldUpdateProduct = Object.keys(formValues).length > 0;
-    console.log(formValues);
+
     const {
         control,
         handleSubmit,
@@ -108,12 +108,12 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
         year
     } = attributes || {};
 
-    const getTranslatedDropdownValue = (item: null | string | string[] | Translation | Translation[]): null | string | string[] => {
+    const getTranslatedDropdownValue = (item: null | string | string[] | TranslationsAllRequired | TranslationsAllRequired[]): null | string | string[] => {
         if (!item) {
             return null;
         }
 
-        if (Array.isArray(item)) {
+        if (item && Array.isArray(item)) {
             return item.map((i) => typeof i === 'string' ? i : i[userLanguage]);
         }
 
@@ -152,16 +152,17 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
     return (
         <form noValidate onSubmit={handleSubmit(handleFormSubmit)}>
             <GridAutoFit>
-                <div className={classes.fullWidthField}>
+                <GridFullWidth>
                     <MultiLanguageInputAdapter
                         isRequired
                         isReadOnly={isReadOnly}
+                        isDescriptionHidden={isReadOnly}
                         name={formFields.title}
-                        placeholder={translate('attributes.title.fillIn')}
+                        placeholderTranslation="attributes.title.fillIn"
                         label={translate('attributes.title')}
                         control={control}
                     />
-                </div>
+                </GridFullWidth>
                 <InputAdapter
                     isRequired
                     isReadOnly={isReadOnly}
@@ -329,8 +330,9 @@ const ComicsCategory: FC<CategoryProps<ComicsProduct>> = (
                     <MultiLanguageTextboxAdapter
                         isRequired
                         isReadOnly={isReadOnly}
+                        isDescriptionHidden={isReadOnly}
                         name={formFields.description}
-                        placeholder={translate('attributes.description.fillIn')}
+                        placeholderTranslation="attributes.description.fillIn"
                         label={translate('attributes.description')}
                         control={control}
                     />

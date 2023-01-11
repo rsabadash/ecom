@@ -5,3 +5,8 @@
 .fieldLabel_error {
     color: var(--text-error);
 }
+
+.fieldLabel_readOnly {
+    cursor: auto;
+    user-select: none;
+}

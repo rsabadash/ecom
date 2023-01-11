@@ -1,0 +1,1 @@
+export const DEFAULT_MIN_COLUMN_WIDTH = 320;

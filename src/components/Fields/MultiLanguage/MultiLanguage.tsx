@@ -9,7 +9,8 @@ const MultiLanguage: FC<MultiLanguageProps> = (
     {
         name,
         forceExpand,
-        isReadOnly,
+        isInitiallyExpand,
+        isToggleHidden,
         ariaLabel,
         ariaControls,
         renderComponent,
@@ -21,11 +22,11 @@ const MultiLanguage: FC<MultiLanguageProps> = (
     return (
         <div>
             <Collapse
-                isInitiallyExpand
                 forceExpand={forceExpand}
+                isInitiallyExpand={isInitiallyExpand}
                 ariaLabel={ariaLabel}
                 ariaControls={ariaControls}
-                isToggleHidden={isReadOnly}
+                isToggleHidden={isToggleHidden}
                 header={<MultiLanguageItem name={name} language={firstLanguage} renderComponent={renderComponent} />}
                 body={
                     <div className={classes.multiLanguage__hiddenWrapper}>

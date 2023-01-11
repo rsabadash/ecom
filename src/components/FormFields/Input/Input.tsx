@@ -29,10 +29,11 @@ const InputFormField: FC<InputFormFieldProps> = (
     const describedById = `${name}Description`;
 
     return (
-        <div className={classes.accessibleFieldWrapper}>
+        <div className={classes.formFieldWrapper}>
             <FieldLabel
                 label={label}
                 htmlFor={name}
+                isValid={isValid}
                 isReadOnly={isReadOnly}
                 isRequired={isRequired}
             />

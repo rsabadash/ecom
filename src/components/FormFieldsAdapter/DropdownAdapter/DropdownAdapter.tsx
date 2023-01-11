@@ -1,10 +1,10 @@
-import { useController } from 'react-hook-form';
+import { FieldValues, useController } from 'react-hook-form';
 import { DropdownAdapterProps } from './types';
 import { DropdownFormField } from '../../FormFields';
 import { DropdownItem } from '../../Fields/Dropdown';
 import { useTranslation } from '../../IntlProvider';
 
-const DropdownAdapter = <FormValues,>(
+const DropdownAdapter = <FormValues extends FieldValues>(
     {
         name,
         items,
@@ -16,7 +16,7 @@ const DropdownAdapter = <FormValues,>(
         isOpen,
         hasMultiselect,
         itemValueGetter,
-        errorFormatter,
+        formatError,
         isDescriptionHidden,
         label,
         control
@@ -28,12 +28,14 @@ const DropdownAdapter = <FormValues,>(
     } = useController<FormValues>({
         name,
         control,
+        // @ts-ignore
+        defaultValue: hasMultiselect ? [] : null
     });
 
     const { translate } = useTranslation();
 
     const fieldValues = value as DropdownItem;
-    const fieldErrorMessage = error && errorFormatter ? errorFormatter(error) : error?.message && translate(error.message);
+    const fieldErrorMessage = error && formatError ? formatError(error) : error?.message && translate(error.message);
 
     return (
         <DropdownFormField

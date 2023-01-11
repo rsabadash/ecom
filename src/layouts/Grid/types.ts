@@ -1,3 +1,3 @@
-export type SimpleGridProps = {
+export type GridAutoFitProps = {
     gridColumnMinWidth?: number;
 };

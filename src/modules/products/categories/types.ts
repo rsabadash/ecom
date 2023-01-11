@@ -1,11 +1,11 @@
 import { categories } from './constants';
-import { Translation } from '../../../components/IntlProvider';
+import { Translations } from '../../../components/IntlProvider';
 
 export type Categories = ValuesOfObject<typeof categories>;
 
 export type AttributeItem<Case = string> = {
     cases: Case[];
-    translations?: Translation[];
+    translations?: Translations[];
 };
 
 export type CategoryProps<D> = {

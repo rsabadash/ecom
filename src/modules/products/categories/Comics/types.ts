@@ -1,5 +1,5 @@
 import { attributeLanguage, attributeCover, attributeCondition } from './constants';
-import { Translation } from '../../../../components/IntlProvider';
+import { Translations } from '../../../../components/IntlProvider';
 import { ComicsProduct } from '../../products/types';
 
 export type AttributeLanguage = ValuesOfObject<typeof attributeLanguage>;
@@ -7,23 +7,23 @@ export type AttributeCover = ValuesOfObject<typeof attributeCover>;
 export type AttributeCondition = ValuesOfObject<typeof attributeCondition>;
 
 export type ComicsCategoryFormValues = {
-    title: Translation;
-    screenwriter: null | Translation[];
-    artist: null | Translation[];
+    title: Translations;
+    screenwriter: null | Translations[];
+    artist: null | Translations[];
     publishingHouse: string;
-    language: Translation;
+    language: Translations;
     format: string;
-    cover: Translation;
+    cover: Translations;
     pages: string;
     isbn: string;
     year: string;
-    description: Translation;
-    condition: Translation;
+    description: Translations;
+    condition: Translations;
     quantity: string;
     preorder: boolean;
     label: string;
-    character: null | Translation[];
-    genre: Translation[];
+    character: null | Translations[];
+    genre: Translations[];
     price: string;
     discountPrice: undefined | string;
 };
@@ -31,8 +31,8 @@ export type ComicsCategoryFormValues = {
 export type ComicsNewEntity = Omit<ComicsProduct, '_id' | 'category'>;
 
 export type ComicsAttributes = {
-    screenwriter: Translation[];
-    artist: Translation[];
+    screenwriter: Translations[];
+    artist: Translations[];
     publishingHouse: string[];
     language: AttributeLanguage[];
     format: string[];
@@ -40,6 +40,6 @@ export type ComicsAttributes = {
     year: number[];
     condition: AttributeCondition[];
     label: string[];
-    character: Translation[];
-    genre: Translation[];
+    character: Translations[];
+    genre: Translations[];
 };
