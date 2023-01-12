@@ -4,6 +4,7 @@ import { common } from './common';
 import { dashboard } from './dashboard';
 import { menu } from './menu';
 import { products } from './products';
+import { suppliers } from './suppliers';
 
 const translationUK = {
     uk: {
@@ -12,7 +13,8 @@ const translationUK = {
         ...common,
         ...dashboard,
         ...menu,
-        ...products
+        ...products,
+        ...suppliers
     }
 };
 

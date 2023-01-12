@@ -6,5 +6,10 @@ export const routes = {
     categoriesAdd: '/categories/add',
 
     products: '/products',
-    productsAdd: `/products/add`
+    productsAdd: '/products/add',
+
+    suppliers: {
+        root: '/suppliers',
+        add: '/suppliers/add',
+    }
 };

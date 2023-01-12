@@ -4,6 +4,7 @@ import { common } from './common';
 import { dashboard } from './dashboard';
 import { menu } from './menu';
 import { products } from './products';
+import { suppliers } from './suppliers';
 
 const translationEN = {
     en: {
@@ -12,7 +13,8 @@ const translationEN = {
         ...common,
         ...dashboard,
         ...menu,
-        ...products
+        ...products,
+        ...suppliers
     }
 };
 

@@ -23,6 +23,10 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
             //         title: 'Склад'
             //     }
             // ]
-        }
+        },
+        {
+            title: translateFn('menu.suppliers'),
+            path: routes.suppliers.root
+        },
     ];
 }
