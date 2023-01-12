@@ -1,14 +1,16 @@
 import { CategoryDetailEntity, CategoryFormValues } from './types';
+import { Language } from '../../components/IntlProvider';
 
-export const matchDataToFormValues = (data: CategoryDetailEntity | undefined): CategoryFormValues | undefined => {
+export const matchDataToFormValues = (data: CategoryDetailEntity | undefined, language: Language): CategoryFormValues | undefined => {
     if (!data) {
         return undefined;
     }
 
-    const { _id, ...rest } = data;
+    const { parents, name, isActive, } = data;
 
     return {
-        ...rest,
-        parentIds: rest.parents
+        name,
+        isActive,
+        parentIds: parents.map((parent) => ({ id: parent._id, value: parent.name[language] || '' }))
     };
 };

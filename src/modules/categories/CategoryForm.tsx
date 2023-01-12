@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
-import { useAPI, useCachedAPI, useTranslatedDropdownValue } from '../../hooks';
+import { useAPI, useCachedAPI } from '../../hooks';
 import { useTranslation } from '../../components/IntlProvider';
 import { DropdownAdapter, MultiLanguageInputAdapter } from '../../components/FormFieldsAdapter';
 import { formFields } from './constants';
@@ -11,14 +11,15 @@ import { Button } from '../../components/Button';
 import { mainTranslationRequired } from '../../validations/translations';
 import { CheckboxAdapter } from '../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
 import {
-    Category,
     CategoryDeleteData,
     CategoryFormProps,
     CategoryFormValues,
+    CategoryPatchData,
     CategoryPostData,
     CategoryPostResponse
 } from './types';
 import { endpoint } from '../../common/constants/api';
+import { DropdownItem } from '../../components/Fields/Dropdown';
 
 const schema = yup.object().shape({
     name: yup.object().shape(mainTranslationRequired({
@@ -33,11 +34,10 @@ const CategoryForm: FC<CategoryFormProps> = (
         isReadOnly
     }
 ) => {
-    const { POST, DELETE } = useAPI();
-    const { data } = useCachedAPI<Category[]>(`${endpoint.categories}`);
+    const { POST, PATCH, DELETE } = useAPI();
+    const { data: categoriesDropdownList } = useCachedAPI<DropdownItem[]>(`${endpoint.categories}/dropdown-list`);
 
     const { translate } = useTranslation();
-    const { translateDropdownValue } = useTranslatedDropdownValue();
 
     const { control, handleSubmit, reset, formState: { isDirty, isSubmitted } } = useForm<CategoryFormValues>({
         resolver: yupResolver(schema),
@@ -52,34 +52,10 @@ const CategoryForm: FC<CategoryFormProps> = (
         }
     }, [reset, isReadOnly, isSubmitted, isDirty]);
 
-    const categoryValueGetter = (item: null | string | Category | Category[]): string | string[] => {
-        if (!item) {
-            return [];
-        }
-
-        if (typeof item === 'string') {
-            return item;
-        }
-
-        if (Array.isArray(item)) {
-            return item.reduce<string[]>((acc, i) => {
-                const value = translateDropdownValue(i.name);
-
-                if (typeof value === 'string') {
-                    acc.push(value);
-                }
-
-                return acc;
-            }, []);
-        }
-
-        const value = translateDropdownValue(item.name);
-
-        return value || [];
-    };
-
-    const getCategoryIds = (categories: Category[]): string[] => {
-        return categories.map((category) => category._id);
+    const getCategoryIds = (categories: DropdownItem[]): string[] => {
+        return categories.map((category) => {
+            return typeof category === 'string' || typeof category === 'number' ? String(category) : category.id;
+        });
     };
 
     const handleFormSubmit = async (value: CategoryFormValues) => {
@@ -88,7 +64,11 @@ const CategoryForm: FC<CategoryFormProps> = (
             parentIds: getCategoryIds(value.parentIds)
         };
 
-        await POST<CategoryPostResponse, CategoryPostData>({ url: endpoint.categories, data });
+        if (id) {
+            await PATCH<any, CategoryPatchData>({ url: endpoint.categories, data: { id, ...data } })
+        } else {
+            await POST<CategoryPostResponse, CategoryPostData>({ url: endpoint.categories, data });
+        }
     };
 
     const handleDeleteCategory = async () => {
@@ -119,8 +99,7 @@ const CategoryForm: FC<CategoryFormProps> = (
                         isReadOnly={isReadOnly}
                         isDescriptionHidden={isReadOnly}
                         name={formFields.parentIds}
-                        customItems={data}
-                        itemValueGetter={categoryValueGetter}
+                        items={categoriesDropdownList}
                         placeholder={translate('category.parent.select')}
                         label={translate('category.parent')}
                         control={control}

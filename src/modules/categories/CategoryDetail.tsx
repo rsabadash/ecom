@@ -17,9 +17,9 @@ const CategoryDetail = () => {
     const { categoryId } = useParams<{ categoryId: string }>();
     const { language, translate } = useTranslation();
 
-    const { data } = useCachedAPI<CategoryDetailEntity>(`${endpoint.categories}/${categoryId}`);
+    const { data: categoryDetail } = useCachedAPI<CategoryDetailEntity>(`${endpoint.categories}/${categoryId}`);
 
-    const formValues: CategoryFormValues | undefined = matchDataToFormValues(data);
+    const formValues: CategoryFormValues | undefined = matchDataToFormValues(categoryDetail, language);
 
     const handleButtonClick = (): void => {
         setReadOnly((isReadOnly) => !isReadOnly);
@@ -27,7 +27,7 @@ const CategoryDetail = () => {
 
     return (
         <>
-            <Top headingText={data?.name[language]}>
+            <Top headingText={categoryDetail?.name[language]}>
                 <TopButtons>
                     {isReadOnly && (
                         <ButtonLink variant="primary" to={routes.categoriesAdd}>
@@ -42,7 +42,7 @@ const CategoryDetail = () => {
 
             <ForegroundSection>
                 <Suspense>
-                    <CategoryForm id={data?._id} formValues={formValues} isReadOnly={isReadOnly} />
+                    <CategoryForm id={categoryDetail?._id} formValues={formValues} isReadOnly={isReadOnly} />
                 </Suspense>
             </ForegroundSection>
         </>
