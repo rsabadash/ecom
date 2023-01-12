@@ -1,4 +1,5 @@
 import { Translations } from '../../components/IntlProvider';
+import { DropdownItem } from '../../components/Fields/Dropdown';
 
 export type Category = {
     _id: string;
@@ -17,7 +18,7 @@ export type CategoryDetailEntity = {
 export type CategoryFormValues = {
     name: Translations;
     isActive: boolean;
-    parentIds: Category[];
+    parentIds: DropdownItem[];
 };
 
 export type CategoryFormProps = {
@@ -39,6 +40,13 @@ export type CategoryPostResponse = {
     name: Translations;
     isActive: boolean;
     parents: Category[];
+};
+
+export type CategoryPatchData = {
+    id: string;
+    name: Translations;
+    isActive: boolean;
+    parentIds: string[];
 };
 
 export type CategoryDeleteData = {

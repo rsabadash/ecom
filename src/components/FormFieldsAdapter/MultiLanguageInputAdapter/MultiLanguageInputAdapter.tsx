@@ -54,7 +54,7 @@ const MultiLanguageInputAdapter = <FormValues extends FieldValues>(
                         formatValue={formatValue}
                         formatError={(error) => addLanguageToTranslation({ translation: error.message, language, translate })}
                         isDescriptionHidden={isDescriptionHidden}
-                        label={label}
+                        label={`${label} (${translate(`${language}.adjective`)})`}
                         control={control}
                     />
                 )}
