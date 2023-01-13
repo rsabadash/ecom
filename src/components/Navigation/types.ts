@@ -1,3 +1,4 @@
+import { KeyboardEvent, RefObject } from 'react';
 import { EventKeys } from '../../common/enums/events';
 
 export type MenuItem = {
@@ -13,3 +14,12 @@ export type NavData = {
 };
 
 export type KeyIndexMap = Partial<{ [key in EventKeys]: number }>;
+
+export type UseNavigationReturn = {
+    menuItems: MenuItems;
+    itemsListRef: RefObject<HTMLUListElement>;
+    handleNavigationKeyDown: (e: KeyboardEvent<HTMLUListElement>) => void;
+    handleNavigationMouseMove: () => void;
+    focusIndex: number;
+    setInitialIndex: (index: number) => void;
+};
