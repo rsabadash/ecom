@@ -1,6 +1,6 @@
-import {Context, createContext, Provider, useContext} from "react";
+import { Context, createContext, Provider, useContext } from 'react';
 
-export interface CreateProviderOptions<ContextType> {
+export type CreateProviderOptions<ContextType> = {
     strict?: boolean;
     errorMessage?: string;
     contextName?: string;
