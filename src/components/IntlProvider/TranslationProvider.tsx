@@ -1,11 +1,15 @@
-import { createContext, FC, PropsWithChildren, useCallback, useMemo } from 'react';
+import { FC, PropsWithChildren, useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { Language, TranslationProviderProps, TranslationContextValue } from './types';
 import { translationContextValuesDefault } from './constants';
+import {createProvider} from "../../utils";
 
-export const TranslationContext = createContext<TranslationContextValue>(translationContextValuesDefault);
+const [Provider, useTranslation] = createProvider<TranslationContextValue>({
+        contextName: 'TranslationContext',
+        contextDefaultValue: translationContextValuesDefault
+    })
 
-export const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = (
+const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = (
     {
         language,
         setLanguage,
@@ -29,8 +33,10 @@ export const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>
     }), [language, translate, changeLanguage]);
 
     return (
-        <TranslationContext.Provider value={contextValue}>
+        <Provider value={contextValue}>
             {children}
-        </TranslationContext.Provider>
+        </Provider>
     );
 };
+
+export { TranslationProvider, useTranslation }
