@@ -1,25 +1,19 @@
-import {useMemo} from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
-import {useTranslation} from '../IntlProvider';
-import {getMenuItems} from './utils';
-import {NavData} from './types';
-import {INDEX_ABSENCE_FOCUS} from './constants';
+import { NavData } from './types';
+import { INDEX_ABSENCE_FOCUS } from './constants';
+import { useNavigation } from './hooks/useNavigation';
 import classes from './styles/index.module.css';
-import {useNavigation} from "./hooks/useNavigation";
 
 const Navigation = () => {
-    const {translate} = useTranslation();
-
-    const menuItems = useMemo(() => getMenuItems(translate), [translate]);
-
     const {
+        menuItems,
         focusIndex,
         itemsListRef,
         setInitialIndex,
         handleNavigationKeyDown,
         handleNavigationMouseMove
-    } = useNavigation(menuItems);
+    } = useNavigation();
 
     return (
         <nav aria-label="Main">
@@ -65,4 +59,4 @@ const Navigation = () => {
     );
 };
 
-export {Navigation};
+export { Navigation };

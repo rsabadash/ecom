@@ -1,14 +1,20 @@
-import {KeyboardEvent, useCallback, useLayoutEffect, useRef, useState} from "react";
-import {INDEX_ABSENCE_FOCUS} from "../constants";
-import {EventKeys} from "../../../common/enums/events";
-import {KeyIndexMap, MenuItems} from "../types";
+import { KeyboardEvent, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { INDEX_ABSENCE_FOCUS } from '../constants';
+import { EventKeys } from '../../../common/enums/events';
+import { KeyIndexMap, UseNavigationReturn } from '../types';
+import { getMenuItems } from '../utils';
+import { useTranslation } from '../../IntlProvider';
 
-export const useNavigation = (menuItems: MenuItems) => {
+export const useNavigation = (): UseNavigationReturn => {
+    const { translate } = useTranslation();
+
+    const menuItems = useMemo(() => getMenuItems(translate), [translate]);
+
     const initialIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
     const itemsListRef = useRef<HTMLUListElement>(null);
 
     const [focusIndex, setFocusIndex] = useState<number>(initialIndexRef.current);
-    const [isKeyboardControl, setIsKeyboardControl] = useState(false);
+    const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
 
     const getLiElementByIndex = useCallback((index: number): HTMLLIElement | undefined => {
         if (index !== INDEX_ABSENCE_FOCUS && itemsListRef.current) {
@@ -16,7 +22,7 @@ export const useNavigation = (menuItems: MenuItems) => {
         }
     }, []);
 
-    const blurNavItem = (index: number) => {
+    const blurNavItem = (index: number): void => {
         const liElement = getLiElementByIndex(index);
 
         if (liElement) {
@@ -104,5 +110,12 @@ export const useNavigation = (menuItems: MenuItems) => {
         initialIndexRef.current = index;
     };
 
-    return { itemsListRef, handleNavigationKeyDown, handleNavigationMouseMove, focusIndex, setInitialIndex };
-}
+    return {
+        menuItems,
+        focusIndex,
+        itemsListRef,
+        setInitialIndex,
+        handleNavigationKeyDown,
+        handleNavigationMouseMove
+    };
+};
