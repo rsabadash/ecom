@@ -1,3 +1,3 @@
 export const categories = {
-    comics: 'comics'
+  comics: 'comics',
 } as const;

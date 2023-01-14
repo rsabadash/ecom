@@ -1,21 +1,21 @@
 export const buttonVariant = {
-    regular: 'regular',
-    primary: 'primary',
-    success: 'success',
-    warning: 'warning',
-    danger: 'danger',
-    theme: 'theme'
+  regular: 'regular',
+  primary: 'primary',
+  success: 'success',
+  warning: 'warning',
+  danger: 'danger',
+  theme: 'theme',
 } as const;
 
 export const buttonSize = {
-    s: 's',
-    l: 'l',
-    xl: 'xl'
+  s: 's',
+  l: 'l',
+  xl: 'xl',
 } as const;
 
 export const buttonType = {
-    button: 'button',
-    submit: 'submit'
+  button: 'button',
+  submit: 'submit',
 } as const;
 
 export const DEFAULT_BUTTON_VARIANT = buttonVariant.regular;

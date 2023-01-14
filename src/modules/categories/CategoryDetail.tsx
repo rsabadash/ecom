@@ -12,41 +12,50 @@ import { CategoryForm } from './CategoryForm';
 import { matchDataToFormValues } from './utils';
 
 const CategoryDetail = () => {
-    const [isReadOnly, setReadOnly] = useState<boolean>(true);
+  const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
-    const { categoryId } = useParams<{ categoryId: string }>();
-    const { language, translate } = useTranslation();
+  const { categoryId } = useParams<{ categoryId: string }>();
+  const { language, translate } = useTranslation();
 
-    const { data: categoryDetail } = useCachedAPI<CategoryDetailEntity>(`${endpoint.categories}/${categoryId}`);
+  const { data: categoryDetail } = useCachedAPI<CategoryDetailEntity>(
+    `${endpoint.categories}/${categoryId}`,
+  );
 
-    const formValues: CategoryFormValues | undefined = matchDataToFormValues(categoryDetail, language);
+  const formValues: CategoryFormValues | undefined = matchDataToFormValues(
+    categoryDetail,
+    language,
+  );
 
-    const handleButtonClick = (): void => {
-        setReadOnly((isReadOnly) => !isReadOnly);
-    };
+  const handleButtonClick = (): void => {
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
 
-    return (
-        <>
-            <Top headingText={categoryDetail?.name[language]}>
-                <TopButtons>
-                    {isReadOnly && (
-                        <ButtonLink variant="primary" to={routes.categoriesAdd}>
-                            {translate('category.add')}
-                        </ButtonLink>
-                    )}
-                    <Button variant="primary" onClick={handleButtonClick}>
-                        {!isReadOnly ? translate('cancel') : translate('category.edit')}
-                    </Button>
-                </TopButtons>
-            </Top>
+  return (
+    <>
+      <Top headingText={categoryDetail?.name[language]}>
+        <TopButtons>
+          {isReadOnly && (
+            <ButtonLink variant="primary" to={routes.categoriesAdd}>
+              {translate('category.add')}
+            </ButtonLink>
+          )}
+          <Button variant="primary" onClick={handleButtonClick}>
+            {!isReadOnly ? translate('cancel') : translate('category.edit')}
+          </Button>
+        </TopButtons>
+      </Top>
 
-            <ForegroundSection>
-                <Suspense>
-                    <CategoryForm id={categoryDetail?._id} formValues={formValues} isReadOnly={isReadOnly} />
-                </Suspense>
-            </ForegroundSection>
-        </>
-    );
+      <ForegroundSection>
+        <Suspense>
+          <CategoryForm
+            id={categoryDetail?._id}
+            formValues={formValues}
+            isReadOnly={isReadOnly}
+          />
+        </Suspense>
+      </ForegroundSection>
+    </>
+  );
 };
 
 export default CategoryDetail;

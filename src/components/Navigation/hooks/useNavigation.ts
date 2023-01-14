@@ -1,4 +1,11 @@
-import { KeyboardEvent, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import {
+  KeyboardEvent,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { INDEX_ABSENCE_FOCUS } from '../constants';
 import { EventKeys } from '../../../common/enums/events';
 import { KeyIndexMap, UseNavigationReturn } from '../types';
@@ -6,116 +13,131 @@ import { getMenuItems } from '../utils';
 import { useTranslation } from '../../IntlProvider';
 
 export const useNavigation = (): UseNavigationReturn => {
-    const { translate } = useTranslation();
+  const { translate } = useTranslation();
 
-    const menuItems = useMemo(() => getMenuItems(translate), [translate]);
+  const menuItems = useMemo(() => getMenuItems(translate), [translate]);
 
-    const initialIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
-    const itemsListRef = useRef<HTMLUListElement>(null);
+  const initialIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
+  const itemsListRef = useRef<HTMLUListElement>(null);
 
-    const [focusIndex, setFocusIndex] = useState<number>(initialIndexRef.current);
-    const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
+  const [focusIndex, setFocusIndex] = useState<number>(initialIndexRef.current);
+  const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
 
-    const getLiElementByIndex = useCallback((index: number): HTMLLIElement | undefined => {
-        if (index !== INDEX_ABSENCE_FOCUS && itemsListRef.current) {
-            return itemsListRef.current.children[index] as HTMLLIElement;
-        }
-    }, []);
+  const getLiElementByIndex = useCallback(
+    (index: number): HTMLLIElement | undefined => {
+      if (index !== INDEX_ABSENCE_FOCUS && itemsListRef.current) {
+        return itemsListRef.current.children[index] as HTMLLIElement;
+      }
+    },
+    [],
+  );
 
-    const blurNavItem = (index: number): void => {
-        const liElement = getLiElementByIndex(index);
+  const blurNavItem = (index: number): void => {
+    const liElement = getLiElementByIndex(index);
 
-        if (liElement) {
-            const linkElement = liElement.children[0] as HTMLAnchorElement;
+    if (liElement) {
+      const linkElement = liElement.children[0] as HTMLAnchorElement;
 
-            linkElement.blur();
-        }
+      linkElement.blur();
+    }
+  };
+
+  const defineFocusIndexByKey = (key: EventKeys): number | undefined => {
+    const itemsLength = menuItems.length;
+    const isInitialIndex = focusIndex === INDEX_ABSENCE_FOCUS;
+
+    const keyIndexPair: KeyIndexMap = {
+      [EventKeys.Home]: 0,
+      [EventKeys.End]: itemsLength - 1,
+      [EventKeys.ArrowDown]:
+        isInitialIndex || focusIndex === itemsLength - 1 ? 0 : focusIndex + 1,
+      [EventKeys.ArrowUp]:
+        isInitialIndex || focusIndex === 0 ? itemsLength - 1 : focusIndex - 1,
+      [EventKeys.PageDown]:
+        isInitialIndex || focusIndex === itemsLength - 1 ? 0 : focusIndex + 1,
+      [EventKeys.PageUp]:
+        isInitialIndex || focusIndex === 0 ? itemsLength - 1 : focusIndex - 1,
+      [EventKeys.Tab]: INDEX_ABSENCE_FOCUS,
     };
 
-    const defineFocusIndexByKey = (key: EventKeys): number | undefined => {
-        const itemsLength = menuItems.length;
-        const isInitialIndex = focusIndex === INDEX_ABSENCE_FOCUS;
+    if (typeof keyIndexPair[key] !== 'undefined') {
+      return keyIndexPair[key];
+    }
 
-        const keyIndexPair: KeyIndexMap = {
-            [EventKeys.Home]: 0,
-            [EventKeys.End]: itemsLength - 1,
-            [EventKeys.ArrowDown]: isInitialIndex || focusIndex === itemsLength - 1 ? 0 : focusIndex + 1,
-            [EventKeys.ArrowUp]: isInitialIndex || focusIndex === 0 ? itemsLength - 1 : focusIndex - 1,
-            [EventKeys.PageDown]: isInitialIndex || focusIndex === itemsLength - 1 ? 0 : focusIndex + 1,
-            [EventKeys.PageUp]: isInitialIndex || focusIndex === 0 ? itemsLength - 1 : focusIndex - 1,
-            [EventKeys.Tab]: INDEX_ABSENCE_FOCUS
-        };
+    return undefined;
+  };
 
-        if (typeof keyIndexPair[key] !== 'undefined') {
-            return keyIndexPair[key]!;
-        }
+  useLayoutEffect(() => {
+    if (initialIndexRef.current !== null) {
+      setFocusIndex(initialIndexRef.current);
+    }
+  }, []);
 
-        return undefined;
-    };
+  useLayoutEffect(() => {
+    if (isKeyboardControl) {
+      const liElement = getLiElementByIndex(focusIndex);
 
-    useLayoutEffect(() => {
-        if (initialIndexRef.current !== null) {
-            setFocusIndex(initialIndexRef.current);
-        }
-    }, []);
+      if (liElement) {
+        const linkElement = liElement.children[0] as HTMLAnchorElement;
 
-    useLayoutEffect(() => {
-        if (isKeyboardControl) {
-            const liElement = getLiElementByIndex(focusIndex);
+        linkElement.focus();
+        liElement.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }, [focusIndex, getLiElementByIndex, isKeyboardControl]);
 
-            if (liElement) {
-                const linkElement = liElement.children[0] as HTMLAnchorElement;
+  const handleNavigationMouseMove = (): void => {
+    if (
+      isKeyboardControl &&
+      initialIndexRef.current !== null &&
+      itemsListRef.current
+    ) {
+      const blurIndex =
+        initialIndexRef.current === focusIndex
+          ? initialIndexRef.current
+          : focusIndex;
 
-                linkElement.focus();
-                liElement.scrollIntoView({ block: 'nearest' });
-            }
-        }
-    }, [focusIndex, getLiElementByIndex, isKeyboardControl]);
+      setFocusIndex(initialIndexRef.current);
+      blurNavItem(blurIndex);
 
-    const handleNavigationMouseMove = (): void => {
-        if (isKeyboardControl && initialIndexRef.current !== null && itemsListRef.current) {
-            const blurIndex = initialIndexRef.current === focusIndex ? initialIndexRef.current : focusIndex;
+      setIsKeyboardControl(false);
+    }
+  };
 
-            setFocusIndex(initialIndexRef.current);
-            blurNavItem(blurIndex);
+  const handleNavigationKeyDown = (
+    e: KeyboardEvent<HTMLUListElement>,
+  ): void => {
+    const key = e.key as EventKeys;
+    const index = defineFocusIndexByKey(key);
 
-            setIsKeyboardControl(false);
-        }
-    };
+    if (typeof index === 'undefined') {
+      return;
+    }
 
-    const handleNavigationKeyDown = (e: KeyboardEvent<HTMLUListElement>): void => {
-        const key = e.key as EventKeys;
-        const index = defineFocusIndexByKey(key);
+    if (index !== INDEX_ABSENCE_FOCUS) {
+      setIsKeyboardControl(true);
+      setFocusIndex(index);
 
-        if (typeof index === 'undefined') {
-            return;
-        }
+      return;
+    }
 
-        if (index !== INDEX_ABSENCE_FOCUS) {
-            setIsKeyboardControl(true);
-            setFocusIndex(index);
+    if (key === EventKeys.Tab) {
+      if (initialIndexRef.current !== null) {
+        setFocusIndex(initialIndexRef.current);
+      }
+    }
+  };
 
-            return;
-        }
+  const setInitialIndex = (index: number): void => {
+    initialIndexRef.current = index;
+  };
 
-        if (key === EventKeys.Tab) {
-            if (initialIndexRef.current !== null) {
-                setFocusIndex(initialIndexRef.current);
-            }
-        }
-
-    };
-
-    const setInitialIndex = (index: number): void => {
-        initialIndexRef.current = index;
-    };
-
-    return {
-        menuItems,
-        focusIndex,
-        itemsListRef,
-        setInitialIndex,
-        handleNavigationKeyDown,
-        handleNavigationMouseMove
-    };
+  return {
+    menuItems,
+    focusIndex,
+    itemsListRef,
+    setInitialIndex,
+    handleNavigationKeyDown,
+    handleNavigationMouseMove,
+  };
 };

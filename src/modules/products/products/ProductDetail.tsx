@@ -11,40 +11,44 @@ import { endpoint } from '../../../common/constants/api';
 import { routes } from '../../../common/constants/routes';
 
 const ProductDetail = () => {
-    const [isReadOnly, setReadOnly] = useState<boolean>(true);
-    const { productId } = useParams<{ productId: string }>();
-    const { language, translate } = useTranslation();
+  const [isReadOnly, setReadOnly] = useState<boolean>(true);
+  const { productId } = useParams<{ productId: string }>();
+  const { language, translate } = useTranslation();
 
-    const { data } = useCachedAPI<Product>(`${endpoint.products}/${productId}`);
+  const { data } = useCachedAPI<Product>(`${endpoint.products}/${productId}`);
 
-    const handleButtonClick = (): void => {
-        setReadOnly((isReadOnly) => !isReadOnly);
-    };
+  const handleButtonClick = (): void => {
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
 
-    return (
-        <>
-            <Top headingText={data?.title[language]}>
-                <TopButtons>
-                    {isReadOnly && (
-                        <ButtonLink variant="primary" to={routes.productsAdd}>
-                            {translate('products.add')}
-                        </ButtonLink>
-                    )}
-                    <Button variant="primary" onClick={handleButtonClick}>
-                        {!isReadOnly ? translate('cancel') : translate('edit')}
-                    </Button>
-                </TopButtons>
-            </Top>
+  return (
+    <>
+      <Top headingText={data?.title[language]}>
+        <TopButtons>
+          {isReadOnly && (
+            <ButtonLink variant="primary" to={routes.productsAdd}>
+              {translate('products.add')}
+            </ButtonLink>
+          )}
+          <Button variant="primary" onClick={handleButtonClick}>
+            {!isReadOnly ? translate('cancel') : translate('edit')}
+          </Button>
+        </TopButtons>
+      </Top>
 
-            <ForegroundSection>
-                {data && (
-                    <Suspense>
-                        {mapCategoryToComponent({ formData: data, isReadOnly })[data.category]}
-                    </Suspense>
-                )}
-            </ForegroundSection>
-        </>
-    );
+      <ForegroundSection>
+        {data && (
+          <Suspense>
+            {
+              mapCategoryToComponent({ formData: data, isReadOnly })[
+                data.category
+              ]
+            }
+          </Suspense>
+        )}
+      </ForegroundSection>
+    </>
+  );
 };
 
 export default ProductDetail;
