@@ -1,84 +1,84 @@
 .button {
-    color: var(--text);
-    text-decoration: none;
-    border-radius: var(--radius-regular);
-    border: none;
-    cursor: pointer;
-    transition: background-color var(--transition);
-    outline: none;
-    display: flex;
-    align-items: center;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: var(--radius-regular);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition);
+  outline: none;
+  display: flex;
+  align-items: center;
 }
 
 .button a {
-    color: var(--text);
-    text-decoration: none;
+  color: var(--text);
+  text-decoration: none;
 }
 
 .button:focus-visible {
-    box-shadow: var(--input-box-shadow-focus);
+  box-shadow: var(--input-box-shadow-focus);
 }
 
 .button_s {
-    font-size: var(--font-size-regular);
-    line-height: var(--line-height-regular);
-    padding: 8px 12px;
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  padding: 8px 12px;
 }
 
 .button_s svg {
-    height: var(--line-height-regular);
+  height: var(--line-height-regular);
 }
 
 .button_l {
-    font-size: var(--font-size-large);
-    line-height: var(--line-height-large);
-    padding: 10px 16px;
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+  padding: 10px 16px;
 }
 
 .button_l svg {
-    height: var(--line-height-large);
+  height: var(--line-height-large);
 }
 
 .button_xl {
-    font-size: var(--font-size-xl);
-    line-height: var(--line-height-xl);
-    padding: 14px 24px;
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  padding: 14px 24px;
 }
 
 .button_xl svg {
-    height: var(--line-height-xl);
+  height: var(--line-height-xl);
 }
 
 .button_regular {
-    color: var(--background-900);
-    background-color: var(--button-regular-background);
+  color: var(--background-900);
+  background-color: var(--button-regular-background);
 }
 
 .button_primary {
-    color: var(--button-variant-text);
-    background-color: var(--primary-900);
+  color: var(--button-variant-text);
+  background-color: var(--primary-900);
 }
 
 .button_primary:hover {
-    background-color: var(--primary-800);
+  background-color: var(--primary-800);
 }
 
 .button_success {
-    color: var(--button-variant-text);
-    background-color: var(--success-900);
+  color: var(--button-variant-text);
+  background-color: var(--success-900);
 }
 
 .button_warning {
-    color: var(--button-variant-text);
-    background-color: var(--warning-900);
+  color: var(--button-variant-text);
+  background-color: var(--warning-900);
 }
 
 .button_danger {
-    color: var(--button-variant-text);
-    background-color: var(--danger-900);
+  color: var(--button-variant-text);
+  background-color: var(--danger-900);
 }
 
 .button_theme {
-    background-color: var(--input-background);
-    outline: 1px solid var(--border); /* avoid additional height by regular border property */
+  background-color: var(--input-background);
+  outline: 1px solid var(--border); /* avoid additional height by regular border property */
 }

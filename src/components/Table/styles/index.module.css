@@ -1,62 +1,62 @@
 .tableForeground {
-    margin-top: 32px;
+  margin-top: 32px;
 }
 
 .table__header {
-    color: var(--foreground-700);
-    font-size: var(--font-size-regular);
-    line-height: var(--line-height-regular);
-    border-bottom: 1px solid var(--border);
+  color: var(--foreground-700);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  border-bottom: 1px solid var(--border);
 }
 
 .table__headerRow {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .table__headerItem {
-    padding: 16px;
+  padding: 16px;
 }
 
 .table__body a {
-    text-decoration: none;
-    color: var(--text);
+  text-decoration: none;
+  color: var(--text);
 }
 
 .table__row {
-    display: flex;
-    color: var(--text);
-    font-size: var(--font-size-regular);
-    line-height: var(--line-height-regular);
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    align-items: center;
+  display: flex;
+  color: var(--text);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  align-items: center;
 }
 
 .table__row:hover {
-    background-color: var(--hover);
+  background-color: var(--hover);
 }
 
 .table__row:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .table__row:last-child:hover {
-    border-bottom-right-radius: var(--radius-large);
-    border-bottom-left-radius: var(--radius-large);
+  border-bottom-right-radius: var(--radius-large);
+  border-bottom-left-radius: var(--radius-large);
 }
 
 .table__row:focus-visible {
-    outline: none;
-    box-shadow: var(--input-box-shadow-focus);
-    background-color: var(--hover);
+  outline: none;
+  box-shadow: var(--input-box-shadow-focus);
+  background-color: var(--hover);
 }
 
 .table__row:last-child:focus-visible {
-    border-bottom-right-radius: var(--radius-large);
-    border-bottom-left-radius: var(--radius-large);
+  border-bottom-right-radius: var(--radius-large);
+  border-bottom-left-radius: var(--radius-large);
 }
 
 .table__rowItem {
-    padding: 16px;
+  padding: 16px;
 }

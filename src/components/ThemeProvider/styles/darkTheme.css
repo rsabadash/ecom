@@ -1,23 +1,23 @@
 :root {
-    --background-dark-900: rgba(41, 45, 63, 1);
-    --background-dark-800: rgba(41, 45, 63, 0.72);
-    --background-dark-700: rgba(41, 45, 63, 0.48);
-    --background-dark-600: rgba(41, 45, 63, 0.32);
-    --background-dark-500: rgba(41, 45, 63, 0.19);
-    --background-dark-400: rgba(41, 45, 63, 0.13);
-    --background-dark-300: rgba(41, 45, 63, 0.08);
-    --background-dark-200: rgba(41, 45, 63, 0.05);
-    --background-dark-100: rgba(41, 45, 63, 0.03);
+  --background-dark-900: rgba(41, 45, 63, 1);
+  --background-dark-800: rgba(41, 45, 63, 0.72);
+  --background-dark-700: rgba(41, 45, 63, 0.48);
+  --background-dark-600: rgba(41, 45, 63, 0.32);
+  --background-dark-500: rgba(41, 45, 63, 0.19);
+  --background-dark-400: rgba(41, 45, 63, 0.13);
+  --background-dark-300: rgba(41, 45, 63, 0.08);
+  --background-dark-200: rgba(41, 45, 63, 0.05);
+  --background-dark-100: rgba(41, 45, 63, 0.03);
 
-    --foreground-dark-900: rgba(255, 255, 255, 1);
-    --foreground-dark-800: rgba(255, 255, 255, 0.72);
-    --foreground-dark-700: rgba(255, 255, 255, 0.48);
-    --foreground-dark-600: rgba(255, 255, 255, 0.32);
-    --foreground-dark-500: rgba(255, 255, 255, 0.19);
-    --foreground-dark-400: rgba(255, 255, 255, 0.13);
-    --foreground-dark-300: rgba(255, 255, 255, 0.08);
-    --foreground-dark-200: rgba(255, 255, 255, 0.05);
-    --foreground-dark-100: rgba(255, 255, 255, 0.03);
+  --foreground-dark-900: rgba(255, 255, 255, 1);
+  --foreground-dark-800: rgba(255, 255, 255, 0.72);
+  --foreground-dark-700: rgba(255, 255, 255, 0.48);
+  --foreground-dark-600: rgba(255, 255, 255, 0.32);
+  --foreground-dark-500: rgba(255, 255, 255, 0.19);
+  --foreground-dark-400: rgba(255, 255, 255, 0.13);
+  --foreground-dark-300: rgba(255, 255, 255, 0.08);
+  --foreground-dark-200: rgba(255, 255, 255, 0.05);
+  --foreground-dark-100: rgba(255, 255, 255, 0.03);
 }
 
 /*@media(prefers-color-scheme: dark) {*/
@@ -25,28 +25,28 @@
 /*    }*/
 /*}*/
 
-[data-theme="dark"] {
-    --background-900: rgba(41, 45, 63, 1);
-    --background-800: rgba(41, 45, 63, 0.72);
-    --background-700: rgba(41, 45, 63, 0.48);
-    --background-600: rgba(41, 45, 63, 0.32);
-    --background-500: rgba(41, 45, 63, 0.19);
-    --background-400: rgba(41, 45, 63, 0.13);
-    --background-300: rgba(41, 45, 63, 0.08);
-    --background-200: rgba(41, 45, 63, 0.05);
-    --background-100: rgba(41, 45, 63, 0.03);
+[data-theme='dark'] {
+  --background-900: rgba(41, 45, 63, 1);
+  --background-800: rgba(41, 45, 63, 0.72);
+  --background-700: rgba(41, 45, 63, 0.48);
+  --background-600: rgba(41, 45, 63, 0.32);
+  --background-500: rgba(41, 45, 63, 0.19);
+  --background-400: rgba(41, 45, 63, 0.13);
+  --background-300: rgba(41, 45, 63, 0.08);
+  --background-200: rgba(41, 45, 63, 0.05);
+  --background-100: rgba(41, 45, 63, 0.03);
 
-    --foreground-900: rgba(255, 255, 255, 1);
-    --foreground-800: rgba(255, 255, 255, 0.72);
-    --foreground-700: rgba(255, 255, 255, 0.48);
-    --foreground-600: rgba(255, 255, 255, 0.32);
-    --foreground-500: rgba(255, 255, 255, 0.19);
-    --foreground-400: rgba(255, 255, 255, 0.13);
-    --foreground-300: rgba(255, 255, 255, 0.08);
-    --foreground-200: rgba(255, 255, 255, 0.05);
-    --foreground-100: rgba(255, 255, 255, 0.03);
+  --foreground-900: rgba(255, 255, 255, 1);
+  --foreground-800: rgba(255, 255, 255, 0.72);
+  --foreground-700: rgba(255, 255, 255, 0.48);
+  --foreground-600: rgba(255, 255, 255, 0.32);
+  --foreground-500: rgba(255, 255, 255, 0.19);
+  --foreground-400: rgba(255, 255, 255, 0.13);
+  --foreground-300: rgba(255, 255, 255, 0.08);
+  --foreground-200: rgba(255, 255, 255, 0.05);
+  --foreground-100: rgba(255, 255, 255, 0.03);
 
-    --button-variant-text: var(--foreground-900);
+  --button-variant-text: var(--foreground-900);
 
-    --input-background-absolute-hack: #303445; /*to avoid color transparency on absolutely positioned elements */
+  --input-background-absolute-hack: #303445; /*to avoid color transparency on absolutely positioned elements */
 }
