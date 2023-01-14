@@ -4,16 +4,30 @@ module.exports = {
     project: 'tsconfig.json',
     tsconfigRootDir : __dirname, 
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  plugins: ['@typescript-eslint/eslint-plugin', 'react'],
   extends: [
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended'
   ],
   root: true,
   env: {
     node: true,
     jest: true,
+    browser: true,
+    es2021: true,
   },
   ignorePatterns: ['.eslintrc.js', 'src/**/*.css', 'src/**/*.svg', 'src/**/*.ttf'],
   rules: {
