@@ -1,4 +1,4 @@
 export const products = {
-    'products': 'Товари',
-    'products.add': 'Додати товар'
+  products: 'Товари',
+  'products.add': 'Додати товар',
 };

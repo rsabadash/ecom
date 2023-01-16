@@ -5,31 +5,29 @@ import { useTranslation } from '../../IntlProvider';
 import { FieldLabelProps } from './types';
 import classes from './styles/index.module.css';
 
-const FieldLabel: FC<FieldLabelProps> = (
-    {
-        label,
-        htmlFor,
-        isValid,
-        isReadOnly,
-        isRequired
-    }
-) => {
-    const { translate } = useTranslation();
-    const itemLabel = isRequired && !isReadOnly ? `${label} (${translate('required').toLowerCase()})` : label;
+const FieldLabel: FC<FieldLabelProps> = ({
+  label,
+  htmlFor,
+  isValid,
+  isReadOnly,
+  isRequired,
+}) => {
+  const { translate } = useTranslation();
+  const itemLabel =
+    isRequired && !isReadOnly
+      ? `${label} (${translate('required').toLowerCase()})`
+      : label;
 
-    const fieldLabelClassNames = clsx(
-        classes.fieldLabel,
-        {
-            [classes.fieldLabel_error]: !isValid,
-            [classes.fieldLabel_readOnly]: isReadOnly
-        }
-    );
+  const fieldLabelClassNames = clsx(classes.fieldLabel, {
+    [classes.fieldLabel_error]: !isValid,
+    [classes.fieldLabel_readOnly]: isReadOnly,
+  });
 
-    return (
-        <Label htmlFor={htmlFor} labelClassName={fieldLabelClassNames}>
-            {itemLabel}
-        </Label>
-    );
+  return (
+    <Label htmlFor={htmlFor} labelClassName={fieldLabelClassNames}>
+      {itemLabel}
+    </Label>
+  );
 };
 
 export { FieldLabel };

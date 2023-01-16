@@ -1,12 +1,12 @@
 .fieldLabel {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .fieldLabel_error {
-    color: var(--text-error);
+  color: var(--text-error);
 }
 
 .fieldLabel_readOnly {
-    cursor: auto;
-    user-select: none;
+  cursor: auto;
+  user-select: none;
 }

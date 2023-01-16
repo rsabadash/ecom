@@ -6,20 +6,20 @@ import { CategoryForm } from './CategoryForm';
 import { ForegroundSection } from '../../components/Foreground';
 
 export const CategoryAdd = () => {
-    const { translate } = useTranslation();
+  const { translate } = useTranslation();
 
-    return (
-        <>
-            <Top headingText={translate('category.add')}>
-                <ButtonLink variant="primary" to={routes.categories}>
-                    {translate('cancel')}
-                </ButtonLink>
-            </Top>
-            <ForegroundSection>
-                <CategoryForm />
-            </ForegroundSection>
-        </>
-    );
+  return (
+    <>
+      <Top headingText={translate('category.add')}>
+        <ButtonLink variant="primary" to={routes.categories}>
+          {translate('cancel')}
+        </ButtonLink>
+      </Top>
+      <ForegroundSection>
+        <CategoryForm />
+      </ForegroundSection>
+    </>
+  );
 };
 
 export default CategoryAdd;

@@ -1,3 +1,3 @@
 export const dashboard = {
-    'dashboard': 'Dashboard'
+  dashboard: 'Dashboard',
 };

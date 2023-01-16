@@ -7,15 +7,15 @@ import { products } from './products';
 import { suppliers } from './suppliers';
 
 const translationEN = {
-    en: {
-        ...attributes,
-        ...categories,
-        ...common,
-        ...dashboard,
-        ...menu,
-        ...products,
-        ...suppliers
-    }
+  en: {
+    ...attributes,
+    ...categories,
+    ...common,
+    ...dashboard,
+    ...menu,
+    ...products,
+    ...suppliers
+  },
 };
 
 export default translationEN;

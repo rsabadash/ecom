@@ -9,38 +9,38 @@ import { formCategoryField } from './constants';
 import { mapCategoryToComponent } from './utils';
 
 const ProductsAdd = () => {
-    const { translate } = useTranslation();
-    const { control, watch } = useForm<FormCategoryValues>();
-    const categoryValue = watch(formCategoryField.category);
+  const { translate } = useTranslation();
+  const { control, watch } = useForm<FormCategoryValues>();
+  const categoryValue = watch(formCategoryField.category);
 
-    const categories = [{
-        id: 'comics',
-        value: translate('category.comics')
-    }];
+  const categories = [
+    {
+      id: 'comics',
+      value: translate('category.comics'),
+    },
+  ];
 
-    return (
-        <>
-            <Top headingText={translate('products.add')}></Top>
-            <ForegroundSection>
-                <DropdownAdapter
-                    isRequired
-                    name={formCategoryField.category}
-                    control={control}
-                    items={categories}
-                    label={translate('category')}
-                    placeholder={translate('category.select')}
-                />
-            </ForegroundSection>
+  return (
+    <>
+      <Top headingText={translate('products.add')}></Top>
+      <ForegroundSection>
+        <DropdownAdapter
+          isRequired
+          name={formCategoryField.category}
+          control={control}
+          items={categories}
+          label={translate('category')}
+          placeholder={translate('category.select')}
+        />
+      </ForegroundSection>
 
-            <ForegroundSection placeholder={translate('category.noProduct')}>
-                {categoryValue && (
-                    <Suspense>
-                        {mapCategoryToComponent()[categoryValue.id]}
-                    </Suspense>
-                )}
-            </ForegroundSection>
-        </>
-    );
+      <ForegroundSection placeholder={translate('category.noProduct')}>
+        {categoryValue && (
+          <Suspense>{mapCategoryToComponent()[categoryValue.id]}</Suspense>
+        )}
+      </ForegroundSection>
+    </>
+  );
 };
 
 export default ProductsAdd;

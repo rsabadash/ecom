@@ -7,50 +7,66 @@ import { useCachedAPI } from '../../hooks';
 import { endpoint } from '../../common/constants/api';
 import { Category } from './types';
 import { TABLE_ID } from './constants';
-import { RowCustomRenderArgs, Table, TableColumnGeneric } from '../../components/Table';
+import {
+  RowCustomRenderArgs,
+  Table,
+  TableColumnGeneric,
+} from '../../components/Table';
 
 export const Categories = () => {
-    const { data = [] } = useCachedAPI<Category[]>(`${endpoint.categories}`);
+  const { data = [] } = useCachedAPI<Category[]>(`${endpoint.categories}`);
 
-    const { translate, language } = useTranslation();
+  const { translate, language } = useTranslation();
 
-    const columns: TableColumnGeneric<Category>[] = [
-        {
-            title: translate('category.name'),
-            key: 'name',
-            width: '70%',
-            valueGetter: (value: Translations) => {
-                return value[language];
-            }
-        },
-        {
-            title: translate('category.state'),
-            key: 'isActive',
-            width: '30%',
-            valueGetter: (value: boolean) => {
-                return value ? translate('category.state.active') : translate('category.state.inactive')
-            }
-        }
-    ];
+  const columns: TableColumnGeneric<Category>[] = [
+    {
+      title: translate('category.name'),
+      key: 'name',
+      width: '70%',
+      valueGetter: (value: Translations) => {
+        return value[language];
+      },
+    },
+    {
+      title: translate('category.state'),
+      key: 'isActive',
+      width: '30%',
+      valueGetter: (value: boolean) => {
+        return value
+          ? translate('category.state.active')
+          : translate('category.state.inactive');
+      },
+    },
+  ];
 
-    return (
-        <>
-            <Top headingId={TABLE_ID} headingText={translate('categories')}>
-                <ButtonLink variant="primary" to={routes.categoriesAdd}>
-                    {translate('category.add')}
-                </ButtonLink>
-            </Top>
-            <Table
-                isRowLinkInteractive
-                items={data}
-                columns={columns}
-                tableLabeledBy={TABLE_ID}
-                rowCustomRender={({ row, item, rowProps }: RowCustomRenderArgs<Category>) => (
-                    <Link key={item._id} to={`${routes.categories}/${item._id}`} {...rowProps}>{row}</Link>
-                )}
-            />
-        </>
-    );
+  return (
+    <>
+      <Top headingId={TABLE_ID} headingText={translate('categories')}>
+        <ButtonLink variant="primary" to={routes.categoriesAdd}>
+          {translate('category.add')}
+        </ButtonLink>
+      </Top>
+      <Table
+        isRowLinkInteractive
+        items={data}
+        columns={columns}
+        tableLabeledBy={TABLE_ID}
+        rowCustomRender={({
+          row,
+          item,
+          rowProps,
+        }: RowCustomRenderArgs<Category>) => (
+          <Link
+            key={item._id}
+            to={`${routes.categories}/${item._id}`}
+            {...rowProps}
+          >
+            {row}
+          </Link>
+        )}
+      />
+    </>
+  );
 };
 
 export default Categories;

@@ -6,124 +6,135 @@ import { ReactComponent as ChevronDownIcon } from '../../assets/icons/ChevronDow
 import { ReactComponent as ChevronUpIcon } from '../../assets/icons/ChevronUp.svg';
 import classes from './styles/index.module.css';
 
-const Collapse: FC<CollapseProps> = (
-    {
-        header,
-        body,
-        forceExpand,
-        isInitiallyExpand = false,
-        isToggleHidden,
-        onExpandFinished,
-        onCollapseFinished,
-        ariaLabel,
-        ariaControls,
-        headerClassName,
-        bodyClassName,
+const Collapse: FC<CollapseProps> = ({
+  header,
+  body,
+  forceExpand,
+  isInitiallyExpand = false,
+  isToggleHidden,
+  onExpandFinished,
+  onCollapseFinished,
+  ariaLabel,
+  ariaControls,
+  headerClassName,
+  bodyClassName,
+}) => {
+  const [isExpand, setIsExpand] = useState(false);
+  const collapseBodyRef = useRef<null | HTMLDivElement>(null);
+
+  const expandFinishedCallback = useCallback(() => {
+    onExpandFinished && onExpandFinished();
+
+    if (collapseBodyRef.current) {
+      collapseBodyRef.current.style.overflow = 'unset';
+      // set "auto" because if we leave a defined height it can break the styles
+      // in case our height of collapse dynamically was changed some parts of the component can be overlapped
+      collapseBodyRef.current.style.height = 'auto';
+      collapseBodyRef.current.removeEventListener(
+        'transitionend',
+        expandFinishedCallback,
+      );
     }
-) => {
-    const [isExpand, setIsExpand] = useState(false);
-    const collapseBodyRef = useRef<null | HTMLDivElement>(null);
+  }, [onExpandFinished]);
 
-    const expandFinishedCallback = useCallback(() => {
-        onExpandFinished && onExpandFinished();
+  const collapseFinishedCallback = useCallback(() => {
+    onCollapseFinished && onCollapseFinished();
 
+    if (collapseBodyRef.current) {
+      collapseBodyRef.current.removeEventListener(
+        'transitionend',
+        collapseFinishedCallback,
+      );
+    }
+  }, [onCollapseFinished]);
+
+  const expand = useCallback(() => {
+    if (collapseBodyRef.current) {
+      collapseBodyRef.current.addEventListener(
+        'transitionend',
+        expandFinishedCallback,
+      );
+
+      requestAnimationFrame(() => {
         if (collapseBodyRef.current) {
-            collapseBodyRef.current.style.overflow = 'unset';
-            // set "auto" because if we leave a defined height it can break the styles
-            // in case our height of collapse dynamically was changed some parts of the component can be overlapped
-            collapseBodyRef.current.style.height = 'auto';
-            collapseBodyRef.current.removeEventListener('transitionend', expandFinishedCallback);
+          collapseBodyRef.current.style.height = `${collapseBodyRef.current.scrollHeight}px`;
+
+          // make area focusable
+          collapseBodyRef.current.removeAttribute('inert');
         }
-    }, [onExpandFinished]);
+      });
+    }
+  }, [expandFinishedCallback]);
 
-    const collapseFinishedCallback = useCallback(() => {
-        onCollapseFinished && onCollapseFinished();
+  const collapse = useCallback(() => {
+    if (collapseBodyRef.current) {
+      // we define the height to make collapse animatable
+      collapseBodyRef.current.style.height = `${collapseBodyRef.current.scrollHeight}px`;
+      collapseBodyRef.current.addEventListener(
+        'transitionend',
+        collapseFinishedCallback,
+      );
 
+      requestAnimationFrame(() => {
         if (collapseBodyRef.current) {
-            collapseBodyRef.current.removeEventListener('transitionend', collapseFinishedCallback);
+          collapseBodyRef.current.style.overflow = 'hidden';
+          collapseBodyRef.current.style.height = '0px';
+
+          // make area not focusable
+          collapseBodyRef.current.setAttribute('inert', '');
         }
-    }, [onCollapseFinished]);
+      });
+    }
+  }, [collapseFinishedCallback]);
 
-    const expand = useCallback(() => {
-        if (collapseBodyRef.current) {
-            collapseBodyRef.current.addEventListener('transitionend', expandFinishedCallback);
+  const toggleCollapse = (): void => {
+    setIsExpand((prevIsOpen) => !prevIsOpen);
+  };
 
-            requestAnimationFrame(() => {
-                if (collapseBodyRef.current) {
-                    collapseBodyRef.current.style.height = `${collapseBodyRef.current.scrollHeight}px`;
+  useLayoutEffect(() => {
+    if (isInitiallyExpand && collapseBodyRef.current) {
+      setIsExpand(isInitiallyExpand);
+    }
+  }, [isInitiallyExpand]);
 
-                    // make area focusable
-                    collapseBodyRef.current.removeAttribute('inert');
-                }
-            });
-        }
-    }, [expandFinishedCallback]);
+  useLayoutEffect(() => {
+    if (forceExpand) {
+      expand();
+    }
+  }, [forceExpand, expand]);
 
-    const collapse = useCallback(() => {
-        if (collapseBodyRef.current) {
-            // we define the height to make collapse animatable
-            collapseBodyRef.current.style.height = `${collapseBodyRef.current.scrollHeight}px`;
-            collapseBodyRef.current.addEventListener('transitionend', collapseFinishedCallback);
+  useLayoutEffect(() => {
+    if (isExpand) {
+      expand();
+    } else {
+      collapse();
+    }
+  }, [isExpand, collapse, expand]);
 
-            requestAnimationFrame(() => {
-                if (collapseBodyRef.current) {
-                    collapseBodyRef.current.style.overflow = 'hidden';
-                    collapseBodyRef.current.style.height = '0px';
+  const headerClassNames = clsx(classes.collapse__header, headerClassName);
+  const bodyClassNames = clsx(classes.collapse__body, bodyClassName);
 
-                    // make area not focusable
-                    collapseBodyRef.current.setAttribute('inert', '');
-
-                }
-            });
-        }
-    }, [collapseFinishedCallback]);
-
-    const toggleCollapse = (): void => {
-        setIsExpand((prevIsOpen) => !prevIsOpen);
-    };
-
-    useLayoutEffect(() => {
-        if (isInitiallyExpand && collapseBodyRef.current) {
-            setIsExpand(isInitiallyExpand);
-        }
-    }, [isInitiallyExpand]);
-
-    useLayoutEffect(() => {
-        if (forceExpand) {
-            expand();
-        }
-    }, [forceExpand, expand]);
-
-    useLayoutEffect(() => {
-        if (isExpand) {
-            expand();
-        } else {
-            collapse();
-        }
-    }, [isExpand, collapse, expand]);
-
-    const headerClassNames = clsx(classes.collapse__header, headerClassName);
-    const bodyClassNames = clsx(classes.collapse__body, bodyClassName);
-    
-    return (
-        <div className={classes.collapse}>
-            <div className={headerClassNames}>
-                <div className={classes.collapse__headerContent}>{header}</div>
-                {!isToggleHidden && (
-                    <Button
-                        onClick={toggleCollapse}
-                        ariaLabel={ariaLabel}
-                        ariaExpanded={isExpand}
-                        ariaControls={ariaControls}
-                        className={classes.collapse__switcher}
-                    >
-                        {isExpand ? <ChevronUpIcon /> : <ChevronDownIcon />}
-                    </Button>
-                )}
-            </div>
-            <div id={ariaControls} className={bodyClassNames} ref={collapseBodyRef}>{body}</div>
-        </div>
-    );
+  return (
+    <div className={classes.collapse}>
+      <div className={headerClassNames}>
+        <div className={classes.collapse__headerContent}>{header}</div>
+        {!isToggleHidden && (
+          <Button
+            onClick={toggleCollapse}
+            ariaLabel={ariaLabel}
+            ariaExpanded={isExpand}
+            ariaControls={ariaControls}
+            className={classes.collapse__switcher}
+          >
+            {isExpand ? <ChevronUpIcon /> : <ChevronDownIcon />}
+          </Button>
+        )}
+      </div>
+      <div id={ariaControls} className={bodyClassNames} ref={collapseBodyRef}>
+        {body}
+      </div>
+    </div>
+  );
 };
 
 export { Collapse };

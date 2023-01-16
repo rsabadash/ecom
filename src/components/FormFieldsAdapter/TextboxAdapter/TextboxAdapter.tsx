@@ -4,50 +4,52 @@ import { TextboxFormField } from '../../FormFields';
 import { TextboxValue } from '../../Fields/Textbox';
 import { useTranslation } from '../../IntlProvider';
 
-const TextboxAdapter = <FormValues extends FieldValues>(
-    {
-        name,
-        placeholder,
-        isReadOnly,
-        isRequired,
-        isDisabled,
-        formatError,
-        isDescriptionHidden,
-        label,
-        control,
-    }: TextboxAdapterProps<FormValues>
-) => {
-    const {
-        field: { onChange, onBlur, name: fieldName, value },
-        fieldState: { error }
-    } = useController<FormValues>({
-        name,
-        control,
-        // @ts-ignore
-        defaultValue: null
-    });
+const TextboxAdapter = <FormValues extends FieldValues>({
+  name,
+  placeholder,
+  isReadOnly,
+  isRequired,
+  isDisabled,
+  formatError,
+  isDescriptionHidden,
+  label,
+  control,
+}: TextboxAdapterProps<FormValues>) => {
+  const {
+    field: { onChange, onBlur, name: fieldName, value },
+    fieldState: { error },
+  } = useController<FormValues>({
+    name,
+    control,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    defaultValue: null,
+  });
 
-    const { translate } = useTranslation();
+  const { translate } = useTranslation();
 
-    const fieldValue = value as TextboxValue;
-    const fieldErrorMessage = error && formatError ? formatError(error) : error?.message && translate(error.message);
+  const fieldValue = value as TextboxValue;
+  const fieldErrorMessage =
+    error && formatError
+      ? formatError(error)
+      : error?.message && translate(error.message);
 
-    return (
-        <TextboxFormField
-            name={fieldName}
-            value={fieldValue}
-            placeholder={placeholder}
-            isValid={!fieldErrorMessage}
-            isReadOnly={isReadOnly}
-            isRequired={isRequired}
-            isDisabled={isDisabled}
-            onBlur={onBlur}
-            onChange={onChange}
-            errorMessage={fieldErrorMessage}
-            isDescriptionHidden={isDescriptionHidden}
-            label={label}
-        />
-    );
+  return (
+    <TextboxFormField
+      name={fieldName}
+      value={fieldValue}
+      placeholder={placeholder}
+      isValid={!fieldErrorMessage}
+      isReadOnly={isReadOnly}
+      isRequired={isRequired}
+      isDisabled={isDisabled}
+      onBlur={onBlur}
+      onChange={onChange}
+      errorMessage={fieldErrorMessage}
+      isDescriptionHidden={isDescriptionHidden}
+      label={label}
+    />
+  );
 };
 
 export { TextboxAdapter };

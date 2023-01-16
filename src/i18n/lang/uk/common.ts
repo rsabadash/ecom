@@ -1,13 +1,13 @@
 export const common = {
-    'required': 'Обов\'язкове',
-    'reset': 'Скинути',
-    'add': 'Додати',
-    'update': 'Оновити',
-    'edit': 'Редагувати',
-    'cancel': 'Відмінити',
+  required: "Обов'язкове",
+  reset: 'Скинути',
+  add: 'Додати',
+  update: 'Оновити',
+  edit: 'Редагувати',
+  cancel: 'Відмінити',
 
-    'uk.adjective': 'українськю',
-    'en.adjective': 'англійською',
+  'uk.adjective': 'українськю',
+  'en.adjective': 'англійською',
 
-    'translations.field': 'Переклади для поля {field}'
+  'translations.field': 'Переклади для поля {field}',
 };

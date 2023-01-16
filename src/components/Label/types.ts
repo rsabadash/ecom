@@ -1,5 +1,5 @@
 export type LabelProps = {
-    labelId?: string;
-    htmlFor?: string;
-    labelClassName?: string;
+  labelId?: string;
+  htmlFor?: string;
+  labelClassName?: string;
 };

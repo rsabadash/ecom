@@ -2,53 +2,56 @@ import { Translations } from '../../components/IntlProvider';
 import { DropdownItem } from '../../components/Fields/Dropdown';
 
 export type Category = {
-    _id: string;
-    name: Translations;
-    isActive: boolean;
-    parentIds: string[];
+  _id: string;
+  name: Translations;
+  isActive: boolean;
+  parentIds: string[];
 };
 
 export type CategoryDetailEntity = {
-    _id: string;
-    name: Translations;
-    isActive: boolean;
-    parents: Category[];
+  _id: string;
+  name: Translations;
+  isActive: boolean;
+  parents: Category[];
 };
 
 export type CategoryFormValues = {
-    name: Translations;
-    isActive: boolean;
-    parentIds: DropdownItem[];
+  name: Translations;
+  isActive: boolean;
+  parentIds: DropdownItem[];
 };
 
 export type CategoryFormProps = {
-    id?: string;
-    isReadOnly?: boolean;
-    formValues?: Partial<CategoryFormValues>;
+  id?: string;
+  isReadOnly?: boolean;
+  formValues?: Partial<CategoryFormValues>;
 };
 
-export type CategoryFormFields = Record<keyof CategoryFormValues, keyof CategoryFormValues>;
+export type CategoryFormFields = Record<
+  keyof CategoryFormValues,
+  keyof CategoryFormValues
+>;
 
 export type CategoryPostData = {
-    name: Translations;
-    isActive: boolean;
-    parentIds: string[];
+  name: Translations;
+  isActive: boolean;
+  parentIds: string[];
 };
 
 export type CategoryPostResponse = {
-    _id: string;
-    name: Translations;
-    isActive: boolean;
-    parents: Category[];
+  _id: string;
+  name: Translations;
+  isActive: boolean;
+  parents: Category[];
 };
 
 export type CategoryPatchData = {
-    id: string;
-    name: Translations;
-    isActive: boolean;
-    parentIds: string[];
+  id: string;
+  name: Translations;
+  isActive: boolean;
+  parentIds: string[];
 };
 
 export type CategoryDeleteData = {
-    id: string;
+  id: string;
 };

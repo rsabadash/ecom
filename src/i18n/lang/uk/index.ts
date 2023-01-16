@@ -7,15 +7,15 @@ import { products } from './products';
 import { suppliers } from './suppliers';
 
 const translationUK = {
-    uk: {
-        ...attributes,
-        ...categories,
-        ...common,
-        ...dashboard,
-        ...menu,
-        ...products,
-        ...suppliers
-    }
+  uk: {
+    ...attributes,
+    ...categories,
+    ...common,
+    ...dashboard,
+    ...menu,
+    ...products,
+    ...suppliers
+  },
 };
 
 export default translationUK;

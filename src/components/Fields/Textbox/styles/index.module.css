@@ -1,74 +1,74 @@
 .textboxWrapper {
-    background-color: var(--input-background);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-regular);
-    padding: 12px 4px 12px 0;
+  background-color: var(--input-background);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-regular);
+  padding: 12px 4px 12px 0;
 }
 
 .textboxWrapper:focus-within {
-    box-shadow: var(--input-box-shadow-focus);
+  box-shadow: var(--input-box-shadow-focus);
 }
 
 .textboxWrapper_invalid {
-    border: 2px solid var(--border-error);
+  border: 2px solid var(--border-error);
 }
 
 .textboxWrapper_invalid:focus-within {
-    border: 2px solid var(--border);
-    box-shadow: var(--input-box-shadow-error-focus);
+  border: 2px solid var(--border);
+  box-shadow: var(--input-box-shadow-error-focus);
 }
 
 .textboxWrapper_readOnly {
-    border: none;
-    border-radius: 0;
-    background-color: transparent;
-    padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
 }
 
 .textboxWrapper_readOnly:focus-within {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .textbox {
-    background-color: transparent;
-    border: none;
-    color: var(--text);
-    line-height: 24px;
-    font-size: 14px;
-    padding: 0 8px 0 16px;
-    outline: none;
-    transition: box-shadow var(--transition);
-    width: 100%;
-    font-family: var(--font-family-body);
-    font-weight: 500;
-    resize: none;
-    max-height: calc(24px * 5);
+  background-color: transparent;
+  border: none;
+  color: var(--text);
+  line-height: 24px;
+  font-size: 14px;
+  padding: 0 8px 0 16px;
+  outline: none;
+  transition: box-shadow var(--transition);
+  width: 100%;
+  font-family: var(--font-family-body);
+  font-weight: 500;
+  resize: none;
+  max-height: calc(24px * 5);
 }
 
 .textbox::placeholder {
-    color: var(--text-disabled);
+  color: var(--text-disabled);
 }
 
 .textbox::-webkit-scrollbar {
-    width: var(--scrollbar-width);
+  width: var(--scrollbar-width);
 }
 
 .textbox::-webkit-scrollbar-track {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .textbox::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb);
-    border-radius: 4px;
-    height: 64px;
+  background-color: var(--scrollbar-thumb);
+  border-radius: 4px;
+  height: 64px;
 }
 
 .textbox_readOnly {
-    border: none;
-    border-radius: 0;
-    background-color: transparent;
-    height: auto;
-    padding: 0;
-    cursor: default;
-    user-select: none;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  height: auto;
+  padding: 0;
+  cursor: default;
+  user-select: none;
 }

@@ -1,115 +1,119 @@
 :root {
-    --primary-900: rgba(37, 157, 168, 1);
-    --primary-800: rgba(37, 157, 168, 0.72);
-    --primary-700: rgba(37, 157, 168, 0.48);
-    --primary-600: rgba(37, 157, 168, 0.32);
-    --primary-500: rgba(37, 157, 168, 0.19);
-    --primary-400: rgba(37, 157, 168, 0.13);
-    --primary-300: rgba(37, 157, 168, 0.08);
-    --primary-200: rgba(37, 157, 168, 0.05);
-    --primary-100: rgba(37, 157, 168, 0.03);
+  --primary-900: rgba(37, 157, 168, 1);
+  --primary-800: rgba(37, 157, 168, 0.72);
+  --primary-700: rgba(37, 157, 168, 0.48);
+  --primary-600: rgba(37, 157, 168, 0.32);
+  --primary-500: rgba(37, 157, 168, 0.19);
+  --primary-400: rgba(37, 157, 168, 0.13);
+  --primary-300: rgba(37, 157, 168, 0.08);
+  --primary-200: rgba(37, 157, 168, 0.05);
+  --primary-100: rgba(37, 157, 168, 0.03);
 
-    --success-900: rgba(173, 220, 123, 1);
-    --success-800: rgba(173, 220, 123, 0.72);
-    --success-700: rgba(173, 220, 123, 0.48);
-    --success-600: rgba(173, 220, 123, 0.32);
-    --success-500: rgba(173, 220, 123, 0.19);
-    --success-400: rgba(173, 220, 123, 0.13);
-    --success-300: rgba(173, 220, 123, 0.08);
-    --success-200: rgba(173, 220, 123, 0.05);
-    --success-100: rgba(173, 220, 123, 0.03);
+  --success-900: rgba(173, 220, 123, 1);
+  --success-800: rgba(173, 220, 123, 0.72);
+  --success-700: rgba(173, 220, 123, 0.48);
+  --success-600: rgba(173, 220, 123, 0.32);
+  --success-500: rgba(173, 220, 123, 0.19);
+  --success-400: rgba(173, 220, 123, 0.13);
+  --success-300: rgba(173, 220, 123, 0.08);
+  --success-200: rgba(173, 220, 123, 0.05);
+  --success-100: rgba(173, 220, 123, 0.03);
 
-    --warning-900: rgba(252, 201, 88, 1);
-    --warning-800: rgba(252, 201, 88, 0.72);
-    --warning-700: rgba(252, 201, 88, 0.48);
-    --warning-600: rgba(252, 201, 88, 0.32);
-    --warning-500: rgba(252, 201, 88, 0.19);
-    --warning-400: rgba(252, 201, 88, 0.13);
-    --warning-300: rgba(252, 201, 88, 0.08);
-    --warning-200: rgba(252, 201, 88, 0.05);
-    --warning-100: rgba(252, 201, 88, 0.03);
+  --warning-900: rgba(252, 201, 88, 1);
+  --warning-800: rgba(252, 201, 88, 0.72);
+  --warning-700: rgba(252, 201, 88, 0.48);
+  --warning-600: rgba(252, 201, 88, 0.32);
+  --warning-500: rgba(252, 201, 88, 0.19);
+  --warning-400: rgba(252, 201, 88, 0.13);
+  --warning-300: rgba(252, 201, 88, 0.08);
+  --warning-200: rgba(252, 201, 88, 0.05);
+  --warning-100: rgba(252, 201, 88, 0.03);
 
-    --danger-900: rgba(255, 134, 99, 1);
-    --danger-800: rgba(255, 134, 99, 0.72);
-    --danger-700: rgba(255, 134, 99, 0.48);
-    --danger-600: rgba(255, 134, 99, 0.32);
-    --danger-500: rgba(255, 134, 99, 0.19);
-    --danger-400: rgba(255, 134, 99, 0.13);
-    --danger-300: rgba(255, 134, 99, 0.08);
-    --danger-200: rgba(255, 134, 99, 0.05);
-    --danger-100: rgba(255, 134, 99, 0.03);
+  --danger-900: rgba(255, 134, 99, 1);
+  --danger-800: rgba(255, 134, 99, 0.72);
+  --danger-700: rgba(255, 134, 99, 0.48);
+  --danger-600: rgba(255, 134, 99, 0.32);
+  --danger-500: rgba(255, 134, 99, 0.19);
+  --danger-400: rgba(255, 134, 99, 0.13);
+  --danger-300: rgba(255, 134, 99, 0.08);
+  --danger-200: rgba(255, 134, 99, 0.05);
+  --danger-100: rgba(255, 134, 99, 0.03);
 
-    --shadow-5: 0px 1px 1px rgba(0, 0, 0, 0.08), 0px 32px 40px -2px rgba(0, 0, 0, 0.08);
-    --shadow-4: 0px 1px 1px rgba(0, 0, 0, 0.08), 0px 16px 16px -1px rgba(0, 0, 0, 0.08);
-    --shadow-3: 0px 1px 1px rgba(0, 0, 0, 0.08), 0px 6px 6px -1px rgba(0, 0, 0, 0.08);
-    --shadow-2: 0px 1px 1px rgba(0, 0, 0, 0.08), 0px 3px 3px -1px rgba(0, 0, 0, 0.08);
-    --shadow-1: 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 1px 1px rgba(0, 0, 0, 0.08);
-    --shadow-0: none;
+  --shadow-5: 0px 1px 1px rgba(0, 0, 0, 0.08),
+    0px 32px 40px -2px rgba(0, 0, 0, 0.08);
+  --shadow-4: 0px 1px 1px rgba(0, 0, 0, 0.08),
+    0px 16px 16px -1px rgba(0, 0, 0, 0.08);
+  --shadow-3: 0px 1px 1px rgba(0, 0, 0, 0.08),
+    0px 6px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-2: 0px 1px 1px rgba(0, 0, 0, 0.08),
+    0px 3px 3px -1px rgba(0, 0, 0, 0.08);
+  --shadow-1: 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 1px 1px rgba(0, 0, 0, 0.08);
+  --shadow-0: none;
 
-    --sidebar-widh: 250px;
+  --sidebar-widh: 250px;
 
-    --scrollbar-width: 4px;
+  --scrollbar-width: 4px;
 
-    --input-height: 48px;
-    --input-box-shadow-focus: var(--primary-700) 0 0 0 0.2em;
-    --input-box-shadow-error-focus: var(--danger-900) 0 0 0 0.2em;
+  --input-height: 48px;
+  --input-box-shadow-focus: var(--primary-700) 0 0 0 0.2em;
+  --input-box-shadow-error-focus: var(--danger-900) 0 0 0 0.2em;
 
-    --transition: 0.15s ease-in-out 0s;
+  --transition: 0.15s ease-in-out 0s;
 
-    --radius-small: 8px;
-    --radius-regular: 12px;
-    --radius-large: 16px;
+  --radius-small: 8px;
+  --radius-regular: 12px;
+  --radius-large: 16px;
 
-    --font-family-body: 'Inter', serif;
-    --font-family-head: 'Montserrat Medium', serif;
+  --font-family-body: 'Inter', serif;
+  --font-family-head: 'Montserrat Medium', serif;
 
-    --font-size-tiny: 10px;
-    --line-height-tiny: 16px;
-    --letter-spacing-tiny: 0.2px;
-    --font-size-small: 12px;
-    --line-height-small: 20px;
-    --font-size-regular: 14px;
-    --line-height-regular: 24px;
-    --font-size-large: 16px;
-    --line-height-large: 28px;
-    --font-size-xl: 20px;
-    --line-height-xl: 32px;
-    --font-size-2xl: 24px;
-    --line-height-2xl: 36px;
+  --font-size-tiny: 10px;
+  --line-height-tiny: 16px;
+  --letter-spacing-tiny: 0.2px;
+  --font-size-small: 12px;
+  --line-height-small: 20px;
+  --font-size-regular: 14px;
+  --line-height-regular: 24px;
+  --font-size-large: 16px;
+  --line-height-large: 28px;
+  --font-size-xl: 20px;
+  --line-height-xl: 32px;
+  --font-size-2xl: 24px;
+  --line-height-2xl: 36px;
 
-    --font-size-head-1: 64px;
-    --line-height-head-1: 72px;
-    --font-size-head-2: 48px;
-    --line-height-head-2: 64px;
-    --font-size-head-3: 34px;
-    --line-height-head-3: 48px;
-    --font-size-head-4: 28px;
-    --line-height-head-4: 40px;
+  --font-size-head-1: 64px;
+  --line-height-head-1: 72px;
+  --font-size-head-2: 48px;
+  --line-height-head-2: 64px;
+  --font-size-head-3: 34px;
+  --line-height-head-3: 48px;
+  --font-size-head-4: 28px;
+  --line-height-head-4: 40px;
 
-    --text-error: var(--danger-800);
-    --border-error: var(--danger-900);
+  --text-error: var(--danger-800);
+  --border-error: var(--danger-900);
 }
 
-[data-theme="dark"],
-[data-theme="light"] {
-    --background: var(--background-900);
-    --foreground: var(--foreground-100);
+[data-theme='dark'],
+[data-theme='light'] {
+  --background: var(--background-900);
+  --foreground: var(--foreground-100);
 
-    --text: var(--foreground-900);
-    --text-disabled: var(--foreground-600);
+  --text: var(--foreground-900);
+  --text-disabled: var(--foreground-600);
 
-    --border: var(--foreground-400);
+  --border: var(--foreground-400);
 
-    --scrollbar-thumb: var(--foreground-700);
+  --scrollbar-thumb: var(--foreground-700);
 
-    --hover: var(--foreground-200);
+  --hover: var(--foreground-200);
 
-    --label-color: var(--foreground-800);
+  --label-color: var(--foreground-800);
 
-    --input-background: var(--foreground-100);
-    --input-hover: var(--foreground-400);
+  --input-background: var(--foreground-100);
+  --input-hover: var(--foreground-400);
 
-    --button-regular-background: var(--foreground-900);
+  --button-regular-background: var(--foreground-900);
 
-    --text-description: var(--foreground-800);
+  --text-description: var(--foreground-800);
 }

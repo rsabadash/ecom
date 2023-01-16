@@ -1,24 +1,23 @@
 .collapse {
-
 }
 
 .collapse__header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .collapse__headerContent {
-    width: 100%;
+  width: 100%;
 }
 
 .collapse__switcher {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 .collapse__body {
-    overflow: hidden;
-    transition: height 0.3s ease-out;
-    height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+  height: 0;
 }
