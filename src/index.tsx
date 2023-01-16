@@ -8,16 +8,16 @@ import { IntlProvider } from './components/IntlProvider';
 import { themeStorage } from './utils';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 root.render(
-    <StrictMode>
-        <BrowserRouter>
-            <ThemeProvider themeStorage={themeStorage}>
-                <IntlProvider>
-                    <App />
-                </IntlProvider>
-            </ThemeProvider>
-        </BrowserRouter>
-    </StrictMode>
+  <StrictMode>
+    <BrowserRouter>
+      <ThemeProvider themeStorage={themeStorage}>
+        <IntlProvider>
+          <App />
+        </IntlProvider>
+      </ThemeProvider>
+    </BrowserRouter>
+  </StrictMode>,
 );

@@ -6,14 +6,14 @@ import { menu } from './menu';
 import { products } from './products';
 
 const translationUK = {
-    uk: {
-        ...attributes,
-        ...categories,
-        ...common,
-        ...dashboard,
-        ...menu,
-        ...products
-    }
+  uk: {
+    ...attributes,
+    ...categories,
+    ...common,
+    ...dashboard,
+    ...menu,
+    ...products,
+  },
 };
 
 export default translationUK;

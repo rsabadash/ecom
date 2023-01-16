@@ -1,10 +1,10 @@
 .fieldDescription {
-    font-size: var(--font-size-tiny);
-    line-height: var(--line-height-tiny);
-    letter-spacing: var(--letter-spacing-tiny);
-    color: var(--text-description);
+  font-size: var(--font-size-tiny);
+  line-height: var(--line-height-tiny);
+  letter-spacing: var(--letter-spacing-tiny);
+  color: var(--text-description);
 }
 
 .fieldDescription_error {
-    color: var(--text-error);
+  color: var(--text-error);
 }

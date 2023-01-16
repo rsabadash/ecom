@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
 export type FieldLabelProps = {
-    label: ReactNode;
-    htmlFor: string;
-    isValid?: boolean;
-    isReadOnly?: boolean;
-    isRequired?: boolean;
+  label: ReactNode;
+  htmlFor: string;
+  isValid?: boolean;
+  isReadOnly?: boolean;
+  isRequired?: boolean;
 };

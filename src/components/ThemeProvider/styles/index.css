@@ -1,13 +1,15 @@
-html, body, #root {
-    height: 100%;
-    width: 100%;
-    background-color: var(--background);
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
 }
 
 #theme-root {
-    /*color-scheme: var(--scheme);*/
-    color: var(--text);
-    background-color: var(--background);
-    transition: all 500ms;
-    height: 100%;
+  /*color-scheme: var(--scheme);*/
+  color: var(--text);
+  background-color: var(--background);
+  transition: all 500ms;
+  height: 100%;
 }

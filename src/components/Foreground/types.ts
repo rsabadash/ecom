@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
 export type ForegroundProps = {
-    foregroundClassName?: string;
+  foregroundClassName?: string;
 };
 
 export type ForegroundSectionProps = {
-    placeholder?: ReactNode;
+  placeholder?: ReactNode;
 };

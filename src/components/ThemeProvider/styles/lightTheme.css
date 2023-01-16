@@ -1,23 +1,23 @@
 :root {
-    --background-light-900: rgba(255, 255, 255, 1);
-    --background-light-800: rgba(255, 255, 255, 0.72);
-    --background-light-700: rgba(255, 255, 255, 0.48);
-    --background-light-600: rgba(255, 255, 255, 0.32);
-    --background-light-500: rgba(255, 255, 255, 0.19);
-    --background-light-400: rgba(255, 255, 255, 0.13);
-    --background-light-300: rgba(255, 255, 255, 0.08);
-    --background-light-200: rgba(255, 255, 255, 0.05);
-    --background-light-100: rgba(255, 255, 255, 0.03);
+  --background-light-900: rgba(255, 255, 255, 1);
+  --background-light-800: rgba(255, 255, 255, 0.72);
+  --background-light-700: rgba(255, 255, 255, 0.48);
+  --background-light-600: rgba(255, 255, 255, 0.32);
+  --background-light-500: rgba(255, 255, 255, 0.19);
+  --background-light-400: rgba(255, 255, 255, 0.13);
+  --background-light-300: rgba(255, 255, 255, 0.08);
+  --background-light-200: rgba(255, 255, 255, 0.05);
+  --background-light-100: rgba(255, 255, 255, 0.03);
 
-    --foreground-light-900: rgba(41, 45, 63, 1);
-    --foreground-light-800: rgba(41, 45, 63, 0.72);
-    --foreground-light-700: rgba(41, 45, 63, 0.48);
-    --foreground-light-600: rgba(41, 45, 63, 0.32);
-    --foreground-light-500: rgba(41, 45, 63, 0.19);
-    --foreground-light-400: rgba(41, 45, 63, 0.13);
-    --foreground-light-300: rgba(41, 45, 63, 0.08);
-    --foreground-light-200: rgba(41, 45, 63, 0.05);
-    --foreground-light-100: rgba(41, 45, 63, 0.03);
+  --foreground-light-900: rgba(41, 45, 63, 1);
+  --foreground-light-800: rgba(41, 45, 63, 0.72);
+  --foreground-light-700: rgba(41, 45, 63, 0.48);
+  --foreground-light-600: rgba(41, 45, 63, 0.32);
+  --foreground-light-500: rgba(41, 45, 63, 0.19);
+  --foreground-light-400: rgba(41, 45, 63, 0.13);
+  --foreground-light-300: rgba(41, 45, 63, 0.08);
+  --foreground-light-200: rgba(41, 45, 63, 0.05);
+  --foreground-light-100: rgba(41, 45, 63, 0.03);
 }
 
 /*@media(prefers-color-scheme: light) {*/
@@ -25,28 +25,28 @@
 /*    }*/
 /*}*/
 
-[data-theme="light"] {
-    --background-900: rgba(255, 255, 255, 1);
-    --background-800: rgba(255, 255, 255, 0.72);
-    --background-700: rgba(255, 255, 255, 0.48);
-    --background-600: rgba(255, 255, 255, 0.32);
-    --background-500: rgba(255, 255, 255, 0.19);
-    --background-400: rgba(255, 255, 255, 0.13);
-    --background-300: rgba(255, 255, 255, 0.08);
-    --background-200: rgba(255, 255, 255, 0.05);
-    --background-100: rgba(255, 255, 255, 0.03);
+[data-theme='light'] {
+  --background-900: rgba(255, 255, 255, 1);
+  --background-800: rgba(255, 255, 255, 0.72);
+  --background-700: rgba(255, 255, 255, 0.48);
+  --background-600: rgba(255, 255, 255, 0.32);
+  --background-500: rgba(255, 255, 255, 0.19);
+  --background-400: rgba(255, 255, 255, 0.13);
+  --background-300: rgba(255, 255, 255, 0.08);
+  --background-200: rgba(255, 255, 255, 0.05);
+  --background-100: rgba(255, 255, 255, 0.03);
 
-    --foreground-900: rgba(41, 45, 63, 1);
-    --foreground-800: rgba(41, 45, 63, 0.72);
-    --foreground-700: rgba(41, 45, 63, 0.48);
-    --foreground-600: rgba(41, 45, 63, 0.32);
-    --foreground-500: rgba(41, 45, 63, 0.19);
-    --foreground-400: rgba(41, 45, 63, 0.13);
-    --foreground-300: rgba(41, 45, 63, 0.08);
-    --foreground-200: rgba(41, 45, 63, 0.05);
-    --foreground-100: rgba(41, 45, 63, 0.03);
+  --foreground-900: rgba(41, 45, 63, 1);
+  --foreground-800: rgba(41, 45, 63, 0.72);
+  --foreground-700: rgba(41, 45, 63, 0.48);
+  --foreground-600: rgba(41, 45, 63, 0.32);
+  --foreground-500: rgba(41, 45, 63, 0.19);
+  --foreground-400: rgba(41, 45, 63, 0.13);
+  --foreground-300: rgba(41, 45, 63, 0.08);
+  --foreground-200: rgba(41, 45, 63, 0.05);
+  --foreground-100: rgba(41, 45, 63, 0.03);
 
-    --button-variant-text: var(--background-900);
+  --button-variant-text: var(--background-900);
 
-    --input-background-absolute-hack: #f8f8f9; /*to avoid color transparency on absolutely positioned elements */
+  --input-background-absolute-hack: #f8f8f9; /*to avoid color transparency on absolutely positioned elements */
 }
