@@ -9,7 +9,9 @@ const CategoryDetail = lazy(
   () => import('../../modules/categories/CategoryDetail'),
 );
 const Suppliers = lazy(() => import('../../modules/suppliers/Suppliers'));
-const SuppliersDetail = lazy(() => import('../../modules/suppliers/SuppliersDetail'));
+const SuppliersDetail = lazy(
+  () => import('../../modules/suppliers/SuppliersDetail'),
+);
 const SuppliersAdd = lazy(() => import('../../modules/suppliers/SuppliersAdd'));
 // const Products = lazy(() => import('../../modules/products/products'));
 // const ProductsAdd = lazy(() => import('../../modules/products/products/ProductsAdd'));
@@ -54,17 +56,31 @@ const Router = () => {
           </Suspense>
         }
       />
-        <Route path={routes.suppliers.root} element={(
-            <Suspense>
-                <Suppliers />
-            </Suspense>
-        )}/>
-        <Route path={`${routes.suppliers}/:supplierId`} element={(
-            <Suspense><SuppliersDetail /></Suspense>
-        )}/>
-        <Route path={routes.suppliers.add} element={(
-            <Suspense><SuppliersAdd /></Suspense>
-        )}/>
+      <Route
+        path={routes.suppliers.root}
+        element={
+          <Suspense>
+            <Suppliers />
+          </Suspense>
+        }
+      />
+      <Route
+        path={`${routes.suppliers}/:supplierId`}
+        element={
+          <Suspense>
+            <SuppliersDetail />
+          </Suspense>
+        }
+      />
+      <Route
+        path={routes.suppliers.add}
+        element={
+          <Suspense>
+            <SuppliersAdd />
+          </Suspense>
+        }
+      />
+
       {/*<Route path={routes.products} element={(*/}
       {/*    <Suspense><Products /></Suspense>*/}
       {/*)}/>*/}

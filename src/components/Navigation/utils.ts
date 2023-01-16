@@ -24,9 +24,9 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
       //     }
       // ]
     },
-  {
+    {
       title: translateFn('menu.suppliers'),
-      path: routes.suppliers.root
-  },
+      path: routes.suppliers.root,
+    },
   ];
 };

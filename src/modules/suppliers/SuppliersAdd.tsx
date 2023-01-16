@@ -1,13 +1,25 @@
-import {useCachedAPI} from "../../hooks";
-import {endpoint} from "../../common/constants/api";
-import {Supplier} from "./types";
+import { Top } from '../../layouts/Top';
+import { ButtonLink } from '../../components/Button';
+import { routes } from '../../common/constants/routes';
+import { ForegroundSection } from '../../components/Foreground';
+import { useTranslation } from '../../components/IntlProvider';
+import { SupplierForm } from './SupplierForm';
 
 const SuppliersAdd = () => {
-    const { data = [] } = useCachedAPI<Supplier[]>(endpoint.suppliers);
+  const { translate } = useTranslation();
 
-    return (
-        <>SuppliersAdd</>
-    )
-}
+  return (
+    <>
+      <Top headingText={translate('suppliers.add')}>
+        <ButtonLink variant="primary" to={routes.suppliers.root}>
+          {translate('cancel')}
+        </ButtonLink>
+      </Top>
+      <ForegroundSection>
+        <SupplierForm />
+      </ForegroundSection>
+    </>
+  );
+};
 
-export default SuppliersAdd
+export default SuppliersAdd;

@@ -14,7 +14,7 @@ const translationEN = {
     ...dashboard,
     ...menu,
     ...products,
-    ...suppliers
+    ...suppliers,
   },
 };
 

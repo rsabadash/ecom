@@ -14,7 +14,7 @@ const translationUK = {
     ...dashboard,
     ...menu,
     ...products,
-    ...suppliers
+    ...suppliers,
   },
 };
 
