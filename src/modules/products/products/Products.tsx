@@ -40,7 +40,7 @@ const Products = () => {
   return (
     <>
       <Top headingId={TABLE_ID} headingText={translate('products')}>
-        <ButtonLink variant="primary" to={routes.productsAdd}>
+        <ButtonLink variant="primary" to={routes.products.add}>
           {translate('products.add')}
         </ButtonLink>
       </Top>

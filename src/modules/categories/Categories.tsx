@@ -42,7 +42,7 @@ export const Categories = () => {
   return (
     <>
       <Top headingId={TABLE_ID} headingText={translate('categories')}>
-        <ButtonLink variant="primary" to={routes.categoriesAdd}>
+        <ButtonLink variant="primary" to={routes.categories.add}>
           {translate('category.add')}
         </ButtonLink>
       </Top>
@@ -58,7 +58,7 @@ export const Categories = () => {
         }: RowCustomRenderArgs<Category>) => (
           <Link
             key={item._id}
-            to={`${routes.categories}/${item._id}`}
+            to={`${routes.categories.root}/${item._id}`}
             {...rowProps}
           >
             {row}

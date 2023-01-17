@@ -33,7 +33,7 @@ const Router = () => {
         }
       />
       <Route
-        path={routes.categories}
+        path={routes.categories.root}
         element={
           <Suspense>
             <Categories />
@@ -41,7 +41,7 @@ const Router = () => {
         }
       />
       <Route
-        path={`${routes.categories}/:categoryId`}
+        path={routes.categories.detail}
         element={
           <Suspense>
             <CategoryDetail />
@@ -49,7 +49,7 @@ const Router = () => {
         }
       />
       <Route
-        path={routes.categoriesAdd}
+        path={routes.categories.add}
         element={
           <Suspense>
             <CategoryAdd />

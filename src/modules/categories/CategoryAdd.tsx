@@ -11,7 +11,7 @@ export const CategoryAdd = () => {
   return (
     <>
       <Top headingText={translate('category.add')}>
-        <ButtonLink variant="primary" to={routes.categories}>
+        <ButtonLink variant="primary" to={routes.categories.root}>
           {translate('cancel')}
         </ButtonLink>
       </Top>

@@ -10,11 +10,11 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
     },
     {
       title: translateFn('menu.categories'),
-      path: routes.categories,
+      path: routes.categories.root,
     },
     {
       title: translateFn('menu.products'),
-      path: routes.products,
+      path: routes.products.root,
       // items: [
       //     {
       //         title: 'Статистика'

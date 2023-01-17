@@ -26,7 +26,7 @@ const ProductDetail = () => {
       <Top headingText={data?.title[language]}>
         <TopButtons>
           {isReadOnly && (
-            <ButtonLink variant="primary" to={routes.productsAdd}>
+            <ButtonLink variant="primary" to={routes.products.add}>
               {translate('products.add')}
             </ButtonLink>
           )}

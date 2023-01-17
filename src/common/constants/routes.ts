@@ -2,12 +2,16 @@ export const routes = {
   home: '/',
   dashboard: '/dashboard',
 
-  categories: '/categories',
-  categoriesAdd: '/categories/add',
+  categories: {
+    root: '/categories',
+    add: '/categories/add',
+    detail: '/categories/:categoryId',
+  },
 
-  products: '/products',
-  productsAdd: '/products/add',
-
+  products: {
+    root: '/products',
+    add: '/products/add',
+  },
   suppliers: {
     root: '/suppliers',
     add: '/suppliers/add',
