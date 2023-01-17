@@ -80,7 +80,7 @@ const CategoryForm: FC<CategoryFormProps> = ({
     };
 
     if (id) {
-      await PATCH<any, CategoryPatchData>({
+      await PATCH<void, CategoryPatchData>({
         url: endpoint.categories,
         data: { id, ...data },
       });
