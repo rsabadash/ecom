@@ -30,6 +30,7 @@ export type SupplierFormFields = Record<
 export type SupplierFormProps = {
   id?: string;
   isReadOnly?: boolean;
+  handleButtonEditClick?: () => void;
   formValues?: SupplierFormValues;
 };
 

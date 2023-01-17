@@ -1,7 +1,7 @@
 import { CategoryDetailEntity, CategoryFormValues } from './types';
 import { Language } from '../../components/IntlProvider';
 
-export const matchDataToFormValues = (
+export const matchCategoryDataToFormValues = (
   data: CategoryDetailEntity | undefined,
   language: Language,
 ): CategoryFormValues | undefined => {

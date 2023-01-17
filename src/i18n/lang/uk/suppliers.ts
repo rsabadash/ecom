@@ -8,5 +8,6 @@ export const suppliers = {
   'suppliers.note': 'Нотатки',
   'suppliers.bill': 'Рахунок',
   'suppliers.phoneNumber': 'Номер телефона',
+  'suppliers.update': 'Оновити постачальника',
   'supplier.delete': 'Видалити постачальника',
 };

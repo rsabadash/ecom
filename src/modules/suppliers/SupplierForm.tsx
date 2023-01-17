@@ -12,9 +12,10 @@ const SupplierForm: FC<SupplierFormProps> = ({
   id,
   formValues,
   isReadOnly,
+  handleButtonEditClick,
 }) => {
   const { translate } = useTranslation();
-  const { handleFormSubmit } = useSupplierFormSubmit(id);
+  const { handleFormSubmit } = useSupplierFormSubmit(id, handleButtonEditClick);
   const { deleteSupplier } = useDeleteSupplier();
 
   const {

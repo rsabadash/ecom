@@ -7,8 +7,9 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from '../../components/IntlProvider';
 import { useCachedAPI } from '../../hooks';
 import { endpoint } from '../../common/constants/api';
-import { SupplierDetailEntry } from './types';
+import { SupplierDetailEntry, SupplierFormValues } from './types';
 import { SupplierForm } from './SupplierForm';
+import { matchSupplierDataToFormValues } from './utils';
 
 const SuppliersDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -20,6 +21,13 @@ const SuppliersDetail = () => {
     `${endpoint.suppliers}/${supplierId}`,
   );
 
+  const formValues: SupplierFormValues | undefined =
+    matchSupplierDataToFormValues(supplierDetail);
+
+  const handleButtonEditClick = (): void => {
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
+
   return (
     <>
       <Top headingText={supplierDetail?.name}>
@@ -29,10 +37,7 @@ const SuppliersDetail = () => {
               {translate('suppliers.add')}
             </ButtonLink>
           )}
-          <Button
-            variant="primary"
-            onClick={() => setReadOnly((isReadOnly) => !isReadOnly)}
-          >
+          <Button variant="primary" onClick={handleButtonEditClick}>
             {!isReadOnly ? translate('cancel') : translate('suppliers.edit')}
           </Button>
         </TopButtons>
@@ -41,8 +46,9 @@ const SuppliersDetail = () => {
         <Suspense>
           <SupplierForm
             id={supplierDetail?._id}
-            formValues={supplierDetail}
+            formValues={formValues}
             isReadOnly={isReadOnly}
+            handleButtonEditClick={handleButtonEditClick}
           />
         </Suspense>
       </ForegroundSection>

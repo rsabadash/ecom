@@ -8,7 +8,7 @@ import { supplierFormFields } from '../constants';
 const schema = yup.object().shape({
   [supplierFormFields.name]: yup.string().required().min(3).max(50),
   [supplierFormFields.note]: yup.string().max(1024),
-  [supplierFormFields.phoneNumber]: yup.string().length(10),
+  [supplierFormFields.phoneNumber]: yup.string().length(10).nullable(),
 });
 
 export const useSupplierForm = (

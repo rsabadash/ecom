@@ -65,7 +65,7 @@ const Router = () => {
         }
       />
       <Route
-        path={`${routes.suppliers}/:supplierId`}
+        path={`${routes.suppliers.detail}`}
         element={
           <Suspense>
             <SuppliersDetail />
