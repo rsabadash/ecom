@@ -5,7 +5,7 @@ import { ForegroundSection } from '../../components/Foreground';
 import { useTranslation } from '../../components/IntlProvider';
 import { SupplierForm } from './SupplierForm';
 
-const SuppliersAdd = () => {
+const SupplierAdd = () => {
   const { translate } = useTranslation();
 
   return (
@@ -22,4 +22,4 @@ const SuppliersAdd = () => {
   );
 };
 
-export default SuppliersAdd;
+export default SupplierAdd;

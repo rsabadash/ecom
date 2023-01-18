@@ -3,7 +3,7 @@ import { GridAutoFitProps } from './types';
 import { DEFAULT_MIN_COLUMN_WIDTH } from './constants';
 import classes from './styles/index.module.css';
 
-const GridAutoFit: FC<PropsWithChildren<GridAutoFitProps>> = ({
+export const GridAutoFit: FC<PropsWithChildren<GridAutoFitProps>> = ({
   children,
   gridColumnMinWidth = DEFAULT_MIN_COLUMN_WIDTH,
 }) => {
@@ -17,5 +17,3 @@ const GridAutoFit: FC<PropsWithChildren<GridAutoFitProps>> = ({
     </div>
   );
 };
-
-export { GridAutoFit };

@@ -6,7 +6,7 @@ import { ReactComponent as ChevronDownIcon } from '../../assets/icons/ChevronDow
 import { ReactComponent as ChevronUpIcon } from '../../assets/icons/ChevronUp.svg';
 import classes from './styles/index.module.css';
 
-const Collapse: FC<CollapseProps> = ({
+export const Collapse: FC<CollapseProps> = ({
   header,
   body,
   forceExpand,
@@ -136,5 +136,3 @@ const Collapse: FC<CollapseProps> = ({
     </div>
   );
 };
-
-export { Collapse };

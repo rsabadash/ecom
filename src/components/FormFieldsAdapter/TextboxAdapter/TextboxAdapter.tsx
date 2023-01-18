@@ -4,7 +4,7 @@ import { TextboxFormField } from '../../FormFields';
 import { TextboxValue } from '../../Fields/Textbox';
 import { useTranslation } from '../../IntlProvider';
 
-const TextboxAdapter = <FormValues extends FieldValues>({
+export const TextboxAdapter = <FormValues extends FieldValues>({
   name,
   placeholder,
   isReadOnly,
@@ -51,5 +51,3 @@ const TextboxAdapter = <FormValues extends FieldValues>({
     />
   );
 };
-
-export { TextboxAdapter };

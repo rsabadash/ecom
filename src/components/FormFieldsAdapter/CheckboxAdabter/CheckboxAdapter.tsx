@@ -4,7 +4,7 @@ import { CheckboxFormField } from '../../FormFields';
 import { CheckboxAdapterProps } from './types';
 import { CheckboxValue } from '../../Fields/Checkbox/types';
 
-const CheckboxAdapter = <FormValues extends FieldValues>({
+export const CheckboxAdapter = <FormValues extends FieldValues>({
   name,
   placeholder,
   isReadOnly,
@@ -51,5 +51,3 @@ const CheckboxAdapter = <FormValues extends FieldValues>({
     />
   );
 };
-
-export { CheckboxAdapter };

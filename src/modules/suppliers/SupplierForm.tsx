@@ -8,14 +8,13 @@ import { SupplierFormProps } from './types';
 import { useSupplierForm, useSupplierFormSubmit } from './hooks';
 import { useDeleteSupplier } from './hooks/useDeleteSupplier';
 
-const SupplierForm: FC<SupplierFormProps> = ({
+export const SupplierForm: FC<SupplierFormProps> = ({
   id,
-  formValues,
   isReadOnly,
-  handleButtonEditClick,
+  defaultValues,
 }) => {
   const { translate } = useTranslation();
-  const { handleFormSubmit } = useSupplierFormSubmit(id, handleButtonEditClick);
+  const { handleFormSubmit } = useSupplierFormSubmit(id);
   const { deleteSupplier } = useDeleteSupplier();
 
   const {
@@ -23,7 +22,7 @@ const SupplierForm: FC<SupplierFormProps> = ({
     control,
     handleSubmit,
     formState: { isDirty, isSubmitted },
-  } = useSupplierForm(formValues);
+  } = useSupplierForm(defaultValues);
 
   useEffect(() => {
     if (isReadOnly) {
@@ -33,7 +32,8 @@ const SupplierForm: FC<SupplierFormProps> = ({
     }
   }, [reset, isReadOnly, isSubmitted, isDirty]);
 
-  const shouldUpdateProduct = formValues && Object.keys(formValues).length > 0;
+  const shouldUpdateProduct =
+    defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
     <form noValidate onSubmit={handleSubmit(handleFormSubmit)}>
@@ -95,5 +95,3 @@ const SupplierForm: FC<SupplierFormProps> = ({
     </form>
   );
 };
-
-export { SupplierForm };

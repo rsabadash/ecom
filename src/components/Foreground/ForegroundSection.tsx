@@ -3,10 +3,9 @@ import clsx from 'clsx';
 import { ForegroundSectionProps } from './types';
 import classes from './styles/index.module.css';
 
-const ForegroundSection: FC<PropsWithChildren<ForegroundSectionProps>> = ({
-  children,
-  placeholder,
-}) => {
+export const ForegroundSection: FC<
+  PropsWithChildren<ForegroundSectionProps>
+> = ({ children, placeholder }) => {
   return (
     <section className={clsx(classes.foreground, classes.foregroundSection)}>
       {children || (
@@ -17,5 +16,3 @@ const ForegroundSection: FC<PropsWithChildren<ForegroundSectionProps>> = ({
     </section>
   );
 };
-
-export { ForegroundSection };

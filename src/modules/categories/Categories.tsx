@@ -12,14 +12,14 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
-import { useCategoriesColumns } from './hooks/useCategoriesColumns';
+import { useCategoriesTableColumns } from './hooks/useCategoriesTableColumns';
 
-export const Categories = () => {
+const Categories = () => {
   const { data = [] } = useCachedAPI<Category[]>(`${endpoint.categories}`);
 
   const { translate } = useTranslation();
 
-  const columns: TableColumnGeneric<Category>[] = useCategoriesColumns();
+  const columns: TableColumnGeneric<Category>[] = useCategoriesTableColumns();
 
   return (
     <>

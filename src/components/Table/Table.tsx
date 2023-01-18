@@ -16,7 +16,7 @@ import classes from './styles/index.module.css';
 // TODO ARIA for sorting https://www.w3.org/WAI/ARIA/apg/practices/grid-and-table-properties/
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role
 
-const Table: FC<TableProps> = ({
+export const Table: FC<TableProps> = ({
   items,
   columns,
   tableLabeledBy,
@@ -180,5 +180,3 @@ const Table: FC<TableProps> = ({
     </Foreground>
   );
 };
-
-export { Table };

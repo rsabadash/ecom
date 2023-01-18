@@ -5,7 +5,7 @@ import { commonFormatValue, serializeValue } from './utils';
 import { DEFAULT_INPUT_TYPE } from './constants';
 import classes from './styles/index.module.css';
 
-const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
   id,
   name,
   type = DEFAULT_INPUT_TYPE,
@@ -69,5 +69,3 @@ const Input: FC<InputProps> = ({
     />
   );
 };
-
-export { Input };

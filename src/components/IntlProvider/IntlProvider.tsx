@@ -9,7 +9,7 @@ import { TranslationProvider } from './TranslationProvider';
 
 const userLanguage = defineUserLanguageByLocale();
 
-const CustomIntlProvider: FC<PropsWithChildren> = ({ children }) => {
+export const CustomIntlProvider: FC<PropsWithChildren> = ({ children }) => {
   const [language, setLanguage] = useState<Language>(userLanguage);
 
   useEffect(() => {
@@ -29,5 +29,3 @@ const CustomIntlProvider: FC<PropsWithChildren> = ({ children }) => {
     </IntlProvider>
   );
 };
-
-export { CustomIntlProvider };

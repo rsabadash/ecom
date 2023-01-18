@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { TextboxProps } from './types';
 import classes from './styles/index.module.css';
 
-const Textbox: FC<TextboxProps> = ({
+export const Textbox: FC<TextboxProps> = ({
   id,
   name,
   value,
@@ -63,5 +63,3 @@ const Textbox: FC<TextboxProps> = ({
     </div>
   );
 };
-
-export { Textbox };

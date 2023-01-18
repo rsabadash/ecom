@@ -20,7 +20,7 @@ import { useOutsideElementClick } from '../../../hooks';
 import { useTranslation } from '../../IntlProvider';
 import classes from './styles/index.module.css';
 
-const Dropdown: FC<DropdownProps> = ({
+export const Dropdown: FC<DropdownProps> = ({
   name,
   value,
   items = [],
@@ -448,5 +448,3 @@ const Dropdown: FC<DropdownProps> = ({
     </div>
   );
 };
-
-export { Dropdown };

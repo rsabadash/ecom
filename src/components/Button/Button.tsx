@@ -8,7 +8,7 @@ import {
 import { ButtonProps } from './types';
 import classes from './styles/index.module.css';
 
-const Button: FC<PropsWithChildren<ButtonProps>> = ({
+export const Button: FC<PropsWithChildren<ButtonProps>> = ({
   type = DEFAULT_BUTTON_TYPE,
   size = DEFAULT_BUTTON_SIZE,
   variant = DEFAULT_BUTTON_VARIANT,
@@ -47,5 +47,3 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
     </button>
   );
 };
-
-export { Button };

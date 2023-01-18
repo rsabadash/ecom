@@ -47,8 +47,8 @@ const CategoryDetail = () => {
         <Suspense>
           <CategoryForm
             id={categoryDetail?._id}
-            formValues={formValues}
             isReadOnly={isReadOnly}
+            defaultValues={formValues}
           />
         </Suspense>
       </ForegroundSection>

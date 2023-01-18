@@ -1,9 +1,6 @@
-import { FC, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { FC } from 'react';
 import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
-import { useAPI, useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../hooks';
 import { useTranslation } from '../../components/IntlProvider';
 import {
   DropdownAdapter,
@@ -11,100 +8,43 @@ import {
 } from '../../components/FormFieldsAdapter';
 import { formFields } from './constants';
 import { Button } from '../../components/Button';
-import { mainTranslationRequired } from '../../validations/translations';
 import { CheckboxAdapter } from '../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
-import {
-  CategoryDeleteData,
-  CategoryFormProps,
-  CategoryFormValues,
-  CategoryPatchData,
-  CategoryPostData,
-  CategoryPostResponse,
-} from './types';
+import { CategoryFormProps } from './types';
 import { endpoint } from '../../common/constants/api';
 import { DropdownItem } from '../../components/Fields/Dropdown';
+import { Form } from '../../components/FormFields/Form';
+import { useCategoriesFrom } from './hooks/useCategoriesFrom';
+import { useCategoriesFormSubmit } from './hooks/useCategoriesFormSubmit';
+import { deleteCategory } from './api';
 
-const schema = yup.object().shape({
-  name: yup
-    .object()
-    .shape(
-      mainTranslationRequired({
-        uk: 'category.name.error.required',
-      }),
-    )
-    .required(),
-});
-
-const CategoryForm: FC<CategoryFormProps> = ({
+export const CategoryForm: FC<CategoryFormProps> = ({
   id,
-  formValues,
   isReadOnly,
+  defaultValues,
 }) => {
-  const { POST, PATCH, DELETE } = useAPI();
   const { data: categoriesDropdownList } = useCachedAPI<DropdownItem[]>(
     `${endpoint.categories}/dropdown-list`,
   );
 
   const { translate } = useTranslation();
 
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { isDirty, isSubmitted },
-  } = useForm<CategoryFormValues>({
-    resolver: yupResolver(schema),
-    defaultValues: formValues,
+  const { handleFormSubmit } = useCategoriesFormSubmit({ id });
+
+  const { control, handleSubmit } = useCategoriesFrom({
+    defaultValues,
+    shouldReset: isReadOnly,
+    submitHandler: handleFormSubmit,
   });
 
-  useEffect(() => {
-    if (isReadOnly) {
-      if (isDirty && !isSubmitted) {
-        reset();
-      }
-    }
-  }, [reset, isReadOnly, isSubmitted, isDirty]);
-
-  const getCategoryIds = (categories: DropdownItem[]): string[] => {
-    return categories.map((category) => {
-      return typeof category === 'string' || typeof category === 'number'
-        ? String(category)
-        : category.id;
-    });
-  };
-
-  const handleFormSubmit = async (value: CategoryFormValues) => {
-    const data: CategoryPostData = {
-      ...value,
-      parentIds: getCategoryIds(value.parentIds),
-    };
-
-    if (id) {
-      await PATCH<void, CategoryPatchData>({
-        url: endpoint.categories,
-        data: { id, ...data },
-      });
-    } else {
-      await POST<CategoryPostResponse, CategoryPostData>({
-        url: endpoint.categories,
-        data,
-      });
-    }
-  };
-
   const handleDeleteCategory = async () => {
-    if (id) {
-      await DELETE<void, CategoryDeleteData>({
-        url: endpoint.categories,
-        data: { id },
-      });
-    }
+    await deleteCategory(id);
   };
 
-  const shouldUpdateProduct = formValues && Object.keys(formValues).length > 0;
+  const shouldUpdateCategory =
+    defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
-    <form noValidate onSubmit={handleSubmit(handleFormSubmit)}>
+    <Form onSubmit={handleSubmit}>
       <GridAutoFit>
         <GridFullWidth>
           <MultiLanguageInputAdapter
@@ -143,11 +83,11 @@ const CategoryForm: FC<CategoryFormProps> = ({
           <GridFullWidth>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <Button variant="primary" type="submit">
-                {shouldUpdateProduct
+                {shouldUpdateCategory
                   ? translate('category.update')
                   : translate('category.add')}
               </Button>
-              {shouldUpdateProduct && (
+              {shouldUpdateCategory && (
                 <Button variant="danger" onClick={handleDeleteCategory}>
                   {translate('category.delete')}
                 </Button>
@@ -156,8 +96,6 @@ const CategoryForm: FC<CategoryFormProps> = ({
           </GridFullWidth>
         )}
       </GridAutoFit>
-    </form>
+    </Form>
   );
 };
-
-export { CategoryForm };

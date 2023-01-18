@@ -10,11 +10,11 @@ const CategoryDetail = lazy(
 );
 const Suppliers = lazy(() => import('../../modules/suppliers/Suppliers'));
 const SuppliersDetail = lazy(
-  () => import('../../modules/suppliers/SuppliersDetail'),
+  () => import('../../modules/suppliers/SupplierDetail'),
 );
-const SuppliersAdd = lazy(() => import('../../modules/suppliers/SuppliersAdd'));
+const SuppliersAdd = lazy(() => import('../../modules/suppliers/SupplierAdd'));
 
-const Router = () => {
+export const Router = () => {
   return (
     <Routes>
       <Route
@@ -80,5 +80,3 @@ const Router = () => {
     </Routes>
   );
 };
-
-export { Router };

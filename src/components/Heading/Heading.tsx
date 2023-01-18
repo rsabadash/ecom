@@ -4,7 +4,7 @@ import { HeadingProps } from './types';
 import { DEFAULT_FONT_SIZE, DEFAULT_LEVEL, levelTagMap } from './constatns';
 import classes from './styles/index.module.css';
 
-const Heading: FC<PropsWithChildren<HeadingProps>> = ({
+export const Heading: FC<PropsWithChildren<HeadingProps>> = ({
   id,
   level = DEFAULT_LEVEL,
   fontSize = DEFAULT_FONT_SIZE,
@@ -22,5 +22,3 @@ const Heading: FC<PropsWithChildren<HeadingProps>> = ({
     </HeadingTag>
   );
 };
-
-export { Heading };

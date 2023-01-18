@@ -8,6 +8,7 @@ import {
   DELETE,
   DeleteAction,
 } from '../utils/api';
+import { useMemo } from 'react';
 
 type UseAPIReturn = {
   GET: GetAction;
@@ -17,10 +18,13 @@ type UseAPIReturn = {
 };
 
 export const useAPI = (): UseAPIReturn => {
-  return {
-    GET,
-    POST,
-    PATCH,
-    DELETE,
-  };
+  return useMemo(
+    () => ({
+      GET,
+      POST,
+      PATCH,
+      DELETE,
+    }),
+    [],
+  );
 };

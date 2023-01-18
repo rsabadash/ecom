@@ -4,7 +4,7 @@ import { FieldDescriptionProps } from './types';
 import { typeToAriaLiveMapper } from './constatns';
 import classes from './styles/index.module.css';
 
-const FieldDescription: FC<FieldDescriptionProps> = ({
+export const FieldDescription: FC<FieldDescriptionProps> = ({
   id,
   type,
   message,
@@ -33,5 +33,3 @@ const FieldDescription: FC<FieldDescriptionProps> = ({
     </div>
   );
 };
-
-export { FieldDescription };

@@ -24,7 +24,7 @@ export type CategoryFormValues = {
 export type CategoryFormProps = {
   id?: string;
   isReadOnly?: boolean;
-  formValues?: Partial<CategoryFormValues>;
+  defaultValues?: Partial<CategoryFormValues>;
 };
 
 export type CategoryFormFields = Record<

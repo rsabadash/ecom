@@ -5,7 +5,7 @@ import { INDEX_ABSENCE_FOCUS } from './constants';
 import { useNavigation } from './hooks/useNavigation';
 import classes from './styles/index.module.css';
 
-const Navigation = () => {
+export const Navigation = () => {
   const {
     menuItems,
     focusIndex,
@@ -56,5 +56,3 @@ const Navigation = () => {
     </nav>
   );
 };
-
-export { Navigation };

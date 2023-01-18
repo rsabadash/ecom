@@ -3,7 +3,7 @@ import { Translations, useTranslation } from '../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../components/Table';
 import { Category } from '../types';
 
-export const useCategoriesColumns = (): TableColumnGeneric<Category>[] => {
+export const useCategoriesTableColumns = (): TableColumnGeneric<Category>[] => {
   const { translate, language } = useTranslation();
 
   return useMemo(

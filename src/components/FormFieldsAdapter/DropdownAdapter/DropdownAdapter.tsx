@@ -4,7 +4,7 @@ import { DropdownFormField } from '../../FormFields';
 import { DropdownItem } from '../../Fields/Dropdown';
 import { useTranslation } from '../../IntlProvider';
 
-const DropdownAdapter = <FormValues extends FieldValues>({
+export const DropdownAdapter = <FormValues extends FieldValues>({
   name,
   items,
   customItems,
@@ -61,5 +61,3 @@ const DropdownAdapter = <FormValues extends FieldValues>({
     />
   );
 };
-
-export { DropdownAdapter };

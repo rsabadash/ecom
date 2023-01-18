@@ -4,7 +4,8 @@ import { CheckboxFormFieldProps } from './types';
 import { FieldLabel } from '../FieldLabel';
 import { FieldDescription } from '../FieldDescription';
 import classes from './styles/index.module.css';
-const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
+
+export const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
   name,
   isChecked,
   placeholder,
@@ -54,5 +55,3 @@ const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
     </div>
   );
 };
-
-export { CheckboxFormField };

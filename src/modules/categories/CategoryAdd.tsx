@@ -5,7 +5,7 @@ import { routes } from '../../common/constants/routes';
 import { CategoryForm } from './CategoryForm';
 import { ForegroundSection } from '../../components/Foreground';
 
-export const CategoryAdd = () => {
+const CategoryAdd = () => {
   const { translate } = useTranslation();
 
   return (

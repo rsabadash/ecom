@@ -11,7 +11,7 @@ import { SupplierDetailEntry, SupplierFormValues } from './types';
 import { SupplierForm } from './SupplierForm';
 import { matchSupplierDataToFormValues } from './utils';
 
-const SuppliersDetail = () => {
+const SupplierDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { supplierId } = useParams<{ supplierId: string }>();
@@ -46,9 +46,8 @@ const SuppliersDetail = () => {
         <Suspense>
           <SupplierForm
             id={supplierDetail?._id}
-            formValues={formValues}
+            defaultValues={formValues}
             isReadOnly={isReadOnly}
-            handleButtonEditClick={handleButtonEditClick}
           />
         </Suspense>
       </ForegroundSection>
@@ -56,4 +55,4 @@ const SuppliersDetail = () => {
   );
 };
 
-export default SuppliersDetail;
+export default SupplierDetail;
