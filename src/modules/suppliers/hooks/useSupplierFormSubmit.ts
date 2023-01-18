@@ -1,28 +1,18 @@
-import {
-  SupplierFormValues,
-  SupplierPatchData,
-  SupplierPostData,
-  SupplierPostResponse,
-} from '../types';
-import { endpoint } from '../../../common/constants/api';
-import { PATCH, POST } from '../../../utils/api';
+import { SupplierFormValues } from '../types';
+import { createSupplierApi, updateSupplierApi } from '../api';
 
 type UseSupplierFormSubmit = (id: string | undefined) => {
-  handleFormSubmit: (data: SupplierFormValues) => Promise<void>;
+  handleFormSubmit: (data: SupplierFormValues) => void;
 };
 
 export const useSupplierFormSubmit: UseSupplierFormSubmit = (id) => {
-  const handleFormSubmit = async (data: SupplierFormValues) => {
+  const handleFormSubmit = (data: SupplierFormValues) => {
     if (id) {
-      await PATCH<any, SupplierPatchData>({
-        url: endpoint.suppliers,
-        data: { id, ...data },
-      });
+      updateSupplierApi(id, data);
+      //notification redirect etc
     } else {
-      await POST<SupplierPostResponse, SupplierPostData>({
-        url: endpoint.suppliers,
-        data,
-      });
+      createSupplierApi(data);
+      //notification redirect etc
     }
   };
 

@@ -1,13 +1,11 @@
-import { endpoint } from '../../../common/constants/api';
-import { DELETE } from '../../../utils/api';
-import { SupplierDeleteData } from '../types';
+import { deleteSupplierApi } from '../api';
 
-export const useDeleteSupplier = () => {
-  const deleteSupplier = async (id: string) => {
-    return await DELETE<void, SupplierDeleteData>({
-      url: endpoint.suppliers,
-      data: { id },
-    });
+export const useDeleteSupplier = (): {
+  deleteSupplier: (id: string) => void;
+} => {
+  const deleteSupplier = (id: string) => {
+    deleteSupplierApi(id);
+    //notification redirect etc
   };
 
   return { deleteSupplier };

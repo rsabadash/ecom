@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
 import { useTranslation } from '../../components/IntlProvider';
 import { InputAdapter } from '../../components/FormFieldsAdapter';
@@ -17,26 +17,17 @@ export const SupplierForm: FC<SupplierFormProps> = ({
   const { handleFormSubmit } = useSupplierFormSubmit(id);
   const { deleteSupplier } = useDeleteSupplier();
 
-  const {
-    reset,
-    control,
-    handleSubmit,
-    formState: { isDirty, isSubmitted },
-  } = useSupplierForm(defaultValues);
-
-  useEffect(() => {
-    if (isReadOnly) {
-      if (isDirty && !isSubmitted) {
-        reset();
-      }
-    }
-  }, [reset, isReadOnly, isSubmitted, isDirty]);
+  const { control, handleSubmit } = useSupplierForm({
+    defaultValues,
+    shouldReset: isReadOnly,
+    submitHandler: handleFormSubmit,
+  });
 
   const shouldUpdateProduct =
     defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
-    <form noValidate onSubmit={handleSubmit(handleFormSubmit)}>
+    <form noValidate onSubmit={handleSubmit}>
       <GridAutoFit>
         <GridFullWidth>
           <InputAdapter

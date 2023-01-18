@@ -1,9 +1,16 @@
-import { useForm } from 'react-hook-form';
 import { SupplierFormValues } from '../types';
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { UseFormReturn } from 'react-hook-form/dist/types';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { UseCustomFormProps } from '../../../hooks/useCustomForm';
+import { useCustomForm } from '../../../hooks';
 import { supplierFormFields } from '../constants';
+
+type UseCategoriesFromProps = Pick<
+  UseCustomFormProps<SupplierFormValues>,
+  'shouldReset' | 'submitHandler'
+> & {
+  defaultValues?: Partial<SupplierFormValues>;
+};
 
 const schema = yup.object().shape({
   [supplierFormFields.name]: yup.string().required().min(3).max(50),
@@ -11,11 +18,22 @@ const schema = yup.object().shape({
   [supplierFormFields.phoneNumber]: yup.string().length(10).nullable(),
 });
 
-export const useSupplierForm = (
-  formValues: Partial<SupplierFormValues> | undefined,
-): UseFormReturn<SupplierFormValues> => {
-  return useForm<SupplierFormValues>({
-    resolver: yupResolver(schema),
-    defaultValues: formValues || undefined,
+export const useSupplierForm = ({
+  shouldReset,
+  submitHandler,
+  defaultValues,
+}: UseCategoriesFromProps) => {
+  const { control, handleSubmit } = useCustomForm<SupplierFormValues>({
+    formProps: {
+      resolver: yupResolver(schema),
+      defaultValues: defaultValues,
+    },
+    shouldReset,
+    submitHandler,
   });
+
+  return {
+    control,
+    handleSubmit,
+  };
 };
