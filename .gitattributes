@@ -1,4 +1,4 @@
-# Declare files that will always have CRLF line endings on checkout.
+# Declare files that will always have LF line endings on checkout.
 *.js    eol=lf
 *.jsx   eol=lf
 *.ts    eol=lf

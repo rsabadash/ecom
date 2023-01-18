@@ -1,4 +1,5 @@
 export const categories = {
+  category: 'Категорія',
   categories: 'Категорії',
   'category.add': 'Додати категорію',
   'category.edit': 'Редагувати категорію',
@@ -16,9 +17,4 @@ export const categories = {
   'category.state.inactive': 'Не активна',
   'category.parent': 'Батьківська категорія',
   'category.parent.select': 'Оберіть одну або декілька батьківських категорій',
-
-  category: 'Категорія',
-  'category.comics': 'Комікс',
-  'category.select': 'Оберіть категорію товару',
-  'category.noProduct': 'Категорія товару не обрана',
 };

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Top } from '../../layouts/Top';
 import { TABLE_ID } from './constants';
 import { ButtonLink } from '../../components/Button';
@@ -6,15 +7,19 @@ import { useTranslation } from '../../components/IntlProvider';
 import { useCachedAPI } from '../../hooks';
 import { endpoint } from '../../common/constants/api';
 import { Supplier } from './types';
-import { RowCustomRenderArgs, Table } from '../../components/Table';
-import { Link } from 'react-router-dom';
+import {
+  RowCustomRenderArgs,
+  Table,
+  TableColumnGeneric,
+} from '../../components/Table';
 import { useSuppliersColumns } from './hooks';
 
 const Suppliers = () => {
-  const { translate } = useTranslation();
   const { data = [] } = useCachedAPI<Supplier[]>(`${endpoint.suppliers}`);
 
-  const columns = useSuppliersColumns();
+  const { translate } = useTranslation();
+
+  const columns: TableColumnGeneric<Supplier>[] = useSuppliersColumns();
 
   return (
     <>

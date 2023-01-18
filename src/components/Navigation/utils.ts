@@ -13,18 +13,6 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
       path: routes.categories.root,
     },
     {
-      title: translateFn('menu.products'),
-      path: routes.products.root,
-      // items: [
-      //     {
-      //         title: 'Статистика'
-      //     },
-      //     {
-      //         title: 'Склад'
-      //     }
-      // ]
-    },
-    {
       title: translateFn('menu.suppliers'),
       path: routes.suppliers.root,
     },
