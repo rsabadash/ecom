@@ -1,9 +1,11 @@
+import { useMemo } from 'react';
 import { TableColumnGeneric } from '../../../components/Table';
 import { Supplier } from '../types';
 import { useTranslation } from '../../../components/IntlProvider';
-import { useMemo } from 'react';
 
-export const useSuppliersColumns = (): TableColumnGeneric<Supplier>[] => {
+type UseSuppliersTableColumns = () => TableColumnGeneric<Supplier>[];
+
+export const useSuppliersTableColumns: UseSuppliersTableColumns = () => {
   const { translate } = useTranslation();
 
   return useMemo(

@@ -12,7 +12,7 @@ export type UseCustomFormProps<V extends Record<string, any>> = {
   submitHandler: SubmitHandler<V>;
 };
 
-type UseCustomFormReturn<V extends Record<string, any>> = Omit<
+export type UseCustomFormReturn<V extends Record<string, any>> = Omit<
   UseFormReturn<V>,
   'handleSubmit'
 > & {

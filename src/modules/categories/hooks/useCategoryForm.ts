@@ -1,16 +1,26 @@
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UseCustomFormProps } from '../../../hooks/useCustomForm';
+import {
+  UseCustomFormProps,
+  UseCustomFormReturn,
+} from '../../../hooks/useCustomForm';
 import { useCustomForm } from '../../../hooks';
 import { CategoryFormValues } from '../types';
 import { mainTranslationRequired } from '../../../validations/translations';
 
-type UseCategoriesFromProps = Pick<
+type UseCategoryFromProps = Pick<
   UseCustomFormProps<CategoryFormValues>,
   'shouldReset' | 'submitHandler'
 > & {
   defaultValues?: Partial<CategoryFormValues>;
 };
+
+type UseCategoryFromReturn = Pick<
+  UseCustomFormReturn<CategoryFormValues>,
+  'control' | 'handleSubmit'
+>;
+
+type UseCategoryForm = (props: UseCategoryFromProps) => UseCategoryFromReturn;
 
 const schema = yup.object().shape({
   name: yup
@@ -23,11 +33,11 @@ const schema = yup.object().shape({
     .required(),
 });
 
-export const useCategoriesFrom = ({
+export const useCategoryForm: UseCategoryForm = ({
   shouldReset,
   submitHandler,
   defaultValues,
-}: UseCategoriesFromProps) => {
+}) => {
   const { control, handleSubmit } = useCustomForm<CategoryFormValues>({
     formProps: {
       resolver: yupResolver(schema),

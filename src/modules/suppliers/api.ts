@@ -1,7 +1,6 @@
 import { DELETE, PATCH, POST } from '../../utils/api';
 import {
   SupplierDeleteData,
-  SupplierFormValues,
   SupplierPatchData,
   SupplierPostData,
   SupplierPostResponse,
@@ -9,7 +8,7 @@ import {
 import { endpoint } from '../../common/constants/api';
 
 export const createSupplierApi = async (
-  data: SupplierFormValues,
+  data: SupplierPostData,
 ): Promise<SupplierPostResponse> => {
   return await POST<SupplierPostResponse, SupplierPostData>({
     url: endpoint.suppliers,
@@ -18,17 +17,16 @@ export const createSupplierApi = async (
 };
 
 export const updateSupplierApi = async (
-  id: string,
-  data: SupplierFormValues,
+  data: SupplierPatchData,
 ): Promise<void> => {
-  return await PATCH<any, SupplierPatchData>({
+  await PATCH<void, SupplierPatchData>({
     url: endpoint.suppliers,
-    data: { id, ...data },
+    data,
   });
 };
 
 export const deleteSupplierApi = async (id: string): Promise<void> => {
-  return await DELETE<void, SupplierDeleteData>({
+  await DELETE<void, SupplierDeleteData>({
     url: endpoint.suppliers,
     data: { id },
   });

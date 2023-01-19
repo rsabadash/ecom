@@ -1,12 +1,18 @@
+import { useCallback } from 'react';
 import { deleteSupplierApi } from '../api';
 
-export const useDeleteSupplier = (): {
-  deleteSupplier: (id: string) => void;
-} => {
-  const deleteSupplier = (id: string) => {
-    deleteSupplierApi(id);
-    //notification redirect etc
-  };
+type UseDeleteSupplier = (id: string | undefined) => {
+  deleteSupplier: () => void;
+};
+
+export const useDeleteSupplier: UseDeleteSupplier = (
+  id: string | undefined,
+) => {
+  const deleteSupplier = useCallback(async () => {
+    if (id) {
+      await deleteSupplierApi(id);
+    }
+  }, [id]);
 
   return { deleteSupplier };
 };

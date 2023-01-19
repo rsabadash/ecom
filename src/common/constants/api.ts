@@ -11,3 +11,7 @@ export const endpoint = {
 export const query = {
   category: 'category',
 };
+
+export const path = {
+  dropdownList: '/dropdown-list',
+};

@@ -5,8 +5,11 @@ import { InputAdapter } from '../../components/FormFieldsAdapter';
 import { supplierFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { SupplierFormProps } from './types';
-import { useSupplierForm, useSupplierFormSubmit } from './hooks';
-import { useDeleteSupplier } from './hooks/useDeleteSupplier';
+import {
+  useDeleteSupplier,
+  useSupplierForm,
+  useSupplierFormSubmit,
+} from './hooks';
 
 export const SupplierForm: FC<SupplierFormProps> = ({
   id,
@@ -14,8 +17,8 @@ export const SupplierForm: FC<SupplierFormProps> = ({
   defaultValues,
 }) => {
   const { translate } = useTranslation();
+  const { deleteSupplier } = useDeleteSupplier(id);
   const { handleFormSubmit } = useSupplierFormSubmit(id);
-  const { deleteSupplier } = useDeleteSupplier();
 
   const { control, handleSubmit } = useSupplierForm({
     defaultValues,
@@ -75,7 +78,7 @@ export const SupplierForm: FC<SupplierFormProps> = ({
                   : translate('suppliers.add')}
               </Button>
               {shouldUpdateProduct && id && (
-                <Button variant="danger" onClick={() => deleteSupplier(id)}>
+                <Button variant="danger" onClick={deleteSupplier}>
                   {translate('supplier.delete')}
                 </Button>
               )}

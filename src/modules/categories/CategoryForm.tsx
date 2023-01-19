@@ -10,12 +10,14 @@ import { formFields } from './constants';
 import { Button } from '../../components/Button';
 import { CheckboxAdapter } from '../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
 import { CategoryFormProps } from './types';
-import { endpoint } from '../../common/constants/api';
+import { endpoint, path } from '../../common/constants/api';
 import { DropdownItem } from '../../components/Fields/Dropdown';
 import { Form } from '../../components/FormFields/Form';
-import { useCategoriesFrom } from './hooks/useCategoriesFrom';
-import { useCategoriesFormSubmit } from './hooks/useCategoriesFormSubmit';
-import { deleteCategory } from './api';
+import {
+  useCategoryForm,
+  useCategoryFormSubmit,
+  useDeleteCategory,
+} from './hooks';
 
 export const CategoryForm: FC<CategoryFormProps> = ({
   id,
@@ -23,22 +25,18 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   defaultValues,
 }) => {
   const { data: categoriesDropdownList } = useCachedAPI<DropdownItem[]>(
-    `${endpoint.categories}/dropdown-list`,
+    `${endpoint.categories}${path.dropdownList}`,
   );
 
   const { translate } = useTranslation();
+  const { deleteCategory } = useDeleteCategory(id);
+  const { handleFormSubmit } = useCategoryFormSubmit({ id });
 
-  const { handleFormSubmit } = useCategoriesFormSubmit({ id });
-
-  const { control, handleSubmit } = useCategoriesFrom({
+  const { control, handleSubmit } = useCategoryForm({
     defaultValues,
     shouldReset: isReadOnly,
     submitHandler: handleFormSubmit,
   });
-
-  const handleDeleteCategory = async () => {
-    await deleteCategory(id);
-  };
 
   const shouldUpdateCategory =
     defaultValues && Object.keys(defaultValues).length > 0;
@@ -88,7 +86,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
                   : translate('category.add')}
               </Button>
               {shouldUpdateCategory && (
-                <Button variant="danger" onClick={handleDeleteCategory}>
+                <Button variant="danger" onClick={deleteCategory}>
                   {translate('category.delete')}
                 </Button>
               )}

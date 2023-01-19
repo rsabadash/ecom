@@ -12,7 +12,7 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
-import { useCategoriesTableColumns } from './hooks/useCategoriesTableColumns';
+import { useCategoriesTableColumns } from './hooks';
 
 const Categories = () => {
   const { data = [] } = useCachedAPI<Category[]>(`${endpoint.categories}`);

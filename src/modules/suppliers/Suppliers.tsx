@@ -12,14 +12,14 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
-import { useSuppliersColumns } from './hooks';
+import { useSuppliersTableColumns } from './hooks';
 
 const Suppliers = () => {
   const { data = [] } = useCachedAPI<Supplier[]>(`${endpoint.suppliers}`);
 
   const { translate } = useTranslation();
 
-  const columns: TableColumnGeneric<Supplier>[] = useSuppliersColumns();
+  const columns: TableColumnGeneric<Supplier>[] = useSuppliersTableColumns();
 
   return (
     <>

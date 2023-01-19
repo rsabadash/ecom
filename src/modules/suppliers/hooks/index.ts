@@ -1,3 +1,6 @@
+export { useCreateSupplier } from './useCreateSupplier';
+export { useDeleteSupplier } from './useDeleteSupplier';
 export { useSupplierForm } from './useSupplierForm';
-export { useSuppliersColumns } from './useSuppliersColumns';
 export { useSupplierFormSubmit } from './useSupplierFormSubmit';
+export { useSuppliersTableColumns } from './useSuppliersTableColumns';
+export { useUpdateSupplier } from './useUpdateSupplier';

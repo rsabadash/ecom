@@ -5,19 +5,21 @@ import {
   CategoryPatchData,
   CategoryPostData,
 } from '../types';
-import { createCategory, updateCategory } from '../api';
+import { useCreateCategory } from './useCreateCategory';
+import { useUpdateCategory } from './useUpdateCategory';
 
 type UseCategoriesFormSubmitProps = {
   id?: string;
 };
 
-type UseCategoriesFormSubmitReturn = {
+type UseCategoryFormSubmit = (props: UseCategoriesFormSubmitProps) => {
   handleFormSubmit: (values: CategoryFormValues) => Promise<void>;
 };
 
-export const useCategoriesFormSubmit = ({
-  id,
-}: UseCategoriesFormSubmitProps): UseCategoriesFormSubmitReturn => {
+export const useCategoryFormSubmit: UseCategoryFormSubmit = ({ id }) => {
+  const { createCategory } = useCreateCategory();
+  const { updateCategory } = useUpdateCategory();
+
   const getCategoryIds = useCallback((categories: DropdownItem[]): string[] => {
     return categories.map((category) => {
       return typeof category === 'string' || typeof category === 'number'
@@ -39,7 +41,7 @@ export const useCategoriesFormSubmit = ({
         await createCategory(data);
       }
     },
-    [getCategoryIds, id],
+    [createCategory, getCategoryIds, id, updateCategory],
   );
 
   return {
