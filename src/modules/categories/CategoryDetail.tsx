@@ -9,7 +9,7 @@ import { ForegroundSection } from '../../components/Foreground';
 import { endpoint } from '../../common/constants/api';
 import { routes } from '../../common/constants/routes';
 import { CategoryForm } from './CategoryForm';
-import { matchDataToFormValues } from './utils';
+import { matchCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -21,10 +21,8 @@ const CategoryDetail = () => {
     `${endpoint.categories}/${categoryId}`,
   );
 
-  const formValues: CategoryFormValues | undefined = matchDataToFormValues(
-    categoryDetail,
-    language,
-  );
+  const formValues: CategoryFormValues | undefined =
+    matchCategoryDataToFormValues(categoryDetail, language);
 
   const handleButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
@@ -35,7 +33,7 @@ const CategoryDetail = () => {
       <Top headingText={categoryDetail?.name[language]}>
         <TopButtons>
           {isReadOnly && (
-            <ButtonLink variant="primary" to={routes.categoriesAdd}>
+            <ButtonLink variant="primary" to={routes.categories.add}>
               {translate('category.add')}
             </ButtonLink>
           )}
@@ -49,8 +47,8 @@ const CategoryDetail = () => {
         <Suspense>
           <CategoryForm
             id={categoryDetail?._id}
-            formValues={formValues}
             isReadOnly={isReadOnly}
+            defaultValues={formValues}
           />
         </Suspense>
       </ForegroundSection>

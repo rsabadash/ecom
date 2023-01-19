@@ -4,7 +4,7 @@ import { CheckboxProps } from './types';
 import { ReactComponent as CheckIcon } from '../../../assets/icons/Check.svg';
 import classes from './styles/index.module.css';
 
-const Checkbox: FC<CheckboxProps> = ({
+export const Checkbox: FC<CheckboxProps> = ({
   id,
   name,
   isChecked,
@@ -59,5 +59,3 @@ const Checkbox: FC<CheckboxProps> = ({
     </div>
   );
 };
-
-export { Checkbox };

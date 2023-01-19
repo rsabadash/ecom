@@ -5,7 +5,7 @@ import { Collapse } from '../../Collapse';
 import { MultiLanguageItem } from './MultilanguageItem';
 import classes from './styles/index.module.css';
 
-const MultiLanguage: FC<MultiLanguageProps> = ({
+export const MultiLanguage: FC<MultiLanguageProps> = ({
   name,
   forceExpand,
   isInitiallyExpand,
@@ -48,5 +48,3 @@ const MultiLanguage: FC<MultiLanguageProps> = ({
     </div>
   );
 };
-
-export { MultiLanguage };

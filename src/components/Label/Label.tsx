@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { LabelProps } from './types';
 import classes from './styles/index.module.css';
 
-const Label: FC<PropsWithChildren<LabelProps>> = ({
+export const Label: FC<PropsWithChildren<LabelProps>> = ({
   labelId,
   htmlFor,
   labelClassName,
@@ -19,5 +19,3 @@ const Label: FC<PropsWithChildren<LabelProps>> = ({
     </label>
   );
 };
-
-export { Label };

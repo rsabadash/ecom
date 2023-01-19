@@ -3,7 +3,7 @@ import { Heading } from '../../components/Heading';
 import { TopProps } from './types';
 import classes from './styles/index.module.css';
 
-const Top: FC<PropsWithChildren<TopProps>> = ({
+export const Top: FC<PropsWithChildren<TopProps>> = ({
   headingId,
   headingText,
   children,
@@ -21,5 +21,3 @@ const Top: FC<PropsWithChildren<TopProps>> = ({
     </div>
   );
 };
-
-export { Top };

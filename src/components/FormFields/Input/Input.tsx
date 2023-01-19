@@ -5,7 +5,7 @@ import { FieldLabel } from '../FieldLabel';
 import { FieldDescription } from '../FieldDescription';
 import classes from './styles/index.module.css';
 
-const InputFormField: FC<InputFormFieldProps> = ({
+export const InputFormField: FC<InputFormFieldProps> = ({
   name,
   type,
   value,
@@ -59,5 +59,3 @@ const InputFormField: FC<InputFormFieldProps> = ({
     </div>
   );
 };
-
-export { InputFormField };

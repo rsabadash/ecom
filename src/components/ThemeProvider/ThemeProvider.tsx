@@ -21,7 +21,7 @@ export const ThemeContext = createContext<ThemeContextValue>({
   switchTheme: () => null,
 });
 
-const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
+export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
   children,
   themeStorage,
   useUserAgentTheming,
@@ -67,5 +67,3 @@ const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
     </ThemeContext.Provider>
   );
 };
-
-export { ThemeProvider };

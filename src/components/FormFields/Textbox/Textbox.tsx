@@ -5,7 +5,7 @@ import { FieldLabel } from '../FieldLabel';
 import { FieldDescription } from '../FieldDescription';
 import classes from './styles/index.module.css';
 
-const TextboxFormField: FC<TextboxFormFieldProps> = ({
+export const TextboxFormField: FC<TextboxFormFieldProps> = ({
   name,
   value,
   placeholder,
@@ -53,5 +53,3 @@ const TextboxFormField: FC<TextboxFormFieldProps> = ({
     </div>
   );
 };
-
-export { TextboxFormField };

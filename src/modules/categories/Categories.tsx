@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Top } from '../../layouts/Top';
-import { Translations, useTranslation } from '../../components/IntlProvider';
+import { useTranslation } from '../../components/IntlProvider';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
 import { useCachedAPI } from '../../hooks';
@@ -12,37 +12,19 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
+import { useCategoriesTableColumns } from './hooks';
 
-export const Categories = () => {
+const Categories = () => {
   const { data = [] } = useCachedAPI<Category[]>(`${endpoint.categories}`);
 
-  const { translate, language } = useTranslation();
+  const { translate } = useTranslation();
 
-  const columns: TableColumnGeneric<Category>[] = [
-    {
-      title: translate('category.name'),
-      key: 'name',
-      width: '70%',
-      valueGetter: (value: Translations) => {
-        return value[language];
-      },
-    },
-    {
-      title: translate('category.state'),
-      key: 'isActive',
-      width: '30%',
-      valueGetter: (value: boolean) => {
-        return value
-          ? translate('category.state.active')
-          : translate('category.state.inactive');
-      },
-    },
-  ];
+  const columns: TableColumnGeneric<Category>[] = useCategoriesTableColumns();
 
   return (
     <>
       <Top headingId={TABLE_ID} headingText={translate('categories')}>
-        <ButtonLink variant="primary" to={routes.categoriesAdd}>
+        <ButtonLink variant="primary" to={routes.categories.add}>
           {translate('category.add')}
         </ButtonLink>
       </Top>
@@ -58,7 +40,7 @@ export const Categories = () => {
         }: RowCustomRenderArgs<Category>) => (
           <Link
             key={item._id}
-            to={`${routes.categories}/${item._id}`}
+            to={`${routes.categories.root}/${item._id}`}
             {...rowProps}
           >
             {row}

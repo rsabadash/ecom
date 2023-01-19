@@ -5,7 +5,7 @@ import { TextboxAdapter } from '../TextboxAdapter';
 import { MultiLanguage } from '../../Fields/MultiLanguage';
 import { DEFAULT_LANGUAGE, useTranslation } from '../../IntlProvider';
 
-const MultiLanguageTextboxAdapter = <FormValues extends FieldValues>({
+export const MultiLanguageTextboxAdapter = <FormValues extends FieldValues>({
   name,
   placeholderTranslation,
   isReadOnly,
@@ -72,5 +72,3 @@ const MultiLanguageTextboxAdapter = <FormValues extends FieldValues>({
     </div>
   );
 };
-
-export { MultiLanguageTextboxAdapter };

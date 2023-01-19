@@ -1,4 +1,5 @@
 export const categories = {
+  category: 'Category',
   categories: 'Categories',
   'category.add': 'Add category',
   'category.edit': 'Edit category',
@@ -15,9 +16,4 @@ export const categories = {
   'category.state.inactive': 'Inactive',
   'category.parent': 'Parent category',
   'category.parent.select': 'Select either one or a few parent categories',
-
-  category: 'Category',
-  'category.comics': 'Comics',
-  'category.select': 'Select a product category',
-  'category.noProduct': 'Product category not selected',
 };

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { MultiLanguageItemProps } from './types';
 import classes from './styles/index.module.css';
 
-const MultiLanguageItem: FC<MultiLanguageItemProps> = ({
+export const MultiLanguageItem: FC<MultiLanguageItemProps> = ({
   name,
   language,
   renderComponent,
@@ -22,5 +22,3 @@ const MultiLanguageItem: FC<MultiLanguageItemProps> = ({
     </div>
   );
 };
-
-export { MultiLanguageItem };

@@ -5,7 +5,7 @@ import { DEFAULT_BUTTON_VARIANT, DEFAULT_BUTTON_SIZE } from './constants';
 import { ButtonLinkProps } from './types';
 import classes from './styles/index.module.css';
 
-const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
+export const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
   size = DEFAULT_BUTTON_SIZE,
   variant = DEFAULT_BUTTON_VARIANT,
   isDisabled,
@@ -47,5 +47,3 @@ const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
     </div>
   );
 };
-
-export { ButtonLink };

@@ -5,7 +5,7 @@ import { InputAdapter } from '../InputAdapter';
 import { MultiLanguage } from '../../Fields/MultiLanguage';
 import { DEFAULT_LANGUAGE, useTranslation } from '../../IntlProvider';
 
-const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
+export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
   name,
   type,
   placeholderTranslation,
@@ -78,5 +78,3 @@ const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
     </div>
   );
 };
-
-export { MultiLanguageInputAdapter };

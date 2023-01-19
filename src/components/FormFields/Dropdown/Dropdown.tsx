@@ -5,7 +5,7 @@ import { FieldLabel } from '../FieldLabel';
 import { FieldDescription } from '../FieldDescription';
 import classes from './styles/index.module.css';
 
-const DropdownFormField: FC<DropdownFormFieldProps> = ({
+export const DropdownFormField: FC<DropdownFormFieldProps> = ({
   name,
   value,
   items,
@@ -64,5 +64,3 @@ const DropdownFormField: FC<DropdownFormFieldProps> = ({
     </div>
   );
 };
-
-export { DropdownFormField };

@@ -4,7 +4,7 @@ import { InputFormField } from '../../FormFields';
 import { InputValue } from '../../Fields/Input';
 import { useTranslation } from '../../IntlProvider';
 
-const InputAdapter = <FormValues extends FieldValues>({
+export const InputAdapter = <FormValues extends FieldValues>({
   name,
   type,
   placeholder,
@@ -57,5 +57,3 @@ const InputAdapter = <FormValues extends FieldValues>({
     />
   );
 };
-
-export { InputAdapter };

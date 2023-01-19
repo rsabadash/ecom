@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { ForegroundProps } from './types';
 import classes from './styles/index.module.css';
 
-const Foreground: FC<PropsWithChildren<ForegroundProps>> = ({
+export const Foreground: FC<PropsWithChildren<ForegroundProps>> = ({
   children,
   foregroundClassName,
 }) => {
@@ -13,5 +13,3 @@ const Foreground: FC<PropsWithChildren<ForegroundProps>> = ({
     </div>
   );
 };
-
-export { Foreground };

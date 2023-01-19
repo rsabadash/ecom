@@ -5,7 +5,7 @@ import { useTranslation } from '../../IntlProvider';
 import { FieldLabelProps } from './types';
 import classes from './styles/index.module.css';
 
-const FieldLabel: FC<FieldLabelProps> = ({
+export const FieldLabel: FC<FieldLabelProps> = ({
   label,
   htmlFor,
   isValid,
@@ -29,5 +29,3 @@ const FieldLabel: FC<FieldLabelProps> = ({
     </Label>
   );
 };
-
-export { FieldLabel };

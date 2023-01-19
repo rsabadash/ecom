@@ -4,6 +4,7 @@ import {
   Language,
   LOCALE_STORAGE_KEY,
 } from '../components/IntlProvider';
+import { isJsonContentType } from './isJsonContentType';
 
 const HOST = 'http://localhost:3001';
 
@@ -65,11 +66,11 @@ type PatchOptions<D> = CommonOptions & {
 
 export type PatchAction = <R, D = Record<string, unknown>>(
   options: PatchOptions<D>,
-) => Promise<R>;
+) => Promise<R | undefined>;
 
 export const PATCH: PatchAction = async <R, D = Record<string, unknown>>(
   options: PatchOptions<D>,
-): Promise<R> => {
+): Promise<R | undefined> => {
   const response = await fetch(`${HOST}${options.url}`, {
     method: 'PATCH',
     headers: {
@@ -80,6 +81,8 @@ export const PATCH: PatchAction = async <R, D = Record<string, unknown>>(
     },
     body: JSON.stringify(options.data),
   });
+
+  if (isJsonContentType(response)) return;
 
   if (response.ok) {
     return (await response.json()) as Promise<R>;
@@ -93,11 +96,11 @@ type DeleteOptions<D> = CommonOptions & {
 };
 export type DeleteAction = <R, D = Record<string, unknown>>(
   options: DeleteOptions<D>,
-) => Promise<R>;
+) => Promise<R | undefined>;
 
-export const DELETE: PostAction = async <R, D = Record<string, unknown>>(
+export const DELETE: DeleteAction = async <R, D = Record<string, unknown>>(
   options: DeleteOptions<D>,
-): Promise<R> => {
+): Promise<R | undefined> => {
   const response = await fetch(`${HOST}${options.url}`, {
     method: 'DELETE',
     headers: {
@@ -108,6 +111,8 @@ export const DELETE: PostAction = async <R, D = Record<string, unknown>>(
     },
     body: JSON.stringify(options.data),
   });
+
+  if (isJsonContentType(response)) return;
 
   if (response.ok) {
     return (await response.json()) as Promise<R>;

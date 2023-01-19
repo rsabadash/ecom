@@ -16,7 +16,7 @@ import classes from './styles/index.module.css';
 // TODO ARIA for sorting https://www.w3.org/WAI/ARIA/apg/practices/grid-and-table-properties/
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role
 
-const Table: FC<TableProps> = ({
+export const Table: FC<TableProps> = ({
   items,
   columns,
   tableLabeledBy,
@@ -154,12 +154,12 @@ const Table: FC<TableProps> = ({
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
             };
 
-            const row = columns.map(({ key, width, valueGetter }) => {
+            const row = columns.map(({ key, width, valueGetter, title }) => {
               const rowValue = valueGetter ? valueGetter(item[key]) : item[key];
 
               return (
                 <div
-                  key={rowValue}
+                  key={`${rowValue}${item._id}${title}`}
                   style={{ minWidth: width }}
                   className={classes.table__rowItem}
                   role="cell"
@@ -180,5 +180,3 @@ const Table: FC<TableProps> = ({
     </Foreground>
   );
 };
-
-export { Table };

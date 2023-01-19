@@ -2,7 +2,7 @@ import { FC, PropsWithChildren } from 'react';
 import { Navigation } from '../../components/Navigation';
 import classes from './styles/index.module.css';
 
-const Main: FC<PropsWithChildren> = ({ children }) => {
+export const Main: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={classes.mainWrapper}>
       <aside className={classes.aside}>
@@ -15,5 +15,3 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
     </div>
   );
 };
-
-export { Main };
