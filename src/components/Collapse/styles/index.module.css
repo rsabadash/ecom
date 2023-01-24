@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.collapse__switcher path {
+  fill: var(--text-color);
+}
+
 .collapse__switcher {
   background-color: transparent;
   border: none;

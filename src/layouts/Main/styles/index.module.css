@@ -1,5 +1,5 @@
 :root {
-  --content-width: 1400px;
+  --content-width: 2000px;
 }
 
 .mainWrapper {
@@ -8,10 +8,13 @@
   grid-template-areas: 'aside main';
   direction: ltr;
   height: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
 }
 
 .aside {
   border-right: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
   background-color: var(--foreground);
   box-shadow: var(--shadow-5);
   height: 100%;
@@ -23,9 +26,8 @@
 .main {
   padding: 2.5rem;
   grid-area: main;
+  border-right: 1px solid var(--border-color);
 }
 
 .content {
-  max-width: var(--content-width);
-  margin: 0 auto;
 }
