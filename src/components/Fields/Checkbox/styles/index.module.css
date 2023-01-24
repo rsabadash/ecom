@@ -1,7 +1,7 @@
 .checkboxWrapper {
-  --checkboxHeight: 24px;
+  font-size: 1rem;
   position: relative;
-  height: var(--checkboxHeight);
+  line-height: 0;
 }
 
 .checkboxCheckMark {
@@ -15,11 +15,11 @@
   -webkit-appearance: none;
   appearance: none;
   /* creating a custom design */
-  width: 24px;
-  height: var(--checkboxHeight);
+  width: var(--checkboxSize);
+  height: var(--checkboxSize);
   border-radius: var(--radius-small);
   background-color: var(--input-background);
-  border: 2px solid var(--border);
+  border: 1px solid var(--border-color);
   outline: none;
   cursor: pointer;
   transition: box-shadow var(--transition), background-color var(--transition);

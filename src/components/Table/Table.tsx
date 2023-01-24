@@ -112,7 +112,12 @@ export const Table: FC<TableProps> = ({
   return (
     <Foreground foregroundClassName={classes.tableForeground}>
       {/* aria-rowcount is total number of items, not only visible */}
-      <div role="grid" aria-rowcount={items.length} aria-label={tableLabeledBy}>
+      <div
+        role="grid"
+        className={classes.table}
+        aria-rowcount={items.length}
+        aria-label={tableLabeledBy}
+      >
         <div className={classes.table__header} role="rowgroup">
           <div
             className={classes.table__headerRow}

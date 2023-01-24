@@ -1,4 +1,4 @@
-import { Top } from '../../layouts/Top';
+import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { useTranslation } from '../../components/IntlProvider';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
@@ -10,10 +10,13 @@ const CategoryAdd = () => {
 
   return (
     <>
-      <Top headingText={translate('category.add')}>
-        <ButtonLink variant="primary" to={routes.categories.root}>
-          {translate('cancel')}
-        </ButtonLink>
+      <Top>
+        <TopHeading>{translate('add')}</TopHeading>
+        <TopButtons>
+          <ButtonLink variant="primary" to={routes.categories.root}>
+            {translate('cancel')}
+          </ButtonLink>
+        </TopButtons>
       </Top>
       <ForegroundSection>
         <CategoryForm />

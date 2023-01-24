@@ -1,12 +1,14 @@
 .tableForeground {
-  margin-top: 32px;
+  margin-top: 1.5rem;
+}
+
+.table {
+  font-size: var(--font-size-regular);
 }
 
 .table__header {
   color: var(--foreground-700);
-  font-size: var(--font-size-regular);
-  line-height: var(--line-height-regular);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .table__headerRow {
@@ -15,48 +17,43 @@
 }
 
 .table__headerItem {
-  padding: 16px;
+  padding-block: 1em;
+  padding-inline: 0.90em;
 }
 
 .table__body a {
   text-decoration: none;
-  color: var(--text);
+  color: var(--text-color);
 }
 
 .table__row {
   display: flex;
-  color: var(--text);
-  font-size: var(--font-size-regular);
-  line-height: var(--line-height-regular);
-  border-bottom: 1px solid var(--border);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
   cursor: pointer;
   align-items: center;
 }
 
 .table__row:hover {
-  background-color: var(--hover);
+  background-color: var(--hover-color);
 }
 
 .table__row:last-child {
   border-bottom: none;
 }
 
-.table__row:last-child:hover {
-  border-bottom-right-radius: var(--radius-large);
-  border-bottom-left-radius: var(--radius-large);
-}
-
 .table__row:focus-visible {
   outline: none;
   box-shadow: var(--input-box-shadow-focus);
-  background-color: var(--hover);
+  background-color: var(--hover-color);
 }
 
 .table__row:last-child:focus-visible {
-  border-bottom-right-radius: var(--radius-large);
-  border-bottom-left-radius: var(--radius-large);
+  border-bottom-right-radius: var(--radius-regular);
+  border-bottom-left-radius: var(--radius-regular);
 }
 
 .table__rowItem {
-  padding: 16px;
+  padding-block: 0.90em;
+  padding-inline: 0.90em;
 }

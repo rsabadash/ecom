@@ -1,5 +1,5 @@
 .formFieldWrapper {
   display: grid;
-  gap: 4px;
-  grid-template-rows: auto;
+  gap: 0.4em;
+  font-size: 1rem;
 }

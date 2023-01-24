@@ -29,7 +29,7 @@ export const useCustomForm = <V extends Record<string, any>>({
   const { isDirty, isSubmitted } = formState;
 
   const handleFormSubmit = useCallback(
-    (e?: BaseSyntheticEvent) => handleSubmit(submitHandler)(e),
+    async (e?: BaseSyntheticEvent) => await handleSubmit(submitHandler)(e),
     [handleSubmit, submitHandler],
   );
 

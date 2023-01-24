@@ -1,5 +1,5 @@
-import { Top, TopButtons } from '../../layouts/Top';
-import { Button, ButtonLink } from '../../components/Button';
+import { Top, TopButtons, TopHeading } from '../../layouts/Top';
+import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
 import { ForegroundSection } from '../../components/Foreground';
 import { Suspense, useState } from 'react';
@@ -10,6 +10,7 @@ import { endpoint } from '../../common/constants/api';
 import { SupplierDetailEntry, SupplierFormValues } from './types';
 import { SupplierForm } from './SupplierForm';
 import { matchSupplierDataToFormValues } from './utils';
+import { useDeleteSupplier } from './hooks';
 
 const SupplierDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -20,6 +21,7 @@ const SupplierDetail = () => {
   const { data: supplierDetail } = useCachedAPI<SupplierDetailEntry>(
     `${endpoint.suppliers}/${supplierId}`,
   );
+  const { deleteSupplier } = useDeleteSupplier(supplierDetail?._id);
 
   const formValues: SupplierFormValues | undefined =
     matchSupplierDataToFormValues(supplierDetail);
@@ -30,16 +32,22 @@ const SupplierDetail = () => {
 
   return (
     <>
-      <Top headingText={supplierDetail?.name}>
+      <Top>
+        <TopHeading>{supplierDetail?.name}</TopHeading>
         <TopButtons>
-          {isReadOnly && (
-            <ButtonLink variant="primary" to={routes.suppliers.add}>
-              {translate('suppliers.add')}
-            </ButtonLink>
-          )}
-          <Button variant="primary" onClick={handleButtonEditClick}>
-            {!isReadOnly ? translate('cancel') : translate('suppliers.edit')}
-          </Button>
+          <ButtonsGroup>
+            {isReadOnly && (
+              <ButtonLink variant="primary" to={routes.suppliers.add}>
+                {translate('add')}
+              </ButtonLink>
+            )}
+            <Button variant="primary" onClick={handleButtonEditClick}>
+              {!isReadOnly ? translate('cancel') : translate('edit')}
+            </Button>
+            <Button variant="danger" onClick={deleteSupplier}>
+              {translate('delete')}
+            </Button>
+          </ButtonsGroup>
         </TopButtons>
       </Top>
       <ForegroundSection>

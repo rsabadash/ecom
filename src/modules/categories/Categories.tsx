@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Top } from '../../layouts/Top';
+import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { useTranslation } from '../../components/IntlProvider';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
@@ -23,10 +23,13 @@ const Categories = () => {
 
   return (
     <>
-      <Top headingId={TABLE_ID} headingText={translate('categories')}>
-        <ButtonLink variant="primary" to={routes.categories.add}>
-          {translate('category.add')}
-        </ButtonLink>
+      <Top>
+        <TopHeading id={TABLE_ID}>{translate('categories')}</TopHeading>
+        <TopButtons>
+          <ButtonLink variant="primary" to={routes.categories.add}>
+            {translate('add')}
+          </ButtonLink>
+        </TopButtons>
       </Top>
       <Table
         isRowLinkInteractive

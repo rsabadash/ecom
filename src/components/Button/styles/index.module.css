@@ -1,5 +1,5 @@
 .button {
-  color: var(--text);
+  color: var(--text-color);
   text-decoration: none;
   border-radius: var(--radius-regular);
   border: none;
@@ -8,10 +8,12 @@
   outline: none;
   display: flex;
   align-items: center;
+  padding: 0.71em 0.85em;
+  font-size: var(--font-size-regular);
 }
 
 .button a {
-  color: var(--text);
+  color: var(--text-color);
   text-decoration: none;
 }
 
@@ -20,33 +22,15 @@
 }
 
 .button_s {
-  font-size: var(--font-size-regular);
-  line-height: var(--line-height-regular);
-  padding: 8px 12px;
-}
-
-.button_s svg {
-  height: var(--line-height-regular);
+  font-size: var(--font-size-small);
 }
 
 .button_l {
   font-size: var(--font-size-large);
-  line-height: var(--line-height-large);
-  padding: 10px 16px;
-}
-
-.button_l svg {
-  height: var(--line-height-large);
 }
 
 .button_xl {
   font-size: var(--font-size-xl);
-  line-height: var(--line-height-xl);
-  padding: 14px 24px;
-}
-
-.button_xl svg {
-  height: var(--line-height-xl);
 }
 
 .button_regular {
@@ -80,5 +64,10 @@
 
 .button_theme {
   background-color: var(--input-background);
-  outline: 1px solid var(--border); /* avoid additional height by regular border property */
+  outline: 1px solid var(--border-color); /* avoid additional height by regular border property */
+}
+
+.buttonsGroup {
+  display: flex;
+  gap: 0.5rem;
 }

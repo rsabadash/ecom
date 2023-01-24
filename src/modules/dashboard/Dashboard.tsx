@@ -1,12 +1,14 @@
 import { useTranslation } from '../../components/IntlProvider';
-import { Top } from '../../layouts/Top';
+import { Top, TopHeading } from '../../layouts/Top';
 
 const Dashboard = () => {
   const { translate } = useTranslation();
 
   return (
     <>
-      <Top headingText={translate('dashboard')} />
+      <Top>
+        <TopHeading>{translate('dashboard')}</TopHeading>
+      </Top>
     </>
   );
 };

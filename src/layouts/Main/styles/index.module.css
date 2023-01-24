@@ -1,37 +1,31 @@
 :root {
-  --aside-width: 250px;
+  --content-width: 1400px;
 }
 
 .mainWrapper {
   display: grid;
-  grid-template-columns: var(--aside-width) auto;
+  grid-template-columns: var(--sidebar-widh) minmax(320px, auto);
   grid-template-areas: 'aside main';
   direction: ltr;
   height: 100%;
 }
 
 .aside {
-  border-right: 2px solid var(--border);
+  border-right: 1px solid var(--border-color);
   background-color: var(--foreground);
   box-shadow: var(--shadow-5);
   height: 100%;
-  flex: 0 0 auto;
-  padding: 24px 16px;
+  padding-block: 2.5rem;
+  padding-inline: 1rem;
   grid-area: aside;
 }
 
-.aside__logo {
-  height: 48px;
-  margin-bottom: 56px;
-}
-
 .main {
-  padding: 64px 80px;
-  width: 100%;
+  padding: 2.5rem;
   grid-area: main;
 }
 
 .content {
-  max-width: 1400px;
+  max-width: var(--content-width);
   margin: 0 auto;
 }

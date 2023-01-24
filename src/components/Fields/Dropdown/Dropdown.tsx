@@ -357,6 +357,11 @@ export const Dropdown: FC<DropdownProps> = ({
 
   const viewValue = getItemValue(value);
   const placeholderValue = isReadOnly ? '' : placeholder;
+  const emptyValue = (
+    <span className={classes.dropdownEmptyValue}>
+      {translate('notSelected')}
+    </span>
+  );
 
   const dropdownClassName = clsx(classes.dropdown, {
     [classes.dropdown_noValue]: !viewValue,
@@ -384,7 +389,7 @@ export const Dropdown: FC<DropdownProps> = ({
         className={dropdownClassName}
         tabIndex={isReadOnly ? -1 : 0}
       >
-        {viewValue || placeholderValue}
+        {viewValue || placeholderValue || emptyValue}
       </div>
       {isOpenInternal && isListInitialized && (
         <div className={classes.dropdownListWrapper}>

@@ -54,41 +54,31 @@
 
   --scrollbar-width: 4px;
 
-  --input-height: 48px;
   --input-box-shadow-focus: var(--primary-700) 0 0 0 0.2em;
   --input-box-shadow-error-focus: var(--danger-900) 0 0 0 0.2em;
+  --checkboxSize: 1.65em;
 
   --transition: 0.15s ease-in-out 0s;
 
-  --radius-small: 8px;
-  --radius-regular: 12px;
-  --radius-large: 16px;
+  --radius-small: 0.4em;
+  --radius-regular: 0.6em;
+  --radius-large: 0.8em;
 
   --font-family-body: 'Inter', serif;
   --font-family-head: 'Montserrat Medium', serif;
 
-  --font-size-tiny: 10px;
-  --line-height-tiny: 16px;
-  --letter-spacing-tiny: 0.2px;
-  --font-size-small: 12px;
-  --line-height-small: 20px;
-  --font-size-regular: 14px;
-  --line-height-regular: 24px;
-  --font-size-large: 16px;
-  --line-height-large: 28px;
-  --font-size-xl: 20px;
-  --line-height-xl: 32px;
-  --font-size-2xl: 24px;
-  --line-height-2xl: 36px;
+  --font-size-tiny: 0.65rem;
+  --font-size-small: 0.75rem;
+  --font-size-regular: 0.85rem;
+  --font-size-large: 1rem;
+  --font-size-xl: 1.15rem;
 
-  --font-size-head-1: 64px;
-  --line-height-head-1: 72px;
-  --font-size-head-2: 48px;
-  --line-height-head-2: 64px;
-  --font-size-head-3: 34px;
-  --line-height-head-3: 48px;
-  --font-size-head-4: 28px;
-  --line-height-head-4: 40px;
+  --font-size-head-1: 1.75rem;
+  --font-size-head-2: 1.65rem;
+  --font-size-head-3: 1.55rem;
+  --font-size-head-4: 1.45rem;
+  --font-size-head-5: 1.35rem;
+  --font-size-head-6: 1.25rem;
 
   --text-error: var(--danger-800);
   --border-error: var(--danger-900);
@@ -99,21 +89,16 @@
   --background: var(--background-900);
   --foreground: var(--foreground-100);
 
-  --text: var(--foreground-900);
-  --text-disabled: var(--foreground-600);
+  --text-color: var(--foreground-900);
+  --text-color-secondary: var(--foreground-800);
+  --text-color-disabled: var(--foreground-600);
 
-  --border: var(--foreground-400);
+  --border-color: var(--foreground-400);
 
-  --scrollbar-thumb: var(--foreground-700);
+  --scrollbar-thumb-color: var(--foreground-700);
 
-  --hover: var(--foreground-200);
-
-  --label-color: var(--foreground-800);
+  --hover-color: var(--foreground-200);
 
   --input-background: var(--foreground-100);
-  --input-hover: var(--foreground-400);
-
   --button-regular-background: var(--foreground-900);
-
-  --text-description: var(--foreground-800);
 }
