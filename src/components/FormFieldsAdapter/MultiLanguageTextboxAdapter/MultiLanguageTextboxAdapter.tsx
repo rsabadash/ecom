@@ -21,10 +21,10 @@ export const MultiLanguageTextboxAdapter = <FormValues extends FieldValues>({
   const { translate } = useTranslation();
   const { errors } = useFormState<FormValues>({ control });
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const hasMultiLanguageError =
     errors[name] &&
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     Object.keys(errors[name]).some(
       (errorLanguage) => errorLanguage !== DEFAULT_LANGUAGE,
     );

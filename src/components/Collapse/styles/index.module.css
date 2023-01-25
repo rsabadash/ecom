@@ -4,11 +4,15 @@
 .collapse__header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1rem;
 }
 
 .collapse__headerContent {
   width: 100%;
+}
+
+.collapse__switcher path {
+  fill: var(--text-color);
 }
 
 .collapse__switcher {

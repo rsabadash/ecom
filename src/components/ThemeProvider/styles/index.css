@@ -6,9 +6,13 @@ body,
   background-color: var(--background);
 }
 
+html {
+  font-size: 16px;
+}
+
 #theme-root {
   /*color-scheme: var(--scheme);*/
-  color: var(--text);
+  color: var(--text-color);
   background-color: var(--background);
   transition: all 500ms;
   height: 100%;

@@ -1,16 +1,14 @@
 .top {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: 1rem;
 }
 
 .top__heading {
-  margin-right: auto;
+  align-self: flex-start;
 }
 
 .top__buttons {
-  display: flex;
-  gap: 1rem;
+  align-self: flex-end;
 }

@@ -4,7 +4,9 @@ export const common = {
   add: 'Додати',
   update: 'Оновити',
   edit: 'Редагувати',
+  delete: 'Видалити',
   cancel: 'Відмінити',
+  notSelected: 'Не обрано',
 
   'uk.adjective': 'українськю',
   'en.adjective': 'англійською',

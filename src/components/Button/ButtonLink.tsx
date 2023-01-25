@@ -27,23 +27,21 @@ export const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
   };
 
   return (
-    <div>
-      <Link
-        role="button"
-        onClick={handleButtonClick}
-        aria-label={ariaLabel}
-        aria-expanded={ariaExpanded}
-        aria-controls={ariaControls}
-        className={clsx(
-          classes.button,
-          className,
-          classes[`button_${size}`],
-          classes[`button_${variant}`],
-        )}
-        {...linkProps}
-      >
-        {children}
-      </Link>
-    </div>
+    <Link
+      role="button"
+      onClick={handleButtonClick}
+      aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      aria-controls={ariaControls}
+      className={clsx(
+        classes.button,
+        className,
+        classes[`button_${size}`],
+        classes[`button_${variant}`],
+      )}
+      {...linkProps}
+    >
+      {children}
+    </Link>
   );
 };

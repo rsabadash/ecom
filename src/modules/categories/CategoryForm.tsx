@@ -13,11 +13,7 @@ import { CategoryFormProps } from './types';
 import { endpoint, path } from '../../common/constants/api';
 import { DropdownItem } from '../../components/Fields/Dropdown';
 import { Form } from '../../components/FormFields/Form';
-import {
-  useCategoryForm,
-  useCategoryFormSubmit,
-  useDeleteCategory,
-} from './hooks';
+import { useCategoryForm, useCategoryFormSubmit } from './hooks';
 
 export const CategoryForm: FC<CategoryFormProps> = ({
   id,
@@ -29,7 +25,6 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   );
 
   const { translate } = useTranslation();
-  const { deleteCategory } = useDeleteCategory(id);
   const { handleFormSubmit } = useCategoryFormSubmit({ id });
 
   const { control, handleSubmit } = useCategoryForm({
@@ -79,18 +74,9 @@ export const CategoryForm: FC<CategoryFormProps> = ({
         </GridFullWidth>
         {!isReadOnly && (
           <GridFullWidth>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <Button variant="primary" type="submit">
-                {shouldUpdateCategory
-                  ? translate('category.update')
-                  : translate('category.add')}
-              </Button>
-              {shouldUpdateCategory && (
-                <Button variant="danger" onClick={deleteCategory}>
-                  {translate('category.delete')}
-                </Button>
-              )}
-            </div>
+            <Button variant="primary" type="submit">
+              {shouldUpdateCategory ? translate('update') : translate('add')}
+            </Button>
           </GridFullWidth>
         )}
       </GridAutoFit>

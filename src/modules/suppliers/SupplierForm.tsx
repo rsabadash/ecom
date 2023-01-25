@@ -5,11 +5,7 @@ import { InputAdapter } from '../../components/FormFieldsAdapter';
 import { supplierFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { SupplierFormProps } from './types';
-import {
-  useDeleteSupplier,
-  useSupplierForm,
-  useSupplierFormSubmit,
-} from './hooks';
+import { useSupplierForm, useSupplierFormSubmit } from './hooks';
 
 export const SupplierForm: FC<SupplierFormProps> = ({
   id,
@@ -17,7 +13,6 @@ export const SupplierForm: FC<SupplierFormProps> = ({
   defaultValues,
 }) => {
   const { translate } = useTranslation();
-  const { deleteSupplier } = useDeleteSupplier(id);
   const { handleFormSubmit } = useSupplierFormSubmit(id);
 
   const { control, handleSubmit } = useSupplierForm({
@@ -71,18 +66,9 @@ export const SupplierForm: FC<SupplierFormProps> = ({
         </GridFullWidth>
         {!isReadOnly && (
           <GridFullWidth>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <Button variant="primary" type="submit">
-                {shouldUpdateProduct
-                  ? translate('suppliers.update')
-                  : translate('suppliers.add')}
-              </Button>
-              {shouldUpdateProduct && id && (
-                <Button variant="danger" onClick={deleteSupplier}>
-                  {translate('supplier.delete')}
-                </Button>
-              )}
-            </div>
+            <Button variant="primary" type="submit">
+              {shouldUpdateProduct ? translate('update') : translate('add')}
+            </Button>
           </GridFullWidth>
         )}
       </GridAutoFit>

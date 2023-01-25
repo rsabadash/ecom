@@ -8,7 +8,7 @@
     auto-fit,
     minmax(min(var(--grid-column-min-width), 100%), 1fr)
   );
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .gridFullWidth {

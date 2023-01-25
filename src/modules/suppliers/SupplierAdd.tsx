@@ -1,4 +1,4 @@
-import { Top } from '../../layouts/Top';
+import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
 import { ForegroundSection } from '../../components/Foreground';
@@ -10,10 +10,13 @@ const SupplierAdd = () => {
 
   return (
     <>
-      <Top headingText={translate('suppliers.add')}>
-        <ButtonLink variant="primary" to={routes.suppliers.root}>
-          {translate('cancel')}
-        </ButtonLink>
+      <Top>
+        <TopHeading>{translate('add')}</TopHeading>
+        <TopButtons>
+          <ButtonLink variant="primary" to={routes.suppliers.root}>
+            {translate('cancel')}
+          </ButtonLink>
+        </TopButtons>
       </Top>
       <ForegroundSection>
         <SupplierForm />

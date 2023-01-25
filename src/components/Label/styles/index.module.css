@@ -1,6 +1,5 @@
 .label {
   display: block;
-  color: var(--label-color);
-  font-size: 12px;
-  line-height: 20px;
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-regular);
 }

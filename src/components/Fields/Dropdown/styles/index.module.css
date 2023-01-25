@@ -1,23 +1,19 @@
 .dropdownWrapper {
   position: relative;
+  font-size: var(--font-size-regular);
 }
 
 .dropdown {
   background-color: var(--input-background);
-  border: 2px solid var(--border);
-  color: var(--text);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-regular);
-  height: var(--input-height);
-  line-height: 24px;
-  font-size: 14px;
-  padding: 12px 16px;
+  padding: 0.85em;
+  color: var(--text-color);
   outline: none;
   transition: box-shadow var(--transition);
   width: 100%;
+  font-family: var(--font-family-body);
   cursor: pointer;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 .dropdown:focus-visible {
@@ -25,11 +21,11 @@
 }
 
 .dropdown_noValue {
-  color: var(--text-disabled);
+  color: var(--text-color-disabled);
 }
 
 .dropdown_invalid {
-  border: 2px solid var(--border-error);
+  border: 1px solid var(--border-error);
 }
 
 .dropdown_invalid:focus-visible {
@@ -45,21 +41,27 @@
   cursor: default;
 }
 
+.dropdownEmptyValue {
+  color: transparent;
+}
+
 .dropdownListWrapper {
   background-color: var(--input-background-absolute-hack);
-  border: 2px solid var(--border);
+  border: 1px solid var(--border-color);
   box-shadow: var(--shadow-5);
-  border-radius: var(--radius-large);
-  padding: 12px 4px 12px 12px;
+  border-radius: var(--radius-regular);
+  padding-block: 0.85em;
+  padding-inline-start: 0.85em;
+  padding-inline-end: 0.40em;
   overflow: hidden;
   position: absolute;
   width: 100%;
   z-index: 1;
-  margin-top: 4px;
+  margin-top: 0.4em;
 }
 
 .dropdownList {
-  padding: 0 8px 0 0;
+  padding-inline-end: 0.45em;
   max-height: 200px;
   overflow: auto;
 }
@@ -73,20 +75,18 @@
 }
 
 .dropdownList::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
+  background-color: var(--scrollbar-thumb-color);
   border-radius: 4px;
   height: 64px;
 }
 
 .dropdownList__item {
   cursor: pointer;
-  font-size: 14px;
-  line-height: 24px;
-  padding: 12px 16px;
+  padding: 0.85em;
   border-radius: var(--radius-regular);
 }
 
 .dropdownList__item_focus,
 .dropdownList__item:hover {
-  background-color: var(--input-hover);
+  background-color: var(--hover-color);
 }
