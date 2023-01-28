@@ -1,11 +1,4 @@
-import {
-  FC,
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import { createProvider } from '../../utils';
 import { AuthContextValue, SignInData } from './types';
 import {
@@ -16,8 +9,6 @@ import {
 } from './constants';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSignIn } from './hooks';
-import { useNavigate } from 'react-router-dom';
-import { routes } from '../../common/constants/routes';
 
 const [Provider, useAuth] = createProvider<AuthContextValue>({
   contextName: CONTEXT_NAME,
@@ -25,7 +16,6 @@ const [Provider, useAuth] = createProvider<AuthContextValue>({
 });
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const navigate = useNavigate();
   const { setStorageItem, getStorageItem, removeStorageItem } =
     useLocalStorage();
 
@@ -55,11 +45,11 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     setIsAuthenticated(false);
   }, [removeStorageItem]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate(routes.signIn, { replace: true });
-    }
-  }, [isAuthenticated, navigate]);
+  // useEffect(() => {
+  //   if (!isAuthenticated) {
+  //     navigate(routes.signIn, { replace: true });
+  //   }
+  // }, [isAuthenticated, navigate]);
 
   const contextValue = useMemo<AuthContextValue>(() => {
     return {
