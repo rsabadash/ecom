@@ -8,9 +8,7 @@ export const Main: FC<PropsWithChildren> = ({ children }) => {
       <aside className={classes.aside}>
         <Navigation />
       </aside>
-      <main className={classes.main}>
-        <div className={classes.content}>{children}</div>
-      </main>
+      <main className={classes.main}>{children}</main>
     </div>
   );
 };

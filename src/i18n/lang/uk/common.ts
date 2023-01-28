@@ -7,6 +7,7 @@ export const common = {
   delete: 'Видалити',
   cancel: 'Відмінити',
   notSelected: 'Не обрано',
+  signOut: 'Вийти',
 
   'uk.adjective': 'українськю',
   'en.adjective': 'англійською',

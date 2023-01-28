@@ -2,6 +2,7 @@ import { categories } from './categories';
 import { common } from './common';
 import { dashboard } from './dashboard';
 import { menu } from './menu';
+import { signIn } from './signIn';
 import { suppliers } from './suppliers';
 
 const translationUK = {
@@ -10,6 +11,7 @@ const translationUK = {
     ...common,
     ...dashboard,
     ...menu,
+    ...signIn,
     ...suppliers,
   },
 };

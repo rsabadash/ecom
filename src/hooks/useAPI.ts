@@ -1,23 +1,10 @@
-import {
-  GET,
-  GetAction,
-  POST,
-  PostAction,
-  PATCH,
-  PatchAction,
-  DELETE,
-  DeleteAction,
-} from '../utils/api';
 import { useMemo } from 'react';
+import { GET, POST, PATCH, DELETE } from '../utils/api';
+import { ApiServiceInterface } from '../services/apiService';
 
-type UseAPIReturn = {
-  GET: GetAction;
-  POST: PostAction;
-  PATCH: PatchAction;
-  DELETE: DeleteAction;
-};
+type UseAPI = () => ApiServiceInterface;
 
-export const useAPI = (): UseAPIReturn => {
+export const useAPI: UseAPI = () => {
   return useMemo(
     () => ({
       GET,

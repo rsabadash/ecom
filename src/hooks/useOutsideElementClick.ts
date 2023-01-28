@@ -1,18 +1,18 @@
 import { useCallback, useLayoutEffect, useRef } from 'react';
 
-export type UseOutsideElementClickArgs = {
+export type UseOutsideElementClickProps = {
   dependency: boolean;
   handleClick: () => void;
 };
 
-type ReturnType = {
+type UseOutsideElementClick = (props: UseOutsideElementClickProps) => {
   setCurrentElement: (element: null | HTMLElement) => void;
 };
 
-export const useOutsideElementClick = ({
+export const useOutsideElementClick: UseOutsideElementClick = ({
   dependency,
   handleClick,
-}: UseOutsideElementClickArgs): ReturnType => {
+}) => {
   const currentElement = useRef<null | HTMLElement>(null);
 
   const setCurrentElement = useCallback((element: null | HTMLElement): void => {

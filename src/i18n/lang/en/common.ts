@@ -7,6 +7,7 @@ export const common = {
   delete: 'Delete',
   cancel: 'Cancel',
   notSelected: 'Not selected',
+  signOut: 'Sign out',
 
   'uk.adjective': 'Ukrainian',
   'en.adjective': 'English',

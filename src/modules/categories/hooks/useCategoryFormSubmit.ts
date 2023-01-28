@@ -29,10 +29,10 @@ export const useCategoryFormSubmit: UseCategoryFormSubmit = ({ id }) => {
   }, []);
 
   const handleFormSubmit = useCallback(
-    async (value: CategoryFormValues) => {
+    async (values: CategoryFormValues) => {
       const data: CategoryPostData | CategoryPatchData = {
-        ...value,
-        parentIds: getCategoryIds(value.parentIds),
+        ...values,
+        parentIds: getCategoryIds(values.parentIds),
       };
 
       if (id) {

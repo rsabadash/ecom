@@ -1,12 +1,5 @@
 import { Router } from './components/Router';
-import { Main } from './layouts/Main';
 
-const App = () => {
-  return (
-    <Main>
-      <Router />
-    </Main>
-  );
-};
+const App = () => <Router />;
 
 export default App;

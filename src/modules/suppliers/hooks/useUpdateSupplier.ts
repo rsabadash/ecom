@@ -3,7 +3,7 @@ import { updateSupplierApi } from '../api';
 import { SupplierPatchData } from '../types';
 
 type UseUpdateSupplier = () => {
-  updateSupplier: (data: SupplierPatchData) => void;
+  updateSupplier: (data: SupplierPatchData) => Promise<void>;
 };
 
 export const useUpdateSupplier: UseUpdateSupplier = () => {

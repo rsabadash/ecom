@@ -1,13 +1,17 @@
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
-import { ForegroundSection } from '../../components/Foreground';
+import { Foreground } from '../../components/Foreground';
 import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from '../../components/IntlProvider';
 import { useCachedAPI } from '../../hooks';
-import { endpoint } from '../../common/constants/api';
-import { SupplierDetailEntry, SupplierFormValues } from './types';
+import { endpoints } from '../../common/constants/api';
+import {
+  SupplierDetailEntry,
+  SupplierFormValues,
+  SupplierUrlParams,
+} from './types';
 import { SupplierForm } from './SupplierForm';
 import { matchSupplierDataToFormValues } from './utils';
 import { useDeleteSupplier } from './hooks';
@@ -15,11 +19,11 @@ import { useDeleteSupplier } from './hooks';
 const SupplierDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
-  const { supplierId } = useParams<{ supplierId: string }>();
+  const { supplierId } = useParams<SupplierUrlParams>();
   const { translate } = useTranslation();
 
   const { data: supplierDetail } = useCachedAPI<SupplierDetailEntry>(
-    `${endpoint.suppliers}/${supplierId}`,
+    `${endpoints.suppliers.root}/${supplierId}`,
   );
   const { deleteSupplier } = useDeleteSupplier(supplierDetail?._id);
 
@@ -50,7 +54,7 @@ const SupplierDetail = () => {
           </ButtonsGroup>
         </TopButtons>
       </Top>
-      <ForegroundSection>
+      <Foreground>
         <Suspense>
           <SupplierForm
             id={supplierDetail?._id}
@@ -58,7 +62,7 @@ const SupplierDetail = () => {
             isReadOnly={isReadOnly}
           />
         </Suspense>
-      </ForegroundSection>
+      </Foreground>
     </>
   );
 };

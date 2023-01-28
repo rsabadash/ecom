@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { deleteCategoryApi } from '../api';
 
 type UseDeleteCategory = (id: string | undefined) => {
-  deleteCategory: () => void;
+  deleteCategory: () => Promise<void>;
 };
 
 export const useDeleteCategory: UseDeleteCategory = (

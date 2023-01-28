@@ -21,16 +21,16 @@ export type CategoryFormValues = {
   parentIds: DropdownItem[];
 };
 
+export type CategoryFormFields = Record<
+  keyof CategoryFormValues,
+  keyof CategoryFormValues
+>;
+
 export type CategoryFormProps = {
   id?: string;
   isReadOnly?: boolean;
   defaultValues?: Partial<CategoryFormValues>;
 };
-
-export type CategoryFormFields = Record<
-  keyof CategoryFormValues,
-  keyof CategoryFormValues
->;
 
 export type CategoryPostData = {
   name: Translations;
@@ -54,4 +54,8 @@ export type CategoryPatchData = {
 
 export type CategoryDeleteData = {
   id: string;
+};
+
+export type CategoryUrlParams = {
+  categoryId: string;
 };

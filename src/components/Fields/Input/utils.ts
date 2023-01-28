@@ -12,12 +12,12 @@ export const serializeValue = (
 
 export const commonFormatValue = (
   value: undefined | InputValue,
-  type: 'text' | 'number',
+  type: 'text' | 'number' | 'password',
 ): InputFormValue => {
   const formattedValue: InputFormValue = value;
 
   if (value === '') {
-    return undefined;
+    return null;
   }
 
   if (type === 'number' && value) {

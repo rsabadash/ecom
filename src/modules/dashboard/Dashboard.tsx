@@ -5,11 +5,9 @@ const Dashboard = () => {
   const { translate } = useTranslation();
 
   return (
-    <>
-      <Top>
-        <TopHeading>{translate('dashboard')}</TopHeading>
-      </Top>
-    </>
+    <Top>
+      <TopHeading>{translate('dashboard')}</TopHeading>
+    </Top>
   );
 };
 

@@ -4,6 +4,7 @@ import { SupplierFormValues } from '../types';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
+  YupSchemaKey,
 } from '../../../hooks/useCustomForm';
 import { useCustomForm } from '../../../hooks';
 import { supplierFormFields } from '../constants';
@@ -22,7 +23,7 @@ type UseSupplierFormReturn = Pick<
 
 type UseSupplierForm = (props: UseSupplierFormProps) => UseSupplierFormReturn;
 
-const schema = yup.object().shape({
+const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
   [supplierFormFields.name]: yup.string().required().min(3).max(50),
   [supplierFormFields.note]: yup.string().max(1024),
   [supplierFormFields.phoneNumber]: yup.string().length(10).nullable(),

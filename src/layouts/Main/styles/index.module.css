@@ -29,5 +29,20 @@
   border-right: 1px solid var(--border-color);
 }
 
-.content {
+.mainPublicWrapper {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 650px) 1fr;
+  grid-template-areas:
+    '. .... .'
+    '. main .'
+    '. .... .'
+  ;
+  direction: ltr;
+  height: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.mainPublic {
+  grid-area: main;
 }

@@ -5,29 +5,29 @@ import {
   SupplierPostData,
   SupplierPostResponse,
 } from './types';
-import { endpoint } from '../../common/constants/api';
+import { endpoints } from '../../common/constants/api';
 
 export const createSupplierApi = async (
   data: SupplierPostData,
-): Promise<SupplierPostResponse> => {
-  return await POST<SupplierPostResponse, SupplierPostData>({
-    url: endpoint.suppliers,
-    data,
-  });
+): Promise<SupplierPostResponse | undefined> => {
+  return await POST<SupplierPostResponse, SupplierPostData>(
+    endpoints.suppliers.root,
+    {
+      data,
+    },
+  );
 };
 
 export const updateSupplierApi = async (
   data: SupplierPatchData,
 ): Promise<void> => {
-  await PATCH<void, SupplierPatchData>({
-    url: endpoint.suppliers,
+  await PATCH<void, SupplierPatchData>(endpoints.suppliers.root, {
     data,
   });
 };
 
 export const deleteSupplierApi = async (id: string): Promise<void> => {
-  await DELETE<void, SupplierDeleteData>({
-    url: endpoint.suppliers,
+  await DELETE<void, SupplierDeleteData>(endpoints.suppliers.root, {
     data: { id },
   });
 };

@@ -1,4 +1,5 @@
 export const routes = {
+  signIn: '/sign-in',
   home: '/',
   dashboard: '/dashboard',
   categories: {

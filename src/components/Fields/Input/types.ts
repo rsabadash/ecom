@@ -7,7 +7,7 @@ export type InputFormValue = string | number | null | undefined;
 export type InputProps = {
   id?: string;
   name: string;
-  type?: 'text' | 'number';
+  type?: 'text' | 'number' | 'password' | 'email';
   value?: null | InputValue;
   placeholder?: string;
   isValid?: boolean;

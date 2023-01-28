@@ -3,9 +3,15 @@ import clsx from 'clsx';
 import { NavData } from './types';
 import { INDEX_ABSENCE_FOCUS } from './constants';
 import { useNavigation } from './hooks/useNavigation';
+import { Button } from '../Button';
+import { useTranslation } from '../IntlProvider';
+import { useAuth } from '../AuthProvider';
 import classes from './styles/index.module.css';
 
 export const Navigation = () => {
+  const { translate } = useTranslation();
+  const { signOut } = useAuth();
+
   const {
     menuItems,
     focusIndex,
@@ -53,6 +59,10 @@ export const Navigation = () => {
           );
         })}
       </ul>
+
+      <Button variant="primary" onClick={signOut}>
+        {translate('signOut')}
+      </Button>
     </nav>
   );
 };

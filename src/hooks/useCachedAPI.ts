@@ -1,11 +1,14 @@
+import { useCallback } from 'react';
 import useSWR from 'swr';
 import { useAPI } from './useAPI';
+import { useAuth } from '../components/AuthProvider';
+import { messages } from '../common/constants/errors';
 
 type UseCachedAPIOptions = {
   shouldFetch?: boolean;
 };
 
-const defaultOptions: Required<UseCachedAPIOptions> = {
+const defaultOptions: UseCachedAPIOptions = {
   shouldFetch: true,
 };
 
@@ -14,10 +17,28 @@ export const useCachedAPI = <D>(
   options: UseCachedAPIOptions = defaultOptions,
 ) => {
   const { GET } = useAPI();
-  const fetchUrl = options.shouldFetch ? { url } : null;
+  const { signOut } = useAuth();
+  const { shouldFetch } = options;
 
-  return useSWR<D>(fetchUrl, GET, {
+  const fetchUrl = shouldFetch ? url : null;
+
+  const fetcher = useCallback(
+    async (url: string) => {
+      return await GET<D>(url, {
+        onError: (error) => {
+          if (error.message.toLowerCase() === messages.jwt.malformed) {
+            signOut();
+          }
+        },
+      });
+    },
+    [GET, signOut],
+  );
+
+  return useSWR<D | undefined>(fetchUrl, fetcher, {
     suspense: true,
     revalidateOnFocus: false,
+    errorRetryCount: 0,
+    shouldRetryOnError: false,
   });
 };

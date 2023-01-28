@@ -6,11 +6,11 @@ import {
   DropdownAdapter,
   MultiLanguageInputAdapter,
 } from '../../components/FormFieldsAdapter';
-import { formFields } from './constants';
+import { categoryFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { CheckboxAdapter } from '../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
 import { CategoryFormProps } from './types';
-import { endpoint, path } from '../../common/constants/api';
+import { endpoints, path } from '../../common/constants/api';
 import { DropdownItem } from '../../components/Fields/Dropdown';
 import { Form } from '../../components/FormFields/Form';
 import { useCategoryForm, useCategoryFormSubmit } from './hooks';
@@ -21,7 +21,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   defaultValues,
 }) => {
   const { data: categoriesDropdownList } = useCachedAPI<DropdownItem[]>(
-    `${endpoint.categories}${path.dropdownList}`,
+    `${endpoints.categories.root}${path.dropdownList}`,
   );
 
   const { translate } = useTranslation();
@@ -44,7 +44,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             isRequired
             isReadOnly={isReadOnly}
             isDescriptionHidden={isReadOnly}
-            name={formFields.name}
+            name={categoryFormFields.name}
             placeholderTranslation="category.name.fillIn"
             label={translate('category.name')}
             control={control}
@@ -55,7 +55,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             hasMultiselect
             isReadOnly={isReadOnly}
             isDescriptionHidden={isReadOnly}
-            name={formFields.parentIds}
+            name={categoryFormFields.parentIds}
             items={categoriesDropdownList}
             placeholder={translate('category.parent.select')}
             label={translate('category.parent')}
@@ -66,7 +66,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
           <CheckboxAdapter
             isReadOnly={isReadOnly}
             isDescriptionHidden={isReadOnly}
-            name={formFields.isActive}
+            name={categoryFormFields.isActive}
             label={translate('category.active')}
             placeholder={translate('category.active.description')}
             control={control}
