@@ -12,7 +12,7 @@ export const serializeValue = (
 
 export const commonFormatValue = (
   value: undefined | InputValue,
-  type: 'text' | 'number' | 'password',
+  type: 'text' | 'number' | 'password' | 'email',
 ): InputFormValue => {
   const formattedValue: InputFormValue = value;
 
