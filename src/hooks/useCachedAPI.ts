@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import { useAPI } from './useAPI';
 import { useAuth } from '../components/AuthProvider';
 import { messages } from '../common/constants/errors';
+import { ApiError } from '../services/apiService';
 
 type UseCachedAPIOptions = {
   shouldFetch?: boolean;
@@ -25,7 +26,7 @@ export const useCachedAPI = <D>(
   const fetcher = useCallback(
     async (url: string) => {
       return await GET<D>(url, {
-        onError: (error) => {
+        onError: (error: ApiError) => {
           if (error.message.toLowerCase() === messages.jwt.malformed) {
             signOut();
           }

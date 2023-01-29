@@ -20,8 +20,8 @@ const Categories = () => {
           </ButtonLink>
         </TopButtons>
       </Top>
-      <ErrorBoundary fallback={<div>{'Error boundary Categories list'}</div>}>
-        <Suspense fallback={<div>{'Suspense Categories list'}</div>}>
+      <ErrorBoundary fallback="Error boundary Categories list">
+        <Suspense fallback="Suspense Categories list">
           <CategoriesList />
         </Suspense>
       </ErrorBoundary>

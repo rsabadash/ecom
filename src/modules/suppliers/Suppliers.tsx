@@ -20,8 +20,8 @@ const Suppliers = () => {
           </ButtonLink>
         </TopButtons>
       </Top>
-      <ErrorBoundary fallback={<div>{'Error boundary Suppliers list'}</div>}>
-        <Suspense fallback={<div>{'Suspense Suppliers list'}</div>}>
+      <ErrorBoundary fallback="Error boundary Suppliers list">
+        <Suspense fallback="Suspense Suppliers list">
           <SuppliersList />
         </Suspense>
       </ErrorBoundary>
