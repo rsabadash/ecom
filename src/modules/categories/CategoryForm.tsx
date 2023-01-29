@@ -12,7 +12,7 @@ import { CheckboxAdapter } from '../../components/FormFieldsAdapter/CheckboxAdab
 import { CategoryFormProps } from './types';
 import { endpoints, path } from '../../common/constants/api';
 import { DropdownItem } from '../../components/Fields/Dropdown';
-import { Form } from '../../components/FormFields/Form';
+import { Form } from '../../components/FormFields';
 import { useCategoryForm, useCategoryFormSubmit } from './hooks';
 
 export const CategoryForm: FC<CategoryFormProps> = ({
@@ -74,7 +74,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
         </GridFullWidth>
         {!isReadOnly && (
           <GridFullWidth>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" size="l">
               {shouldUpdateCategory ? translate('update') : translate('add')}
             </Button>
           </GridFullWidth>

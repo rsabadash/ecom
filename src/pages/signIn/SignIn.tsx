@@ -1,6 +1,6 @@
 import { Foreground } from '../../components/Foreground';
 import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
-import { Form } from '../../components/FormFields/Form';
+import { Form } from '../../components/FormFields';
 import { InputAdapter } from '../../components/FormFieldsAdapter';
 import { useTranslation } from '../../components/IntlProvider';
 import { useSignInForm, useSignInFormSubmit } from './hooks';
@@ -45,7 +45,7 @@ const SignIn = () => {
               />
             </GridFullWidth>
             <GridFullWidth>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" size="l">
                 {translate('signIn')}
               </Button>
             </GridFullWidth>
