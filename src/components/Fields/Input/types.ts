@@ -4,10 +4,12 @@ export type InputValue = string;
 
 export type InputFormValue = string | number | null | undefined;
 
+export type InputType = 'text' | 'number' | 'password' | 'email';
+
 export type InputProps = {
   id?: string;
   name: string;
-  type?: 'text' | 'number' | 'password' | 'email';
+  type?: InputType;
   value?: null | InputValue;
   placeholder?: string;
   isValid?: boolean;

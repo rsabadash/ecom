@@ -1,4 +1,4 @@
-import { InputFormValue, InputValue } from './types';
+import { InputFormValue, InputType, InputValue } from './types';
 
 export const serializeValue = (
   value: undefined | null | InputValue,
@@ -12,7 +12,7 @@ export const serializeValue = (
 
 export const commonFormatValue = (
   value: undefined | InputValue,
-  type: 'text' | 'number' | 'password' | 'email',
+  type: InputType,
 ): InputFormValue => {
   const formattedValue: InputFormValue = value;
 

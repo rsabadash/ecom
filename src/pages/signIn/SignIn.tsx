@@ -3,8 +3,7 @@ import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
 import { Form } from '../../components/FormFields/Form';
 import { InputAdapter } from '../../components/FormFieldsAdapter';
 import { useTranslation } from '../../components/IntlProvider';
-import { useSignInForm } from './hooks';
-import { useSignInFormSubmit } from './hooks';
+import { useSignInForm, useSignInFormSubmit } from './hooks';
 import { signInFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { Top, TopHeading } from '../../layouts/Top';
@@ -31,6 +30,7 @@ const SignIn = () => {
                 type="email"
                 name={signInFormFields.email}
                 label={translate('signIn.email')}
+                placeholder={translate('signIn.email.description')}
                 control={control}
               />
             </GridFullWidth>
@@ -40,6 +40,7 @@ const SignIn = () => {
                 type="password"
                 name={signInFormFields.password}
                 label={translate('signIn.password')}
+                placeholder={translate('signIn.password.description')}
                 control={control}
               />
             </GridFullWidth>

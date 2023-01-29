@@ -24,8 +24,9 @@ const schema = yup.object().shape<YupSchemaKey<SignInFormValues>>({
   email: yup
     .string()
     .email('signIn.email.invalid')
+    .nullable()
     .required('signIn.email.required'),
-  password: yup.string().required('signIn.password.required'),
+  password: yup.string().nullable().required('signIn.password.required'),
 });
 
 export const useSignInForm: UseCategoryForm = ({ submitHandler }) => {
