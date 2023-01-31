@@ -1,9 +1,11 @@
 import { KeyboardEvent, RefObject } from 'react';
 import { EventKeys } from '../../common/enums/events';
+import { Role } from '../UserProvider/enums';
 
 export type MenuItem = {
   title: string;
   path: string;
+  roles?: Role[];
   items?: MenuItems;
 };
 

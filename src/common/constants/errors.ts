@@ -3,4 +3,7 @@ export const messages = {
     expired: 'jwt expired',
     malformed: 'jwt malformed',
   },
+  access: {
+    forbidden: 'forbidden resource',
+  },
 };

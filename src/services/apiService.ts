@@ -12,8 +12,9 @@ type ErrorResponse = {
 type FetchOptions = RequestInit;
 
 export type CustomOptions = {
-  onRetry?: (error: ApiError) => Promise<void> | void;
+  onRetry?: (error: ApiError) => Promise<boolean> | boolean;
   onError?: (error: ApiError) => Promise<void> | void;
+  onGlobalError?: (error: ApiError) => Promise<void> | void;
   retry?: number;
 };
 
@@ -82,6 +83,41 @@ export class ApiService implements ApiServiceInterface {
     };
   }
 
+  private async handleRetry(
+    options: Omit<Options, 'retry'>,
+    error: ApiError,
+  ): Promise<boolean> {
+    const { onRetry } = options;
+
+    if (onRetry) {
+      return onRetry(error);
+    }
+
+    return true;
+  }
+
+  private async handleError(
+    options: Omit<Options, 'retry'>,
+    error: ApiError,
+  ): Promise<undefined> {
+    const { onError, onGlobalError } = options;
+
+    if (onGlobalError) {
+      await onGlobalError(error);
+
+      if (onError) {
+        await onError(error);
+      }
+
+      return undefined;
+    }
+
+    const newError: any = new Error(error.message);
+    newError.status = error.status;
+
+    throw error;
+  }
+
   private async fetchWrapper<R>(
     url: string,
     options: Options = {},
@@ -90,15 +126,13 @@ export class ApiService implements ApiServiceInterface {
 
     const fetcher = async (
       fetcherUrl: string,
+      fetcherOptions: Options,
       retries?: number,
     ): Promise<R | undefined> => {
-      const { onError, onRetry, ...fetcherOptions } =
-        this.mergeOptions(options);
+      // Revalidate because some global options can be updated
+      const mergedOptions = this.mergeOptions(fetcherOptions);
 
-      const response = await fetch(
-        `${this._host}${fetcherUrl}`,
-        fetcherOptions,
-      );
+      const response = await fetch(`${this._host}${fetcherUrl}`, mergedOptions);
 
       if (response.ok) {
         return this.parseResponse<R>(response);
@@ -114,26 +148,17 @@ export class ApiService implements ApiServiceInterface {
       };
 
       if (retries && retries > 0) {
-        if (onRetry) {
-          await onRetry(errorData);
+        const shouldRetry = await this.handleRetry(mergedOptions, errorData);
+
+        if (shouldRetry) {
+          return fetcher(url, fetcherOptions, retries - 1);
         }
-
-        return fetcher(url, retries - 1);
       }
 
-      if (onError) {
-        onError(errorData);
-
-        return;
-      }
-
-      const error: any = new Error(errorMessage);
-      error.status = errorStatus;
-
-      throw error;
+      return await this.handleError(mergedOptions, errorData);
     };
 
-    return await fetcher(url, retry);
+    return await fetcher(url, options, retry);
   }
 
   public GET = async <R>(
@@ -176,7 +201,7 @@ export class ApiService implements ApiServiceInterface {
     });
   };
 
-  public setConfig = (options: DefaultOptions): void => {
+  public setGlobalOptions = (options: DefaultOptions): void => {
     this.defaultOptions = options;
   };
 }

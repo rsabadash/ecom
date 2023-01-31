@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Navigate,
   Route,
   RouterProvider,
 } from 'react-router-dom';
@@ -10,6 +9,9 @@ import { routes } from '../../common/constants/routes';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
+import { SignedInRedirect } from './SignedInRedirect';
+// import { RoleGuard } from '../RoleGuard';
+// import { Role } from '../UserProvider/enums';
 
 const SignIn = lazy(() => import('../../pages/signIn/SignIn'));
 const Dashboard = lazy(() => import('../../modules/dashboard/Dashboard'));
@@ -41,10 +43,7 @@ export const router = createBrowserRouter(
           </Suspense>
         }
       >
-        <Route
-          path={routes.home}
-          element={<Navigate replace to={routes.dashboard} />}
-        />
+        <Route path={routes.home} element={<SignedInRedirect />} />
         <Route
           path={routes.dashboard}
           element={
@@ -57,7 +56,9 @@ export const router = createBrowserRouter(
           path={routes.categories.root}
           element={
             <Suspense fallback="Route Categories">
+              {/*<RoleGuard roles={[Role.ContentManager]}>*/}
               <Categories />
+              {/*</RoleGuard>*/}
             </Suspense>
           }
         />

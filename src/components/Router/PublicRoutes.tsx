@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { routes } from '../../common/constants/routes';
+import { Outlet } from 'react-router-dom';
 import { useAuth } from '../AuthProvider';
 import { MainPublic } from '../../layouts/Main';
+import { SignedInRedirect } from './SignedInRedirect';
 
 export const PublicRoutes: FC = () => {
   const { isAuthenticated } = useAuth();
@@ -12,6 +12,6 @@ export const PublicRoutes: FC = () => {
       <Outlet />
     </MainPublic>
   ) : (
-    <Navigate to={routes.dashboard} />
+    <SignedInRedirect />
   );
 };

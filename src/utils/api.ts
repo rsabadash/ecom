@@ -8,10 +8,11 @@ import {
 import { ACCESS_TOKEN_KEY } from '../components/AuthProvider/constants';
 import { refreshTokenApi } from '../components/AuthProvider/api';
 import { messages } from '../common/constants/errors';
+import { sharedBus } from './sharedBus';
 
 const apiService = new ApiService(API_HOST);
 
-apiService.setConfig(() => ({
+apiService.setGlobalOptions(() => ({
   headers: {
     'Accept-Language':
       LocalStorageService.getItem<Language>(LOCALE_STORAGE_KEY) ||
@@ -20,9 +21,21 @@ apiService.setConfig(() => ({
     'Content-Type': 'application/json',
   },
   retry: 1,
-  onRetry: async (error) => {
+  onRetry: async (error): Promise<boolean> => {
     if (error.message.toLowerCase() === messages.jwt.expired) {
       await refreshTokenApi();
+      return true;
+    }
+
+    return false;
+  },
+  onGlobalError: (error): void => {
+    if (error.message.toLowerCase() === messages.jwt.malformed) {
+      return sharedBus.methods.signOut();
+    }
+
+    if (error.message.toLowerCase() === messages.access.forbidden) {
+      return sharedBus.methods.signedInRedirect();
     }
   },
 }));

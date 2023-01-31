@@ -8,4 +8,5 @@ export type User = {
 
 export type UserContextValue = {
   user: User | undefined;
+  hasAllAccesses: boolean;
 };
