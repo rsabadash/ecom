@@ -19,9 +19,11 @@ export class ErrorBoundary extends Component<
     };
   }
 
-  // componentDidCatch(error, errorInfo) {
-  //   logErrorToMyService(error, errorInfo);
-  // }
+  componentDidCatch(error: any, errorInfo: any) {
+    console.log(error);
+    console.log(errorInfo);
+    //   logErrorToMyService(error, errorInfo);
+  }
 
   render() {
     if (this.state.hasError) {

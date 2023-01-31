@@ -4,10 +4,10 @@ export class LocalStorageService {
   }
 
   static setItem<V extends string>(key: string, value: V): void {
-    return localStorage.setItem(key, value);
+    localStorage.setItem(key, value);
   }
 
   static removeItem(key: string): void {
-    return localStorage.retItem(key);
+    localStorage.removeItem(key);
   }
 }

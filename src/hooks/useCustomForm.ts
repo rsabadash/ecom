@@ -6,6 +6,8 @@ import {
   UseFormReturn,
 } from 'react-hook-form';
 
+export type YupSchemaKey<V> = Partial<Record<keyof V, any>>;
+
 export type UseCustomFormProps<V extends Record<string, any>> = {
   formProps: UseFormProps<V>;
   shouldReset?: boolean;

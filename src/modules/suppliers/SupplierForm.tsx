@@ -6,6 +6,7 @@ import { supplierFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { SupplierFormProps } from './types';
 import { useSupplierForm, useSupplierFormSubmit } from './hooks';
+import { Form } from '../../components/FormFields';
 
 export const SupplierForm: FC<SupplierFormProps> = ({
   id,
@@ -25,7 +26,7 @@ export const SupplierForm: FC<SupplierFormProps> = ({
     defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
-    <form noValidate onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <GridAutoFit>
         <GridFullWidth>
           <InputAdapter
@@ -66,12 +67,12 @@ export const SupplierForm: FC<SupplierFormProps> = ({
         </GridFullWidth>
         {!isReadOnly && (
           <GridFullWidth>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" size="l">
               {shouldUpdateProduct ? translate('update') : translate('add')}
             </Button>
           </GridFullWidth>
         )}
       </GridAutoFit>
-    </form>
+    </Form>
   );
 };

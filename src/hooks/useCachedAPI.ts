@@ -5,7 +5,7 @@ type UseCachedAPIOptions = {
   shouldFetch?: boolean;
 };
 
-const defaultOptions: Required<UseCachedAPIOptions> = {
+const defaultOptions: UseCachedAPIOptions = {
   shouldFetch: true,
 };
 
@@ -14,10 +14,14 @@ export const useCachedAPI = <D>(
   options: UseCachedAPIOptions = defaultOptions,
 ) => {
   const { GET } = useAPI();
-  const fetchUrl = options.shouldFetch ? { url } : null;
+  const { shouldFetch } = options;
 
-  return useSWR<D>(fetchUrl, GET, {
+  const fetchUrl = shouldFetch ? url : null;
+
+  return useSWR<D | undefined>(fetchUrl, GET, {
     suspense: true,
     revalidateOnFocus: false,
+    errorRetryCount: 0,
+    shouldRetryOnError: false,
   });
 };

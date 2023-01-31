@@ -1,5 +1,6 @@
 import { CategoryFormFields } from './types';
-export const formFields: CategoryFormFields = {
+
+export const categoryFormFields: CategoryFormFields = {
   name: 'name',
   isActive: 'isActive',
   parentIds: 'parentIds',

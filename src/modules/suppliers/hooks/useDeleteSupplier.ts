@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { deleteSupplierApi } from '../api';
 
 type UseDeleteSupplier = (id: string | undefined) => {
-  deleteSupplier: () => void;
+  deleteSupplier: () => Promise<void>;
 };
 
 export const useDeleteSupplier: UseDeleteSupplier = (

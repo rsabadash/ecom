@@ -1,11 +1,24 @@
+export const API_HOST = 'http://localhost:3001';
+
 export const API = '/api';
 export const API_V = '/v1';
 
-export const endpoint = {
-  attributes: `${API}${API_V}/attributes`,
-  products: `${API}${API_V}/products`,
-  categories: `${API}${API_V}/categories`,
-  suppliers: `${API}${API_V}/suppliers`,
+const PREFIX = `${API}${API_V}`;
+
+export const endpoints = {
+  categories: {
+    root: `${PREFIX}/categories`,
+  },
+  suppliers: {
+    root: `${PREFIX}/suppliers`,
+  },
+  authentication: {
+    signIn: `${PREFIX}/authentication/sign-in`,
+    refreshToken: `${PREFIX}/authentication/refresh-token`,
+  },
+  users: {
+    signIn: `${PREFIX}/users/sign-in`,
+  },
 };
 
 export const query = {

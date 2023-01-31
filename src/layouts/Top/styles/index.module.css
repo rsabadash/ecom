@@ -6,9 +6,11 @@
 }
 
 .top__heading {
+  display: flex;
   align-self: flex-start;
 }
 
 .top__buttons {
+  display: flex;
   align-self: flex-end;
 }

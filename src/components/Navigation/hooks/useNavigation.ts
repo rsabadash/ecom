@@ -8,14 +8,35 @@ import {
 } from 'react';
 import { INDEX_ABSENCE_FOCUS } from '../constants';
 import { EventKeys } from '../../../common/enums/events';
-import { KeyIndexMap, UseNavigationReturn } from '../types';
+import { KeyIndexMap, MenuItem, UseNavigationReturn } from '../types';
 import { getMenuItems } from '../utils';
 import { useTranslation } from '../../IntlProvider';
+import { useUser } from '../../UserProvider';
 
 export const useNavigation = (): UseNavigationReturn => {
+  const { user, hasAllAccesses } = useUser();
   const { translate } = useTranslation();
 
-  const menuItems = useMemo(() => getMenuItems(translate), [translate]);
+  const menuItems = useMemo<MenuItem[]>(
+    () => getMenuItems(translate),
+    [translate],
+  );
+
+  const allowedItems = useMemo<MenuItem[]>(() => {
+    if (!hasAllAccesses) {
+      return menuItems.filter((item) => {
+        return user?.roles.some((userRole) => {
+          if (item.roles) {
+            return item.roles?.includes(userRole);
+          }
+
+          return true;
+        });
+      });
+    }
+
+    return menuItems;
+  }, [hasAllAccesses, menuItems, user?.roles]);
 
   const initialIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
   const itemsListRef = useRef<HTMLUListElement>(null);
@@ -43,7 +64,7 @@ export const useNavigation = (): UseNavigationReturn => {
   };
 
   const defineFocusIndexByKey = (key: EventKeys): number | undefined => {
-    const itemsLength = menuItems.length;
+    const itemsLength = allowedItems.length;
     const isInitialIndex = focusIndex === INDEX_ABSENCE_FOCUS;
 
     const keyIndexPair: KeyIndexMap = {
@@ -133,7 +154,7 @@ export const useNavigation = (): UseNavigationReturn => {
   };
 
   return {
-    menuItems,
+    menuItems: allowedItems,
     focusIndex,
     itemsListRef,
     setInitialIndex,

@@ -61,3 +61,7 @@ export type SupplierPatchData = {
 export type SupplierDeleteData = {
   id: string;
 };
+
+export type SupplierUrlParams = {
+  supplierId: string;
+};

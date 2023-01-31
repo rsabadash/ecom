@@ -3,7 +3,7 @@ import { updateCategoryApi } from '../api';
 import { CategoryPatchData } from '../types';
 
 type UseUpdateCategory = () => {
-  updateCategory: (data: CategoryPatchData) => void;
+  updateCategory: (data: CategoryPatchData) => Promise<void>;
 };
 
 export const useUpdateCategory: UseUpdateCategory = () => {
