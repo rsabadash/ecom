@@ -1,2 +1,6 @@
 export { InputFormField } from './Input';
-export type { InputFormFieldProps } from './types';
+export { InputWithCollapseFormField } from './InputWithCollapse';
+export type {
+  InputFormFieldProps,
+  InputWithCollapseFormFieldProps,
+} from './types';

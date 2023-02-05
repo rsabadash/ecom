@@ -1,8 +1,8 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { DropdownAdapterProps } from './types';
-import { DropdownFormField } from '../../FormFields';
-import { DropdownItem } from '../../Fields/Dropdown';
 import { useTranslation } from '../../IntlProvider';
+import { DropdownFormField } from '../../FormFields';
+import { DropdownAdapterProps } from './types';
+import { DropdownItem } from '../../Fields/Dropdown';
 
 export const DropdownAdapter = <FormValues extends FieldValues>({
   name,
@@ -19,6 +19,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
   isDescriptionHidden,
   label,
   control,
+  columnIndex,
 }: DropdownAdapterProps<FormValues>) => {
   const {
     field: { onChange, onBlur, name: fieldName, value },
@@ -58,6 +59,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
       errorMessage={fieldErrorMessage}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
+      columnIndex={columnIndex}
     />
   );
 };

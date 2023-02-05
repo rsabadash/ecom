@@ -4,7 +4,14 @@ import { TextboxAdapterProps } from '../TextboxAdapter';
 export type MultiLanguageTextboxAdapterProps<FormValues extends FieldValues> =
   Omit<
     TextboxAdapterProps<FormValues>,
-    'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'placeholder'
+    | 'onChange'
+    | 'onBlur'
+    | 'value'
+    | 'name'
+    | 'isValid'
+    | 'placeholder'
+    | 'formatError'
+    | 'errorMessage'
   > & {
     placeholderTranslation: string;
     isToggleHidden?: boolean;

@@ -1,7 +1,7 @@
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
-import { Foreground } from '../../components/Foreground';
+import { Foreground } from '../../layouts/Foreground';
 import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from '../../components/IntlProvider';

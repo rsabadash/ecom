@@ -14,7 +14,7 @@ import {
   CONTEXT_NAME,
   REFRESH_TOKEN_KEY,
 } from './constants';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useLocalStorage } from '../../hooks';
 import { useSignIn } from './hooks';
 import { sharedBus } from '../../utils/sharedBus';
 import { routes } from '../../common/constants/routes';

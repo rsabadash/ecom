@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import { Textbox } from '../../Fields/Textbox';
 import { TextboxFormFieldProps } from './types';
-import { FieldLabel } from '../FieldLabel';
-import { FieldDescription } from '../FieldDescription';
-import classes from './styles/index.module.css';
+import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
 
 export const TextboxFormField: FC<TextboxFormFieldProps> = ({
   name,
@@ -15,23 +13,27 @@ export const TextboxFormField: FC<TextboxFormFieldProps> = ({
   isDisabled,
   onBlur,
   onChange,
+  valueGetter,
+  formatValue,
   errorMessage,
   isDescriptionHidden,
   label,
+  columnIndex,
 }) => {
-  const descriptionType = errorMessage ? 'error' : undefined;
-  const descriptionMessage = errorMessage ? errorMessage : placeholder;
   const describedById = `${name}Description`;
 
   return (
-    <div className={classes.formFieldWrapper}>
-      <FieldLabel
-        label={label}
-        htmlFor={name}
-        isValid={isValid}
-        isReadOnly={isReadOnly}
-        isRequired={isRequired}
-      />
+    <CommonFormFieldsWrapper
+      name={name}
+      label={label}
+      placeholder={placeholder}
+      isValid={isValid}
+      isReadOnly={isReadOnly}
+      isRequired={isRequired}
+      isDescriptionHidden={isDescriptionHidden}
+      errorMessage={errorMessage}
+      columnIndex={columnIndex}
+    >
       <Textbox
         name={name}
         value={value}
@@ -42,14 +44,9 @@ export const TextboxFormField: FC<TextboxFormFieldProps> = ({
         ariaDescribedBy={describedById}
         onBlur={onBlur}
         onChange={onChange}
+        valueGetter={valueGetter}
+        formatValue={formatValue}
       />
-      {!isDescriptionHidden && descriptionMessage && (
-        <FieldDescription
-          id={describedById}
-          type={descriptionType}
-          message={descriptionMessage}
-        />
-      )}
-    </div>
+    </CommonFormFieldsWrapper>
   );
 };

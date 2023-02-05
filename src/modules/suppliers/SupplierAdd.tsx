@@ -1,7 +1,7 @@
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
-import { Foreground } from '../../components/Foreground';
+import { Foreground } from '../../layouts/Foreground';
 import { useTranslation } from '../../components/IntlProvider';
 import { SupplierForm } from './SupplierForm';
 

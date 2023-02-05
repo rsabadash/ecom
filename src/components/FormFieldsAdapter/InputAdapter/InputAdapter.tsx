@@ -1,8 +1,8 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { InputAdapterProps } from './types';
-import { InputFormField } from '../../FormFields';
-import { InputValue } from '../../Fields/Input';
 import { useTranslation } from '../../IntlProvider';
+import { InputFormField } from '../../FormFields';
+import { InputAdapterProps } from './types';
+import { InputValue } from '../../Fields/Input';
 
 export const InputAdapter = <FormValues extends FieldValues>({
   name,
@@ -17,6 +17,7 @@ export const InputAdapter = <FormValues extends FieldValues>({
   isDescriptionHidden,
   label,
   control,
+  columnIndex,
 }: InputAdapterProps<FormValues>) => {
   const {
     field: { onChange, onBlur, name: fieldName, value },
@@ -54,6 +55,7 @@ export const InputAdapter = <FormValues extends FieldValues>({
       errorMessage={fieldErrorMessage}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
+      columnIndex={columnIndex}
     />
   );
 };

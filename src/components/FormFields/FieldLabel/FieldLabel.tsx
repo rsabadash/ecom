@@ -11,6 +11,7 @@ export const FieldLabel: FC<FieldLabelProps> = ({
   isValid,
   isReadOnly,
   isRequired,
+  fieldLabelClassName,
 }) => {
   const { translate } = useTranslation();
   const itemLabel =
@@ -18,10 +19,14 @@ export const FieldLabel: FC<FieldLabelProps> = ({
       ? `${label} (${translate('required').toLowerCase()})`
       : label;
 
-  const fieldLabelClassNames = clsx(classes.fieldLabel, {
-    [classes.fieldLabel_error]: !isValid,
-    [classes.fieldLabel_readOnly]: isReadOnly,
-  });
+  const fieldLabelClassNames = clsx(
+    classes.fieldLabel,
+    {
+      [classes.fieldLabel_error]: !isValid,
+      [classes.fieldLabel_readOnly]: isReadOnly,
+    },
+    fieldLabelClassName,
+  );
 
   return (
     <Label htmlFor={htmlFor} labelClassName={fieldLabelClassNames}>

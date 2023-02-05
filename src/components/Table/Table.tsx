@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Foreground } from '../Foreground';
+import { Foreground } from '../../layouts/Foreground';
 import { TableBodyRowProps, TableProps } from './types';
 import { INDEX_ABSENCE_FOCUS, INITIAL_FOCUS_INDEX } from './constants';
 import { EventKeys } from '../../common/enums/events';

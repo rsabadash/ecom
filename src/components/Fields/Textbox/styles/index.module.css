@@ -5,6 +5,7 @@
   padding-block: 0.85em;
   padding-inline-start: 0.85em;
   padding-inline-end: 0.40em;
+  width: 100%;
 }
 
 .textboxWrapper:focus-within {

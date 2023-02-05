@@ -1,6 +1,7 @@
 .fieldDescription {
   font-size: var(--font-size-tiny);
   color: var(--text-color-secondary);
+  margin-top: 0.5rem;
 }
 
 .fieldDescription_error {

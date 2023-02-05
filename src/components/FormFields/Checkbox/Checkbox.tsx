@@ -3,6 +3,7 @@ import { Checkbox } from '../../Fields/Checkbox';
 import { CheckboxFormFieldProps } from './types';
 import { FieldLabel } from '../FieldLabel';
 import { FieldDescription } from '../FieldDescription';
+import { useGridInlineStyles } from '../../GridRowBalancer';
 import classes from './styles/index.module.css';
 
 export const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
@@ -18,40 +19,47 @@ export const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
   errorMessage,
   isDescriptionHidden,
   label,
+  columnIndex,
 }) => {
+  const [row1, row2] = useGridInlineStyles(columnIndex);
+
   const descriptionType = errorMessage ? 'error' : undefined;
   const descriptionMessage = errorMessage ? errorMessage : placeholder;
   const describedById = `${name}Description`;
 
   return (
     <div className={classes.formFieldWrapper}>
-      <div className={classes.checkboxLabelWrapper}>
-        <Checkbox
-          name={name}
-          isChecked={isChecked}
-          isValid={isValid}
-          isReadOnly={isReadOnly}
-          isRequired={isRequired}
-          isDisabled={isDisabled}
-          ariaDescribedBy={describedById}
-          onBlur={onBlur}
-          onChange={onChange}
-        />
-        <FieldLabel
-          label={label}
-          htmlFor={name}
-          isValid={isValid}
-          isReadOnly={isReadOnly}
-          isRequired={isRequired}
-        />
+      <div style={row1} />
+      <div style={row2}>
+        <div className={classes.checkboxLabelWrapper}>
+          <Checkbox
+            name={name}
+            isChecked={isChecked}
+            isValid={isValid}
+            isReadOnly={isReadOnly}
+            isRequired={isRequired}
+            isDisabled={isDisabled}
+            ariaDescribedBy={describedById}
+            onBlur={onBlur}
+            onChange={onChange}
+          />
+          <FieldLabel
+            label={label}
+            htmlFor={name}
+            isValid={isValid}
+            isReadOnly={isReadOnly}
+            isRequired={isRequired}
+            fieldLabelClassName={classes.checkboxLabel}
+          />
+        </div>
+        {!isDescriptionHidden && descriptionMessage && (
+          <FieldDescription
+            id={describedById}
+            type={descriptionType}
+            message={descriptionMessage}
+          />
+        )}
       </div>
-      {!isDescriptionHidden && descriptionMessage && (
-        <FieldDescription
-          id={describedById}
-          type={descriptionType}
-          message={descriptionMessage}
-        />
-      )}
     </div>
   );
 };

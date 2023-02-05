@@ -4,7 +4,14 @@ import { InputAdapterProps } from '../InputAdapter';
 export type MultiLanguageInputAdapterProps<FormValues extends FieldValues> =
   Omit<
     InputAdapterProps<FormValues>,
-    'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'placeholder'
+    | 'onChange'
+    | 'onBlur'
+    | 'value'
+    | 'name'
+    | 'isValid'
+    | 'placeholder'
+    | 'formatError'
+    | 'type'
   > & {
     placeholderTranslation: string;
     isToggleHidden?: boolean;

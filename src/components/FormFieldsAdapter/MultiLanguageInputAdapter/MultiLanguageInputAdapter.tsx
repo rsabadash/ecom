@@ -1,13 +1,12 @@
 import { FieldValues, Path, useFormState } from 'react-hook-form';
-import { MultiLanguageInputAdapterProps } from './types';
-import { addLanguageToTranslation } from '../utils';
-import { InputAdapter } from '../InputAdapter';
-import { MultiLanguage } from '../../Fields/MultiLanguage';
 import { DEFAULT_LANGUAGE, useTranslation } from '../../IntlProvider';
+import { InputAdapter, InputWithCollapseAdapter } from '../InputAdapter';
+import { MultiLanguage } from '../../MultiLanguage';
+import { MultiLanguageInputAdapterProps } from './types';
+import { useAddLanguageToTranslation } from '../hooks';
 
 export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
   name,
-  type,
   placeholderTranslation,
   isReadOnly,
   isRequired,
@@ -20,8 +19,10 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
   isRequiredAllLanguages,
   label,
   control,
+  columnIndex,
 }: MultiLanguageInputAdapterProps<FormValues>) => {
   const { translate } = useTranslation();
+  const { addLanguageToTranslation } = useAddLanguageToTranslation();
   const { errors } = useFormState<FormValues>({ control });
 
   const hasMultiLanguageError =
@@ -32,49 +33,63 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
       (errorLanguage) => errorLanguage !== DEFAULT_LANGUAGE,
     );
 
+  const ariaControls = `${name}Controls`;
   const ariaLabelValue = translate('translations.field', {
     field: typeof label === 'string' ? label : name,
   });
 
+  const commonProps = {
+    isReadOnly,
+    isDisabled,
+    valueGetter,
+    formatValue,
+    isDescriptionHidden,
+    control,
+  };
+
   return (
-    <div>
-      <MultiLanguage
-        name={name}
-        forceExpand={hasMultiLanguageError}
-        isInitiallyExpand={isInitiallyExpand}
-        isToggleHidden={isToggleHidden}
-        ariaLabel={ariaLabelValue}
-        ariaControls={`${name}Controls`}
-        renderComponent={({ language, languagePostfixName }) => (
-          <InputAdapter
-            name={languagePostfixName as Path<FormValues>}
-            type={type}
-            placeholder={addLanguageToTranslation({
-              translation: placeholderTranslation,
-              language,
-              translate,
-            })}
-            isReadOnly={isReadOnly}
-            isRequired={
-              isRequiredAllLanguages ||
-              (DEFAULT_LANGUAGE === language && isRequired)
-            }
-            isDisabled={isDisabled}
-            valueGetter={valueGetter}
-            formatValue={formatValue}
-            formatError={(error) =>
-              addLanguageToTranslation({
-                translation: error.message,
-                language,
-                translate,
-              })
-            }
-            isDescriptionHidden={isDescriptionHidden}
-            label={`${label} (${translate(`${language}.adjective`)})`}
-            control={control}
-          />
-        )}
-      />
-    </div>
+    <MultiLanguage
+      columnIndex={columnIndex}
+      collapseBodyId={ariaControls}
+      renderVisibleComponent={({ language, collapseBodyRef }) => (
+        <InputWithCollapseAdapter
+          {...commonProps}
+          name={`${name}.${language}` as Path<FormValues>}
+          isRequired={isRequired}
+          placeholder={addLanguageToTranslation({
+            translation: placeholderTranslation,
+            language,
+          })}
+          formatError={({ message }) =>
+            addLanguageToTranslation({ translation: message, language })
+          }
+          label={`${label} (${translate(`${language}.adjective`)})`}
+          columnIndex={columnIndex}
+          ariaLabel={ariaLabelValue}
+          ariaControls={ariaControls}
+          forceExpand={hasMultiLanguageError}
+          isToggleHidden={isToggleHidden}
+          isInitiallyExpand={isInitiallyExpand}
+          collapseBodyRef={collapseBodyRef}
+        />
+      )}
+      renderHiddenComponent={({ language }) => (
+        <InputAdapter
+          key={language}
+          {...commonProps}
+          name={`${name}.${language}` as Path<FormValues>}
+          isRequired={isRequiredAllLanguages}
+          placeholder={addLanguageToTranslation({
+            translation: placeholderTranslation,
+            language,
+          })}
+          formatError={({ message }) =>
+            addLanguageToTranslation({ translation: message, language })
+          }
+          label={`${label} (${translate(`${language}.adjective`)})`}
+          columnIndex={0}
+        />
+      )}
+    />
   );
 };

@@ -1,26 +1,19 @@
-.collapse {
-}
-
-.collapse__header {
+.collapseHeader {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.collapse__headerContent {
-  width: 100%;
-}
-
-.collapse__switcher path {
+.collapseButton path {
   fill: var(--text-color);
 }
 
-.collapse__switcher {
+.collapseButton {
   background-color: transparent;
   border: none;
 }
 
-.collapse__body {
+.collapseBody {
   overflow: hidden;
   transition: height 0.3s ease-out;
   height: 0;

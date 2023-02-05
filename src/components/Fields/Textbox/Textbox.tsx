@@ -1,6 +1,7 @@
-import { FC, useEffect, useRef } from 'react';
+import { ChangeEvent, FC, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { TextboxProps } from './types';
+import { commonFormatValue, serializeValue } from './utils';
 import classes from './styles/index.module.css';
 
 export const Textbox: FC<TextboxProps> = ({
@@ -17,7 +18,22 @@ export const Textbox: FC<TextboxProps> = ({
   ariaDescribedBy,
   onBlur,
   onChange,
+  valueGetter,
+  formatValue,
 }) => {
+  const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
+
+  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    if (onChange) {
+      const value = e.target.value;
+      const formattedValue = formatValue
+        ? formatValue(value)
+        : commonFormatValue(value);
+
+      onChange(formattedValue);
+    }
+  };
+
   const textBoxRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -45,6 +61,7 @@ export const Textbox: FC<TextboxProps> = ({
         ref={textBoxRef}
         id={id || name}
         name={name}
+        value={currentValue}
         readOnly={isReadOnly}
         required={isRequired}
         disabled={isDisabled}
@@ -55,10 +72,9 @@ export const Textbox: FC<TextboxProps> = ({
         aria-labelledby={ariaLabelledBy} // which element has a label for an input
         aria-describedby={ariaDescribedBy || placeholder} // which element describe input
         onBlur={onBlur}
-        onChange={onChange}
+        onChange={handleOnChange}
         className={textboxClassName}
         tabIndex={isReadOnly ? -1 : 0}
-        value={value || ''}
       />
     </div>
   );

@@ -1,6 +1,8 @@
-import { ChangeEventHandler, FocusEventHandler } from 'react';
+import { FocusEventHandler } from 'react';
 
 export type TextboxValue = string;
+
+export type TextboxFormValue = string | number | null | undefined;
 
 export type TextboxProps = {
   id?: string;
@@ -15,5 +17,7 @@ export type TextboxProps = {
   ariaLabelledBy?: string;
   ariaDescribedBy?: string;
   onBlur?: FocusEventHandler;
-  onChange?: ChangeEventHandler;
+  onChange?: (value: TextboxFormValue) => void;
+  valueGetter?: (value: any) => TextboxValue;
+  formatValue?: (value: any) => TextboxFormValue;
 };
