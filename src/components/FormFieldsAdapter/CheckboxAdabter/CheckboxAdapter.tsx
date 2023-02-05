@@ -14,6 +14,7 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
   isDescriptionHidden,
   label,
   control,
+  columnIndex,
 }: CheckboxAdapterProps<FormValues>) => {
   const {
     field: { onChange, onBlur, name: fieldName, value },
@@ -48,6 +49,7 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
       errorMessage={fieldErrorMessage}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
+      columnIndex={columnIndex}
     />
   );
 };

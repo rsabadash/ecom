@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import { Input } from '../../Fields/Input';
 import { InputFormFieldProps } from './types';
-import { FieldLabel } from '../FieldLabel';
-import { FieldDescription } from '../FieldDescription';
-import classes from './styles/index.module.css';
+import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
 
 export const InputFormField: FC<InputFormFieldProps> = ({
   name,
@@ -21,20 +19,22 @@ export const InputFormField: FC<InputFormFieldProps> = ({
   errorMessage,
   isDescriptionHidden,
   label,
+  columnIndex,
 }) => {
-  const descriptionType = errorMessage ? 'error' : undefined;
-  const descriptionMessage = errorMessage ? errorMessage : placeholder;
   const describedById = `${name}Description`;
 
   return (
-    <div className={classes.formFieldWrapper}>
-      <FieldLabel
-        label={label}
-        htmlFor={name}
-        isValid={isValid}
-        isReadOnly={isReadOnly}
-        isRequired={isRequired}
-      />
+    <CommonFormFieldsWrapper
+      name={name}
+      label={label}
+      placeholder={placeholder}
+      isValid={isValid}
+      isReadOnly={isReadOnly}
+      isRequired={isRequired}
+      isDescriptionHidden={isDescriptionHidden}
+      errorMessage={errorMessage}
+      columnIndex={columnIndex}
+    >
       <Input
         name={name}
         type={type}
@@ -49,13 +49,6 @@ export const InputFormField: FC<InputFormFieldProps> = ({
         valueGetter={valueGetter}
         formatValue={formatValue}
       />
-      {!isDescriptionHidden && descriptionMessage && (
-        <FieldDescription
-          id={describedById}
-          type={descriptionType}
-          message={descriptionMessage}
-        />
-      )}
-    </div>
+    </CommonFormFieldsWrapper>
   );
 };

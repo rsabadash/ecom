@@ -1,10 +1,10 @@
 import {
-  UseOutsideElementClickArgs,
+  UseOutsideElementClickProps,
   useOutsideElementClick,
 } from '../useOutsideElementClick';
 import { renderHook, fireEvent } from '@testing-library/react';
 
-const initHook = (props: UseOutsideElementClickArgs) => {
+const initHook = (props: UseOutsideElementClickProps) => {
   return renderHook(useOutsideElementClick, {
     initialProps: props,
   });

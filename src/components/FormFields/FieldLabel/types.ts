@@ -6,4 +6,5 @@ export type FieldLabelProps = {
   isValid?: boolean;
   isReadOnly?: boolean;
   isRequired?: boolean;
+  fieldLabelClassName?: string;
 };

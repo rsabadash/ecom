@@ -1,2 +1,6 @@
 export { TextboxFormField } from './Textbox';
-export type { TextboxFormFieldProps } from './types';
+export { TextboxWithCollapseFormField } from './TextboxWithCollapse';
+export type {
+  TextboxFormFieldProps,
+  TextboxWithCollapseFormFieldProps,
+} from './types';

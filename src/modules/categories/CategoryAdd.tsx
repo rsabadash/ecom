@@ -3,7 +3,7 @@ import { useTranslation } from '../../components/IntlProvider';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
 import { CategoryForm } from './CategoryForm';
-import { Foreground } from '../../components/Foreground';
+import { Foreground } from '../../layouts/Foreground';
 
 const CategoryAdd = () => {
   const { translate } = useTranslation();

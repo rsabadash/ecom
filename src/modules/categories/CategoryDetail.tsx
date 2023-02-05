@@ -9,7 +9,7 @@ import {
 } from './types';
 import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
 import { useTranslation } from '../../components/IntlProvider';
-import { Foreground } from '../../components/Foreground';
+import { Foreground } from '../../layouts/Foreground';
 import { endpoints } from '../../common/constants/api';
 import { routes } from '../../common/constants/routes';
 import { CategoryForm } from './CategoryForm';

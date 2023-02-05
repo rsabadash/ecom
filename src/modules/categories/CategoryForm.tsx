@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
+import { GridFullWidth } from '../../layouts/Grid';
 import { useCachedAPI } from '../../hooks';
 import { useTranslation } from '../../components/IntlProvider';
 import {
@@ -14,6 +14,7 @@ import { endpoints, path } from '../../common/constants/api';
 import { DropdownItem } from '../../components/Fields/Dropdown';
 import { Form } from '../../components/FormFields';
 import { useCategoryForm, useCategoryFormSubmit } from './hooks';
+import { GridRowBalancer } from '../../components/GridRowBalancer';
 
 export const CategoryForm: FC<CategoryFormProps> = ({
   id,
@@ -38,48 +39,45 @@ export const CategoryForm: FC<CategoryFormProps> = ({
 
   return (
     <Form onSubmit={handleSubmit}>
-      <GridAutoFit>
+      <GridRowBalancer columns={2} elementRows={4}>
+        <MultiLanguageInputAdapter
+          isRequired
+          isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
+          name={categoryFormFields.name}
+          placeholderTranslation="category.name.fillIn"
+          label={translate('category.name')}
+          control={control}
+          columnIndex={1}
+        />
+        <DropdownAdapter
+          hasMultiselect
+          isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
+          name={categoryFormFields.parentIds}
+          items={categoriesDropdownList}
+          placeholder={translate('category.parent.select')}
+          label={translate('category.parent')}
+          control={control}
+          columnIndex={2}
+        />
+        <CheckboxAdapter
+          isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
+          name={categoryFormFields.isActive}
+          label={translate('category.active')}
+          placeholder={translate('category.active.description')}
+          control={control}
+          columnIndex={3}
+        />
+      </GridRowBalancer>
+      {!isReadOnly && (
         <GridFullWidth>
-          <MultiLanguageInputAdapter
-            isRequired
-            isReadOnly={isReadOnly}
-            isDescriptionHidden={isReadOnly}
-            name={categoryFormFields.name}
-            placeholderTranslation="category.name.fillIn"
-            label={translate('category.name')}
-            control={control}
-          />
+          <Button variant="primary" type="submit" size="l">
+            {shouldUpdateCategory ? translate('update') : translate('add')}
+          </Button>
         </GridFullWidth>
-        <GridFullWidth>
-          <DropdownAdapter
-            hasMultiselect
-            isReadOnly={isReadOnly}
-            isDescriptionHidden={isReadOnly}
-            name={categoryFormFields.parentIds}
-            items={categoriesDropdownList}
-            placeholder={translate('category.parent.select')}
-            label={translate('category.parent')}
-            control={control}
-          />
-        </GridFullWidth>
-        <GridFullWidth>
-          <CheckboxAdapter
-            isReadOnly={isReadOnly}
-            isDescriptionHidden={isReadOnly}
-            name={categoryFormFields.isActive}
-            label={translate('category.active')}
-            placeholder={translate('category.active.description')}
-            control={control}
-          />
-        </GridFullWidth>
-        {!isReadOnly && (
-          <GridFullWidth>
-            <Button variant="primary" type="submit" size="l">
-              {shouldUpdateCategory ? translate('update') : translate('add')}
-            </Button>
-          </GridFullWidth>
-        )}
-      </GridAutoFit>
+      )}
     </Form>
   );
 };

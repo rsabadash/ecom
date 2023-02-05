@@ -1,5 +1,4 @@
-.formFieldWrapper {
-  display: grid;
-  gap: 0.4em;
-  font-size: 1rem;
+.fieldWithCollapse {
+    display: flex;
+    grid-column-gap: 1.5rem;
 }

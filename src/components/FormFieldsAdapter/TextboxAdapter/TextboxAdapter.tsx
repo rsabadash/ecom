@@ -1,8 +1,8 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { TextboxAdapterProps } from './types';
-import { TextboxFormField } from '../../FormFields';
-import { TextboxValue } from '../../Fields/Textbox';
 import { useTranslation } from '../../IntlProvider';
+import { TextboxFormField } from '../../FormFields';
+import { TextboxAdapterProps } from './types';
+import { TextboxValue } from '../../Fields/Textbox';
 
 export const TextboxAdapter = <FormValues extends FieldValues>({
   name,
@@ -10,10 +10,13 @@ export const TextboxAdapter = <FormValues extends FieldValues>({
   isReadOnly,
   isRequired,
   isDisabled,
+  valueGetter,
+  formatValue,
   formatError,
   isDescriptionHidden,
   label,
   control,
+  columnIndex,
 }: TextboxAdapterProps<FormValues>) => {
   const {
     field: { onChange, onBlur, name: fieldName, value },
@@ -45,9 +48,12 @@ export const TextboxAdapter = <FormValues extends FieldValues>({
       isDisabled={isDisabled}
       onBlur={onBlur}
       onChange={onChange}
+      valueGetter={valueGetter}
+      formatValue={formatValue}
       errorMessage={fieldErrorMessage}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
+      columnIndex={columnIndex}
     />
   );
 };

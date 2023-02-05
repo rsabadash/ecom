@@ -1,11 +1,13 @@
 .formFieldWrapper {
-  display: grid;
-  gap: 0.4em;
-  font-size: 1rem;
+  display: contents;
 }
 
 .checkboxLabelWrapper {
   display: flex;
   align-items: center;
-  gap: 0.4em;
+  gap: 0.5em;
+}
+
+.checkboxLabel {
+  margin: 0;
 }

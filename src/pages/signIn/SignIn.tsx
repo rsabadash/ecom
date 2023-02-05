@@ -1,4 +1,4 @@
-import { Foreground } from '../../components/Foreground';
+import { Foreground } from '../../layouts/Foreground';
 import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
 import { Form } from '../../components/FormFields';
 import { InputAdapter } from '../../components/FormFieldsAdapter';
