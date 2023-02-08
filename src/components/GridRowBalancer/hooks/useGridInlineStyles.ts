@@ -20,7 +20,6 @@ export const useGridInlineStyles: UseGridInlineStyles = (columnIndex) => {
   return useMemo(
     () =>
       elementRowIndexes.map((elementRowIndex, index) => {
-        console.log(marginTop);
         return {
           gridRow: elementRowIndex,
           gridColumn: currentColumnIndex,
