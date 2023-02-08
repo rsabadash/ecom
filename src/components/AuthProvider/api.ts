@@ -8,6 +8,7 @@ import { POST } from '../../utils/api';
 import { endpoints } from '../../common/constants/api';
 import { LocalStorageService } from '../../services';
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from './constants';
+import { sharedBus } from '../../utils/sharedBus';
 
 export const signInApi = async (
   data: SignInData,
@@ -30,6 +31,8 @@ export const refreshTokenApi = async (): Promise<void> => {
         data: {
           refreshToken: refresh,
         },
+        retry: 0,
+        onError: sharedBus.methods.signOut,
       },
     );
 
