@@ -108,8 +108,6 @@ export class ApiService implements ApiServiceInterface {
       if (onError) {
         await onError(error);
       }
-
-      return undefined;
     }
 
     const newError: any = new Error(error.message);

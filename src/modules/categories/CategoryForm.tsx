@@ -21,8 +21,12 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   isReadOnly,
   defaultValues,
 }) => {
+  const dropdownCategoriesUrl = id
+    ? `${endpoints.categories.root}${path.dropdownList}?_id=${id}`
+    : `${endpoints.categories.root}${path.dropdownList}`;
+
   const { data: categoriesDropdownList } = useCachedAPI<DropdownItem[]>(
-    `${endpoints.categories.root}${path.dropdownList}`,
+    dropdownCategoriesUrl,
   );
 
   const { translate } = useTranslation();

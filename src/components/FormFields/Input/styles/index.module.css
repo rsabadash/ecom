@@ -2,3 +2,8 @@
     display: flex;
     grid-column-gap: 1.5rem;
 }
+
+.fieldWithCollapseButton {
+    padding-top: 0;
+    padding-bottom: 0;
+}
