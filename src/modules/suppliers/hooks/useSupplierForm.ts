@@ -24,9 +24,20 @@ type UseSupplierFormReturn = Pick<
 type UseSupplierForm = (props: UseSupplierFormProps) => UseSupplierFormReturn;
 
 const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
-  [supplierFormFields.name]: yup.string().required().min(3).max(50),
-  [supplierFormFields.note]: yup.string().max(1024),
-  [supplierFormFields.phoneNumber]: yup.string().length(10).nullable(),
+  [supplierFormFields.name]: yup
+    .string()
+    .nullable()
+    .required('suppliers.name.error.required')
+    .min(3)
+    .max(50),
+  [supplierFormFields.note]: yup
+    .string()
+    .nullable()
+    .max(1024, 'suppliers.name.error.max'),
+  [supplierFormFields.phoneNumber]: yup
+    .string()
+    .nullable()
+    .length(10, 'suppliers.phoneNumber.error.length'),
 });
 
 export const useSupplierForm: UseSupplierForm = ({
