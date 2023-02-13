@@ -33,11 +33,11 @@ const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
   [supplierFormFields.note]: yup
     .string()
     .nullable()
-    .max(1024, 'suppliers.name.error.max'),
+    .max(1024, 'suppliers.note.error.max'),
   [supplierFormFields.phoneNumber]: yup
     .string()
     .nullable()
-    .length(10, 'suppliers.phoneNumber.error.length'),
+    .length(10, 'suppliers.phone.error.length'),
 });
 
 export const useSupplierForm: UseSupplierForm = ({

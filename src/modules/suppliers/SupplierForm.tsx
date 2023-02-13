@@ -50,7 +50,7 @@ export const SupplierForm: FC<SupplierFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={supplierFormFields.phoneNumber}
-          label={translate('suppliers.phoneNumber')}
+          label={translate('suppliers.phone')}
           control={control}
           columnIndex={3}
         />
