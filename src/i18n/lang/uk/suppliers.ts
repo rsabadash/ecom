@@ -7,5 +7,4 @@ export const suppliers = {
   'suppliers.phone.error.length': 'Номер телефона має містити 10 цифр',
   'suppliers.note': 'Нотатки',
   'suppliers.note.error.max': 'Нотатка має містити не більше 1024 символів',
-  'suppliers.bill': 'Рахунок',
 };

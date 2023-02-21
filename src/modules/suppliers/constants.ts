@@ -6,5 +6,4 @@ export const supplierFormFields: SupplierFormFields = {
   name: 'name',
   note: 'note',
   phoneNumber: 'phoneNumber',
-  accountId: 'accountId',
 };
