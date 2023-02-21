@@ -31,4 +31,5 @@ export type TableProps = {
   rowCustomRender?: (args: RowCustomRenderArgs) => ReactNode;
   isRowInteractive?: boolean;
   isRowLinkInteractive?: boolean;
+  tableRowRenderKey?: string;
 };

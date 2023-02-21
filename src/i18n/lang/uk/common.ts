@@ -8,6 +8,7 @@ export const common = {
   cancel: 'Відмінити',
   notSelected: 'Не обрано',
   signOut: 'Вийти',
+  sortOrder: 'Порядок сортування',
 
   'uk.adjective': 'українськю',
   'en.adjective': 'англійською',

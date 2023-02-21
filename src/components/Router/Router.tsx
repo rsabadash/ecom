@@ -10,6 +10,11 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
 import { SignedInRedirect } from './SignedInRedirect';
+import Attributes from '../../modules/attributes/list/Attributes';
+import AttributeAdd from '../../modules/attributes/list/AttributeAdd';
+import AttributeDetail from '../../modules/attributes/detail/AttributeDetail';
+import AttributeVariantDetail from '../../modules/attributes/detail/AttributeVariantDetail';
+import AttributeVariantAdd from '../../modules/attributes/detail/AttributeVariantAdd';
 // import { RoleGuard } from '../RoleGuard';
 // import { Role } from '../UserProvider/enums';
 
@@ -102,8 +107,47 @@ export const router = createBrowserRouter(
             </Suspense>
           }
         />
+        <Route
+          path={routes.attributes.root}
+          element={
+            <Suspense fallback="Route Attributes">
+              <Attributes />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.add}
+          element={
+            <Suspense fallback="Route Attribute add">
+              <AttributeAdd />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.detail}
+          element={
+            <Suspense fallback="Route Attribute detail">
+              <AttributeDetail />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.variantAdd}
+          element={
+            <Suspense fallback="Route Attribute variant add detail">
+              <AttributeVariantAdd />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.variantDetail}
+          element={
+            <Suspense fallback="Route Attribute variant detail">
+              <AttributeVariantDetail />
+            </Suspense>
+          }
+        />
       </Route>
-
       <Route
         element={
           <Suspense fallback="Rout Public">

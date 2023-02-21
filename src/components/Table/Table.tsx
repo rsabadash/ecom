@@ -23,6 +23,7 @@ export const Table: FC<TableProps> = ({
   rowCustomRender,
   // isRowInteractive, TODO onClick initialization by pressing Enter
   isRowLinkInteractive,
+  tableRowRenderKey = '_id',
 }) => {
   const tableBodyRef = useRef<HTMLDivElement>(null);
   const [focusIndex, setFocusIndex] = useState<number>(INITIAL_FOCUS_INDEX);
@@ -164,7 +165,7 @@ export const Table: FC<TableProps> = ({
 
               return (
                 <div
-                  key={`${rowValue}${item._id}${title}`}
+                  key={`${rowValue}${item[tableRowRenderKey]}${title}`}
                   style={{ minWidth: width }}
                   className={classes.table__rowItem}
                   role="cell"
