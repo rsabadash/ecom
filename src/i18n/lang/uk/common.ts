@@ -6,6 +6,8 @@ export const common = {
   edit: 'Редагувати',
   delete: 'Видалити',
   cancel: 'Відмінити',
+  save: 'Зберегти',
+  generate: 'Згенерувати',
   notSelected: 'Не обрано',
   signOut: 'Вийти',
 

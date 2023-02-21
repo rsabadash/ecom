@@ -1,0 +1,30 @@
+.collapseWrapper {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.collapseHeader {
+  padding: 0.75rem;
+  font-size: var(--font-size-regular);
+}
+
+.variantsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--checkboxSize);
+  padding: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.productFieldGroup {
+  margin-top: 1.5rem;
+}
+
+.productFieldGroup:first-of-type {
+  margin-top: 0;
+}
+
+.generatedProductFieldTags {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}

@@ -1,0 +1,7 @@
+.formContent {
+  margin-top: 1.5rem;
+}
+
+.formContent:first-of-type {
+  margin-top: 0;
+}

@@ -1,3 +1,4 @@
+export { CheckboxAdapter } from './CheckboxAdabter';
 export { DropdownAdapter } from './DropdownAdapter';
 export { InputAdapter } from './InputAdapter';
 export { MultiLanguageInputAdapter } from './MultiLanguageInputAdapter';

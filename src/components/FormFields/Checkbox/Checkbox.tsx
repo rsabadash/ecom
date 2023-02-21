@@ -28,7 +28,11 @@ export const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
   const describedById = `${name}Description`;
 
   return (
-    <div className={classes.formFieldWrapper}>
+    <div
+      className={
+        columnIndex !== undefined ? classes.formFieldWrapper : undefined
+      }
+    >
       <div style={row1} />
       <div style={row2}>
         <div className={classes.checkboxLabelWrapper}>

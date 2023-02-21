@@ -25,6 +25,15 @@ const SuppliersDetail = lazy(
   () => import('../../modules/suppliers/SupplierDetail'),
 );
 const SuppliersAdd = lazy(() => import('../../modules/suppliers/SupplierAdd'));
+const WarehouseProductsList = lazy(
+  () => import('../../modules/warehouseProducts/List/WarehouseProductsList'),
+);
+const WarehouseProductsGenerator = lazy(
+  () =>
+    import(
+      '../../modules/warehouseProducts/Generator/WarehouseProductsGenerator'
+    ),
+);
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -99,6 +108,22 @@ export const router = createBrowserRouter(
           element={
             <Suspense fallback="Route Suppliers add">
               <SuppliersAdd />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouseProducts.root}
+          element={
+            <Suspense fallback="Route Warehouse products">
+              <WarehouseProductsList />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouseProducts.generate}
+          element={
+            <Suspense fallback="Route Warehouse products generator">
+              <WarehouseProductsGenerator />
             </Suspense>
           }
         />

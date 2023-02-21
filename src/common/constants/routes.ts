@@ -12,4 +12,8 @@ export const routes = {
     add: '/suppliers/add',
     detail: '/suppliers/:supplierId',
   },
+  warehouseProducts: {
+    root: '/warehouse-products',
+    generate: '/warehouse-products/generate',
+  },
 };

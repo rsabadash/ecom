@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { FieldValues, useController } from 'react-hook-form';
 import { useTranslation } from '../../IntlProvider';
 import { CheckboxFormField } from '../../FormFields';
@@ -10,6 +11,7 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
   isReadOnly,
   isRequired,
   isDisabled,
+  onChange,
   formatError,
   isDescriptionHidden,
   label,
@@ -17,7 +19,7 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
   columnIndex,
 }: CheckboxAdapterProps<FormValues>) => {
   const {
-    field: { onChange, onBlur, name: fieldName, value },
+    field: { onChange: onFieldChange, onBlur, name: fieldName, value },
     fieldState: { error },
   } = useController<FormValues>({
     name,
@@ -28,6 +30,17 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
   });
 
   const { translate } = useTranslation();
+
+  const handleChange = useCallback(
+    (value: CheckboxValue) => {
+      onFieldChange(value);
+
+      if (onChange) {
+        onChange(value);
+      }
+    },
+    [onFieldChange, onChange],
+  );
 
   const fieldValue = value as CheckboxValue;
   const fieldErrorMessage =
@@ -45,7 +58,7 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
       isRequired={isRequired}
       isDisabled={isDisabled}
       onBlur={onBlur}
-      onChange={onChange}
+      onChange={handleChange}
       errorMessage={fieldErrorMessage}
       isDescriptionHidden={isDescriptionHidden}
       label={label}

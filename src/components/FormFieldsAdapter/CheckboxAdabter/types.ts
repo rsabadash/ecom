@@ -11,5 +11,6 @@ export type CheckboxAdapterProps<FormValues extends FieldValues> = Omit<
   'isChecked' | 'onChange' | 'onBlur' | 'name' | 'isValid' | 'errorMessage'
 > &
   AdapterProps<FormValues> & {
+    onChange?: CheckboxFormFieldProps['onChange'];
     formatError?: (error: FieldError) => undefined | string;
   };

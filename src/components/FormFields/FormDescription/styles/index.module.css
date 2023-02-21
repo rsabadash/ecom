@@ -1,0 +1,6 @@
+.formDescription {
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-small);
+  line-height: 1.5em;
+  margin: 0;
+}
