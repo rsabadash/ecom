@@ -10,7 +10,9 @@ type UseWarehouseProductsGeneratorProductsFormSubmit = () => {
 export const useWarehouseProductsGeneratorProductsFormSubmit: UseWarehouseProductsGeneratorProductsFormSubmit =
   () => {
     const handleFormSubmit = useCallback(
-      async (values: WarehouseProductsGeneratorProductsFromValues) => {
+      async (
+        values: WarehouseProductsGeneratorProductsFromValues,
+      ): Promise<void> => {
         console.log(values);
       },
       [],

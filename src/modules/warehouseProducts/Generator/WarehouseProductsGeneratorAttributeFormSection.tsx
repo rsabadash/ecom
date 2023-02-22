@@ -4,6 +4,7 @@ import {
   WarehouseProductsGeneratorAttributeFormSectionProps,
   Variant,
   VariantVirtualFieldValue,
+  AttributeVirtualFieldValue,
 } from './types';
 import { CheckboxValue } from '../../../components/Fields/Checkbox/types';
 import { warehouseProductsGeneratorFormFields } from './constants';
@@ -16,8 +17,23 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
 > = ({ attribute, setValue, getValues, control }) => {
   const { language } = useTranslation();
 
+  const removeEmptyAttribute = useCallback(
+    (value: Variant): void => {
+      const { attributesVirtual } = warehouseProductsGeneratorFormFields;
+
+      const allAttributes = getValues(
+        attributesVirtual,
+      ) as AttributeVirtualFieldValue;
+
+      delete allAttributes[value.attributeId];
+
+      setValue(attributesVirtual, allAttributes);
+    },
+    [getValues, setValue],
+  );
+
   const handleChange = useCallback(
-    (isChecked: CheckboxValue, value: Variant) => {
+    (isChecked: CheckboxValue, value: Variant): void => {
       const name = `${warehouseProductsGeneratorFormFields.attributesVirtual}.${value.attributeId}`;
 
       const checkedVariants = getValues(name) as VariantVirtualFieldValue[];
@@ -40,11 +56,15 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
         fieldVale = checkedVariants.filter(
           (variant) => variant.variantId !== value.variantId,
         );
+
+        if (fieldVale.length === 0) {
+          return removeEmptyAttribute(value);
+        }
       }
 
       setValue(name, fieldVale);
     },
-    [getValues, setValue],
+    [getValues, removeEmptyAttribute, setValue],
   );
 
   return (
