@@ -54,14 +54,6 @@ export const SupplierForm: FC<SupplierFormProps> = ({
           control={control}
           columnIndex={3}
         />
-        <InputAdapter
-          isReadOnly={isReadOnly}
-          isDescriptionHidden={isReadOnly}
-          name={supplierFormFields.accountId}
-          label={translate('suppliers.bill')}
-          control={control}
-          columnIndex={4}
-        />
       </GridRowBalancer>
       {!isReadOnly && (
         <GridFullWidth>

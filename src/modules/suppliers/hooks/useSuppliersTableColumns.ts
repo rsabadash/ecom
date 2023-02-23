@@ -17,12 +17,6 @@ export const useSuppliersTableColumns: UseSuppliersTableColumns = () => {
         valueGetter: (value: string) => value,
       },
       {
-        title: translate('suppliers.account'),
-        key: 'accountId',
-        width: '30%',
-        valueGetter: (value: boolean) => (value ? value : '-'),
-      },
-      {
         title: translate('suppliers.phone'),
         key: 'phoneNumber',
         width: '30%',
