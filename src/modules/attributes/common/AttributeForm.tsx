@@ -46,6 +46,7 @@ export const AttributeForm: FC<AttributeFormProps> = ({
         />
         <InputAdapter
           isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
           label={translate('sortOrder')}
           name={attributesFormFields.sortOrder}
           control={control}

@@ -16,7 +16,7 @@ export const useAttributesTableColumns: UseAttributeTableColumns = () => {
       {
         title: translate('attribute.name'),
         key: 'name',
-        width: '30%',
+        width: '50%',
         valueGetter: (value: Translations) => {
           return value[language];
         },

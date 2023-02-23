@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 import {
   RowCustomRenderArgs,
   Table,
@@ -33,15 +33,21 @@ export const AttributesVariantsList: FC<AttributesVariantsListProps> = ({
         row,
         item,
         rowProps,
-      }: RowCustomRenderArgs<AttributeVariant>) => (
-        <Link
-          key={item.variantId}
-          to={`${routes.attributes.variantDetailPath}/${item.variantId}`}
-          {...rowProps}
-        >
-          {row}
-        </Link>
-      )}
+      }: RowCustomRenderArgs<AttributeVariant>) => {
+        const variantDetailPath = generatePath(
+          routes.attributes.variantDetail,
+          {
+            attributeId: item.attributeId,
+            variantId: item.variantId,
+          },
+        );
+
+        return (
+          <Link key={item.variantId} to={variantDetailPath} {...rowProps}>
+            {row}
+          </Link>
+        );
+      }}
     />
   );
 };

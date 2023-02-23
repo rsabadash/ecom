@@ -14,7 +14,7 @@ export const attributes = {
   'attribute.variant': 'Варіант',
   'attribute.sortOrder.description':
     'Порядок відображення атрибутів в списку атрибутів',
-  'attribute.variantCount': 'Кількість варіантів',
+  'attribute.variant.count': 'Кількість варіантів',
   'attribute.variant.name': 'Назва варіанта',
   'attribute.variant.name.fillIn': 'Введіть назву варіанта {language} мовою',
   'attribute.variant.sortOrder.description':

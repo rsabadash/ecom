@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { generatePath, useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
 import { AttributeUrlParams } from './types';
@@ -35,6 +35,10 @@ const AttributeDetail = () => {
   const showAttributeVariantsList =
     attributeDetail?.variants && attributeDetail.variants.length !== 0;
 
+  const variantAddPath = generatePath(routes.attributes.variantAdd, {
+    attributeId,
+  });
+
   return (
     <>
       <Top>
@@ -47,10 +51,7 @@ const AttributeDetail = () => {
               </ButtonLink>
             )}
             {isReadOnly && (
-              <ButtonLink
-                variant="primary"
-                to={`${routes.attributes.root}/${attributeId}/${routes.attributes.variantAddPath}`}
-              >
+              <ButtonLink variant="primary" to={variantAddPath}>
                 {translate('attribute.variant.add')}
               </ButtonLink>
             )}
