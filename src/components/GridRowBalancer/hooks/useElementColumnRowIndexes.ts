@@ -31,7 +31,7 @@ export const useElementColumnRowIndexes: UseElementColumnRowIndexes = (
       return [...Array(elementRows)];
     }
 
-    // List to iterate and define the row index for each row in the element
+    // list to iterate and define the row index for each row in the element
     // For instance: 1, 2, 3 - first row, 4, 5, 6 - second row etc.
     // The list itself - 0, 1, 2
     const elementRowsList = [...Array(elementRows).keys()];

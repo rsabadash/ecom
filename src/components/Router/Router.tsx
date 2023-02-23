@@ -26,12 +26,12 @@ const SuppliersDetail = lazy(
 );
 const SuppliersAdd = lazy(() => import('../../modules/suppliers/SupplierAdd'));
 const WarehouseProductsList = lazy(
-  () => import('../../modules/warehouseProducts/List/WarehouseProductsList'),
+  () => import('../../modules/warehouseProducts/list/WarehouseProductsList'),
 );
 const WarehouseProductsGenerator = lazy(
   () =>
     import(
-      '../../modules/warehouseProducts/Generator/WarehouseProductsGenerator'
+      '../../modules/warehouseProducts/generator/WarehouseProductsGenerator'
     ),
 );
 
