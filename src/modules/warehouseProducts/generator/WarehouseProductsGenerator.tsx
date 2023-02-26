@@ -29,7 +29,7 @@ const WarehouseProductsGenerator = () => {
           {generatedProducts && (
             <Foreground>
               <WarehouseProductsGeneratorProductsForm
-                products={generatedProducts}
+                generatedProducts={generatedProducts}
               />
             </Foreground>
           )}

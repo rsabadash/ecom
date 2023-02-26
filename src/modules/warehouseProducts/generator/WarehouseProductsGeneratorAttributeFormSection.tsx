@@ -16,16 +16,17 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
   WarehouseProductsGeneratorAttributeFormSectionProps
 > = ({ attribute, setValue, getValues, control }) => {
   const { language } = useTranslation();
+  const { _id: attributeId } = attribute;
 
   const removeEmptyAttribute = useCallback(
-    (value: Variant): void => {
+    (id: string): void => {
       const { attributesVirtual } = warehouseProductsGeneratorFormFields;
 
       const allAttributes = getValues(
         attributesVirtual,
       ) as AttributeVirtualFieldValue;
 
-      delete allAttributes[value.attributeId];
+      delete allAttributes[id];
 
       setValue(attributesVirtual, allAttributes);
     },
@@ -34,7 +35,7 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
 
   const handleChange = useCallback(
     (isChecked: CheckboxValue, value: Variant): void => {
-      const name = `${warehouseProductsGeneratorFormFields.attributesVirtual}.${value.attributeId}`;
+      const name = `${warehouseProductsGeneratorFormFields.attributesVirtual}.${attributeId}`;
 
       const checkedVariants = getValues(name) as VariantVirtualFieldValue[];
 
@@ -44,7 +45,7 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
         const newVariant = {
           name: value.name,
           variantId: value.variantId,
-          attributeId: value.attributeId,
+          attributeId: attributeId,
         };
 
         if (Array.isArray(checkedVariants)) {
@@ -58,13 +59,13 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
         );
 
         if (fieldVale.length === 0) {
-          return removeEmptyAttribute(value);
+          return removeEmptyAttribute(attributeId);
         }
       }
 
       setValue(name, fieldVale);
     },
-    [getValues, removeEmptyAttribute, setValue],
+    [attributeId, getValues, removeEmptyAttribute, setValue],
   );
 
   return (
@@ -78,7 +79,7 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
               return (
                 <CheckboxAdapter
                   key={variant.variantId}
-                  name={`${warehouseProductsGeneratorFormFields.attributes}.${attribute._id}.variants.${variant.variantId}`}
+                  name={`${warehouseProductsGeneratorFormFields.attributes}.${attributeId}.variants.${variant.variantId}`}
                   label={variant.name[language]}
                   onChange={(isChecked) => handleChange(isChecked, variant)}
                   control={control}

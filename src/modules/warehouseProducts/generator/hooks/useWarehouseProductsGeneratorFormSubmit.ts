@@ -49,7 +49,7 @@ export const useWarehouseProductsGeneratorFormSubmit: UseWarehouseProductsGenera
           );
         }
 
-        return [{ name: values.name, attribute: null }];
+        return [{ name: values.name, attributes: null }];
       },
       [getListToProductGeneration],
     );

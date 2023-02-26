@@ -6,18 +6,18 @@ import {
   YupSchemaKey,
 } from '../../../../hooks/useCustomForm';
 import { useCustomForm } from '../../../../hooks';
-import { WarehouseProductsGeneratorProductsFromValues } from '../types';
+import { WarehouseProductsGeneratorProductsFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
 
 type UseWarehouseProductsGeneratorProductsFromProps = Pick<
-  UseCustomFormProps<WarehouseProductsGeneratorProductsFromValues>,
+  UseCustomFormProps<WarehouseProductsGeneratorProductsFormValues>,
   'shouldReset' | 'submitHandler'
 > & {
-  defaultValues?: Partial<WarehouseProductsGeneratorProductsFromValues>;
+  defaultValues?: Partial<WarehouseProductsGeneratorProductsFormValues>;
 };
 
 type UseWarehouseProductsGeneratorProductsFromReturn = Pick<
-  UseCustomFormReturn<WarehouseProductsGeneratorProductsFromValues>,
+  UseCustomFormReturn<WarehouseProductsGeneratorProductsFormValues>,
   'control' | 'setValue' | 'clearErrors' | 'handleSubmit'
 >;
 
@@ -27,8 +27,8 @@ type UseWarehouseProductsGeneratorProductsForm = (
 
 const schema = yup
   .object()
-  .shape<YupSchemaKey<WarehouseProductsGeneratorProductsFromValues>>({
-    product: yup.array().of(
+  .shape<YupSchemaKey<WarehouseProductsGeneratorProductsFormValues>>({
+    products: yup.array().of(
       yup.object().shape({
         name: yup
           .object()
@@ -38,7 +38,10 @@ const schema = yup
             }),
           )
           .required(),
-        sku: yup.string().required('warehouseProducts.sku.error.required'),
+        sku: yup
+          .string()
+          .nullable()
+          .required('warehouseProducts.sku.error.required'),
       }),
     ),
   });
@@ -46,7 +49,7 @@ const schema = yup
 export const useWarehouseProductsGeneratorProductsForm: UseWarehouseProductsGeneratorProductsForm =
   ({ shouldReset, submitHandler, defaultValues }) => {
     const { control, setValue, handleSubmit, clearErrors } =
-      useCustomForm<WarehouseProductsGeneratorProductsFromValues>({
+      useCustomForm<WarehouseProductsGeneratorProductsFormValues>({
         formProps: {
           resolver: yupResolver(schema),
           defaultValues: defaultValues,

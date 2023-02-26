@@ -14,11 +14,14 @@ import { Tag } from '../../../components/Tag';
 import { useTranslation } from '../../../components/IntlProvider';
 import { GridAutoFit } from '../../../layouts/Grid';
 import { Button } from '../../../components/Button';
+import { warehouseProductsGeneratorProductsFormFields } from './constants';
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorProductsForm: FC<
   WarehouseProductsGeneratorProductsFormProps
-> = ({ products }) => {
+> = ({ generatedProducts }) => {
+  const { products: productsFieldName } =
+    warehouseProductsGeneratorProductsFormFields;
   const { language, translate } = useTranslation();
 
   const { handleFormSubmit } =
@@ -28,18 +31,18 @@ export const WarehouseProductsGeneratorProductsForm: FC<
     useWarehouseProductsGeneratorProductsForm({
       submitHandler: handleFormSubmit,
       defaultValues: {
-        product: products,
+        products: generatedProducts,
       },
     });
 
   useEffect(() => {
     clearErrors();
-    setValue('product', products);
-  }, [products, setValue, clearErrors]);
+    setValue(productsFieldName, generatedProducts);
+  }, [generatedProducts, setValue, clearErrors, productsFieldName]);
 
   const { fields } = useFieldArray({
     control,
-    name: 'product',
+    name: productsFieldName,
   });
 
   return (
@@ -52,7 +55,7 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                 <div>
                   <MultiLanguageInputAdapter
                     isRequired
-                    name={`product.${index}.name`}
+                    name={`${productsFieldName}.${index}.name`}
                     placeholderTranslation="warehouseProducts.generatedName.fillIn"
                     label={translate('warehouseProducts.generatedName')}
                     control={control}
@@ -60,19 +63,21 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                 </div>
                 <InputAdapter
                   isRequired
-                  name={`product.${index}.sku`}
+                  name={`${productsFieldName}.${index}.sku`}
                   placeholder={translate('warehouseProducts.sku.fillIn')}
                   label={translate('warehouseProducts.sku')}
                   control={control}
                 />
               </GridAutoFit>
               <div className={classes.generatedProductFieldTags}>
-                {field.attribute?.variants.map((variant) => {
-                  return (
-                    <Tag key={variant.variantId} variant="theme">
-                      {variant.name[language]}
-                    </Tag>
-                  );
+                {field.attributes?.map((attribute) => {
+                  return attribute.variants.map((variant) => {
+                    return (
+                      <Tag key={variant.variantId} variant="theme">
+                        {variant.name[language]}
+                      </Tag>
+                    );
+                  });
                 })}
               </div>
             </div>

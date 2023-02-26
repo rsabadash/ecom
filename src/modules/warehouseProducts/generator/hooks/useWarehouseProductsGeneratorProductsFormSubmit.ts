@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
-import { WarehouseProductsGeneratorProductsFromValues } from '../types';
+import { WarehouseProductsGeneratorProductsFormValues } from '../types';
 
 type UseWarehouseProductsGeneratorProductsFormSubmit = () => {
   handleFormSubmit: (
-    values: WarehouseProductsGeneratorProductsFromValues,
+    values: WarehouseProductsGeneratorProductsFormValues,
   ) => Promise<void>;
 };
 
@@ -11,7 +11,7 @@ export const useWarehouseProductsGeneratorProductsFormSubmit: UseWarehouseProduc
   () => {
     const handleFormSubmit = useCallback(
       async (
-        values: WarehouseProductsGeneratorProductsFromValues,
+        values: WarehouseProductsGeneratorProductsFormValues,
       ): Promise<void> => {
         console.log(values);
       },

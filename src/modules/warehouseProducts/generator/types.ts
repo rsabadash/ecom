@@ -35,7 +35,6 @@ export type WarehouseProductsGeneratorFormFields = Record<
 >;
 
 export type Variant = {
-  attributeId: string;
   isActive: boolean;
   name: Translations;
   sortOrder: number;
@@ -72,17 +71,24 @@ export type GeneratedAttribute = {
 
 export type GeneratedProduct = {
   name: Translations;
-  attribute: null | GeneratedAttribute;
+  attributes: null | GeneratedAttribute[];
 };
 
 export type WarehouseProductsGeneratorProductsFormProps = {
-  products: GeneratedProduct[];
+  generatedProducts: GeneratedProduct[];
 };
 
 export type GeneratedProductFieldValue = GeneratedProduct & {
   sku?: string;
 };
 
-export type WarehouseProductsGeneratorProductsFromValues = {
-  product: GeneratedProductFieldValue[];
+export type WarehouseProductsGeneratorProductsFormValues = {
+  products: GeneratedProductFieldValue[];
 };
+
+export type WarehouseProductsGeneratorProductsFormFields = Record<
+  keyof WarehouseProductsGeneratorProductsFormValues,
+  keyof WarehouseProductsGeneratorProductsFormValues
+>;
+
+// export type WarehouseProductsPostData = GeneratedProductFieldValue[];

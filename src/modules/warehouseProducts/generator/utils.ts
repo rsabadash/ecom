@@ -10,14 +10,14 @@ import {
 
 export const transformProductBasedOnVariants = (
   initial: GeneratedProduct,
-  argument: DataToGenerateProducts,
+  data: DataToGenerateProducts,
 ): GeneratedProduct => {
   const intermediateResult = SUPPORTED_LANGUAGES.reduce((acc, language) => {
     const prevTranslation = acc.name?.[language];
     const prevValue = prevTranslation ? `${prevTranslation} ` : '';
-    const nextValue = argument.name[language]
-      ? argument.name[language]
-      : argument.name[DEFAULT_LANGUAGE];
+    const nextValue = data.name[language]
+      ? data.name[language]
+      : data.name[DEFAULT_LANGUAGE];
 
     return {
       ...acc,
@@ -28,23 +28,26 @@ export const transformProductBasedOnVariants = (
     };
   }, initial);
 
-  if (argument.variantId && argument.attributeId) {
-    const { attribute } = initial;
+  if (data.variantId && data.attributeId) {
+    const { attributes } = initial;
     const newVariant: GeneratedVariant = {
-      variantId: argument.variantId,
-      name: argument.name,
+      variantId: data.variantId,
+      name: data.name,
     };
 
-    const updatedVariants: GeneratedVariant[] = attribute?.variants
-      ? [...attribute.variants, newVariant]
-      : [newVariant];
+    const newAttribute = {
+      attributeId: data.attributeId,
+      variants: [newVariant],
+    };
+
+    const updatedAttributes =
+      attributes && attributes.length > 0
+        ? [...attributes, newAttribute]
+        : [newAttribute];
 
     return {
       ...intermediateResult,
-      attribute: {
-        attributeId: argument.attributeId,
-        variants: updatedVariants,
-      },
+      attributes: updatedAttributes,
     };
   }
 
