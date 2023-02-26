@@ -33,11 +33,11 @@ export const useAttributeVariantFormSubmit: UseAttributeVariantFormSubmit = ({
         attributeId,
       };
 
-      if (variantId) {
+      if (variantId && variantId) {
         await updateAttributeVariant(patchData);
       }
 
-      if (attributeId) {
+      if (attributeId && !variantId) {
         await createAttributeVariant(postData);
       }
     },

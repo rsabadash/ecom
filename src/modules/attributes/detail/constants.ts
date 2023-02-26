@@ -5,5 +5,3 @@ export const attributesVariantFormFields: AttributesVariantFormFields = {
   isActive: 'isActive',
   sortOrder: 'sortOrder',
 };
-
-export const TABLE_VARIANTS_ID = 'attributesVariantsTable';

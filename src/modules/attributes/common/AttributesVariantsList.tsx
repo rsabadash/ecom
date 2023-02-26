@@ -1,14 +1,15 @@
 import { FC } from 'react';
-import { generatePath, Link } from 'react-router-dom';
+import { generatePath, Link, useParams } from 'react-router-dom';
 import {
   RowCustomRenderArgs,
   Table,
   TableColumnGeneric,
 } from '../../../components/Table';
-import { TABLE_ATTRIBUTES_ID } from './constants';
+import { TABLE_VARIANTS_ID } from './constants';
 import { AttributeVariant } from './types';
 import { routes } from '../../../common/constants/routes';
 import { useAttributeVariantsTableColumns } from './hooks';
+import { AttributeUrlParams } from '../detail/types';
 
 type AttributesVariantsListProps = {
   variants: AttributeVariant[];
@@ -19,6 +20,8 @@ export const AttributesVariantsList: FC<AttributesVariantsListProps> = ({
   variants,
   isDetailList,
 }) => {
+  const { attributeId } = useParams<AttributeUrlParams>();
+
   const columns: TableColumnGeneric<AttributeVariant>[] =
     useAttributeVariantsTableColumns(isDetailList);
 
@@ -28,7 +31,7 @@ export const AttributesVariantsList: FC<AttributesVariantsListProps> = ({
       items={variants}
       columns={columns}
       tableRowRenderKey="variantId"
-      tableLabeledBy={TABLE_ATTRIBUTES_ID}
+      tableLabeledBy={TABLE_VARIANTS_ID}
       rowCustomRender={({
         row,
         item,
@@ -37,7 +40,7 @@ export const AttributesVariantsList: FC<AttributesVariantsListProps> = ({
         const variantDetailPath = generatePath(
           routes.attributes.variantDetail,
           {
-            attributeId: item.attributeId,
+            attributeId: item.attributeId || attributeId,
             variantId: item.variantId,
           },
         );

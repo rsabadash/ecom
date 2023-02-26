@@ -14,8 +14,8 @@ export const useAttributeVariantsTableColumns: UseAttributeVariantsTableColumns 
   (isDetailList) => {
     const { translate, language } = useTranslation();
 
-    return useMemo(
-      () => [
+    return useMemo(() => {
+      const columns: TableColumnGeneric<AttributeVariant>[] = [
         {
           title: translate('attribute.variant.name'),
           key: 'name',
@@ -42,7 +42,19 @@ export const useAttributeVariantsTableColumns: UseAttributeVariantsTableColumns 
             return value;
           },
         },
-      ],
-      [translate, language],
-    );
+      ];
+
+      if (!isDetailList) {
+        columns.splice(1, 0, {
+          title: translate('attribute.name'),
+          key: 'attributeName',
+          width: '30%',
+          valueGetter: (value: Translations) => {
+            return value[language];
+          },
+        });
+      }
+
+      return columns;
+    }, [translate, isDetailList, language]);
   };

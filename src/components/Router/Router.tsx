@@ -15,6 +15,7 @@ import AttributeAdd from '../../modules/attributes/list/AttributeAdd';
 import AttributeDetail from '../../modules/attributes/detail/AttributeDetail';
 import AttributeVariantDetail from '../../modules/attributes/detail/AttributeVariantDetail';
 import AttributeVariantAdd from '../../modules/attributes/detail/AttributeVariantAdd';
+import Variants from '../../modules/attributes/list/Variants';
 // import { RoleGuard } from '../RoleGuard';
 // import { Role } from '../UserProvider/enums';
 
@@ -128,6 +129,14 @@ export const router = createBrowserRouter(
           element={
             <Suspense fallback="Route Attribute detail">
               <AttributeDetail />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.variantList}
+          element={
+            <Suspense fallback="Route Variants list">
+              <Variants />
             </Suspense>
           }
         />

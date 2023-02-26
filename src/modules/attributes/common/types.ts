@@ -11,6 +11,7 @@ export type Attribute = {
 export type AttributeVariant = Omit<Attribute, '_id' | 'variants'> & {
   variantId: string;
   attributeId: string;
+  attributeName?: Translations;
 };
 
 export type AttributeFormValues = {

@@ -6,4 +6,4 @@ export const attributesFormFields: AttributesFormFields = {
   sortOrder: 'sortOrder',
 };
 
-export const TABLE_ATTRIBUTES_ID = 'attributesTable';
+export const TABLE_VARIANTS_ID = 'variantsTable';

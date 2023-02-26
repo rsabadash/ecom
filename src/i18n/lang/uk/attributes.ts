@@ -1,6 +1,7 @@
 export const attributes = {
   attribute: 'Атрибут',
   attributes: 'Атрибути',
+  'attribute.attributes.list': 'Список атрибутів',
   'attribute.name': 'Назва атрибута',
   'attribute.name.fillIn': 'Введіть назву атрибута {language} мовою',
   'attribute.name.error.required':
@@ -12,6 +13,7 @@ export const attributes = {
   'attribute.state.active': 'Активний',
   'attribute.state.inactive': 'Не активний',
   'attribute.variant': 'Варіант',
+  'attribute.variants': 'Варіанти',
   'attribute.sortOrder.description':
     'Порядок відображення атрибутів в списку атрибутів',
   'attribute.variant.count': 'Кількість варіантів',
@@ -23,4 +25,5 @@ export const attributes = {
   'attribute.variant.active.description':
     'Зробити варіант атрибута доступним для показу на публічних сторінках/використання ',
   'attribute.variant.add': 'Додати варіант',
+  'attribute.variant.list': 'Список варіантів',
 };

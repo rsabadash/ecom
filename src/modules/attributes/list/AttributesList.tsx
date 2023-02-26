@@ -8,8 +8,8 @@ import { routes } from '../../../common/constants/routes';
 import { useCachedAPI } from '../../../hooks';
 import { endpoints } from '../../../common/constants/api';
 import { useAttributesTableColumns } from './hooks';
-import { TABLE_ATTRIBUTES_ID } from '../common/constants';
 import { Attribute } from '../common/types';
+import { TABLE_ATTRIBUTES_ID } from './constants';
 
 export const AttributesList = () => {
   const { data = [] } = useCachedAPI<Attribute[]>(

@@ -1,6 +1,7 @@
 export const attributes = {
   attribute: 'Attribute',
   attributes: 'Attributes',
+  'attribute.attributes.list': 'Attributes list',
   'attribute.name': 'Attribute name',
   'attribute.name.fillIn': 'Fill in attribute name in {language}',
   'attribute.name.error.required': 'Attribute name in {language} is required',
@@ -11,6 +12,7 @@ export const attributes = {
   'attribute.state.active': 'Active',
   'attribute.state.inactive': 'Not active',
   'attribute.variant': 'Variant',
+  'attribute.variants': 'Variants',
   'attribute.sortOrder.description': 'Attributes display order in list',
   'attribute.variant.count': 'Variants count',
   'attribute.variant.name': 'Variant name',
@@ -23,4 +25,5 @@ export const attributes = {
   'attribute.variant.active.description':
     'Make variant available for display on public pages/usage',
   'attribute.variant.add': 'Add variant',
+  'attribute.variant.list': 'Variants list',
 };

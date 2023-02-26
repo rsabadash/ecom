@@ -16,6 +16,7 @@ export const routes = {
     root: '/attributes',
     add: '/attributes/add',
     detail: '/attributes/:attributeId',
+    variantList: '/attributes/variants',
     variantAdd: '/attributes/:attributeId/variants/add',
     variantDetail: '/attributes/:attributeId/variants/:variantId',
   },
