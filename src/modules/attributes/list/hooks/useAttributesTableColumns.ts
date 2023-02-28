@@ -16,7 +16,7 @@ export const useAttributesTableColumns: UseAttributeTableColumns = () => {
       {
         title: translate('attribute.name'),
         key: 'name',
-        width: '50%',
+        width: '25%',
         valueGetter: (value: Translations) => {
           return value[language];
         },
@@ -24,7 +24,7 @@ export const useAttributesTableColumns: UseAttributeTableColumns = () => {
       {
         title: translate('attribute.state'),
         key: 'isActive',
-        width: '15%',
+        width: '25%',
         valueGetter: (value: boolean) => {
           return value
             ? translate('attribute.state.active')
@@ -34,7 +34,7 @@ export const useAttributesTableColumns: UseAttributeTableColumns = () => {
       {
         title: translate('sortOrder'),
         key: 'sortOrder',
-        width: '15%',
+        width: '25%',
         valueGetter: (value: number) => {
           return value;
         },
@@ -42,7 +42,7 @@ export const useAttributesTableColumns: UseAttributeTableColumns = () => {
       {
         title: translate('attribute.variant.count'),
         key: 'variants',
-        width: '15%',
+        width: '25%',
         valueGetter: (value: AttributeVariant[]) => {
           return value.length;
         },
