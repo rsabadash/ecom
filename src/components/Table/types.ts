@@ -4,6 +4,7 @@ export type TableColumn = {
   title: string;
   key: string;
   width: string;
+  isHidden?: boolean;
   valueGetter?: (value: any) => ReactNode;
 };
 

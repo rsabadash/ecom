@@ -126,6 +126,8 @@ export const Table: FC<TableProps> = ({
             aria-rowindex={1}
           >
             {columns.map((column) => {
+              if (column.isHidden) return;
+
               return (
                 <div
                   key={column.key}
@@ -160,20 +162,26 @@ export const Table: FC<TableProps> = ({
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
             };
 
-            const row = columns.map(({ key, width, valueGetter, title }) => {
-              const rowValue = valueGetter ? valueGetter(item[key]) : item[key];
+            const row = columns.map(
+              ({ key, width, valueGetter, title, isHidden }) => {
+                if (isHidden) return;
 
-              return (
-                <div
-                  key={`${rowValue}${item[tableRowRenderKey]}${title}`}
-                  style={{ minWidth: width }}
-                  className={classes.table__rowItem}
-                  role="cell"
-                >
-                  {rowValue}
-                </div>
-              );
-            });
+                const rowValue = valueGetter
+                  ? valueGetter(item[key])
+                  : item[key];
+
+                return (
+                  <div
+                    key={`${rowValue}${item[tableRowRenderKey]}${title}`}
+                    style={{ minWidth: width }}
+                    className={classes.table__rowItem}
+                    role="cell"
+                  >
+                    {rowValue}
+                  </div>
+                );
+              },
+            );
 
             return rowCustomRender ? (
               rowCustomRender({ row, item, rowProps })
