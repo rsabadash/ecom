@@ -167,7 +167,7 @@ export const Table: FC<TableProps> = ({
                 if (isHidden) return;
 
                 const rowValue = valueGetter
-                  ? valueGetter(item[key])
+                  ? valueGetter(item[key], item)
                   : item[key];
 
                 return (
