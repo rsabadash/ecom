@@ -2,24 +2,24 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
-import { AttributeVariantFormValues, AttributeVariantUrlParams } from './types';
+import { VariantFormValues, VariantUrlParams } from './types';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Foreground } from '../../../layouts/Foreground';
 import { endpoints } from '../../../common/constants/api';
-import { AttributeVariantForm } from './AttributeVariantForm';
-import { matchAttributeVariantDataToFormValues } from './utils';
-import { AttributeVariant } from '../common/types';
-import { useDeleteAttributeVariant } from './hooks/useDeleteAttributeVariant';
+import { VariantForm } from './VariantForm';
+import { matchVariantDataToFormValues } from './utils';
+import { Variant } from '../common/types';
+import { useDeleteVariant } from './hooks';
 
-const AttributeVariantDetail = () => {
+const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
-  const { variantId } = useParams<AttributeVariantUrlParams>();
+  const { variantId } = useParams<VariantUrlParams>();
   const { language, translate } = useTranslation();
-  const { deleteAttributeVariant } = useDeleteAttributeVariant(variantId);
+  const { deleteVariant } = useDeleteVariant(variantId);
 
-  const { data: attributeVariantDetail } = useCachedAPI<AttributeVariant>(
+  const { data: variantDetail } = useCachedAPI<Variant>(
     `${endpoints.attributes.variants}/${variantId}`,
   );
 
@@ -27,27 +27,27 @@ const AttributeVariantDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
-  const formValues: AttributeVariantFormValues | undefined =
-    matchAttributeVariantDataToFormValues(attributeVariantDetail);
+  const formValues: VariantFormValues | undefined =
+    matchVariantDataToFormValues(variantDetail);
 
   return (
     <>
       <Top>
-        <TopHeading>{attributeVariantDetail?.name[language]}</TopHeading>
+        <TopHeading>{variantDetail?.name[language]}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
             <Button variant="primary" onClick={handleButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
-            <Button variant="danger" onClick={deleteAttributeVariant}>
+            <Button variant="danger" onClick={deleteVariant}>
               {translate('delete')}
             </Button>
           </ButtonsGroup>
         </TopButtons>
       </Top>
       <Foreground>
-        <AttributeVariantForm
-          variantId={attributeVariantDetail?.variantId}
+        <VariantForm
+          variantId={variantDetail?.variantId}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
         />
@@ -56,4 +56,4 @@ const AttributeVariantDetail = () => {
   );
 };
 
-export default AttributeVariantDetail;
+export default VariantDetail;

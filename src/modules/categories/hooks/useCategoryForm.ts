@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
+  YupSchemaKey,
 } from '../../../hooks/useCustomForm';
 import { useCustomForm } from '../../../hooks';
 import { CategoryFormValues } from '../types';
@@ -22,7 +23,7 @@ type UseCategoryFromReturn = Pick<
 
 type UseCategoryForm = (props: UseCategoryFromProps) => UseCategoryFromReturn;
 
-const schema = yup.object().shape({
+const schema = yup.object().shape<YupSchemaKey<CategoryFormValues>>({
   name: yup
     .object()
     .shape(

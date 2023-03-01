@@ -172,7 +172,7 @@ export const Table: FC<TableProps> = ({
 
                 return (
                   <div
-                    key={`${rowValue}${item[tableRowRenderKey]}${title}`}
+                    key={`${item[tableRowRenderKey]}${title}`}
                     style={{ minWidth: width }}
                     className={classes.table__rowItem}
                     role="cell"

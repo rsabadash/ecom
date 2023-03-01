@@ -4,7 +4,7 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { Attribute, AttributeVariant } from '../../common/types';
+import { Attribute, Variant } from '../../common/types';
 
 type UseAttributeTableColumns = () => TableColumnGeneric<Attribute>[];
 
@@ -43,7 +43,7 @@ export const useAttributesTableColumns: UseAttributeTableColumns = () => {
         title: translate('attribute.variant.count'),
         key: 'variants',
         width: '25%',
-        valueGetter: (value: AttributeVariant[]) => {
+        valueGetter: (value: Variant[]) => {
           return value.length;
         },
       },

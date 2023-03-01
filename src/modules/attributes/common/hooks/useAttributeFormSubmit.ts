@@ -7,7 +7,11 @@ import {
 import { useCreateAttribute } from './useCreateAttribute';
 import { useUpdateAttribute } from './useUpdateAttribute';
 
-type UseAttributeFormSubmit = (props: { id?: string }) => {
+type UseAttributeFormSubmitProps = {
+  id?: string;
+};
+
+type UseAttributeFormSubmit = (props: UseAttributeFormSubmitProps) => {
   handleFormSubmit: (values: AttributeFormValues) => Promise<void>;
 };
 

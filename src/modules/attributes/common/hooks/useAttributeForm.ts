@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
+  YupSchemaKey,
 } from '../../../../hooks/useCustomForm';
 import { useCustomForm } from '../../../../hooks';
 import { AttributeFormValues } from '../types';
@@ -24,7 +25,7 @@ type UseAttributeForm = (
   props: UseAttributeFromProps,
 ) => UseAttributeFromReturn;
 
-const schema = yup.object().shape({
+const schema = yup.object().shape<YupSchemaKey<AttributeFormValues>>({
   name: yup
     .object()
     .shape(
@@ -35,7 +36,7 @@ const schema = yup.object().shape({
     .required(),
 });
 
-export const useAttributesForm: UseAttributeForm = ({
+export const useAttributeForm: UseAttributeForm = ({
   shouldReset,
   submitHandler,
   defaultValues,

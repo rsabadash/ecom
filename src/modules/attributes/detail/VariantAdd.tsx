@@ -1,13 +1,13 @@
+import { useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useTranslation } from '../../../components/IntlProvider';
 import { ButtonLink } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';
 import { Foreground } from '../../../layouts/Foreground';
-import { AttributeVariantForm } from './AttributeVariantForm';
-import { useParams } from 'react-router-dom';
+import { VariantForm } from './VariantForm';
 import { AttributeUrlParams } from './types';
 
-const AttributeVariantAdd = () => {
+const VariantAdd = () => {
   const { translate } = useTranslation();
   const { attributeId } = useParams<AttributeUrlParams>();
 
@@ -27,10 +27,10 @@ const AttributeVariantAdd = () => {
         )}
       </Top>
       <Foreground>
-        <AttributeVariantForm />
+        <VariantForm />
       </Foreground>
     </>
   );
 };
 
-export default AttributeVariantAdd;
+export default VariantAdd;

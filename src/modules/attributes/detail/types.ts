@@ -4,45 +4,42 @@ export type AttributeUrlParams = {
   attributeId: string;
 };
 
-export type AttributeVariantFormValues = {
+export type VariantFormValues = {
   name: Translations;
   isActive: boolean;
   sortOrder: number;
 };
 
-export type AttributesVariantFormFields = Record<
-  keyof AttributeVariantFormValues,
-  keyof AttributeVariantFormValues
+export type VariantFormFields = Record<
+  keyof VariantFormValues,
+  keyof VariantFormValues
 >;
 
-export type AttributesVariantFormProps = {
+export type VariantFormProps = {
   variantId?: string;
   isReadOnly?: boolean;
-  defaultValues?: Partial<AttributeVariantFormValues>;
+  defaultValues?: Partial<VariantFormValues>;
 };
 
-export type AttributeVariantPostData = {
+export type VariantPostData = {
   name: Translations;
   isActive: boolean;
   sortOrder: number;
   attributeId?: string;
 };
 
-export type AttributeVariantPatchData = Omit<
-  AttributeVariantPostData,
-  'attributeId'
-> & {
+export type VariantPatchData = Omit<VariantPostData, 'attributeId'> & {
   variantId?: string;
 };
 
-export type AttributeVariantPostResponse = AttributeVariantPostData & {
+export type VariantPostResponse = VariantPostData & {
   variantId: string;
 };
 
-export type AttributeVariantDeleteData = {
+export type VariantDeleteData = {
   variantId: string;
 };
 
-export type AttributeVariantUrlParams = {
+export type VariantUrlParams = {
   variantId: string;
 };

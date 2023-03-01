@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
-import { TABLE_ID } from './constants';
+import { TABLE_SUPPLIERS_ID } from './constants';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
 import { useTranslation } from '../../components/IntlProvider';
@@ -13,7 +13,9 @@ const Suppliers = () => {
   return (
     <>
       <Top>
-        <TopHeading id={TABLE_ID}>{translate('suppliers')}</TopHeading>
+        <TopHeading id={TABLE_SUPPLIERS_ID}>
+          {translate('suppliers')}
+        </TopHeading>
         <TopButtons>
           <ButtonLink variant="primary" to={routes.suppliers.add}>
             {translate('add')}

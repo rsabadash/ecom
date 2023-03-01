@@ -9,9 +9,8 @@ import { attributesFormFields } from './constants';
 import { Button } from '../../../components/Button';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
 import { AttributeFormProps } from './types';
-
 import { Form } from '../../../components/FormFields';
-import { useAttributesForm, useAttributeFormSubmit } from './hooks';
+import { useAttributeForm, useAttributeFormSubmit } from './hooks';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 
 export const AttributeForm: FC<AttributeFormProps> = ({
@@ -22,7 +21,7 @@ export const AttributeForm: FC<AttributeFormProps> = ({
   const { translate } = useTranslation();
   const { handleFormSubmit } = useAttributeFormSubmit({ id });
 
-  const { control, handleSubmit } = useAttributesForm({
+  const { control, handleSubmit } = useAttributeForm({
     defaultValues,
     shouldReset: isReadOnly,
     submitHandler: handleFormSubmit,
@@ -45,14 +44,14 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           columnIndex={1}
         />
         <InputAdapter
+          type="number"
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
-          label={translate('sortOrder')}
           name={attributesFormFields.sortOrder}
+          placeholder={translate('attribute.sortOrder.description')}
+          label={translate('sortOrder')}
           control={control}
           columnIndex={2}
-          placeholder={translate('attribute.sortOrder.description')}
-          type="number"
         />
         <CheckboxAdapter
           isReadOnly={isReadOnly}

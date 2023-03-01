@@ -3,28 +3,27 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
+  YupSchemaKey,
 } from '../../../../hooks/useCustomForm';
 import { useCustomForm } from '../../../../hooks';
-import { AttributeVariantFormValues } from '../types';
+import { VariantFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
 
-type UseAttributeVariantFromProps = Pick<
-  UseCustomFormProps<AttributeVariantFormValues>,
+type UseVariantFromProps = Pick<
+  UseCustomFormProps<VariantFormValues>,
   'shouldReset' | 'submitHandler'
 > & {
-  defaultValues?: Partial<AttributeVariantFormValues>;
+  defaultValues?: Partial<VariantFormValues>;
 };
 
-type UseAttributeVariantFromReturn = Pick<
-  UseCustomFormReturn<AttributeVariantFormValues>,
+type UseVariantFromReturn = Pick<
+  UseCustomFormReturn<VariantFormValues>,
   'control' | 'handleSubmit'
 >;
 
-type UseAttributeVariantForm = (
-  props: UseAttributeVariantFromProps,
-) => UseAttributeVariantFromReturn;
+type UseVariantForm = (props: UseVariantFromProps) => UseVariantFromReturn;
 
-const schema = yup.object().shape({
+const schema = yup.object().shape<YupSchemaKey<VariantFormValues>>({
   name: yup
     .object()
     .shape(
@@ -35,12 +34,12 @@ const schema = yup.object().shape({
     .required(),
 });
 
-export const useAttributeVariantForm: UseAttributeVariantForm = ({
+export const useVariantForm: UseVariantForm = ({
   shouldReset,
   submitHandler,
   defaultValues,
 }) => {
-  const { control, handleSubmit } = useCustomForm<AttributeVariantFormValues>({
+  const { control, handleSubmit } = useCustomForm<VariantFormValues>({
     formProps: {
       resolver: yupResolver(schema),
       defaultValues: defaultValues,

@@ -1,5 +1,5 @@
-import { AttributePostData, AttributePostResponse } from '../types';
 import { useCallback } from 'react';
+import { AttributePostData, AttributePostResponse } from '../types';
 import { createAttributeApi } from '../api';
 
 type UseCreateAttributeProps = () => {

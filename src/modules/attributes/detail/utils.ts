@@ -1,9 +1,5 @@
-import { AttributeVariantFormValues } from './types';
-import {
-  Attribute,
-  AttributeFormValues,
-  AttributeVariant,
-} from '../common/types';
+import { VariantFormValues } from './types';
+import { Attribute, AttributeFormValues, Variant } from '../common/types';
 
 export const matchAttributeDataToFormValues = (
   data: Attribute | undefined,
@@ -21,9 +17,9 @@ export const matchAttributeDataToFormValues = (
   };
 };
 
-export const matchAttributeVariantDataToFormValues = (
-  data: AttributeVariant | undefined,
-): AttributeVariantFormValues | undefined => {
+export const matchVariantDataToFormValues = (
+  data: Variant | undefined,
+): VariantFormValues | undefined => {
   if (!data) {
     return undefined;
   }

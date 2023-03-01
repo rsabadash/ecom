@@ -1,8 +1,8 @@
 import {
-  AttributeVariantDeleteData,
-  AttributeVariantPatchData,
-  AttributeVariantPostData,
-  AttributeVariantPostResponse,
+  VariantDeleteData,
+  VariantPatchData,
+  VariantPostData,
+  VariantPostResponse,
 } from './types';
 import { endpoints } from '../../../common/constants/api';
 import { DELETE, PATCH, POST } from '../../../utils/api';
@@ -18,10 +18,10 @@ export const deleteAttributeApi = async (
   }
 };
 
-export const createAttributeVariantApi = async (
-  data: AttributeVariantPostData,
-): Promise<AttributeVariantPostResponse | undefined> => {
-  return await POST<AttributeVariantPostResponse, AttributeVariantPostData>(
+export const createVariantApi = async (
+  data: VariantPostData,
+): Promise<VariantPostResponse | undefined> => {
+  return await POST<VariantPostResponse, VariantPostData>(
     endpoints.attributes.variants,
     {
       data,
@@ -29,19 +29,19 @@ export const createAttributeVariantApi = async (
   );
 };
 
-export const updateAttributeVariantApi = async (
-  data: AttributeVariantPatchData,
+export const updateVariantApi = async (
+  data: VariantPatchData,
 ): Promise<void> => {
-  await PATCH<void, AttributeVariantPatchData>(endpoints.attributes.variants, {
+  await PATCH<void, VariantPatchData>(endpoints.attributes.variants, {
     data,
   });
 };
 
-export const deleteAttributeVariantApi = async (
+export const deleteVariantApi = async (
   variantId: string | undefined,
 ): Promise<void> => {
   if (variantId) {
-    return await DELETE<void, AttributeVariantDeleteData>(
+    return await DELETE<void, VariantDeleteData>(
       endpoints.attributes.variants,
       {
         data: { variantId },

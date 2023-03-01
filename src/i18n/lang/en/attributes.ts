@@ -7,7 +7,7 @@ export const attributes = {
   'attribute.name.error.required': 'Attribute name in {language} is required',
   'attribute.active': 'Attribute is active',
   'attribute.active.description':
-    'Make attribute available for display on public pages/usage',
+    'Make attribute available for display on public pages',
   'attribute.state': 'State',
   'attribute.state.active': 'Active',
   'attribute.state.inactive': 'Not active',
@@ -23,7 +23,7 @@ export const attributes = {
     'Variants display order in attribute variants list',
   'attribute.variant.active': 'Variant is active',
   'attribute.variant.active.description':
-    'Make variant available for display on public pages/usage',
+    'Make variant available for display on public pages',
   'attribute.variant.add': 'Add variant',
   'attribute.variant.list': 'Variants list',
 };

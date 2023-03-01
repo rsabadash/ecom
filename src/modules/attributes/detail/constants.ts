@@ -1,6 +1,6 @@
-import { AttributesVariantFormFields } from './types';
+import { VariantFormFields } from './types';
 
-export const attributesVariantFormFields: AttributesVariantFormFields = {
+export const variantFormFields: VariantFormFields = {
   name: 'name',
   isActive: 'isActive',
   sortOrder: 'sortOrder',

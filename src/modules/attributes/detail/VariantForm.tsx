@@ -1,31 +1,30 @@
 import { FC } from 'react';
+import { useParams } from 'react-router-dom';
 import { GridFullWidth } from '../../../layouts/Grid';
 import { useTranslation } from '../../../components/IntlProvider';
 import {
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
-import { attributesVariantFormFields } from './constants';
+import { variantFormFields } from './constants';
 import { Button } from '../../../components/Button';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
-import { AttributesVariantFormProps } from './types';
-
+import { AttributeUrlParams, VariantFormProps } from './types';
 import { Form } from '../../../components/FormFields';
-import {
-  useAttributeVariantForm,
-  useAttributeVariantFormSubmit,
-} from './hooks';
+import { useVariantForm, useVariantFormSubmit } from './hooks';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 
-export const AttributeVariantForm: FC<AttributesVariantFormProps> = ({
+export const VariantForm: FC<VariantFormProps> = ({
   variantId,
   isReadOnly,
   defaultValues,
 }) => {
-  const { translate } = useTranslation();
-  const { handleFormSubmit } = useAttributeVariantFormSubmit({ variantId });
+  const { attributeId } = useParams<AttributeUrlParams>();
 
-  const { control, handleSubmit } = useAttributeVariantForm({
+  const { translate } = useTranslation();
+  const { handleFormSubmit } = useVariantFormSubmit({ attributeId, variantId });
+
+  const { control, handleSubmit } = useVariantForm({
     defaultValues,
     shouldReset: isReadOnly,
     submitHandler: handleFormSubmit,
@@ -41,25 +40,26 @@ export const AttributeVariantForm: FC<AttributesVariantFormProps> = ({
           isRequired
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
-          name={attributesVariantFormFields.name}
+          name={variantFormFields.name}
           placeholderTranslation="attribute.variant.name.fillIn"
           label={translate('attribute.variant.name')}
           control={control}
           columnIndex={1}
         />
         <InputAdapter
+          type="number"
           isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
+          name={variantFormFields.sortOrder}
+          placeholder={translate('attribute.variant.sortOrder.description')}
           label={translate('sortOrder')}
-          name={attributesVariantFormFields.sortOrder}
           control={control}
           columnIndex={2}
-          placeholder={translate('attribute.variant.sortOrder.description')}
-          type="number"
         />
         <CheckboxAdapter
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
-          name={attributesVariantFormFields.isActive}
+          name={variantFormFields.isActive}
           label={translate('attribute.variant.active')}
           placeholder={translate('attribute.variant.active.description')}
           control={control}

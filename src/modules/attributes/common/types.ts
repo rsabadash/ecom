@@ -5,11 +5,14 @@ export type Attribute = {
   name: Translations;
   isActive: boolean;
   sortOrder: number;
-  variants: AttributeVariant[];
+  variants: Variant[];
 };
 
-export type AttributeVariant = Omit<Attribute, '_id' | 'variants'> & {
+export type Variant = {
   variantId: string;
+  name: Translations;
+  isActive: boolean;
+  sortOrder: number;
   attributeId: string;
   attributeName?: Translations;
 };
@@ -43,4 +46,9 @@ export type AttributePostResponse = AttributePostData & { _id: string };
 
 export type AttributeDeleteData = {
   id: string;
+};
+
+export type VariantsListProps = {
+  variants: Variant[];
+  isDetailList: boolean;
 };

@@ -6,24 +6,19 @@ import {
   TableColumnGeneric,
 } from '../../../components/Table';
 import { TABLE_VARIANTS_ID } from './constants';
-import { AttributeVariant } from './types';
+import { VariantsListProps, Variant } from './types';
 import { routes } from '../../../common/constants/routes';
-import { useAttributeVariantsTableColumns } from './hooks';
+import { useVariantsTableColumns } from './hooks';
 import { AttributeUrlParams } from '../detail/types';
 
-type AttributesVariantsListProps = {
-  variants: AttributeVariant[];
-  isDetailList: boolean;
-};
-
-export const AttributesVariantsList: FC<AttributesVariantsListProps> = ({
+export const VariantsList: FC<VariantsListProps> = ({
   variants,
   isDetailList,
 }) => {
   const { attributeId } = useParams<AttributeUrlParams>();
 
-  const columns: TableColumnGeneric<AttributeVariant>[] =
-    useAttributeVariantsTableColumns(isDetailList);
+  const columns: TableColumnGeneric<Variant>[] =
+    useVariantsTableColumns(isDetailList);
 
   return (
     <Table
@@ -36,10 +31,12 @@ export const AttributesVariantsList: FC<AttributesVariantsListProps> = ({
         row,
         item,
         rowProps,
-      }: RowCustomRenderArgs<AttributeVariant>) => {
+      }: RowCustomRenderArgs<Variant>) => {
         const variantDetailPath = generatePath(
           routes.attributes.variantDetail,
           {
+            // on the general list we have the ID in response
+            // on the attribute detail we have the ID only in the URL
             attributeId: item.attributeId || attributeId,
             variantId: item.variantId,
           },

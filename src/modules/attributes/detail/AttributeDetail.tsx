@@ -11,13 +11,14 @@ import { routes } from '../../../common/constants/routes';
 import { AttributeForm } from '../common/AttributeForm';
 import { useDeleteAttribute } from './hooks';
 import { matchAttributeDataToFormValues } from './utils';
-import { AttributesVariantsList } from '../common/AttributesVariantsList';
+import { VariantsList } from '../common/VariantsList';
 import { Attribute, AttributeFormValues } from '../common/types';
 
 const AttributeDetail = () => {
+  const [isReadOnly, setReadOnly] = useState<boolean>(true);
+
   const { attributeId } = useParams<AttributeUrlParams>();
   const { language, translate } = useTranslation();
-  const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { data: attributeDetail } = useCachedAPI<Attribute>(
     `${endpoints.attributes.root}/${attributeId}`,
@@ -73,10 +74,7 @@ const AttributeDetail = () => {
       </Foreground>
       <>
         {showAttributeVariantsList && isReadOnly && (
-          <AttributesVariantsList
-            isDetailList
-            variants={attributeDetail.variants}
-          />
+          <VariantsList isDetailList variants={attributeDetail.variants} />
         )}
         {/*TODO No data placeholder component*/}
         {!showAttributeVariantsList && (

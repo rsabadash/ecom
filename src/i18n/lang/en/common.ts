@@ -8,6 +8,7 @@ export const common = {
   cancel: 'Cancel',
   notSelected: 'Not selected',
   signOut: 'Sign out',
+  sortOrder: 'Sort order',
 
   'uk.adjective': 'Ukrainian',
   'en.adjective': 'English',
