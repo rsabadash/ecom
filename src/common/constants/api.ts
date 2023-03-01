@@ -12,6 +12,10 @@ export const endpoints = {
   suppliers: {
     root: `${PREFIX}/suppliers`,
   },
+  attributes: {
+    root: `${PREFIX}/attributes`,
+    variants: `${PREFIX}/attributes/variants`,
+  },
   authentication: {
     signIn: `${PREFIX}/authentication/sign-in`,
     refreshToken: `${PREFIX}/authentication/refresh-token`,

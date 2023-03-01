@@ -6,4 +6,4 @@ export const categoryFormFields: CategoryFormFields = {
   parentIds: 'parentIds',
 };
 
-export const TABLE_ID = 'categoryTable';
+export const TABLE_CATEGORIES_ID = 'categoriesTable';

@@ -15,6 +15,10 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
       // roles: [Role.ContentManager],
     },
     {
+      title: translateFn('menu.attributes'),
+      path: routes.attributes.root,
+    },
+    {
       title: translateFn('menu.suppliers'),
       path: routes.suppliers.root,
     },

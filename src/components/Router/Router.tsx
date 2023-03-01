@@ -10,6 +10,7 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
 import { SignedInRedirect } from './SignedInRedirect';
+
 // import { RoleGuard } from '../RoleGuard';
 // import { Role } from '../UserProvider/enums';
 
@@ -25,6 +26,22 @@ const SuppliersDetail = lazy(
   () => import('../../modules/suppliers/SupplierDetail'),
 );
 const SuppliersAdd = lazy(() => import('../../modules/suppliers/SupplierAdd'));
+const Attributes = lazy(
+  () => import('../../modules/attributes/list/Attributes'),
+);
+const AttributeAdd = lazy(
+  () => import('../../modules/attributes/list/AttributeAdd'),
+);
+const AttributeDetail = lazy(
+  () => import('../../modules/attributes/detail/AttributeDetail'),
+);
+const Variants = lazy(() => import('../../modules/attributes/list/Variants'));
+const VariantAdd = lazy(
+  () => import('../../modules/attributes/detail/VariantAdd'),
+);
+const VariantDetail = lazy(
+  () => import('../../modules/attributes/detail/VariantDetail'),
+);
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -102,8 +119,55 @@ export const router = createBrowserRouter(
             </Suspense>
           }
         />
+        <Route
+          path={routes.attributes.root}
+          element={
+            <Suspense fallback="Route Attributes">
+              <Attributes />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.add}
+          element={
+            <Suspense fallback="Route Attribute add">
+              <AttributeAdd />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.detail}
+          element={
+            <Suspense fallback="Route Attribute detail">
+              <AttributeDetail />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.variantList}
+          element={
+            <Suspense fallback="Route Variants list">
+              <Variants />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.variantAdd}
+          element={
+            <Suspense fallback="Route Attribute variant add detail">
+              <VariantAdd />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.variantDetail}
+          element={
+            <Suspense fallback="Route Attribute variant detail">
+              <VariantDetail />
+            </Suspense>
+          }
+        />
       </Route>
-
       <Route
         element={
           <Suspense fallback="Rout Public">

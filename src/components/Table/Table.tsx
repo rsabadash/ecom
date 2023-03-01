@@ -23,6 +23,7 @@ export const Table: FC<TableProps> = ({
   rowCustomRender,
   // isRowInteractive, TODO onClick initialization by pressing Enter
   isRowLinkInteractive,
+  tableRowRenderKey = '_id',
 }) => {
   const tableBodyRef = useRef<HTMLDivElement>(null);
   const [focusIndex, setFocusIndex] = useState<number>(INITIAL_FOCUS_INDEX);
@@ -125,6 +126,8 @@ export const Table: FC<TableProps> = ({
             aria-rowindex={1}
           >
             {columns.map((column) => {
+              if (column.isHidden) return;
+
               return (
                 <div
                   key={column.key}
@@ -159,20 +162,26 @@ export const Table: FC<TableProps> = ({
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
             };
 
-            const row = columns.map(({ key, width, valueGetter, title }) => {
-              const rowValue = valueGetter ? valueGetter(item[key]) : item[key];
+            const row = columns.map(
+              ({ key, width, valueGetter, title, isHidden }) => {
+                if (isHidden) return;
 
-              return (
-                <div
-                  key={`${rowValue}${item._id}${title}`}
-                  style={{ minWidth: width }}
-                  className={classes.table__rowItem}
-                  role="cell"
-                >
-                  {rowValue}
-                </div>
-              );
-            });
+                const rowValue = valueGetter
+                  ? valueGetter(item[key], item)
+                  : item[key];
+
+                return (
+                  <div
+                    key={`${item[tableRowRenderKey]}${title}`}
+                    style={{ minWidth: width }}
+                    className={classes.table__rowItem}
+                    role="cell"
+                  >
+                    {rowValue}
+                  </div>
+                );
+              },
+            );
 
             return rowCustomRender ? (
               rowCustomRender({ row, item, rowProps })

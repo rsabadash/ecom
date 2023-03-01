@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { TABLE_ID } from './constants';
+import { TABLE_SUPPLIERS_ID } from './constants';
 import {
   RowCustomRenderArgs,
   Table,
@@ -21,7 +21,7 @@ export const SuppliersList = () => {
       isRowLinkInteractive
       items={data}
       columns={columns}
-      tableLabeledBy={TABLE_ID}
+      tableLabeledBy={TABLE_SUPPLIERS_ID}
       rowCustomRender={({
         row,
         item,
