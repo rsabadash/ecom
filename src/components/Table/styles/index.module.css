@@ -18,7 +18,7 @@
 
 .table__headerItem {
   padding-block: 1em;
-  padding-inline: 0.90em;
+  padding-inline: 1em;
 }
 
 .table__body a {
@@ -54,6 +54,6 @@
 }
 
 .table__rowItem {
-  padding-block: 0.90em;
-  padding-inline: 0.90em;
+  padding-block: 1em;
+  padding-inline: 1em;
 }

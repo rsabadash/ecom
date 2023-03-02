@@ -1,0 +1,25 @@
+.tag {
+  color: var(--text-color);
+  border-radius: var(--radius-large);
+  border: none;
+  transition: background-color var(--transition);
+  display: inline-block;
+  padding-block: 0.35em;
+  padding-inline: 0.70em;
+  font-size: var(--font-size-regular);
+}
+
+.tag_regular {
+  color: var(--background-900);
+  background-color: var(--button-regular-background);
+}
+
+.tag_primary {
+  color: var(--button-variant-text);
+  background-color: var(--primary-900);
+}
+
+.tag_theme {
+  color: var(--foreground-900);
+  background-color: var(--foreground-300);
+}

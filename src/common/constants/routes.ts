@@ -20,4 +20,8 @@ export const routes = {
     variantAdd: '/attributes/:attributeId/variants/add',
     variantDetail: '/attributes/:attributeId/variants/:variantId',
   },
+  warehouseProducts: {
+    root: '/warehouse-products',
+    generate: '/warehouse-products/generate',
+  },
 };

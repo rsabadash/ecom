@@ -42,6 +42,15 @@ const VariantAdd = lazy(
 const VariantDetail = lazy(
   () => import('../../modules/attributes/detail/VariantDetail'),
 );
+const WarehouseProductsList = lazy(
+  () => import('../../modules/warehouseProducts/list/WarehouseProductsList'),
+);
+const WarehouseProductsGenerator = lazy(
+  () =>
+    import(
+      '../../modules/warehouseProducts/generator/WarehouseProductsGenerator'
+    ),
+);
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -164,6 +173,22 @@ export const router = createBrowserRouter(
           element={
             <Suspense fallback="Route Attribute variant detail">
               <VariantDetail />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouseProducts.root}
+          element={
+            <Suspense fallback="Route Warehouse products">
+              <WarehouseProductsList />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouseProducts.generate}
+          element={
+            <Suspense fallback="Route Warehouse products generator">
+              <WarehouseProductsGenerator />
             </Suspense>
           }
         />

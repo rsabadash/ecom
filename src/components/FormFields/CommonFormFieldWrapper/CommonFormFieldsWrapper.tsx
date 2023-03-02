@@ -27,7 +27,11 @@ export const CommonFormFieldsWrapper: FC<
   const describedById = `${name}Description`;
 
   return (
-    <div className={classes.formFieldWrapper}>
+    <div
+      className={
+        columnIndex !== undefined ? classes.formFieldWrapper : undefined
+      }
+    >
       <div style={row1}>
         <FieldLabel
           label={label}

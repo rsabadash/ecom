@@ -5,6 +5,8 @@ import { menu } from './menu';
 import { signIn } from './signIn';
 import { suppliers } from './suppliers';
 import { attributes } from './attributes';
+import { warehouseProducts } from './warehouseProducts';
+
 const translationEN = {
   en: {
     ...categories,
@@ -14,6 +16,7 @@ const translationEN = {
     ...signIn,
     ...suppliers,
     ...attributes,
+    ...warehouseProducts,
   },
 };
 

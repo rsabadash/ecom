@@ -6,6 +6,8 @@ export const common = {
   edit: 'Edit',
   delete: 'Delete',
   cancel: 'Cancel',
+  save: 'Save',
+  generate: 'Generate',
   notSelected: 'Not selected',
   signOut: 'Sign out',
   sortOrder: 'Sort order',

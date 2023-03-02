@@ -13,3 +13,5 @@ export type {
   TextboxWithCollapseFormFieldProps,
 } from './Textbox';
 export { Form } from './Form';
+export { FormContent } from './FormContent';
+export { FormDescription } from './FormDescription';
