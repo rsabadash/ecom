@@ -3,7 +3,7 @@ export const warehouseProducts = {
   'warehouseProducts.generation': 'Генерація складських товарів',
   'warehouseProducts.generate': 'Згенерувати товари',
   'warehouseProducts.generate.form.description':
-    'Введіть загальну назву товару та оберіть атрибути, які належать до цього товару. На основі обраних атрибутів буде згенеровано відповідну кількість унікальних товарів.',
+    'На основі загальної назви та обраних атрибутів, буде згенеровано відповідну кількість унікальних складських товарів.',
   'warehouseProducts.name': 'Назва товару',
   'warehouseProducts.name.fillIn':
     'Введіть загальну назву товару {language} мовою',

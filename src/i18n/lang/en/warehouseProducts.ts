@@ -3,7 +3,7 @@ export const warehouseProducts = {
   'warehouseProducts.generation': 'Generation of warehouse products',
   'warehouseProducts.generate': 'Generate products',
   'warehouseProducts.generate.form.description':
-    'Fill in the general product name and select the attributes, that belong to the product. Based on the selected attributes, the corresponding number of unique items will be generated.',
+    'Based on the common name and selected attributes, an appropriate number of unique warehouse items will be generated.',
   'warehouseProducts.name': 'Product name',
   'warehouseProducts.name.fillIn': 'Fill in general product name in {language}',
   'warehouseProducts.name.error.required':
