@@ -23,9 +23,6 @@ export const endpoints = {
   users: {
     signIn: `${PREFIX}/users/sign-in`,
   },
-  attributes: {
-    root: `${PREFIX}/attributes`,
-  },
 };
 
 export const query = {
