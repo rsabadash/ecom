@@ -4,6 +4,7 @@ import { DropdownItem } from '../../components/Fields/Dropdown';
 export type Category = {
   _id: string;
   name: Translations;
+  seoName: string;
   isActive: boolean;
   parentIds: string[];
 };
@@ -11,12 +12,14 @@ export type Category = {
 export type CategoryDetailEntity = {
   _id: string;
   name: Translations;
+  seoName: string;
   isActive: boolean;
   parents: Category[];
 };
 
 export type CategoryFormValues = {
   name: Translations;
+  seoName: string;
   isActive: boolean;
   parentIds: DropdownItem[];
 };
@@ -34,6 +37,7 @@ export type CategoryFormProps = {
 
 export type CategoryPostData = {
   name: Translations;
+  seoName: string;
   isActive: boolean;
   parentIds: string[];
 };
@@ -41,6 +45,7 @@ export type CategoryPostData = {
 export type CategoryPostResponse = {
   _id: string;
   name: Translations;
+  seoName: string;
   isActive: boolean;
   parents: Category[];
 };
@@ -48,6 +53,7 @@ export type CategoryPostResponse = {
 export type CategoryPatchData = {
   id: string;
   name: Translations;
+  seoName: string;
   isActive: boolean;
   parentIds: string[];
 };

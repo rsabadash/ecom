@@ -3,6 +3,7 @@ import { useCachedAPI } from '../../hooks';
 import { useTranslation } from '../../components/IntlProvider';
 import {
   DropdownAdapter,
+  InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../components/FormFieldsAdapter';
 import { categoryFormFields } from './constants';
@@ -54,6 +55,16 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             control={control}
             columnIndex={1}
           />
+          <InputAdapter
+            isRequired
+            isReadOnly={isReadOnly}
+            isDescriptionHidden={isReadOnly}
+            name={categoryFormFields.seoName}
+            label={translate('category.seoName')}
+            placeholder={translate('category.seoName.description')}
+            control={control}
+            columnIndex={3}
+          />
           <DropdownAdapter
             hasMultiselect
             isReadOnly={isReadOnly}
@@ -72,7 +83,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             label={translate('category.active')}
             placeholder={translate('category.active.description')}
             control={control}
-            columnIndex={3}
+            columnIndex={4}
           />
         </GridRowBalancer>
       </FormContent>
