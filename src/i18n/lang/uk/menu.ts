@@ -3,5 +3,6 @@ export const menu = {
   'menu.categories': 'Категорії',
   'menu.products': 'Товари',
   'menu.suppliers': 'Постачальники',
+  'menu.attributes': 'Атрибути',
   'menu.warehouseProducts': 'Складські товари',
 };

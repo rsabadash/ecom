@@ -10,6 +10,7 @@ export const common = {
   generate: 'Згенерувати',
   notSelected: 'Не обрано',
   signOut: 'Вийти',
+  sortOrder: 'Порядок сортування',
 
   'uk.adjective': 'українськю',
   'en.adjective': 'англійською',

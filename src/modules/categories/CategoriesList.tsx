@@ -4,7 +4,7 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
-import { TABLE_ID } from './constants';
+import { TABLE_CATEGORIES_ID } from './constants';
 import { Category } from './types';
 import { routes } from '../../common/constants/routes';
 import { useCachedAPI } from '../../hooks';
@@ -23,7 +23,7 @@ export const CategoriesList = () => {
       isRowLinkInteractive
       items={data}
       columns={columns}
-      tableLabeledBy={TABLE_ID}
+      tableLabeledBy={TABLE_CATEGORIES_ID}
       rowCustomRender={({
         row,
         item,

@@ -1,13 +1,14 @@
 import { ReactNode } from 'react';
 
-export type TableColumn = {
+export type TableColumn<K> = {
   title: string;
   key: string;
   width: string;
-  valueGetter?: (value: any) => ReactNode;
+  isHidden?: boolean;
+  valueGetter?: (value: any, item: Record<keyof K, any>) => ReactNode;
 };
 
-export type TableColumnGeneric<K> = Omit<TableColumn, 'key'> & {
+export type TableColumnGeneric<K> = Omit<TableColumn<K>, 'key'> & {
   key: keyof K;
 };
 
@@ -27,8 +28,9 @@ export type RowCustomRenderArgs<I = any> = {
 export type TableProps = {
   tableLabeledBy?: string;
   items: Record<string, any>[];
-  columns: TableColumn[];
+  columns: TableColumn<Record<string, any>>[];
   rowCustomRender?: (args: RowCustomRenderArgs) => ReactNode;
   isRowInteractive?: boolean;
   isRowLinkInteractive?: boolean;
+  tableRowRenderKey?: string;
 };

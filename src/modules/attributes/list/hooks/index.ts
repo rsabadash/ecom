@@ -1,0 +1,1 @@
+export { useAttributesTableColumns } from './useAttributesTableColumns';
