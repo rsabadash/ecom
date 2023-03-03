@@ -7,7 +7,7 @@ import {
 } from '../../../components/FormFieldsAdapter';
 import { attributesFormFields } from './constants';
 import { Button } from '../../../components/Button';
-import { CheckboxAdapter } from '../../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
+import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { AttributeFormProps } from './types';
 import { Form } from '../../../components/FormFields';
 import { useAttributeForm, useAttributeFormSubmit } from './hooks';
@@ -44,6 +44,16 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           columnIndex={1}
         />
         <InputAdapter
+          isRequired
+          isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
+          name={attributesFormFields.seoName}
+          label={translate('attribute.seoName')}
+          placeholder={translate('attribute.seoName.description')}
+          control={control}
+          columnIndex={3}
+        />
+        <InputAdapter
           type="number"
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
@@ -60,7 +70,7 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           label={translate('attribute.active')}
           placeholder={translate('attribute.active.description')}
           control={control}
-          columnIndex={3}
+          columnIndex={4}
         />
       </GridRowBalancer>
       {!isReadOnly && (

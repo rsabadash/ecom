@@ -8,7 +8,7 @@ import {
 } from '../../../components/FormFieldsAdapter';
 import { variantFormFields } from './constants';
 import { Button } from '../../../components/Button';
-import { CheckboxAdapter } from '../../../components/FormFieldsAdapter/CheckboxAdabter/CheckboxAdapter';
+import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { AttributeUrlParams, VariantFormProps } from './types';
 import { Form } from '../../../components/FormFields';
 import { useVariantForm, useVariantFormSubmit } from './hooks';
@@ -47,6 +47,16 @@ export const VariantForm: FC<VariantFormProps> = ({
           columnIndex={1}
         />
         <InputAdapter
+          isRequired
+          isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
+          name={variantFormFields.seoName}
+          label={translate('attribute.variant.seoName')}
+          placeholder={translate('attribute.variant.seoName.description')}
+          control={control}
+          columnIndex={3}
+        />
+        <InputAdapter
           type="number"
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
@@ -63,7 +73,7 @@ export const VariantForm: FC<VariantFormProps> = ({
           label={translate('attribute.variant.active')}
           placeholder={translate('attribute.variant.active.description')}
           control={control}
-          columnIndex={3}
+          columnIndex={4}
         />
       </GridRowBalancer>
       {!isReadOnly && (

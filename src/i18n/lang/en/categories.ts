@@ -9,7 +9,7 @@ export const categories = {
   'category.seoName.error.symbol':
     'Category SEO name can contains only number and Latin letters',
   'category.seoName.description':
-    'Аor search optimization add category SEO name in English',
+    'For search optimization add category SEO name in English',
   'category.active': 'Category is active',
   'category.active.description':
     'Make category available for display on public pages',

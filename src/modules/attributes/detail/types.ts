@@ -6,6 +6,7 @@ export type AttributeUrlParams = {
 
 export type VariantFormValues = {
   name: Translations;
+  seoName: string;
   isActive: boolean;
   sortOrder: number;
 };
@@ -23,6 +24,7 @@ export type VariantFormProps = {
 
 export type VariantPostData = {
   name: Translations;
+  seoName: string;
   isActive: boolean;
   sortOrder: number;
   attributeId?: string;
