@@ -1,12 +1,11 @@
 import { FC } from 'react';
-import { GridFullWidth } from '../../layouts/Grid';
 import { useTranslation } from '../../components/IntlProvider';
 import { InputAdapter } from '../../components/FormFieldsAdapter';
 import { supplierFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { SupplierFormProps } from './types';
 import { useSupplierForm, useSupplierFormSubmit } from './hooks';
-import { Form } from '../../components/FormFields';
+import { Form, FormContent } from '../../components/FormFields';
 import { GridRowBalancer } from '../../components/GridRowBalancer';
 
 export const SupplierForm: FC<SupplierFormProps> = ({
@@ -56,11 +55,11 @@ export const SupplierForm: FC<SupplierFormProps> = ({
         />
       </GridRowBalancer>
       {!isReadOnly && (
-        <GridFullWidth>
-          <Button variant="primary" type="submit" size="l">
+        <FormContent>
+          <Button variant="primary" type="submit">
             {shouldUpdateProduct ? translate('update') : translate('add')}
           </Button>
-        </GridFullWidth>
+        </FormContent>
       )}
     </Form>
   );

@@ -3,6 +3,7 @@ import { Translations } from '../../../components/IntlProvider';
 export type Attribute = {
   _id: string;
   name: Translations;
+  seoName: string;
   isActive: boolean;
   sortOrder: number;
   variants: Variant[];
@@ -11,14 +12,19 @@ export type Attribute = {
 export type Variant = {
   variantId: string;
   name: Translations;
+  seoName: string;
   isActive: boolean;
   sortOrder: number;
+};
+
+export type VariantWithAttribute = Variant & {
   attributeId: string;
-  attributeName?: Translations;
+  attributeName: Translations;
 };
 
 export type AttributeFormValues = {
   name: Translations;
+  seoName: string;
   isActive: boolean;
   sortOrder: number;
 };
