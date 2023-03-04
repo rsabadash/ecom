@@ -1,5 +1,6 @@
 import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
 import { Translations } from '../../../components/IntlProvider';
+import { Attribute } from '../../attributes/common/types';
 
 export type WarehouseProductsGeneratorFormProps = {
   onSuccessSubmit: (products: GeneratedProduct[]) => void;
@@ -33,21 +34,6 @@ export type WarehouseProductsGeneratorFormFields = Record<
   keyof WarehouseProductsGeneratorFormValues,
   keyof WarehouseProductsGeneratorFormValues
 >;
-
-export type Variant = {
-  isActive: boolean;
-  name: Translations;
-  sortOrder: number;
-  variantId: string;
-};
-
-export type Attribute = {
-  name: Translations;
-  isActive: boolean;
-  sortOrder: number;
-  _id: string;
-  variants: Variant[];
-};
 
 export type WarehouseProductsGeneratorAttributeFormSectionProps = {
   attribute: Attribute;

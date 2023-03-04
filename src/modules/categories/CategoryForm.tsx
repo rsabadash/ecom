@@ -50,10 +50,21 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             isReadOnly={isReadOnly}
             isDescriptionHidden={isReadOnly}
             name={categoryFormFields.name}
-            placeholderTranslation="category.name.fillIn"
+            placeholderTranslation="category.name.description"
             label={translate('category.name')}
             control={control}
             columnIndex={1}
+          />
+          <DropdownAdapter
+            hasMultiselect
+            isReadOnly={isReadOnly}
+            isDescriptionHidden={isReadOnly}
+            name={categoryFormFields.parentIds}
+            items={categoriesDropdownList}
+            placeholder={translate('category.parent.description')}
+            label={translate('category.parent')}
+            control={control}
+            columnIndex={2}
           />
           <InputAdapter
             isRequired
@@ -64,17 +75,6 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             placeholder={translate('category.seoName.description')}
             control={control}
             columnIndex={3}
-          />
-          <DropdownAdapter
-            hasMultiselect
-            isReadOnly={isReadOnly}
-            isDescriptionHidden={isReadOnly}
-            name={categoryFormFields.parentIds}
-            items={categoriesDropdownList}
-            placeholder={translate('category.parent.select')}
-            label={translate('category.parent')}
-            control={control}
-            columnIndex={2}
           />
           <CheckboxAdapter
             isReadOnly={isReadOnly}
@@ -89,7 +89,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
       </FormContent>
       {!isReadOnly && (
         <FormContent>
-          <Button variant="primary" type="submit" size="l">
+          <Button variant="primary" type="submit">
             {shouldUpdateCategory ? translate('update') : translate('add')}
           </Button>
         </FormContent>

@@ -15,8 +15,11 @@ export type Variant = {
   seoName: string;
   isActive: boolean;
   sortOrder: number;
+};
+
+export type VariantWithAttribute = Variant & {
   attributeId: string;
-  attributeName?: Translations;
+  attributeName: Translations;
 };
 
 export type AttributeFormValues = {

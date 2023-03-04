@@ -8,7 +8,7 @@ import {
 import { useCustomForm } from '../../../hooks';
 import { CategoryFormValues } from '../types';
 import { mainTranslationRequired } from '../../../validations/translations';
-import { onlyNumbersAndLatinLetters } from '../../../common/constants/regExp';
+import { URL_SLUG } from '../../../common/constants/regExp';
 
 type UseCategoryFromProps = Pick<
   UseCustomFormProps<CategoryFormValues>,
@@ -36,7 +36,7 @@ const schema = yup.object().shape<YupSchemaKey<CategoryFormValues>>({
   seoName: yup
     .string()
     .nullable()
-    .matches(onlyNumbersAndLatinLetters, 'category.seoName.error.symbol')
+    .matches(URL_SLUG, 'category.seoName.error.symbol')
     .required('category.seoName.error.required'),
 });
 

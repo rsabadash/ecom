@@ -56,7 +56,7 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                   <MultiLanguageInputAdapter
                     isRequired
                     name={`${productsFieldName}.${index}.name`}
-                    placeholderTranslation="warehouseProducts.generatedName.fillIn"
+                    placeholderTranslation="warehouseProducts.generatedName.description"
                     label={translate('warehouseProducts.generatedName')}
                     control={control}
                   />
@@ -64,7 +64,7 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                 <InputAdapter
                   isRequired
                   name={`${productsFieldName}.${index}.sku`}
-                  placeholder={translate('warehouseProducts.sku.fillIn')}
+                  placeholder={translate('warehouseProducts.sku.description')}
                   label={translate('warehouseProducts.sku')}
                   control={control}
                 />

@@ -8,7 +8,7 @@ import {
 import { useCustomForm } from '../../../../hooks';
 import { AttributeFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
-import { onlyNumbersAndLatinLetters } from '../../../../common/constants/regExp';
+import { URL_SLUG } from '../../../../common/constants/regExp';
 
 type UseAttributeFromProps = Pick<
   UseCustomFormProps<AttributeFormValues>,
@@ -38,7 +38,7 @@ const schema = yup.object().shape<YupSchemaKey<AttributeFormValues>>({
   seoName: yup
     .string()
     .nullable()
-    .matches(onlyNumbersAndLatinLetters, 'attribute.seoName.error.symbol')
+    .matches(URL_SLUG, 'attribute.seoName.error.symbol')
     .required('attribute.seoName.error.required'),
 });
 

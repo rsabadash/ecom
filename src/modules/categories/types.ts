@@ -9,11 +9,7 @@ export type Category = {
   parentIds: string[];
 };
 
-export type CategoryDetailEntity = {
-  _id: string;
-  name: Translations;
-  seoName: string;
-  isActive: boolean;
+export type CategoryDetailEntity = Omit<Category, 'parentIds'> & {
   parents: Category[];
 };
 

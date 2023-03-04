@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { GridFullWidth } from '../../../layouts/Grid';
 import { useTranslation } from '../../../components/IntlProvider';
 import {
   InputAdapter,
@@ -9,7 +8,7 @@ import { attributesFormFields } from './constants';
 import { Button } from '../../../components/Button';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { AttributeFormProps } from './types';
-import { Form } from '../../../components/FormFields';
+import { Form, FormContent } from '../../../components/FormFields';
 import { useAttributeForm, useAttributeFormSubmit } from './hooks';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 
@@ -38,20 +37,10 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={attributesFormFields.name}
-          placeholderTranslation="attribute.name.fillIn"
+          placeholderTranslation="attribute.name.description"
           label={translate('attribute.name')}
           control={control}
           columnIndex={1}
-        />
-        <InputAdapter
-          isRequired
-          isReadOnly={isReadOnly}
-          isDescriptionHidden={isReadOnly}
-          name={attributesFormFields.seoName}
-          label={translate('attribute.seoName')}
-          placeholder={translate('attribute.seoName.description')}
-          control={control}
-          columnIndex={3}
         />
         <InputAdapter
           type="number"
@@ -62,6 +51,16 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           label={translate('sortOrder')}
           control={control}
           columnIndex={2}
+        />
+        <InputAdapter
+          isRequired
+          isReadOnly={isReadOnly}
+          isDescriptionHidden={isReadOnly}
+          name={attributesFormFields.seoName}
+          label={translate('attribute.seoName')}
+          placeholder={translate('attribute.seoName.description')}
+          control={control}
+          columnIndex={3}
         />
         <CheckboxAdapter
           isReadOnly={isReadOnly}
@@ -74,11 +73,11 @@ export const AttributeForm: FC<AttributeFormProps> = ({
         />
       </GridRowBalancer>
       {!isReadOnly && (
-        <GridFullWidth>
-          <Button variant="primary" type="submit" size="l">
+        <FormContent>
+          <Button variant="primary" type="submit">
             {shouldUpdateAttribute ? translate('update') : translate('add')}
           </Button>
-        </GridFullWidth>
+        </FormContent>
       )}
     </Form>
   );

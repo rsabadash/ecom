@@ -8,7 +8,7 @@ import {
 import { useCustomForm } from '../../../../hooks';
 import { VariantFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
-import { onlyNumbersAndLatinLetters } from '../../../../common/constants/regExp';
+import { URL_SLUG } from '../../../../common/constants/regExp';
 
 type UseVariantFromProps = Pick<
   UseCustomFormProps<VariantFormValues>,
@@ -36,10 +36,7 @@ const schema = yup.object().shape<YupSchemaKey<VariantFormValues>>({
   seoName: yup
     .string()
     .nullable()
-    .matches(
-      onlyNumbersAndLatinLetters,
-      'attribute.variant.seoName.error.symbol',
-    )
+    .matches(URL_SLUG, 'attribute.variant.seoName.error.symbol')
     .required('attribute.variant.seoName.error.required'),
 });
 

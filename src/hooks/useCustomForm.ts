@@ -26,9 +26,11 @@ export const useCustomForm = <V extends Record<string, any>>({
   shouldReset,
   submitHandler,
 }: UseCustomFormProps<V>): UseCustomFormReturn<V> => {
-  const { formState, reset, handleSubmit, ...rest } = useForm<V>(formProps);
+  const { formState, reset, clearErrors, handleSubmit, ...rest } =
+    useForm<V>(formProps);
 
-  const { isDirty, isSubmitted } = formState;
+  const { isDirty, isSubmitted, errors } = formState;
+  const hasError = Object.keys(errors).length > 0;
 
   const handleFormSubmit = useCallback(
     async (e?: BaseSyntheticEvent) => await handleSubmit(submitHandler)(e),
@@ -40,13 +42,18 @@ export const useCustomForm = <V extends Record<string, any>>({
       if (isDirty && !isSubmitted) {
         reset();
       }
+
+      if (hasError) {
+        clearErrors();
+      }
     }
-  }, [reset, shouldReset, isSubmitted, isDirty]);
+  }, [reset, shouldReset, isSubmitted, isDirty, clearErrors, hasError]);
 
   return {
     ...rest,
     formState,
     reset,
+    clearErrors,
     handleSubmit: handleFormSubmit,
   };
 };
