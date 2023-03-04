@@ -7,7 +7,7 @@ export const categories = {
   'category.seoName': 'Category SEO name',
   'category.seoName.error.required': 'Category SEO name is required',
   'category.seoName.error.symbol':
-    'Category SEO name can contains only number and Latin letters',
+    'Category SEO name should contains only number and Latin letters',
   'category.seoName.description':
     'For search optimization add category SEO name in English',
   'category.active': 'Category is active',

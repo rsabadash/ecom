@@ -8,7 +8,7 @@ export const attributes = {
   'attribute.seoName': 'Attribute SEO name',
   'attribute.seoName.error.required': 'Attribute SEO name is required',
   'attribute.seoName.error.symbol':
-    'Attribute SEO name can contains only number and Latin letters',
+    'Attribute SEO name should contains only number and Latin letters',
   'attribute.seoName.description':
     'For search optimization add attribute SEO name in English',
   'attribute.active': 'Attribute is active',
@@ -28,7 +28,7 @@ export const attributes = {
   'attribute.variant.seoName': 'Variant SEO name',
   'attribute.variant.seoName.error.required': 'Variant SEO name is required',
   'attribute.variant.seoName.error.symbol':
-    'Variant SEO name can contains only number and Latin letters',
+    'Variant SEO name should contains only number and Latin letters',
   'attribute.variant.seoName.description':
     'For search optimization add variant SEO name in English',
   'attribute.variant.sortOrder.description':
