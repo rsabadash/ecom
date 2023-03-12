@@ -20,7 +20,6 @@ export const AttributesList = () => {
 
   return (
     <Table
-      isRowLinkInteractive
       items={data}
       columns={columns}
       tableLabeledBy={TABLE_ATTRIBUTES_ID}

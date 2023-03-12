@@ -17,12 +17,7 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
   label,
   control,
   columnIndex,
-  ariaLabel,
-  ariaControls,
-  forceExpand,
   isToggleHidden,
-  isInitiallyExpand,
-  collapseBodyRef,
 }: TextboxWithCollapseAdapterProps<FormValues>) => {
   const {
     field: { onChange, onBlur, name: fieldName, value },
@@ -60,12 +55,7 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
       isDescriptionHidden={isDescriptionHidden}
       label={label}
       columnIndex={columnIndex}
-      ariaLabel={ariaLabel}
-      ariaControls={ariaControls}
-      forceExpand={forceExpand}
       isToggleHidden={isToggleHidden}
-      isInitiallyExpand={isInitiallyExpand}
-      collapseBodyRef={collapseBodyRef}
     />
   );
 };

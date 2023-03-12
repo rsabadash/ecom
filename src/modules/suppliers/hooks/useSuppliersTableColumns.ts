@@ -8,7 +8,7 @@ type UseSuppliersTableColumns = () => TableColumnGeneric<Supplier>[];
 export const useSuppliersTableColumns: UseSuppliersTableColumns = () => {
   const { translate } = useTranslation();
 
-  return useMemo(
+  return useMemo<TableColumnGeneric<Supplier>[]>(
     () => [
       {
         title: translate('suppliers.name'),

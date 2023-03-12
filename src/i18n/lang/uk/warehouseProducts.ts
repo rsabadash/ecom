@@ -17,4 +17,5 @@ export const warehouseProducts = {
   'warehouseProducts.sku': 'SKU ідентифікатор',
   'warehouseProducts.sku.description': 'Введіть унікальний артикул товару',
   'warehouseProducts.sku.error.required': "SKU ідентифікатор є обов'язковим",
+  'warehouseProducts.attributes': 'Атрибути',
 };

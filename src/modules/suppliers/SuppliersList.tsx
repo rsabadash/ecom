@@ -18,7 +18,6 @@ export const SuppliersList = () => {
 
   return (
     <Table
-      isRowLinkInteractive
       items={data}
       columns={columns}
       tableLabeledBy={TABLE_SUPPLIERS_ID}

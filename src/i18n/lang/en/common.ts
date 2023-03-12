@@ -11,6 +11,8 @@ export const common = {
   notSelected: 'Not selected',
   signOut: 'Sign out',
   sortOrder: 'Sort order',
+  yes: 'yes',
+  no: 'no',
 
   'uk.adjective': 'Ukrainian',
   'en.adjective': 'English',

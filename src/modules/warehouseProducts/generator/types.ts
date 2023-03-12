@@ -1,6 +1,7 @@
 import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
 import { Translations } from '../../../components/IntlProvider';
 import { Attribute } from '../../attributes/common/types';
+import { WarehouseProduct } from '../list/types';
 
 export type WarehouseProductsGeneratorFormProps = {
   onSuccessSubmit: (products: GeneratedProduct[]) => void;
@@ -77,4 +78,6 @@ export type WarehouseProductsGeneratorProductsFormFields = Record<
   keyof WarehouseProductsGeneratorProductsFormValues
 >;
 
-// export type WarehouseProductsPostData = GeneratedProductFieldValue[];
+export type WarehouseProductsPostData = GeneratedProductFieldValue[];
+
+export type WarehouseProductsPostResponse = WarehouseProduct[];

@@ -18,7 +18,9 @@ export const useVariantsTableColumns: UseVariantsTableColumns = (
   const { translate, language } = useTranslation();
   const navigate = useNavigate();
 
-  return useMemo(
+  return useMemo<
+    (TableColumnGeneric<Variant> | TableColumnGeneric<VariantWithAttribute>)[]
+  >(
     () => [
       {
         title: translate('attribute.variant.name'),

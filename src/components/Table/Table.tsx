@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import clsx from 'clsx';
 import { Foreground } from '../../layouts/Foreground';
 import { TableBodyRowProps, TableProps } from './types';
 import { INDEX_ABSENCE_FOCUS, INITIAL_FOCUS_INDEX } from './constants';
@@ -19,10 +20,9 @@ import classes from './styles/index.module.css';
 export const Table: FC<TableProps> = ({
   items,
   columns,
+  tableClassName,
   tableLabeledBy,
   rowCustomRender,
-  // isRowInteractive, TODO onClick initialization by pressing Enter
-  isRowLinkInteractive,
   tableRowRenderKey = '_id',
 }) => {
   const tableBodyRef = useRef<HTMLDivElement>(null);
@@ -50,17 +50,12 @@ export const Table: FC<TableProps> = ({
     if (isKeyboardControl) {
       const rowElement = getRowElementByIndex(focusIndex);
 
-      if (rowElement && isRowLinkInteractive) {
+      if (rowElement) {
         rowElement.focus();
         rowElement.scrollIntoView({ block: 'nearest' });
       }
     }
-  }, [
-    focusIndex,
-    getRowElementByIndex,
-    isKeyboardControl,
-    isRowLinkInteractive,
-  ]);
+  }, [focusIndex, getRowElementByIndex, isKeyboardControl]);
 
   const defineFocusIndexByKey = (key: EventKeys): number | undefined => {
     const itemsLength = items.length;
@@ -104,18 +99,20 @@ export const Table: FC<TableProps> = ({
   };
 
   const handleTableBodyMouseMove = (): void => {
-    if (isRowLinkInteractive && isKeyboardControl) {
+    if (isKeyboardControl) {
       blurNavItem(focusIndex);
       setIsKeyboardControl(false);
     }
   };
+
+  const tableClassNames = clsx(classes.table, tableClassName);
 
   return (
     <Foreground foregroundClassName={classes.tableForeground}>
       {/* aria-rowcount is total number of items, not only visible */}
       <div
         role="grid"
-        className={classes.table}
+        className={tableClassNames}
         aria-rowcount={items.length}
         aria-label={tableLabeledBy}
       >
@@ -163,7 +160,7 @@ export const Table: FC<TableProps> = ({
             };
 
             const row = columns.map(
-              ({ key, width, valueGetter, title, isHidden }) => {
+              ({ key, width, align, valueGetter, title, isHidden }) => {
                 if (isHidden) return;
 
                 const rowValue = valueGetter
@@ -173,8 +170,8 @@ export const Table: FC<TableProps> = ({
                 return (
                   <div
                     key={`${item[tableRowRenderKey]}${title}`}
-                    style={{ minWidth: width }}
-                    className={classes.table__rowItem}
+                    style={{ minWidth: width, justifyContent: align }}
+                    className={classes.table__cell}
                     role="cell"
                   >
                     {rowValue}

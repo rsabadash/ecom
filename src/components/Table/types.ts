@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
+import { horizontalAlignment } from './constants';
 
 export type TableColumn<K> = {
   title: string;
   key: string;
   width: string;
+  align?: ValuesOfObject<typeof horizontalAlignment>;
   isHidden?: boolean;
   valueGetter?: (value: any, item: Record<keyof K, any>) => ReactNode;
 };
@@ -26,11 +28,10 @@ export type RowCustomRenderArgs<I = any> = {
 };
 
 export type TableProps = {
+  tableClassName?: string;
   tableLabeledBy?: string;
   items: Record<string, any>[];
   columns: TableColumn<Record<string, any>>[];
   rowCustomRender?: (args: RowCustomRenderArgs) => ReactNode;
-  isRowInteractive?: boolean;
-  isRowLinkInteractive?: boolean;
   tableRowRenderKey?: string;
 };

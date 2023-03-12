@@ -51,7 +51,11 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
     <MultiLanguage
       columnIndex={columnIndex}
       collapseBodyId={ariaControls}
-      renderVisibleComponent={({ language, collapseBodyRef }) => (
+      ariaLabel={ariaLabelValue}
+      ariaControls={ariaControls}
+      forceExpand={hasMultiLanguageError}
+      isInitiallyExpand={isInitiallyExpand}
+      renderVisibleComponent={({ language }) => (
         <InputWithCollapseAdapter
           {...commonProps}
           name={`${name}.${language}` as Path<FormValues>}
@@ -65,12 +69,7 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
           }
           label={`${label} (${translate(`${language}.adjective`)})`}
           columnIndex={columnIndex}
-          ariaLabel={ariaLabelValue}
-          ariaControls={ariaControls}
-          forceExpand={hasMultiLanguageError}
           isToggleHidden={isToggleHidden}
-          isInitiallyExpand={isInitiallyExpand}
-          collapseBodyRef={collapseBodyRef}
         />
       )}
       renderHiddenComponent={({ language }) => (
