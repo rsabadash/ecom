@@ -39,7 +39,19 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           key: 'attributes',
           width: '15%',
           valueGetter: (value: null | WarehouseProductsAttribute[]) => {
-            return value?.length ? translate('yes') : translate('no');
+            const valueIsAttribute = value?.length
+              ? translate('yes')
+              : translate('no');
+
+            return (
+              <div
+                aria-label={`${translate(
+                  'warehouseProducts.attributes',
+                )} ${valueIsAttribute}`}
+              >
+                {valueIsAttribute}
+              </div>
+            );
           },
         },
         {

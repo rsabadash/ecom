@@ -7,3 +7,13 @@ export const horizontalAlignment = {
   end: 'flex-end',
   center: 'center',
 } as const;
+
+export const tableRoles = {
+  treegrid: 'treegrid',
+  grid: 'grid',
+} as const;
+
+export const tableRowRoles = {
+  treegrid: 'treeitem',
+  grid: 'row',
+} as const;

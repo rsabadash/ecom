@@ -9,7 +9,12 @@ import {
 import clsx from 'clsx';
 import { Foreground } from '../../layouts/Foreground';
 import { TableBodyRowProps, TableProps } from './types';
-import { INDEX_ABSENCE_FOCUS, INITIAL_FOCUS_INDEX } from './constants';
+import {
+  INDEX_ABSENCE_FOCUS,
+  INITIAL_FOCUS_INDEX,
+  tableRoles,
+  tableRowRoles,
+} from './constants';
 import { EventKeys } from '../../common/enums/events';
 import { KeyIndexMap } from '../Navigation/types';
 import classes from './styles/index.module.css';
@@ -20,8 +25,9 @@ import classes from './styles/index.module.css';
 export const Table: FC<TableProps> = ({
   items,
   columns,
-  tableClassName,
+  tableRole = tableRoles.grid,
   tableLabeledBy,
+  tableBodyClassName,
   rowCustomRender,
   tableRowRenderKey = '_id',
 }) => {
@@ -105,16 +111,16 @@ export const Table: FC<TableProps> = ({
     }
   };
 
-  const tableClassNames = clsx(classes.table, tableClassName);
+  const tableBodyClassNames = clsx(classes.table__body, tableBodyClassName);
 
   return (
     <Foreground foregroundClassName={classes.tableForeground}>
       {/* aria-rowcount is total number of items, not only visible */}
       <div
-        role="grid"
-        className={tableClassNames}
+        role={tableRole}
+        className={classes.table}
         aria-rowcount={items.length}
-        aria-label={tableLabeledBy}
+        aria-labelledby={tableLabeledBy}
       >
         <div className={classes.table__header} role="rowgroup">
           <div
@@ -140,7 +146,7 @@ export const Table: FC<TableProps> = ({
         </div>
         <div
           role="rowgroup"
-          className={classes.table__body}
+          className={tableBodyClassNames}
           onKeyDown={handleTableBodyKeyDown}
           onMouseMove={handleTableBodyMouseMove}
           ref={tableBodyRef}
@@ -154,7 +160,7 @@ export const Table: FC<TableProps> = ({
             const rowProps: TableBodyRowProps = {
               tabIndex,
               className: classes.table__row,
-              role: 'row',
+              role: tableRowRoles[tableRole],
               // aria-rowindex to do exactly index from whole list length, not by current index
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
             };
@@ -172,7 +178,7 @@ export const Table: FC<TableProps> = ({
                     key={`${item[tableRowRenderKey]}${title}`}
                     style={{ minWidth: width, justifyContent: align }}
                     className={classes.table__cell}
-                    role="cell"
+                    role="gridcell"
                   >
                     {rowValue}
                   </div>

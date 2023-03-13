@@ -9,6 +9,7 @@ import {
 import { WarehouseProduct, WarehouseProductTable } from './types';
 import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
 import { WarehouseProductsListItem } from './WarehouseProductsListItem';
+import { tableRoles } from '../../../components/Table/constants';
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsList = () => {
@@ -23,8 +24,9 @@ export const WarehouseProductsList = () => {
     <Table
       items={data}
       columns={columns}
+      tableRole={tableRoles.treegrid}
       tableLabeledBy={TABLE_WAREHOUSE_PRODUCTS_ID}
-      tableClassName={classes.warehouseList}
+      tableBodyClassName={classes.warehouseList}
       rowCustomRender={({
         row,
         item,

@@ -1,9 +1,8 @@
-import { FC, KeyboardEvent, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { CollapseBuilderHeaderProps } from './types';
 import { useCollapseController } from './CollapseController';
 import { CollapseBuilderButton } from './CollapseBuilderButton';
-import { EventKeys } from '../../common/enums/events';
 import classes from './styles/index.module.css';
 
 export const CollapseBuilderHeader: FC<
@@ -15,18 +14,10 @@ export const CollapseBuilderHeader: FC<
   isCollapseDisabled,
   headerClassName,
 }) => {
-  const { toggleCollapse } = useCollapseController();
+  const { isExpand, toggleCollapse } = useCollapseController();
 
   const handleHeaderClick = () => {
     if (isToggleableHeader && !isCollapseDisabled) {
-      toggleCollapse();
-    }
-  };
-
-  const handleHeaderKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const key = event.key as EventKeys;
-
-    if (isToggleableHeader && !isCollapseDisabled && key === EventKeys.Enter) {
       toggleCollapse();
     }
   };
@@ -37,7 +28,7 @@ export const CollapseBuilderHeader: FC<
     <div
       className={headerClassNames}
       onClick={handleHeaderClick}
-      onKeyDown={handleHeaderKeyDown}
+      aria-expanded={isExpand}
     >
       {children}
       {!isToggleHidden && (

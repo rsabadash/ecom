@@ -14,12 +14,13 @@ export const WarehouseProductsListItemRow = forwardRef<
   HTMLDivElement,
   PropsWithChildren<WarehouseProductsListItemRowProps>
 >(({ children, item, rowProps }, ref) => {
-  const { toggleCollapse } = useCollapseController();
+  const { isExpand, toggleCollapse } = useCollapseController();
 
   const { className, ...restRowProps } = rowProps;
   const tableRowClassNames = clsx(className, classes.warehouseListRow);
 
   const hasAttributes = !!item.attributes?.length;
+  const isExpanded = hasAttributes ? isExpand : undefined;
 
   const handleRowKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (hasAttributes) {
@@ -36,6 +37,7 @@ export const WarehouseProductsListItemRow = forwardRef<
       {...restRowProps}
       className={tableRowClassNames}
       onKeyDown={handleRowKeyDown}
+      aria-expanded={isExpanded}
     >
       <CollapseBuilderHeader
         isToggleHidden

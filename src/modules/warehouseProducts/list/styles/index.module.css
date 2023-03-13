@@ -14,7 +14,8 @@
     cursor: default;
 }
 
-.warehouseList .warehouseListRowCollapseBody:last-child {
+.warehouseList > .warehouseListRow:last-of-type {
+    overflow: hidden;
     border-bottom-right-radius: var(--radius-regular);
     border-bottom-left-radius: var(--radius-regular);
 }
