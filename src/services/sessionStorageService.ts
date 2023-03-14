@@ -1,17 +1,17 @@
-export class LocalStorageService {
+export class SessionStorageService {
   static getItem<V>(key: string): V | null {
-    return localStorage.getItem(key) as V | null;
+    return sessionStorage.getItem(key) as V | null;
   }
 
   static setItem<V extends string>(key: string, value: V): void {
-    localStorage.setItem(key, value);
+    sessionStorage.setItem(key, value);
   }
 
   static removeItem(key: string): boolean {
-    const value = localStorage.getItem(key);
+    const value = sessionStorage.getItem(key);
 
     if (value) {
-      localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
 
       return true;
     } else {

@@ -6,9 +6,9 @@ import {
 import { TableColumnGeneric } from '../../../../components/Table';
 import { Attribute, Variant } from '../../common/types';
 
-type UseAttributeTableColumns = () => TableColumnGeneric<Attribute>[];
+type UseAttributeTableColumnsReturn = TableColumnGeneric<Attribute>[];
 
-export const useAttributesTableColumns: UseAttributeTableColumns = () => {
+export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
   const { translate, language } = useTranslation();
 
   return useMemo(

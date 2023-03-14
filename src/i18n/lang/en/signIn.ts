@@ -8,4 +8,7 @@ export const signIn = {
   'signIn.password': 'Password',
   'signIn.password.description': 'Enter user password',
   'signIn.password.required': 'Password is required',
+  'signIn.rememberUser': 'Remember me',
+  'signIn.rememberUser.description':
+    'Do not sign out after closing the browser',
 };

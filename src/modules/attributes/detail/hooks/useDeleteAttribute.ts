@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { deleteAttributeApi } from '../api';
 
-type UseDeleteAttribute = (id: string | undefined) => {
+type UseDeleteAttributeReturn = {
   deleteAttribute: () => Promise<void>;
 };
 
-export const useDeleteAttribute: UseDeleteAttribute = (
+export const useDeleteAttribute = (
   id: string | undefined,
-) => {
+): UseDeleteAttributeReturn => {
   const deleteAttribute = useCallback(async () => {
     if (id) {
       await deleteAttributeApi(id);

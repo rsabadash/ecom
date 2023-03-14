@@ -1,5 +1,5 @@
 export type AuthContextValue = {
-  signIn: (data: SignInData) => Promise<void>;
+  signIn: (data: SignInDataExtended) => Promise<void>;
   signOut: () => void;
   isAuthenticated: boolean;
 };
@@ -12,6 +12,10 @@ export type Tokens = {
 export type SignInData = {
   email: string;
   password: string;
+};
+
+export type SignInDataExtended = SignInData & {
+  rememberUser: boolean;
 };
 
 export type SignInResponse = Tokens;

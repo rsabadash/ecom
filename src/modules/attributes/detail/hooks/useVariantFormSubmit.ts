@@ -8,14 +8,14 @@ type UseVariantFormSubmitProps = {
   variantId?: string;
 };
 
-type UseVariantFormSubmit = (props: UseVariantFormSubmitProps) => {
+type UseVariantFormSubmitReturn = {
   handleFormSubmit: (values: VariantFormValues) => Promise<void>;
 };
 
-export const useVariantFormSubmit: UseVariantFormSubmit = ({
+export const useVariantFormSubmit = ({
   attributeId,
   variantId,
-}) => {
+}: UseVariantFormSubmitProps): UseVariantFormSubmitReturn => {
   const { createVariant } = useCreateVariant();
   const { updateVariant } = useUpdateVariant();
 

@@ -22,10 +22,6 @@ type UseAttributeFromReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-type UseAttributeForm = (
-  props: UseAttributeFromProps,
-) => UseAttributeFromReturn;
-
 const schema = yup.object().shape<YupSchemaKey<AttributeFormValues>>({
   name: yup
     .object()
@@ -42,11 +38,11 @@ const schema = yup.object().shape<YupSchemaKey<AttributeFormValues>>({
     .required('attribute.seoName.error.required'),
 });
 
-export const useAttributeForm: UseAttributeForm = ({
+export const useAttributeForm = ({
   shouldReset,
   submitHandler,
   defaultValues,
-}) => {
+}: UseAttributeFromProps): UseAttributeFromReturn => {
   const { control, handleSubmit } = useCustomForm<AttributeFormValues>({
     formProps: {
       resolver: yupResolver(schema),

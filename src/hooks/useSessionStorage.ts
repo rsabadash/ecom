@@ -1,26 +1,26 @@
 import { useCallback } from 'react';
-import { LocalStorageService } from '../services';
+import { SessionStorageService } from '../services';
 
-type UseLocalStorageReturn = {
+type UseSessionStorageReturn = {
   setStorageItem: <V extends string>(key: string, value: V) => void;
   getStorageItem: <V>(key: string) => V | null;
   removeStorageItem: (key: string) => boolean;
 };
 
-export const useLocalStorage = (): UseLocalStorageReturn => {
+export const useSessionStorage = (): UseSessionStorageReturn => {
   const setStorageItem = useCallback(
     <V extends string>(key: string, value: V): void => {
-      LocalStorageService.setItem<V>(key, value);
+      SessionStorageService.setItem<V>(key, value);
     },
     [],
   );
 
   const getStorageItem = useCallback(<V>(key: string): V | null => {
-    return LocalStorageService.getItem<V>(key);
+    return SessionStorageService.getItem<V>(key);
   }, []);
 
   const removeStorageItem = useCallback((key: string): boolean => {
-    return LocalStorageService.removeItem(key);
+    return SessionStorageService.removeItem(key);
   }, []);
 
   return {

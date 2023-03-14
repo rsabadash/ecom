@@ -7,11 +7,11 @@ type GridInlineStyle = {
   marginTop?: string;
 };
 
-type UseGridInlineStyles = (
-  columnIndex: undefined | number,
-) => GridInlineStyle[];
+type UseGridInlineStylesReturn = GridInlineStyle[];
 
-export const useGridInlineStyles: UseGridInlineStyles = (columnIndex) => {
+export const useGridInlineStyles = (
+  columnIndex: undefined | number,
+): UseGridInlineStylesReturn => {
   const { rowIndex, currentColumnIndex, elementRowIndexes } =
     useElementColumnRowIndexes(columnIndex);
 

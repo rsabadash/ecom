@@ -8,13 +8,14 @@ import { TableColumnGeneric } from '../../../../components/Table';
 import { Variant, VariantWithAttribute } from '../types';
 import { routes } from '../../../../common/constants/routes';
 
-type UseVariantsTableColumns = (
-  isDetailList: boolean,
-) => (TableColumnGeneric<Variant> | TableColumnGeneric<VariantWithAttribute>)[];
+type UseVariantsTableColumnsReturn = (
+  | TableColumnGeneric<Variant>
+  | TableColumnGeneric<VariantWithAttribute>
+)[];
 
-export const useVariantsTableColumns: UseVariantsTableColumns = (
-  isDetailList,
-) => {
+export const useVariantsTableColumns = (
+  isDetailList: boolean,
+): UseVariantsTableColumnsReturn => {
   const { translate, language } = useTranslation();
   const navigate = useNavigate();
 
