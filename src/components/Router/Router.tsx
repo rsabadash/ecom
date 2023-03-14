@@ -10,6 +10,7 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
 import { SignedInRedirect } from './SignedInRedirect';
+import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 
 // import { RoleGuard } from '../RoleGuard';
 // import { Role } from '../UserProvider/enums';
@@ -72,6 +73,7 @@ export const router = createBrowserRouter(
         <Route path={routes.home} element={<SignedInRedirect />} />
         <Route
           path={routes.dashboard}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Dashboard">
               <Dashboard />
@@ -90,6 +92,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.categories.detail}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Categories detail">
               <CategoryDetail />
@@ -98,6 +101,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.categories.add}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Categories add">
               <CategoryAdd />
@@ -106,6 +110,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.suppliers.root}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Suppliers">
               <Suppliers />
@@ -114,6 +119,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={`${routes.suppliers.detail}`}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Suppliers detail">
               <SuppliersDetail />
@@ -122,6 +128,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.suppliers.add}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Suppliers add">
               <SuppliersAdd />
@@ -138,6 +145,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.attributes.add}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Attribute add">
               <AttributeAdd />
@@ -146,6 +154,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.attributes.detail}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Attribute detail">
               <AttributeDetail />
@@ -154,6 +163,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.attributes.variantList}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Variants list">
               <Variants />
@@ -162,6 +172,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.attributes.variantAdd}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Attribute variant add detail">
               <VariantAdd />
@@ -170,6 +181,7 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.attributes.variantDetail}
+          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Attribute variant detail">
               <VariantDetail />
@@ -192,6 +204,7 @@ export const router = createBrowserRouter(
             </Suspense>
           }
         />
+        <Route path="*" element={<ErrorPage />} />
       </Route>
       <Route
         element={
