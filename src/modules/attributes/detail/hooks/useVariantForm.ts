@@ -8,6 +8,7 @@ import {
 import { useCustomForm } from '../../../../hooks';
 import { VariantFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
+import { URL_SLUG } from '../../../../common/constants/regExp';
 
 type UseVariantFromProps = Pick<
   UseCustomFormProps<VariantFormValues>,
@@ -32,6 +33,11 @@ const schema = yup.object().shape<YupSchemaKey<VariantFormValues>>({
       }),
     )
     .required(),
+  seoName: yup
+    .string()
+    .nullable()
+    .matches(URL_SLUG, 'attribute.variant.seoName.error.symbol')
+    .required('attribute.variant.seoName.error.required'),
 });
 
 export const useVariantForm: UseVariantForm = ({

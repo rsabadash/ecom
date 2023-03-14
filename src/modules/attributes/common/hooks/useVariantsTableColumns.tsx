@@ -5,12 +5,12 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { Variant } from '../types';
+import { Variant, VariantWithAttribute } from '../types';
 import { routes } from '../../../../common/constants/routes';
 
 type UseVariantsTableColumns = (
   isDetailList: boolean,
-) => TableColumnGeneric<Variant>[];
+) => (TableColumnGeneric<Variant> | TableColumnGeneric<VariantWithAttribute>)[];
 
 export const useVariantsTableColumns: UseVariantsTableColumns = (
   isDetailList,

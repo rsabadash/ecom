@@ -6,7 +6,10 @@ import {
   YupSchemaKey,
 } from '../../../../hooks/useCustomForm';
 import { useCustomForm } from '../../../../hooks';
-import { WarehouseProductsGeneratorProductsFormValues } from '../types';
+import {
+  GeneratedProductFieldValue,
+  WarehouseProductsGeneratorProductsFormValues,
+} from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
 
 type UseWarehouseProductsGeneratorProductsFromProps = Pick<
@@ -29,7 +32,7 @@ const schema = yup
   .object()
   .shape<YupSchemaKey<WarehouseProductsGeneratorProductsFormValues>>({
     products: yup.array().of(
-      yup.object().shape({
+      yup.object().shape<YupSchemaKey<GeneratedProductFieldValue>>({
         name: yup
           .object()
           .shape(

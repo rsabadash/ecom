@@ -12,10 +12,11 @@ import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter
 import { warehouseProductsGeneratorFormFields } from './constants';
 import { useCachedAPI } from '../../../hooks';
 import { endpoints } from '../../../common/constants/api';
-import { Attribute, WarehouseProductsGeneratorFormProps } from './types';
+import { WarehouseProductsGeneratorFormProps } from './types';
 import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProductsGeneratorAttributeFormSection';
 import { Button } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
+import { Attribute } from '../../attributes/common/types';
 
 export const WarehouseProductsGeneratorForm: FC<
   WarehouseProductsGeneratorFormProps
@@ -42,7 +43,7 @@ export const WarehouseProductsGeneratorForm: FC<
         <MultiLanguageInputAdapter
           isRequired
           name={warehouseProductsGeneratorFormFields.name}
-          placeholderTranslation="warehouseProducts.name.fillIn"
+          placeholderTranslation="warehouseProducts.name.description"
           label={translate('warehouseProducts.name')}
           control={control}
         />

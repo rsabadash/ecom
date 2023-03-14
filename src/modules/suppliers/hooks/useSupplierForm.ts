@@ -27,17 +27,7 @@ const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
   [supplierFormFields.name]: yup
     .string()
     .nullable()
-    .required('suppliers.name.error.required')
-    .min(3)
-    .max(50),
-  [supplierFormFields.note]: yup
-    .string()
-    .nullable()
-    .max(1024, 'suppliers.note.error.max'),
-  [supplierFormFields.phoneNumber]: yup
-    .string()
-    .nullable()
-    .length(10, 'suppliers.phone.error.length'),
+    .required('suppliers.name.error.required'),
 });
 
 export const useSupplierForm: UseSupplierForm = ({

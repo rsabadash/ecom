@@ -8,10 +8,11 @@ export const matchAttributeDataToFormValues = (
     return undefined;
   }
 
-  const { sortOrder, name, isActive } = data;
+  const { sortOrder, name, isActive, seoName } = data;
 
   return {
     name,
+    seoName,
     isActive,
     sortOrder,
   };
@@ -24,10 +25,11 @@ export const matchVariantDataToFormValues = (
     return undefined;
   }
 
-  const { sortOrder, name, isActive } = data;
+  const { sortOrder, name, isActive, seoName } = data;
 
   return {
     name,
+    seoName,
     isActive,
     sortOrder,
   };
