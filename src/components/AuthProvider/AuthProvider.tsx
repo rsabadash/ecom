@@ -97,6 +97,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   );
 
   const signOutUser = useCallback(() => {
+    removeStorageItem(PERSIST_USER_KEY);
     removeStorageItem(ACCESS_TOKEN_KEY);
     removeStorageItem(REFRESH_TOKEN_KEY);
     setIsAuthenticated(false);
