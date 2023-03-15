@@ -8,7 +8,7 @@ export const signIn = {
   'signIn.password': 'Пароль',
   'signIn.password.description': 'Введіть пароль користувача',
   'signIn.password.required': "Пароль є обов'язковим",
-  'signIn.rememberUser': "Запам'ятати мене",
-  'signIn.rememberUser.description':
+  'signIn.isPersistUser': "Запам'ятати мене",
+  'signIn.isPersistUser.description':
     'Не виходити з облікового запису після закриття браузера',
 };

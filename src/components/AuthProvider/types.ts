@@ -15,7 +15,7 @@ export type SignInData = {
 };
 
 export type SignInDataExtended = SignInData & {
-  rememberUser: boolean;
+  isPersistUser: boolean;
 };
 
 export type SignInResponse = Tokens;

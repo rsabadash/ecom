@@ -2,30 +2,30 @@ import { useCallback } from 'react';
 import { LocalStorageService } from '../services';
 
 type UseLocalStorageReturn = {
-  setStorageItem: <V extends string>(key: string, value: V) => void;
-  getStorageItem: <V>(key: string) => V | null;
-  removeStorageItem: (key: string) => boolean;
+  setLocalStorageItem: <V extends string>(key: string, value: V) => void;
+  getLocalStorageItem: <V>(key: string) => V | null;
+  removeLocalStorageItem: (key: string) => boolean;
 };
 
 export const useLocalStorage = (): UseLocalStorageReturn => {
-  const setStorageItem = useCallback(
+  const setLocalStorageItem = useCallback(
     <V extends string>(key: string, value: V): void => {
       LocalStorageService.setItem<V>(key, value);
     },
     [],
   );
 
-  const getStorageItem = useCallback(<V>(key: string): V | null => {
+  const getLocalStorageItem = useCallback(<V>(key: string): V | null => {
     return LocalStorageService.getItem<V>(key);
   }, []);
 
-  const removeStorageItem = useCallback((key: string): boolean => {
+  const removeLocalStorageItem = useCallback((key: string): boolean => {
     return LocalStorageService.removeItem(key);
   }, []);
 
   return {
-    setStorageItem,
-    getStorageItem,
-    removeStorageItem,
+    setLocalStorageItem,
+    getLocalStorageItem,
+    removeLocalStorageItem,
   };
 };

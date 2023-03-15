@@ -49,9 +49,9 @@ const SignIn = () => {
             </GridFullWidth>
             <GridFullWidth>
               <CheckboxAdapter
-                name={signInFormFields.rememberUser}
-                label={translate('signIn.rememberUser')}
-                placeholder={translate('signIn.rememberUser.description')}
+                name={signInFormFields.isPersistUser}
+                label={translate('signIn.isPersistUser')}
+                placeholder={translate('signIn.isPersistUser.description')}
                 control={control}
               />
             </GridFullWidth>
