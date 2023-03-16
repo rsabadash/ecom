@@ -17,7 +17,7 @@ export const WarehouseProductsListAttributes =
               className={classes.warehouseListAttributes}
             >
               <div>{attribute.name[language]}</div>
-              <div>
+              <div className={classes.warehouseListVariants}>
                 {attribute.variants.map((variant) => {
                   return (
                     <Tag key={variant.variantId} variant="theme">

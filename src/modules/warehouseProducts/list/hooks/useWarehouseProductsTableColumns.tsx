@@ -35,21 +35,20 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           width: '20%',
         },
         {
-          title: translate('warehouseProducts.attributes'),
+          title: translate('warehouseProducts.attributes.quantity'),
           key: 'attributes',
           width: '15%',
           valueGetter: (value: null | WarehouseProductsAttribute[]) => {
-            const valueIsAttribute = value?.length
-              ? translate('yes')
-              : translate('no');
+            const quantity = value?.length ? value.length : '-';
+            const ariaValue = quantity === '-' ? 0 : quantity;
 
             return (
               <div
                 aria-label={`${translate(
-                  'warehouseProducts.attributes',
-                )} ${valueIsAttribute}`}
+                  'warehouseProducts.attributes.quantity',
+                )} ${ariaValue}`}
               >
-                {valueIsAttribute}
+                {quantity}
               </div>
             );
           },

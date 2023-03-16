@@ -71,8 +71,9 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
   return (
     <div className={classes.collapseWrapper}>
       <Collapse
-        headerClassName={classes.collapseHeader}
+        isToggleableHeader
         header={attribute.name[language]}
+        headerClassName={classes.collapseHeader}
         body={
           <div className={classes.variantsWrapper}>
             {attribute.variants.map((variant) => {

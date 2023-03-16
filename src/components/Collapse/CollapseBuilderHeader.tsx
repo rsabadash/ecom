@@ -22,7 +22,13 @@ export const CollapseBuilderHeader: FC<
     }
   };
 
-  const headerClassNames = clsx(classes.collapseHeader, headerClassName);
+  const headerClassNames = clsx(
+    classes.collapseHeader,
+    {
+      [classes.collapseHeader_toggleable]: isToggleableHeader,
+    },
+    headerClassName,
+  );
 
   return (
     <div

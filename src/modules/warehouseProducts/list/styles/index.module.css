@@ -33,3 +33,9 @@
     align-items: center;
     gap: 0.5rem;
 }
+
+.warehouseListVariants {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}

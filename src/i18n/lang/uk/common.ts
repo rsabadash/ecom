@@ -11,8 +11,6 @@ export const common = {
   notSelected: 'Не обрано',
   signOut: 'Вийти',
   sortOrder: 'Порядок сортування',
-  yes: 'Так',
-  no: 'Hi',
 
   'uk.adjective': 'українськю',
   'en.adjective': 'англійською',
