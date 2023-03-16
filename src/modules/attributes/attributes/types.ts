@@ -58,3 +58,7 @@ export type VariantsListProps = {
   variants: Variant[];
   isDetailList: boolean;
 };
+
+export type AttributeUrlParams = {
+  attributeId: string;
+};

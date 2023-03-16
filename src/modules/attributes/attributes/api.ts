@@ -1,10 +1,11 @@
+import { endpoints } from '../../../common/constants/api';
+import { DELETE, PATCH, POST } from '../../../utils/api';
 import {
+  AttributeDeleteData,
   AttributePatchData,
   AttributePostData,
   AttributePostResponse,
 } from './types';
-import { endpoints } from '../../../common/constants/api';
-import { PATCH, POST } from '../../../utils/api';
 
 export const createAttributeApi = async (
   data: AttributePostData,
@@ -23,4 +24,14 @@ export const updateAttributeApi = async (
   await PATCH<void, AttributePatchData>(endpoints.attributes.root, {
     data,
   });
+};
+
+export const deleteAttributeApi = async (
+  id: string | undefined,
+): Promise<void> => {
+  if (id) {
+    return await DELETE<void, AttributeDeleteData>(endpoints.attributes.root, {
+      data: { id },
+    });
+  }
 };

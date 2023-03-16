@@ -5,7 +5,7 @@ import { ErrorBoundary } from '../../../components/ErrorBoundary';
 import { TABLE_VARIANTS_ID } from '../common/constants';
 import { VariantsList } from '../common/VariantsList';
 import { useCachedAPI } from '../../../hooks';
-import { Variant } from '../common/types';
+import { Variant } from '../attributes/types';
 import { endpoints } from '../../../common/constants/api';
 import { ButtonLink, ButtonsGroup } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';

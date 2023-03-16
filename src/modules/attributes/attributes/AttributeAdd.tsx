@@ -3,7 +3,7 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { ButtonLink } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';
 import { Foreground } from '../../../layouts/Foreground';
-import { AttributeForm } from '../common/AttributeForm';
+import { AttributeForm } from './AttributeForm';
 
 const AttributeAdd = () => {
   const { translate } = useTranslation();

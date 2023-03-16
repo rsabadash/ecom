@@ -5,7 +5,7 @@ import { ButtonLink } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';
 import { Foreground } from '../../../layouts/Foreground';
 import { VariantForm } from './VariantForm';
-import { AttributeUrlParams } from './types';
+import { AttributeUrlParams } from '../attributes/types';
 
 const VariantAdd = () => {
   const { translate } = useTranslation();

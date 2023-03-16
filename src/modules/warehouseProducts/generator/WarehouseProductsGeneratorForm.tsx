@@ -16,7 +16,7 @@ import { WarehouseProductsGeneratorFormProps } from './types';
 import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProductsGeneratorAttributeFormSection';
 import { Button } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Attribute } from '../../attributes/common/types';
+import { Attribute } from '../../attributes/attributes/types';
 
 export const WarehouseProductsGeneratorForm: FC<
   WarehouseProductsGeneratorFormProps

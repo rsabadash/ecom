@@ -8,9 +8,9 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { Foreground } from '../../../layouts/Foreground';
 import { endpoints } from '../../../common/constants/api';
 import { VariantForm } from './VariantForm';
-import { matchVariantDataToFormValues } from './utils';
-import { Variant } from '../common/types';
+import { Variant } from '../attributes/types';
 import { useDeleteVariant } from './hooks';
+import { matchVariantDataToFormValues } from './utils';
 
 const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

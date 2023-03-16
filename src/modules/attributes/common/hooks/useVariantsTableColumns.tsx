@@ -5,7 +5,7 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { Variant, VariantWithAttribute } from '../types';
+import { Variant, VariantWithAttribute } from '../../attributes/types';
 import { routes } from '../../../../common/constants/routes';
 
 type UseVariantsTableColumns = (

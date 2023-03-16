@@ -6,10 +6,14 @@ import {
   TableColumnGeneric,
 } from '../../../components/Table';
 import { TABLE_VARIANTS_ID } from './constants';
-import { VariantsListProps, Variant, VariantWithAttribute } from './types';
+import {
+  VariantsListProps,
+  Variant,
+  VariantWithAttribute,
+  AttributeUrlParams,
+} from '../attributes/types';
 import { routes } from '../../../common/constants/routes';
 import { useVariantsTableColumns } from './hooks';
-import { AttributeUrlParams } from '../detail/types';
 
 export const VariantsList: FC<VariantsListProps> = ({
   variants,

@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { generatePath, useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
-import { AttributeUrlParams } from './types';
 import { Button, ButtonLink, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Foreground } from '../../../layouts/Foreground';
 import { endpoints } from '../../../common/constants/api';
 import { routes } from '../../../common/constants/routes';
-import { AttributeForm } from '../common/AttributeForm';
+import { AttributeForm } from './AttributeForm';
 import { useDeleteAttribute } from './hooks';
 import { matchAttributeDataToFormValues } from './utils';
 import { VariantsList } from '../common/VariantsList';
-import { Attribute, AttributeFormValues } from '../common/types';
+import { Attribute, AttributeFormValues, AttributeUrlParams } from './types';
 
 const AttributeDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

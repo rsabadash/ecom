@@ -1,9 +1,5 @@
 import { Translations } from '../../../components/IntlProvider';
 
-export type AttributeUrlParams = {
-  attributeId: string;
-};
-
 export type VariantFormValues = {
   name: Translations;
   seoName: string;
