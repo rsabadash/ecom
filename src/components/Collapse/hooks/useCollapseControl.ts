@@ -10,18 +10,18 @@ type UseCollapseControlProps = Omit<
   | 'headerClassName'
 >;
 
-type UseCollapseControl = (props: UseCollapseControlProps) => {
+type UseCollapseControlReturn = {
   isExpand: boolean;
   toggleCollapse: () => void;
 };
 
-export const useCollapseControl: UseCollapseControl = ({
+export const useCollapseControl = ({
   forceExpand,
   isInitiallyExpand = false,
   onExpandFinished,
   onCollapseFinished,
   collapseBodyRef,
-}) => {
+}: UseCollapseControlProps): UseCollapseControlReturn => {
   const [isExpand, setIsExpand] = useState(false);
 
   const expandFinishedCallback = useCallback(() => {

@@ -2,9 +2,9 @@ import { useMemo } from 'react';
 import { GET, POST, PATCH, DELETE } from '../utils/api';
 import { ApiServiceInterface } from '../services/apiService';
 
-type UseAPI = () => ApiServiceInterface;
+type UseAPIReturn = ApiServiceInterface;
 
-export const useAPI: UseAPI = () => {
+export const useAPI = (): UseAPIReturn => {
   return useMemo(
     () => ({
       GET,

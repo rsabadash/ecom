@@ -2,11 +2,11 @@ import { useCallback } from 'react';
 import { updateCategoryApi } from '../api';
 import { CategoryPatchData } from '../types';
 
-type UseUpdateCategory = () => {
+type UseUpdateCategoryReturn = {
   updateCategory: (data: CategoryPatchData) => Promise<void>;
 };
 
-export const useUpdateCategory: UseUpdateCategory = () => {
+export const useUpdateCategory = (): UseUpdateCategoryReturn => {
   const updateCategory = useCallback(async (data: CategoryPatchData) => {
     await updateCategoryApi(data);
   }, []);

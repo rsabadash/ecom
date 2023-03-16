@@ -7,18 +7,20 @@ import {
   useState,
 } from 'react';
 import { createProvider } from '../../utils';
-import { AuthContextValue, SignInData } from './types';
+import { AuthContextValue, SignInDataExtended } from './types';
 import {
   ACCESS_TOKEN_KEY,
   authContextValueDefault,
   CONTEXT_NAME,
+  PERSIST_USER_KEY,
   REFRESH_TOKEN_KEY,
 } from './constants';
-import { useLocalStorage } from '../../hooks';
+import { useLocalStorage, useSessionStorage } from '../../hooks';
 import { useSignIn } from './hooks';
 import { sharedBus } from '../../utils/sharedBus';
 import { routes } from '../../common/constants/routes';
-import { useNavigate } from 'react-router-dom';
+import { PERSIST_STATE } from './enums';
+import { router } from '../Router/Router';
 
 const [Provider, useAuth] = createProvider<AuthContextValue>({
   contextName: CONTEXT_NAME,
@@ -26,10 +28,48 @@ const [Provider, useAuth] = createProvider<AuthContextValue>({
 });
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const navigate = useNavigate();
-
-  const { setStorageItem, getStorageItem, removeStorageItem } =
+  const { setLocalStorageItem, getLocalStorageItem, removeLocalStorageItem } =
     useLocalStorage();
+  const {
+    setSessionStorageItem,
+    getSessionStorageItem,
+    removeSessionStorageItem,
+  } = useSessionStorage();
+
+  const getStorageItem = useCallback(
+    (key: string): string | null => {
+      return getLocalStorageItem(key) || getSessionStorageItem(key);
+    },
+    [getLocalStorageItem, getSessionStorageItem],
+  );
+
+  const setStorageItem = useCallback(
+    (key: string, value: string, isPersistUser: boolean): void => {
+      if (isPersistUser) {
+        setLocalStorageItem<PERSIST_STATE>(
+          PERSIST_USER_KEY,
+          PERSIST_STATE.EXIST,
+        );
+        setLocalStorageItem(key, value);
+      } else {
+        setSessionStorageItem(key, value);
+      }
+    },
+    [setLocalStorageItem, setSessionStorageItem],
+  );
+
+  const removeStorageItem = useCallback(
+    (key: string): void => {
+      const persistState = getLocalStorageItem<PERSIST_STATE>(PERSIST_USER_KEY);
+
+      if (persistState === PERSIST_STATE.EXIST) {
+        removeLocalStorageItem(key);
+      } else {
+        removeSessionStorageItem(key);
+      }
+    },
+    [getLocalStorageItem, removeLocalStorageItem, removeSessionStorageItem],
+  );
 
   const [isAuthenticated, setIsAuthenticated] = useState(
     () => !!getStorageItem(ACCESS_TOKEN_KEY),
@@ -38,20 +78,26 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const { signIn } = useSignIn();
 
   const signInUser = useCallback(
-    async (data: SignInData) => {
-      const response = await signIn(data);
+    async (data: SignInDataExtended) => {
+      const { isPersistUser, ...restData } = data;
+      const response = await signIn(restData);
       const { accessToken, refreshToken } = response || {};
+
       // TODO Error handling
-      if (accessToken && refreshToken) {
-        setStorageItem(ACCESS_TOKEN_KEY, accessToken);
-        setStorageItem(REFRESH_TOKEN_KEY, refreshToken);
+      if (accessToken) {
+        setStorageItem(ACCESS_TOKEN_KEY, accessToken, isPersistUser);
         setIsAuthenticated(true);
+      }
+
+      if (refreshToken) {
+        setStorageItem(REFRESH_TOKEN_KEY, refreshToken, isPersistUser);
       }
     },
     [setStorageItem, signIn],
   );
 
   const signOutUser = useCallback(() => {
+    removeStorageItem(PERSIST_USER_KEY);
     removeStorageItem(ACCESS_TOKEN_KEY);
     removeStorageItem(REFRESH_TOKEN_KEY);
     setIsAuthenticated(false);
@@ -60,7 +106,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     sharedBus.addMethod('signOut', signOutUser);
     sharedBus.addMethod('signedInRedirect', () =>
-      navigate(routes.dashboard, { replace: true }),
+      router.navigate(routes.dashboard, { replace: true }),
     );
   }, [signOutUser]);
 

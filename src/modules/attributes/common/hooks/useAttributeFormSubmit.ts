@@ -11,11 +11,13 @@ type UseAttributeFormSubmitProps = {
   id?: string;
 };
 
-type UseAttributeFormSubmit = (props: UseAttributeFormSubmitProps) => {
+type UseAttributeFormSubmitReturn = {
   handleFormSubmit: (values: AttributeFormValues) => Promise<void>;
 };
 
-export const useAttributeFormSubmit: UseAttributeFormSubmit = ({ id }) => {
+export const useAttributeFormSubmit = ({
+  id,
+}: UseAttributeFormSubmitProps): UseAttributeFormSubmitReturn => {
   const { createAttribute } = useCreateAttribute();
   const { updateAttribute } = useUpdateAttribute();
 

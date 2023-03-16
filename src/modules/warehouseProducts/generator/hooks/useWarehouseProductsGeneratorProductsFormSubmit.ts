@@ -1,14 +1,14 @@
 import { useCallback } from 'react';
 import { WarehouseProductsGeneratorProductsFormValues } from '../types';
 
-type UseWarehouseProductsGeneratorProductsFormSubmit = () => {
+type UseWarehouseProductsGeneratorProductsFormSubmitReturn = {
   handleFormSubmit: (
     values: WarehouseProductsGeneratorProductsFormValues,
   ) => Promise<void>;
 };
 
-export const useWarehouseProductsGeneratorProductsFormSubmit: UseWarehouseProductsGeneratorProductsFormSubmit =
-  () => {
+export const useWarehouseProductsGeneratorProductsFormSubmit =
+  (): UseWarehouseProductsGeneratorProductsFormSubmitReturn => {
     const handleFormSubmit = useCallback(
       async (
         values: WarehouseProductsGeneratorProductsFormValues,

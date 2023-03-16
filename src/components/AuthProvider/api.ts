@@ -6,9 +6,14 @@ import {
 } from './types';
 import { POST } from '../../utils/api';
 import { endpoints } from '../../common/constants/api';
-import { LocalStorageService } from '../../services';
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from './constants';
+import { LocalStorageService, SessionStorageService } from '../../services';
+import {
+  ACCESS_TOKEN_KEY,
+  PERSIST_USER_KEY,
+  REFRESH_TOKEN_KEY,
+} from './constants';
 import { sharedBus } from '../../utils/sharedBus';
+import { PERSIST_STATE } from './enums';
 
 export const signInApi = async (
   data: SignInData,
@@ -22,7 +27,12 @@ export const signInApi = async (
 };
 
 export const refreshTokenApi = async (): Promise<void> => {
-  const refresh = LocalStorageService.getItem<string>(REFRESH_TOKEN_KEY);
+  const isPersistUser =
+    LocalStorageService.getItem(PERSIST_USER_KEY) === PERSIST_STATE.EXIST;
+
+  const refresh = isPersistUser
+    ? LocalStorageService.getItem<string>(REFRESH_TOKEN_KEY)
+    : SessionStorageService.getItem<string>(REFRESH_TOKEN_KEY);
 
   if (refresh) {
     const response = await POST<RefreshTokenResponse, RefreshTokenData>(
@@ -38,9 +48,20 @@ export const refreshTokenApi = async (): Promise<void> => {
 
     const { accessToken, refreshToken } = response || {};
 
-    if (accessToken && refreshToken) {
-      LocalStorageService.setItem(ACCESS_TOKEN_KEY, accessToken);
-      LocalStorageService.setItem(REFRESH_TOKEN_KEY, refreshToken);
+    if (accessToken) {
+      if (isPersistUser) {
+        LocalStorageService.setItem(ACCESS_TOKEN_KEY, accessToken);
+      } else {
+        SessionStorageService.setItem(ACCESS_TOKEN_KEY, accessToken);
+      }
+    }
+
+    if (refreshToken) {
+      if (isPersistUser) {
+        LocalStorageService.setItem(REFRESH_TOKEN_KEY, refreshToken);
+      } else {
+        SessionStorageService.setItem(REFRESH_TOKEN_KEY, refreshToken);
+      }
     }
   }
 };

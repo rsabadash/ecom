@@ -3,3 +3,4 @@ export { useCachedAPI } from './useCachedAPI';
 export { useCustomForm } from './useCustomForm';
 export { useLocalStorage } from './useLocalStorage';
 export { useOutsideElementClick } from './useOutsideElementClick';
+export { useSessionStorage } from './useSessionStorage';

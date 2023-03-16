@@ -5,14 +5,14 @@ export type UseOutsideElementClickProps = {
   handleClick: () => void;
 };
 
-type UseOutsideElementClick = (props: UseOutsideElementClickProps) => {
+type UseOutsideElementClickReturn = {
   setCurrentElement: (element: null | HTMLElement) => void;
 };
 
-export const useOutsideElementClick: UseOutsideElementClick = ({
+export const useOutsideElementClick = ({
   dependency,
   handleClick,
-}) => {
+}: UseOutsideElementClickProps): UseOutsideElementClickReturn => {
   const currentElement = useRef<null | HTMLElement>(null);
 
   const setCurrentElement = useCallback((element: null | HTMLElement): void => {
