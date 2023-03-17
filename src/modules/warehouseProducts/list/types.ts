@@ -19,7 +19,7 @@ export type WarehouseProduct = {
   attributes: null | WarehouseProductsAttribute[];
   groupId: null | string;
   groupName: null | string;
-  createdAt: Date;
+  createdDate: Date;
 };
 
 export type WarehouseProductTable = WarehouseProduct & {
