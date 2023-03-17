@@ -5,18 +5,14 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { Variant, VariantWithAttribute } from '../../attributes/types';
+import { VariantWithAttribute } from '../types';
 import { routes } from '../../../../common/constants/routes';
 
-type UseVariantsTableColumns = (
-  isDetailList: boolean,
-) => (TableColumnGeneric<Variant> | TableColumnGeneric<VariantWithAttribute>)[];
+type UseVariantsTableColumns = () => TableColumnGeneric<VariantWithAttribute>[];
 
-export const useVariantsTableColumns: UseVariantsTableColumns = (
-  isDetailList,
-) => {
-  const { translate, language } = useTranslation();
+export const useVariantsTableColumns: UseVariantsTableColumns = () => {
   const navigate = useNavigate();
+  const { translate, language } = useTranslation();
 
   return useMemo(
     () => [
@@ -32,8 +28,7 @@ export const useVariantsTableColumns: UseVariantsTableColumns = (
         title: translate('attribute.name'),
         key: 'attributeName',
         width: '25%',
-        isHidden: isDetailList,
-        valueGetter: (value: Translations, item) => {
+        valueGetter: (value: Translations, item: VariantWithAttribute) => {
           return (
             <span
               onClick={(e) => {
@@ -65,6 +60,6 @@ export const useVariantsTableColumns: UseVariantsTableColumns = (
         },
       },
     ],
-    [translate, isDetailList, language, navigate],
+    [translate, language, navigate],
   );
 };

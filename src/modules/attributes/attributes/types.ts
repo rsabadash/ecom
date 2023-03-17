@@ -1,4 +1,5 @@
 import { Translations } from '../../../components/IntlProvider';
+import { Variant } from '../variants/types';
 
 export type Attribute = {
   _id: string;
@@ -7,19 +8,6 @@ export type Attribute = {
   isActive: boolean;
   sortOrder: number;
   variants: Variant[];
-};
-
-export type Variant = {
-  variantId: string;
-  name: Translations;
-  seoName: string;
-  isActive: boolean;
-  sortOrder: number;
-};
-
-export type VariantWithAttribute = Variant & {
-  attributeId: string;
-  attributeName: Translations;
 };
 
 export type AttributeFormValues = {
@@ -54,9 +42,8 @@ export type AttributeDeleteData = {
   id: string;
 };
 
-export type VariantsListProps = {
+export type AttributesVariantsListProps = {
   variants: Variant[];
-  isDetailList: boolean;
 };
 
 export type AttributeUrlParams = {

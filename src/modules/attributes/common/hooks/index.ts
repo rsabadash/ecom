@@ -1,1 +1,0 @@
-export { useVariantsTableColumns } from './useVariantsTableColumns';

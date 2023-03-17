@@ -4,7 +4,8 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { Attribute, Variant } from '../types';
+import { Variant } from '../../variants/types';
+import { Attribute } from '../types';
 
 type UseAttributeTableColumns = () => TableColumnGeneric<Attribute>[];
 

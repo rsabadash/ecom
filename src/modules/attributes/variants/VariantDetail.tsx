@@ -2,13 +2,12 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
-import { VariantFormValues, VariantUrlParams } from './types';
+import { Variant, VariantFormValues, VariantUrlParams } from './types';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Foreground } from '../../../layouts/Foreground';
 import { endpoints } from '../../../common/constants/api';
 import { VariantForm } from './VariantForm';
-import { Variant } from '../attributes/types';
 import { useDeleteVariant } from './hooks';
 import { matchVariantDataToFormValues } from './utils';
 

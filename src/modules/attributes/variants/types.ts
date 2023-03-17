@@ -1,5 +1,18 @@
 import { Translations } from '../../../components/IntlProvider';
 
+export type Variant = {
+  variantId: string;
+  name: Translations;
+  seoName: string;
+  isActive: boolean;
+  sortOrder: number;
+};
+
+export type VariantWithAttribute = Variant & {
+  attributeId: string;
+  attributeName: Translations;
+};
+
 export type VariantFormValues = {
   name: Translations;
   seoName: string;
@@ -40,4 +53,8 @@ export type VariantDeleteData = {
 
 export type VariantUrlParams = {
   variantId: string;
+};
+
+export type VariantsListProps = {
+  variants: VariantWithAttribute[];
 };

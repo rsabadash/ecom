@@ -12,7 +12,8 @@ export const Heading: FC<PropsWithChildren<HeadingProps>> = ({
   children,
 }) => {
   const HeadingTag = levelTagMap[level];
-
+  console.log(fontSize);
+  console.log(clsx(classes[`heading-${fontSize}`], classNameHeading));
   return (
     <HeadingTag
       id={id}

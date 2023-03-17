@@ -10,8 +10,11 @@ import { routes } from '../../../common/constants/routes';
 import { AttributeForm } from './AttributeForm';
 import { useDeleteAttribute } from './hooks';
 import { matchAttributeDataToFormValues } from './utils';
-import { VariantsList } from '../common/VariantsList';
+import { AttributeVariantsList } from './AttributeVariantsList';
 import { Attribute, AttributeFormValues, AttributeUrlParams } from './types';
+import { Heading } from '../../../components/Heading';
+import { TABLE_ATTRIBUTE_VARIANTS_ID } from './constants';
+import classes from './styles/index.module.css';
 
 const AttributeDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -72,8 +75,16 @@ const AttributeDetail = () => {
         />
       </Foreground>
       <>
+        <Heading
+          id={TABLE_ATTRIBUTE_VARIANTS_ID}
+          level={2}
+          fontSize={6}
+          classNameHeading={classes.attributes__variantsTitle}
+        >
+          {translate('attribute.variants')}
+        </Heading>
         {showAttributeVariantsList && isReadOnly && (
-          <VariantsList isDetailList variants={attributeDetail.variants} />
+          <AttributeVariantsList variants={attributeDetail.variants} />
         )}
         {/*TODO No data placeholder component*/}
         {!showAttributeVariantsList && (
