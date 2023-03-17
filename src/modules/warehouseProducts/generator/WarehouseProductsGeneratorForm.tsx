@@ -9,12 +9,12 @@ import {
   useWarehouseProductsGeneratorFormSubmit,
 } from './hooks';
 import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter';
-import { warehouseProductsGeneratorFormFields } from './constants';
+import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
 import { useCachedAPI } from '../../../hooks';
 import { endpoints } from '../../../common/constants/api';
 import { WarehouseProductsGeneratorFormProps } from './types';
 import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProductsGeneratorAttributeFormSection';
-import { Button } from '../../../components/Button';
+import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Attribute } from '../../attributes/common/types';
 
@@ -47,6 +47,13 @@ export const WarehouseProductsGeneratorForm: FC<
           label={translate('warehouseProducts.name')}
           control={control}
         />
+      </FormContent>
+      <FormContent>
+        <FormDescription>
+          {translate('warehouseProducts.generate.form.description')}
+        </FormDescription>
+      </FormContent>
+      <FormContent>
         {attributes?.map((attribute) => {
           return (
             <WarehouseProductsGeneratorAttributeFormSection
@@ -60,14 +67,18 @@ export const WarehouseProductsGeneratorForm: FC<
         })}
       </FormContent>
       <FormContent>
-        <FormDescription>
-          {translate('warehouseProducts.generate.form.description')}
-        </FormDescription>
-      </FormContent>
-      <FormContent>
-        <Button variant="primary" type="submit">
-          {translate('generate')}
-        </Button>
+        <ButtonsGroup>
+          <Button variant="primary" type="submit" name={buttonNames.oneProduct}>
+            {translate('warehouseProducts.generateOne')}
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            name={buttonNames.manyProducts}
+          >
+            {translate('warehouseProducts.generateMany')}
+          </Button>
+        </ButtonsGroup>
       </FormContent>
     </Form>
   );

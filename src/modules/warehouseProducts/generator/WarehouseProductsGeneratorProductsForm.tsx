@@ -50,7 +50,10 @@ export const WarehouseProductsGeneratorProductsForm: FC<
       <FormContent>
         {fields.map((field, index) => {
           return (
-            <div key={field.id} className={classes.productFieldGroup}>
+            <div
+              key={field.id}
+              className={classes.generatedProduct__fieldGroup}
+            >
               <GridAutoFit>
                 <div>
                   <MultiLanguageInputAdapter
@@ -69,7 +72,7 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                   control={control}
                 />
               </GridAutoFit>
-              <div className={classes.generatedProductFieldTags}>
+              <div className={classes.generatedProduct__tags}>
                 {field.attributes?.map((attribute) => {
                   return attribute.variants.map((variant) => {
                     return (

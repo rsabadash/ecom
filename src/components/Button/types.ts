@@ -2,6 +2,7 @@ import { LinkProps } from 'react-router-dom';
 import { buttonSize, buttonType, buttonVariant } from './constants';
 
 export type ButtonProps = {
+  name?: string;
   type?: ValuesOfObject<typeof buttonType>;
   size?: ValuesOfObject<typeof buttonSize>;
   variant?: ValuesOfObject<typeof buttonVariant>;
@@ -13,4 +14,4 @@ export type ButtonProps = {
   className?: string;
 };
 
-export type ButtonLinkProps = LinkProps & Omit<ButtonProps, 'type'>;
+export type ButtonLinkProps = LinkProps & Omit<ButtonProps, 'name' | 'type'>;

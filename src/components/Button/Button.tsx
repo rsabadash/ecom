@@ -9,6 +9,7 @@ import { ButtonProps } from './types';
 import classes from './styles/index.module.css';
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = ({
+  name,
   type = DEFAULT_BUTTON_TYPE,
   size = DEFAULT_BUTTON_SIZE,
   variant = DEFAULT_BUTTON_VARIANT,
@@ -30,6 +31,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
 
   return (
     <button
+      name={name}
       type={type}
       disabled={isDisabled}
       onClick={handleButtonClick}
