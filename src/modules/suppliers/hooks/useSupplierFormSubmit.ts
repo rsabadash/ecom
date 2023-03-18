@@ -3,11 +3,13 @@ import { SupplierFormValues } from '../types';
 import { useCreateSupplier } from './useCreateSupplier';
 import { useUpdateSupplier } from './useUpdateSupplier';
 
-type UseSupplierFormSubmit = (id: string | undefined) => {
+type UseSupplierFormSubmitReturn = {
   handleFormSubmit: (data: SupplierFormValues) => void;
 };
 
-export const useSupplierFormSubmit: UseSupplierFormSubmit = (id) => {
+export const useSupplierFormSubmit = (
+  id: string | undefined,
+): UseSupplierFormSubmitReturn => {
   const { createSupplier } = useCreateSupplier();
   const { updateSupplier } = useUpdateSupplier();
 

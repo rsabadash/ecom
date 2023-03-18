@@ -6,6 +6,7 @@ import { signIn } from './signIn';
 import { suppliers } from './suppliers';
 import { attributes } from './attributes';
 import { warehouseProducts } from './warehouseProducts';
+import { pageError } from './pageError';
 
 const translationEN = {
   en: {
@@ -17,6 +18,7 @@ const translationEN = {
     ...suppliers,
     ...attributes,
     ...warehouseProducts,
+    ...pageError,
   },
 };
 

@@ -13,3 +13,11 @@
 .heading-4 {
   font-size: var(--font-size-head-4);
 }
+
+.heading-5 {
+  font-size: var(--font-size-head-5);
+}
+
+.heading-6 {
+  font-size: var(--font-size-head-6);
+}

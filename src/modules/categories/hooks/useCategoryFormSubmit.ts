@@ -12,11 +12,13 @@ type UseCategoriesFormSubmitProps = {
   id?: string;
 };
 
-type UseCategoryFormSubmit = (props: UseCategoriesFormSubmitProps) => {
+type UseCategoryFormSubmitReturn = {
   handleFormSubmit: (values: CategoryFormValues) => Promise<void>;
 };
 
-export const useCategoryFormSubmit: UseCategoryFormSubmit = ({ id }) => {
+export const useCategoryFormSubmit = ({
+  id,
+}: UseCategoriesFormSubmitProps): UseCategoryFormSubmitReturn => {
   const { createCategory } = useCreateCategory();
   const { updateCategory } = useUpdateCategory();
 

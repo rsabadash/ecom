@@ -11,3 +11,5 @@ export const authContextValueDefault: AuthContextValue = {
 export const ACCESS_TOKEN_KEY = 'accessToken';
 
 export const REFRESH_TOKEN_KEY = 'refreshToken';
+
+export const PERSIST_USER_KEY = 'isPersistUser';
