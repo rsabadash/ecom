@@ -1,6 +1,6 @@
 import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
 import { Translations } from '../../../components/IntlProvider';
-import { Attribute } from '../../attributes/common/types';
+import { Attribute } from '../../attributes/attributes/types';
 
 export type WarehouseProductsGeneratorFormProps = {
   onSuccessSubmit: (products: GeneratedProduct[]) => void;
