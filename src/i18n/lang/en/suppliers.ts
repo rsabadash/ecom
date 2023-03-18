@@ -1,8 +1,9 @@
 export const suppliers = {
   suppliers: 'Suppliers',
-  'suppliers.name': 'Supplier name',
-  'suppliers.name.error.required': 'Supplier name is required',
-  'suppliers.account': 'Account',
-  'suppliers.phone': 'Phone',
-  'suppliers.note': 'Note',
+  'supplier.add': 'Add supplier',
+  'supplier.name': 'Supplier name',
+  'supplier.name.error.required': 'Supplier name is required',
+  'supplier.account': 'Account',
+  'supplier.phone': 'Phone',
+  'supplier.note': 'Note',
 };

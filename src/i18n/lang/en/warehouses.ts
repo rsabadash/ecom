@@ -1,0 +1,15 @@
+export const warehouses = {
+  warehouses: 'Warehouses',
+  'warehouse.add': 'Add warehouse',
+  'warehouse.name': 'Warehouse name',
+  'warehouse.name.description': 'Enter warehouse name',
+  'warehouse.name.error.required': 'Warehouse name is required',
+  'warehouse.type': 'Warehouse type',
+  'warehouse.type.shop': 'Shop',
+  'warehouse.type.warehouse': 'Warehouse',
+  'warehouse.type.onlineStore': 'Online store',
+  'warehouse.type.description': 'Select which type the warehouse belongs to',
+  'warehouse.type.error.required': 'Warehouse type is required',
+  'warehouse.address': 'Warehouse address',
+  'warehouse.address.description': 'Enter warehouse address',
+};

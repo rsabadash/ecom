@@ -11,13 +11,13 @@ export const useSuppliersTableColumns = (): UseSuppliersTableColumnsReturn => {
   return useMemo<TableColumnGeneric<Supplier>[]>(
     () => [
       {
-        title: translate('suppliers.name'),
+        title: translate('supplier.name'),
         key: 'name',
         width: '30%',
         valueGetter: (value: string) => value,
       },
       {
-        title: translate('suppliers.phone'),
+        title: translate('supplier.phone'),
         key: 'phoneNumber',
         width: '30%',
         valueGetter: (value: boolean) => (value ? value : '-'),

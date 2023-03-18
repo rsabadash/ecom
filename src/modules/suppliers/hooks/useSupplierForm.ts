@@ -25,7 +25,7 @@ const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
   [supplierFormFields.name]: yup
     .string()
     .nullable()
-    .required('suppliers.name.error.required'),
+    .required('supplier.name.error.required'),
 });
 
 export const useSupplierForm = ({

@@ -26,5 +26,9 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
       title: translateFn('menu.warehouseProducts'),
       path: routes.warehouseProducts.root,
     },
+    {
+      title: translateFn('menu.warehouses'),
+      path: routes.warehouses.root,
+    },
   ];
 };

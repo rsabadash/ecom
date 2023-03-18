@@ -5,7 +5,7 @@ import { useCachedAPI } from '../../../hooks';
 import { Variant, VariantFormValues, VariantUrlParams } from './types';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Foreground } from '../../../layouts/Foreground';
+import { SectionForeground } from '../../../layouts/Section';
 import { endpoints } from '../../../common/constants/api';
 import { VariantForm } from './VariantForm';
 import { useDeleteVariant } from './hooks';
@@ -44,13 +44,13 @@ const VariantDetail = () => {
           </ButtonsGroup>
         </TopButtons>
       </Top>
-      <Foreground>
+      <SectionForeground>
         <VariantForm
           variantId={variantDetail?.variantId}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
         />
-      </Foreground>
+      </SectionForeground>
     </>
   );
 };

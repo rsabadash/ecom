@@ -43,8 +43,8 @@ export const WarehouseProductsGeneratorForm: FC<
         <MultiLanguageInputAdapter
           isRequired
           name={warehouseProductsGeneratorFormFields.name}
-          placeholderTranslation="warehouseProducts.name.description"
-          label={translate('warehouseProducts.name')}
+          placeholderTranslation="warehouseProduct.name.description"
+          label={translate('warehouseProduct.name')}
           control={control}
         />
       </FormContent>
@@ -69,14 +69,14 @@ export const WarehouseProductsGeneratorForm: FC<
       <FormContent>
         <ButtonsGroup>
           <Button variant="primary" type="submit" name={buttonNames.oneProduct}>
-            {translate('warehouseProducts.generateOne')}
+            {translate('warehouseProduct.generateOne')}
           </Button>
           <Button
             variant="primary"
             type="submit"
             name={buttonNames.manyProducts}
           >
-            {translate('warehouseProducts.generateMany')}
+            {translate('warehouseProduct.generateMany')}
           </Button>
         </ButtonsGroup>
       </FormContent>

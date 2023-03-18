@@ -3,26 +3,26 @@ import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
 import { SectionForeground } from '../../layouts/Section';
 import { useTranslation } from '../../components/IntlProvider';
-import { SupplierForm } from './SupplierForm';
+import { WarehouseForm } from './WarehouseForm';
 
-const SupplierAdd = () => {
+const WarehouseAdd = () => {
   const { translate } = useTranslation();
 
   return (
     <>
       <Top>
-        <TopHeading>{translate('supplier.add')}</TopHeading>
+        <TopHeading>{translate('warehouse.add')}</TopHeading>
         <TopButtons>
-          <ButtonLink variant="primary" to={routes.suppliers.root}>
+          <ButtonLink variant="primary" to={routes.warehouses.root}>
             {translate('cancel')}
           </ButtonLink>
         </TopButtons>
       </Top>
       <SectionForeground>
-        <SupplierForm />
+        <WarehouseForm />
       </SectionForeground>
     </>
   );
 };
 
-export default SupplierAdd;
+export default WarehouseAdd;

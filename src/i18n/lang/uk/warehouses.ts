@@ -1,0 +1,15 @@
+export const warehouses = {
+  warehouses: 'Склади',
+  'warehouse.add': 'Додати склад',
+  'warehouse.name': 'Назва склада',
+  'warehouse.name.description': 'Введіть назву склада',
+  'warehouse.name.error.required': "Назва склада є обов'язковою",
+  'warehouse.type': 'Тип склада',
+  'warehouse.type.shop': 'Магазин',
+  'warehouse.type.warehouse': 'Склад',
+  'warehouse.type.onlineStore': 'Онлайн магазин',
+  'warehouse.type.description': 'Оберіть, до якого типу належить склад',
+  'warehouse.type.error.required': "Тип склада є обов'язковим",
+  'warehouse.address': 'Адреса склада',
+  'warehouse.address.description': 'Введіть адресу склада',
+};

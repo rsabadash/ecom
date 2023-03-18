@@ -4,4 +4,5 @@ export const menu = {
   'menu.suppliers': 'Suppliers',
   'menu.attributes': 'Attributes',
   'menu.warehouseProducts': 'Warehouse products',
+  'menu.warehouses': 'Warehouses',
 };

@@ -1,6 +1,7 @@
 export const categories = {
   category: 'Категорія',
   categories: 'Категорії',
+  'category.add': 'Додати категорію',
   'category.name': 'Назва категорії',
   'category.name.description': 'Введіть назву категорії {language} мовою',
   'category.name.error.required':

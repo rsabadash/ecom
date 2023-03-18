@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import { Foreground } from '../../layouts/Foreground';
+import { SectionForeground } from '../../layouts/Section';
 import { TableBodyRowProps, TableProps } from './types';
 import {
   INDEX_ABSENCE_FOCUS,
@@ -114,7 +114,7 @@ export const Table: FC<TableProps> = ({
   const tableBodyClassNames = clsx(classes.table__body, tableBodyClassName);
 
   return (
-    <Foreground foregroundClassName={classes.tableForeground}>
+    <SectionForeground foregroundClassName={classes.tableForeground}>
       {/* aria-rowcount is total number of items, not only visible */}
       <div
         role={tableRole}
@@ -194,6 +194,6 @@ export const Table: FC<TableProps> = ({
           })}
         </div>
       </div>
-    </Foreground>
+    </SectionForeground>
   );
 };

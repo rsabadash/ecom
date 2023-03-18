@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Foreground } from '../../layouts/Foreground';
+import { SectionForeground } from '../../layouts/Section';
 import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
 import { Form } from '../../components/FormFields';
 import {
@@ -31,7 +31,7 @@ const SignIn = () => {
       <Top>
         <TopHeading>{translate('signIn.enter')}</TopHeading>
       </Top>
-      <Foreground>
+      <SectionForeground>
         <Form onSubmit={handleSubmit}>
           <GridAutoFit>
             <GridFullWidth>
@@ -69,7 +69,7 @@ const SignIn = () => {
             </GridFullWidth>
           </GridAutoFit>
         </Form>
-      </Foreground>
+      </SectionForeground>
     </>
   );
 };

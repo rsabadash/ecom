@@ -1,6 +1,7 @@
 export const categories = {
   category: 'Category',
   categories: 'Categories',
+  'category.add': 'Add category',
   'category.name': 'Category name',
   'category.name.description': 'Enter category name in {language}',
   'category.name.error.required': 'Category name in {language} is required',

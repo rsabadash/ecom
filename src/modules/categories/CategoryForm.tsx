@@ -30,6 +30,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   );
 
   const { translate } = useTranslation();
+
   const { handleFormSubmit } = useCategoryFormSubmit({ id });
 
   const { control, handleSubmit } = useCategoryForm({

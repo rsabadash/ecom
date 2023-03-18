@@ -3,7 +3,7 @@ import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useTranslation } from '../../../components/IntlProvider';
 import { ButtonLink } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';
-import { Foreground } from '../../../layouts/Foreground';
+import { SectionForeground } from '../../../layouts/Section';
 import { VariantForm } from './VariantForm';
 import { AttributeUrlParams } from '../attributes/types';
 
@@ -26,9 +26,9 @@ const VariantAdd = () => {
           </TopButtons>
         )}
       </Top>
-      <Foreground>
+      <SectionForeground>
         <VariantForm />
-      </Foreground>
+      </SectionForeground>
     </>
   );
 };
