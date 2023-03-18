@@ -1,0 +1,41 @@
+.warehouseList {}
+
+.warehouseListRow {
+    flex-wrap: wrap;
+}
+
+.warehouseListRowCollapseHeader {
+    display: contents;
+}
+
+.warehouseListRowCollapseBody {
+    width: 100%;
+    background-color: var(--background-900);
+    cursor: default;
+}
+
+.warehouseList > .warehouseListRow:last-of-type {
+    overflow: hidden;
+    border-bottom-right-radius: var(--radius-regular);
+    border-bottom-left-radius: var(--radius-regular);
+}
+
+.warehouseListRowCollapseContent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-inline: 1rem;
+    padding-block: 1rem;
+}
+
+.warehouseListAttributes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.warehouseListVariants {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}

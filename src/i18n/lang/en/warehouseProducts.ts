@@ -21,4 +21,5 @@ export const warehouseProducts = {
   'warehouseProducts.sku.error.required': 'SKU identifier is required',
   'warehouseProducts.attributes.noVariants':
     "The attribute doesn't have any variants",
+  'warehouseProducts.attributes.quantity': 'Number of attributes',
 };

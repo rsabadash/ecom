@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { WarehouseProductsGeneratorProductsFormValues } from '../types';
+import { useCreateWarehouseProducts } from './useCreateWarehouseProducts';
 
 type UseWarehouseProductsGeneratorProductsFormSubmitReturn = {
   handleFormSubmit: (
@@ -9,13 +10,15 @@ type UseWarehouseProductsGeneratorProductsFormSubmitReturn = {
 
 export const useWarehouseProductsGeneratorProductsFormSubmit =
   (): UseWarehouseProductsGeneratorProductsFormSubmitReturn => {
+    const { createWarehouseProducts } = useCreateWarehouseProducts();
+
     const handleFormSubmit = useCallback(
       async (
         values: WarehouseProductsGeneratorProductsFormValues,
       ): Promise<void> => {
-        console.log(values);
+        await createWarehouseProducts(values.products);
       },
-      [],
+      [createWarehouseProducts],
     );
 
     return {

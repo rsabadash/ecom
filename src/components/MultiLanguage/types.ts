@@ -6,12 +6,15 @@ export type RenderComponentArgs = {
   language: Language;
 };
 
-export type RenderVisibleComponentArgs = RenderComponentArgs &
-  Pick<CollapseControllerProps, 'collapseBodyRef'>;
-
-export type MultiLanguageProps = {
+export type MultiLanguageProps = Omit<
+  CollapseControllerProps,
+  | 'onExpandFinished'
+  | 'onCollapseFinished'
+  | 'collapseBodyRef'
+  | 'isToggleHidden'
+> & {
   columnIndex?: number;
   collapseBodyId?: string;
-  renderVisibleComponent: (args: RenderVisibleComponentArgs) => ReactNode;
+  renderVisibleComponent: (args: RenderComponentArgs) => ReactNode;
   renderHiddenComponent: (args: RenderComponentArgs) => ReactNode;
 };

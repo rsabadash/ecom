@@ -74,6 +74,7 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
       <Collapse
         headerClassName={classes.generator__attributesName}
         header={name[language]}
+        isToggleableHeader
         body={
           <div className={classes.generator__variants}>
             {hasVariants ? (

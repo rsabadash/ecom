@@ -17,13 +17,13 @@ export const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
   className,
   ...linkProps
 }) => {
-  const handleButtonClick = (e: MouseEvent): void => {
+  const handleButtonClick = (event: MouseEvent<HTMLAnchorElement>): void => {
     if (isDisabled) {
-      e.preventDefault();
+      event.preventDefault();
       return;
     }
 
-    onClick && onClick();
+    onClick && onClick(event);
   };
 
   return (

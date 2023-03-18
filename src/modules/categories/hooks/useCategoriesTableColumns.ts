@@ -9,7 +9,7 @@ export const useCategoriesTableColumns =
   (): UseCategoriesTableColumnsReturn => {
     const { translate, language } = useTranslation();
 
-    return useMemo(
+    return useMemo<TableColumnGeneric<Category>[]>(
       () => [
         {
           title: translate('category.name'),

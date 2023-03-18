@@ -45,8 +45,8 @@ const VariantAdd = lazy(
 const VariantDetail = lazy(
   () => import('../../modules/attributes/variants/VariantDetail'),
 );
-const WarehouseProductsList = lazy(
-  () => import('../../modules/warehouseProducts/list/WarehouseProductsList'),
+const WarehouseProducts = lazy(
+  () => import('../../modules/warehouseProducts/list/WarehouseProducts'),
 );
 const WarehouseProductsGenerator = lazy(
   () =>
@@ -194,7 +194,7 @@ export const router = createBrowserRouter(
           path={routes.warehouseProducts.root}
           element={
             <Suspense fallback="Route Warehouse products">
-              <WarehouseProductsList />
+              <WarehouseProducts />
             </Suspense>
           }
         />
