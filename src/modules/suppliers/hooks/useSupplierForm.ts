@@ -21,8 +21,6 @@ type UseSupplierFormReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-type UseSupplierForm = (props: UseSupplierFormProps) => UseSupplierFormReturn;
-
 const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
   [supplierFormFields.name]: yup
     .string()
@@ -30,11 +28,11 @@ const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
     .required('suppliers.name.error.required'),
 });
 
-export const useSupplierForm: UseSupplierForm = ({
+export const useSupplierForm = ({
   shouldReset,
   submitHandler,
   defaultValues,
-}) => {
+}: UseSupplierFormProps): UseSupplierFormReturn => {
   const { control, handleSubmit } = useCustomForm<SupplierFormValues>({
     formProps: {
       resolver: yupResolver(schema),

@@ -9,7 +9,7 @@ import { CheckboxValue } from '../../../components/Fields/Checkbox/types';
 import { warehouseProductsGeneratorFormFields } from './constants';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Variant } from '../../attributes/common/types';
+import { Variant } from '../../attributes/variants/types';
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorAttributeFormSection: FC<

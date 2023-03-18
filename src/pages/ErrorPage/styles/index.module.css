@@ -1,0 +1,11 @@
+.errorPage {
+  text-align: center;
+}
+
+.errorPageStatus {
+  margin-bottom: .5em;
+}
+
+.errorPageMessage {
+  margin-bottom: .5em;
+}

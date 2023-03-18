@@ -18,8 +18,6 @@ type UseCategoryFromReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-type UseCategoryForm = (props: UseCategoryFromProps) => UseCategoryFromReturn;
-
 const schema = yup.object().shape<YupSchemaKey<SignInFormValues>>({
   email: yup
     .string()
@@ -29,7 +27,9 @@ const schema = yup.object().shape<YupSchemaKey<SignInFormValues>>({
   password: yup.string().nullable().required('signIn.password.required'),
 });
 
-export const useSignInForm: UseCategoryForm = ({ submitHandler }) => {
+export const useSignInForm = ({
+  submitHandler,
+}: UseCategoryFromProps): UseCategoryFromReturn => {
   const { control, handleSubmit } = useCustomForm<SignInFormValues>({
     formProps: {
       resolver: yupResolver(schema),

@@ -22,8 +22,6 @@ type UseCategoryFromReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-type UseCategoryForm = (props: UseCategoryFromProps) => UseCategoryFromReturn;
-
 const schema = yup.object().shape<YupSchemaKey<CategoryFormValues>>({
   name: yup
     .object()
@@ -40,11 +38,11 @@ const schema = yup.object().shape<YupSchemaKey<CategoryFormValues>>({
     .required('category.seoName.error.required'),
 });
 
-export const useCategoryForm: UseCategoryForm = ({
+export const useCategoryForm = ({
   shouldReset,
   submitHandler,
   defaultValues,
-}) => {
+}: UseCategoryFromProps): UseCategoryFromReturn => {
   const { control, handleSubmit } = useCustomForm<CategoryFormValues>({
     formProps: {
       resolver: yupResolver(schema),

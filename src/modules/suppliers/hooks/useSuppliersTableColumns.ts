@@ -3,9 +3,9 @@ import { TableColumnGeneric } from '../../../components/Table';
 import { Supplier } from '../types';
 import { useTranslation } from '../../../components/IntlProvider';
 
-type UseSuppliersTableColumns = () => TableColumnGeneric<Supplier>[];
+type UseSuppliersTableColumnsReturn = TableColumnGeneric<Supplier>[];
 
-export const useSuppliersTableColumns: UseSuppliersTableColumns = () => {
+export const useSuppliersTableColumns = (): UseSuppliersTableColumnsReturn => {
   const { translate } = useTranslation();
 
   return useMemo<TableColumnGeneric<Supplier>[]>(

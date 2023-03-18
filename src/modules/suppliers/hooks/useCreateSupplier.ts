@@ -2,13 +2,13 @@ import { useCallback } from 'react';
 import { createSupplierApi } from '../api';
 import { SupplierPostData, SupplierPostResponse } from '../types';
 
-type UseCreateSupplier = () => {
+type UseCreateSupplierReturn = {
   createSupplier: (
     data: SupplierPostData,
   ) => Promise<SupplierPostResponse | undefined>;
 };
 
-export const useCreateSupplier: UseCreateSupplier = () => {
+export const useCreateSupplier = (): UseCreateSupplierReturn => {
   const createSupplier = useCallback(async (data: SupplierPostData) => {
     return await createSupplierApi(data);
   }, []);
