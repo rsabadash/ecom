@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   Translations,
   useTranslation,
@@ -7,11 +6,12 @@ import {
 import { TableColumnGeneric } from '../../../../components/Table';
 import { VariantWithAttribute } from '../types';
 import { routes } from '../../../../common/constants/routes';
+import { useCustomNavigate } from '../../../../hooks';
 
 type UseVariantsTableColumnsReturn = TableColumnGeneric<VariantWithAttribute>[];
 
 export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
-  const navigate = useNavigate();
+  const navigate = useCustomNavigate();
   const { translate, language } = useTranslation();
 
   return useMemo(

@@ -15,12 +15,15 @@ import {
   PERSIST_USER_KEY,
   REFRESH_TOKEN_KEY,
 } from './constants';
-import { useLocalStorage, useSessionStorage } from '../../hooks';
+import {
+  useCustomNavigate,
+  useLocalStorage,
+  useSessionStorage,
+} from '../../hooks';
 import { useSignIn } from './hooks';
 import { sharedBus } from '../../utils/sharedBus';
 import { routes } from '../../common/constants/routes';
 import { PERSIST_STATE } from './enums';
-import { router } from '../Router/Router';
 
 const [Provider, useAuth] = createProvider<AuthContextValue>({
   contextName: CONTEXT_NAME,
@@ -28,6 +31,7 @@ const [Provider, useAuth] = createProvider<AuthContextValue>({
 });
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
+  const navigate = useCustomNavigate();
   const { setLocalStorageItem, getLocalStorageItem, removeLocalStorageItem } =
     useLocalStorage();
   const {
@@ -106,9 +110,9 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     sharedBus.addMethod('signOut', signOutUser);
     sharedBus.addMethod('signedInRedirect', () =>
-      router.navigate(routes.dashboard, { replace: true }),
+      navigate(routes.dashboard, { replace: true }),
     );
-  }, [signOutUser]);
+  }, [navigate, signOutUser]);
 
   const contextValue = useMemo<AuthContextValue>(() => {
     return {
