@@ -21,10 +21,6 @@ type UseWarehouseProductsGeneratorFromReturn = Pick<
   'control' | 'setValue' | 'getValues' | 'handleSubmit'
 >;
 
-type UseWarehouseProductsGeneratorForm = (
-  props: UseWarehouseProductsGeneratorFromProps,
-) => UseWarehouseProductsGeneratorFromReturn;
-
 const schema = yup
   .object()
   .shape<YupSchemaKey<WarehouseProductsGeneratorFormValues>>({
@@ -38,22 +34,25 @@ const schema = yup
       .required(),
   });
 
-export const useWarehouseProductsGeneratorForm: UseWarehouseProductsGeneratorForm =
-  ({ shouldReset, submitHandler, defaultValues }) => {
-    const { control, handleSubmit, setValue, getValues } =
-      useCustomForm<WarehouseProductsGeneratorFormValues>({
-        formProps: {
-          resolver: yupResolver(schema),
-          defaultValues: defaultValues,
-        },
-        shouldReset,
-        submitHandler,
-      });
+export const useWarehouseProductsGeneratorForm = ({
+  shouldReset,
+  submitHandler,
+  defaultValues,
+}: UseWarehouseProductsGeneratorFromProps): UseWarehouseProductsGeneratorFromReturn => {
+  const { control, handleSubmit, setValue, getValues } =
+    useCustomForm<WarehouseProductsGeneratorFormValues>({
+      formProps: {
+        resolver: yupResolver(schema),
+        defaultValues: defaultValues,
+      },
+      shouldReset,
+      submitHandler,
+    });
 
-    return {
-      control,
-      setValue,
-      getValues,
-      handleSubmit,
-    };
+  return {
+    control,
+    setValue,
+    getValues,
+    handleSubmit,
   };
+};

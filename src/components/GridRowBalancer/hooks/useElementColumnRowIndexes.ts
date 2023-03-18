@@ -1,15 +1,15 @@
 import { useMemo } from 'react';
 import { useGridRowBalancer } from '../GridRowBalancer';
 
-type UseElementColumnRowIndexes = (columnIndex: undefined | number) => {
+type UseElementColumnRowIndexesReturn = {
   rowIndex: number;
   currentColumnIndex: number;
   elementRowIndexes: number[];
 };
 
-export const useElementColumnRowIndexes: UseElementColumnRowIndexes = (
-  columnIndex = 0,
-) => {
+export const useElementColumnRowIndexes = (
+  columnIndex: undefined | number = 0,
+): UseElementColumnRowIndexesReturn => {
   const { columns, elementRows } = useGridRowBalancer();
 
   // To the elements we pass consecutive numbers 1, 2, 3, 4, 5, 6 etc.

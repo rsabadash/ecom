@@ -8,9 +8,9 @@ import { TableColumnGeneric } from '../../../../components/Table';
 import { VariantWithAttribute } from '../types';
 import { routes } from '../../../../common/constants/routes';
 
-type UseVariantsTableColumns = () => TableColumnGeneric<VariantWithAttribute>[];
+type UseVariantsTableColumnsReturn = TableColumnGeneric<VariantWithAttribute>[];
 
-export const useVariantsTableColumns: UseVariantsTableColumns = () => {
+export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
   const navigate = useNavigate();
   const { translate, language } = useTranslation();
 

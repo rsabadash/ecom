@@ -22,8 +22,6 @@ type UseVariantFromReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-type UseVariantForm = (props: UseVariantFromProps) => UseVariantFromReturn;
-
 const schema = yup.object().shape<YupSchemaKey<VariantFormValues>>({
   name: yup
     .object()
@@ -40,11 +38,11 @@ const schema = yup.object().shape<YupSchemaKey<VariantFormValues>>({
     .required('attribute.variant.seoName.error.required'),
 });
 
-export const useVariantForm: UseVariantForm = ({
+export const useVariantForm = ({
   shouldReset,
   submitHandler,
   defaultValues,
-}) => {
+}: UseVariantFromProps): UseVariantFromReturn => {
   const { control, handleSubmit } = useCustomForm<VariantFormValues>({
     formProps: {
       resolver: yupResolver(schema),

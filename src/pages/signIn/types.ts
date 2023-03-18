@@ -1,6 +1,7 @@
 export type SignInFormValues = {
   email: string;
   password: string;
+  isPersistUser: boolean;
 };
 
 export type SignInFormFields = Record<
