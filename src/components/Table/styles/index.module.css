@@ -48,12 +48,14 @@
   background-color: var(--hover-color);
 }
 
-.table__row:last-child:focus-visible {
+.table__row:last-child:focus-visible,
+.table__row:last-child:hover {
   border-bottom-right-radius: var(--radius-regular);
   border-bottom-left-radius: var(--radius-regular);
 }
 
-.table__rowItem {
+.table__cell {
+  display: flex;
   padding-block: 1em;
   padding-inline: 1em;
 }

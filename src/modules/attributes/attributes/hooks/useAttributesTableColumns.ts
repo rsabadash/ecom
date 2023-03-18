@@ -12,7 +12,7 @@ type UseAttributeTableColumnsReturn = TableColumnGeneric<Attribute>[];
 export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
   const { translate, language } = useTranslation();
 
-  return useMemo(
+  return useMemo<TableColumnGeneric<Attribute>[]>(
     () => [
       {
         title: translate('attribute.name'),

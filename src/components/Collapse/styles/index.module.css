@@ -4,6 +4,10 @@
   gap: 1rem;
 }
 
+.collapseHeader_toggleable {
+  cursor: pointer;
+}
+
 .collapseButton path {
   fill: var(--text-color);
 }

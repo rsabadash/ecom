@@ -21,7 +21,6 @@ export const AttributeVariantsList: FC<AttributesVariantsListProps> = ({
 
   return (
     <Table
-      isRowLinkInteractive
       items={variants}
       columns={columns}
       tableRowRenderKey="variantId"

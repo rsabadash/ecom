@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Input } from '../../Fields/Input';
 import { InputWithCollapseFormFieldProps } from './types';
 import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
-import { CollapseBuilderButton, CollapseController } from '../../Collapse';
+import { CollapseBuilderButton } from '../../Collapse';
 import classes from './styles/index.module.css';
 
 export const InputWithCollapseFormField: FC<
@@ -25,12 +25,7 @@ export const InputWithCollapseFormField: FC<
   isDescriptionHidden,
   label,
   columnIndex,
-  ariaLabel,
-  ariaControls,
-  forceExpand,
   isToggleHidden,
-  isInitiallyExpand,
-  collapseBodyRef,
 }) => {
   const describedById = `${name}Description`;
 
@@ -51,33 +46,25 @@ export const InputWithCollapseFormField: FC<
       columnIndex={columnIndex}
       row2ClassName={classes.fieldWithCollapse}
     >
-      <CollapseController
-        ariaLabel={ariaLabel}
-        ariaControls={ariaControls}
-        forceExpand={forceExpand}
-        isInitiallyExpand={isInitiallyExpand}
-        collapseBodyRef={collapseBodyRef}
-      >
-        <Input
-          name={name}
-          type={type}
-          value={value}
-          isValid={isValid}
-          isReadOnly={isReadOnly}
-          isRequired={isRequired}
-          isDisabled={isDisabled}
-          ariaDescribedBy={describedById}
-          onBlur={onBlur}
-          onChange={onChange}
-          valueGetter={valueGetter}
-          formatValue={formatValue}
+      <Input
+        name={name}
+        type={type}
+        value={value}
+        isValid={isValid}
+        isReadOnly={isReadOnly}
+        isRequired={isRequired}
+        isDisabled={isDisabled}
+        ariaDescribedBy={describedById}
+        onBlur={onBlur}
+        onChange={onChange}
+        valueGetter={valueGetter}
+        formatValue={formatValue}
+      />
+      {!isToggleHidden && (
+        <CollapseBuilderButton
+          collapseButtonClassName={collapseButtonClassName}
         />
-        {!isToggleHidden && (
-          <CollapseBuilderButton
-            collapseButtonClassName={collapseButtonClassName}
-          />
-        )}
-      </CollapseController>
+      )}
     </CommonFormFieldsWrapper>
   );
 };

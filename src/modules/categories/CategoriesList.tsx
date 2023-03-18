@@ -20,7 +20,6 @@ export const CategoriesList = () => {
 
   return (
     <Table
-      isRowLinkInteractive
       items={data}
       columns={columns}
       tableLabeledBy={TABLE_CATEGORIES_ID}

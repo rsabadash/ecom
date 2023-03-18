@@ -1,5 +1,5 @@
 import { FC, useMemo, useRef } from 'react';
-import { CollapseBuilderBody } from '../Collapse';
+import { CollapseBuilderBody, CollapseController } from '../Collapse';
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../IntlProvider';
 import { MultiLanguageProps } from './types';
 import { useGridInlineStyles } from '../GridRowBalancer';
@@ -9,6 +9,10 @@ export const MultiLanguage: FC<MultiLanguageProps> = ({
   collapseBodyId,
   renderVisibleComponent,
   renderHiddenComponent,
+  ariaLabel,
+  ariaControls,
+  forceExpand,
+  isInitiallyExpand,
 }) => {
   const [, , , row4] = useGridInlineStyles(columnIndex);
   const collapseBodyRef = useRef<HTMLDivElement | null>(null);
@@ -20,10 +24,15 @@ export const MultiLanguage: FC<MultiLanguageProps> = ({
   );
 
   return (
-    <>
+    <CollapseController
+      ariaLabel={ariaLabel}
+      ariaControls={ariaControls}
+      forceExpand={forceExpand}
+      isInitiallyExpand={isInitiallyExpand}
+      collapseBodyRef={collapseBodyRef}
+    >
       {renderVisibleComponent({
         language: DEFAULT_LANGUAGE,
-        collapseBodyRef,
       })}
       <div style={row4}>
         <CollapseBuilderBody id={collapseBodyId} ref={collapseBodyRef}>
@@ -32,6 +41,6 @@ export const MultiLanguage: FC<MultiLanguageProps> = ({
           })}
         </CollapseBuilderBody>
       </div>
-    </>
+    </CollapseController>
   );
 };

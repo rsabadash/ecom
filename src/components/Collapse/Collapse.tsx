@@ -1,10 +1,8 @@
 import { FC, useRef } from 'react';
-import clsx from 'clsx';
 import { CollapseProps } from './types';
 import { CollapseBuilderBody } from './CollapseBuilderBody';
-import { CollapseBuilderButton } from './CollapseBuilderButton';
 import { CollapseController } from './CollapseController';
-import classes from './styles/index.module.css';
+import { CollapseBuilderHeader } from './CollapseBuilderHeader';
 
 export const Collapse: FC<CollapseProps> = ({
   header,
@@ -12,6 +10,9 @@ export const Collapse: FC<CollapseProps> = ({
   forceExpand,
   isInitiallyExpand = false,
   isToggleHidden,
+  isToggleableHeader,
+  isCollapseDisabled,
+  renderBodyOnExpand,
   onExpandFinished,
   onCollapseFinished,
   ariaLabel,
@@ -20,9 +21,6 @@ export const Collapse: FC<CollapseProps> = ({
   bodyClassName,
 }) => {
   const collapseBodyRef = useRef<null | HTMLDivElement>(null);
-
-  const headerClassNames = clsx(classes.collapseHeader, headerClassName);
-  const bodyClassNames = clsx(classes.collapse__body, bodyClassName);
 
   return (
     <CollapseController
@@ -34,14 +32,19 @@ export const Collapse: FC<CollapseProps> = ({
       ariaControls={ariaControls}
       collapseBodyRef={collapseBodyRef}
     >
-      <div className={headerClassNames}>
+      <CollapseBuilderHeader
+        isToggleHidden={isToggleHidden}
+        isToggleableHeader={isToggleableHeader}
+        isCollapseDisabled={isCollapseDisabled}
+        headerClassName={headerClassName}
+      >
         {header}
-        {!isToggleHidden && <CollapseBuilderButton />}
-      </div>
+      </CollapseBuilderHeader>
       <CollapseBuilderBody
         id={ariaControls}
         ref={collapseBodyRef}
-        collapseBodyClassName={bodyClassNames}
+        renderBodyOnExpand={renderBodyOnExpand}
+        collapseBodyClassName={bodyClassName}
       >
         {body}
       </CollapseBuilderBody>

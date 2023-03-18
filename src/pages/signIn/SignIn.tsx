@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Foreground } from '../../layouts/Foreground';
 import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
 import { Form } from '../../components/FormFields';
@@ -10,10 +11,16 @@ import { useSignInForm, useSignInFormSubmit } from './hooks';
 import { signInFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { Top, TopHeading } from '../../layouts/Top';
+import { useAuth } from '../../components/AuthProvider';
 
 const SignIn = () => {
+  const { signOut } = useAuth();
   const { translate } = useTranslation();
   const { handleFormSubmit } = useSignInFormSubmit();
+
+  useEffect(() => {
+    signOut();
+  }, [signOut]);
 
   const { control, handleSubmit } = useSignInForm({
     submitHandler: handleFormSubmit,

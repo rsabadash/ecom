@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import clsx from 'clsx';
 import { useCollapseController } from './CollapseController';
 import { Button } from '../Button';
@@ -8,6 +8,8 @@ import { CollapseBuilderButtonProps } from './types';
 import classes from './styles/index.module.css';
 
 export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
+  iconSize = '24px',
+  isCollapseDisabled,
   collapseButtonClassName,
 }) => {
   const { ariaControls, ariaLabel, isExpand, toggleCollapse } =
@@ -18,15 +20,25 @@ export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
     collapseButtonClassName,
   );
 
+  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    toggleCollapse();
+  };
+
   return (
     <Button
-      onClick={toggleCollapse}
+      onClick={handleButtonClick}
       ariaLabel={ariaLabel}
       ariaExpanded={isExpand}
       ariaControls={ariaControls}
       className={collapseButtonClassNames}
+      tabIndex={isCollapseDisabled ? -1 : 0}
     >
-      {isExpand ? <ChevronUpIcon /> : <ChevronDownIcon />}
+      {isExpand ? (
+        <ChevronUpIcon width={iconSize} height={iconSize} />
+      ) : (
+        <ChevronDownIcon width={iconSize} height={iconSize} />
+      )}
     </Button>
   );
 };

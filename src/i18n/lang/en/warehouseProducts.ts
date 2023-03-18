@@ -17,4 +17,5 @@ export const warehouseProducts = {
   'warehouseProducts.sku': 'SKU identifier',
   'warehouseProducts.sku.description': 'Enter the unique SKU of the product',
   'warehouseProducts.sku.error.required': 'SKU identifier is required',
+  'warehouseProducts.attributes.quantity': 'Number of attributes',
 };

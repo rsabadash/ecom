@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, MouseEvent, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import {
   DEFAULT_BUTTON_VARIANT,
@@ -18,14 +18,15 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
   ariaLabel,
   ariaExpanded,
   ariaControls,
+  tabIndex,
   className,
 }) => {
-  const handleButtonClick = (): void => {
+  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>): void => {
     if (isDisabled) {
       return;
     }
 
-    onClick && onClick();
+    onClick && onClick(event);
   };
 
   return (
@@ -42,6 +43,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
         classes[`button_${size}`],
         classes[`button_${variant}`],
       )}
+      tabIndex={tabIndex}
     >
       {children}
     </button>

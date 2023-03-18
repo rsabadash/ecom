@@ -6,9 +6,15 @@ import {
   useRef,
   useState,
 } from 'react';
+import clsx from 'clsx';
 import { Foreground } from '../../layouts/Foreground';
 import { TableBodyRowProps, TableProps } from './types';
-import { INDEX_ABSENCE_FOCUS, INITIAL_FOCUS_INDEX } from './constants';
+import {
+  INDEX_ABSENCE_FOCUS,
+  INITIAL_FOCUS_INDEX,
+  tableRoles,
+  tableRowRoles,
+} from './constants';
 import { EventKeys } from '../../common/enums/events';
 import { KeyIndexMap } from '../Navigation/types';
 import classes from './styles/index.module.css';
@@ -19,10 +25,10 @@ import classes from './styles/index.module.css';
 export const Table: FC<TableProps> = ({
   items,
   columns,
+  tableRole = tableRoles.grid,
   tableLabeledBy,
+  tableBodyClassName,
   rowCustomRender,
-  // isRowInteractive, TODO onClick initialization by pressing Enter
-  isRowLinkInteractive,
   tableRowRenderKey = '_id',
 }) => {
   const tableBodyRef = useRef<HTMLDivElement>(null);
@@ -50,17 +56,12 @@ export const Table: FC<TableProps> = ({
     if (isKeyboardControl) {
       const rowElement = getRowElementByIndex(focusIndex);
 
-      if (rowElement && isRowLinkInteractive) {
+      if (rowElement) {
         rowElement.focus();
         rowElement.scrollIntoView({ block: 'nearest' });
       }
     }
-  }, [
-    focusIndex,
-    getRowElementByIndex,
-    isKeyboardControl,
-    isRowLinkInteractive,
-  ]);
+  }, [focusIndex, getRowElementByIndex, isKeyboardControl]);
 
   const defineFocusIndexByKey = (key: EventKeys): number | undefined => {
     const itemsLength = items.length;
@@ -104,20 +105,22 @@ export const Table: FC<TableProps> = ({
   };
 
   const handleTableBodyMouseMove = (): void => {
-    if (isRowLinkInteractive && isKeyboardControl) {
+    if (isKeyboardControl) {
       blurNavItem(focusIndex);
       setIsKeyboardControl(false);
     }
   };
 
+  const tableBodyClassNames = clsx(classes.table__body, tableBodyClassName);
+
   return (
     <Foreground foregroundClassName={classes.tableForeground}>
       {/* aria-rowcount is total number of items, not only visible */}
       <div
-        role="grid"
+        role={tableRole}
         className={classes.table}
         aria-rowcount={items.length}
-        aria-label={tableLabeledBy}
+        aria-labelledby={tableLabeledBy}
       >
         <div className={classes.table__header} role="rowgroup">
           <div
@@ -143,7 +146,7 @@ export const Table: FC<TableProps> = ({
         </div>
         <div
           role="rowgroup"
-          className={classes.table__body}
+          className={tableBodyClassNames}
           onKeyDown={handleTableBodyKeyDown}
           onMouseMove={handleTableBodyMouseMove}
           ref={tableBodyRef}
@@ -157,13 +160,13 @@ export const Table: FC<TableProps> = ({
             const rowProps: TableBodyRowProps = {
               tabIndex,
               className: classes.table__row,
-              role: 'row',
+              role: tableRowRoles[tableRole],
               // aria-rowindex to do exactly index from whole list length, not by current index
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
             };
 
             const row = columns.map(
-              ({ key, width, valueGetter, title, isHidden }) => {
+              ({ key, width, align, valueGetter, title, isHidden }) => {
                 if (isHidden) return;
 
                 const rowValue = valueGetter
@@ -173,9 +176,9 @@ export const Table: FC<TableProps> = ({
                 return (
                   <div
                     key={`${item[tableRowRenderKey]}${title}`}
-                    style={{ minWidth: width }}
-                    className={classes.table__rowItem}
-                    role="cell"
+                    style={{ minWidth: width, justifyContent: align }}
+                    className={classes.table__cell}
+                    role="gridcell"
                   >
                     {rowValue}
                   </div>
