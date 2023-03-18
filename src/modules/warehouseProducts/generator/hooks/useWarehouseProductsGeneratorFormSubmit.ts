@@ -15,97 +15,92 @@ type UseWarehouseProductsGeneratorFormSubmitProps = {
   onSuccess: (products: GeneratedProduct[]) => void;
 };
 
-type UseWarehouseProductsGeneratorFormSubmit = (
-  props: UseWarehouseProductsGeneratorFormSubmitProps,
-) => {
+type UseWarehouseProductsGeneratorFormSubmitReturn = {
   handleFormSubmit: (
     values: WarehouseProductsGeneratorFormValues,
     event?: BaseSyntheticEvent,
   ) => Promise<void>;
 };
 
-export const useWarehouseProductsGeneratorFormSubmit: UseWarehouseProductsGeneratorFormSubmit =
-  ({ onSuccess }) => {
-    const getListToProductGeneration = useCallback(
-      (
-        attributes: AttributeVirtualFieldValue,
-      ): VariantVirtualFieldValue[][] => {
-        const sortedIds = Object.keys(attributes).sort();
+export const useWarehouseProductsGeneratorFormSubmit = ({
+  onSuccess,
+}: UseWarehouseProductsGeneratorFormSubmitProps): UseWarehouseProductsGeneratorFormSubmitReturn => {
+  const getListToProductGeneration = useCallback(
+    (attributes: AttributeVirtualFieldValue): VariantVirtualFieldValue[][] => {
+      const sortedIds = Object.keys(attributes).sort();
 
-        return sortedIds.map((id) => attributes[id]);
-      },
-      [],
-    );
+      return sortedIds.map((id) => attributes[id]);
+    },
+    [],
+  );
 
-    const generateProducts = useCallback(
-      (values: WarehouseProductsGeneratorFormValues): GeneratedProduct[] => {
-        if (values.attributesVirtual) {
-          const listToProductGeneration = getListToProductGeneration(
-            values.attributesVirtual,
-          );
+  const generateProducts = useCallback(
+    (values: WarehouseProductsGeneratorFormValues): GeneratedProduct[] => {
+      if (values.attributesVirtual) {
+        const listToProductGeneration = getListToProductGeneration(
+          values.attributesVirtual,
+        );
 
-          return cartesian<DataToGenerateProducts, GeneratedProduct>(
-            transformProductBasedOnVariants,
-            {},
-            [{ name: values.name }],
-            ...listToProductGeneration,
-          );
-        }
+        return cartesian<DataToGenerateProducts, GeneratedProduct>(
+          transformProductBasedOnVariants,
+          {},
+          [{ name: values.name }],
+          ...listToProductGeneration,
+        );
+      }
 
-        return [{ name: values.name, attributes: null }];
-      },
-      [getListToProductGeneration],
-    );
+      return [{ name: values.name, attributes: null }];
+    },
+    [getListToProductGeneration],
+  );
 
-    const generateProduct = useCallback(
-      (values: WarehouseProductsGeneratorFormValues): GeneratedProduct => {
-        let attributes: null | GeneratedAttribute[] = null;
-        const { name, attributesVirtual } = values;
+  const generateProduct = useCallback(
+    (values: WarehouseProductsGeneratorFormValues): GeneratedProduct => {
+      let attributes: null | GeneratedAttribute[] = null;
+      const { name, attributesVirtual } = values;
 
-        if (attributesVirtual) {
-          attributes = Object.keys(attributesVirtual).map(
-            (attributeVirtual) => {
-              return {
-                attributeId: attributeVirtual,
-                variants: attributesVirtual[attributeVirtual],
-              };
-            },
-          );
-        }
+      if (attributesVirtual) {
+        attributes = Object.keys(attributesVirtual).map((attributeVirtual) => {
+          return {
+            attributeId: attributeVirtual,
+            variants: attributesVirtual[attributeVirtual],
+          };
+        });
+      }
 
-        return {
-          name,
-          attributes,
-        };
-      },
-      [],
-    );
+      return {
+        name,
+        attributes,
+      };
+    },
+    [],
+  );
 
-    const handleFormSubmit = useCallback(
-      async (
-        values: WarehouseProductsGeneratorFormValues,
-        event?: BaseSyntheticEvent,
-      ): Promise<void> => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const submitButtonName = event?.nativeEvent.submitter?.name;
+  const handleFormSubmit = useCallback(
+    async (
+      values: WarehouseProductsGeneratorFormValues,
+      event?: BaseSyntheticEvent,
+    ): Promise<void> => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const submitButtonName = event?.nativeEvent.submitter?.name;
 
-        if (submitButtonName === buttonNames.manyProducts) {
-          const generatedProducts = generateProducts(values);
+      if (submitButtonName === buttonNames.manyProducts) {
+        const generatedProducts = generateProducts(values);
 
-          return onSuccess(generatedProducts);
-        }
+        return onSuccess(generatedProducts);
+      }
 
-        if (submitButtonName === buttonNames.oneProduct) {
-          const generatedProduct = generateProduct(values);
+      if (submitButtonName === buttonNames.oneProduct) {
+        const generatedProduct = generateProduct(values);
 
-          return onSuccess([generatedProduct]);
-        }
-      },
-      [generateProduct, generateProducts, onSuccess],
-    );
+        return onSuccess([generatedProduct]);
+      }
+    },
+    [generateProduct, generateProducts, onSuccess],
+  );
 
-    return {
-      handleFormSubmit,
-    };
+  return {
+    handleFormSubmit,
   };
+};
