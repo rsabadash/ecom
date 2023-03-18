@@ -3,7 +3,9 @@ export const warehouseProducts = {
   'warehouseProducts.generation': 'Generation of warehouse products',
   'warehouseProducts.generate': 'Generate products',
   'warehouseProducts.generate.form.description':
-    'Based on the common name and selected attributes, an appropriate number of unique warehouse items will be generated.',
+    'Either one or many products can be generated based on the common name and selected attribute variants. Generating one product means creating a product to which all selected attribute variants will be added. Generating multiple products means creating products with unique combinations of selected attribute variants.',
+  'warehouseProducts.generateOne': 'Generate one product',
+  'warehouseProducts.generateMany': 'Generate many products',
   'warehouseProducts.name': 'Product name',
   'warehouseProducts.name.description':
     'Enter general product name in {language}',
@@ -17,5 +19,7 @@ export const warehouseProducts = {
   'warehouseProducts.sku': 'SKU identifier',
   'warehouseProducts.sku.description': 'Enter the unique SKU of the product',
   'warehouseProducts.sku.error.required': 'SKU identifier is required',
+  'warehouseProducts.attributes.noVariants':
+    "The attribute doesn't have any variants",
   'warehouseProducts.attributes.quantity': 'Number of attributes',
 };

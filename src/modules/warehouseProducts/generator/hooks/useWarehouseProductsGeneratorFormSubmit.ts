@@ -1,13 +1,15 @@
-import { useCallback } from 'react';
+import { BaseSyntheticEvent, useCallback } from 'react';
 import {
   AttributeVirtualFieldValue,
   DataToGenerateProducts,
   GeneratedProduct,
   WarehouseProductsGeneratorFormValues,
   VariantVirtualFieldValue,
+  GeneratedAttribute,
 } from '../types';
 import { transformProductBasedOnVariants } from '../utils';
 import { cartesian } from '../../../../utils/cartesian';
+import { buttonNames } from '../constants';
 
 type UseWarehouseProductsGeneratorFormSubmitProps = {
   onSuccess: (products: GeneratedProduct[]) => void;
@@ -16,6 +18,7 @@ type UseWarehouseProductsGeneratorFormSubmitProps = {
 type UseWarehouseProductsGeneratorFormSubmitReturn = {
   handleFormSubmit: (
     values: WarehouseProductsGeneratorFormValues,
+    event?: BaseSyntheticEvent,
   ) => Promise<void>;
 };
 
@@ -51,13 +54,50 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
     [getListToProductGeneration],
   );
 
-  const handleFormSubmit = useCallback(
-    async (values: WarehouseProductsGeneratorFormValues): Promise<void> => {
-      const generatedProducts = generateProducts(values);
+  const generateProduct = useCallback(
+    (values: WarehouseProductsGeneratorFormValues): GeneratedProduct => {
+      let attributes: null | GeneratedAttribute[] = null;
+      const { name, attributesVirtual } = values;
 
-      onSuccess(generatedProducts);
+      if (attributesVirtual) {
+        attributes = Object.keys(attributesVirtual).map((attributeVirtual) => {
+          return {
+            attributeId: attributeVirtual,
+            variants: attributesVirtual[attributeVirtual],
+          };
+        });
+      }
+
+      return {
+        name,
+        attributes,
+      };
     },
-    [generateProducts, onSuccess],
+    [],
+  );
+
+  const handleFormSubmit = useCallback(
+    async (
+      values: WarehouseProductsGeneratorFormValues,
+      event?: BaseSyntheticEvent,
+    ): Promise<void> => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const submitButtonName = event?.nativeEvent.submitter?.name;
+
+      if (submitButtonName === buttonNames.manyProducts) {
+        const generatedProducts = generateProducts(values);
+
+        return onSuccess(generatedProducts);
+      }
+
+      if (submitButtonName === buttonNames.oneProduct) {
+        const generatedProduct = generateProduct(values);
+
+        return onSuccess([generatedProduct]);
+      }
+    },
+    [generateProduct, generateProducts, onSuccess],
   );
 
   return {

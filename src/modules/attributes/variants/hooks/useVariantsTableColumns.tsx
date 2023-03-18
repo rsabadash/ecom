@@ -4,7 +4,7 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { VariantWithAttribute } from '../types';
+import { Variant, VariantWithAttribute } from '../types';
 import { routes } from '../../../../common/constants/routes';
 import { useCustomNavigate } from '../../../../hooks';
 

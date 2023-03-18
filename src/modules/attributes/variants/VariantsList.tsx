@@ -16,7 +16,6 @@ export const VariantsList: FC<VariantsListProps> = ({ variants }) => {
 
   return (
     <Table
-      isRowLinkInteractive
       items={variants}
       columns={columns}
       tableRowRenderKey="variantId"

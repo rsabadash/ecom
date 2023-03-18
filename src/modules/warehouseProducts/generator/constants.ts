@@ -14,3 +14,8 @@ export const warehouseProductsGeneratorProductsFormFields: WarehouseProductsGene
   {
     products: 'products',
   };
+
+export const buttonNames = {
+  oneProduct: 'oneProduct',
+  manyProducts: 'manyProducts',
+};
