@@ -26,7 +26,7 @@ const CollapseController: FC<PropsWithChildren<CollapseControllerProps>> = ({
   ariaControls,
   collapseBodyRef,
 }) => {
-  const { isExpand, toggleCollapse } = useCollapseControl({
+  const { isExpand, isOnceExpanded, toggleCollapse } = useCollapseControl({
     collapseBodyRef,
     onCollapseFinished,
     forceExpand,
@@ -37,11 +37,12 @@ const CollapseController: FC<PropsWithChildren<CollapseControllerProps>> = ({
   const contextValue = useMemo<CollapseControllerContextValue>(() => {
     return {
       isExpand,
+      isOnceExpanded,
       toggleCollapse,
       ariaLabel,
       ariaControls,
     };
-  }, [ariaLabel, ariaControls, isExpand, toggleCollapse]);
+  }, [isExpand, isOnceExpanded, toggleCollapse, ariaLabel, ariaControls]);
 
   return <Provider value={contextValue}>{children}</Provider>;
 };

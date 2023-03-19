@@ -1,28 +1,45 @@
-import { Suspense } from 'react';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { ButtonLink } from '../../../components/Button';
-import { routes } from '../../../common/constants/routes';
-import { useTranslation } from '../../../components/IntlProvider';
-import { ErrorBoundary } from '../../../components/ErrorBoundary';
+import { useCachedAPI } from '../../../hooks';
+import { endpoints } from '../../../common/constants/api';
+import { useWarehouseProductsTableColumns } from './hooks';
+import {
+  RowCustomRenderArgs,
+  Table,
+  TableColumnGeneric,
+} from '../../../components/Table';
+import { WarehouseProduct, WarehouseProductTable } from './types';
+import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
+import { WarehouseProductsListItem } from './WarehouseProductsListItem';
+import { tableRoles } from '../../../components/Table/constants';
+import classes from './styles/index.module.css';
 
-const WarehouseProductsList = () => {
-  const { translate } = useTranslation();
+export const WarehouseProductsList = () => {
+  const { data = [] } = useCachedAPI<WarehouseProduct[]>(
+    `${endpoints.warehouseProducts.root}`,
+  );
+
+  const columns: TableColumnGeneric<WarehouseProductTable>[] =
+    useWarehouseProductsTableColumns();
 
   return (
-    <>
-      <Top>
-        <TopHeading>{translate('warehouseProducts')}</TopHeading>
-        <TopButtons>
-          <ButtonLink variant="primary" to={routes.warehouseProducts.generate}>
-            {translate('warehouseProducts.generate')}
-          </ButtonLink>
-        </TopButtons>
-      </Top>
-      <ErrorBoundary fallback="Error boundary Warehouse products list">
-        <Suspense fallback="Suspense Warehouse products list">List</Suspense>
-      </ErrorBoundary>
-    </>
+    <Table
+      items={data}
+      columns={columns}
+      tableRole={tableRoles.treegrid}
+      tableLabeledBy={TABLE_WAREHOUSE_PRODUCTS_ID}
+      tableBodyClassName={classes.warehouseList}
+      rowCustomRender={({
+        row,
+        item,
+        rowProps,
+      }: RowCustomRenderArgs<WarehouseProduct>) => (
+        <WarehouseProductsListItem
+          key={item._id}
+          item={item}
+          rowProps={rowProps}
+        >
+          {row}
+        </WarehouseProductsListItem>
+      )}
+    />
   );
 };
-
-export default WarehouseProductsList;

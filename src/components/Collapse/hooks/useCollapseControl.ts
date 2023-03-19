@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { CollapseControllerProps } from '../types';
 
 type UseCollapseControlProps = Omit<
@@ -10,21 +10,27 @@ type UseCollapseControlProps = Omit<
   | 'headerClassName'
 >;
 
-type UseCollapseControl = (props: UseCollapseControlProps) => {
+type UseCollapseControlReturn = {
   isExpand: boolean;
   toggleCollapse: () => void;
+  isOnceExpanded: boolean;
 };
 
-export const useCollapseControl: UseCollapseControl = ({
+export const useCollapseControl = ({
   forceExpand,
   isInitiallyExpand = false,
   onExpandFinished,
   onCollapseFinished,
   collapseBodyRef,
-}) => {
+}: UseCollapseControlProps): UseCollapseControlReturn => {
   const [isExpand, setIsExpand] = useState(false);
+  const isOnceExpandedRef = useRef<boolean>(false);
 
   const expandFinishedCallback = useCallback(() => {
+    if (!isOnceExpandedRef.current) {
+      isOnceExpandedRef.current = true;
+    }
+
     onExpandFinished && onExpandFinished();
     if (collapseBodyRef.current) {
       collapseBodyRef.current.style.overflow = 'unset';
@@ -89,8 +95,16 @@ export const useCollapseControl: UseCollapseControl = ({
   }, [collapseBodyRef, collapseFinishedCallback]);
 
   const toggleCollapse = useCallback((): void => {
-    setIsExpand((prevIsOpen) => !prevIsOpen);
-  }, []);
+    setIsExpand((prevIsOpen) => {
+      if (prevIsOpen) {
+        collapse();
+      } else {
+        expand();
+      }
+
+      return !prevIsOpen;
+    });
+  }, [collapse, expand]);
 
   useLayoutEffect(() => {
     if (isInitiallyExpand && collapseBodyRef.current) {
@@ -104,16 +118,17 @@ export const useCollapseControl: UseCollapseControl = ({
     }
   }, [forceExpand, expand]);
 
-  useLayoutEffect(() => {
-    if (isExpand) {
-      expand();
-    } else {
-      collapse();
-    }
-  }, [isExpand, collapse, expand]);
+  // useLayoutEffect(() => {
+  //   if (isExpand) {
+  //     expand();
+  //   } else {
+  //     collapse();
+  //   }
+  // }, [isExpand, collapse, expand]);
 
   return {
     isExpand,
     toggleCollapse,
+    isOnceExpanded: isOnceExpandedRef.current,
   };
 };

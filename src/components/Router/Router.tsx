@@ -28,23 +28,25 @@ const SuppliersDetail = lazy(
 );
 const SuppliersAdd = lazy(() => import('../../modules/suppliers/SupplierAdd'));
 const Attributes = lazy(
-  () => import('../../modules/attributes/list/Attributes'),
+  () => import('../../modules/attributes/attributes/Attributes'),
 );
 const AttributeAdd = lazy(
-  () => import('../../modules/attributes/list/AttributeAdd'),
+  () => import('../../modules/attributes/attributes/AttributeAdd'),
 );
 const AttributeDetail = lazy(
-  () => import('../../modules/attributes/detail/AttributeDetail'),
+  () => import('../../modules/attributes/attributes/AttributeDetail'),
 );
-const Variants = lazy(() => import('../../modules/attributes/list/Variants'));
+const Variants = lazy(
+  () => import('../../modules/attributes/variants/Variants'),
+);
 const VariantAdd = lazy(
-  () => import('../../modules/attributes/detail/VariantAdd'),
+  () => import('../../modules/attributes/variants/VariantAdd'),
 );
 const VariantDetail = lazy(
-  () => import('../../modules/attributes/detail/VariantDetail'),
+  () => import('../../modules/attributes/variants/VariantDetail'),
 );
-const WarehouseProductsList = lazy(
-  () => import('../../modules/warehouseProducts/list/WarehouseProductsList'),
+const WarehouseProducts = lazy(
+  () => import('../../modules/warehouseProducts/list/WarehouseProducts'),
 );
 const WarehouseProductsGenerator = lazy(
   () =>
@@ -192,7 +194,7 @@ export const router = createBrowserRouter(
           path={routes.warehouseProducts.root}
           element={
             <Suspense fallback="Route Warehouse products">
-              <WarehouseProductsList />
+              <WarehouseProducts />
             </Suspense>
           }
         />

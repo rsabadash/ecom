@@ -9,14 +9,15 @@ import { CheckboxValue } from '../../../components/Fields/Checkbox/types';
 import { warehouseProductsGeneratorFormFields } from './constants';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Variant } from '../../attributes/common/types';
+import { Variant } from '../../attributes/variants/types';
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorAttributeFormSection: FC<
   WarehouseProductsGeneratorAttributeFormSectionProps
 > = ({ attribute, setValue, getValues, control }) => {
-  const { language } = useTranslation();
-  const { _id: attributeId } = attribute;
+  const { language, translate } = useTranslation();
+  const { _id: attributeId, name, variants } = attribute;
+  const hasVariants = variants?.length > 0;
 
   const removeEmptyAttribute = useCallback(
     (id: string): void => {
@@ -69,23 +70,30 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
   );
 
   return (
-    <div className={classes.collapseWrapper}>
+    <div className={classes.generator__attributesRow}>
       <Collapse
-        headerClassName={classes.collapseHeader}
-        header={attribute.name[language]}
+        headerClassName={classes.generator__attributesName}
+        header={name[language]}
+        isToggleableHeader
         body={
-          <div className={classes.variantsWrapper}>
-            {attribute.variants.map((variant) => {
-              return (
-                <CheckboxAdapter
-                  key={variant.variantId}
-                  name={`${warehouseProductsGeneratorFormFields.attributes}.${attributeId}.variants.${variant.variantId}`}
-                  label={variant.name[language]}
-                  onChange={(isChecked) => handleChange(isChecked, variant)}
-                  control={control}
-                />
-              );
-            })}
+          <div className={classes.generator__variants}>
+            {hasVariants ? (
+              variants.map((variant) => {
+                return (
+                  <CheckboxAdapter
+                    key={variant.variantId}
+                    name={`${warehouseProductsGeneratorFormFields.attributes}.${attributeId}.variants.${variant.variantId}`}
+                    label={variant.name[language]}
+                    onChange={(isChecked) => handleChange(isChecked, variant)}
+                    control={control}
+                  />
+                );
+              })
+            ) : (
+              <div className={classes.generator__noVariants}>
+                {translate('warehouseProducts.attributes.noVariants')}
+              </div>
+            )}
           </div>
         }
       />

@@ -1,7 +1,7 @@
 import { InputProps } from '../../Fields/Input';
 import { FieldLabelProps } from '../FieldLabel';
-import { CollapseControllerProps } from '../../Collapse';
 import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
+import { CollapseControllerProps } from '../../Collapse';
 
 export type InputFormFieldProps = Omit<
   InputProps,
@@ -14,4 +14,4 @@ export type InputFormFieldProps = Omit<
   >;
 
 export type InputWithCollapseFormFieldProps = InputFormFieldProps &
-  Omit<CollapseControllerProps, 'onExpandFinished' | 'onCollapseFinished'>;
+  Pick<CollapseControllerProps, 'isToggleHidden'>;

@@ -23,6 +23,9 @@ export const endpoints = {
   users: {
     signIn: `${PREFIX}/users/sign-in`,
   },
+  warehouseProducts: {
+    root: `${PREFIX}/warehouse-products`,
+  },
 };
 
 export const query = {

@@ -14,4 +14,4 @@ export type TextboxFormFieldProps = Omit<
   >;
 
 export type TextboxWithCollapseFormFieldProps = TextboxFormFieldProps &
-  Omit<CollapseControllerProps, 'onExpandFinished' | 'onCollapseFinished'>;
+  Pick<CollapseControllerProps, 'isToggleHidden'>;

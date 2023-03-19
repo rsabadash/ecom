@@ -1,13 +1,17 @@
-.collapseWrapper {
+.generator__attributesRow {
   border-bottom: 1px solid var(--border-color);
 }
 
-.collapseHeader {
+.generator__attributesRow:first-of-type {
+  border-top: 1px solid var(--border-color);
+}
+
+.generator__attributesName {
   padding: 0.75rem;
   font-size: var(--font-size-regular);
 }
 
-.variantsWrapper {
+.generator__variants {
   display: flex;
   flex-wrap: wrap;
   gap: var(--checkboxSize);
@@ -15,15 +19,20 @@
   border-top: 1px solid var(--border-color);
 }
 
-.productFieldGroup {
+.generator__noVariants {
+  font-size: var(--font-size-regular);
+  margin: 0 auto;
+}
+
+.generatedProduct__fieldGroup {
   margin-top: 1.5rem;
 }
 
-.productFieldGroup:first-of-type {
+.generatedProduct__fieldGroup:first-of-type {
   margin-top: 0;
 }
 
-.generatedProductFieldTags {
+.generatedProduct__tags {
   margin-top: 0.5rem;
   display: flex;
   gap: 0.5rem;

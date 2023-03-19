@@ -18,12 +18,7 @@ export const InputWithCollapseAdapter = <FormValues extends FieldValues>({
   label,
   control,
   columnIndex,
-  ariaLabel,
-  ariaControls,
-  forceExpand,
   isToggleHidden,
-  isInitiallyExpand,
-  collapseBodyRef,
 }: InputWithCollapseAdapterProps<FormValues>) => {
   const {
     field: { onChange, onBlur, name: fieldName, value },
@@ -62,12 +57,7 @@ export const InputWithCollapseAdapter = <FormValues extends FieldValues>({
       isDescriptionHidden={isDescriptionHidden}
       label={label}
       columnIndex={columnIndex}
-      ariaLabel={ariaLabel}
-      ariaControls={ariaControls}
-      forceExpand={forceExpand}
       isToggleHidden={isToggleHidden}
-      isInitiallyExpand={isInitiallyExpand}
-      collapseBodyRef={collapseBodyRef}
     />
   );
 };
