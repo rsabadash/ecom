@@ -6,4 +6,6 @@ export type ErrorBoundaryProps = {
 
 export type ErrorBoundaryState = {
   hasError: boolean;
+  errorStatus: number | null;
+  error: string | null;
 };
