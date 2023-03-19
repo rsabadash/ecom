@@ -27,5 +27,6 @@ export const routes = {
   warehouses: {
     root: '/warehouses',
     add: '/warehouses/add',
+    detail: '/warehouses/:warehouseId',
   },
 };

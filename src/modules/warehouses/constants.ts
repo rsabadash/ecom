@@ -13,3 +13,5 @@ export const warehouseTypes: Record<WarehouseType, WarehouseType> = {
 };
 
 export const warehouseTypeKeys = Object.keys(warehouseTypes) as WarehouseType[];
+
+export const warehouseTypeTranslationPrefix = 'warehouse.type.';

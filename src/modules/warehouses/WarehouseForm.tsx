@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Form, FormContent } from '../../components/FormFields';
 import { GridRowBalancer } from '../../components/GridRowBalancer';
 import {
@@ -5,20 +6,28 @@ import {
   InputAdapter,
   TextboxAdapter,
 } from '../../components/FormFieldsAdapter';
-import { warehouseFormFields, warehouseTypeKeys } from './constants';
+import {
+  warehouseFormFields,
+  warehouseTypeKeys,
+  warehouseTypeTranslationPrefix,
+} from './constants';
 import { useTranslation } from '../../components/IntlProvider';
 import { useWarehouseForm, useWarehouseFormSubmit } from './hooks';
-import { WarehouseType } from './types';
+import { WarehouseFormProps, WarehouseType } from './types';
 import { DropdownItemObject } from '../../components/Fields/Dropdown';
 import { Button } from '../../components/Button';
 
-export const WarehouseForm = () => {
+export const WarehouseForm: FC<WarehouseFormProps> = ({
+  id,
+  isReadOnly,
+  defaultValues,
+}) => {
   const { translate } = useTranslation();
 
   const { handleFormSubmit } = useWarehouseFormSubmit();
 
   const { control, handleSubmit } = useWarehouseForm({
-    defaultValues: undefined,
+    defaultValues,
     submitHandler: handleFormSubmit,
   });
 
@@ -26,9 +35,12 @@ export const WarehouseForm = () => {
     warehouseTypeKeys.map((key) => {
       return {
         id: key,
-        value: translate(`warehouse.type.${key}`),
+        value: translate(`${warehouseTypeTranslationPrefix}${key}`),
       };
     });
+
+  const shouldUpdateCategory =
+    defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -36,8 +48,8 @@ export const WarehouseForm = () => {
         <GridRowBalancer columns={2} elementRows={3}>
           <InputAdapter
             isRequired
-            // isReadOnly={isReadOnly}
-            // isDescriptionHidden={isReadOnly}
+            isReadOnly={isReadOnly}
+            isDescriptionHidden={isReadOnly}
             name={warehouseFormFields.name}
             label={translate('warehouse.name')}
             placeholder={translate('warehouse.name.description')}
@@ -46,8 +58,8 @@ export const WarehouseForm = () => {
           />
           <DropdownAdapter
             isRequired
-            // isReadOnly={isReadOnly}
-            // isDescriptionHidden={isReadOnly}
+            isReadOnly={isReadOnly}
+            isDescriptionHidden={isReadOnly}
             name={warehouseFormFields.type}
             items={warehouseTypeItems}
             placeholder={translate('warehouse.type.description')}
@@ -56,6 +68,8 @@ export const WarehouseForm = () => {
             columnIndex={2}
           />
           <TextboxAdapter
+            isReadOnly={isReadOnly}
+            isDescriptionHidden={isReadOnly}
             name={warehouseFormFields.address}
             placeholder={translate('warehouse.address.description')}
             label={translate('warehouse.address')}
@@ -64,11 +78,13 @@ export const WarehouseForm = () => {
           />
         </GridRowBalancer>
       </FormContent>
-      <FormContent>
-        <Button variant="primary" type="submit">
-          {translate('add')}
-        </Button>
-      </FormContent>
+      {!isReadOnly && (
+        <FormContent>
+          <Button variant="primary" type="submit">
+            {shouldUpdateCategory ? translate('update') : translate('add')}
+          </Button>
+        </FormContent>
+      )}
     </Form>
   );
 };

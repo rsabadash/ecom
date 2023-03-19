@@ -58,6 +58,9 @@ const Warehouses = lazy(() => import('../../modules/warehouses/Warehouses'));
 const WarehouseAdd = lazy(
   () => import('../../modules/warehouses/WarehouseAdd'),
 );
+const WarehouseDetail = lazy(
+  () => import('../../modules/warehouses/WarehouseDetail'),
+);
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -223,6 +226,14 @@ export const router = createBrowserRouter(
           element={
             <Suspense fallback="Route Warehouses add">
               <WarehouseAdd />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouses.detail}
+          element={
+            <Suspense fallback="Route Warehouses detail">
+              <WarehouseDetail />
             </Suspense>
           }
         />

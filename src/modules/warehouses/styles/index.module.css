@@ -19,6 +19,11 @@
     fill: var(--text-color);
 }
 
+.warehouseLink {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
 .warehouseName {
     font-weight: bold;
 }
