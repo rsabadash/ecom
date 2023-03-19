@@ -1,6 +1,7 @@
-import { PATCH, POST } from '../../utils/api';
+import { DELETE, PATCH, POST } from '../../utils/api';
 import { endpoints } from '../../common/constants/api';
 import {
+  WarehouseDeleteData,
   WarehousePatchData,
   WarehousePostData,
   WarehousePostResponse,
@@ -23,4 +24,14 @@ export const updateWarehouseApi = async (
   await PATCH<void, WarehousePatchData>(endpoints.warehouses.root, {
     data,
   });
+};
+
+export const deleteWarehouseApi = async (
+  id: string | undefined,
+): Promise<void> => {
+  if (id) {
+    return await DELETE<void, WarehouseDeleteData>(endpoints.warehouses.root, {
+      data: { id },
+    });
+  }
 };

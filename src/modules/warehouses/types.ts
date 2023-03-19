@@ -35,6 +35,10 @@ export type WarehousePatchData = {
   address: string | null;
 };
 
+export type WarehouseDeleteData = {
+  id: string;
+};
+
 export type WarehouseUrlParams = {
   warehouseId: string;
 };
