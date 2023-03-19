@@ -24,7 +24,7 @@ export const WarehouseForm: FC<WarehouseFormProps> = ({
 }) => {
   const { translate } = useTranslation();
 
-  const { handleFormSubmit } = useWarehouseFormSubmit();
+  const { handleFormSubmit } = useWarehouseFormSubmit({ id });
 
   const { control, handleSubmit } = useWarehouseForm({
     defaultValues,

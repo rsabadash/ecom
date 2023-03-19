@@ -1,6 +1,10 @@
-import { POST } from '../../utils/api';
+import { PATCH, POST } from '../../utils/api';
 import { endpoints } from '../../common/constants/api';
-import { WarehousePostData, WarehousePostResponse } from './types';
+import {
+  WarehousePatchData,
+  WarehousePostData,
+  WarehousePostResponse,
+} from './types';
 
 export const createWarehouseApi = async (
   data: WarehousePostData,
@@ -11,4 +15,12 @@ export const createWarehouseApi = async (
       data,
     },
   );
+};
+
+export const updateWarehouseApi = async (
+  data: WarehousePatchData,
+): Promise<void> => {
+  await PATCH<void, WarehousePatchData>(endpoints.warehouses.root, {
+    data,
+  });
 };

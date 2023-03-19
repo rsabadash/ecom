@@ -1,22 +1,40 @@
 import { useCallback } from 'react';
-import { WarehouseFormValues } from '../types';
+import {
+  WarehouseFormValues,
+  WarehousePatchData,
+  WarehousePostData,
+} from '../types';
 import { useCreateWarehouse } from './useCreateWarehouse';
+import { useUpdateWarehouse } from './useUpdateWarehouse';
+
+type UseWarehouseFormSubmitProps = {
+  id?: string;
+};
 
 type UseWarehouseFormSubmitReturn = {
   handleFormSubmit: (values: WarehouseFormValues) => Promise<void>;
 };
 
-export const useWarehouseFormSubmit = (): UseWarehouseFormSubmitReturn => {
+export const useWarehouseFormSubmit = ({
+  id,
+}: UseWarehouseFormSubmitProps): UseWarehouseFormSubmitReturn => {
   const { createWarehouse } = useCreateWarehouse();
+  const { updateWarehouse } = useUpdateWarehouse();
 
   const handleFormSubmit = useCallback(
     async (values: WarehouseFormValues) => {
-      await createWarehouse({
+      const data: WarehousePostData | WarehousePatchData = {
         ...values,
         type: values.type.id,
-      });
+      };
+
+      if (id) {
+        await updateWarehouse({ id, ...data });
+      } else {
+        await createWarehouse(data);
+      }
     },
-    [createWarehouse],
+    [createWarehouse, id, updateWarehouse],
   );
 
   return {

@@ -75,6 +75,7 @@ export const Textbox: FC<TextboxProps> = ({
         onChange={handleOnChange}
         className={textboxClassName}
         tabIndex={isReadOnly ? -1 : 0}
+        rows={isReadOnly ? 1 : undefined}
       />
     </div>
   );

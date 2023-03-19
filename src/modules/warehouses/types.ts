@@ -28,6 +28,13 @@ export type WarehousePostData = {
 
 export type WarehousePostResponse = Warehouse;
 
+export type WarehousePatchData = {
+  id: string;
+  name: string;
+  type: WarehouseType;
+  address: string | null;
+};
+
 export type WarehouseUrlParams = {
   warehouseId: string;
 };
