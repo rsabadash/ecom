@@ -24,6 +24,14 @@
     color: var(--text-color);
 }
 
+.warehouseLink:focus-within {
+    outline: none;
+    background-color: var(--primary-400);
+    border-radius: var(--radius-regular);
+    box-shadow: var(--input-box-shadow-focus);
+    transition: background-color var(--transition), box-shadow var(--transition);
+}
+
 .warehouseName {
     font-weight: bold;
 }

@@ -44,7 +44,7 @@ export const WarehousesList = () => {
           );
         })}
 
-        <Link to={routes.warehouses.add}>
+        <Link to={routes.warehouses.add} className={classes.warehouseLink}>
           <Foreground foregroundClassName={classes.warehouseCard}>
             <PlusIcon width="2em" height="2em" />
           </Foreground>
