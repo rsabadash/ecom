@@ -12,9 +12,7 @@ import { endpoints } from '../../common/constants/api';
 import { useCategoriesTableColumns } from './hooks';
 
 export const CategoriesList = () => {
-  const { data = [] } = useCachedAPI<Category[]>(
-    `${endpoints.categories.root}`,
-  );
+  const { data = [] } = useCachedAPI<Category[]>(endpoints.categories.root);
 
   const columns: TableColumnGeneric<Category>[] = useCategoriesTableColumns();
 
