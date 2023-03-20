@@ -1,4 +1,4 @@
-.errorPage {
+.notFound {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -7,10 +7,10 @@
   text-align: center;
 }
 
-.errorPageStatus {
+.notFound__status {
   font-size: clamp(4rem, 2vw + 5rem, 7rem);
 }
 
-.errorPageMessage {
+.notFound__message {
   font-size: clamp(2rem, 2vw + 1rem, 3rem);
 }

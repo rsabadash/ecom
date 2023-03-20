@@ -10,7 +10,6 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
 import { SignedInRedirect } from './SignedInRedirect';
-import PageNotFound from '../../pages/ErrorPage/PageNotFound';
 import { ErrorBoundary } from '../ErrorBoundary';
 
 // import { RoleGuard } from '../RoleGuard';
@@ -55,6 +54,7 @@ const WarehouseProductsGenerator = lazy(
       '../../modules/warehouseProducts/generator/WarehouseProductsGenerator'
     ),
 );
+const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -214,7 +214,7 @@ export const router = createBrowserRouter(
             </Suspense>
           }
         />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
       <Route
         element={

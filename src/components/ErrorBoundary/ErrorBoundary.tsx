@@ -1,8 +1,8 @@
-import { Component, PropsWithChildren } from 'react';
+import { Component, lazy, PropsWithChildren, Suspense } from 'react';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
-import PageNotFound from '../../pages/ErrorPage/PageNotFound';
-//import { Simulate } from 'react-dom/test-utils';
-//import error = Simulate.error;
+import { messages } from '../../common/constants/errors';
+
+const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 
 // https://blog.openreplay.com/catching-errors-in-react-with-error-boundaries/
 export class ErrorBoundary extends Component<
@@ -14,18 +14,29 @@ export class ErrorBoundary extends Component<
     this.state = {
       hasError: false,
       errorStatus: null,
-      error: '',
+      error: null,
     };
   }
 
-  static getDerivedStateFromError() {
+  static getDerivedStateFromError(error: any) {
     return {
       hasError: true,
+      errorStatus: error.status,
+      error: error.error,
     };
+  }
+
+  get isEntityNotFound() {
+    const { errorStatus, error } = this.state;
+
+    return (
+      errorStatus === 404 &&
+      error &&
+      error.toLowerCase() === messages.notFound.entity
+    );
   }
 
   componentDidCatch(error: any, errorInfo: any) {
-    this.setState({ errorStatus: error.status, error: error.error });
     console.log(error);
     console.log(errorInfo);
     //   logErrorToMyService(error, errorInfo);
@@ -33,13 +44,12 @@ export class ErrorBoundary extends Component<
 
   render() {
     if (this.state.hasError) {
-      const showPageNotFound =
-        this.state.errorStatus &&
-        this.state.errorStatus === 404 &&
-        this.state.error === 'Entity not found';
-
-      if (showPageNotFound) {
-        return <PageNotFound />;
+      if (this.isEntityNotFound) {
+        return (
+          <Suspense>
+            <NotFound />
+          </Suspense>
+        );
       }
 
       return this.props.fallback;

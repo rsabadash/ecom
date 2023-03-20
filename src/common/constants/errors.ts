@@ -6,4 +6,7 @@ export const messages = {
   access: {
     forbidden: 'forbidden resource',
   },
+  notFound: {
+    entity: 'entity not found',
+  },
 };
