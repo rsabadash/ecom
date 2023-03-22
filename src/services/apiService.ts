@@ -1,6 +1,7 @@
 export type ApiError = {
   status?: number;
   message: string;
+  error: string;
 };
 
 type ErrorResponse = {
@@ -137,10 +138,12 @@ export class ApiService implements ApiServiceInterface {
       }
 
       const errorResponse = await this.parseResponse<ErrorResponse>(response);
+      const error = errorResponse?.error || response.statusText;
       const errorMessage = errorResponse?.message || response.statusText;
       const errorStatus = errorResponse?.statusCode || response.status;
 
       const errorData: ApiError = {
+        error,
         message: errorMessage,
         status: errorStatus,
       };

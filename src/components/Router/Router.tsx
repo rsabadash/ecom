@@ -10,7 +10,7 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
 import { SignedInRedirect } from './SignedInRedirect';
-import ErrorPage from '../../pages/ErrorPage/ErrorPage';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 // import { RoleGuard } from '../RoleGuard';
 // import { Role } from '../UserProvider/enums';
@@ -54,6 +54,7 @@ const WarehouseProductsGenerator = lazy(
       '../../modules/warehouseProducts/generator/WarehouseProductsGenerator'
     ),
 );
+const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 const Warehouses = lazy(() => import('../../modules/warehouses/Warehouses'));
 const WarehouseAdd = lazy(
   () => import('../../modules/warehouses/WarehouseAdd'),
@@ -82,7 +83,6 @@ export const router = createBrowserRouter(
         <Route path={routes.home} element={<SignedInRedirect />} />
         <Route
           path={routes.dashboard}
-          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Dashboard">
               <Dashboard />
@@ -101,25 +101,26 @@ export const router = createBrowserRouter(
         />
         <Route
           path={routes.categories.detail}
-          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Categories detail">
-              <CategoryDetail />
+              <ErrorBoundary fallback="Error boundary Categories detail">
+                <CategoryDetail />
+              </ErrorBoundary>
             </Suspense>
           }
         />
         <Route
           path={routes.categories.add}
-          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Categories add">
-              <CategoryAdd />
+              <ErrorBoundary fallback="Error boundary Categories add">
+                <CategoryAdd />
+              </ErrorBoundary>
             </Suspense>
           }
         />
         <Route
           path={routes.suppliers.root}
-          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Suppliers">
               <Suppliers />
@@ -128,19 +129,21 @@ export const router = createBrowserRouter(
         />
         <Route
           path={`${routes.suppliers.detail}`}
-          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Suppliers detail">
-              <SuppliersDetail />
+              <ErrorBoundary fallback="Error boundary Suppliers detail">
+                <SuppliersDetail />
+              </ErrorBoundary>
             </Suspense>
           }
         />
         <Route
           path={routes.suppliers.add}
-          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Suppliers add">
-              <SuppliersAdd />
+              <ErrorBoundary fallback="Error boundary Suppliers add">
+                <SuppliersAdd />
+              </ErrorBoundary>
             </Suspense>
           }
         />
@@ -153,26 +156,27 @@ export const router = createBrowserRouter(
           }
         />
         <Route
-          path={routes.attributes.add}
-          errorElement={<ErrorPage />}
-          element={
-            <Suspense fallback="Route Attribute add">
-              <AttributeAdd />
-            </Suspense>
-          }
-        />
-        <Route
           path={routes.attributes.detail}
-          errorElement={<ErrorPage />}
           element={
             <Suspense fallback="Route Attribute detail">
-              <AttributeDetail />
+              <ErrorBoundary fallback="Error boundary Attribute detail">
+                <AttributeDetail />
+              </ErrorBoundary>
             </Suspense>
           }
         />
         <Route
-          path={routes.attributes.variantsList}
-          errorElement={<ErrorPage />}
+          path={routes.attributes.add}
+          element={
+            <Suspense fallback="Route Attribute add">
+              <ErrorBoundary fallback="Error boundary Attribute add">
+                <AttributeAdd />
+              </ErrorBoundary>
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.attributes.variantList}
           element={
             <Suspense fallback="Route Variants list">
               <Variants />
@@ -180,20 +184,22 @@ export const router = createBrowserRouter(
           }
         />
         <Route
-          path={routes.attributes.variantAdd}
-          errorElement={<ErrorPage />}
+          path={routes.attributes.variantDetail}
           element={
-            <Suspense fallback="Route Attribute variant add detail">
-              <VariantAdd />
+            <Suspense fallback="Route Attribute variant detail">
+              <ErrorBoundary fallback="Error boundary Variant detail">
+                <VariantDetail />
+              </ErrorBoundary>
             </Suspense>
           }
         />
         <Route
-          path={routes.attributes.variantDetail}
-          errorElement={<ErrorPage />}
+          path={routes.attributes.variantAdd}
           element={
-            <Suspense fallback="Route Attribute variant detail">
-              <VariantDetail />
+            <Suspense fallback="Route Attribute variant add detail">
+              <ErrorBoundary fallback="Error boundary Warehouse product generator">
+                <VariantAdd />
+              </ErrorBoundary>
             </Suspense>
           }
         />
@@ -209,7 +215,9 @@ export const router = createBrowserRouter(
           path={routes.warehouseProducts.generate}
           element={
             <Suspense fallback="Route Warehouse products generator">
-              <WarehouseProductsGenerator />
+              <ErrorBoundary fallback="Error boundary Warehouse product generator">
+                <WarehouseProductsGenerator />
+              </ErrorBoundary>
             </Suspense>
           }
         />
@@ -237,7 +245,7 @@ export const router = createBrowserRouter(
             </Suspense>
           }
         />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
       <Route
         element={

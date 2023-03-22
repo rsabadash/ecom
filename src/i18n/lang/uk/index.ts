@@ -2,7 +2,7 @@ import { categories } from './categories';
 import { common } from './common';
 import { dashboard } from './dashboard';
 import { menu } from './menu';
-import { pageError } from './pageError';
+import { notFound } from './notFound';
 import { signIn } from './signIn';
 import { suppliers } from './suppliers';
 import { attributes } from './attributes';
@@ -15,7 +15,7 @@ const translationUK = {
     ...common,
     ...dashboard,
     ...menu,
-    ...pageError,
+    ...notFound,
     ...signIn,
     ...suppliers,
     ...attributes,

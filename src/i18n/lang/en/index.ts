@@ -2,8 +2,8 @@ import { categories } from './categories';
 import { common } from './common';
 import { dashboard } from './dashboard';
 import { menu } from './menu';
-import { pageError } from './pageError';
 import { signIn } from './signIn';
+import { notFound } from './notFound';
 import { suppliers } from './suppliers';
 import { attributes } from './attributes';
 import { warehouseProducts } from './warehouseProducts';
@@ -15,7 +15,7 @@ const translationEN = {
     ...common,
     ...dashboard,
     ...menu,
-    ...pageError,
+    ...notFound,
     ...signIn,
     ...suppliers,
     ...attributes,
