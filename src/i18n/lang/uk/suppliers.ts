@@ -1,8 +1,9 @@
 export const suppliers = {
   suppliers: 'Постачальники',
-  'suppliers.name': 'Назва постачальника',
-  'suppliers.name.error.required': "Назва постачальника є обов'язковою",
-  'suppliers.account': 'Рахунок постачальника',
-  'suppliers.phone': 'Телефон',
-  'suppliers.note': 'Нотатки',
+  'supplier.add': 'Додати постачальника',
+  'supplier.name': 'Назва постачальника',
+  'supplier.name.error.required': "Назва постачальника є обов'язковою",
+  'supplier.account': 'Рахунок постачальника',
+  'supplier.phone': 'Телефон',
+  'supplier.note': 'Нотатки',
 };

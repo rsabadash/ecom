@@ -3,10 +3,5 @@
   box-shadow: var(--shadow-5);
   border-radius: var(--radius-regular);
   background-color: var(--foreground);
-  margin-top: 1.5em;
   padding: 1.5em;
-}
-
-.foreground__placeholder {
-  text-align: center;
 }

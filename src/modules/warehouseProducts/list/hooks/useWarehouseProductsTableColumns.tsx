@@ -22,7 +22,7 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
     return useMemo<TableColumnGeneric<WarehouseProductTable>[]>(
       () => [
         {
-          title: translate('warehouseProducts.name'),
+          title: translate('warehouseProduct.name'),
           key: 'name',
           width: '55%',
           valueGetter: (value: Translations) => {
@@ -30,12 +30,12 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           },
         },
         {
-          title: translate('warehouseProducts.sku'),
+          title: translate('warehouseProduct.sku'),
           key: 'sku',
           width: '20%',
         },
         {
-          title: translate('warehouseProducts.attributes.quantity'),
+          title: translate('warehouseProduct.attributes.quantity'),
           key: 'attributes',
           width: '15%',
           valueGetter: (value: null | WarehouseProductsAttribute[]) => {
@@ -45,7 +45,7 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
             return (
               <div
                 aria-label={`${translate(
-                  'warehouseProducts.attributes.quantity',
+                  'warehouseProduct.attributes.quantity',
                 )} ${ariaValue}`}
               >
                 {quantity}

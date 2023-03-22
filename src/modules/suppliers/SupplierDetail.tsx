@@ -1,7 +1,7 @@
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
-import { Foreground } from '../../layouts/Foreground';
+import { SectionForeground } from '../../layouts/Section';
 import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from '../../components/IntlProvider';
@@ -54,7 +54,7 @@ const SupplierDetail = () => {
           </ButtonsGroup>
         </TopButtons>
       </Top>
-      <Foreground>
+      <SectionForeground>
         <Suspense>
           <SupplierForm
             id={supplierDetail?._id}
@@ -62,7 +62,7 @@ const SupplierDetail = () => {
             isReadOnly={isReadOnly}
           />
         </Suspense>
-      </Foreground>
+      </SectionForeground>
     </>
   );
 };

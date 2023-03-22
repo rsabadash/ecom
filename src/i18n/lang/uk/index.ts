@@ -7,6 +7,7 @@ import { signIn } from './signIn';
 import { suppliers } from './suppliers';
 import { attributes } from './attributes';
 import { warehouseProducts } from './warehouseProducts';
+import { warehouses } from './warehouses';
 
 const translationUK = {
   uk: {
@@ -19,6 +20,7 @@ const translationUK = {
     ...suppliers,
     ...attributes,
     ...warehouseProducts,
+    ...warehouses,
   },
 };
 

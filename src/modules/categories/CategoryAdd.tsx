@@ -3,7 +3,7 @@ import { useTranslation } from '../../components/IntlProvider';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
 import { CategoryForm } from './CategoryForm';
-import { Foreground } from '../../layouts/Foreground';
+import { SectionForeground } from '../../layouts/Section';
 
 const CategoryAdd = () => {
   const { translate } = useTranslation();
@@ -11,16 +11,16 @@ const CategoryAdd = () => {
   return (
     <>
       <Top>
-        <TopHeading>{translate('add')}</TopHeading>
+        <TopHeading>{translate('category.add')}</TopHeading>
         <TopButtons>
           <ButtonLink variant="primary" to={routes.categories.root}>
             {translate('cancel')}
           </ButtonLink>
         </TopButtons>
       </Top>
-      <Foreground>
+      <SectionForeground>
         <CategoryForm />
-      </Foreground>
+      </SectionForeground>
     </>
   );
 };

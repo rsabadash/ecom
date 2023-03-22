@@ -16,12 +16,17 @@ export const routes = {
     root: '/attributes',
     add: '/attributes/add',
     detail: '/attributes/:attributeId',
-    variantList: '/attributes/variants',
+    variantsList: '/attributes/variants',
     variantAdd: '/attributes/:attributeId/variants/add',
     variantDetail: '/attributes/:attributeId/variants/:variantId',
   },
   warehouseProducts: {
     root: '/warehouse-products',
     generate: '/warehouse-products/generate',
+  },
+  warehouses: {
+    root: '/warehouses',
+    add: '/warehouses/add',
+    detail: '/warehouses/:warehouseId',
   },
 };

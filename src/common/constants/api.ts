@@ -26,6 +26,9 @@ export const endpoints = {
   warehouseProducts: {
     root: `${PREFIX}/warehouse-products`,
   },
+  warehouses: {
+    root: `${PREFIX}/warehouses`,
+  },
 };
 
 export const query = {

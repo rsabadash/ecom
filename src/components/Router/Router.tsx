@@ -55,6 +55,13 @@ const WarehouseProductsGenerator = lazy(
     ),
 );
 const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
+const Warehouses = lazy(() => import('../../modules/warehouses/Warehouses'));
+const WarehouseAdd = lazy(
+  () => import('../../modules/warehouses/WarehouseAdd'),
+);
+const WarehouseDetail = lazy(
+  () => import('../../modules/warehouses/WarehouseDetail'),
+);
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -169,7 +176,7 @@ export const router = createBrowserRouter(
           }
         />
         <Route
-          path={routes.attributes.variantList}
+          path={routes.attributes.variantsList}
           element={
             <Suspense fallback="Route Variants list">
               <Variants />
@@ -210,6 +217,34 @@ export const router = createBrowserRouter(
             <Suspense fallback="Route Warehouse products generator">
               <ErrorBoundary fallback="Error boundary Warehouse product generator">
                 <WarehouseProductsGenerator />
+              </ErrorBoundary>
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouses.root}
+          element={
+            <Suspense fallback="Route Warehouses list">
+              <Warehouses />
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouses.add}
+          element={
+            <Suspense fallback="Route Warehouses add">
+              <ErrorBoundary fallback="Error boundary Warehouse add">
+                <WarehouseAdd />
+              </ErrorBoundary>
+            </Suspense>
+          }
+        />
+        <Route
+          path={routes.warehouses.detail}
+          element={
+            <Suspense fallback="Route Warehouses detail">
+              <ErrorBoundary fallback="Error boundary Warehouse detail">
+                <WarehouseDetail />
               </ErrorBoundary>
             </Suspense>
           }

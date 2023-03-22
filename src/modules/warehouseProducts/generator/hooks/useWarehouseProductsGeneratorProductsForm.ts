@@ -33,14 +33,14 @@ const schema = yup
           .object()
           .shape(
             mainTranslationRequired({
-              uk: 'warehouseProducts.generatedName.error.required',
+              uk: 'warehouseProduct.generatedName.error.required',
             }),
           )
           .required(),
         sku: yup
           .string()
           .nullable()
-          .required('warehouseProducts.sku.error.required'),
+          .required('warehouseProduct.sku.error.required'),
       }),
     ),
   });

@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react';
 import { ErrorBoundary } from '../../../components/ErrorBoundary';
-import { Foreground } from '../../../layouts/Foreground';
+import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopHeading } from '../../../layouts/Top';
 import { WarehouseProductsGeneratorForm } from './WarehouseProductsGeneratorForm';
 import { WarehouseProductsGeneratorProductsForm } from './WarehouseProductsGeneratorProductsForm';
@@ -21,17 +21,17 @@ const WarehouseProductsGenerator = () => {
       </Top>
       <ErrorBoundary fallback="Error boundary Warehouse products generator">
         <Suspense fallback="Suspense Warehouse products generator">
-          <Foreground>
+          <SectionForeground>
             <WarehouseProductsGeneratorForm
               onSuccessSubmit={setGeneratedProducts}
             />
-          </Foreground>
+          </SectionForeground>
           {generatedProducts && (
-            <Foreground>
+            <SectionForeground>
               <WarehouseProductsGeneratorProductsForm
                 generatedProducts={generatedProducts}
               />
-            </Foreground>
+            </SectionForeground>
           )}
         </Suspense>
       </ErrorBoundary>

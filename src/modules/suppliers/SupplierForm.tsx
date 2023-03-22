@@ -33,7 +33,7 @@ export const SupplierForm: FC<SupplierFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={supplierFormFields.name}
-          label={translate('suppliers.name')}
+          label={translate('supplier.name')}
           control={control}
           columnIndex={1}
         />
@@ -41,7 +41,7 @@ export const SupplierForm: FC<SupplierFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={supplierFormFields.note}
-          label={translate('suppliers.note')}
+          label={translate('supplier.note')}
           control={control}
           columnIndex={2}
         />
@@ -49,7 +49,7 @@ export const SupplierForm: FC<SupplierFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={supplierFormFields.phoneNumber}
-          label={translate('suppliers.phone')}
+          label={translate('supplier.phone')}
           control={control}
           columnIndex={3}
         />

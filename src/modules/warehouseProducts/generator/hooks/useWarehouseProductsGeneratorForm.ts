@@ -28,7 +28,7 @@ const schema = yup
       .object()
       .shape(
         mainTranslationRequired({
-          uk: 'warehouseProducts.name.error.required',
+          uk: 'warehouseProduct.name.error.required',
         }),
       )
       .required(),

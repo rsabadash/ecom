@@ -4,7 +4,7 @@ import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
 import { Button, ButtonLink, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Foreground } from '../../../layouts/Foreground';
+import { SectionForeground } from '../../../layouts/Section';
 import { endpoints } from '../../../common/constants/api';
 import { routes } from '../../../common/constants/routes';
 import { AttributeForm } from './AttributeForm';
@@ -67,13 +67,13 @@ const AttributeDetail = () => {
           </ButtonsGroup>
         </TopButtons>
       </Top>
-      <Foreground>
+      <SectionForeground>
         <AttributeForm
           id={attributeDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
         />
-      </Foreground>
+      </SectionForeground>
       <>
         <Heading
           id={TABLE_ATTRIBUTE_VARIANTS_ID}

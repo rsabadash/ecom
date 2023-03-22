@@ -91,7 +91,7 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
               })
             ) : (
               <div className={classes.generator__noVariants}>
-                {translate('warehouseProducts.attributes.noVariants')}
+                {translate('warehouseProduct.attributes.noVariants')}
               </div>
             )}
           </div>

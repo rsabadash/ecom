@@ -9,7 +9,7 @@ import {
 } from './types';
 import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
 import { useTranslation } from '../../components/IntlProvider';
-import { Foreground } from '../../layouts/Foreground';
+import { SectionForeground } from '../../layouts/Section';
 import { endpoints } from '../../common/constants/api';
 import { routes } from '../../common/constants/routes';
 import { CategoryForm } from './CategoryForm';
@@ -54,13 +54,13 @@ const CategoryDetail = () => {
           </ButtonsGroup>
         </TopButtons>
       </Top>
-      <Foreground>
+      <SectionForeground>
         <CategoryForm
           id={categoryDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
         />
-      </Foreground>
+      </SectionForeground>
     </>
   );
 };

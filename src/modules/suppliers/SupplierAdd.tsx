@@ -1,7 +1,7 @@
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { ButtonLink } from '../../components/Button';
 import { routes } from '../../common/constants/routes';
-import { Foreground } from '../../layouts/Foreground';
+import { SectionForeground } from '../../layouts/Section';
 import { useTranslation } from '../../components/IntlProvider';
 import { SupplierForm } from './SupplierForm';
 
@@ -11,16 +11,16 @@ const SupplierAdd = () => {
   return (
     <>
       <Top>
-        <TopHeading>{translate('add')}</TopHeading>
+        <TopHeading>{translate('supplier.add')}</TopHeading>
         <TopButtons>
           <ButtonLink variant="primary" to={routes.suppliers.root}>
             {translate('cancel')}
           </ButtonLink>
         </TopButtons>
       </Top>
-      <Foreground>
+      <SectionForeground>
         <SupplierForm />
-      </Foreground>
+      </SectionForeground>
     </>
   );
 };
