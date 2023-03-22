@@ -176,7 +176,7 @@ export const router = createBrowserRouter(
           }
         />
         <Route
-          path={routes.attributes.variantList}
+          path={routes.attributes.variantsList}
           element={
             <Suspense fallback="Route Variants list">
               <Variants />
@@ -233,7 +233,9 @@ export const router = createBrowserRouter(
           path={routes.warehouses.add}
           element={
             <Suspense fallback="Route Warehouses add">
-              <WarehouseAdd />
+              <ErrorBoundary fallback="Error boundary Warehouse add">
+                <WarehouseAdd />
+              </ErrorBoundary>
             </Suspense>
           }
         />
@@ -241,7 +243,9 @@ export const router = createBrowserRouter(
           path={routes.warehouses.detail}
           element={
             <Suspense fallback="Route Warehouses detail">
-              <WarehouseDetail />
+              <ErrorBoundary fallback="Error boundary Warehouse detail">
+                <WarehouseDetail />
+              </ErrorBoundary>
             </Suspense>
           }
         />
