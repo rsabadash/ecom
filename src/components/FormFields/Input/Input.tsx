@@ -14,8 +14,12 @@ export const InputFormField: FC<InputFormFieldProps> = ({
   isDisabled,
   onBlur,
   onChange,
+  onIconClick,
   valueGetter,
   formatValue,
+  Icon,
+  iconAriaLabel,
+  inputClassName,
   errorMessage,
   isDescriptionHidden,
   label,
@@ -46,8 +50,12 @@ export const InputFormField: FC<InputFormFieldProps> = ({
         ariaDescribedBy={describedById}
         onBlur={onBlur}
         onChange={onChange}
+        onIconClick={onIconClick}
         valueGetter={valueGetter}
         formatValue={formatValue}
+        Icon={Icon}
+        iconAriaLabel={iconAriaLabel}
+        inputClassName={inputClassName}
       />
     </CommonFormFieldsWrapper>
   );

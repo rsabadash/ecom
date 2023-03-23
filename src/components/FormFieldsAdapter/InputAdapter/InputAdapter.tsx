@@ -11,8 +11,12 @@ export const InputAdapter = <FormValues extends FieldValues>({
   isReadOnly,
   isRequired,
   isDisabled,
+  onIconClick,
   valueGetter,
   formatValue,
+  Icon,
+  iconAriaLabel,
+  inputClassName,
   formatError,
   isDescriptionHidden,
   label,
@@ -50,8 +54,12 @@ export const InputAdapter = <FormValues extends FieldValues>({
       isDisabled={isDisabled}
       onBlur={onBlur}
       onChange={onChange}
+      onIconClick={onIconClick}
       valueGetter={valueGetter}
       formatValue={formatValue}
+      Icon={Icon}
+      iconAriaLabel={iconAriaLabel}
+      inputClassName={inputClassName}
       errorMessage={fieldErrorMessage}
       isDescriptionHidden={isDescriptionHidden}
       label={label}

@@ -6,7 +6,7 @@ export enum EventKeys {
   ArrowDown = 'ArrowDown',
   ArrowUp = 'ArrowUp',
   Enter = 'Enter',
-  Space = 'Space',
+  Space = ' ',
   PageDown = 'PageDown',
   PageUp = 'PageUp',
 }

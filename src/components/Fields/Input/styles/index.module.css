@@ -1,3 +1,9 @@
+.inputWrapper {
+  display: grid;
+  justify-items: end;
+  align-items: center;
+}
+
 .input {
   background-color: var(--input-background);
   border: 1px solid var(--border-color);
@@ -9,6 +15,8 @@
   transition: box-shadow var(--transition);
   width: 100%;
   font-family: var(--font-family-body);
+  grid-column: 1/2;
+  grid-row: 1/2;
 }
 
 .input::-webkit-outer-spin-button,
@@ -50,4 +58,41 @@
 
 .input_readOnly::selection {
   background: transparent; /* Prevent auto-highlighting text on focus (only visual impact) */
+}
+
+.input_withIcon {
+  padding-inline-end: 2.7em;
+}
+
+.input__icon {
+  outline: none;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  box-sizing: initial;
+  padding-inline: 0.85em;
+}
+
+.input__iconInteractive {
+  outline: none;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  box-sizing: initial;
+  padding-inline: 0.85em;
+  cursor: pointer;
+}
+
+.input__icon path,
+.input__iconInteractive path {
+  opacity: 0.5;
+  fill: var(--foreground-900);
+}
+
+.input__iconInteractive:hover path {
+  opacity: 1;
+}
+
+.input__iconInteractive:focus-visible {
+  padding-block: 0.55em;
+  border-radius: var(--radius-regular);
+  box-shadow: var(--input-box-shadow-focus);
 }
