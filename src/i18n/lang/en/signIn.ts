@@ -8,6 +8,8 @@ export const signIn = {
   'signIn.password': 'Password',
   'signIn.password.description': 'Enter user password',
   'signIn.password.required': 'Password is required',
+  'signIn.password.show': 'Show password',
+  'signIn.password.hide': 'Hide password',
   'signIn.isPersistUser': 'Remember me',
   'signIn.isPersistUser.description':
     'Do not sign out after closing the browser',

@@ -1,10 +1,11 @@
-import { FocusEventHandler } from 'react';
+import { FocusEventHandler, ElementType } from 'react';
+import { inputType } from './constants';
 
 export type InputValue = string;
 
 export type InputFormValue = string | number | null | undefined;
 
-export type InputType = 'text' | 'number' | 'password' | 'email';
+export type InputType = ValuesOfObject<typeof inputType>;
 
 export type InputProps = {
   id?: string;
@@ -21,7 +22,10 @@ export type InputProps = {
   ariaDescribedBy?: string;
   onBlur?: FocusEventHandler;
   onChange?: (value: InputFormValue) => void;
+  onIconClick?: () => void;
   valueGetter?: (value: any) => InputValue;
   formatValue?: (value: any) => InputFormValue;
+  Icon?: ElementType;
+  iconAriaLabel?: string;
   inputClassName?: string;
 };

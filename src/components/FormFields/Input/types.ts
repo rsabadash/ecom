@@ -5,7 +5,7 @@ import { CollapseControllerProps } from '../../Collapse';
 
 export type InputFormFieldProps = Omit<
   InputProps,
-  'id' | 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy' | 'inputClassName'
+  'id' | 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'
 > &
   Pick<FieldLabelProps, 'label'> &
   Pick<
