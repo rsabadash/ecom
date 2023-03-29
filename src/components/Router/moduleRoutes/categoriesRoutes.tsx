@@ -1,5 +1,5 @@
-import { routes } from '../../../common/constants/routes';
 import { lazy, Suspense } from 'react';
+import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
 const Categories = lazy(() => import('../../../modules/categories/Categories'));
@@ -10,7 +10,7 @@ const CategoryDetail = lazy(
   () => import('../../../modules/categories/CategoryDetail'),
 );
 
-export const CategoriesRoutes = [
+export const categoriesRoutes = [
   {
     path: routes.categories.root,
     element: (

@@ -6,16 +6,15 @@ import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
 import { SignedInRedirect } from './SignedInRedirect';
 import {
-  DashboardRoutes,
-  SuppliersRoutes,
-  CategoriesRoutes,
-  AttributesRoutes,
-  WarehousesRoutes,
-  WarehouseProductsRoutes,
+  attributesRoutes,
+  categoriesRoutes,
+  dashboardRoutes,
+  suppliersRoutes,
+  warehouseProductsRoutes,
+  warehousesRoutes,
 } from './moduleRoutes';
 
 const SignIn = lazy(() => import('../../pages/signIn/SignIn'));
-
 const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 
 export const router = createBrowserRouter([
@@ -39,12 +38,12 @@ export const router = createBrowserRouter([
             path: routes.home,
             element: <SignedInRedirect />,
           },
-          ...DashboardRoutes,
-          ...CategoriesRoutes,
-          ...SuppliersRoutes,
-          ...AttributesRoutes,
-          ...WarehouseProductsRoutes,
-          ...WarehousesRoutes,
+          ...attributesRoutes,
+          ...categoriesRoutes,
+          ...dashboardRoutes,
+          ...suppliersRoutes,
+          ...warehouseProductsRoutes,
+          ...warehousesRoutes,
         ],
       },
       {

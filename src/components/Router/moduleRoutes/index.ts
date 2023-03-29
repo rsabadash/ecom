@@ -1,6 +1,6 @@
-export { DashboardRoutes } from './DashboardRoutes';
-export { CategoriesRoutes } from './CategoriesRoutes';
-export { SuppliersRoutes } from './SuppliersRoutes';
-export { AttributesRoutes } from './AttributesRoutes';
-export { WarehousesRoutes } from './WarehousesRoutes';
-export { WarehouseProductsRoutes } from './WarehouseProductsRoutes';
+export { attributesRoutes } from './attributesRoutes';
+export { categoriesRoutes } from './categoriesRoutes';
+export { dashboardRoutes } from './dashboardRoutes';
+export { suppliersRoutes } from './suppliersRoutes';
+export { warehouseProductsRoutes } from './warehouseProductsRoutes';
+export { warehousesRoutes } from './warehousesRoutes';

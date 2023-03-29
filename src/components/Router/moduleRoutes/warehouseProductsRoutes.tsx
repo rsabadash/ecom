@@ -1,5 +1,5 @@
-import { routes } from '../../../common/constants/routes';
 import { lazy, Suspense } from 'react';
+import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
 const WarehouseProducts = lazy(
@@ -12,7 +12,7 @@ const WarehouseProductsGenerator = lazy(
     ),
 );
 
-export const WarehouseProductsRoutes = [
+export const warehouseProductsRoutes = [
   {
     path: routes.warehouseProducts.root,
     element: (

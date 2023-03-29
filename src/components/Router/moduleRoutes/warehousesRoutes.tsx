@@ -10,7 +10,7 @@ const WarehouseDetail = lazy(
   () => import('../../../modules/warehouses/WarehouseDetail'),
 );
 
-export const WarehousesRoutes = [
+export const warehousesRoutes = [
   {
     path: routes.warehouses.root,
     element: (

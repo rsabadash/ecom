@@ -1,5 +1,5 @@
-import { routes } from '../../../common/constants/routes';
 import { lazy, Suspense } from 'react';
+import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
 const Suppliers = lazy(() => import('../../../modules/suppliers/Suppliers'));
@@ -10,7 +10,7 @@ const SuppliersAdd = lazy(
   () => import('../../../modules/suppliers/SupplierAdd'),
 );
 
-export const SuppliersRoutes = [
+export const suppliersRoutes = [
   {
     path: routes.suppliers.root,
     element: (
