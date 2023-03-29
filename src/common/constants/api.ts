@@ -24,7 +24,7 @@ export const endpoints = {
     signIn: `${PREFIX}/users/sign-in`,
   },
   warehouseProducts: {
-    root: `${PREFIX}/warehouse-products`,
+    root: `${PREFIX}/warehouses-products`,
   },
   warehouses: {
     root: `${PREFIX}/warehouses`,
