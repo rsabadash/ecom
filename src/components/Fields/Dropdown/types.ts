@@ -1,4 +1,5 @@
 import { EventKeys } from '../../../common/enums/events';
+import { SIZE } from './constants';
 
 export type DropdownItemId = string;
 
@@ -25,6 +26,7 @@ export type DropdownValue<V = DropdownItemValue> =
 export type DropdownProps = {
   name: string;
   value?: DropdownValue;
+  size?: ValuesOfObject<typeof SIZE>;
   items?: DropdownItem[];
   customItems?: any[];
   placeholder?: string;

@@ -12,7 +12,9 @@
   fill: var(--text-color);
 }
 
-.collapseButton {
+.collapseButton,
+.collapseButton:hover,
+.collapseButton:focus-visible {
   padding: 0;
   background-color: transparent;
   border: none;

@@ -8,7 +8,7 @@ import {
 } from 'react';
 import clsx from 'clsx';
 import { EventKeys } from '../../../common/enums/events';
-import { LIST_CONTROL_ID, INDEX_ABSENCE_FOCUS } from './constants';
+import { INDEX_ABSENCE_FOCUS, SIZE } from './constants';
 import {
   DropdownItemId,
   DropdownItem,
@@ -20,9 +20,12 @@ import { useOutsideElementClick } from '../../../hooks';
 import { useTranslation } from '../../IntlProvider';
 import classes from './styles/index.module.css';
 
+const LIST_CONTROL_ID = Date.now().toString();
+
 export const Dropdown: FC<DropdownProps> = ({
   name,
   value,
+  size = SIZE.M,
   items = [],
   customItems,
   placeholder,
@@ -312,6 +315,7 @@ export const Dropdown: FC<DropdownProps> = ({
       return;
     }
 
+    e.stopPropagation();
     const key = e.key as EventKeys;
     const index = defineFocusIndexByKey(key);
 
@@ -367,6 +371,7 @@ export const Dropdown: FC<DropdownProps> = ({
     [classes.dropdown_noValue]: !viewValue,
     [classes.dropdown_readOnly]: isReadOnly,
     [classes.dropdown_invalid]: !isValid,
+    [classes[`dropdown_${size}`]]: size !== SIZE.M,
   });
 
   return (
@@ -379,7 +384,7 @@ export const Dropdown: FC<DropdownProps> = ({
         aria-expanded={isOpenInternal}
         aria-controls={LIST_CONTROL_ID}
         aria-activedescendant={focusItemId || undefined}
-        aria-label={ariaLabel} // if other description absent
+        aria-label={ariaLabel} //  if another description is absent
         aria-labelledby={ariaLabelledBy} // which element has a label for an input
         aria-describedby={ariaDescribedBy || placeholder} // which element describe input
         aria-valuetext={viewValue || undefined}
@@ -387,7 +392,7 @@ export const Dropdown: FC<DropdownProps> = ({
         onKeyDown={handleDropdownKeyDown}
         ref={dropdownButtonRef}
         className={dropdownClassName}
-        tabIndex={isReadOnly ? -1 : 0}
+        tabIndex={isActive ? 0 : -1}
       >
         {viewValue || placeholderValue || emptyValue}
       </div>

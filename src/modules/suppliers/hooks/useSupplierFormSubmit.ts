@@ -4,7 +4,7 @@ import { useCreateSupplier } from './useCreateSupplier';
 import { useUpdateSupplier } from './useUpdateSupplier';
 
 type UseSupplierFormSubmitReturn = {
-  handleFormSubmit: (data: SupplierFormValues) => void;
+  handleFormSubmit: (values: SupplierFormValues) => Promise<void>;
 };
 
 export const useSupplierFormSubmit = (
@@ -14,11 +14,11 @@ export const useSupplierFormSubmit = (
   const { updateSupplier } = useUpdateSupplier();
 
   const handleFormSubmit = useCallback(
-    async (value: SupplierFormValues) => {
+    async (values: SupplierFormValues) => {
       if (id) {
-        await updateSupplier({ ...value, id });
+        await updateSupplier({ ...values, id });
       } else {
-        await createSupplier(value);
+        await createSupplier(values);
       }
     },
     [createSupplier, id, updateSupplier],

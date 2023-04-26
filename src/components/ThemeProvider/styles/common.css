@@ -54,12 +54,12 @@
 
   --scrollbar-width: 4px;
 
-  --input-box-shadow-focus: var(--primary-700) 0 0 0 0.2em;
   --input-box-shadow-error-focus: var(--danger-900) 0 0 0 0.2em;
   --checkboxSize: 1.65em;
 
   --transition: 0.15s ease-in-out 0s;
 
+  --radius-tiny: 0.2em;
   --radius-small: 0.4em;
   --radius-regular: 0.6em;
   --radius-large: 0.8em;
@@ -67,10 +67,10 @@
   --font-family-body: 'Inter', serif;
   --font-family-head: 'Montserrat Medium', serif;
 
-  --font-size-tiny: 0.65rem;
-  --font-size-small: 0.75rem;
-  --font-size-regular: 0.85rem;
-  --font-size-large: 1rem;
+  --font-size-xs: 0.65rem;
+  --font-size-s: 0.75rem;
+  --font-size-m: 0.85rem;
+  --font-size-l: 1rem;
   --font-size-xl: 1.15rem;
 
   --font-size-head-1: 1.75rem;

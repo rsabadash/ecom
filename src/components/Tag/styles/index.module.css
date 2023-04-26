@@ -6,7 +6,7 @@
   display: inline-block;
   padding-block: 0.35em;
   padding-inline: 0.70em;
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-m);
 }
 
 .tag_regular {

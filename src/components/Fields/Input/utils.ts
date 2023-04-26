@@ -1,13 +1,13 @@
 import { InputFormValue, InputType, InputValue } from './types';
 
 export const serializeValue = (
-  value: undefined | null | InputValue,
+  value: undefined | null | InputFormValue,
 ): InputValue => {
   if (value === undefined || value === null) {
     return '';
   }
 
-  return value;
+  return String(value);
 };
 
 export const commonFormatValue = (

@@ -2,6 +2,7 @@ import { useCallback, useLayoutEffect, useRef } from 'react';
 
 export type UseOutsideElementClickProps = {
   dependency: boolean;
+  listenKeyboard?: boolean;
   handleClick: () => void;
 };
 
@@ -11,6 +12,7 @@ type UseOutsideElementClickReturn = {
 
 export const useOutsideElementClick = ({
   dependency,
+  listenKeyboard,
   handleClick,
 }: UseOutsideElementClickProps): UseOutsideElementClickReturn => {
   const currentElement = useRef<null | HTMLElement>(null);
@@ -46,17 +48,28 @@ export const useOutsideElementClick = ({
     [handleClick],
   );
 
+  const handleKeyDown = useCallback(() => {
+    handleClick();
+  }, [handleClick]);
+
   useLayoutEffect(() => {
     if (dependency) {
       document.addEventListener('click', handleOutsideClick);
+      if (listenKeyboard) {
+        document.addEventListener('keydown', handleKeyDown);
+      }
     }
 
     return () => {
       if (dependency) {
         document.removeEventListener('click', handleOutsideClick);
+
+        if (listenKeyboard) {
+          document.removeEventListener('keydown', handleKeyDown);
+        }
       }
     };
-  }, [dependency, handleOutsideClick]);
+  }, [dependency, handleKeyDown, handleOutsideClick, listenKeyboard]);
 
   return {
     setCurrentElement,

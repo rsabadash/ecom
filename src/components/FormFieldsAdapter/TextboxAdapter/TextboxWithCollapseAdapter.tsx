@@ -13,6 +13,7 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
   valueGetter,
   formatValue,
   formatError,
+  isLabelHidden,
   isDescriptionHidden,
   label,
   control,
@@ -52,6 +53,7 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
       valueGetter={valueGetter}
       formatValue={formatValue}
       errorMessage={fieldErrorMessage}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
       columnIndex={columnIndex}

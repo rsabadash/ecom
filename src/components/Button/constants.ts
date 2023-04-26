@@ -9,7 +9,7 @@ export const buttonVariant = {
 
 export const buttonSize = {
   s: 's',
-  regular: 'regular',
+  m: 'm',
   l: 'l',
   xl: 'xl',
 } as const;
@@ -20,5 +20,5 @@ export const buttonType = {
 } as const;
 
 export const DEFAULT_BUTTON_VARIANT = buttonVariant.regular;
-export const DEFAULT_BUTTON_SIZE = buttonSize.regular;
+export const DEFAULT_BUTTON_SIZE = buttonSize.m;
 export const DEFAULT_BUTTON_TYPE = buttonType.button;

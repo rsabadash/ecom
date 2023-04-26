@@ -11,7 +11,13 @@ type AdapterProps<FormValues extends FieldValues> = {
 
 export type TextboxAdapterProps<FormValues extends FieldValues> = Omit<
   TextboxFormFieldProps,
-  'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
+  | 'onChange'
+  | 'onBlur'
+  | 'value'
+  | 'name'
+  | 'isValid'
+  | 'errorMessage'
+  | 'ariaLabel'
 > &
   AdapterProps<FormValues> & {
     formatError?: (error: FieldError) => undefined | string;
@@ -20,7 +26,13 @@ export type TextboxAdapterProps<FormValues extends FieldValues> = Omit<
 export type TextboxWithCollapseAdapterProps<FormValues extends FieldValues> =
   Omit<
     TextboxWithCollapseFormFieldProps,
-    'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
+    | 'onChange'
+    | 'onBlur'
+    | 'value'
+    | 'name'
+    | 'isValid'
+    | 'errorMessage'
+    | 'ariaLabel'
   > &
     AdapterProps<FormValues> & {
       formatError?: (error: FieldError) => undefined | string;

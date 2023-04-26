@@ -1,5 +1,5 @@
 .label {
   display: block;
   color: var(--text-color-secondary);
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-m);
 }

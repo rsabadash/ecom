@@ -5,6 +5,7 @@ import { menu } from './menu';
 import { signIn } from './signIn';
 import { notFound } from './notFound';
 import { suppliers } from './suppliers';
+import { supplies } from './supplies';
 import { attributes } from './attributes';
 import { warehouseProducts } from './warehouseProducts';
 import { warehouses } from './warehouses';
@@ -18,6 +19,7 @@ const translationEN = {
     ...notFound,
     ...signIn,
     ...suppliers,
+    ...supplies,
     ...attributes,
     ...warehouseProducts,
     ...warehouses,

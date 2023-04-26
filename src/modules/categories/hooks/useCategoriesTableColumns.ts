@@ -15,7 +15,7 @@ export const useCategoriesTableColumns =
           title: translate('category.name'),
           key: 'name',
           width: '70%',
-          valueGetter: (value: Translations) => {
+          valueGetter: ({ value }: { value: Translations }) => {
             return value[language];
           },
         },
@@ -23,7 +23,7 @@ export const useCategoriesTableColumns =
           title: translate('category.state'),
           key: 'isActive',
           width: '30%',
-          valueGetter: (value: boolean) => {
+          valueGetter: ({ value }: { value: boolean }) => {
             return value
               ? translate('category.state.active')
               : translate('category.state.inactive');

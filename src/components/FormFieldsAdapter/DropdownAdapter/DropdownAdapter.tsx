@@ -6,6 +6,7 @@ import { DropdownItem } from '../../Fields/Dropdown';
 
 export const DropdownAdapter = <FormValues extends FieldValues>({
   name,
+  size,
   items,
   customItems,
   placeholder,
@@ -16,6 +17,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
   hasMultiselect,
   itemValueGetter,
   formatError,
+  isLabelHidden,
   isDescriptionHidden,
   label,
   control,
@@ -43,6 +45,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
   return (
     <DropdownFormField
       name={fieldName}
+      size={size}
       value={fieldValues}
       items={items}
       customItems={customItems}
@@ -57,6 +60,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
       onChange={onChange}
       itemValueGetter={itemValueGetter}
       errorMessage={fieldErrorMessage}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
       columnIndex={columnIndex}

@@ -1,12 +1,13 @@
 .dropdownWrapper {
   position: relative;
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-m);
 }
 
 .dropdown {
   background-color: var(--input-background);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-regular);
+  font-size: var(--font-size-m);
   padding: 0.85em;
   color: var(--text-color);
   outline: none;
@@ -16,8 +17,16 @@
   cursor: pointer;
 }
 
+.dropdown_s {
+  font-size: var(--font-size-s);
+}
+
+.dropdown_xs {
+  font-size: var(--font-size-xs);
+}
+
 .dropdown:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: var(--box-shadow-focus);
 }
 
 .dropdown_noValue {
@@ -43,6 +52,7 @@
 
 .dropdownEmptyValue {
   color: transparent;
+  user-select: none;
 }
 
 .dropdownListWrapper {

@@ -1,3 +1,7 @@
 .formFieldWrapper {
+  width: 100%;
+}
+
+.formFieldWrapperWithColumnIndex {
   display: contents;
 }

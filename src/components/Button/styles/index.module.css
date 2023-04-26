@@ -4,12 +4,13 @@
   border-radius: var(--radius-regular);
   border: none;
   cursor: pointer;
-  transition: background-color var(--transition);
+  transition: background-color var(--transition), border var(--transition);
   outline: none;
   display: flex;
   align-items: center;
-  padding: 0.71em 0.85em;
-  font-size: var(--font-size-regular);
+  justify-content: center;
+  padding: 0.85em;
+  font-size: var(--font-size-m);
 }
 
 .button a {
@@ -18,15 +19,15 @@
 }
 
 .button:focus-visible {
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: var(--box-shadow-focus);
 }
 
 .button_s {
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-s);
 }
 
 .button_l {
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-l);
 }
 
 .button_xl {
@@ -36,36 +37,71 @@
 .button_regular {
   color: var(--background-900);
   background-color: var(--button-regular-background);
+  border: 1px solid var(--button-regular-background);
+}
+
+.button_regular:hover {
+  background-color: var(--foreground-800);
+  border: 1px solid var(--foreground-100);
+}
+
+.button_regular:focus-visible {
+  border: 1px solid var(--background-900);
 }
 
 .button_primary {
   color: var(--button-variant-text);
   background-color: var(--primary-900);
+  border: 1px solid var(--primary-900);
 }
 
 .button_primary:hover {
   background-color: var(--primary-800);
+  border: 1px solid var(--primary-100);
 }
 
 .button_success {
   color: var(--button-variant-text);
   background-color: var(--success-900);
+  border: 1px solid var(--success-900);
+}
+
+.button_success:hover {
+  background-color: var(--success-800);
+  border: 1px solid var(--success-100);
 }
 
 .button_warning {
   color: var(--button-variant-text);
   background-color: var(--warning-900);
+  border: 1px solid var(--warning-900);
+}
+
+.button_warning:hover {
+  background-color: var(--warning-800);
+  border: 1px solid var(--warning-100);
 }
 
 .button_danger {
   color: var(--button-variant-text);
   background-color: var(--danger-900);
+  border: 1px solid var(--danger-900);
+}
+
+.button_danger:hover {
+  background-color: var(--danger-800);
+  border: 1px solid var(--danger-100);
 }
 
 .button_theme {
   color: var(--foreground-900);
   background-color: var(--input-background);
-  outline: 1px solid var(--border-color); /* avoid additional height by regular border property */
+  border: 1px solid var(--border-color);
+  /*outline: 1px solid var(--border-color); !* avoid additional height by regular border property *!*/
+}
+
+.button_theme:hover {
+  background-color: var(--hover-color);
 }
 
 .buttonsGroup {

@@ -11,6 +11,7 @@ export const InputWithCollapseFormField: FC<
 > = ({
   name,
   type,
+  size,
   value,
   placeholder,
   isValid,
@@ -18,16 +19,22 @@ export const InputWithCollapseFormField: FC<
   isRequired,
   isDisabled,
   onBlur,
+  onFocus,
   onChange,
   valueGetter,
   formatValue,
   errorMessage,
+  isLabelHidden,
   isDescriptionHidden,
+  ariaLabel,
   label,
   columnIndex,
   isToggleHidden,
 }) => {
   const describedById = `${name}Description`;
+  const fieldAriaLabel = isLabelHidden
+    ? ariaLabel || (typeof label === 'string' ? label : undefined)
+    : undefined;
 
   const collapseButtonClassName = clsx({
     [classes.fieldWithCollapseButton]: isReadOnly,
@@ -41,7 +48,9 @@ export const InputWithCollapseFormField: FC<
       isValid={isValid}
       isReadOnly={isReadOnly}
       isRequired={isRequired}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
+      describedById={describedById}
       errorMessage={errorMessage}
       columnIndex={columnIndex}
       row2ClassName={classes.fieldWithCollapse}
@@ -49,13 +58,16 @@ export const InputWithCollapseFormField: FC<
       <Input
         name={name}
         type={type}
+        size={size}
         value={value}
         isValid={isValid}
         isReadOnly={isReadOnly}
         isRequired={isRequired}
         isDisabled={isDisabled}
+        ariaLabel={fieldAriaLabel}
         ariaDescribedBy={describedById}
         onBlur={onBlur}
+        onFocus={onFocus}
         onChange={onChange}
         valueGetter={valueGetter}
         formatValue={formatValue}

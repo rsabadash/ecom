@@ -21,12 +21,17 @@ export const TextboxWithCollapseFormField: FC<
   valueGetter,
   formatValue,
   errorMessage,
+  isLabelHidden,
   isDescriptionHidden,
+  ariaLabel,
   label,
   columnIndex,
   isToggleHidden,
 }) => {
   const describedById = `${name}Description`;
+  const fieldAriaLabel = isLabelHidden
+    ? ariaLabel || (typeof label === 'string' ? label : undefined)
+    : undefined;
 
   const collapseButtonClassName = clsx({
     [classes.fieldWithCollapseButton]: isReadOnly,
@@ -40,7 +45,9 @@ export const TextboxWithCollapseFormField: FC<
       isValid={isValid}
       isReadOnly={isReadOnly}
       isRequired={isRequired}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
+      describedById={describedById}
       errorMessage={errorMessage}
       columnIndex={columnIndex}
       row2ClassName={classes.fieldWithCollapse}
@@ -52,6 +59,7 @@ export const TextboxWithCollapseFormField: FC<
         isReadOnly={isReadOnly}
         isRequired={isRequired}
         isDisabled={isDisabled}
+        ariaLabel={fieldAriaLabel}
         ariaDescribedBy={describedById}
         onBlur={onBlur}
         onChange={onChange}

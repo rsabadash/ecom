@@ -1,5 +1,5 @@
 .navigation__list {
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-m);
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
 
 .navigation__itemLink:focus-visible {
   outline: none;
-  box-shadow: var(--input-box-shadow-focus);
+  box-shadow: var(--box-shadow-focus);
   background-color: var(--hover-color);
 }
 

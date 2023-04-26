@@ -16,12 +16,14 @@ const [Provider, useUser] = createProvider<UserContextValue>({
 const UserProvider: FC<PropsWithChildren> = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
-  const { data: user } = useCachedAPI<User | undefined>(
+  const { data: user, error } = useCachedAPI<User | undefined>(
     endpoints.users.signIn,
     {
       shouldFetch: isAuthenticated,
     },
   );
+
+  console.log('UserProvider', error);
 
   const hasAllAccesses = useMemo<boolean>(
     () => !!user?.roles.find((role) => role === Role.Admin),

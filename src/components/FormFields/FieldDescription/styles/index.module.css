@@ -1,5 +1,5 @@
 .fieldDescription {
-  font-size: var(--font-size-tiny);
+  font-size: var(--font-size-xs);
   color: var(--text-color-secondary);
   margin-top: 0.5rem;
 }

@@ -1,0 +1,21 @@
+.supplyProducts__listItem {}
+
+.supplyProducts__listItem:hover {
+    background-color: transparent;
+    cursor: initial;
+}
+
+.supplyProducts__list_button {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.supplyProducts__summary {
+    display: flex;
+    gap: 1em;
+    width: 100%;
+}
+
+.supplyProducts__summaryItem {
+    box-sizing: content-box;
+}

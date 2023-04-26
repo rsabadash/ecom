@@ -16,11 +16,16 @@ export const TextboxFormField: FC<TextboxFormFieldProps> = ({
   valueGetter,
   formatValue,
   errorMessage,
+  isLabelHidden,
   isDescriptionHidden,
+  ariaLabel,
   label,
   columnIndex,
 }) => {
   const describedById = `${name}Description`;
+  const fieldAriaLabel = isLabelHidden
+    ? ariaLabel || (typeof label === 'string' ? label : undefined)
+    : undefined;
 
   return (
     <CommonFormFieldsWrapper
@@ -30,7 +35,9 @@ export const TextboxFormField: FC<TextboxFormFieldProps> = ({
       isValid={isValid}
       isReadOnly={isReadOnly}
       isRequired={isRequired}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
+      describedById={describedById}
       errorMessage={errorMessage}
       columnIndex={columnIndex}
     >
@@ -41,6 +48,7 @@ export const TextboxFormField: FC<TextboxFormFieldProps> = ({
         isReadOnly={isReadOnly}
         isRequired={isRequired}
         isDisabled={isDisabled}
+        ariaLabel={fieldAriaLabel}
         ariaDescribedBy={describedById}
         onBlur={onBlur}
         onChange={onChange}

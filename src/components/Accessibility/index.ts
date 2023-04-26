@@ -1,0 +1,1 @@
+export { HiddenPoliteNotification } from './HiddenPoliteNotification';

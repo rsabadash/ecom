@@ -6,7 +6,9 @@ export type CommonFormFieldWrapperProps = Pick<FieldLabelProps, 'label'> & {
   isValid?: boolean;
   isReadOnly?: boolean;
   isRequired?: boolean;
+  isLabelHidden?: boolean;
   isDescriptionHidden?: boolean;
+  describedById?: string;
   errorMessage?: string;
   columnIndex?: number;
   row2ClassName?: string;

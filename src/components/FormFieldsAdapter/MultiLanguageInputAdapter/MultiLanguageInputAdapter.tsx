@@ -6,15 +6,18 @@ import { MultiLanguageInputAdapterProps } from './types';
 import { useAddLanguageToTranslation } from '../hooks';
 
 export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
+  size,
   name,
   placeholderTranslation,
   isReadOnly,
   isRequired,
   isDisabled,
+  onFocus,
   valueGetter,
   formatValue,
   isToggleHidden,
   isInitiallyExpand,
+  isLabelHidden,
   isDescriptionHidden,
   isRequiredAllLanguages,
   label,
@@ -39,10 +42,13 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
   });
 
   const commonProps = {
+    size,
     isReadOnly,
     isDisabled,
+    onFocus,
     valueGetter,
     formatValue,
+    isLabelHidden,
     isDescriptionHidden,
     control,
   };

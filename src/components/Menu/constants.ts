@@ -1,0 +1,41 @@
+export const INDEX_ABSENCE_FOCUS = -1;
+
+export const MENU_POSITION = {
+  START: 'start',
+  END: 'end',
+  TOP: 'top',
+  BOTTOM: 'bottom',
+} as const;
+
+export const DEFAULT_MENU_POSITION = MENU_POSITION.BOTTOM;
+
+export const MENU_ALIGNMENT = {
+  PULL: 'pull',
+  PUSH: 'push',
+} as const;
+
+export const OPPOSITE_POSITION = {
+  [MENU_POSITION.START]: MENU_POSITION.END,
+  [MENU_POSITION.END]: MENU_POSITION.START,
+  [MENU_POSITION.TOP]: MENU_POSITION.BOTTOM,
+  [MENU_POSITION.BOTTOM]: MENU_POSITION.TOP,
+};
+
+export const OPPOSITE_ALIGNMENT = {
+  [MENU_ALIGNMENT.PUSH]: MENU_ALIGNMENT.PULL,
+  [MENU_ALIGNMENT.PULL]: MENU_ALIGNMENT.PUSH,
+};
+
+export const CONTENT_POSITION_DIMENSION = {
+  [MENU_POSITION.START]: 'width',
+  [MENU_POSITION.END]: 'width',
+  [MENU_POSITION.TOP]: 'height',
+  [MENU_POSITION.BOTTOM]: 'height',
+} as const;
+
+export const CONTENT_ALIGNMENT_DIMENSION = {
+  [MENU_POSITION.START]: 'height',
+  [MENU_POSITION.END]: 'height',
+  [MENU_POSITION.TOP]: 'width',
+  [MENU_POSITION.BOTTOM]: 'width',
+} as const;

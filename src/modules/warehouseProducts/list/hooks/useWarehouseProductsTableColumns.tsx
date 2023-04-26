@@ -4,11 +4,7 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import {
-  WarehouseProduct,
-  WarehouseProductsAttribute,
-  WarehouseProductTable,
-} from '../types';
+import { WarehouseProductsAttribute, WarehouseProductTable } from '../types';
 import { CollapseBuilderButton } from '../../../../components/Collapse';
 import { horizontalAlignment } from '../../../../components/Table/constants';
 
@@ -25,7 +21,7 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           title: translate('warehouseProduct.name'),
           key: 'name',
           width: '55%',
-          valueGetter: (value: Translations) => {
+          valueGetter: ({ value }: { value: Translations }) => {
             return value[language];
           },
         },
@@ -38,7 +34,11 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           title: translate('warehouseProduct.attributes.quantity'),
           key: 'attributes',
           width: '15%',
-          valueGetter: (value: null | WarehouseProductsAttribute[]) => {
+          valueGetter: ({
+            value,
+          }: {
+            value: null | WarehouseProductsAttribute[];
+          }) => {
             const quantity = value?.length ? value.length : '-';
             const ariaValue = quantity === '-' ? 0 : quantity;
 
@@ -58,7 +58,7 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           key: 'button',
           width: '10%',
           align: horizontalAlignment.end,
-          valueGetter: (_: undefined, item: WarehouseProduct) => {
+          valueGetter: ({ item }: { item: WarehouseProductTable }) => {
             if (item.attributes?.length) {
               return (
                 <CollapseBuilderButton isCollapseDisabled iconSize="1rem" />

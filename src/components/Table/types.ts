@@ -1,13 +1,19 @@
 import { ReactNode } from 'react';
 import { horizontalAlignment, tableRoles, tableRowRoles } from './constants';
 
+type TableCellValueGetterProps<K> = {
+  index: number;
+  value: any;
+  item: Record<keyof K, any>;
+};
+
 export type TableColumn<K> = {
   title: string;
   key: string;
   width: string;
   align?: ValuesOfObject<typeof horizontalAlignment>;
   isHidden?: boolean;
-  valueGetter?: (value: any, item: Record<keyof K, any>) => ReactNode;
+  valueGetter?: (props: TableCellValueGetterProps<K>) => ReactNode;
 };
 
 export type TableColumnGeneric<K> = Omit<TableColumn<K>, 'key'> & {
@@ -30,9 +36,11 @@ export type RowCustomRenderArgs<I = any> = {
 export type TableProps = {
   tableLabeledBy?: string;
   tableBodyClassName?: string;
+  tableRowClassName?: string;
   items: Record<string, any>[];
   tableRole?: ValuesOfObject<typeof tableRoles>;
   columns: TableColumn<Record<string, any>>[];
   rowCustomRender?: (args: RowCustomRenderArgs) => ReactNode;
+  bottomPanelNode?: ReactNode;
   tableRowRenderKey?: string;
 };

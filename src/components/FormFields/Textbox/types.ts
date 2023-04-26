@@ -5,12 +5,12 @@ import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
 
 export type TextboxFormFieldProps = Omit<
   TextboxProps,
-  'id' | 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'
+  'id' | 'ariaLabelledBy' | 'ariaDescribedBy'
 > &
   Pick<FieldLabelProps, 'label'> &
   Pick<
     CommonFormFieldWrapperProps,
-    'errorMessage' | 'isDescriptionHidden' | 'columnIndex'
+    'errorMessage' | 'isLabelHidden' | 'isDescriptionHidden' | 'columnIndex'
   >;
 
 export type TextboxWithCollapseFormFieldProps = TextboxFormFieldProps &

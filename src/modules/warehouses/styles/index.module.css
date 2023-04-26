@@ -28,7 +28,7 @@
     outline: none;
     background-color: var(--primary-400);
     border-radius: var(--radius-regular);
-    box-shadow: var(--input-box-shadow-focus);
+    box-shadow: var(--box-shadow-focus);
     transition: background-color var(--transition), box-shadow var(--transition);
 }
 
@@ -37,5 +37,5 @@
 }
 
 .warehouseInfo {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-s);
 }

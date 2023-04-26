@@ -28,7 +28,9 @@ export const Table: FC<TableProps> = ({
   tableRole = tableRoles.grid,
   tableLabeledBy,
   tableBodyClassName,
+  tableRowClassName,
   rowCustomRender,
+  bottomPanelNode,
   tableRowRenderKey = '_id',
 }) => {
   const tableBodyRef = useRef<HTMLDivElement>(null);
@@ -112,6 +114,7 @@ export const Table: FC<TableProps> = ({
   };
 
   const tableBodyClassNames = clsx(classes.table__body, tableBodyClassName);
+  const tableRowClassNames = clsx(classes.table__row, tableRowClassName);
 
   return (
     <SectionForeground foregroundClassName={classes.tableForeground}>
@@ -134,7 +137,7 @@ export const Table: FC<TableProps> = ({
               return (
                 <div
                   key={column.key}
-                  style={{ minWidth: column.width }}
+                  style={{ width: column.width }}
                   className={classes.table__headerItem}
                   role="columnheader"
                 >
@@ -152,6 +155,7 @@ export const Table: FC<TableProps> = ({
           ref={tableBodyRef}
         >
           {items.map((item, index) => {
+            const rowKey = item[tableRowRenderKey];
             const tabIndex =
               focusIndex === index || focusIndex === INDEX_ABSENCE_FOCUS
                 ? 0
@@ -159,7 +163,7 @@ export const Table: FC<TableProps> = ({
 
             const rowProps: TableBodyRowProps = {
               tabIndex,
-              className: classes.table__row,
+              className: tableRowClassNames,
               role: tableRowRoles[tableRole],
               // aria-rowindex to do exactly index from whole list length, not by current index
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
@@ -170,13 +174,13 @@ export const Table: FC<TableProps> = ({
                 if (isHidden) return;
 
                 const rowValue = valueGetter
-                  ? valueGetter(item[key], item)
+                  ? valueGetter({ value: item[key], item, index })
                   : item[key];
 
                 return (
                   <div
-                    key={`${item[tableRowRenderKey]}${title}`}
-                    style={{ minWidth: width, justifyContent: align }}
+                    key={`${rowKey}${title}`}
+                    style={{ width, justifyContent: align }}
                     className={classes.table__cell}
                     role="gridcell"
                   >
@@ -189,9 +193,14 @@ export const Table: FC<TableProps> = ({
             return rowCustomRender ? (
               rowCustomRender({ row, item, rowProps })
             ) : (
-              <div {...rowProps}>{row}</div>
+              <div key={rowKey} {...rowProps}>
+                {row}
+              </div>
             );
           })}
+          {bottomPanelNode && (
+            <div className={classes.tableBottomPanel}>{bottomPanelNode}</div>
+          )}
         </div>
       </div>
     </SectionForeground>

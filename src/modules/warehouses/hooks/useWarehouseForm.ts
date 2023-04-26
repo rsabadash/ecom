@@ -8,6 +8,7 @@ import {
   YupSchemaKey,
 } from '../../../hooks/useCustomForm';
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
+import { dropdownItem } from '../../../validations/dropdown';
 
 type UseWarehouseFormProps = Pick<
   UseCustomFormProps<WarehouseFormValues>,
@@ -26,10 +27,7 @@ const schema = yup.object().shape<YupSchemaKey<WarehouseFormValues>>({
   type: yup
     .object()
     .nullable()
-    .shape<YupSchemaKey<DropdownItemObject>>({
-      id: yup.string().required(),
-      value: yup.string().required(),
-    })
+    .shape<YupSchemaKey<DropdownItemObject>>(dropdownItem)
     .required('warehouse.type.error.required'),
 });
 

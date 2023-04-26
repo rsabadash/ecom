@@ -15,6 +15,7 @@ export const MultiLanguageTextboxAdapter = <FormValues extends FieldValues>({
   formatValue,
   isToggleHidden,
   isInitiallyExpand,
+  isLabelHidden,
   isDescriptionHidden,
   isRequiredAllLanguages,
   label,
@@ -43,6 +44,7 @@ export const MultiLanguageTextboxAdapter = <FormValues extends FieldValues>({
     isDisabled,
     valueGetter,
     formatValue,
+    isLabelHidden,
     isDescriptionHidden,
     control,
   };

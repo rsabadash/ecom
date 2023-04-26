@@ -15,7 +15,9 @@ export const CommonFormFieldsWrapper: FC<
   isValid,
   isReadOnly,
   isRequired,
+  isLabelHidden,
   isDescriptionHidden,
+  describedById,
   errorMessage,
   columnIndex,
   row2ClassName,
@@ -24,23 +26,26 @@ export const CommonFormFieldsWrapper: FC<
 
   const descriptionType = errorMessage ? 'error' : undefined;
   const descriptionMessage = errorMessage ? errorMessage : placeholder;
-  const describedById = `${name}Description`;
 
   return (
     <div
       className={
-        columnIndex !== undefined ? classes.formFieldWrapper : undefined
+        columnIndex !== undefined
+          ? classes.formFieldWrapperWithColumnIndex
+          : classes.formFieldWrapper
       }
     >
-      <div style={row1}>
-        <FieldLabel
-          label={label}
-          htmlFor={name}
-          isValid={isValid}
-          isReadOnly={isReadOnly}
-          isRequired={isRequired}
-        />
-      </div>
+      {!isLabelHidden && (
+        <div style={row1}>
+          <FieldLabel
+            label={label}
+            htmlFor={name}
+            isValid={isValid}
+            isReadOnly={isReadOnly}
+            isRequired={isRequired}
+          />
+        </div>
+      )}
       <div className={row2ClassName} style={row2}>
         {children}
       </div>

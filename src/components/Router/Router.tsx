@@ -10,6 +10,7 @@ import {
   categoriesRoutes,
   dashboardRoutes,
   suppliersRoutes,
+  suppliesRoutes,
   warehouseProductsRoutes,
   warehousesRoutes,
 } from './moduleRoutes';
@@ -42,6 +43,7 @@ export const router = createBrowserRouter([
           ...categoriesRoutes,
           ...dashboardRoutes,
           ...suppliersRoutes,
+          ...suppliesRoutes,
           ...warehouseProductsRoutes,
           ...warehousesRoutes,
         ],

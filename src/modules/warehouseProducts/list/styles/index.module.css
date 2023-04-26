@@ -5,7 +5,7 @@
 }
 
 .warehouseListRowCollapseHeader {
-    display: contents;
+    width: 100%;
 }
 
 .warehouseListRowCollapseBody {

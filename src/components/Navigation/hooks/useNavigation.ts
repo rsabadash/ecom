@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { INDEX_ABSENCE_FOCUS } from '../constants';
 import { EventKeys } from '../../../common/enums/events';
-import { KeyIndexMap, MenuItem, UseNavigationReturn } from '../types';
+import { KeyIndexMap, NavigationItem, UseNavigationReturn } from '../types';
 import { getMenuItems } from '../utils';
 import { useTranslation } from '../../IntlProvider';
 import { useUser } from '../../UserProvider';
@@ -17,12 +17,12 @@ export const useNavigation = (): UseNavigationReturn => {
   const { user, hasAllAccesses } = useUser();
   const { translate } = useTranslation();
 
-  const menuItems = useMemo<MenuItem[]>(
+  const menuItems = useMemo<NavigationItem[]>(
     () => getMenuItems(translate),
     [translate],
   );
 
-  const allowedItems = useMemo<MenuItem[]>(() => {
+  const allowedItems = useMemo<NavigationItem[]>(() => {
     if (!hasAllAccesses) {
       return menuItems.filter((item) => {
         return user?.roles.some((userRole) => {

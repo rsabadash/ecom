@@ -64,15 +64,10 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const removeStorageItem = useCallback(
     (key: string): void => {
-      const persistState = getLocalStorageItem<PERSIST_STATE>(PERSIST_USER_KEY);
-
-      if (persistState === PERSIST_STATE.EXIST) {
-        removeLocalStorageItem(key);
-      } else {
-        removeSessionStorageItem(key);
-      }
+      removeLocalStorageItem(key);
+      removeSessionStorageItem(key);
     },
-    [getLocalStorageItem, removeLocalStorageItem, removeSessionStorageItem],
+    [removeLocalStorageItem, removeSessionStorageItem],
   );
 
   const [isAuthenticated, setIsAuthenticated] = useState(

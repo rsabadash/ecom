@@ -5,6 +5,7 @@ import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
 
 export const DropdownFormField: FC<DropdownFormFieldProps> = ({
   name,
+  size,
   value,
   items,
   customItems,
@@ -19,11 +20,16 @@ export const DropdownFormField: FC<DropdownFormFieldProps> = ({
   itemValueGetter,
   isReadOnly,
   errorMessage,
+  isLabelHidden,
   isDescriptionHidden,
+  ariaLabel,
   label,
   columnIndex,
 }) => {
   const describedById = `${name}Description`;
+  const fieldAriaLabel = isLabelHidden
+    ? ariaLabel || (typeof label === 'string' ? label : undefined)
+    : undefined;
 
   return (
     <CommonFormFieldsWrapper
@@ -33,12 +39,15 @@ export const DropdownFormField: FC<DropdownFormFieldProps> = ({
       isValid={isValid}
       isReadOnly={isReadOnly}
       isRequired={isRequired}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
+      describedById={describedById}
       errorMessage={errorMessage}
       columnIndex={columnIndex}
     >
       <Dropdown
         name={name}
+        size={size}
         value={value}
         items={items}
         customItems={customItems}
@@ -48,6 +57,7 @@ export const DropdownFormField: FC<DropdownFormFieldProps> = ({
         isDisabled={isDisabled}
         isOpen={isOpen}
         hasMultiselect={hasMultiselect}
+        ariaLabel={fieldAriaLabel}
         ariaDescribedBy={describedById}
         onBlur={onBlur}
         onChange={onChange}

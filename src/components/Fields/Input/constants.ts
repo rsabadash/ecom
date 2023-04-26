@@ -1,8 +1,14 @@
-export const inputType = {
-  text: 'text',
-  number: 'number',
-  password: 'password',
-  email: 'email',
+export const INPUT_TYPE = {
+  TEXT: 'text',
+  NUMBER: 'number',
+  PASSWORD: 'password',
+  EMAIL: 'email',
 };
 
-export const DEFAULT_INPUT_TYPE = inputType.text;
+export const DEFAULT_INPUT_TYPE = INPUT_TYPE.TEXT;
+
+export const SIZE = {
+  M: 'm',
+  S: 's',
+  XS: 'xs',
+} as const;

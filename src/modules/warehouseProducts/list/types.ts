@@ -22,7 +22,10 @@ export type WarehouseProduct = {
   createdDate: Date;
 };
 
-export type WarehouseProductTable = WarehouseProduct & {
+export type WarehouseProductTable = Pick<
+  WarehouseProduct,
+  'name' | 'sku' | 'attributes'
+> & {
   button: JSX.Element;
 };
 
