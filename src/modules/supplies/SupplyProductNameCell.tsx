@@ -14,6 +14,7 @@ export const SupplyProductNameCell: FC<SupplyProductNameCellProps> = ({
 }) => {
   const { data: warehouseProductsDropdownList } = useCachedAPI<DropdownItem[]>(
     `${endpoints.warehouseProducts.root}${path.dropdownList}`,
+    { dedupingInterval: 30000 },
   );
 
   const { translate } = useTranslation();

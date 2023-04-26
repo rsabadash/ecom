@@ -1,7 +1,10 @@
 import useSWR from 'swr';
 import { useAPI } from './useAPI';
+import { PublicConfiguration } from 'swr/_internal';
 
-type UseCachedAPIOptions = {
+type UseCachedAPIOptions = Partial<
+  Pick<PublicConfiguration, 'dedupingInterval'>
+> & {
   shouldFetch?: boolean;
 };
 
@@ -11,10 +14,10 @@ const defaultOptions: UseCachedAPIOptions = {
 
 export const useCachedAPI = <D>(
   url: string,
-  options: UseCachedAPIOptions = defaultOptions,
+  options: UseCachedAPIOptions = {},
 ) => {
   const { GET } = useAPI();
-  const { shouldFetch } = options;
+  const { shouldFetch, ...config } = { ...defaultOptions, ...options };
 
   const fetchUrl = shouldFetch ? url : null;
 
@@ -23,5 +26,6 @@ export const useCachedAPI = <D>(
     revalidateOnFocus: false,
     errorRetryCount: 0,
     shouldRetryOnError: false,
+    ...config,
   });
 };
