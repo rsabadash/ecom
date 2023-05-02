@@ -1,8 +1,8 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { useTranslation } from '../../IntlProvider';
 import { DropdownWitTooltipFormField } from '../../FormFields';
 import { DropdownWithTooltipAdapterProps } from './types';
 import { DropdownItem } from '../../Fields/Dropdown';
+import { useFieldErrorMessage } from '../hooks';
 
 export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
   name,
@@ -32,13 +32,12 @@ export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
     defaultValue: hasMultiselect ? [] : null,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
 
   const fieldValues = value as DropdownItem;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
 
   return (
     <DropdownWitTooltipFormField

@@ -1,8 +1,8 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { useTranslation } from '../../IntlProvider';
 import { DropdownFormField } from '../../FormFields';
 import { DropdownAdapterProps } from './types';
 import { DropdownItem } from '../../Fields/Dropdown';
+import { useFieldErrorMessage } from '../hooks';
 
 export const DropdownAdapter = <FormValues extends FieldValues>({
   name,
@@ -34,13 +34,12 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
     defaultValue: hasMultiselect ? [] : null,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
 
   const fieldValues = value as DropdownItem;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
 
   return (
     <DropdownFormField

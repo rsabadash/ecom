@@ -70,9 +70,16 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
             translation: placeholderTranslation,
             language,
           })}
-          formatError={({ message }) =>
-            addLanguageToTranslation({ translation: message, language })
-          }
+          formatError={({ message }) => {
+            if (typeof message === 'string') {
+              return addLanguageToTranslation({
+                translation: message,
+                language,
+              });
+            }
+
+            return 'Message type is not supported';
+          }}
           label={`${label} (${translate(`${language}.adjective`)})`}
           columnIndex={columnIndex}
           isToggleHidden={isToggleHidden}
@@ -88,9 +95,16 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
             translation: placeholderTranslation,
             language,
           })}
-          formatError={({ message }) =>
-            addLanguageToTranslation({ translation: message, language })
-          }
+          formatError={({ message }) => {
+            if (typeof message === 'string') {
+              return addLanguageToTranslation({
+                translation: message,
+                language,
+              });
+            }
+
+            return 'Message type is not supported';
+          }}
           label={`${label} (${translate(`${language}.adjective`)})`}
           columnIndex={0}
         />

@@ -17,6 +17,8 @@ import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProdu
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Attribute } from '../../attributes/attributes/types';
+import { GridRowBalancer } from '../../../components/GridRowBalancer';
+import { WarehouseProductUnitField } from './WarehouseProductUnitField';
 
 export const WarehouseProductsGeneratorForm: FC<
   WarehouseProductsGeneratorFormProps
@@ -40,13 +42,20 @@ export const WarehouseProductsGeneratorForm: FC<
   return (
     <Form onSubmit={handleSubmit}>
       <FormContent>
-        <MultiLanguageInputAdapter
-          isRequired
-          name={warehouseProductsGeneratorFormFields.name}
-          placeholderTranslation="warehouseProduct.name.description"
-          label={translate('warehouseProduct.name')}
-          control={control}
-        />
+        <GridRowBalancer columns={2} elementRows={4}>
+          <MultiLanguageInputAdapter
+            isRequired
+            name={warehouseProductsGeneratorFormFields.name}
+            placeholderTranslation="warehouseProduct.name.description"
+            label={translate('warehouseProduct.name')}
+            control={control}
+            columnIndex={1}
+          />
+          <WarehouseProductUnitField
+            name={warehouseProductsGeneratorFormFields.unit}
+            control={control}
+          />
+        </GridRowBalancer>
       </FormContent>
       <FormContent>
         <FormDescription>

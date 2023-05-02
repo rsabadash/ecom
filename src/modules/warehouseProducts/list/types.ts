@@ -1,5 +1,6 @@
 import { Translations } from '../../../components/IntlProvider';
 import { TableBodyRowProps } from '../../../components/Table/types';
+import { Unit } from '../../../common/types/unit';
 
 export type WarehouseProductsVariant = {
   variantId: string;
@@ -16,6 +17,7 @@ export type WarehouseProduct = {
   _id: string;
   name: Translations;
   sku: string;
+  unit: Unit;
   attributes: null | WarehouseProductsAttribute[];
   groupId: null | string;
   groupName: null | string;
@@ -24,7 +26,7 @@ export type WarehouseProduct = {
 
 export type WarehouseProductTable = Pick<
   WarehouseProduct,
-  'name' | 'sku' | 'attributes'
+  'name' | 'sku' | 'unit' | 'attributes'
 > & {
   button: JSX.Element;
 };

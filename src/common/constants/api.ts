@@ -12,6 +12,9 @@ export const endpoints = {
   suppliers: {
     root: `${PREFIX}/suppliers`,
   },
+  supplies: {
+    root: `${PREFIX}/supplies`,
+  },
   attributes: {
     root: `${PREFIX}/attributes`,
     variants: `${PREFIX}/attributes/variants`,

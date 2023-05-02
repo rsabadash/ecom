@@ -61,10 +61,11 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
     if (typeof value === 'string' && value.trim() !== '') {
       const decimalTotalCostValue = parseToDecimal(value);
       const { quantity } = getValues(`products.${index}`) || {};
+      const divideToQuantityValue = !quantity ? 1 : quantity;
 
-      const newPrice = quantity
-        ? bigDecimal.divide(value, quantity, 2)
-        : decimalTotalCostValue;
+      const newPrice = parseToDecimal(
+        bigDecimal.divide(decimalTotalCostValue, divideToQuantityValue, 0),
+      );
 
       const fieldArrayErrors = errors.products ? errors.products[index] : {};
 
@@ -73,9 +74,15 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
         decimalTotalCostValue,
       );
 
-      setValue(quantityFieldName, newPrice, {
-        shouldValidate: !!fieldArrayErrors?.price,
-      });
+      if (
+        decimalTotalCostValue !== parseToDecimal('0') &&
+        divideToQuantityValue !== 0
+      ) {
+        setValue(quantityFieldName, newPrice, {
+          shouldValidate: !!fieldArrayErrors?.price,
+        });
+      }
+
       setValue(totalCostFieldName, decimalTotalCostValue, {
         shouldValidate: !!fieldArrayErrors?.totalCost,
       });

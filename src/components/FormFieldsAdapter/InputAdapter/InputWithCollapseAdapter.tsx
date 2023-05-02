@@ -1,8 +1,8 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { useTranslation } from '../../IntlProvider';
 import { InputWithCollapseFormField } from '../../FormFields';
 import { InputWithCollapseAdapterProps } from './types';
 import { InputFormValue, InputValue } from '../../Fields/Input';
+import { useFieldErrorMessage } from '../hooks';
 
 export const InputWithCollapseAdapter = <FormValues extends FieldValues>({
   name,
@@ -41,13 +41,12 @@ export const InputWithCollapseAdapter = <FormValues extends FieldValues>({
     defaultValue: null,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
 
   const fieldValue = value as InputValue;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
 
   const handleOnChange = (value: InputFormValue) => {
     onChange && onChange(value);

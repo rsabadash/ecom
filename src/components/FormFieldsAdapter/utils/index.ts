@@ -1,0 +1,1 @@
+export { objectErrorMessage } from './objectErrorMessage';

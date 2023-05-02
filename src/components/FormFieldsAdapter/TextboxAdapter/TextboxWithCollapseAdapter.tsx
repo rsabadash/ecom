@@ -2,7 +2,7 @@ import { FieldValues, useController } from 'react-hook-form';
 import { TextboxWithCollapseAdapterProps } from './types';
 import { TextboxWithCollapseFormField } from '../../FormFields';
 import { TextboxValue } from '../../Fields/Textbox';
-import { useTranslation } from '../../IntlProvider';
+import { useFieldErrorMessage } from '../hooks';
 
 export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
   name,
@@ -31,13 +31,12 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
     defaultValue: null,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
 
   const fieldValue = value as TextboxValue;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
 
   return (
     <TextboxWithCollapseFormField

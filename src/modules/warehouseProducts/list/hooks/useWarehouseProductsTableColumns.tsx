@@ -7,6 +7,7 @@ import { TableColumnGeneric } from '../../../../components/Table';
 import { WarehouseProductsAttribute, WarehouseProductTable } from '../types';
 import { CollapseBuilderButton } from '../../../../components/Collapse';
 import { horizontalAlignment } from '../../../../components/Table/constants';
+import { Unit } from '../../../../common/types/unit';
 
 type UseWarehouseProductsTableColumns =
   () => TableColumnGeneric<WarehouseProductTable>[];
@@ -20,7 +21,7 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
         {
           title: translate('warehouseProduct.name'),
           key: 'name',
-          width: '55%',
+          width: '40%',
           valueGetter: ({ value }: { value: Translations }) => {
             return value[language];
           },
@@ -29,6 +30,14 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           title: translate('warehouseProduct.sku'),
           key: 'sku',
           width: '20%',
+        },
+        {
+          title: translate('warehouseProduct.unit'),
+          key: 'unit',
+          width: '15%',
+          valueGetter: ({ value }: { value: Unit }) => {
+            return value ? translate(`unit.${value}`) : '';
+          },
         },
         {
           title: translate('warehouseProduct.attributes.quantity'),

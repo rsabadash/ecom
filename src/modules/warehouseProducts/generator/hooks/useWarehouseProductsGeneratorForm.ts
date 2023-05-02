@@ -8,6 +8,7 @@ import {
 import { useCustomForm } from '../../../../hooks';
 import { WarehouseProductsGeneratorFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
+import { UNITS_LIST } from '../../../../common/constants/units';
 
 type UseWarehouseProductsGeneratorFromProps = Pick<
   UseCustomFormProps<WarehouseProductsGeneratorFormValues>,
@@ -32,6 +33,11 @@ const schema = yup
         }),
       )
       .required(),
+    unit: yup
+      .string()
+      .nullable()
+      .oneOf(UNITS_LIST, 'error.dropdown.unsupportedValue')
+      .required('warehouseProduct.unit.error.required'),
   });
 
 export const useWarehouseProductsGeneratorForm = ({

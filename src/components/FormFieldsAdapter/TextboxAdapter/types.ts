@@ -3,6 +3,7 @@ import {
   TextboxFormFieldProps,
   TextboxWithCollapseFormFieldProps,
 } from '../../FormFields';
+import { FormatError } from '../hooks';
 
 type AdapterProps<FormValues extends FieldValues> = {
   name: Path<FormValues>;
@@ -20,7 +21,7 @@ export type TextboxAdapterProps<FormValues extends FieldValues> = Omit<
   | 'ariaLabel'
 > &
   AdapterProps<FormValues> & {
-    formatError?: (error: FieldError) => undefined | string;
+    formatError?: FormatError;
   };
 
 export type TextboxWithCollapseAdapterProps<FormValues extends FieldValues> =
@@ -35,5 +36,5 @@ export type TextboxWithCollapseAdapterProps<FormValues extends FieldValues> =
     | 'ariaLabel'
   > &
     AdapterProps<FormValues> & {
-      formatError?: (error: FieldError) => undefined | string;
+      formatError?: FormatError;
     };

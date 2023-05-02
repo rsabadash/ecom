@@ -1,8 +1,9 @@
-import { Control, FieldError, FieldValues, Path } from 'react-hook-form';
+import { Control, FieldValues, Path } from 'react-hook-form';
 import {
   DropdownFormFieldProps,
   DropdownWithTooltipFormFieldProps,
 } from '../../FormFields';
+import { FormatError } from '../hooks';
 
 type AdapterProps<FormValues extends FieldValues> = {
   name: Path<FormValues>;
@@ -20,7 +21,7 @@ export type DropdownAdapterProps<FormValues extends FieldValues> = Omit<
   | 'ariaLabel'
 > &
   AdapterProps<FormValues> & {
-    formatError?: (error: FieldError) => undefined | string;
+    formatError?: FormatError;
   };
 
 export type DropdownWithTooltipAdapterProps<FormValues extends FieldValues> =
@@ -29,5 +30,5 @@ export type DropdownWithTooltipAdapterProps<FormValues extends FieldValues> =
     'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
   > &
     AdapterProps<FormValues> & {
-      formatError?: (error: FieldError) => undefined | string;
+      formatError?: FormatError;
     };

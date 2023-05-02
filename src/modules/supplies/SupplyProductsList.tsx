@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { SupplyProductListColumn, SupplyProductsListProps } from './types';
 import { Table, TableColumnGeneric } from '../../components/Table';
-import { useSupplyProductsTableColumns } from './hooks/useSupplyProductsTableColumns';
+import { useSupplyProductsTableColumns } from './hooks';
 import { Button } from '../../components/Button';
 import { defaultProductValue } from './constants';
 import { useTranslation } from '../../components/IntlProvider';
-import classes from './styles/index.module.css';
 import { SupplyProductSummary } from './SupplyProductSummary';
+import classes from './styles/index.module.css';
 
 export const SupplyProductsList: FC<SupplyProductsListProps> = ({
   control,

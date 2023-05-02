@@ -11,6 +11,10 @@ export const warehouseProducts = {
     'Введіть загальну назву товару {language} мовою',
   'warehouseProduct.name.error.required':
     "Загальна назва товару {language} мовою є обов'язковою",
+  'warehouseProduct.unit': 'Одиниця виміру',
+  'warehouseProduct.unit.description':
+    'Виберіть одиницю виміру, в якій буде продаватися товар',
+  'warehouseProduct.unit.error.required': "Одиниця виміру є обов'язковою",
   'warehouseProduct.generatedName': 'Згенерована назва товару',
   'warehouseProduct.generatedName.description':
     'Введіть або відредагуйте згенеровану назву товару {language} мовою',

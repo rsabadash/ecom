@@ -35,6 +35,7 @@
 
 .dropdown_invalid {
   border: 1px solid var(--border-error);
+  color: var(--text-error);
 }
 
 .dropdown_invalid:focus-visible {

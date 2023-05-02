@@ -14,6 +14,8 @@ export const supplies = {
   'supply.product.name.error.required': 'Product name is required',
   'supply.product.quantity': 'Quantity',
   'supply.product.quantity.error.required': 'Quantity is required',
+  'supply.product.quantity.error.min':
+    'The minimum quantity of product is {language}',
   'supply.product.totalQuantityProducts':
     'Total quantity of products is required',
   'supply.product.totalQuantityProducts.error.required':

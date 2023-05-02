@@ -10,6 +10,11 @@ import {
 import { transformProductBasedOnVariants } from '../utils';
 import { cartesian } from '../../../../utils/cartesian';
 import { buttonNames } from '../constants';
+import {
+  DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
+  Translations,
+} from '../../../../components/IntlProvider';
 
 type UseWarehouseProductsGeneratorFormSubmitProps = {
   onSuccess: (products: GeneratedProduct[]) => void;
@@ -43,21 +48,58 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
 
         return cartesian<DataToGenerateProducts, GeneratedProduct>(
           transformProductBasedOnVariants,
-          {},
+          { unit: values.unit },
           [{ name: values.name }],
           ...listToProductGeneration,
         );
       }
 
-      return [{ name: values.name, attributes: null }];
+      return [{ name: values.name, attributes: null, unit: values.unit }];
     },
     [getListToProductGeneration],
+  );
+
+  const generateSingleNameWithVariants = useCallback(
+    (name: Translations, attributes: GeneratedAttribute[]): Translations => {
+      const generatedProduct = SUPPORTED_LANGUAGES.reduce(
+        (acc, language) => {
+          const variantsValue = attributes?.reduce((acc, attribute) => {
+            let nextValue = '';
+
+            attribute.variants.forEach((variant) => {
+              nextValue = variant.name[language]
+                ? `${nextValue} ${variant.name[language]} `
+                : nextValue;
+            });
+
+            return `${acc} ${nextValue}`.trim();
+          }, '');
+
+          const translatedName = name[language]
+            ? name[language]
+            : name[DEFAULT_LANGUAGE];
+
+          return {
+            ...acc,
+            name: {
+              ...acc.name,
+              [language]: `${translatedName} ${variantsValue}`,
+            },
+          };
+        },
+        { name },
+      );
+
+      return generatedProduct.name;
+    },
+    [],
   );
 
   const generateProduct = useCallback(
     (values: WarehouseProductsGeneratorFormValues): GeneratedProduct => {
       let attributes: null | GeneratedAttribute[] = null;
-      const { name, attributesVirtual } = values;
+      const { name, unit, attributesVirtual } = values;
+      let productName: Translations = name;
 
       if (attributesVirtual) {
         attributes = Object.keys(attributesVirtual).map((attributeVirtual) => {
@@ -66,14 +108,17 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
             variants: attributesVirtual[attributeVirtual],
           };
         });
+
+        productName = generateSingleNameWithVariants(name, attributes);
       }
 
       return {
-        name,
+        name: productName,
+        unit,
         attributes,
       };
     },
-    [],
+    [generateSingleNameWithVariants],
   );
 
   const handleFormSubmit = useCallback(

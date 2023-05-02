@@ -71,15 +71,17 @@ export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
   const handleInputBlur = (value: InputFormValue): void => {
     if (typeof value === 'number') {
       const { price, totalCost } = getValues(`products.${index}`) || {};
+
       const fieldArrayErrors = errors.products ? errors.products[index] : {};
 
       initiateSummaryQuantityCalculation(prevSummaryQuantity.current, value);
 
       if (price) {
         const prevTotalCostValue = parseToDecimal(totalCost || '0');
-        const newTotalCostValue = parseToDecimal(
-          bigDecimal.multiply(price, value),
-        );
+        const newTotalCostValue =
+          value !== 0
+            ? parseToDecimal(bigDecimal.multiply(price, value))
+            : parseToDecimal('0');
 
         initiateSummaryTotalCostCalculation(
           prevTotalCostValue,
@@ -92,11 +94,13 @@ export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
       }
 
       if (totalCost) {
-        return setValue(
-          priceFieldName,
-          bigDecimal.divide(totalCost, value, 2),
-          { shouldValidate: !!fieldArrayErrors?.price },
+        const newPriceValue = parseToDecimal(
+          bigDecimal.divide(totalCost, value, 0),
         );
+
+        return setValue(priceFieldName, newPriceValue, {
+          shouldValidate: !!fieldArrayErrors?.price,
+        });
       }
     }
   };

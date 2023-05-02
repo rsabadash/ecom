@@ -25,15 +25,15 @@
 }
 
 .generatedProduct__fieldGroup {
-  margin-top: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .generatedProduct__fieldGroup:first-of-type {
-  margin-top: 0;
+  padding-top: 0;
 }
 
 .generatedProduct__tags {
-  margin-top: 0.5rem;
   display: flex;
   gap: 0.5rem;
 }

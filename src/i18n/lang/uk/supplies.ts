@@ -14,6 +14,8 @@ export const supplies = {
   'supply.product.name.error.required': "Назва товару є обов'язковою",
   'supply.product.quantity': 'Кількість',
   'supply.product.quantity.error.required': "Кількість товару є обов'язковою",
+  'supply.product.quantity.error.min':
+    'Мінімальна кількість продуктів {language}',
   'supply.product.totalQuantityProducts': 'Загальна кількість товарів',
   'supply.product.totalQuantityProducts.error.required':
     "Загальна кількість товарів є обов'язковою",

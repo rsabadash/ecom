@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { FieldValues, useController } from 'react-hook-form';
-import { useTranslation } from '../../IntlProvider';
 import { CheckboxFormField } from '../../FormFields';
 import { CheckboxAdapterProps } from './types';
 import { CheckboxValue } from '../../Fields/Checkbox/types';
+import { useFieldErrorMessage } from '../hooks';
 
 export const CheckboxAdapter = <FormValues extends FieldValues>({
   name,
@@ -29,7 +29,12 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
     defaultValue: false,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
+
+  const fieldValue = value as CheckboxValue;
 
   const handleChange = useCallback(
     (value: CheckboxValue) => {
@@ -41,12 +46,6 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
     },
     [onFieldChange, onChange],
   );
-
-  const fieldValue = value as CheckboxValue;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
 
   return (
     <CheckboxFormField

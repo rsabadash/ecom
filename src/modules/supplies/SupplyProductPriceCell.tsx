@@ -61,15 +61,18 @@ export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
     if (typeof value === 'string' && value.trim() !== '') {
       const decimalPriceValue = parseToDecimal(value);
       const { quantity, totalCost } = getValues(`products.${index}`) || {};
-
       const prevTotalCostValue = parseToDecimal(totalCost || '0');
-      const newTotalCost = quantity
-        ? parseToDecimal(bigDecimal.multiply(value, quantity))
-        : decimalPriceValue;
-
-      initiateSummaryTotalCostCalculation(prevTotalCostValue, newTotalCost);
 
       const fieldArrayErrors = errors.products ? errors.products[index] : {};
+
+      const avoidTotalCostCalculation =
+        decimalPriceValue === parseToDecimal('0') || !quantity;
+
+      const newTotalCost = avoidTotalCostCalculation
+        ? parseToDecimal('0')
+        : parseToDecimal(bigDecimal.multiply(value, quantity));
+
+      initiateSummaryTotalCostCalculation(prevTotalCostValue, newTotalCost);
 
       setValue(totalCostFieldName, newTotalCost, {
         shouldValidate: !!fieldArrayErrors?.totalCost,

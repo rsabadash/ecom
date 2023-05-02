@@ -10,6 +10,7 @@ import { useCustomForm } from '../../../hooks';
 import { supplyFormFields, supplyFormProductsSubfields } from '../constants';
 import { dropdownItem } from '../../../validations/dropdown';
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
+import { objectErrorMessage } from '../../../components/FormFieldsAdapter/utils';
 
 type UseSupplyFormProps = Pick<
   UseCustomFormProps<SupplyFormValues>,
@@ -48,6 +49,12 @@ const schema = yup.object().shape<YupSchemaKey<SupplyFormValues>>({
       [supplyFormProductsSubfields.quantity]: yup
         .number()
         .nullable()
+        .min(1, (param) => {
+          return objectErrorMessage({
+            translationKey: 'supply.product.quantity.error.min',
+            placeholderValue: param.min,
+          });
+        })
         .required('supply.product.quantity.error.required'),
       [supplyFormProductsSubfields.price]: yup
         .string()

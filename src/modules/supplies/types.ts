@@ -31,6 +31,12 @@ export type SupplyProduct = {
   totalCost: string | null;
 };
 
+type SupplyProductKeys = keyof SupplyProduct;
+
+export type RequiredSupplyProduct = {
+  [K in SupplyProductKeys]: NonNullable<SupplyProduct[K]>;
+};
+
 export type SupplyFormSubFields = Record<
   keyof SupplyProduct,
   keyof SupplyProduct
@@ -72,4 +78,24 @@ export type SupplyProductActionsProps = {
 export type SupplyProductSummaryProps = {
   columns: TableColumnGeneric<SupplyProductListColumn>[];
   control: Control<SupplyFormValues>;
+};
+
+export type SupplyPostProductData = {
+  nameId: string;
+  price: string;
+  quantity: number;
+  totalCost: string;
+};
+
+export type SupplyPostData = {
+  name: string;
+  products: SupplyPostProductData[];
+  productsTotalCost: string;
+  productsTotalQuantity: number;
+  supplierId: string;
+  warehouseId: string;
+};
+
+export type SupplyPostResponse = {
+
 };
