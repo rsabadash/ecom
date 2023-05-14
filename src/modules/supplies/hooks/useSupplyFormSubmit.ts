@@ -4,7 +4,6 @@ import {
   SupplyFormValues,
   SupplyPostData,
   SupplyPostProductData,
-  SupplyProduct,
 } from '../types';
 import { useCreateSupply } from './useCreateSupply';
 

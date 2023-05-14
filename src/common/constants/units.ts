@@ -7,7 +7,7 @@ export const UNIT_CODE = {
   KILOGRAM: 'kg',
   GRAM: 'g',
   MILLIGRAM: 'mg',
-  PIECES: 'pcs',
+  ITEM: 'item',
 } as const;
 
 export const UNITS_LIST = Object.values(UNIT_CODE);

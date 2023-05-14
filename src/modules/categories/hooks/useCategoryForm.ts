@@ -8,7 +8,7 @@ import {
 import { useCustomForm } from '../../../hooks';
 import { CategoryFormValues } from '../types';
 import { mainTranslationRequired } from '../../../validations/translations';
-import { URL_SLUG } from '../../../common/constants/regExp';
+import { URL_SLUG } from '../../../common/constants/regex';
 
 type UseCategoryFromProps = Pick<
   UseCustomFormProps<CategoryFormValues>,

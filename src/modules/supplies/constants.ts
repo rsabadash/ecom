@@ -16,6 +16,7 @@ export const supplyFormFields: SupplyFormFields = {
 
 export const supplyFormProductsSubfields: SupplyFormSubFields = {
   name: 'name',
+  unit: 'unit',
   quantity: 'quantity',
   price: 'price',
   totalCost: 'totalCost',
@@ -23,6 +24,7 @@ export const supplyFormProductsSubfields: SupplyFormSubFields = {
 
 export const defaultProductValue: SupplyProduct = {
   name: null,
+  unit: null,
   quantity: null,
   price: null,
   totalCost: null,
@@ -30,6 +32,6 @@ export const defaultProductValue: SupplyProduct = {
 
 export const initialDefaultValues = {
   products: [defaultProductValue],
-  productsTotalQuantity: 0,
+  productsTotalQuantity: parseToDecimal('0'),
   productsTotalCost: parseToDecimal('0'),
 };

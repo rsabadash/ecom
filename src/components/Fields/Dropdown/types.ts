@@ -3,25 +3,30 @@ import { SIZE } from './constants';
 
 export type DropdownItemId = string;
 
-export type DropdownItemValue<V = string | number> = V extends undefined
+export type DropdownItemValue<V = any> = V extends undefined
   ? string | number
   : V;
 
-export type DropdownItemObject<V = DropdownItemValue, I = DropdownItemId> = {
+export type DropdownItemObject<
+  V = DropdownItemValue,
+  I = DropdownItemId,
+  M = any,
+> = {
   id: I;
   value: V;
+  meta?: M | null;
 };
 
 export type DropdownItemPrimitive<V = DropdownItemValue> = DropdownItemValue<V>;
 
-export type DropdownItem<V = DropdownItemValue> =
-  | DropdownItemObject<V>
+export type DropdownItem<V = DropdownItemValue, I = DropdownItemId, M = any> =
+  | DropdownItemObject<V, I, M>
   | DropdownItemPrimitive<V>;
 
-export type DropdownValue<V = DropdownItemValue> =
+export type DropdownValue<V = DropdownItemValue, I = DropdownItemId, M = any> =
   | null
-  | DropdownItem<V>
-  | DropdownItem<V>[];
+  | DropdownItem<V, I, M>
+  | DropdownItem<V, I, M>[];
 
 export type DropdownProps = {
   name: string;
@@ -37,7 +42,7 @@ export type DropdownProps = {
   isValid?: boolean;
   hasMultiselect?: boolean;
   onBlur?: () => void;
-  onChange: (value: DropdownValue) => void;
+  onChange?: (value: DropdownValue) => void;
   itemValueGetter?: (item: any) => string | string[] | null;
   ariaLabel?: string;
   ariaLabelledBy?: string;

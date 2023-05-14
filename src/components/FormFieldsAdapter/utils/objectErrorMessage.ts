@@ -1,12 +1,17 @@
-export type ObjectErrorMessageProps = {
+type ObjectErrorMessageProps = {
+  key: string;
+  value: string | number;
+};
+
+export type ObjectErrorMessageReturn = {
   translationKey: string;
   placeholderValue: string | number;
 };
 
 export const objectErrorMessage = ({
-  translationKey,
-  placeholderValue,
-}: ObjectErrorMessageProps) => ({
-  translationKey,
-  placeholderValue,
+  key,
+  value,
+}: ObjectErrorMessageProps): ObjectErrorMessageReturn => ({
+  translationKey: key,
+  placeholderValue: value,
 });

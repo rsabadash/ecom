@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { FieldError } from 'react-hook-form';
 import { useTranslation } from '../../IntlProvider';
-import { ObjectErrorMessageProps } from '../utils/objectErrorMessage';
+import { ObjectErrorMessageReturn } from '../utils/objectErrorMessage';
 
-export type CustomErrorMessage = ObjectErrorMessageProps;
+export type CustomErrorMessage = ObjectErrorMessageReturn;
 
 type DirectMessageError = Omit<FieldError, 'message'> & {
   message?: string | CustomErrorMessage;

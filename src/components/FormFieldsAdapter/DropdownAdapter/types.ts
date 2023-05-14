@@ -12,13 +12,7 @@ type AdapterProps<FormValues extends FieldValues> = {
 
 export type DropdownAdapterProps<FormValues extends FieldValues> = Omit<
   DropdownFormFieldProps,
-  | 'onChange'
-  | 'onBlur'
-  | 'value'
-  | 'name'
-  | 'isValid'
-  | 'errorMessage'
-  | 'ariaLabel'
+  'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage' | 'ariaLabel'
 > &
   AdapterProps<FormValues> & {
     formatError?: FormatError;
@@ -27,7 +21,7 @@ export type DropdownAdapterProps<FormValues extends FieldValues> = Omit<
 export type DropdownWithTooltipAdapterProps<FormValues extends FieldValues> =
   Omit<
     DropdownWithTooltipFormFieldProps,
-    'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
+    'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
   > &
     AdapterProps<FormValues> & {
       formatError?: FormatError;

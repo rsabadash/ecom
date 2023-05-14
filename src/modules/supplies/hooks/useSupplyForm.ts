@@ -11,6 +11,11 @@ import { supplyFormFields, supplyFormProductsSubfields } from '../constants';
 import { dropdownItem } from '../../../validations/dropdown';
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { objectErrorMessage } from '../../../components/FormFieldsAdapter/utils';
+import { isUnitSupportDecimal, parseToDecimal } from '../utils';
+import {
+  DECIMAL_POSITIVE,
+  DECIMAL_ZERO_ENDS,
+} from '../../../common/constants/regex';
 
 type UseSupplyFormProps = Pick<
   UseCustomFormProps<SupplyFormValues>,
@@ -46,16 +51,41 @@ const schema = yup.object().shape<YupSchemaKey<SupplyFormValues>>({
         .nullable()
         .shape<YupSchemaKey<DropdownItemObject>>(dropdownItem)
         .required('supply.product.name.error.required'),
-      [supplyFormProductsSubfields.quantity]: yup
-        .number()
-        .nullable()
-        .min(1, (param) => {
-          return objectErrorMessage({
-            translationKey: 'supply.product.quantity.error.min',
-            placeholderValue: param.min,
-          });
-        })
-        .required('supply.product.quantity.error.required'),
+      [supplyFormProductsSubfields.quantity]: yup.lazy((value, options) => {
+        const { name, unit } = options?.parent || {};
+
+        if (!name) {
+          return yup
+            .string()
+            .nullable()
+            .required('supply.product.quantity.error.required');
+        }
+
+        const { id, value: unitValue } = unit || {};
+        const isSupportDecimal =
+          value === parseToDecimal('0') || isUnitSupportDecimal(id);
+
+        const DECIMAL_REGEX = isSupportDecimal
+          ? DECIMAL_POSITIVE
+          : DECIMAL_ZERO_ENDS;
+        const errorTranslation = isSupportDecimal
+          ? 'supply.product.quantity.error.min'
+          : 'supply.product.quantity.error.onlyInteger';
+        const errorValue = isSupportDecimal ? 1 : unitValue.toLowerCase();
+
+        return yup
+          .string()
+          .nullable()
+          .required('supply.product.quantity.error.required')
+          .test(
+            'is-support-decimal',
+            objectErrorMessage({
+              key: errorTranslation,
+              value: errorValue,
+            }),
+            (val: any) => DECIMAL_REGEX.test(val),
+          );
+      }),
       [supplyFormProductsSubfields.price]: yup
         .string()
         .nullable()

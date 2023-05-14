@@ -9,6 +9,7 @@ import { SupplyProductQuantityCell } from '../SupplyProductQuantityCell';
 import { SupplyProductPriceCell } from '../SupplyProductPriceCell';
 import { SupplyProductTotalCostCell } from '../SupplyProductTotalCostCell';
 import { SupplyProductActions } from '../SupplyProductActions';
+import { SupplyProductUnitCell } from '../SupplyProductUnitCell';
 
 type UseSupplyProductsTableColumnsProps = {
   control: Control<SupplyFormValues>;
@@ -41,10 +42,26 @@ export const useSupplyProductsTableColumns = ({
       {
         title: translate('supply.product.name'),
         key: 'name',
-        width: '65%',
+        width: '50%',
         valueGetter: ({ index }) => {
           return (
             <SupplyProductNameCell
+              index={index}
+              control={control}
+              setValue={setValue}
+              getValues={getValues}
+              fieldCommonName={cellCommonName}
+            />
+          );
+        },
+      },
+      {
+        title: translate('supply.product.unit'),
+        key: 'unit',
+        width: '15%',
+        valueGetter: ({ index }) => {
+          return (
+            <SupplyProductUnitCell
               index={index}
               control={control}
               fieldCommonName={cellCommonName}

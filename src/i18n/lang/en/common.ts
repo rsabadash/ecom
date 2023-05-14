@@ -27,7 +27,7 @@ export const common = {
   [`unit.${UNIT_CODE.KILOGRAM}`]: 'Kilogram',
   [`unit.${UNIT_CODE.GRAM}`]: 'Gram',
   [`unit.${UNIT_CODE.MILLIGRAM}`]: 'Milligram',
-  [`unit.${UNIT_CODE.PIECES}`]: 'Pieces',
+  [`unit.${UNIT_CODE.ITEM}`]: 'Item',
 
   'error.dropdown.unsupportedValue': 'The selected value is not supported',
 };

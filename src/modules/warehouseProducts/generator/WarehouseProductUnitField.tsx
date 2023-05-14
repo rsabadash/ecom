@@ -14,7 +14,7 @@ export const WarehouseProductUnitField: FC<WarehouseProductUnitFieldProps> = ({
 
   const unitFieldValue = useCallback(
     (unit: Unit) => {
-      return unit ? translate(`unit.${unit}`) : unit;
+      return unit ? translate(`unit.${unit}`) : null;
     },
     [translate],
   );

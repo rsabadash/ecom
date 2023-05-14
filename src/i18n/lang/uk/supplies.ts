@@ -14,8 +14,9 @@ export const supplies = {
   'supply.product.name.error.required': "Назва товару є обов'язковою",
   'supply.product.quantity': 'Кількість',
   'supply.product.quantity.error.required': "Кількість товару є обов'язковою",
-  'supply.product.quantity.error.min':
-    'Мінімальна кількість продуктів {language}',
+  'supply.product.quantity.error.min': 'Мінімальна кількість товарів {value}',
+  'supply.product.quantity.error.onlyInteger':
+    'Кількість товару може бути вказана лише цілим числом для одиниці продажу "{value}"',
   'supply.product.totalQuantityProducts': 'Загальна кількість товарів',
   'supply.product.totalQuantityProducts.error.required':
     "Загальна кількість товарів є обов'язковою",
@@ -27,5 +28,6 @@ export const supplies = {
   'supply.product.totalCostProducts': 'Загальна вартість товарів',
   'supply.product.totalCostProducts.error.required':
     "Загальна вартість товарів є обов'язковою",
+  'supply.product.unit': 'Одиниця продажу',
   'supply.addProduct': 'Додати товар до постачання',
 };

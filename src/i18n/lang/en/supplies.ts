@@ -14,8 +14,6 @@ export const supplies = {
   'supply.product.name.error.required': 'Product name is required',
   'supply.product.quantity': 'Quantity',
   'supply.product.quantity.error.required': 'Quantity is required',
-  'supply.product.quantity.error.min':
-    'The minimum quantity of product is {language}',
   'supply.product.totalQuantityProducts':
     'Total quantity of products is required',
   'supply.product.totalQuantityProducts.error.required':
@@ -28,5 +26,6 @@ export const supplies = {
   'supply.product.totalCostProducts.error.required':
     'Total cost of products is required',
   'supply.product.totalCost.error.required': 'Total cost is required',
+  'supply.product.unit': 'Unit of sale',
   'supply.addProduct': 'Add a product to the supply',
 };

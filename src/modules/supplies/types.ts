@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
 import { Control, UseFormGetValues, UseFormSetValue } from 'react-hook-form';
 import { DropdownItemObject } from '../../components/Fields/Dropdown';
 import { supplyFormArrayFields } from './constants';
-import { ReactNode } from 'react';
 import { TableColumnGeneric } from '../../components/Table';
+import { Unit } from '../../common/types/unit';
 
 export type SupplyFormValues = {
   name: string;
@@ -10,7 +11,7 @@ export type SupplyFormValues = {
   warehouse: DropdownItemObject;
   products: SupplyProduct[];
   productsTotalCost: string;
-  productsTotalQuantity: number;
+  productsTotalQuantity: string;
 };
 
 export type SupplyFormFields = Record<
@@ -26,7 +27,8 @@ export type SupplyFormProps = {
 
 export type SupplyProduct = {
   name: DropdownItemObject | null;
-  quantity: number | null;
+  unit: DropdownItemObject<string, string, Unit> | null;
+  quantity: string | null;
   price: string | null;
   totalCost: string | null;
 };
@@ -67,6 +69,15 @@ export type SupplyProductCellProps = {
 
 export type SupplyProductNameCellProps = Omit<
   SupplyProductCellProps,
+  'getValues'
+>;
+
+export type ProductNameDropdownMeta = {
+  unit: Unit;
+};
+
+export type SupplyProductUnitCellProps = Omit<
+  SupplyProductCellProps,
   'setValue' | 'getValues'
 >;
 
@@ -83,7 +94,7 @@ export type SupplyProductSummaryProps = {
 export type SupplyPostProductData = {
   nameId: string;
   price: string;
-  quantity: number;
+  quantity: string;
   totalCost: string;
 };
 
@@ -91,7 +102,7 @@ export type SupplyPostData = {
   name: string;
   products: SupplyPostProductData[];
   productsTotalCost: string;
-  productsTotalQuantity: number;
+  productsTotalQuantity: string;
   supplierId: string;
   warehouseId: string;
 };

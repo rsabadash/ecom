@@ -3,11 +3,20 @@ import { useFormState } from 'react-hook-form';
 import { InputWithTooltipAdapter } from '../../components/FormFieldsAdapter';
 import { useTranslation } from '../../components/IntlProvider';
 import { supplyFormFields, supplyFormProductsSubfields } from './constants';
-import { SupplyProductCellProps } from './types';
+import { SupplyFormValues, SupplyProductCellProps } from './types';
 import { calculateSummary, parseToDecimal } from './utils';
 import { InputFormValue } from '../../components/Fields/Input';
+import { DECIMAL } from '../../common/constants/regex';
 
 import bigDecimal from 'js-big-decimal';
+
+const ZERO_VALUE = parseToDecimal('0');
+
+const {
+  quantity: quantitySubfield,
+  price: priceSubfield,
+  totalCost: totalCostSubfield,
+} = supplyFormProductsSubfields;
 
 export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
   index,
@@ -16,76 +25,76 @@ export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
   getValues,
   fieldCommonName,
 }) => {
-  const prevSummaryQuantity = useRef<number | null>(null);
+  const prevSummaryQuantity = useRef<string | null>(null);
 
   const { translate } = useTranslation();
 
   const { errors } = useFormState({ control });
 
-  const priceFieldName =
-    `${fieldCommonName}.${index}.${supplyFormProductsSubfields.price}` as const;
-  const totalCostFieldName =
-    `${fieldCommonName}.${index}.${supplyFormProductsSubfields.totalCost}` as const;
+  const fieldNamePrefix = `${fieldCommonName}.${index}` as const;
+  const quantityFieldName = `${fieldNamePrefix}.${quantitySubfield}` as const;
+  const priceFieldName = `${fieldNamePrefix}.${priceSubfield}` as const;
+  const totalCostFieldName = `${fieldNamePrefix}.${totalCostSubfield}` as const;
 
-  const initiateSummaryQuantityCalculation = (
-    prevValue: number | null,
-    currentValue: number,
-  ) => {
-    const summaryQuantity =
-      (getValues(supplyFormFields.productsTotalQuantity) as number) || 0;
+  const formatQuantityValue = (value: string, prevValue: string): string => {
+    if (DECIMAL.test(value) || !value) {
+      return value;
+    }
 
-    const newSummaryQuantity = calculateSummary<number>(
-      prevValue,
-      currentValue,
-      summaryQuantity,
-    );
-
-    setValue(
-      supplyFormFields.productsTotalQuantity,
-      Number(newSummaryQuantity),
-      {
-        shouldValidate: false,
-      },
-    );
+    return prevValue;
   };
 
-  const initiateSummaryTotalCostCalculation = (
+  const initiateSummaryFieldValueCalculation = (
     prevValue: string | null,
     currentValue: string,
+    summaryFieldName: keyof SupplyFormValues,
   ) => {
-    const summaryTotalCost =
-      (getValues(supplyFormFields.productsTotalCost) as string) ||
-      parseToDecimal('0');
+    const summaryValue = (getValues(summaryFieldName) as string) || ZERO_VALUE;
 
-    const newSummaryTotalCost = calculateSummary<string>(
+    const newSummaryValue = calculateSummary<string>(
       prevValue,
       currentValue,
-      summaryTotalCost,
+      summaryValue,
     );
 
-    setValue(supplyFormFields.productsTotalCost, newSummaryTotalCost, {
+    setValue(summaryFieldName, newSummaryValue, {
       shouldValidate: false,
     });
   };
 
   const handleInputBlur = (value: InputFormValue): void => {
-    if (typeof value === 'number') {
+    if (typeof value === 'string') {
+      const decimalQuantityValue = parseToDecimal(value);
       const { price, totalCost } = getValues(`products.${index}`) || {};
+      const hasQuantity = decimalQuantityValue !== ZERO_VALUE;
+      const hasPrice = price && price !== ZERO_VALUE;
+      const hasTotalCost = totalCost && totalCost !== ZERO_VALUE;
 
       const fieldArrayErrors = errors.products ? errors.products[index] : {};
 
-      initiateSummaryQuantityCalculation(prevSummaryQuantity.current, value);
+      initiateSummaryFieldValueCalculation(
+        prevSummaryQuantity.current,
+        decimalQuantityValue,
+        supplyFormFields.productsTotalQuantity,
+      );
 
-      if (price) {
-        const prevTotalCostValue = parseToDecimal(totalCost || '0');
-        const newTotalCostValue =
-          value !== 0
-            ? parseToDecimal(bigDecimal.multiply(price, value))
-            : parseToDecimal('0');
+      // To avoid auto setting field value as '0.00' if the field is empty
+      if (value.trim()) {
+        setValue(quantityFieldName, decimalQuantityValue, {
+          shouldValidate: !!fieldArrayErrors?.quantity,
+        });
+      }
 
-        initiateSummaryTotalCostCalculation(
+      if (hasPrice) {
+        const prevTotalCostValue = hasTotalCost ? totalCost : ZERO_VALUE;
+        const newTotalCostValue = hasQuantity
+          ? parseToDecimal(bigDecimal.multiply(price, decimalQuantityValue))
+          : ZERO_VALUE;
+
+        initiateSummaryFieldValueCalculation(
           prevTotalCostValue,
           newTotalCostValue,
+          supplyFormFields.productsTotalCost,
         );
 
         return setValue(totalCostFieldName, newTotalCostValue, {
@@ -93,9 +102,9 @@ export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
         });
       }
 
-      if (totalCost) {
+      if (hasTotalCost && hasQuantity) {
         const newPriceValue = parseToDecimal(
-          bigDecimal.divide(totalCost, value, 0),
+          bigDecimal.divide(totalCost, decimalQuantityValue, 2),
         );
 
         return setValue(priceFieldName, newPriceValue, {
@@ -106,7 +115,7 @@ export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
   };
 
   const handleInputFocus = (value: InputFormValue) => {
-    if (typeof value === 'number') {
+    if (typeof value === 'string') {
       prevSummaryQuantity.current = value;
     }
   };
@@ -114,10 +123,10 @@ export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
   return (
     <InputWithTooltipAdapter
       isRequired
-      type="number"
       size="xs"
       name={`${fieldCommonName}.${index}.${supplyFormProductsSubfields.quantity}`}
       ariaLabel={translate('supply.product.quantity')}
+      formatValue={formatQuantityValue}
       onBlur={handleInputBlur}
       onFocus={handleInputFocus}
       control={control}

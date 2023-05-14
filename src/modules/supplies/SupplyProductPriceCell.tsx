@@ -2,13 +2,17 @@ import { FC, useRef } from 'react';
 import { useFormState } from 'react-hook-form';
 import { InputWithTooltipAdapter } from '../../components/FormFieldsAdapter';
 import { useTranslation } from '../../components/IntlProvider';
-import { SupplyProductCellProps } from './types';
-import { DECIMAL } from '../../common/constants/regExp';
+import { SupplyFormValues, SupplyProductCellProps } from './types';
+import { DECIMAL } from '../../common/constants/regex';
 import { calculateSummary, parseToDecimal } from './utils';
 import { supplyFormFields, supplyFormProductsSubfields } from './constants';
 import { InputFormValue } from '../../components/Fields/Input';
 
 import bigDecimal from 'js-big-decimal';
+
+const ZERO_VALUE = parseToDecimal('0');
+const { price: priceSubfield, totalCost: totalCostSubfield } =
+  supplyFormProductsSubfields;
 
 export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
   index,
@@ -17,16 +21,13 @@ export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
   getValues,
   fieldCommonName,
 }) => {
-  const prevSummaryTotalCostRef = useRef<string | null>(null);
-
   const { translate } = useTranslation();
 
   const { errors } = useFormState({ control });
 
-  const priceFieldName =
-    `${fieldCommonName}.${index}.${supplyFormProductsSubfields.price}` as const;
-  const totalCostFieldName =
-    `${fieldCommonName}.${index}.${supplyFormProductsSubfields.totalCost}` as const;
+  const fieldNamePrefix = `${fieldCommonName}.${index}` as const;
+  const priceFieldName = `${fieldNamePrefix}.${priceSubfield}` as const;
+  const totalCostFieldName = `${fieldNamePrefix}.${totalCostSubfield}` as const;
 
   const formatPriceValue = (value: string, prevValue: string): string => {
     if (DECIMAL.test(value) || !value) {
@@ -36,50 +37,57 @@ export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
     return prevValue;
   };
 
-  const initiateSummaryTotalCostCalculation = (
+  const initiateSummaryFieldValueCalculation = (
     prevValue: string | null,
     currentValue: string,
+    summaryFieldName: keyof SupplyFormValues,
   ) => {
-    const summaryTotalCost =
-      (getValues(supplyFormFields.productsTotalCost) as string) ||
-      parseToDecimal('0');
+    const summaryValue = (getValues(summaryFieldName) as string) || ZERO_VALUE;
 
-    const newSummaryTotalCost = calculateSummary<string>(
+    const newSummaryValue = calculateSummary<string>(
       prevValue,
       currentValue,
-      summaryTotalCost,
+      summaryValue,
     );
 
-    prevSummaryTotalCostRef.current = newSummaryTotalCost;
-
-    setValue(supplyFormFields.productsTotalCost, newSummaryTotalCost, {
+    setValue(summaryFieldName, newSummaryValue, {
       shouldValidate: false,
     });
   };
 
   const handleInputBlur = (value: InputFormValue): void => {
-    if (typeof value === 'string' && value.trim() !== '') {
+    if (typeof value === 'string') {
       const decimalPriceValue = parseToDecimal(value);
       const { quantity, totalCost } = getValues(`products.${index}`) || {};
-      const prevTotalCostValue = parseToDecimal(totalCost || '0');
+      const hasPrice = decimalPriceValue !== ZERO_VALUE;
+      const hasQuantity = quantity && quantity !== ZERO_VALUE;
+      const hasTotalCost = totalCost && totalCost !== ZERO_VALUE;
 
       const fieldArrayErrors = errors.products ? errors.products[index] : {};
 
-      const avoidTotalCostCalculation =
-        decimalPriceValue === parseToDecimal('0') || !quantity;
+      const avoidTotalCostCalculation = !hasPrice || !hasQuantity;
 
+      const prevTotalCostValue = hasTotalCost ? totalCost : ZERO_VALUE;
       const newTotalCost = avoidTotalCostCalculation
-        ? parseToDecimal('0')
+        ? ZERO_VALUE
         : parseToDecimal(bigDecimal.multiply(value, quantity));
 
-      initiateSummaryTotalCostCalculation(prevTotalCostValue, newTotalCost);
+      initiateSummaryFieldValueCalculation(
+        prevTotalCostValue,
+        newTotalCost,
+        supplyFormFields.productsTotalCost,
+      );
 
-      setValue(totalCostFieldName, newTotalCost, {
-        shouldValidate: !!fieldArrayErrors?.totalCost,
-      });
-      setValue(priceFieldName, decimalPriceValue, {
-        shouldValidate: !!fieldArrayErrors?.price,
-      });
+      // To avoid auto setting field value as '0.00' if the field is empty
+      if (value.trim()) {
+        setValue(totalCostFieldName, newTotalCost, {
+          shouldValidate: !!fieldArrayErrors?.totalCost,
+        });
+
+        setValue(priceFieldName, decimalPriceValue, {
+          shouldValidate: !!fieldArrayErrors?.price,
+        });
+      }
     }
   };
 

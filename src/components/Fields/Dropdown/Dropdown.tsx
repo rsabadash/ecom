@@ -190,17 +190,17 @@ export const Dropdown: FC<DropdownProps> = ({
   const initMultiSelection = (item: DropdownItem): void => {
     if (value) {
       if (Array.isArray(value)) {
-        return onChange([...value, item]);
+        return onChange && onChange([...value, item]);
       } else {
-        return onChange([value, item]);
+        return onChange && onChange([value, item]);
       }
     }
 
-    return onChange([item]);
+    return onChange && onChange([item]);
   };
 
   const initSingleSelection = (item: DropdownItem): void => {
-    onChange(item);
+    onChange && onChange(item);
     closeDropdown();
   };
 
@@ -221,17 +221,17 @@ export const Dropdown: FC<DropdownProps> = ({
         (current) => getItemValue(current, true) !== idValue,
       );
 
-      return onChange(filteredValue);
+      return onChange && onChange(filteredValue);
     }
 
-    onChange([]);
+    onChange && onChange([]);
   };
 
   const initSingleUnSelection = (): void => {
     if (!isRequired) {
       const emptyValue = hasMultiselect ? [] : null;
 
-      onChange(emptyValue);
+      onChange && onChange(emptyValue);
     }
 
     closeDropdown();

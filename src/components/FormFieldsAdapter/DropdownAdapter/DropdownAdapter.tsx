@@ -1,7 +1,7 @@
 import { FieldValues, useController } from 'react-hook-form';
 import { DropdownFormField } from '../../FormFields';
 import { DropdownAdapterProps } from './types';
-import { DropdownItem } from '../../Fields/Dropdown';
+import { DropdownItem, DropdownValue } from '../../Fields/Dropdown';
 import { useFieldErrorMessage } from '../hooks';
 
 export const DropdownAdapter = <FormValues extends FieldValues>({
@@ -15,6 +15,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
   isDisabled,
   isOpen,
   hasMultiselect,
+  onChange,
   itemValueGetter,
   formatError,
   isLabelHidden,
@@ -24,7 +25,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
   columnIndex,
 }: DropdownAdapterProps<FormValues>) => {
   const {
-    field: { onChange, onBlur, name: fieldName, value },
+    field: { onChange: onChangeField, onBlur, name: fieldName, value },
     fieldState: { error },
   } = useController<FormValues>({
     name,
@@ -41,6 +42,11 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
 
   const fieldValues = value as DropdownItem;
 
+  const handleOnChange = (value: DropdownValue) => {
+    onChange && onChange(value);
+    onChangeField(value);
+  };
+
   return (
     <DropdownFormField
       name={fieldName}
@@ -56,7 +62,7 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
       isOpen={isOpen}
       hasMultiselect={hasMultiselect}
       onBlur={onBlur}
-      onChange={onChange}
+      onChange={handleOnChange}
       itemValueGetter={itemValueGetter}
       errorMessage={fieldErrorMessage}
       isLabelHidden={isLabelHidden}

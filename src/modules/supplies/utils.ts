@@ -1,7 +1,11 @@
 import bigDecimal from 'js-big-decimal';
+import { Unit } from '../../common/types/unit';
+import { UNIT_CODE } from '../../common/constants/units';
 
 export const parseToDecimal = (value: string): string => {
-  return Number.parseFloat(value).toFixed(2);
+  const valueToParse = value.trim() ? value : '0';
+
+  return Number.parseFloat(valueToParse).toFixed(2);
 };
 
 export const calculateSummary = <T>(
@@ -20,4 +24,8 @@ export const calculateSummary = <T>(
   }
 
   return String(summary);
+};
+
+export const isUnitSupportDecimal = (unit: Unit) => {
+  return unit !== UNIT_CODE.ITEM;
 };

@@ -1,7 +1,7 @@
 import { FieldValues, useController } from 'react-hook-form';
 import { DropdownWitTooltipFormField } from '../../FormFields';
 import { DropdownWithTooltipAdapterProps } from './types';
-import { DropdownItem } from '../../Fields/Dropdown';
+import { DropdownItem, DropdownValue } from '../../Fields/Dropdown';
 import { useFieldErrorMessage } from '../hooks';
 
 export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
@@ -15,6 +15,7 @@ export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
   isDisabled,
   isOpen,
   hasMultiselect,
+  onChange,
   itemValueGetter,
   formatError,
   ariaLabel,
@@ -22,7 +23,7 @@ export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
   control,
 }: DropdownWithTooltipAdapterProps<FormValues>) => {
   const {
-    field: { onChange, onBlur, name: fieldName, value },
+    field: { onChange: onChangeField, onBlur, name: fieldName, value },
     fieldState: { error },
   } = useController<FormValues>({
     name,
@@ -39,6 +40,11 @@ export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
 
   const fieldValues = value as DropdownItem;
 
+  const handleOnChange = (value: DropdownValue) => {
+    onChange && onChange(value);
+    onChangeField(value);
+  };
+
   return (
     <DropdownWitTooltipFormField
       name={fieldName}
@@ -54,7 +60,7 @@ export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
       isOpen={isOpen}
       hasMultiselect={hasMultiselect}
       onBlur={onBlur}
-      onChange={onChange}
+      onChange={handleOnChange}
       itemValueGetter={itemValueGetter}
       errorMessage={fieldErrorMessage}
       ariaLabel={ariaLabel}
