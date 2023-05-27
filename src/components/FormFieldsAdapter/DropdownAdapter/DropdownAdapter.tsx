@@ -42,8 +42,8 @@ export const DropdownAdapter = <FormValues extends FieldValues>({
 
   const fieldValues = value as DropdownItem;
 
-  const handleOnChange = (value: DropdownValue) => {
-    onChange && onChange(value);
+  const handleOnChange = (value: DropdownValue, isSelected: boolean): void => {
+    onChange && onChange(value, isSelected);
     onChangeField(value);
   };
 

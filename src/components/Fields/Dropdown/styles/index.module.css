@@ -95,6 +95,7 @@
   cursor: pointer;
   padding: 0.85em;
   border-radius: var(--radius-regular);
+  user-select: none;
 }
 
 .dropdownList__item_focus,

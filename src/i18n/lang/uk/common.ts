@@ -9,6 +9,7 @@ export const common = {
   delete: 'Видалити',
   cancel: 'Відмінити',
   save: 'Зберегти',
+  approve: 'Підтвердити',
   generate: 'Згенерувати',
   notSelected: 'Не обрано',
   signOut: 'Вийти',
@@ -30,4 +31,5 @@ export const common = {
   [`unit.${UNIT_CODE.ITEM}`]: 'Штука',
 
   'error.dropdown.unsupportedValue': 'Вибране значення не підтримується',
+  'modal.close': 'Закрити модальне вікно',
 };

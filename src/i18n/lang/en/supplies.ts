@@ -28,4 +28,6 @@ export const supplies = {
   'supply.product.totalCost.error.required': 'Total cost is required',
   'supply.product.unit': 'Unit of sale',
   'supply.addProduct': 'Add a product to the supply',
+  'supply.warning.deleteOneProduct':
+    'It is not possible to delete a product if it is the only one in the list',
 };

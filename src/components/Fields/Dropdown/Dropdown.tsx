@@ -52,6 +52,9 @@ export const Dropdown: FC<DropdownProps> = ({
   const isActive = !isDisabled && !isReadOnly;
   const isListInitialized = isActive && hasItems;
 
+  const listRef = useRef<HTMLUListElement | null>(null);
+  const dropdownButtonRef = useRef<HTMLDivElement | null>(null);
+
   const [isOpenInternal, setIsOpenInternal] = useState(() => isOpen || false);
   const [isKeyboardControl, setIsKeyboardControl] = useState(false);
 
@@ -61,7 +64,8 @@ export const Dropdown: FC<DropdownProps> = ({
     closeDropdown();
   };
 
-  const { setCurrentElement } = useOutsideElementClick({
+  useOutsideElementClick({
+    ref: listRef,
     dependency: isOpenInternal,
     handleClick: handleOutsideDropdownClick,
   });
@@ -92,7 +96,7 @@ export const Dropdown: FC<DropdownProps> = ({
       }, '');
     }
 
-    return getId ? dropdownItem.id : dropdownItem.value.toString();
+    return getId ? dropdownItem.id : dropdownItem.value?.toString();
   };
 
   const getInitialFocusIndex = (): number => {
@@ -123,21 +127,12 @@ export const Dropdown: FC<DropdownProps> = ({
   const [focusIndex, setFocusIndex] = useState<number>(INDEX_ABSENCE_FOCUS);
   const [focusItemId, setFocusItemId] = useState<DropdownItemId | null>(null);
 
-  const listRef = useRef<HTMLUListElement>(null);
-  const dropdownButtonRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (isListInitialized && isKeyboardControl) {
       setFocusIndex(() => getInitialFocusIndex());
       setFocusItemId(() => getInitialFocusId());
     }
   }, [isListInitialized, isKeyboardControl]);
-
-  useEffect(() => {
-    if (dropdownButtonRef.current) {
-      setCurrentElement(dropdownButtonRef.current);
-    }
-  }, [setCurrentElement]);
 
   useLayoutEffect(() => {
     if (isOpenInternal && focusIndex !== INDEX_ABSENCE_FOCUS) {
@@ -190,17 +185,17 @@ export const Dropdown: FC<DropdownProps> = ({
   const initMultiSelection = (item: DropdownItem): void => {
     if (value) {
       if (Array.isArray(value)) {
-        return onChange && onChange([...value, item]);
+        return onChange && onChange([...value, item], true);
       } else {
-        return onChange && onChange([value, item]);
+        return onChange && onChange([value, item], true);
       }
     }
 
-    return onChange && onChange([item]);
+    return onChange && onChange([item], true);
   };
 
   const initSingleSelection = (item: DropdownItem): void => {
-    onChange && onChange(item);
+    onChange && onChange(item, true);
     closeDropdown();
   };
 
@@ -221,17 +216,17 @@ export const Dropdown: FC<DropdownProps> = ({
         (current) => getItemValue(current, true) !== idValue,
       );
 
-      return onChange && onChange(filteredValue);
+      return onChange && onChange(filteredValue, false);
     }
 
-    onChange && onChange([]);
+    onChange && onChange([], false);
   };
 
   const initSingleUnSelection = (): void => {
     if (!isRequired) {
       const emptyValue = hasMultiselect ? [] : null;
 
-      onChange && onChange(emptyValue);
+      onChange && onChange(emptyValue, false);
     }
 
     closeDropdown();
@@ -245,8 +240,11 @@ export const Dropdown: FC<DropdownProps> = ({
     }
   };
 
-  const handleListItemClick = (item: DropdownItem, selected: boolean): void => {
-    if (selected) {
+  const handleListItemClick = (
+    item: DropdownItem,
+    isSelected: boolean,
+  ): void => {
+    if (isSelected) {
       initUnSelection(item);
     } else {
       initSelection(item);

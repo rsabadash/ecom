@@ -1,77 +1,65 @@
-import { useCallback, useLayoutEffect, useRef } from 'react';
+import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import { EventKeys } from '../common/enums/events';
 
-export type UseOutsideElementClickProps = {
+type HandleClickCallback = () => void;
+
+type UseOutsideElementClickProps = {
+  ref: MutableRefObject<HTMLElement | null>;
   dependency: boolean;
   listenKeyboard?: boolean;
-  handleClick: () => void;
-};
-
-type UseOutsideElementClickReturn = {
-  setCurrentElement: (element: null | HTMLElement) => void;
+  handleClick: HandleClickCallback;
 };
 
 export const useOutsideElementClick = ({
+  ref,
   dependency,
   listenKeyboard,
   handleClick,
-}: UseOutsideElementClickProps): UseOutsideElementClickReturn => {
-  const currentElement = useRef<null | HTMLElement>(null);
+}: UseOutsideElementClickProps): void => {
+  const handleClickRef = useRef<HandleClickCallback>(handleClick);
 
-  const setCurrentElement = useCallback((element: null | HTMLElement): void => {
-    currentElement.current = element;
-  }, []);
-
-  const handleOutsideClick = useCallback(
-    (event: MouseEvent): void => {
+  const handleOutsideAction = useCallback(
+    (event: MouseEvent | TouchEvent): void => {
       if (
-        !currentElement.current ||
-        !(currentElement.current instanceof Node)
-      ) {
-        console.warn('Passed element is not a Node.');
-        return;
-      }
-
-      if (
+        ref.current &&
         event.target instanceof Node &&
-        currentElement.current.contains(event.target)
+        !ref.current.contains(event.target)
       ) {
-        return;
+        event.stopPropagation();
+        handleClickRef.current();
       }
-
-      if (typeof handleClick !== 'function') {
-        console.warn('You should pass callback function.');
-        return;
-      }
-
-      handleClick();
     },
-    [handleClick],
+    [ref],
   );
 
-  const handleKeyDown = useCallback(() => {
-    handleClick();
-  }, [handleClick]);
+  const handleKeyDown = useCallback((event: KeyboardEvent): void => {
+    const key = event.key as EventKeys;
 
-  useLayoutEffect(() => {
+    if (key === EventKeys.Escape) {
+      event.stopPropagation();
+      handleClickRef.current();
+    }
+  }, []);
+
+  useEffect(() => {
     if (dependency) {
-      document.addEventListener('click', handleOutsideClick);
+      document.addEventListener('click', handleOutsideAction, true);
+      document.addEventListener('touchend', handleOutsideAction, true);
+
       if (listenKeyboard) {
-        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keydown', handleKeyDown, true);
       }
     }
 
     return () => {
       if (dependency) {
-        document.removeEventListener('click', handleOutsideClick);
+        document.removeEventListener('click', handleOutsideAction, true);
+        document.removeEventListener('touchend', handleOutsideAction, true);
 
         if (listenKeyboard) {
-          document.removeEventListener('keydown', handleKeyDown);
+          document.removeEventListener('keydown', handleKeyDown, true);
         }
       }
     };
-  }, [dependency, handleKeyDown, handleOutsideClick, listenKeyboard]);
-
-  return {
-    setCurrentElement,
-  };
+  }, [dependency, handleKeyDown, handleOutsideAction, listenKeyboard]);
 };

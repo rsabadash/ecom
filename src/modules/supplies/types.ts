@@ -25,9 +25,13 @@ export type SupplyFormProps = {
   defaultValues?: Partial<SupplyFormValues>;
 };
 
+type SupplyProductMeta = {
+  unit: Unit;
+};
+
 export type SupplyProduct = {
-  name: DropdownItemObject | null;
-  unit: DropdownItemObject<string, string, Unit> | null;
+  name: DropdownItemObject<string, string, SupplyProductMeta> | null;
+  unit: DropdownItemObject<string, Unit> | null;
   quantity: string | null;
   price: string | null;
   totalCost: string | null;
@@ -67,14 +71,7 @@ export type SupplyProductCellProps = {
   fieldCommonName: ValuesOfObject<typeof supplyFormArrayFields>;
 };
 
-export type SupplyProductNameCellProps = Omit<
-  SupplyProductCellProps,
-  'getValues'
->;
-
-export type ProductNameDropdownMeta = {
-  unit: Unit;
-};
+export type ProductNameDropdownMeta = SupplyProductMeta;
 
 export type SupplyProductUnitCellProps = Omit<
   SupplyProductCellProps,
@@ -93,6 +90,7 @@ export type SupplyProductSummaryProps = {
 
 export type SupplyPostProductData = {
   nameId: string;
+  unit: Unit;
   price: string;
   quantity: string;
   totalCost: string;
@@ -107,6 +105,4 @@ export type SupplyPostData = {
   warehouseId: string;
 };
 
-export type SupplyPostResponse = {
-
-};
+export type SupplyPostResponse = any;

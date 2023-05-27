@@ -1,11 +1,12 @@
-import { FC, MouseEvent, PropsWithChildren } from 'react';
+import { FC, KeyboardEvent, MouseEvent, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import {
-  DEFAULT_BUTTON_VARIANT,
   DEFAULT_BUTTON_SIZE,
   DEFAULT_BUTTON_TYPE,
+  DEFAULT_BUTTON_VARIANT,
 } from './constants';
 import { ButtonProps } from './types';
+import { EventKeys } from '../../common/enums/events';
 import classes from './styles/index.module.css';
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = ({
@@ -15,6 +16,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
   variant = DEFAULT_BUTTON_VARIANT,
   isDisabled,
   onClick,
+  onKeyDown,
   children,
   ariaLabel,
   ariaExpanded,
@@ -23,11 +25,26 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
   className,
 }) => {
   const handleButtonClick = (event: MouseEvent<HTMLButtonElement>): void => {
-    if (isDisabled) {
+    if (isDisabled || !onClick) {
       return;
     }
 
-    onClick && onClick(event);
+    onClick(event);
+  };
+
+  const handleButtonKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+  ): void => {
+    if (isDisabled || !onKeyDown) {
+      return;
+    }
+
+    const key = event.key as EventKeys;
+
+    if (key === EventKeys.Enter || key === EventKeys.Space) {
+      event.preventDefault();
+      onKeyDown(event);
+    }
   };
 
   return (
@@ -36,6 +53,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
       type={type}
       disabled={isDisabled}
       onClick={handleButtonClick}
+      onKeyDown={handleButtonKeyDown}
       aria-label={ariaLabel}
       aria-expanded={ariaExpanded}
       aria-controls={ariaControls}

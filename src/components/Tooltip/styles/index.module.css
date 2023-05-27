@@ -27,6 +27,7 @@
     inset-block-start: 0;
     visibility: hidden;
     box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.50);
+    z-index: 1;
 }
 
 .tooltip__content_start {

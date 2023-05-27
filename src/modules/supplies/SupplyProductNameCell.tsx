@@ -31,10 +31,12 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
   const fieldNamePrefix = `${fieldCommonName}.${index}` as const;
   const unitFieldName = `${fieldNamePrefix}.${unitSubfield}` as const;
   const quantityFieldName = `${fieldNamePrefix}.${quantitySubfield}` as const;
+  const productNameFieldName =
+    `${fieldNamePrefix}.${supplyFormProductsSubfields.name}` as const;
 
   const handleDropdownChange = (
     value: DropdownValue<string, string, ProductNameDropdownMeta>,
-  ) => {
+  ): void => {
     if (value && !Array.isArray(value) && typeof value !== 'string') {
       const meta = getDropdownMeta<ProductNameDropdownMeta>(value);
 
@@ -43,7 +45,7 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
         const { quantity, unit: prevUnit } =
           getValues(`products.${index}`) || {};
 
-        const translatedUnit = unit ? translate(`unit.${unit}`) : null;
+        const translatedUnit = unit ? translate(`unit.${unit}`) : '';
 
         setValue(unitFieldName, { id: unit, value: translatedUnit });
 
@@ -63,7 +65,7 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
     <DropdownWithTooltipAdapter
       isRequired
       size="xs"
-      name={`${fieldCommonName}.${index}.${supplyFormProductsSubfields.name}`}
+      name={productNameFieldName}
       items={warehouseProductsDropdownList}
       onChange={handleDropdownChange}
       ariaLabel={translate('supply.product.name')}

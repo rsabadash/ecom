@@ -30,6 +30,7 @@ export const DropdownWitTooltipFormField: FC<
 
   return (
     <Tooltip
+      isClickable
       isChildrenFocusable
       content={errorMessage || placeholder}
       contentId={describedById}

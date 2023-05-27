@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useTranslation } from '../../components/IntlProvider';
 import {
   DropdownAdapter,
@@ -20,6 +20,7 @@ import { endpoints, path } from '../../common/constants/api';
 import { SectionForeground } from '../../layouts/Section';
 import { useFieldArray } from 'react-hook-form';
 import { SupplyProductsList } from './SupplyProductsList';
+import { Modal } from '../../components/Modal';
 
 export const SupplyForm: FC<SupplyFormProps> = ({
   id,
@@ -32,6 +33,9 @@ export const SupplyForm: FC<SupplyFormProps> = ({
   const { data: warehousesDropdownList } = useCachedAPI<DropdownItem[]>(
     `${endpoints.warehouses.root}${path.dropdownList}`,
   );
+
+  const [isRemoveDisabledOpen, setIsRemoveDisabledOpen] =
+    useState<boolean>(false);
 
   const { translate } = useTranslation();
 
@@ -54,65 +58,90 @@ export const SupplyForm: FC<SupplyFormProps> = ({
   const shouldUpdateProduct =
     defaultValues && Object.keys(defaultValues).length > 0;
 
+  const handleRemoveProduct = useCallback(
+    (index: number): void => {
+      if (fields.length > 1) {
+        remove(index);
+      } else {
+        setIsRemoveDisabledOpen(true);
+      }
+    },
+    [fields.length, remove],
+  );
+
+  const removeDisabledModal = () => {
+    setIsRemoveDisabledOpen(false);
+  };
+
   return (
-    <Form onSubmit={handleSubmit}>
-      <SectionForeground>
-        <GridRowBalancer columns={2} elementRows={3}>
-          <InputAdapter
-            isRequired
-            isReadOnly={isReadOnly}
-            isDescriptionHidden={isReadOnly}
-            name={supplyFormFields.name}
-            placeholder={translate('supply.name.description')}
-            label={translate('supply.name')}
-            size="xs"
-            control={control}
-            columnIndex={1}
-          />
-          <DropdownAdapter
-            isRequired
-            isReadOnly={isReadOnly}
-            isDescriptionHidden={isReadOnly}
-            name={supplyFormFields.supplier}
-            items={suppliesDropdownList}
-            placeholder={translate('supply.supplier.description')}
-            label={translate('supply.supplier')}
-            size="xs"
-            control={control}
-            columnIndex={2}
-          />
-          <DropdownAdapter
-            isRequired
-            isReadOnly={isReadOnly}
-            isDescriptionHidden={isReadOnly}
-            name={supplyFormFields.warehouse}
-            items={warehousesDropdownList}
-            placeholder={translate('supply.warehouse.description')}
-            label={translate('supply.warehouse')}
-            size="xs"
-            control={control}
-            columnIndex={3}
-          />
-        </GridRowBalancer>
-      </SectionForeground>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <SectionForeground>
+          <GridRowBalancer columns={2} elementRows={3}>
+            <InputAdapter
+              isRequired
+              isReadOnly={isReadOnly}
+              isDescriptionHidden={isReadOnly}
+              name={supplyFormFields.name}
+              placeholder={translate('supply.name.description')}
+              label={translate('supply.name')}
+              size="xs"
+              control={control}
+              columnIndex={1}
+            />
+            <DropdownAdapter
+              isRequired
+              isReadOnly={isReadOnly}
+              isDescriptionHidden={isReadOnly}
+              name={supplyFormFields.supplier}
+              items={suppliesDropdownList}
+              placeholder={translate('supply.supplier.description')}
+              label={translate('supply.supplier')}
+              size="xs"
+              control={control}
+              columnIndex={2}
+            />
+            <DropdownAdapter
+              isRequired
+              isReadOnly={isReadOnly}
+              isDescriptionHidden={isReadOnly}
+              name={supplyFormFields.warehouse}
+              items={warehousesDropdownList}
+              placeholder={translate('supply.warehouse.description')}
+              label={translate('supply.warehouse')}
+              size="xs"
+              control={control}
+              columnIndex={3}
+            />
+          </GridRowBalancer>
+        </SectionForeground>
 
-      <SupplyProductsList
-        control={control}
-        setValue={setValue}
-        getValues={getValues}
-        listData={fields}
-        listCommonName={supplyFormArrayFields.products}
-        onRemoveProduct={remove}
-        handleAddProduct={append}
-      />
+        <SupplyProductsList
+          control={control}
+          setValue={setValue}
+          getValues={getValues}
+          listData={fields}
+          listCommonName={supplyFormArrayFields.products}
+          onRemoveProduct={handleRemoveProduct}
+          handleAddProduct={append}
+        />
 
-      {!isReadOnly && (
-        <FormContent>
-          <Button variant="primary" type="submit">
-            {shouldUpdateProduct ? translate('update') : translate('add')}
-          </Button>
-        </FormContent>
-      )}
-    </Form>
+        {!isReadOnly && (
+          <FormContent>
+            <Button variant="primary" type="submit">
+              {shouldUpdateProduct ? translate('update') : translate('add')}
+            </Button>
+          </FormContent>
+        )}
+      </Form>
+      <Modal
+        isModalFooterHidden
+        isNoFocusableElements
+        isOpen={isRemoveDisabledOpen}
+        onClose={removeDisabledModal}
+      >
+        {translate('supply.warning.deleteOneProduct')}
+      </Modal>
+    </>
   );
 };

@@ -42,7 +42,7 @@ export type DropdownProps = {
   isValid?: boolean;
   hasMultiselect?: boolean;
   onBlur?: () => void;
-  onChange?: (value: DropdownValue) => void;
+  onChange?: (value: DropdownValue, isSelected: boolean) => void;
   itemValueGetter?: (item: any) => string | string[] | null;
   ariaLabel?: string;
   ariaLabelledBy?: string;

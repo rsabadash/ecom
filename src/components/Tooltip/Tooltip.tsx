@@ -52,7 +52,8 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
     setPositionState(undefined);
   }, []);
 
-  const { setCurrentElement } = useOutsideElementClick({
+  useOutsideElementClick({
+    ref: tooltipContentRef,
     dependency: isOpen,
     listenKeyboard: true,
     handleClick: closeTooltip,
@@ -99,10 +100,9 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
 
   useEffect(() => {
     if (isOpen) {
-      setCurrentElement(tooltipContentRef.current);
       defineTooltipContentPosition();
     }
-  }, [defineTooltipContentPosition, isOpen, setCurrentElement]);
+  }, [defineTooltipContentPosition, isOpen]);
 
   const onResize = useMemo(
     () => debounce(defineTooltipContentPosition, 500),

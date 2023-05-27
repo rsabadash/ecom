@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, KeyboardEvent } from 'react';
 import { LinkProps } from 'react-router-dom';
 import { buttonSize, buttonType, buttonVariant } from './constants';
 
@@ -9,6 +9,7 @@ export type ButtonProps = {
   variant?: ValuesOfObject<typeof buttonVariant>;
   isDisabled?: boolean;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
   ariaLabel?: string;
   ariaExpanded?: boolean;
   ariaControls?: string;

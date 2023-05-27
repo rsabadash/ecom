@@ -9,6 +9,7 @@ export const common = {
   delete: 'Delete',
   cancel: 'Cancel',
   save: 'Save',
+  approve: 'Approve',
   generate: 'Generate',
   notSelected: 'Not selected',
   signOut: 'Sign out',
@@ -30,4 +31,5 @@ export const common = {
   [`unit.${UNIT_CODE.ITEM}`]: 'Item',
 
   'error.dropdown.unsupportedValue': 'The selected value is not supported',
+  'modal.close': 'Close the modal window',
 };

@@ -40,7 +40,7 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [focusIndex, setFocusIndex] = useState<number>(INDEX_ABSENCE_FOCUS);
-  const [isKeyboardControl, setIsKeyboardControl] = useState(false);
+  const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
   const [positionState, setPositionState] = useState<Position | undefined>(
     undefined,
   );
@@ -48,8 +48,8 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
     undefined,
   );
 
-  const menuButtonRef = useRef<HTMLDivElement>(null);
-  const menuListRef = useRef<HTMLUListElement>(null);
+  const menuButtonRef = useRef<HTMLDivElement | null>(null);
+  const menuListRef = useRef<HTMLUListElement | null>(null);
 
   const getPositionFormulaInitiator = useCallback(
     (elementPosition: Position): number => {
@@ -178,14 +178,11 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
     setIsOpen(true);
   };
 
-  const { setCurrentElement } = useOutsideElementClick({
+  useOutsideElementClick({
+    ref: menuListRef,
     dependency: isOpen,
     handleClick: closeMenu,
   });
-
-  useEffect(() => {
-    setCurrentElement(menuButtonRef.current);
-  }, [setCurrentElement]);
 
   useLayoutEffect(() => {
     if (isOpen && focusIndex !== INDEX_ABSENCE_FOCUS) {
@@ -247,7 +244,7 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
     setFocusIndex(index);
   };
 
-  const keyboardItemSelection = () => {
+  const keyboardItemSelection = (): void => {
     const currentItem = items[focusIndex];
 
     currentItem.action();
@@ -344,10 +341,15 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
                   isKeyboardControl && focusIndex === index,
               });
 
+              const handleItemAction = () => {
+                action();
+                closeMenu();
+              };
+
               return (
                 <li
                   key={id}
-                  onClick={action}
+                  onClick={handleItemAction}
                   role="menuitem"
                   className={menuListItemClass}
                 >

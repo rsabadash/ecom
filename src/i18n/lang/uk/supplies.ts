@@ -30,4 +30,6 @@ export const supplies = {
     "Загальна вартість товарів є обов'язковою",
   'supply.product.unit': 'Одиниця продажу',
   'supply.addProduct': 'Додати товар до постачання',
+  'supply.warning.deleteOneProduct':
+    'Неможливо видалити товар, якщо він єдиний у списку',
 };
