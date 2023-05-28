@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
-  RowCustomRenderArgs,
+  RowCustomRenderProps,
   Table,
   TableColumnGeneric,
 } from '../../../components/Table';
@@ -27,7 +27,7 @@ export const AttributesList = () => {
         row,
         item,
         rowProps,
-      }: RowCustomRenderArgs<Attribute>) => (
+      }: RowCustomRenderProps<Attribute>) => (
         <Link
           key={item._id}
           to={`${routes.attributes.root}/${item._id}`}

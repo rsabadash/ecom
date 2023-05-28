@@ -27,7 +27,7 @@ export type TableBodyRowProps = {
   ['aria-rowindex']: number;
 };
 
-export type RowCustomRenderArgs<I = any> = {
+export type RowCustomRenderProps<I = any> = {
   row: ReactNode;
   item: I;
   rowProps: TableBodyRowProps;
@@ -40,7 +40,7 @@ export type TableProps = {
   items: Record<string, any>[];
   tableRole?: ValuesOfObject<typeof tableRoles>;
   columns: TableColumn<Record<string, any>>[];
-  rowCustomRender?: (args: RowCustomRenderArgs) => ReactNode;
+  rowCustomRender?: (args: RowCustomRenderProps) => ReactNode;
   bottomPanelNode?: ReactNode;
   tableRowRenderKey?: string;
 };

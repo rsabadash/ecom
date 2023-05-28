@@ -2,5 +2,5 @@ export { Table } from './Table';
 export type {
   TableColumn,
   TableColumnGeneric,
-  RowCustomRenderArgs,
+  RowCustomRenderProps,
 } from './types';

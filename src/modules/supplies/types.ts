@@ -48,12 +48,16 @@ export type SupplyFormSubFields = Record<
   keyof SupplyProduct
 >;
 
+export type SupplyProductWitFieldArrayId = SupplyProduct & {
+  id: string;
+};
+
 export type SupplyProductsListProps = {
   control: Control<SupplyFormValues>;
   setValue: UseFormSetValue<SupplyFormValues>;
   getValues: UseFormGetValues<SupplyFormValues>;
   onRemoveProduct: (index: number) => void;
-  listData: SupplyProduct[];
+  listData: SupplyProductWitFieldArrayId[];
   listCommonName: ValuesOfObject<typeof supplyFormArrayFields>;
   handleAddProduct: (value: SupplyProduct) => void;
 };

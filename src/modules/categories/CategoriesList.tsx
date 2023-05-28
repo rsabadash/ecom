@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
-  RowCustomRenderArgs,
+  RowCustomRenderProps,
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
@@ -25,7 +25,7 @@ export const CategoriesList = () => {
         row,
         item,
         rowProps,
-      }: RowCustomRenderArgs<Category>) => (
+      }: RowCustomRenderProps<Category>) => (
         <Link
           key={item._id}
           to={`${routes.categories.root}/${item._id}`}

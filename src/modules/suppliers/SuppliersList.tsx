@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { TABLE_SUPPLIERS_ID } from './constants';
 import {
-  RowCustomRenderArgs,
+  RowCustomRenderProps,
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
@@ -25,7 +25,7 @@ export const SuppliersList = () => {
         row,
         item,
         rowProps,
-      }: RowCustomRenderArgs<Supplier>) => (
+      }: RowCustomRenderProps<Supplier>) => (
         <Link
           key={item._id}
           to={`${routes.suppliers.root}/${item._id}`}

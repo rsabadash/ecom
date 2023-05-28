@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { generatePath, Link } from 'react-router-dom';
 import {
-  RowCustomRenderArgs,
+  RowCustomRenderProps,
   Table,
   TableColumnGeneric,
 } from '../../../components/Table';
@@ -24,7 +24,7 @@ export const VariantsList: FC<VariantsListProps> = ({ variants }) => {
         row,
         item,
         rowProps,
-      }: RowCustomRenderArgs<VariantWithAttribute>) => {
+      }: RowCustomRenderProps<VariantWithAttribute>) => {
         const variantDetailPath = generatePath(
           routes.attributes.variantDetail,
           {

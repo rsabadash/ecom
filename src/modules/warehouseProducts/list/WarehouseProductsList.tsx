@@ -2,7 +2,7 @@ import { useCachedAPI } from '../../../hooks';
 import { endpoints } from '../../../common/constants/api';
 import { useWarehouseProductsTableColumns } from './hooks';
 import {
-  RowCustomRenderArgs,
+  RowCustomRenderProps,
   Table,
   TableColumnGeneric,
 } from '../../../components/Table';
@@ -31,7 +31,7 @@ export const WarehouseProductsList = () => {
         row,
         item,
         rowProps,
-      }: RowCustomRenderArgs<WarehouseProduct>) => (
+      }: RowCustomRenderProps<WarehouseProduct>) => (
         <WarehouseProductsListItem
           key={item._id}
           item={item}
