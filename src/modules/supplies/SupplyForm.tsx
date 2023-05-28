@@ -69,7 +69,7 @@ export const SupplyForm: FC<SupplyFormProps> = ({
     [fields.length, remove],
   );
 
-  const removeDisabledModal = () => {
+  const closeRemoveDisabledModal = () => {
     setIsRemoveDisabledOpen(false);
   };
 
@@ -138,7 +138,7 @@ export const SupplyForm: FC<SupplyFormProps> = ({
         isModalFooterHidden
         isNoFocusableElements
         isOpen={isRemoveDisabledOpen}
-        onClose={removeDisabledModal}
+        onClose={closeRemoveDisabledModal}
       >
         {translate('supply.warning.deleteOneProduct')}
       </Modal>
