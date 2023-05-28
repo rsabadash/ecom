@@ -1,14 +1,10 @@
-import { FC, useCallback, useState } from 'react';
+import { FC } from 'react';
 import { useTranslation } from '../../components/IntlProvider';
 import {
   DropdownAdapter,
   InputAdapter,
 } from '../../components/FormFieldsAdapter';
-import {
-  initialDefaultValues,
-  supplyFormArrayFields,
-  supplyFormFields,
-} from './constants';
+import { initialDefaultValues, supplyFormFields } from './constants';
 import { Button } from '../../components/Button';
 import { SupplyFormProps } from './types';
 import { useSupplyForm, useSupplyFormSubmit } from './hooks';
@@ -18,9 +14,7 @@ import { useCachedAPI } from '../../hooks';
 import { DropdownItem } from '../../components/Fields/Dropdown';
 import { endpoints, path } from '../../common/constants/api';
 import { SectionForeground } from '../../layouts/Section';
-import { useFieldArray } from 'react-hook-form';
 import { SupplyProductsList } from './SupplyProductsList';
-import { Modal } from '../../components/Modal';
 
 export const SupplyForm: FC<SupplyFormProps> = ({
   id,
@@ -33,9 +27,6 @@ export const SupplyForm: FC<SupplyFormProps> = ({
   const { data: warehousesDropdownList } = useCachedAPI<DropdownItem[]>(
     `${endpoints.warehouses.root}${path.dropdownList}`,
   );
-
-  const [isRemoveDisabledOpen, setIsRemoveDisabledOpen] =
-    useState<boolean>(false);
 
   const { translate } = useTranslation();
 
@@ -50,28 +41,8 @@ export const SupplyForm: FC<SupplyFormProps> = ({
     submitHandler: handleFormSubmit,
   });
 
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: supplyFormArrayFields.products,
-  });
-
   const shouldUpdateProduct =
     defaultValues && Object.keys(defaultValues).length > 0;
-
-  const handleRemoveProduct = useCallback(
-    (index: number): void => {
-      if (fields.length > 1) {
-        remove(index);
-      } else {
-        setIsRemoveDisabledOpen(true);
-      }
-    },
-    [fields.length, remove],
-  );
-
-  const closeRemoveDisabledModal = () => {
-    setIsRemoveDisabledOpen(false);
-  };
 
   return (
     <>
@@ -120,10 +91,6 @@ export const SupplyForm: FC<SupplyFormProps> = ({
           control={control}
           setValue={setValue}
           getValues={getValues}
-          listData={fields}
-          listCommonName={supplyFormArrayFields.products}
-          onRemoveProduct={handleRemoveProduct}
-          handleAddProduct={append}
         />
 
         {!isReadOnly && (
@@ -134,14 +101,6 @@ export const SupplyForm: FC<SupplyFormProps> = ({
           </FormContent>
         )}
       </Form>
-      <Modal
-        isModalFooterHidden
-        isNoFocusableElements
-        isOpen={isRemoveDisabledOpen}
-        onClose={closeRemoveDisabledModal}
-      >
-        {translate('supply.warning.deleteOneProduct')}
-      </Modal>
     </>
   );
 };

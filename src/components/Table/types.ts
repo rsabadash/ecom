@@ -31,6 +31,7 @@ export type RowCustomRenderProps<I = any> = {
   row: ReactNode;
   item: I;
   rowProps: TableBodyRowProps;
+  rowIndex: number;
 };
 
 export type TableProps = {
@@ -40,7 +41,7 @@ export type TableProps = {
   items: Record<string, any>[];
   tableRole?: ValuesOfObject<typeof tableRoles>;
   columns: TableColumn<Record<string, any>>[];
-  rowCustomRender?: (args: RowCustomRenderProps) => ReactNode;
+  rowCustomRender?: (props: RowCustomRenderProps) => ReactNode;
   bottomPanelNode?: ReactNode;
   tableRowRenderKey?: string;
 };

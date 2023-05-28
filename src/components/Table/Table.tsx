@@ -191,7 +191,7 @@ export const Table: FC<TableProps> = ({
             );
 
             return rowCustomRender ? (
-              rowCustomRender({ row, item, rowProps })
+              rowCustomRender({ row, item, rowProps, rowIndex: index })
             ) : (
               <div key={rowKey} {...rowProps}>
                 {row}
