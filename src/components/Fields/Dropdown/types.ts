@@ -29,6 +29,7 @@ export type DropdownValue<V = DropdownItemValue, I = DropdownItemId, M = any> =
   | DropdownItem<V, I, M>[];
 
 export type DropdownProps = {
+  id?: string;
   name: string;
   value?: DropdownValue;
   size?: ValuesOfObject<typeof SIZE>;

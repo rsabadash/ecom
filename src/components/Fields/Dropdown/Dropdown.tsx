@@ -23,6 +23,7 @@ import classes from './styles/index.module.css';
 const LIST_CONTROL_ID = Date.now().toString();
 
 export const Dropdown: FC<DropdownProps> = ({
+  id,
   name,
   value,
   size = SIZE.M,
@@ -368,13 +369,14 @@ export const Dropdown: FC<DropdownProps> = ({
   const dropdownClassName = clsx(classes.dropdown, {
     [classes.dropdown_noValue]: !viewValue,
     [classes.dropdown_readOnly]: isReadOnly,
-    [classes.dropdown_invalid]: !isValid,
+    [classes.dropdown_invalid]: isValid !== undefined && !isValid,
     [classes[`dropdown_${size}`]]: size !== SIZE.M,
   });
 
   return (
     <div className={classes.dropdownWrapper}>
       <div
+        id={id || name}
         role="combobox"
         aria-disabled={isDisabled}
         aria-required={isRequired}

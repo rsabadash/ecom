@@ -7,7 +7,7 @@
 }
 
 .table__header {
-  color: var(--foreground-700);
+  color: var(--text-color-dimmed);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -34,7 +34,6 @@
 
 .table__body a {
   text-decoration: none;
-  color: var(--text-color);
 }
 
 .table__row {

@@ -3,13 +3,18 @@ import { useAPI } from './useAPI';
 import { PublicConfiguration } from 'swr/_internal';
 
 type UseCachedAPIOptions = Partial<
-  Pick<PublicConfiguration, 'dedupingInterval'>
+  Pick<
+    PublicConfiguration,
+    'dedupingInterval' | 'suspense' | 'keepPreviousData'
+  >
 > & {
   shouldFetch?: boolean;
 };
 
 const defaultOptions: UseCachedAPIOptions = {
   shouldFetch: true,
+  suspense: true,
+  keepPreviousData: false,
 };
 
 export const useCachedAPI = <D>(
@@ -22,7 +27,6 @@ export const useCachedAPI = <D>(
   const fetchUrl = shouldFetch ? url : null;
 
   return useSWR<D | undefined>(fetchUrl, GET, {
-    suspense: true,
     revalidateOnFocus: false,
     errorRetryCount: 0,
     shouldRetryOnError: false,

@@ -15,6 +15,13 @@ export const common = {
   signOut: 'Вийти',
   sortOrder: 'Порядок сортування',
 
+  pagination: 'Пагінація',
+  'pagination.limit': 'Елементів на сторінці',
+
+  page: 'Сторінка',
+  'page.next': 'Наступна сторінка',
+  'page.previous': 'Попередня сторінка',
+
   'uk.adjective': 'українськю',
   'en.adjective': 'англійською',
 

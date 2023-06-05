@@ -5,4 +5,6 @@ export { useCustomNavigate } from './useCustomNavigate';
 export { useLocalStorage } from './useLocalStorage';
 export { useOutsideElementClick } from './useOutsideElementClick';
 export { usePreviousActiveElement } from './usePreviousActiveElement';
+export { usePreviousPersistent } from './usePreviousPersistent';
+export { useQueryParameters } from './useQueryParameters';
 export { useSessionStorage } from './useSessionStorage';

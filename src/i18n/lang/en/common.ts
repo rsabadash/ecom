@@ -15,6 +15,13 @@ export const common = {
   signOut: 'Sign out',
   sortOrder: 'Sort order',
 
+  pagination: 'Pagination',
+  'pagination.limit': 'Items per page',
+
+  page: 'Page',
+  'page.next': 'Next page',
+  'page.previous': 'Previous page',
+
   'uk.adjective': 'Ukrainian',
   'en.adjective': 'English',
 

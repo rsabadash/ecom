@@ -1,6 +1,7 @@
 .dropdownWrapper {
   position: relative;
   font-size: var(--font-size-m);
+  min-width: 5em;
 }
 
 .dropdown {
