@@ -113,7 +113,7 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
       prevSummaryTotalCostRef.current = value;
     }
   };
-
+  // TODO Show modal if user want to select item that already selected
   return (
     <InputWithTooltipAdapter
       isRequired

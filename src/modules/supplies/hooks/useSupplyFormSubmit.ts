@@ -18,12 +18,13 @@ const mapValueToPostData = (value: SupplyFormValues): SupplyPostData => {
     // That hack is added as we have required validation for each field, so they can not be empty
     // In type we added null as we want to initialize the default first item with empty values
     const requiredProduct = product as RequiredSupplyProduct;
-    const { name, unit, ...restProductValue } = requiredProduct;
+    const { name, price, totalCost, quantity } = requiredProduct;
 
     return {
-      ...restProductValue,
-      nameId: name.id,
-      unit: unit.id,
+      price,
+      totalCost,
+      quantity,
+      productId: name.id,
     };
   });
 
@@ -41,9 +42,8 @@ export const useSupplyFormSubmit = (): UseSupplyFormSubmitReturn => {
   const handleFormSubmit = useCallback(
     async (values: SupplyFormValues) => {
       const createSupplyData = mapValueToPostData(values);
-      console.log(values);
-      console.log(createSupplyData);
-      // await createSupply(createSupplyData);
+
+      await createSupply(createSupplyData);
     },
     [createSupply],
   );

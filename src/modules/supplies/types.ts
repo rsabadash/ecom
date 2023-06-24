@@ -85,8 +85,7 @@ export type SupplyProductSummaryProps = {
 };
 
 export type SupplyPostProductData = {
-  nameId: string;
-  unit: Unit;
+  productId: string;
   price: string;
   quantity: string;
   totalCost: string;
