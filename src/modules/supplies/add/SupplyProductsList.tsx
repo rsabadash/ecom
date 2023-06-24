@@ -1,13 +1,13 @@
 import { FC, useCallback, useState } from 'react';
 import { useFieldArray } from 'react-hook-form';
 import { SupplyProductListColumn, SupplyProductsListProps } from './types';
-import { Table, TableColumnGeneric } from '../../components/Table';
+import { Table, TableColumnGeneric } from '../../../components/Table';
 import { useSupplyProductsTableColumns } from './hooks';
-import { Button } from '../../components/Button';
+import { Button } from '../../../components/Button';
 import { defaultProductValue, supplyFormArrayFields } from './constants';
-import { useTranslation } from '../../components/IntlProvider';
+import { useTranslation } from '../../../components/IntlProvider';
 import { SupplyProductSummary } from './SupplyProductSummary';
-import { Modal } from '../../components/Modal';
+import { Modal } from '../../../components/Modal';
 import classes from './styles/index.module.css';
 
 export const SupplyProductsList: FC<SupplyProductsListProps> = ({

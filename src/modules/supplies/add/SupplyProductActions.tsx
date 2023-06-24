@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Menu, MenuItem } from '../../components/Menu';
-import { ReactComponent as VerticalDotsIcon } from '../../assets/icons/VerticalDots.svg';
+import { Menu, MenuItem } from '../../../components/Menu';
+import { ReactComponent as VerticalDotsIcon } from '../../../assets/icons/VerticalDots.svg';
 import { SupplyProductActionsProps } from './types';
-import { useTranslation } from '../../components/IntlProvider';
+import { useTranslation } from '../../../components/IntlProvider';
 
 export const SupplyProductActions: FC<SupplyProductActionsProps> = ({
   rowIndex,

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { Control, UseFormGetValues, UseFormSetValue } from 'react-hook-form';
-import { TableColumnGeneric } from '../../../components/Table';
+import { TableColumnGeneric } from '../../../../components/Table';
 import { SupplyFormValues, SupplyProductListColumn } from '../types';
-import { useTranslation } from '../../../components/IntlProvider';
+import { useTranslation } from '../../../../components/IntlProvider';
 import { SupplyProductNameCell } from '../SupplyProductNameCell';
 import { supplyFormArrayFields } from '../constants';
 import { SupplyProductQuantityCell } from '../SupplyProductQuantityCell';

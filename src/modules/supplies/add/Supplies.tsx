@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
-import { ButtonLink } from '../../components/Button';
-import { routes } from '../../common/constants/routes';
-import { useTranslation } from '../../components/IntlProvider';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { ButtonLink } from '../../../components/Button';
+import { routes } from '../../../common/constants/routes';
+import { useTranslation } from '../../../components/IntlProvider';
+import { ErrorBoundary } from '../../../components/ErrorBoundary';
 
 const Supplies = () => {
   const { translate } = useTranslation();

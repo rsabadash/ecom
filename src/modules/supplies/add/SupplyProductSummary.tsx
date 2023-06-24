@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { SupplyProductSummaryProps } from './types';
-import { InputWithTooltipAdapter } from '../../components/FormFieldsAdapter';
+import { InputWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { supplyFormFields, supplyFormProductsSubfields } from './constants';
 import classes from './styles/index.module.css';
-import { useTranslation } from '../../components/IntlProvider';
+import { useTranslation } from '../../../components/IntlProvider';
 
 const columnKeyFieldNameMap = {
   [supplyFormProductsSubfields.quantity]:

@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { DropdownWithTooltipAdapter } from '../../components/FormFieldsAdapter';
+import { DropdownWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { supplyFormProductsSubfields } from './constants';
 import { SupplyProductUnitCellProps } from './types';
-import { useTranslation } from '../../components/IntlProvider';
+import { useTranslation } from '../../../components/IntlProvider';
 
 export const SupplyProductUnitCell: FC<SupplyProductUnitCellProps> = ({
   index,

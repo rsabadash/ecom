@@ -1,12 +1,15 @@
 import { FC } from 'react';
-import { DropdownWithTooltipAdapter } from '../../components/FormFieldsAdapter';
-import { useCachedAPI } from '../../hooks';
-import { DropdownItem, DropdownValue } from '../../components/Fields/Dropdown';
-import { endpoints, path } from '../../common/constants/api';
-import { useTranslation } from '../../components/IntlProvider';
+import { DropdownWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
+import { useCachedAPI } from '../../../hooks';
+import {
+  DropdownItem,
+  DropdownValue,
+} from '../../../components/Fields/Dropdown';
+import { endpoints, path } from '../../../common/constants/api';
+import { useTranslation } from '../../../components/IntlProvider';
 import { ProductNameDropdownMeta, SupplyProductCellProps } from './types';
 import { supplyFormProductsSubfields } from './constants';
-import { getDropdownMeta } from '../../utils';
+import { getDropdownMeta } from '../../../utils';
 import { useFormState } from 'react-hook-form';
 
 const { quantity: quantitySubfield, unit: unitSubfield } =

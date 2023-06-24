@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { Control, UseFormGetValues, UseFormSetValue } from 'react-hook-form';
-import { DropdownItemObject } from '../../components/Fields/Dropdown';
+import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { supplyFormArrayFields } from './constants';
-import { TableColumnGeneric } from '../../components/Table';
-import { Unit } from '../../common/types/unit';
+import { TableColumnGeneric } from '../../../components/Table';
+import { Unit } from '../../../common/types/unit';
 
 export type SupplyFormValues = {
   name: string;
