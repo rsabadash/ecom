@@ -2,8 +2,8 @@ export const supplies = {
   supplies: 'Supplies',
   'supply.add': 'Add supply',
   'supply.name': 'Supply name',
-  'supply.name.description': 'Enter supply name',
-  'supply.name.error.required': 'Supply name is required',
+  'supply.name.description':
+    'Enter supply name or it will be automatically generated',
   'supply.supplier': 'Supplier',
   'supply.supplier.description': 'Select a supplier',
   'supply.supplier.error.required': 'Supplier is required',
@@ -26,8 +26,10 @@ export const supplies = {
   'supply.product.totalCostProducts.error.required':
     'Total cost of products is required',
   'supply.product.totalCost.error.required': 'Total cost is required',
-  'supply.product.unit': 'Unit of sale',
+  'supply.product.unit': 'Storage unit',
   'supply.addProduct': 'Add a product to the supply',
   'supply.warning.deleteOneProduct':
     'It is not possible to delete a product if it is the only one in the list',
+  'supply.date': 'Date and time',
+  'supply.from': 'Supply from',
 };

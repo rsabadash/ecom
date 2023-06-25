@@ -9,16 +9,14 @@ type TableCellValueGetterProps<K> = {
 
 export type TableColumn<K> = {
   title: string;
-  key: string;
+  key: keyof K;
   width: string;
   align?: ValuesOfObject<typeof horizontalAlignment>;
   isHidden?: boolean;
   valueGetter?: (props: TableCellValueGetterProps<K>) => ReactNode;
 };
 
-export type TableColumnGeneric<K> = Omit<TableColumn<K>, 'key'> & {
-  key: keyof K;
-};
+export type TableColumnGeneric<K> = TableColumn<K>;
 
 export type TableBodyRowProps = {
   tabIndex: -1 | 0;
@@ -44,4 +42,10 @@ export type TableProps = {
   rowCustomRender?: (props: RowCustomRenderProps) => ReactNode;
   bottomPanelNode?: ReactNode;
   tableRowRenderKey?: string;
+};
+
+export type TablePaginationProps = {
+  total: number;
+  limitValue: number;
+  setLimitValue: (value: number) => void;
 };

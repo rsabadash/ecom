@@ -49,17 +49,6 @@ export const SupplyForm: FC<SupplyFormProps> = ({
       <Form onSubmit={handleSubmit}>
         <SectionForeground>
           <GridRowBalancer columns={2} elementRows={3}>
-            <InputAdapter
-              isRequired
-              isReadOnly={isReadOnly}
-              isDescriptionHidden={isReadOnly}
-              name={supplyFormFields.name}
-              placeholder={translate('supply.name.description')}
-              label={translate('supply.name')}
-              size="xs"
-              control={control}
-              columnIndex={1}
-            />
             <DropdownAdapter
               isRequired
               isReadOnly={isReadOnly}
@@ -70,7 +59,7 @@ export const SupplyForm: FC<SupplyFormProps> = ({
               label={translate('supply.supplier')}
               size="xs"
               control={control}
-              columnIndex={2}
+              columnIndex={1}
             />
             <DropdownAdapter
               isRequired
@@ -80,6 +69,16 @@ export const SupplyForm: FC<SupplyFormProps> = ({
               items={warehousesDropdownList}
               placeholder={translate('supply.warehouse.description')}
               label={translate('supply.warehouse')}
+              size="xs"
+              control={control}
+              columnIndex={2}
+            />
+            <InputAdapter
+              isReadOnly={isReadOnly}
+              isDescriptionHidden={isReadOnly}
+              name={supplyFormFields.name}
+              placeholder={translate('supply.name.description')}
+              label={translate('supply.name')}
               size="xs"
               control={control}
               columnIndex={3}

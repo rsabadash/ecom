@@ -2,8 +2,8 @@ export const supplies = {
   supplies: 'Постачання',
   'supply.add': 'Додати постачання',
   'supply.name': 'Назва постачання',
-  'supply.name.description': 'Введіть назву постачання',
-  'supply.name.error.required': "Назва постачання є обов'язковою",
+  'supply.name.description':
+    'Введіть назву постачання або воно буде згенероване автоматично',
   'supply.supplier': 'Постачальник',
   'supply.supplier.description': 'Оберіть постачальника',
   'supply.supplier.error.required': "Постачальник є обов'язковим",
@@ -28,8 +28,10 @@ export const supplies = {
   'supply.product.totalCostProducts': 'Загальна вартість товарів',
   'supply.product.totalCostProducts.error.required':
     "Загальна вартість товарів є обов'язковою",
-  'supply.product.unit': 'Одиниця продажу',
+  'supply.product.unit': 'Одиниця зберігання',
   'supply.addProduct': 'Додати товар до постачання',
   'supply.warning.deleteOneProduct':
     'Неможливо видалити товар, якщо він єдиний у списку',
+  'supply.date': 'Дата та час',
+  'supply.from': 'Постачання від',
 };

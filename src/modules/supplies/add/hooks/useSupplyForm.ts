@@ -30,10 +30,7 @@ type UseSupplyFormReturn = Pick<
 >;
 
 const schema = yup.object().shape<YupSchemaKey<SupplyFormValues>>({
-  [supplyFormFields.name]: yup
-    .string()
-    .nullable()
-    .required('supply.name.error.required'),
+  [supplyFormFields.name]: yup.string().nullable(),
   [supplyFormFields.supplier]: yup
     .object()
     .nullable()

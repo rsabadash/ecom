@@ -4,6 +4,8 @@ import { ButtonLink } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';
 import { useTranslation } from '../../../components/IntlProvider';
 import { ErrorBoundary } from '../../../components/ErrorBoundary';
+import { SuppliesList } from './SuppliesList';
+import { TABLE_SUPPLIES_ID } from './constants';
 
 const Supplies = () => {
   const { translate } = useTranslation();
@@ -11,7 +13,7 @@ const Supplies = () => {
   return (
     <>
       <Top>
-        <TopHeading>{translate('supplies')}</TopHeading>
+        <TopHeading id={TABLE_SUPPLIES_ID}>{translate('supplies')}</TopHeading>
         <TopButtons>
           <ButtonLink variant="primary" to={routes.supplies.add}>
             {translate('add')}
@@ -20,7 +22,7 @@ const Supplies = () => {
       </Top>
       <ErrorBoundary fallback="Error boundary Supplies list">
         <Suspense fallback="Suspense Supplies list">
-          <div />
+          <SuppliesList />
         </Suspense>
       </ErrorBoundary>
     </>

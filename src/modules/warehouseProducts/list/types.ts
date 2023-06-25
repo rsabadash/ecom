@@ -44,9 +44,3 @@ export type WarehouseProductsListItemRowProps = {
 export type WarehouseProductsListAttributesProps = {
   item: WarehouseProduct;
 };
-
-export type WarehouseProductsListPaginationProps = {
-  total: number;
-  limitValue: number;
-  setLimitValue: (value: number) => void;
-};

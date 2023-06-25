@@ -86,3 +86,14 @@
   align-items: center;
   padding: 1em;
 }
+
+.table__paginationBlock {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.table__Pagination {
+  display: flex;
+  justify-content: center;
+}

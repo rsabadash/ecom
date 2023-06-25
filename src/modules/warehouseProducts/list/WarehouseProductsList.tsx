@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { useCachedAPI, useQueryParameters } from '../../../hooks';
+import { useEffect, useRef } from 'react';
+import { useCachedAPI } from '../../../hooks';
 import { endpoints } from '../../../common/constants/api';
 import { useWarehouseProductsTableColumns } from './hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
+  TablePagination,
 } from '../../../components/Table';
 import { WarehouseProduct, WarehouseProductTable } from './types';
 import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
@@ -13,20 +14,20 @@ import { WarehouseProductsListItem } from './WarehouseProductsListItem';
 import { tableRoles } from '../../../components/Table/constants';
 import { PaginationData } from '../../../common/types/pagination';
 import { getPaginationData } from '../../../utils';
-import { LIMIT_DEFAULT } from '../../../components/Pagination';
-import { LIMIT } from '../../../common/constants/filters';
-import { WarehouseProductsListPagination } from './WarehouseProductsListPagination';
+import {
+  usePaginationLimit,
+  usePaginationUrl,
+} from '../../../components/Pagination/hooks';
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsList = () => {
   const isLoadedRef = useRef<boolean>(false);
-  const [limitValue, setLimitValue] = useState<number>(LIMIT_DEFAULT);
 
-  const { queryParameters } = useQueryParameters();
-
-  const GET_WAREHOUSE_PRODUCTS_URL = queryParameters
-    ? `${endpoints.warehouseProducts.root}/?${LIMIT}=${limitValue}&${queryParameters}`
-    : `${endpoints.warehouseProducts.root}/?${LIMIT}=${limitValue}`;
+  const { limitValue, setLimitValue } = usePaginationLimit();
+  const GET_WAREHOUSE_PRODUCTS_URL = usePaginationUrl({
+    url: endpoints.warehouseProducts.root,
+    limit: limitValue,
+  });
 
   const { data } = useCachedAPI<PaginationData<WarehouseProduct>>(
     GET_WAREHOUSE_PRODUCTS_URL,
@@ -68,11 +69,13 @@ export const WarehouseProductsList = () => {
         </WarehouseProductsListItem>
       )}
       bottomPanelNode={
-        <WarehouseProductsListPagination
-          total={total}
-          limitValue={limitValue}
-          setLimitValue={setLimitValue}
-        />
+        total > limitValue && (
+          <TablePagination
+            total={total}
+            limitValue={limitValue}
+            setLimitValue={setLimitValue}
+          />
+        )
       }
     />
   );

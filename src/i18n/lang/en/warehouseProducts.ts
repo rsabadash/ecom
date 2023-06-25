@@ -11,10 +11,10 @@ export const warehouseProducts = {
     'Enter general product name in {language}',
   'warehouseProduct.name.error.required':
     'General product name in {language} is required',
-  'warehouseProduct.unit': 'Unit of sale',
+  'warehouseProduct.unit': 'Storage unit',
   'warehouseProduct.unit.description':
     'Choose the unit in which the product will be sold',
-  'warehouseProduct.unit.error.required': 'Unit of sale is required',
+  'warehouseProduct.unit.error.required': 'Storage unit is required',
   'warehouseProduct.generatedName': 'Generated product name',
   'warehouseProduct.generatedName.description':
     'Enter or edit generated product name in {language}',

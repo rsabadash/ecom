@@ -9,11 +9,11 @@ import { CollapseBuilderButton } from '../../../../components/Collapse';
 import { horizontalAlignment } from '../../../../components/Table/constants';
 import { Unit } from '../../../../common/types/unit';
 
-type UseWarehouseProductsTableColumns =
-  () => TableColumnGeneric<WarehouseProductTable>[];
+type UseWarehouseProductsTableColumnsReturn =
+  TableColumnGeneric<WarehouseProductTable>[];
 
-export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns =
-  () => {
+export const useWarehouseProductsTableColumns =
+  (): UseWarehouseProductsTableColumnsReturn => {
     const { translate, language } = useTranslation();
 
     return useMemo<TableColumnGeneric<WarehouseProductTable>[]>(

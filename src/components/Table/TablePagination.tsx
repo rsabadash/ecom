@@ -4,15 +4,17 @@ import {
   LIMIT_ITEMS_DEFAULT,
   Pagination,
   PaginationLimit,
-} from '../../../components/Pagination';
-import { useQueryParameters } from '../../../hooks';
-import { PAGE } from '../../../common/constants/filters';
-import { WarehouseProductsListPaginationProps } from './types';
+} from '../Pagination';
+import { useQueryParameters } from '../../hooks';
+import { PAGE } from '../../common/constants/filters';
+import { TablePaginationProps } from './types';
 import classes from './styles/index.module.css';
 
-export const WarehouseProductsListPagination: FC<
-  WarehouseProductsListPaginationProps
-> = ({ total, limitValue, setLimitValue }) => {
+export const TablePagination: FC<TablePaginationProps> = ({
+  total,
+  limitValue,
+  setLimitValue,
+}) => {
   const { queryParameters, rawQueryParameters } = useQueryParameters();
 
   const initialPage = parseInt(
@@ -20,7 +22,7 @@ export const WarehouseProductsListPagination: FC<
   );
 
   return (
-    <div className={classes.warehouseListPaginationBlock}>
+    <div className={classes.table__paginationBlock}>
       <PaginationLimit
         items={LIMIT_ITEMS_DEFAULT}
         value={limitValue}
@@ -31,7 +33,7 @@ export const WarehouseProductsListPagination: FC<
         total={total}
         initialPage={initialPage}
         queryParameters={queryParameters}
-        paginationClassName={classes.warehouseListPagination}
+        paginationClassName={classes.table__Pagination}
       />
     </div>
   );
