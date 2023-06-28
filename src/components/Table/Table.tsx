@@ -17,6 +17,7 @@ import {
 } from './constants';
 import { EventKeys } from '../../common/enums/events';
 import { KeyIndexMap } from '../Navigation/types';
+import { TableCell } from './TableCell';
 import classes from './styles/index.module.css';
 
 // TODO ARIA for sorting https://www.w3.org/WAI/ARIA/apg/practices/grid-and-table-properties/
@@ -178,14 +179,13 @@ export const Table: FC<TableProps> = ({
                   : item[key];
 
                 return (
-                  <div
+                  <TableCell
                     key={`${rowKey}${title}`}
-                    style={{ width, justifyContent: align }}
-                    className={classes.table__cell}
-                    role="gridcell"
+                    width={width}
+                    align={align}
                   >
                     {rowValue}
-                  </div>
+                  </TableCell>
                 );
               },
             );

@@ -1,0 +1,48 @@
+import { Translations } from '../../../components/IntlProvider';
+import { TableColumnGeneric } from '../../../components/Table';
+
+export type SupplyDetailData = {
+  createdAt: string;
+  name: null | string;
+  products: SupplyDetailProduct[];
+  productsTotalCost: string;
+  productsTotalQuantity: string;
+  supplierId: string;
+  warehouseId: string;
+  _id: string;
+};
+
+export type SupplyDetailProduct = {
+  attributeIds: string[];
+  price: string;
+  productId: string;
+  productName: Translations;
+  quantity: string;
+  totalCost: string;
+  variantIds: string[];
+};
+
+export type SupplyDetailListProps = {
+  products: SupplyDetailProduct[];
+  productsTotalCost: string | undefined;
+  productsTotalQuantity: string | undefined;
+};
+
+export type SupplyDetailListSummaryProps = Pick<
+  SupplyDetailListProps,
+  'productsTotalCost' | 'productsTotalQuantity'
+> & {
+  columns: TableColumnGeneric<SupplyDetailProduct>[];
+};
+
+export type SummaryRow = Record<
+  string,
+  {
+    value: string | undefined;
+    valueGetter?: (value: string) => string;
+  }
+>;
+
+export type SupplyUrlParams = {
+  supplyId: string;
+};

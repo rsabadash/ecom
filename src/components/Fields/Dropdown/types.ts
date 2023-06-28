@@ -33,7 +33,7 @@ export type DropdownProps = {
   name: string;
   value?: DropdownValue;
   size?: ValuesOfObject<typeof SIZE>;
-  items?: DropdownItem[];
+  items?: readonly DropdownItem[];
   customItems?: any[];
   placeholder?: string;
   isReadOnly?: boolean;

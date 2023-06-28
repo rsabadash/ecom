@@ -15,6 +15,7 @@ export const routes = {
   supplies: {
     root: '/supplies',
     add: '/supplies/add',
+    detail: '/supplies/:supplyId',
   },
   attributes: {
     root: '/attributes',

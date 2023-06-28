@@ -1,3 +1,5 @@
+import { LIMIT_ITEMS_DEFAULT } from './constants';
+
 export type PaginationProps = {
   limit: number;
   total: number;
@@ -17,7 +19,9 @@ export type PaginationItemProps = {
 };
 
 export type PaginationLimitProps = {
-  items: number[];
+  items: readonly Limit[];
   value: number;
-  onLimitChange: (value: number) => void;
+  onLimitChange: (value: Limit) => void;
 };
+
+export type Limit = (typeof LIMIT_ITEMS_DEFAULT)[number];

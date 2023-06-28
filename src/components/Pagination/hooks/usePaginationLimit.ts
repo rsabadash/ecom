@@ -1,20 +1,23 @@
 import { useState } from 'react';
-import { LIMIT_DEFAULT } from '../constants';
+import { LIMIT_DEFAULT, LIMIT_ITEMS_DEFAULT } from '../constants';
+import { Limit } from '../types';
 
 type UsePaginationLimitProps = {
-  initialLimit?: number;
+  initialLimit?: Limit;
 };
 
 type UsePaginationLimitReturn = {
-  limitValue: number;
-  setLimitValue: (limit: number) => void;
+  limitValue: Limit;
+  setLimitValue: (limit: Limit) => void;
 };
 
 export const usePaginationLimit = ({
   initialLimit,
 }: UsePaginationLimitProps = {}): UsePaginationLimitReturn => {
-  const [limitValue, setLimitValue] = useState<number>(
-    initialLimit || LIMIT_DEFAULT,
+  const [limitValue, setLimitValue] = useState<Limit>(
+    initialLimit && LIMIT_ITEMS_DEFAULT.includes(initialLimit)
+      ? initialLimit
+      : LIMIT_DEFAULT,
   );
 
   return {

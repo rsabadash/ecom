@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { horizontalAlignment, tableRoles, tableRowRoles } from './constants';
+import { Limit } from '../Pagination/types';
 
 type TableCellValueGetterProps<K> = {
   index: number;
@@ -44,8 +45,10 @@ export type TableProps = {
   tableRowRenderKey?: string;
 };
 
+export type TableCellProps = Pick<TableColumn<any>, 'width' | 'align'>;
+
 export type TablePaginationProps = {
   total: number;
   limitValue: number;
-  setLimitValue: (value: number) => void;
+  setLimitValue: (value: Limit) => void;
 };

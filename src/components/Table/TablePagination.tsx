@@ -1,13 +1,12 @@
 import { FC } from 'react';
 import {
-  INITIAL_PAGE,
   LIMIT_ITEMS_DEFAULT,
   Pagination,
   PaginationLimit,
 } from '../Pagination';
 import { useQueryParameters } from '../../hooks';
-import { PAGE } from '../../common/constants/filters';
 import { TablePaginationProps } from './types';
+import { usePaginationQueryPage } from '../Pagination/hooks';
 import classes from './styles/index.module.css';
 
 export const TablePagination: FC<TablePaginationProps> = ({
@@ -15,11 +14,8 @@ export const TablePagination: FC<TablePaginationProps> = ({
   limitValue,
   setLimitValue,
 }) => {
-  const { queryParameters, rawQueryParameters } = useQueryParameters();
-
-  const initialPage = parseInt(
-    rawQueryParameters.get(PAGE) || INITIAL_PAGE.toString(),
-  );
+  const initialPage = usePaginationQueryPage();
+  const { queryParameters } = useQueryParameters();
 
   return (
     <div className={classes.table__paginationBlock}>

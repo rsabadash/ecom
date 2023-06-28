@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Dropdown } from '../Fields/Dropdown';
-import { PaginationLimitProps } from './types';
+import { Limit, PaginationLimitProps } from './types';
 import { PAGE } from '../../common/constants/filters';
 import { useQueryParameters } from '../../hooks';
 import { Label } from '../Label';
@@ -17,7 +17,7 @@ export const PaginationLimit: FC<PaginationLimitProps> = ({
 
   const { deleteQueryParameters } = useQueryParameters();
 
-  const handleLimitChange = (value: number): void => {
+  const handleLimitChange = (value: Limit): void => {
     onLimitChange(value);
     deleteQueryParameters(PAGE);
   };
