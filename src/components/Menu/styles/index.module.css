@@ -10,6 +10,7 @@
     outline: none;
     cursor: pointer;
     border-radius: var(--radius-regular);
+    transition: box-shadow var(--transition);
 }
 
 .menuButton:focus-visible {

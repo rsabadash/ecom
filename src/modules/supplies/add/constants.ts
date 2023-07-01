@@ -1,6 +1,9 @@
 import { SupplyFormFields, SupplyFormSubFields, SupplyProduct } from './types';
 import { parseToDecimal } from './utils';
 
+export const MIN_PRODUCTS_IN_SUPPLY = 1;
+export const MAX_PRODUCTS_IN_SUPPLY = 50;
+
 export const supplyFormArrayFields = {
   products: 'products',
 } as const;

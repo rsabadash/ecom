@@ -56,6 +56,7 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
     ref: tooltipContentRef,
     dependency: isOpen,
     listenKeyboard: true,
+    listenInteraction: !isChildrenFocusable,
     handleClick: closeTooltip,
   });
 
@@ -126,7 +127,7 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
     setIsOpen((prevState) => !prevState);
   }, []);
 
-  const handleOnMouseOver = (): void => {
+  const handleOnMouseEnter = (): void => {
     if (!isClickable && !isTooltipDisabled) {
       setIsOpen(true);
     }
@@ -139,7 +140,7 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
   };
 
   const handleOnFocus = (): void => {
-    handleOnMouseOver();
+    handleOnMouseEnter();
   };
 
   const handleOnBlur = (): void => {
@@ -150,12 +151,8 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
     if (!isTooltipDisabled) {
       const key = event.key as EventKeys;
 
-      if (key === EventKeys.Enter) {
+      if (isClickable && key === EventKeys.Enter) {
         return toggle(event);
-      }
-
-      if (key === EventKeys.Escape) {
-        closeTooltip();
       }
     }
   };
@@ -165,6 +162,13 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
       toggle(event);
     }
   };
+
+  useEffect(() => {
+    // For cases when content can disappear on the fly (an error is gone after entering a value)
+    if (!content) {
+      closeTooltip();
+    }
+  }, [closeTooltip, content]);
 
   const tooltipClassNames = clsx(classes.tooltip, tooltipClassName, {
     [classes.tooltip_open]: isOpen,
@@ -178,7 +182,7 @@ export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
       onFocus={handleOnFocus}
       onClick={handleOnClick}
       onKeyDown={handleOnKeyDown}
-      onMouseOver={handleOnMouseOver}
+      onMouseEnter={handleOnMouseEnter}
       onMouseLeave={handleOnMouseLeave}
       className={tooltipClassNames}
       tabIndex={isChildrenFocusable ? -1 : 0}

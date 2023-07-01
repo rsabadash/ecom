@@ -68,6 +68,7 @@ export const Dropdown: FC<DropdownProps> = ({
   useOutsideElementClick({
     ref: listRef,
     dependency: isOpenInternal,
+    listenInteraction: true,
     handleClick: handleOutsideDropdownClick,
   });
 

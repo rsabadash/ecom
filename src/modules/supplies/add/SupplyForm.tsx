@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useTranslation } from '../../../components/IntlProvider';
 import {
   DropdownAdapter,
@@ -6,7 +6,7 @@ import {
 } from '../../../components/FormFieldsAdapter';
 import { initialDefaultValues, supplyFormFields } from './constants';
 import { Button } from '../../../components/Button';
-import { SupplyFormProps } from './types';
+import { ProductDuplicateData, SupplyFormProps } from './types';
 import { useSupplyForm, useSupplyFormSubmit } from './hooks';
 import { Form, FormContent } from '../../../components/FormFields';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
@@ -15,6 +15,7 @@ import { DropdownItem } from '../../../components/Fields/Dropdown';
 import { endpoints, path } from '../../../common/constants/api';
 import { SectionForeground } from '../../../layouts/Section';
 import { SupplyProductsList } from './SupplyProductsList';
+import { SupplyProductsDuplicationsModal } from './SupplyProductsDuplicationsModal';
 
 export const SupplyForm: FC<SupplyFormProps> = ({
   id,
@@ -28,9 +29,21 @@ export const SupplyForm: FC<SupplyFormProps> = ({
     `${endpoints.warehouses.root}${path.dropdownList}`,
   );
 
+  const [duplicationsModalData, setDuplicationsModalData] =
+    useState<ProductDuplicateData>({});
+  const [isDuplicationsModalOpen, setIsDuplicationsModalOpen] =
+    useState<boolean>(false);
+
   const { translate } = useTranslation();
 
-  const { handleFormSubmit } = useSupplyFormSubmit();
+  const onSubmitSupplyFormError = useCallback((data: ProductDuplicateData) => {
+    setDuplicationsModalData(data);
+    setIsDuplicationsModalOpen(true);
+  }, []);
+
+  const { handleFormSubmit } = useSupplyFormSubmit({
+    onError: onSubmitSupplyFormError,
+  });
 
   const { control, setValue, getValues, handleSubmit } = useSupplyForm({
     defaultValues: {
@@ -100,6 +113,12 @@ export const SupplyForm: FC<SupplyFormProps> = ({
           </FormContent>
         )}
       </Form>
+
+      <SupplyProductsDuplicationsModal
+        data={duplicationsModalData}
+        isOpen={isDuplicationsModalOpen}
+        onClose={() => setIsDuplicationsModalOpen(false)}
+      />
     </>
   );
 };

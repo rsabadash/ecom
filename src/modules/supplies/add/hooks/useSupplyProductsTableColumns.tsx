@@ -10,6 +10,7 @@ import { SupplyProductPriceCell } from '../SupplyProductPriceCell';
 import { SupplyProductTotalCostCell } from '../SupplyProductTotalCostCell';
 import { SupplyProductActions } from '../SupplyProductActions';
 import { SupplyProductUnitCell } from '../SupplyProductUnitCell';
+import { SupplyProductOrderCell } from '../SupplyProductOrderCell';
 
 type UseSupplyProductsTableColumnsProps = {
   control: Control<SupplyFormValues>;
@@ -37,7 +38,9 @@ export const useSupplyProductsTableColumns = ({
         title: '№',
         key: 'ordinal',
         width: '24px',
-        valueGetter: ({ index }) => index + 1,
+        valueGetter: ({ index }) => {
+          return <SupplyProductOrderCell index={index} />;
+        },
       },
       {
         title: translate('supply.product.name'),

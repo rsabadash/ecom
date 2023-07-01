@@ -67,6 +67,8 @@ export type SupplyProductCellProps = {
   fieldCommonName: ValuesOfObject<typeof supplyFormArrayFields>;
 };
 
+export type SupplyProductOrderCellProps = Pick<SupplyProductCellProps, 'index'>;
+
 export type ProductNameDropdownMeta = SupplyProductMeta;
 
 export type SupplyProductUnitCellProps = Omit<
@@ -82,6 +84,19 @@ export type SupplyProductActionsProps = {
 export type SupplyProductSummaryProps = {
   columns: TableColumnGeneric<SupplyProductListColumn>[];
   control: Control<SupplyFormValues>;
+};
+
+export type ProductDuplicate = {
+  product: SupplyProduct;
+  positions: number[];
+};
+
+export type ProductDuplicateData = Record<string, ProductDuplicate>;
+
+export type SupplyProductsDuplicationsModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  data: ProductDuplicateData;
 };
 
 export type SupplyPostProductData = {

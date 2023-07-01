@@ -7,6 +7,7 @@ type UseOutsideElementClickProps = {
   ref: MutableRefObject<HTMLElement | null>;
   dependency: boolean;
   listenKeyboard?: boolean;
+  listenInteraction?: boolean;
   handleClick: HandleClickCallback;
 };
 
@@ -14,6 +15,7 @@ export const useOutsideElementClick = ({
   ref,
   dependency,
   listenKeyboard,
+  listenInteraction,
   handleClick,
 }: UseOutsideElementClickProps): void => {
   const handleClickRef = useRef<HandleClickCallback>(handleClick);
@@ -43,8 +45,10 @@ export const useOutsideElementClick = ({
 
   useEffect(() => {
     if (dependency) {
-      document.addEventListener('click', handleOutsideAction, true);
-      document.addEventListener('touchend', handleOutsideAction, true);
+      if (listenInteraction) {
+        document.addEventListener('click', handleOutsideAction, true);
+        document.addEventListener('touchend', handleOutsideAction, true);
+      }
 
       if (listenKeyboard) {
         document.addEventListener('keydown', handleKeyDown, true);
@@ -53,8 +57,10 @@ export const useOutsideElementClick = ({
 
     return () => {
       if (dependency) {
-        document.removeEventListener('click', handleOutsideAction, true);
-        document.removeEventListener('touchend', handleOutsideAction, true);
+        if (listenInteraction) {
+          document.removeEventListener('click', handleOutsideAction, true);
+          document.removeEventListener('touchend', handleOutsideAction, true);
+        }
 
         if (listenKeyboard) {
           document.removeEventListener('keydown', handleKeyDown, true);

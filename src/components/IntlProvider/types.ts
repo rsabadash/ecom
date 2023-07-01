@@ -24,7 +24,7 @@ export type TranslationProviderProps = {
 };
 
 export type TranslateMessage = string;
-export type TranslatePlaceholders = Record<string, string>;
+export type TranslatePlaceholders = Record<string, string | number>;
 export type TranslateFn = (
   value: TranslateMessage,
   placeholders?: TranslatePlaceholders,

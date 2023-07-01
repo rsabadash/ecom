@@ -47,6 +47,13 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
     }
   };
 
+  const buttonClassNames = clsx(
+    classes.button,
+    className,
+    classes[`button_${size}`],
+    classes[`button_${variant}`],
+  );
+
   return (
     <button
       name={name}
@@ -57,12 +64,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
       aria-label={ariaLabel}
       aria-expanded={ariaExpanded}
       aria-controls={ariaControls}
-      className={clsx(
-        classes.button,
-        className,
-        classes[`button_${size}`],
-        classes[`button_${variant}`],
-      )}
+      className={buttonClassNames}
       tabIndex={tabIndex}
     >
       {children}

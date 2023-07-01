@@ -4,7 +4,7 @@
   border-radius: var(--radius-regular);
   border: none;
   cursor: pointer;
-  transition: background-color var(--transition), border var(--transition);
+  transition: background-color var(--transition), border var(--transition) box-shadow var(--transition);
   outline: none;
   display: flex;
   align-items: center;
@@ -20,6 +20,16 @@
 
 .button:focus-visible {
   box-shadow: var(--box-shadow-focus);
+}
+
+.button:disabled,
+.button:disabled:hover {
+  color: var(--foreground-600);
+  background-color: var(--foreground-300);
+  border: 1px solid transparent;
+  cursor: default;
+  /*fix to trigger onMouseEnter and onMouseLeave events*/
+  pointer-events: none;
 }
 
 .button_s {
@@ -45,6 +55,11 @@
   border: 1px solid var(--foreground-100);
 }
 
+.button_regular:disabled,
+.button_regular:disabled:hover {
+  background-color: var(--foreground-300);
+}
+
 .button_regular:focus-visible {
   border: 1px solid var(--background-900);
 }
@@ -54,10 +69,14 @@
   background-color: var(--primary-900);
   border: 1px solid var(--primary-900);
 }
-
 .button_primary:hover {
   background-color: var(--primary-800);
   border: 1px solid var(--primary-100);
+}
+
+.button_primary:disabled,
+.button_primary:disabled:hover {
+  background-color: var(--primary-300);
 }
 
 .button_success {
@@ -71,6 +90,11 @@
   border: 1px solid var(--success-100);
 }
 
+.button_success:disabled,
+.button_success:disabled:hover {
+  background-color: var(--success-300);
+}
+
 .button_warning {
   color: var(--button-variant-text);
   background-color: var(--warning-900);
@@ -82,6 +106,11 @@
   border: 1px solid var(--warning-100);
 }
 
+.button_warning:disabled,
+.button_warning:disabled:hover {
+  background-color: var(--warning-300);
+}
+
 .button_danger {
   color: var(--button-variant-text);
   background-color: var(--danger-900);
@@ -91,6 +120,11 @@
 .button_danger:hover {
   background-color: var(--danger-800);
   border: 1px solid var(--danger-100);
+}
+
+.button_danger:disabled,
+.button_danger:disabled:hover {
+  background-color: var(--danger-300);
 }
 
 .button_theme {

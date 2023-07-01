@@ -1,11 +1,18 @@
 import { useCallback } from 'react';
 import {
+  ProductDuplicate,
+  ProductDuplicateData,
   RequiredSupplyProduct,
   SupplyFormValues,
   SupplyPostData,
   SupplyPostProductData,
+  SupplyProduct,
 } from '../types';
 import { useCreateSupply } from './useCreateSupply';
+
+type UseSupplyFormSubmitProps = {
+  onError: (data: ProductDuplicateData) => void;
+};
 
 type UseSupplyFormSubmitReturn = {
   handleFormSubmit: (values: SupplyFormValues) => Promise<void>;
@@ -36,16 +43,68 @@ const mapValueToPostData = (value: SupplyFormValues): SupplyPostData => {
   };
 };
 
-export const useSupplyFormSubmit = (): UseSupplyFormSubmitReturn => {
+const findDuplicates = (products: SupplyProduct[]): ProductDuplicateData => {
+  const productsMap = new Map<string, ProductDuplicate>();
+  const productDuplicatesMap = new Map<string, ProductDuplicate>();
+
+  products.forEach((product, index) => {
+    const { id } = product.name || {};
+
+    if (id) {
+      const positionInList = index + 1;
+
+      if (productDuplicatesMap.has(id)) {
+        const productInDuplicatesMap = productDuplicatesMap.get(id);
+
+        if (productInDuplicatesMap) {
+          productDuplicatesMap.set(id, {
+            ...productInDuplicatesMap,
+            positions: [...productInDuplicatesMap.positions, positionInList],
+          });
+        }
+
+        return;
+      }
+
+      if (productsMap.has(id)) {
+        const productInMap = productsMap.get(id);
+
+        if (productInMap) {
+          productDuplicatesMap.set(id, {
+            ...productInMap,
+            positions: [...productInMap.positions, positionInList],
+          });
+        }
+
+        productsMap.delete(id);
+
+        return;
+      }
+
+      productsMap.set(id, { product, positions: [positionInList] });
+    }
+  });
+
+  return Object.fromEntries(productDuplicatesMap);
+};
+
+export const useSupplyFormSubmit = ({
+  onError,
+}: UseSupplyFormSubmitProps): UseSupplyFormSubmitReturn => {
   const { createSupply } = useCreateSupply();
 
   const handleFormSubmit = useCallback(
-    async (values: SupplyFormValues) => {
-      const createSupplyData = mapValueToPostData(values);
+    async (values: SupplyFormValues): Promise<void> => {
+      const duplicates = findDuplicates(values.products);
 
+      if (Object.keys(duplicates).length > 0) {
+        return onError(duplicates);
+      }
+
+      const createSupplyData = mapValueToPostData(values);
       await createSupply(createSupplyData);
     },
-    [createSupply],
+    [createSupply, onError],
   );
 
   return { handleFormSubmit };

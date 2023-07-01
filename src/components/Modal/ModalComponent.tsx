@@ -55,6 +55,7 @@ const ModalComponent: FC<PropsWithChildren<ModalComponentProps>> = ({
     ref: modalContentRef,
     dependency: isInitiated,
     listenKeyboard: true,
+    listenInteraction: true,
     handleClick: onKeyboardClose,
   });
 

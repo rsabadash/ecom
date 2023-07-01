@@ -181,6 +181,7 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
   useOutsideElementClick({
     ref: menuListRef,
     dependency: isOpen,
+    listenInteraction: true,
     handleClick: closeMenu,
   });
 

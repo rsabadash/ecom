@@ -4,6 +4,7 @@ import {
   Language,
   TranslationProviderProps,
   TranslationContextValue,
+  TranslatePlaceholders,
 } from './types';
 import { translationContextValuesDefault } from './constants';
 import { createProvider } from '../../utils';
@@ -28,7 +29,7 @@ const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = ({
   );
 
   const translate = useCallback(
-    (value: string, placeholders?: Record<string, string>): string => {
+    (value: string, placeholders?: TranslatePlaceholders): string => {
       return formatMessage({ id: value }, placeholders);
     },
     [formatMessage],

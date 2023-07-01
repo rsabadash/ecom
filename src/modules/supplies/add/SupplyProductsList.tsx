@@ -4,10 +4,16 @@ import { SupplyProductListColumn, SupplyProductsListProps } from './types';
 import { Table, TableColumnGeneric } from '../../../components/Table';
 import { useSupplyProductsTableColumns } from './hooks';
 import { Button } from '../../../components/Button';
-import { defaultProductValue, supplyFormArrayFields } from './constants';
+import {
+  defaultProductValue,
+  MAX_PRODUCTS_IN_SUPPLY,
+  MIN_PRODUCTS_IN_SUPPLY,
+  supplyFormArrayFields,
+} from './constants';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SupplyProductSummary } from './SupplyProductSummary';
 import { Modal } from '../../../components/Modal';
+import { Tooltip } from '../../../components/Tooltip';
 import classes from './styles/index.module.css';
 
 export const SupplyProductsList: FC<SupplyProductsListProps> = ({
@@ -25,7 +31,8 @@ export const SupplyProductsList: FC<SupplyProductsListProps> = ({
     name: supplyFormArrayFields.products,
   });
 
-  const hasMoreThanOneFiled = fields.length > 1;
+  const hasMoreThanOneFiled = fields.length > MIN_PRODUCTS_IN_SUPPLY;
+  const isMaxProductsNumberReached = fields.length >= MAX_PRODUCTS_IN_SUPPLY;
 
   const handleRemoveProduct = useCallback(
     (index: number): void => {
@@ -66,13 +73,25 @@ export const SupplyProductsList: FC<SupplyProductsListProps> = ({
           <SupplyProductSummary columns={columns} control={control} />
         }
       />
-      <Button
-        variant="theme"
-        onClick={handleAddProductOnClick}
-        className={classes.supplyProducts__list_button}
+
+      <Tooltip
+        isDisabled={!isMaxProductsNumberReached}
+        isChildrenFocusable
+        content={translate('supply.products.maxNumber', {
+          value: MAX_PRODUCTS_IN_SUPPLY,
+        })}
+        position="bottom"
+        tooltipClassName={classes.supplyProducts__list_buttonAddWrapper}
       >
-        {translate('supply.addProduct')}
-      </Button>
+        <Button
+          isDisabled={isMaxProductsNumberReached}
+          variant="theme"
+          onClick={handleAddProductOnClick}
+          className={classes.supplyProducts__list_buttonAdd}
+        >
+          {translate('supply.addProduct')}
+        </Button>
+      </Tooltip>
 
       <Modal
         isModalFooterHidden

@@ -3,6 +3,7 @@ import { Menu, MenuItem } from '../../../components/Menu';
 import { ReactComponent as VerticalDotsIcon } from '../../../assets/icons/VerticalDots.svg';
 import { SupplyProductActionsProps } from './types';
 import { useTranslation } from '../../../components/IntlProvider';
+import classes from './styles/index.module.css';
 
 export const SupplyProductActions: FC<SupplyProductActionsProps> = ({
   rowIndex,
@@ -22,7 +23,9 @@ export const SupplyProductActions: FC<SupplyProductActionsProps> = ({
 
   return (
     <Menu items={items} alignment="pull">
-      <VerticalDotsIcon />
+      <div className={classes.supplyProducts__actionButton}>
+        <VerticalDotsIcon />
+      </div>
     </Menu>
   );
 };
