@@ -5,7 +5,7 @@ import {
   CategoryPostResponse,
 } from './types';
 import { endpoints } from '../../common/constants/api';
-import { PATCH, POST, DELETE } from '../../utils/api';
+import { PATCH, POST, DELETE } from '../../common/utils/api';
 
 export const createCategoryApi = async (
   data: CategoryPostData,

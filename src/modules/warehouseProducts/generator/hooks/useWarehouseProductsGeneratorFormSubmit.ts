@@ -8,7 +8,7 @@ import {
   GeneratedAttribute,
 } from '../types';
 import { transformProductBasedOnVariants } from '../utils';
-import { cartesian } from '../../../../utils/cartesian';
+import { cartesian } from '../../../../common/utils/cartesian';
 import { buttonNames } from '../constants';
 import {
   DEFAULT_LANGUAGE,

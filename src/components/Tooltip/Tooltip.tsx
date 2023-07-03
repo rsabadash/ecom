@@ -17,9 +17,9 @@ import {
   TOOLTIP_POSITION,
   CONTENT_DIMENSION,
 } from './constants';
-import { useOutsideElementClick } from '../../hooks';
+import { useOutsideElementClick } from '../../common/hooks';
 import { EventKeys } from '../../common/enums/events';
-import { debounce } from '../../utils';
+import { debounce } from '../../common/utils';
 import classes from './styles/index.module.css';
 
 const root = document.getElementById('root');

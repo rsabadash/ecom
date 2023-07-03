@@ -4,7 +4,7 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { ErrorBoundary } from '../../../components/ErrorBoundary';
 import { TABLE_VARIANTS_ID } from './constants';
 import { VariantsList } from './VariantsList';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import { VariantWithAttribute } from './types';
 import { endpoints } from '../../../common/constants/api';
 import { ButtonLink, ButtonsGroup } from '../../../components/Button';

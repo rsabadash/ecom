@@ -37,7 +37,7 @@ export const CheckboxAdapter = <FormValues extends FieldValues>({
   const fieldValue = value as CheckboxValue;
 
   const handleChange = useCallback(
-    (value: CheckboxValue) => {
+    (value: CheckboxValue): void => {
       onFieldChange(value);
 
       if (onChange) {

@@ -5,8 +5,8 @@ import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../../hooks/useCustomForm';
-import { useCustomForm } from '../../../../hooks';
+} from '../../../../common/hooks/useCustomForm';
+import { useCustomForm } from '../../../../common/hooks';
 import { supplyFormFields, supplyFormProductsSubfields } from '../constants';
 import { dropdownItem } from '../../../../validations/dropdown';
 import { DropdownItemObject } from '../../../../components/Fields/Dropdown';

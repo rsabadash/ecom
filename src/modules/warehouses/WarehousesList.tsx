@@ -4,7 +4,7 @@ import { Foreground } from '../../layouts/Foreground';
 import { Section } from '../../layouts/Section';
 import { ReactComponent as PlusIcon } from '../../assets/icons/Plus.svg';
 import { Heading } from '../../components/Heading';
-import { useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../common/hooks';
 import { routes } from '../../common/constants/routes';
 import { endpoints } from '../../common/constants/api';
 import { Warehouse } from './types';

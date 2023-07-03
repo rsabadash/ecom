@@ -1,6 +1,6 @@
 import { CSSProperties, FC, PropsWithChildren } from 'react';
 import { GridRowBalancerProps, GridRowBalancerContextValue } from './types';
-import { createProvider } from '../../utils';
+import { createProvider } from '../../common/utils';
 import { CONTEXT_NAME, gridRowBalancerContextValueDefault } from './constants';
 import classes from './styles/index.module.css';
 

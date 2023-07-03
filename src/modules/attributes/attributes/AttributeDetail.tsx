@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { generatePath, useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import { Button, ButtonLink, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';

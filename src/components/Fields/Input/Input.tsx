@@ -34,7 +34,7 @@ export const Input: FC<InputProps> = ({
   const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
   const isIconFocusable = onIconClick && !isReadOnly && !isDisabled;
 
-  const handleOnBlur = () => {
+  const handleOnBlur = (): void => {
     if (onBlur) {
       const formattedValue = formatValue
         ? formatValue(currentValue, currentValue)
@@ -44,7 +44,7 @@ export const Input: FC<InputProps> = ({
     }
   };
 
-  const handleOnFocus = () => {
+  const handleOnFocus = (): void => {
     if (onFocus) {
       const formattedValue = formatValue
         ? formatValue(currentValue, currentValue)
@@ -54,7 +54,7 @@ export const Input: FC<InputProps> = ({
     }
   };
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (onChange && !isDisabled) {
       const value = e.target.value;
       const formattedValue = formatValue
@@ -71,7 +71,7 @@ export const Input: FC<InputProps> = ({
     }
   };
 
-  const handleOnKeydown = (event: KeyboardEvent) => {
+  const handleOnKeydown = (event: KeyboardEvent): void => {
     if (type === INPUT_TYPE.NUMBER) {
       const key = event.key as EventKeys;
 

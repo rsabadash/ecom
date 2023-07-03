@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Dropdown } from '../Fields/Dropdown';
 import { Limit, PaginationLimitProps } from './types';
 import { PAGE } from '../../common/constants/filters';
-import { useQueryParameters } from '../../hooks';
+import { useQueryParameters } from '../../common/hooks';
 import { Label } from '../Label';
 import { useTranslation } from '../IntlProvider';
 import { PAGINATION_LIMIT_NAME } from './constants';

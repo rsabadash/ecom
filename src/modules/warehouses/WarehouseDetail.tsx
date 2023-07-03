@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Warehouse, WarehouseFormValues, WarehouseUrlParams } from './types';
 import { useTranslation } from '../../components/IntlProvider';
-import { useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../common/hooks';
 import { endpoints } from '../../common/constants/api';
 import { matchWarehouseDataToFormValues } from './utils';
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';

@@ -16,8 +16,8 @@ export const FocusTrap: FC<PropsWithChildren<FocusTrapProps>> = ({
 }) => {
   // const firstFocusableRef = useRef<null | HTMLElement>(null);
   // const lastFocusableRef = useRef<null | HTMLElement>(null);
-  const firstTrapRef = useRef<HTMLDivElement | null>(null);
-  const lastTrapRef = useRef<HTMLDivElement | null>(null);
+  const firstTrapRef = useRef<null | HTMLDivElement>(null);
+  const lastTrapRef = useRef<null | HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     onFocusTrapInit && onFocusTrapInit();

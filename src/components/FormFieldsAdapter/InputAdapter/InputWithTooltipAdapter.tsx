@@ -49,12 +49,12 @@ export const InputWithTooltipAdapter = <FormValues extends FieldValues>({
 
   const fieldValue = value as InputValue;
 
-  const handleOnChange = (value: InputFormValue) => {
+  const handleOnChange = (value: InputFormValue): void => {
     onChange && onChange(value);
     onChangeField(value);
   };
 
-  const handleOnBlur = (value: InputFormValue) => {
+  const handleOnBlur = (value: InputFormValue): void => {
     onBlur && onBlur(value);
     onBlurField();
   };

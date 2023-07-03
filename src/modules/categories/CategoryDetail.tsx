@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
-import { useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../common/hooks';
 import {
   CategoryDetailEntity,
   CategoryFormValues,

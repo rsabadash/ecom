@@ -23,7 +23,7 @@ export const Textbox: FC<TextboxProps> = ({
 }) => {
   const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
 
-  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     if (onChange) {
       const value = e.target.value;
       const formattedValue = formatValue
@@ -34,7 +34,7 @@ export const Textbox: FC<TextboxProps> = ({
     }
   };
 
-  const textBoxRef = useRef<HTMLTextAreaElement>(null);
+  const textBoxRef = useRef<null | HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (textBoxRef.current) {

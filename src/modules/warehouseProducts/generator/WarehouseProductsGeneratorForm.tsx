@@ -10,7 +10,7 @@ import {
 } from './hooks';
 import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter';
 import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import { endpoints } from '../../../common/constants/api';
 import { WarehouseProductsGeneratorFormProps } from './types';
 import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProductsGeneratorAttributeFormSection';

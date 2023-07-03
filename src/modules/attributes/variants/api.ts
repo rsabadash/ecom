@@ -5,7 +5,7 @@ import {
   VariantPostResponse,
 } from './types';
 import { endpoints } from '../../../common/constants/api';
-import { DELETE, PATCH, POST } from '../../../utils/api';
+import { DELETE, PATCH, POST } from '../../../common/utils/api';
 
 export const createVariantApi = async (
   data: VariantPostData,

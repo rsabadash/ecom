@@ -8,7 +8,7 @@ import {
 import { Supplier } from './types';
 import { routes } from '../../common/constants/routes';
 import { useSuppliersTableColumns } from './hooks';
-import { useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../common/hooks';
 import { endpoints } from '../../common/constants/api';
 
 export const SuppliersList = () => {

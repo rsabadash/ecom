@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { SignInData, SignInResponse } from '../types';
+import { SignInData, SignInResponse, Tokens } from '../types';
 import { signInApi } from '../api';
 
 type UseSignInReturn = {
@@ -7,9 +7,12 @@ type UseSignInReturn = {
 };
 
 export const useSignIn = (): UseSignInReturn => {
-  const signIn = useCallback(async (data: SignInData) => {
-    return await signInApi(data);
-  }, []);
+  const signIn = useCallback(
+    async (data: SignInData): Promise<Tokens | undefined> => {
+      return await signInApi(data);
+    },
+    [],
+  );
 
   return {
     signIn,

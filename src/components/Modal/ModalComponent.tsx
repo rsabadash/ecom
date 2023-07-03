@@ -14,7 +14,10 @@ import { useTranslation } from '../IntlProvider';
 import { Overlay } from '../../layouts/Overlay';
 import { ModalComponentProps } from './types';
 import { FocusTrap } from '../FocusTrap';
-import { useOutsideElementClick, usePreviousActiveElement } from '../../hooks';
+import {
+  useOutsideElementClick,
+  usePreviousActiveElement,
+} from '../../common/hooks';
 import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 import { EventKeys } from '../../common/enums/events';
 import classes from './styles/index.module.css';
@@ -36,7 +39,7 @@ const ModalComponent: FC<PropsWithChildren<ModalComponentProps>> = ({
 }) => {
   const [isInitiated, setIsInitiated] = useState<boolean>(false);
 
-  const modalContentRef = useRef<HTMLDivElement | null>(null);
+  const modalContentRef = useRef<null | HTMLDivElement>(null);
 
   const { translate } = useTranslation();
 

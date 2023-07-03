@@ -3,7 +3,7 @@ import { IntlProvider } from 'react-intl';
 import { Language } from './types';
 import { defineUserLanguageByLocale } from './utils';
 import { DEFAULT_LANGUAGE, LOCALE_STORAGE_KEY } from './constants';
-import { LocalStorageService } from '../../services';
+import { LocalStorageService } from '../../common/services';
 import { translations } from '../../i18n';
 import { TranslationProvider } from './TranslationProvider';
 

@@ -1,15 +1,17 @@
-import { FC, PropsWithChildren, MouseEvent } from 'react';
+import { FC, PropsWithChildren, MouseEvent, KeyboardEvent } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { DEFAULT_BUTTON_VARIANT, DEFAULT_BUTTON_SIZE } from './constants';
 import { ButtonLinkProps } from './types';
 import classes from './styles/index.module.css';
+import { EventKeys } from '../../common/enums/events';
 
 export const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
   size = DEFAULT_BUTTON_SIZE,
   variant = DEFAULT_BUTTON_VARIANT,
   isDisabled,
   onClick,
+  onKeyDown,
   children,
   ariaLabel,
   ariaExpanded,
@@ -26,10 +28,26 @@ export const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
     onClick && onClick(event);
   };
 
+  const handleButtonKeyDown = (
+    event: KeyboardEvent<HTMLAnchorElement>,
+  ): void => {
+    if (isDisabled || !onKeyDown) {
+      return;
+    }
+
+    const key = event.key as EventKeys;
+
+    if (key === EventKeys.Enter || key === EventKeys.Space) {
+      event.preventDefault();
+      onKeyDown(event);
+    }
+  };
+
   return (
     <Link
       role="button"
       onClick={handleButtonClick}
+      onKeyDown={handleButtonKeyDown}
       aria-label={ariaLabel}
       aria-expanded={ariaExpanded}
       aria-controls={ariaControls}

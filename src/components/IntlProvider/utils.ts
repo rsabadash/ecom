@@ -1,14 +1,14 @@
-import { LocalStorageService } from '../../services';
+import { LocalStorageService } from '../../common/services';
 import { LOCALE_STORAGE_KEY } from './constants';
 import { Language, Locale } from './types';
-import { DEFAULT_LANGUAGE, localeToLanguageMap } from './constants';
+import { DEFAULT_LANGUAGE, LOCALE_TO_LANGUAGE_MAP } from './constants';
 
 export const isLocaleSupported = (locale: string): boolean => {
-  return locale in localeToLanguageMap;
+  return locale in LOCALE_TO_LANGUAGE_MAP;
 };
 
 export const mapLocaleToLanguage = (locale: Locale): Language => {
-  return localeToLanguageMap[locale];
+  return LOCALE_TO_LANGUAGE_MAP[locale];
 };
 
 export const getLanguageByLocale = (locale: string): Language | null => {

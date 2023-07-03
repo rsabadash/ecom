@@ -10,7 +10,7 @@ import { ProductDuplicateData, SupplyFormProps } from './types';
 import { useSupplyForm, useSupplyFormSubmit } from './hooks';
 import { Form, FormContent } from '../../../components/FormFields';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import { DropdownItem } from '../../../components/Fields/Dropdown';
 import { endpoints, path } from '../../../common/constants/api';
 import { SectionForeground } from '../../../layouts/Section';

@@ -7,7 +7,7 @@ import {
 import { TABLE_CATEGORIES_ID } from './constants';
 import { Category } from './types';
 import { routes } from '../../common/constants/routes';
-import { useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../common/hooks';
 import { endpoints } from '../../common/constants/api';
 import { useCategoriesTableColumns } from './hooks';
 

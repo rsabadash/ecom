@@ -11,7 +11,7 @@ import {
 } from 'react';
 import clsx from 'clsx';
 import { MenuProps, KeyIndexMap, Position, Alignment } from './types';
-import { useOutsideElementClick } from '../../hooks';
+import { useOutsideElementClick } from '../../common/hooks';
 import {
   INDEX_ABSENCE_FOCUS,
   DEFAULT_MENU_POSITION,
@@ -23,8 +23,8 @@ import {
   CONTENT_ALIGNMENT_DIMENSION,
 } from './constants';
 import { EventKeys } from '../../common/enums/events';
+import { debounce } from '../../common/utils';
 import classes from './styles/index.module.css';
-import { debounce } from '../../utils';
 
 const root = document.getElementById('root');
 
@@ -48,8 +48,8 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
     undefined,
   );
 
-  const menuButtonRef = useRef<HTMLDivElement | null>(null);
-  const menuListRef = useRef<HTMLUListElement | null>(null);
+  const menuButtonRef = useRef<null | HTMLDivElement>(null);
+  const menuListRef = useRef<null | HTMLUListElement>(null);
 
   const getPositionFormulaInitiator = useCallback(
     (elementPosition: Position): number => {

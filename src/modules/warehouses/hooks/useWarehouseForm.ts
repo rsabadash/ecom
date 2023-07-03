@@ -1,12 +1,12 @@
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
-import { useCustomForm } from '../../../hooks';
+import { useCustomForm } from '../../../common/hooks';
 import { WarehouseFormValues } from '../types';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../hooks/useCustomForm';
+} from '../../../common/hooks/useCustomForm';
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { dropdownItem } from '../../../validations/dropdown';
 

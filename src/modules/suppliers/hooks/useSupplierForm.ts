@@ -5,8 +5,8 @@ import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../hooks/useCustomForm';
-import { useCustomForm } from '../../../hooks';
+} from '../../../common/hooks/useCustomForm';
+import { useCustomForm } from '../../../common/hooks';
 import { supplierFormFields } from '../constants';
 
 type UseSupplierFormProps = Pick<

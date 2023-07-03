@@ -5,7 +5,7 @@ import {
   Translations,
   useTranslation,
 } from '../../../../components/IntlProvider';
-import { useIntlCurrency, useTranslationWithFallback } from '../../../../hooks';
+import { useIntlCurrency, useTranslationWithFallback } from '../../../../common/hooks';
 
 export const useSupplyDetailTableColumns = () => {
   const { translate } = useTranslation();

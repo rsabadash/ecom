@@ -18,7 +18,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   onBlur,
   onChange,
 }) => {
-  const handleOnChange = () => {
+  const handleOnChange = (): void => {
     if (!isDisabled && !isReadOnly) {
       onChange(!isChecked);
     }

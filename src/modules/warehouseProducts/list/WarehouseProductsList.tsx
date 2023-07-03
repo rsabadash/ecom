@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import { endpoints } from '../../../common/constants/api';
 import { useWarehouseProductsTableColumns } from './hooks';
 import {
@@ -13,7 +13,7 @@ import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
 import { WarehouseProductsListItem } from './WarehouseProductsListItem';
 import { tableRoles } from '../../../components/Table/constants';
 import { PaginationData } from '../../../common/types/pagination';
-import { getPaginationData } from '../../../utils';
+import { getPaginationData } from '../../../common/utils';
 import {
   usePaginationLimit,
   usePaginationUrl,

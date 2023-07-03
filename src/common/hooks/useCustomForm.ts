@@ -33,7 +33,8 @@ export const useCustomForm = <V extends Record<string, any>>({
   const hasError = Object.keys(errors).length > 0;
 
   const handleFormSubmit = useCallback(
-    async (e?: BaseSyntheticEvent) => await handleSubmit(submitHandler)(e),
+    async (e?: BaseSyntheticEvent): Promise<void> =>
+      await handleSubmit(submitHandler)(e),
     [handleSubmit, submitHandler],
   );
 

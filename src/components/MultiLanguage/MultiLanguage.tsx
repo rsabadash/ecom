@@ -15,7 +15,7 @@ export const MultiLanguage: FC<MultiLanguageProps> = ({
   isInitiallyExpand,
 }) => {
   const [, , , row4] = useGridInlineStyles(columnIndex);
-  const collapseBodyRef = useRef<HTMLDivElement | null>(null);
+  const collapseBodyRef = useRef<null | HTMLDivElement>(null);
 
   const secondaryLanguages = useMemo(
     () =>

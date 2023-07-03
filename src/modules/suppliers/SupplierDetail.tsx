@@ -5,7 +5,7 @@ import { SectionForeground } from '../../layouts/Section';
 import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from '../../components/IntlProvider';
-import { useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../common/hooks';
 import { endpoints } from '../../common/constants/api';
 import {
   SupplierDetailEntry,

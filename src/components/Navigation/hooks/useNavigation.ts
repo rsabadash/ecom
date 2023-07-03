@@ -39,7 +39,7 @@ export const useNavigation = (): UseNavigationReturn => {
   }, [hasAllAccesses, menuItems, user?.roles]);
 
   const initialIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
-  const itemsListRef = useRef<HTMLUListElement>(null);
+  const itemsListRef = useRef<null | HTMLUListElement>(null);
 
   const [focusIndex, setFocusIndex] = useState<number>(initialIndexRef.current);
   const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);

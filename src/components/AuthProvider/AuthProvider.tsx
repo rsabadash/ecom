@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { createProvider } from '../../utils';
+import { createProvider } from '../../common/utils';
 import { AuthContextValue, SignInDataExtended } from './types';
 import {
   ACCESS_TOKEN_KEY,
@@ -19,9 +19,9 @@ import {
   useCustomNavigate,
   useLocalStorage,
   useSessionStorage,
-} from '../../hooks';
+} from '../../common/hooks';
 import { useSignIn } from './hooks';
-import { sharedBus } from '../../utils/sharedBus';
+import { sharedBus } from '../../common/utils/sharedBus';
 import { routes } from '../../common/constants/routes';
 import { PERSIST_STATE } from './enums';
 
@@ -50,10 +50,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const setStorageItem = useCallback(
     (key: string, value: string, isPersistUser: boolean): void => {
       if (isPersistUser) {
-        setLocalStorageItem<PERSIST_STATE>(
-          PERSIST_USER_KEY,
-          PERSIST_STATE.EXIST,
-        );
         setLocalStorageItem(key, value);
       } else {
         setSessionStorageItem(key, value);
@@ -70,7 +66,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     [removeLocalStorageItem, removeSessionStorageItem],
   );
 
-  const [isAuthenticated, setIsAuthenticated] = useState(
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     () => !!getStorageItem(ACCESS_TOKEN_KEY),
   );
 
@@ -82,6 +78,13 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       const response = await signIn(restData);
       const { accessToken, refreshToken } = response || {};
 
+      if (isPersistUser) {
+        setLocalStorageItem<PERSIST_STATE>(
+          PERSIST_USER_KEY,
+          PERSIST_STATE.EXIST,
+        );
+      }
+
       // TODO Error handling
       if (accessToken) {
         setStorageItem(ACCESS_TOKEN_KEY, accessToken, isPersistUser);
@@ -92,7 +95,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         setStorageItem(REFRESH_TOKEN_KEY, refreshToken, isPersistUser);
       }
     },
-    [setStorageItem, signIn],
+    [setLocalStorageItem, setStorageItem, signIn],
   );
 
   const signOutUser = useCallback(() => {

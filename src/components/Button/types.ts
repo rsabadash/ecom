@@ -1,12 +1,12 @@
 import { MouseEvent, KeyboardEvent } from 'react';
 import { LinkProps } from 'react-router-dom';
-import { buttonSize, buttonType, buttonVariant } from './constants';
+import { BUTTON_SIZE, BUTTON_TYPE, BUTTON_VARIANT } from './constants';
 
 export type ButtonProps = {
   name?: string;
-  type?: ValuesOfObject<typeof buttonType>;
-  size?: ValuesOfObject<typeof buttonSize>;
-  variant?: ValuesOfObject<typeof buttonVariant>;
+  type?: ValuesOfObject<typeof BUTTON_TYPE>;
+  size?: ValuesOfObject<typeof BUTTON_SIZE>;
+  variant?: ValuesOfObject<typeof BUTTON_VARIANT>;
   isDisabled?: boolean;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;

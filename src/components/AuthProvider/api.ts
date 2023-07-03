@@ -4,15 +4,15 @@ import {
   SignInData,
   SignInResponse,
 } from './types';
-import { POST } from '../../utils/api';
+import { POST } from '../../common/utils/api';
 import { endpoints } from '../../common/constants/api';
-import { LocalStorageService, SessionStorageService } from '../../services';
+import { LocalStorageService, SessionStorageService } from '../../common/services';
 import {
   ACCESS_TOKEN_KEY,
   PERSIST_USER_KEY,
   REFRESH_TOKEN_KEY,
 } from './constants';
-import { sharedBus } from '../../utils/sharedBus';
+import { sharedBus } from '../../common/utils/sharedBus';
 import { PERSIST_STATE } from './enums';
 
 export const signInApi = async (

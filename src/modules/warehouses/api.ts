@@ -1,4 +1,4 @@
-import { DELETE, PATCH, POST } from '../../utils/api';
+import { DELETE, PATCH, POST } from '../../common/utils/api';
 import { endpoints } from '../../common/constants/api';
 import {
   WarehouseDeleteData,

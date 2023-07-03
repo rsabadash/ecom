@@ -6,7 +6,7 @@ import {
 import { TableColumnGeneric } from '../../../../components/Table';
 import { Variant, VariantWithAttribute } from '../types';
 import { routes } from '../../../../common/constants/routes';
-import { useCustomNavigate } from '../../../../hooks';
+import { useCustomNavigate } from '../../../../common/hooks';
 
 type UseVariantsTableColumnsReturn = TableColumnGeneric<VariantWithAttribute>[];
 

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { SupplyDetailData, SupplyUrlParams } from './types';
-import { useCachedAPI, useIntlDate } from '../../../hooks';
+import { useCachedAPI, useIntlDate } from '../../../common/hooks';
 import { endpoints } from '../../../common/constants/api';
 import { Top, TopHeading } from '../../../layouts/Top';
 import { useTranslation } from '../../../components/IntlProvider';

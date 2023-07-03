@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useCachedAPI } from '../../hooks';
+import { useCachedAPI } from '../../common/hooks';
 import { useTranslation } from '../../components/IntlProvider';
 import {
   DropdownAdapter,

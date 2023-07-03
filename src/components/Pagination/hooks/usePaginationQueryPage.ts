@@ -1,6 +1,6 @@
 import { PAGE } from '../../../common/constants/filters';
 import { INITIAL_PAGE } from '../constants';
-import { useQueryParameters } from '../../../hooks';
+import { useQueryParameters } from '../../../common/hooks';
 import { useMemo } from 'react';
 
 export const usePaginationQueryPage = () => {

@@ -1,4 +1,4 @@
-import { POST } from '../../../utils/api';
+import { POST } from '../../../common/utils/api';
 import {
   WarehouseProductsPostData,
   WarehouseProductsPostResponse,

@@ -4,8 +4,8 @@ import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../hooks/useCustomForm';
-import { useCustomForm } from '../../../hooks';
+} from '../../../common/hooks/useCustomForm';
+import { useCustomForm } from '../../../common/hooks';
 import { CategoryFormValues } from '../types';
 import { mainTranslationRequired } from '../../../validations/translations';
 import { URL_SLUG } from '../../../common/constants/regex';

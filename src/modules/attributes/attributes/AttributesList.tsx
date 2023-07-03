@@ -5,7 +5,7 @@ import {
   TableColumnGeneric,
 } from '../../../components/Table';
 import { routes } from '../../../common/constants/routes';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import { endpoints } from '../../../common/constants/api';
 import { useAttributesTableColumns } from './hooks';
 import { Attribute } from './types';

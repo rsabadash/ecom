@@ -6,11 +6,11 @@ import {
   TranslationContextValue,
   TranslatePlaceholders,
 } from './types';
-import { translationContextValuesDefault } from './constants';
-import { createProvider } from '../../utils';
+import { CONTEXT_NAME, translationContextValuesDefault } from './constants';
+import { createProvider } from '../../common/utils';
 
 const [Provider, useTranslation] = createProvider<TranslationContextValue>({
-  contextName: 'TranslationContext',
+  contextName: CONTEXT_NAME,
   contextDefaultValue: translationContextValuesDefault,
 });
 

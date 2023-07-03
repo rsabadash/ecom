@@ -1,4 +1,4 @@
-import { ThemeStorage } from '../components/ThemeProvider/types';
+import { ThemeStorage } from '../../components/ThemeProvider/types';
 import { LocalStorageService } from '../services';
 
 export const themeStorage: ThemeStorage = {

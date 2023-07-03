@@ -4,8 +4,8 @@ import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../../hooks/useCustomForm';
-import { useCustomForm } from '../../../../hooks';
+} from '../../../../common/hooks/useCustomForm';
+import { useCustomForm } from '../../../../common/hooks';
 import { WarehouseProductsGeneratorFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
 import { UNITS_LIST } from '../../../../common/constants/units';

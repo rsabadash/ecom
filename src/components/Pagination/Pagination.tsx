@@ -6,7 +6,7 @@ import { DOTS, INITIAL_PAGE } from './constants';
 import { ReactComponent as ChevronLeftIcon } from '../../assets/icons/ChevronLeft.svg';
 import { ReactComponent as ChevronRightIcon } from '../../assets/icons/ChevronRight.svg';
 import { usePaginationRange } from './hooks';
-import { usePreviousPersistent } from '../../hooks';
+import { usePreviousPersistent } from '../../common/hooks';
 import classes from './styles/pagination.module.css';
 
 export const Pagination: FC<PaginationProps> = ({

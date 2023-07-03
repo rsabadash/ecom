@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { DropdownWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import {
   DropdownItem,
   DropdownValue,
@@ -9,7 +9,7 @@ import { endpoints, path } from '../../../common/constants/api';
 import { useTranslation } from '../../../components/IntlProvider';
 import { ProductNameDropdownMeta, SupplyProductCellProps } from './types';
 import { supplyFormProductsSubfields } from './constants';
-import { getDropdownMeta } from '../../../utils';
+import { getDropdownMeta } from '../../../common/utils';
 import { useFormState } from 'react-hook-form';
 
 const { quantity: quantitySubfield, unit: unitSubfield } =

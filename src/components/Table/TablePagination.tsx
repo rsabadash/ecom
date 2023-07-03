@@ -4,7 +4,7 @@ import {
   Pagination,
   PaginationLimit,
 } from '../Pagination';
-import { useQueryParameters } from '../../hooks';
+import { useQueryParameters } from '../../common/hooks';
 import { TablePaginationProps } from './types';
 import { usePaginationQueryPage } from '../Pagination/hooks';
 import classes from './styles/index.module.css';

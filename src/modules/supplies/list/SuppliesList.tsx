@@ -5,9 +5,9 @@ import {
   usePaginationUrl,
 } from '../../../components/Pagination/hooks';
 import { endpoints } from '../../../common/constants/api';
-import { useCachedAPI } from '../../../hooks';
+import { useCachedAPI } from '../../../common/hooks';
 import { PaginationData } from '../../../common/types/pagination';
-import { getPaginationData } from '../../../utils';
+import { getPaginationData } from '../../../common/utils';
 import { Supply } from './types';
 import { useSuppliesTableColumns } from './hooks';
 import {

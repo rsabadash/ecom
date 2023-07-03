@@ -1,4 +1,4 @@
-import { useQueryParameters } from '../../../hooks';
+import { useQueryParameters } from '../../../common/hooks';
 import { LIMIT } from '../../../common/constants/filters';
 
 type UsePaginationUrlProps = {

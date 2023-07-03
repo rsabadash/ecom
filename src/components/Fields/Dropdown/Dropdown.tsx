@@ -16,7 +16,7 @@ import {
   DropdownValue,
   KeyIndexMap,
 } from './types';
-import { useOutsideElementClick } from '../../../hooks';
+import { useOutsideElementClick } from '../../../common/hooks';
 import { useTranslation } from '../../IntlProvider';
 import classes from './styles/index.module.css';
 
@@ -53,11 +53,13 @@ export const Dropdown: FC<DropdownProps> = ({
   const isActive = !isDisabled && !isReadOnly;
   const isListInitialized = isActive && hasItems;
 
-  const listRef = useRef<HTMLUListElement | null>(null);
-  const dropdownButtonRef = useRef<HTMLDivElement | null>(null);
+  const listRef = useRef<null | HTMLUListElement>(null);
+  const dropdownButtonRef = useRef<null | HTMLDivElement>(null);
 
-  const [isOpenInternal, setIsOpenInternal] = useState(() => isOpen || false);
-  const [isKeyboardControl, setIsKeyboardControl] = useState(false);
+  const [isOpenInternal, setIsOpenInternal] = useState<boolean>(
+    () => isOpen || false,
+  );
+  const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
 
   const { translate } = useTranslation();
 
@@ -148,7 +150,7 @@ export const Dropdown: FC<DropdownProps> = ({
     setIsOpenInternal(true);
   };
 
-  const resetDropdownState = () => {
+  const resetDropdownState = (): void => {
     setIsKeyboardControl(false);
 
     if (value === undefined || value === null) {

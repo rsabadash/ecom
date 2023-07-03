@@ -28,7 +28,7 @@ export const useCollapseControl = ({
   // To prevent bug when the transition delay has not ended but user collapse the body
   const isTransitioningRef = useRef<boolean>(false);
 
-  const expandFinishedCallback = useCallback(() => {
+  const expandFinishedCallback = useCallback((): void => {
     if (!isOnceExpandedRef.current) {
       isOnceExpandedRef.current = true;
     }
@@ -49,7 +49,7 @@ export const useCollapseControl = ({
     }
   }, [collapseBodyRef, onExpandFinished]);
 
-  const collapseFinishedCallback = useCallback(() => {
+  const collapseFinishedCallback = useCallback((): void => {
     onCollapseFinished && onCollapseFinished();
 
     if (collapseBodyRef.current) {
@@ -62,7 +62,7 @@ export const useCollapseControl = ({
     }
   }, [collapseBodyRef, onCollapseFinished]);
 
-  const expand = useCallback(() => {
+  const expand = useCallback((): void => {
     if (collapseBodyRef.current) {
       if (isOnceExpandedRef.current) {
         isTransitioningRef.current = true;
@@ -73,7 +73,7 @@ export const useCollapseControl = ({
         expandFinishedCallback,
       );
 
-      requestAnimationFrame(() => {
+      requestAnimationFrame((): void => {
         if (collapseBodyRef.current) {
           collapseBodyRef.current.style.height = `${collapseBodyRef.current.scrollHeight}px`;
 
@@ -84,7 +84,7 @@ export const useCollapseControl = ({
     }
   }, [collapseBodyRef, expandFinishedCallback]);
 
-  const collapse = useCallback(() => {
+  const collapse = useCallback((): void => {
     if (collapseBodyRef.current) {
       if (isOnceExpandedRef.current) {
         isTransitioningRef.current = true;
@@ -97,7 +97,7 @@ export const useCollapseControl = ({
         collapseFinishedCallback,
       );
 
-      requestAnimationFrame(() => {
+      requestAnimationFrame((): void => {
         if (collapseBodyRef.current) {
           collapseBodyRef.current.style.overflow = 'hidden';
           collapseBodyRef.current.style.height = '0px';

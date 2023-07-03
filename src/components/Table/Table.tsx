@@ -34,9 +34,9 @@ export const Table: FC<TableProps> = ({
   bottomPanelNode,
   tableRowRenderKey = '_id',
 }) => {
-  const tableBodyRef = useRef<HTMLDivElement>(null);
+  const tableBodyRef = useRef<null | HTMLDivElement>(null);
   const [focusIndex, setFocusIndex] = useState<number>(INITIAL_FOCUS_INDEX);
-  const [isKeyboardControl, setIsKeyboardControl] = useState(false);
+  const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
 
   const getRowElementByIndex = useCallback(
     (index: number): HTMLElement | undefined => {
@@ -47,7 +47,7 @@ export const Table: FC<TableProps> = ({
     [],
   );
 
-  const blurNavItem = (index: number) => {
+  const blurNavItem = (index: number): void => {
     const rowElement = getRowElementByIndex(index);
 
     if (rowElement) {

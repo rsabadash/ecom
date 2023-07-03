@@ -7,7 +7,7 @@ import {
   CONTEXT_NAME,
   collapseControllerContextValueDefault,
 } from './constants';
-import { createProvider } from '../../utils';
+import { createProvider } from '../../common/utils';
 import { useCollapseControl } from './hooks';
 
 const [Provider, useCollapseController] =
