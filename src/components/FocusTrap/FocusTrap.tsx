@@ -5,6 +5,7 @@ import {
   useLayoutEffect,
   useRef,
 } from 'react';
+
 import { FocusTrapProps } from './types';
 import { focusFirstDescendant, focusLastDescendant } from './utils';
 

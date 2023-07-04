@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Warehouse, WarehouseFormValues, WarehouseUrlParams } from './types';
-import { useTranslation } from '../../components/IntlProvider';
-import { useCachedAPI } from '../../common/hooks';
+
 import { endpoints } from '../../common/constants/api';
-import { matchWarehouseDataToFormValues } from './utils';
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
+import { useCachedAPI } from '../../common/hooks';
 import { Button, ButtonsGroup } from '../../components/Button';
+import { useTranslation } from '../../components/IntlProvider';
 import { SectionForeground } from '../../layouts/Section';
-import { WarehouseForm } from './WarehouseForm';
+import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { useDeleteWarehouse } from './hooks';
+import { Warehouse, WarehouseFormValues, WarehouseUrlParams } from './types';
+import { matchWarehouseDataToFormValues } from './utils';
+import { WarehouseForm } from './WarehouseForm';
 
 const WarehouseDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

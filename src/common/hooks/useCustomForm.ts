@@ -1,8 +1,8 @@
 import { BaseSyntheticEvent, useCallback, useEffect } from 'react';
 import {
+  SubmitHandler,
   useForm,
   UseFormProps,
-  SubmitHandler,
   UseFormReturn,
 } from 'react-hook-form';
 

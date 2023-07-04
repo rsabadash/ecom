@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
-import { GridAutoFit } from '../../layouts/Grid';
-import { Foreground } from '../../layouts/Foreground';
-import { Section } from '../../layouts/Section';
-import { ReactComponent as PlusIcon } from '../../assets/icons/Plus.svg';
-import { Heading } from '../../components/Heading';
-import { useCachedAPI } from '../../common/hooks';
-import { routes } from '../../common/constants/routes';
-import { endpoints } from '../../common/constants/api';
-import { Warehouse } from './types';
-import { useTranslation } from '../../components/IntlProvider';
-import { warehouseTypeTranslationPrefix } from './constants';
+
 import classes from './styles/index.module.css';
+
+import { ReactComponent as PlusIcon } from '../../assets/icons/Plus.svg';
+import { endpoints } from '../../common/constants/api';
+import { routes } from '../../common/constants/routes';
+import { useCachedAPI } from '../../common/hooks';
+import { Heading } from '../../components/Heading';
+import { useTranslation } from '../../components/IntlProvider';
+import { Foreground } from '../../layouts/Foreground';
+import { GridAutoFit } from '../../layouts/Grid';
+import { Section } from '../../layouts/Section';
+import { warehouseTypeTranslationPrefix } from './constants';
+import { Warehouse } from './types';
 
 export const WarehousesList = () => {
   const { data = [] } = useCachedAPI<Warehouse[]>(

@@ -1,6 +1,6 @@
 import { CheckboxProps } from '../../Fields/Checkbox';
-import { FieldLabelProps } from '../FieldLabel';
 import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
+import { FieldLabelProps } from '../FieldLabel';
 
 export type CheckboxFormFieldProps = Omit<
   CheckboxProps,

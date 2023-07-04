@@ -1,10 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import { routes } from '../../common/constants/routes';
-import { PrivateRoutes } from './PrivateRoutes';
-import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
-import { SignedInRedirect } from './SignedInRedirect';
 import {
   attributesRoutes,
   categoriesRoutes,
@@ -14,6 +12,9 @@ import {
   warehouseProductsRoutes,
   warehousesRoutes,
 } from './moduleRoutes';
+import { PrivateRoutes } from './PrivateRoutes';
+import { PublicRoutes } from './PublicRoutes';
+import { SignedInRedirect } from './SignedInRedirect';
 
 const SignIn = lazy(() => import('../../pages/signIn/SignIn'));
 const NotFound = lazy(() => import('../../pages/notFound/NotFound'));

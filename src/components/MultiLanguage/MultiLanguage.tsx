@@ -1,8 +1,9 @@
 import { FC, useMemo, useRef } from 'react';
+
 import { CollapseBuilderBody, CollapseController } from '../Collapse';
+import { useGridInlineStyles } from '../GridRowBalancer';
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../IntlProvider';
 import { MultiLanguageProps } from './types';
-import { useGridInlineStyles } from '../GridRowBalancer';
 
 export const MultiLanguage: FC<MultiLanguageProps> = ({
   columnIndex,

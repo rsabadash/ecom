@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { Tooltip } from '../../Tooltip';
-import { Dropdown } from '../../Fields/Dropdown';
-import { DropdownWithTooltipFormFieldProps } from './types';
+
 import classes from './styles/index.module.css';
+
+import { Dropdown } from '../../Fields/Dropdown';
+import { Tooltip } from '../../Tooltip';
+import { DropdownWithTooltipFormFieldProps } from './types';
 
 export const DropdownWitTooltipFormField: FC<
   DropdownWithTooltipFormFieldProps

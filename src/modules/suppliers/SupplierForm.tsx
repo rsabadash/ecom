@@ -1,12 +1,13 @@
 import { FC } from 'react';
-import { useTranslation } from '../../components/IntlProvider';
-import { InputAdapter } from '../../components/FormFieldsAdapter';
-import { supplierFormFields } from './constants';
+
 import { Button } from '../../components/Button';
-import { SupplierFormProps } from './types';
-import { useSupplierForm, useSupplierFormSubmit } from './hooks';
 import { Form, FormContent } from '../../components/FormFields';
+import { InputAdapter } from '../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../components/GridRowBalancer';
+import { useTranslation } from '../../components/IntlProvider';
+import { supplierFormFields } from './constants';
+import { useSupplierForm, useSupplierFormSubmit } from './hooks';
+import { SupplierFormProps } from './types';
 
 export const SupplierForm: FC<SupplierFormProps> = ({
   id,

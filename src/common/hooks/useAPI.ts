@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { GET, POST, PATCH, DELETE } from '../utils/api';
+
 import { ApiServiceInterface } from '../services/apiService';
+import { DELETE, GET, PATCH, POST } from '../utils/api';
 
 type UseAPIReturn = ApiServiceInterface;
 

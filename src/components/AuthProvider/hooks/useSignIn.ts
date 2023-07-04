@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { SignInData, SignInResponse, Tokens } from '../types';
+
 import { signInApi } from '../api';
+import { SignInData, SignInResponse, Tokens } from '../types';
 
 type UseSignInReturn = {
   signIn: (data: SignInData) => Promise<SignInResponse | undefined>;

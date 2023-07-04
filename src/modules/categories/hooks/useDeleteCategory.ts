@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+
 import { deleteCategoryApi } from '../api';
 
 type UseDeleteCategoryReturn = {

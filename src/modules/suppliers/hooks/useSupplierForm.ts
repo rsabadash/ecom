@@ -1,13 +1,14 @@
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SupplierFormValues } from '../types';
+import * as yup from 'yup';
+
+import { useCustomForm } from '../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
 } from '../../../common/hooks/useCustomForm';
-import { useCustomForm } from '../../../common/hooks';
 import { supplierFormFields } from '../constants';
+import { SupplierFormValues } from '../types';
 
 type UseSupplierFormProps = Pick<
   UseCustomFormProps<SupplierFormValues>,

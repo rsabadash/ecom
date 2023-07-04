@@ -7,18 +7,20 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
+
+import classes from './styles/index.module.css';
+
 import { EventKeys } from '../../../common/enums/events';
+import { useOutsideElementClick } from '../../../common/hooks';
+import { useTranslation } from '../../IntlProvider';
 import { INDEX_ABSENCE_FOCUS, SIZE } from './constants';
 import {
-  DropdownItemId,
   DropdownItem,
+  DropdownItemId,
   DropdownProps,
   DropdownValue,
   KeyIndexMap,
 } from './types';
-import { useOutsideElementClick } from '../../../common/hooks';
-import { useTranslation } from '../../IntlProvider';
-import classes from './styles/index.module.css';
 
 const LIST_CONTROL_ID = Date.now().toString();
 

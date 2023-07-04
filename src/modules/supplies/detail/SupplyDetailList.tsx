@@ -1,19 +1,21 @@
 import { FC } from 'react';
-import {
-  Table,
-  TableColumnGeneric,
-  TablePagination,
-} from '../../../components/Table';
-import { SupplyDetailListProps, SupplyDetailProduct } from './types';
-import { TABLE_SUPPLY_DETAIL_ID } from './constants';
+
+import classes from './styles/index.module.css';
+
 import {
   usePaginationLimit,
   usePaginationLocalData,
   usePaginationQueryPage,
 } from '../../../components/Pagination/hooks';
+import {
+  Table,
+  TableColumnGeneric,
+  TablePagination,
+} from '../../../components/Table';
+import { TABLE_SUPPLY_DETAIL_ID } from './constants';
 import { useSupplyDetailTableColumns } from './hooks';
 import { SupplyDetailListSummary } from './SupplyDetailListSummary';
-import classes from './styles/index.module.css';
+import { SupplyDetailListProps, SupplyDetailProduct } from './types';
 
 export const SupplyDetailList: FC<SupplyDetailListProps> = ({
   products,

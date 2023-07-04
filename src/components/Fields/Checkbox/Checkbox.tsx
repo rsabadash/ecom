@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import clsx from 'clsx';
-import { CheckboxProps } from './types';
-import { ReactComponent as CheckIcon } from '../../../assets/icons/Check.svg';
+
 import classes from './styles/index.module.css';
+
+import { ReactComponent as CheckIcon } from '../../../assets/icons/Check.svg';
+import { CheckboxProps } from './types';
 
 export const Checkbox: FC<CheckboxProps> = ({
   id,

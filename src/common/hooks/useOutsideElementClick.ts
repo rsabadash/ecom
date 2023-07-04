@@ -1,4 +1,5 @@
 import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+
 import { EventKeys } from '../enums/events';
 
 type HandleClickCallback = () => void;

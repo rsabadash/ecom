@@ -1,5 +1,6 @@
-import { useElementColumnRowIndexes } from './useElementColumnRowIndexes';
 import { useMemo } from 'react';
+
+import { useElementColumnRowIndexes } from './useElementColumnRowIndexes';
 
 type GridInlineStyle = {
   gridRow?: number;

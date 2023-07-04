@@ -1,13 +1,15 @@
 import { FC } from 'react';
+
+import classes from './styles/index.module.css';
+
+import { useQueryParameters } from '../../common/hooks';
 import {
   LIMIT_ITEMS_DEFAULT,
   Pagination,
   PaginationLimit,
 } from '../Pagination';
-import { useQueryParameters } from '../../common/hooks';
-import { TablePaginationProps } from './types';
 import { usePaginationQueryPage } from '../Pagination/hooks';
-import classes from './styles/index.module.css';
+import { TablePaginationProps } from './types';
 
 export const TablePagination: FC<TablePaginationProps> = ({
   total,

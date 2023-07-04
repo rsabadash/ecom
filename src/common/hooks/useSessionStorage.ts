@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+
 import { SessionStorageService } from '../services';
 
 type UseSessionStorageReturn = {

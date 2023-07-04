@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { InputWithTooltipFormField } from '../../FormFields';
-import { InputWithTooltipAdapterProps } from './types';
+
 import { InputFormValue, InputValue } from '../../Fields/Input';
+import { InputWithTooltipFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { InputWithTooltipAdapterProps } from './types';
 
 export const InputWithTooltipAdapter = <FormValues extends FieldValues>({
   name,

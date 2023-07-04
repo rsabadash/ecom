@@ -1,11 +1,12 @@
 import { FC, PropsWithChildren, useMemo } from 'react';
-import { createProvider } from '../../common/utils';
-import { User, UserContextValue } from './types';
-import { userContextValueDefault, CONTEXT_NAME } from './constants';
-import { useCachedAPI } from '../../common/hooks';
+
 import { endpoints } from '../../common/constants/api';
+import { useCachedAPI } from '../../common/hooks';
+import { createProvider } from '../../common/utils';
 import { useAuth } from '../AuthProvider';
+import { CONTEXT_NAME, userContextValueDefault } from './constants';
 import { Role } from './enums';
+import { User, UserContextValue } from './types';
 
 const [Provider, useUser] = createProvider<UserContextValue>({
   contextName: CONTEXT_NAME,

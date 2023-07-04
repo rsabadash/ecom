@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+
 import { LocalStorageService } from '../services';
 
 type UseLocalStorageReturn = {

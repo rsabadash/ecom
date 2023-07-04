@@ -1,16 +1,17 @@
 import { FC } from 'react';
-import { DropdownWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
+import { useFormState } from 'react-hook-form';
+
+import { endpoints, path } from '../../../common/constants/api';
 import { useCachedAPI } from '../../../common/hooks';
+import { getDropdownMeta } from '../../../common/utils';
 import {
   DropdownItem,
   DropdownValue,
 } from '../../../components/Fields/Dropdown';
-import { endpoints, path } from '../../../common/constants/api';
+import { DropdownWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { ProductNameDropdownMeta, SupplyProductCellProps } from './types';
 import { supplyFormProductsSubfields } from './constants';
-import { getDropdownMeta } from '../../../common/utils';
-import { useFormState } from 'react-hook-form';
+import { ProductNameDropdownMeta, SupplyProductCellProps } from './types';
 
 const { quantity: quantitySubfield, unit: unitSubfield } =
   supplyFormProductsSubfields;

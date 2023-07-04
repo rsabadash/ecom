@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { NavData } from './types';
-import { INDEX_ABSENCE_FOCUS } from './constants';
-import { useNavigation } from './hooks';
+
+import classes from './styles/index.module.css';
+
+import { useAuth } from '../AuthProvider';
 import { Button } from '../Button';
 import { useTranslation } from '../IntlProvider';
-import { useAuth } from '../AuthProvider';
-import classes from './styles/index.module.css';
+import { INDEX_ABSENCE_FOCUS } from './constants';
+import { useNavigation } from './hooks';
+import { NavData } from './types';
 
 export const Navigation = () => {
   const { translate } = useTranslation();

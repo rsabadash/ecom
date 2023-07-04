@@ -6,12 +6,13 @@ import {
   useRef,
   useState,
 } from 'react';
-import { INDEX_ABSENCE_FOCUS } from '../constants';
+
 import { EventKeys } from '../../../common/enums/events';
-import { KeyIndexMap, NavigationItem, UseNavigationReturn } from '../types';
-import { getMenuItems } from '../utils';
 import { useTranslation } from '../../IntlProvider';
 import { useUser } from '../../UserProvider';
+import { INDEX_ABSENCE_FOCUS } from '../constants';
+import { KeyIndexMap, NavigationItem, UseNavigationReturn } from '../types';
+import { getMenuItems } from '../utils';
 
 export const useNavigation = (): UseNavigationReturn => {
   const { user, hasAllAccesses } = useUser();

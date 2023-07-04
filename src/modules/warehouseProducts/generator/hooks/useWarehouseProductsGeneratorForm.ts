@@ -1,14 +1,15 @@
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import { UNITS_LIST } from '../../../../common/constants/units';
+import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
-import { useCustomForm } from '../../../../common/hooks';
-import { WarehouseProductsGeneratorFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
-import { UNITS_LIST } from '../../../../common/constants/units';
+import { WarehouseProductsGeneratorFormValues } from '../types';
 
 type UseWarehouseProductsGeneratorFromProps = Pick<
   UseCustomFormProps<WarehouseProductsGeneratorFormValues>,

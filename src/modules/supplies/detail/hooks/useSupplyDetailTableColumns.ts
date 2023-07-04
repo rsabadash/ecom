@@ -1,11 +1,15 @@
 import { useMemo } from 'react';
-import { TableColumnGeneric } from '../../../../components/Table';
-import { SupplyDetailProduct } from '../types';
+
+import {
+  useIntlCurrency,
+  useTranslationWithFallback,
+} from '../../../../common/hooks';
 import {
   Translations,
   useTranslation,
 } from '../../../../components/IntlProvider';
-import { useIntlCurrency, useTranslationWithFallback } from '../../../../common/hooks';
+import { TableColumnGeneric } from '../../../../components/Table';
+import { SupplyDetailProduct } from '../types';
 
 export const useSupplyDetailTableColumns = () => {
   const { translate } = useTranslation();

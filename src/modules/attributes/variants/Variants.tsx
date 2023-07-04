@@ -1,14 +1,15 @@
 import { Suspense } from 'react';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useTranslation } from '../../../components/IntlProvider';
-import { ErrorBoundary } from '../../../components/ErrorBoundary';
-import { TABLE_VARIANTS_ID } from './constants';
-import { VariantsList } from './VariantsList';
-import { useCachedAPI } from '../../../common/hooks';
-import { VariantWithAttribute } from './types';
+
 import { endpoints } from '../../../common/constants/api';
-import { ButtonLink, ButtonsGroup } from '../../../components/Button';
 import { routes } from '../../../common/constants/routes';
+import { useCachedAPI } from '../../../common/hooks';
+import { ButtonLink, ButtonsGroup } from '../../../components/Button';
+import { ErrorBoundary } from '../../../components/ErrorBoundary';
+import { useTranslation } from '../../../components/IntlProvider';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { TABLE_VARIANTS_ID } from './constants';
+import { VariantWithAttribute } from './types';
+import { VariantsList } from './VariantsList';
 
 const Variants = () => {
   const { translate } = useTranslation();

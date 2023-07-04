@@ -1,21 +1,22 @@
 import { FC, useCallback, useState } from 'react';
-import { useTranslation } from '../../../components/IntlProvider';
+
+import { endpoints, path } from '../../../common/constants/api';
+import { useCachedAPI } from '../../../common/hooks';
+import { Button } from '../../../components/Button';
+import { DropdownItem } from '../../../components/Fields/Dropdown';
+import { Form, FormContent } from '../../../components/FormFields';
 import {
   DropdownAdapter,
   InputAdapter,
 } from '../../../components/FormFieldsAdapter';
-import { initialDefaultValues, supplyFormFields } from './constants';
-import { Button } from '../../../components/Button';
-import { ProductDuplicateData, SupplyFormProps } from './types';
-import { useSupplyForm, useSupplyFormSubmit } from './hooks';
-import { Form, FormContent } from '../../../components/FormFields';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
-import { useCachedAPI } from '../../../common/hooks';
-import { DropdownItem } from '../../../components/Fields/Dropdown';
-import { endpoints, path } from '../../../common/constants/api';
+import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { SupplyProductsList } from './SupplyProductsList';
+import { initialDefaultValues, supplyFormFields } from './constants';
+import { useSupplyForm, useSupplyFormSubmit } from './hooks';
 import { SupplyProductsDuplicationsModal } from './SupplyProductsDuplicationsModal';
+import { SupplyProductsList } from './SupplyProductsList';
+import { ProductDuplicateData, SupplyFormProps } from './types';
 
 export const SupplyForm: FC<SupplyFormProps> = ({
   id,

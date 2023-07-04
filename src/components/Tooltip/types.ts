@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { TOOLTIP_POSITION } from './constants';
 
 export type Position = ValuesOfObject<typeof TOOLTIP_POSITION>;

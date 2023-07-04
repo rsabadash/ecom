@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { Language } from '../IntlProvider';
+
 import { CollapseControllerProps } from '../Collapse';
+import { Language } from '../IntlProvider';
 
 export type RenderComponentArgs = {
   language: Language;

@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { VariantPostResponse, VariantPostData } from '../types';
+
 import { createVariantApi } from '../api';
+import { VariantPostData, VariantPostResponse } from '../types';
 
 type UseCreateAttributeVariantReturn = {
   createVariant: (

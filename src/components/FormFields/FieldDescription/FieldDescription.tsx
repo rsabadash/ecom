@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import clsx from 'clsx';
-import { FieldDescriptionProps } from './types';
-import { TYPE_TO_ARIA_LIVE_MAPPER } from './constatns';
+
 import classes from './styles/index.module.css';
+
+import { TYPE_TO_ARIA_LIVE_MAPPER } from './constatns';
+import { FieldDescriptionProps } from './types';
 
 export const FieldDescription: FC<FieldDescriptionProps> = ({
   id,

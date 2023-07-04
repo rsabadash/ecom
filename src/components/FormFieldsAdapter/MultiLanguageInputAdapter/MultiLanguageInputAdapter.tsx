@@ -1,9 +1,10 @@
 import { FieldValues, Path, useFormState } from 'react-hook-form';
+
 import { DEFAULT_LANGUAGE, useTranslation } from '../../IntlProvider';
-import { InputAdapter, InputWithCollapseAdapter } from '../InputAdapter';
 import { MultiLanguage } from '../../MultiLanguage';
-import { MultiLanguageInputAdapterProps } from './types';
 import { useAddLanguageToTranslation } from '../hooks';
+import { InputAdapter, InputWithCollapseAdapter } from '../InputAdapter';
+import { MultiLanguageInputAdapterProps } from './types';
 
 export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
   size,

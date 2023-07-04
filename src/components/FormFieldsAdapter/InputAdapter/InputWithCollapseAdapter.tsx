@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { InputWithCollapseFormField } from '../../FormFields';
-import { InputWithCollapseAdapterProps } from './types';
+
 import { InputFormValue, InputValue } from '../../Fields/Input';
+import { InputWithCollapseFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { InputWithCollapseAdapterProps } from './types';
 
 export const InputWithCollapseAdapter = <FormValues extends FieldValues>({
   name,

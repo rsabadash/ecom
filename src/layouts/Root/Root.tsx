@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
+
+import { themeStorage } from '../../common/utils';
 import { AuthProvider } from '../../components/AuthProvider';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { IntlProvider } from '../../components/IntlProvider';
 import { ThemeProvider } from '../../components/ThemeProvider';
-import { themeStorage } from '../../common/utils';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
 
 export const Root = () => {
   return (

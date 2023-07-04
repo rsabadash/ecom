@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { InputFormField } from '../../FormFields';
-import { InputAdapterProps } from './types';
+
 import { InputFormValue, InputValue } from '../../Fields/Input';
+import { InputFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { InputAdapterProps } from './types';
 
 export const InputAdapter = <FormValues extends FieldValues>({
   name,

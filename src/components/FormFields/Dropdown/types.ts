@@ -1,7 +1,7 @@
 import { DropdownProps } from '../../Fields/Dropdown';
-import { FieldLabelProps } from '../FieldLabel';
-import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
 import { TooltipProps } from '../../Tooltip/types';
+import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
+import { FieldLabelProps } from '../FieldLabel';
 
 export type DropdownFormFieldProps = Omit<
   DropdownProps,

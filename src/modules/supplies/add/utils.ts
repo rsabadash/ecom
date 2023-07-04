@@ -1,6 +1,7 @@
 import bigDecimal from 'js-big-decimal';
-import { Unit } from '../../../common/types/unit';
+
 import { UNIT_CODE } from '../../../common/constants/units';
+import { Unit } from '../../../common/types/unit';
 
 export const parseToDecimal = (value: string): string => {
   const valueToParse = value.trim() ? value : '0';

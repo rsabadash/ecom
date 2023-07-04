@@ -1,7 +1,7 @@
-import { TextboxProps } from '../../Fields/Textbox';
-import { FieldLabelProps } from '../FieldLabel';
 import { CollapseControllerProps } from '../../Collapse';
+import { TextboxProps } from '../../Fields/Textbox';
 import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
+import { FieldLabelProps } from '../FieldLabel';
 
 export type TextboxFormFieldProps = Omit<
   TextboxProps,

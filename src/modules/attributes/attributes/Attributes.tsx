@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useTranslation } from '../../../components/IntlProvider';
-import { ButtonLink, ButtonsGroup } from '../../../components/Button';
+
 import { routes } from '../../../common/constants/routes';
+import { ButtonLink, ButtonsGroup } from '../../../components/Button';
 import { ErrorBoundary } from '../../../components/ErrorBoundary';
+import { useTranslation } from '../../../components/IntlProvider';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { AttributesList } from './AttributesList';
 import { TABLE_ATTRIBUTES_ID } from './constants';
 

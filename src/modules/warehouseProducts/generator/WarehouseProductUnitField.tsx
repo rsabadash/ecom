@@ -1,10 +1,11 @@
 import { FC, useCallback } from 'react';
-import { DropdownAdapter } from '../../../components/FormFieldsAdapter';
-import { WarehouseProductUnitFieldProps } from './types';
+
 import { UNITS_LIST } from '../../../common/constants/units';
+import { Unit } from '../../../common/types/unit';
+import { DropdownAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
 import { warehouseProductsGeneratorFormFields } from './constants';
-import { Unit } from '../../../common/types/unit';
+import { WarehouseProductUnitFieldProps } from './types';
 
 export const WarehouseProductUnitField: FC<WarehouseProductUnitFieldProps> = ({
   name,

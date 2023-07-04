@@ -1,7 +1,8 @@
 import { renderHook } from '@testing-library/react';
-import { usePreferredTheme } from '../usePreferredTheme';
-import { DEFAULT_THEME, THEMES } from '../../constants';
+
 import { themeStorageMock } from '../../../../test/mocks/themeStorage.mock';
+import { DEFAULT_THEME, THEMES } from '../../constants';
+import { usePreferredTheme } from '../usePreferredTheme';
 
 describe('usePreferredTheme', () => {
   test('obtain theme from system configuration', () => {

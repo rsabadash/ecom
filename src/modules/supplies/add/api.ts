@@ -1,6 +1,6 @@
+import { endpoints } from '../../../common/constants/api';
 import { POST } from '../../../common/utils/api';
 import { SupplyPostData, SupplyPostResponse } from './types';
-import { endpoints } from '../../../common/constants/api';
 
 export const createSupplyApi = async (
   data: SupplyPostData,

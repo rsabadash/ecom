@@ -1,6 +1,7 @@
 import useSWR from 'swr';
-import { useAPI } from './useAPI';
 import { PublicConfiguration } from 'swr/_internal';
+
+import { useAPI } from './useAPI';
 
 type UseCachedAPIOptions = Partial<
   Pick<

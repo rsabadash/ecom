@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
-import { Top, TopHeading } from '../../layouts/Top';
-import { TABLE_WAREHOUSE_PRODUCTS_ID } from '../warehouseProducts/list/constants';
+
 import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { useTranslation } from '../../components/IntlProvider';
+import { Top, TopHeading } from '../../layouts/Top';
+import { TABLE_WAREHOUSE_PRODUCTS_ID } from '../warehouseProducts/list/constants';
 import { WarehousesList } from './WarehousesList';
 
 const Warehouses = () => {

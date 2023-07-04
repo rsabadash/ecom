@@ -1,8 +1,9 @@
 import { FC, useRef } from 'react';
-import { CollapseProps } from './types';
+
 import { CollapseBuilderBody } from './CollapseBuilderBody';
-import { CollapseController } from './CollapseController';
 import { CollapseBuilderHeader } from './CollapseBuilderHeader';
+import { CollapseController } from './CollapseController';
+import { CollapseProps } from './types';
 
 export const Collapse: FC<CollapseProps> = ({
   header,

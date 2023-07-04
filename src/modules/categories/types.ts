@@ -1,5 +1,5 @@
-import { Translations } from '../../components/IntlProvider';
 import { DropdownItem } from '../../components/Fields/Dropdown';
+import { Translations } from '../../components/IntlProvider';
 
 export type Category = {
   _id: string;

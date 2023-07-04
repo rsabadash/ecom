@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { Translations, useTranslation } from '../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../components/Table';
 import { Category } from '../types';

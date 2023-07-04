@@ -1,10 +1,12 @@
 import { ChangeEvent, FC, KeyboardEvent } from 'react';
 import clsx from 'clsx';
+
+import classes from './styles/index.module.css';
+
+import { EventKeys } from '../../../common/enums/events';
+import { DEFAULT_INPUT_TYPE, INPUT_TYPE, SIZE } from './constants';
 import { InputProps } from './types';
 import { commonFormatValue, serializeValue } from './utils';
-import { DEFAULT_INPUT_TYPE, INPUT_TYPE, SIZE } from './constants';
-import { EventKeys } from '../../../common/enums/events';
-import classes from './styles/index.module.css';
 
 export const Input: FC<InputProps> = ({
   id,

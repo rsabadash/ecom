@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
+
+import { useTranslation } from '../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../components/Table';
 import { Supplier } from '../types';
-import { useTranslation } from '../../../components/IntlProvider';
 
 type UseSuppliersTableColumnsReturn = TableColumnGeneric<Supplier>[];
 

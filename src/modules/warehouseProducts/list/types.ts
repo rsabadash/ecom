@@ -1,6 +1,6 @@
+import { Unit } from '../../../common/types/unit';
 import { Translations } from '../../../components/IntlProvider';
 import { TableBodyRowProps } from '../../../components/Table/types';
-import { Unit } from '../../../common/types/unit';
 
 export type WarehouseProductsVariant = {
   variantId: string;

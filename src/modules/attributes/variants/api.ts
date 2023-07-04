@@ -1,11 +1,11 @@
+import { endpoints } from '../../../common/constants/api';
+import { DELETE, PATCH, POST } from '../../../common/utils/api';
 import {
   VariantDeleteData,
   VariantPatchData,
   VariantPostData,
   VariantPostResponse,
 } from './types';
-import { endpoints } from '../../../common/constants/api';
-import { DELETE, PATCH, POST } from '../../../common/utils/api';
 
 export const createVariantApi = async (
   data: VariantPostData,

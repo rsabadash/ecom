@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import clsx from 'clsx';
-import { Label } from '../../Label';
-import { useTranslation } from '../../IntlProvider';
-import { FieldLabelProps } from './types';
+
 import classes from './styles/index.module.css';
+
+import { useTranslation } from '../../IntlProvider';
+import { Label } from '../../Label';
+import { FieldLabelProps } from './types';
 
 export const FieldLabel: FC<FieldLabelProps> = ({
   label,

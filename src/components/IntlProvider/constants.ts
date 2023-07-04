@@ -1,5 +1,5 @@
-import { TranslationContextValue } from './types';
 import { APPLICATION_NAME } from '../../common/constants/application';
+import { TranslationContextValue } from './types';
 
 export const CONTEXT_NAME = 'TranslationContext';
 

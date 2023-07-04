@@ -1,19 +1,22 @@
+import { endpoints } from '../../common/constants/api';
+import {
+  LocalStorageService,
+  SessionStorageService,
+} from '../../common/services';
+import { POST } from '../../common/utils/api';
+import { sharedBus } from '../../common/utils/sharedBus';
+import {
+  ACCESS_TOKEN_KEY,
+  PERSIST_USER_KEY,
+  REFRESH_TOKEN_KEY,
+} from './constants';
+import { PERSIST_STATE } from './enums';
 import {
   RefreshTokenData,
   RefreshTokenResponse,
   SignInData,
   SignInResponse,
 } from './types';
-import { POST } from '../../common/utils/api';
-import { endpoints } from '../../common/constants/api';
-import { LocalStorageService, SessionStorageService } from '../../common/services';
-import {
-  ACCESS_TOKEN_KEY,
-  PERSIST_USER_KEY,
-  REFRESH_TOKEN_KEY,
-} from './constants';
-import { sharedBus } from '../../common/utils/sharedBus';
-import { PERSIST_STATE } from './enums';
 
 export const signInApi = async (
   data: SignInData,

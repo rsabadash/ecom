@@ -1,4 +1,5 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+
 import { CollapseControllerProps } from '../types';
 
 type UseCollapseControlProps = Omit<

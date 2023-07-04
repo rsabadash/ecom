@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
+
+import { endpoints } from '../../common/constants/api';
+import { routes } from '../../common/constants/routes';
 import { useCachedAPI } from '../../common/hooks';
+import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
+import { useTranslation } from '../../components/IntlProvider';
+import { SectionForeground } from '../../layouts/Section';
+import { Top, TopButtons, TopHeading } from '../../layouts/Top';
+import { CategoryForm } from './CategoryForm';
+import { useDeleteCategory } from './hooks';
 import {
   CategoryDetailEntity,
   CategoryFormValues,
   CategoryUrlParams,
 } from './types';
-import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
-import { useTranslation } from '../../components/IntlProvider';
-import { SectionForeground } from '../../layouts/Section';
-import { endpoints } from '../../common/constants/api';
-import { routes } from '../../common/constants/routes';
-import { CategoryForm } from './CategoryForm';
 import { matchCategoryDataToFormValues } from './utils';
-import { useDeleteCategory } from './hooks';
 
 const CategoryDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

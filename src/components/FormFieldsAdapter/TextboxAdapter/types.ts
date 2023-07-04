@@ -1,4 +1,5 @@
-import { Control, FieldError, FieldValues, Path } from 'react-hook-form';
+import { Control, FieldValues, Path } from 'react-hook-form';
+
 import {
   TextboxFormFieldProps,
   TextboxWithCollapseFormFieldProps,

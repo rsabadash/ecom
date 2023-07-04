@@ -7,18 +7,20 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
+
+import classes from './styles/index.module.css';
+
+import { EventKeys } from '../../common/enums/events';
 import { SectionForeground } from '../../layouts/Section';
-import { TableBodyRowProps, TableProps } from './types';
+import { KeyIndexMap } from '../Navigation/types';
 import {
   INDEX_ABSENCE_FOCUS,
   INITIAL_FOCUS_INDEX,
   tableRoles,
   tableRowRoles,
 } from './constants';
-import { EventKeys } from '../../common/enums/events';
-import { KeyIndexMap } from '../Navigation/types';
 import { TableCell } from './TableCell';
-import classes from './styles/index.module.css';
+import { TableBodyRowProps, TableProps } from './types';
 
 // TODO ARIA for sorting https://www.w3.org/WAI/ARIA/apg/practices/grid-and-table-properties/
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role

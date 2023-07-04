@@ -1,20 +1,22 @@
 import { FC, useCallback, useState } from 'react';
 import { useFieldArray } from 'react-hook-form';
-import { SupplyProductListColumn, SupplyProductsListProps } from './types';
-import { Table, TableColumnGeneric } from '../../../components/Table';
-import { useSupplyProductsTableColumns } from './hooks';
+
+import classes from './styles/index.module.css';
+
 import { Button } from '../../../components/Button';
+import { useTranslation } from '../../../components/IntlProvider';
+import { Modal } from '../../../components/Modal';
+import { Table, TableColumnGeneric } from '../../../components/Table';
+import { Tooltip } from '../../../components/Tooltip';
 import {
   defaultProductValue,
   MAX_PRODUCTS_IN_SUPPLY,
   MIN_PRODUCTS_IN_SUPPLY,
   supplyFormArrayFields,
 } from './constants';
-import { useTranslation } from '../../../components/IntlProvider';
+import { useSupplyProductsTableColumns } from './hooks';
 import { SupplyProductSummary } from './SupplyProductSummary';
-import { Modal } from '../../../components/Modal';
-import { Tooltip } from '../../../components/Tooltip';
-import classes from './styles/index.module.css';
+import { SupplyProductListColumn, SupplyProductsListProps } from './types';
 
 export const SupplyProductsList: FC<SupplyProductsListProps> = ({
   control,

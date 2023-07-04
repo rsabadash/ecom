@@ -1,4 +1,8 @@
-import { DEFAULT_LANGUAGE, LANGUAGES, LOCALE_TO_LANGUAGE_MAP } from './constants';
+import {
+  DEFAULT_LANGUAGE,
+  LANGUAGES,
+  LOCALE_TO_LANGUAGE_MAP,
+} from './constants';
 
 export type Language = ValuesOfObject<typeof LANGUAGES>;
 

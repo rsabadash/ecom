@@ -1,20 +1,21 @@
 import { BaseSyntheticEvent, useCallback } from 'react';
-import {
-  AttributeVirtualFieldValue,
-  DataToGenerateProducts,
-  GeneratedProduct,
-  WarehouseProductsGeneratorFormValues,
-  VariantVirtualFieldValue,
-  GeneratedAttribute,
-} from '../types';
-import { transformProductBasedOnVariants } from '../utils';
+
 import { cartesian } from '../../../../common/utils/cartesian';
-import { buttonNames } from '../constants';
 import {
   DEFAULT_LANGUAGE,
   SUPPORTED_LANGUAGES,
   Translations,
 } from '../../../../components/IntlProvider';
+import { buttonNames } from '../constants';
+import {
+  AttributeVirtualFieldValue,
+  DataToGenerateProducts,
+  GeneratedAttribute,
+  GeneratedProduct,
+  VariantVirtualFieldValue,
+  WarehouseProductsGeneratorFormValues,
+} from '../types';
+import { transformProductBasedOnVariants } from '../utils';
 
 type UseWarehouseProductsGeneratorFormSubmitProps = {
   onSuccess: (products: GeneratedProduct[]) => void;

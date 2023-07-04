@@ -1,4 +1,5 @@
-import { FC, PropsWithChildren, Suspense, lazy } from 'react';
+import { FC, lazy, PropsWithChildren, Suspense } from 'react';
+
 import { ModalProps } from './types';
 
 const ModalComponent = lazy(() => import('./ModalComponent'));

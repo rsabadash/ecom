@@ -1,7 +1,9 @@
 import { memo } from 'react';
+
+import classes from './styles/index.module.css';
+
 import { useTranslation } from '../../../components/IntlProvider';
 import { Tag } from '../../../components/Tag';
-import classes from './styles/index.module.css';
 import { WarehouseProductsListAttributesProps } from './types';
 
 export const WarehouseProductsListAttributes =

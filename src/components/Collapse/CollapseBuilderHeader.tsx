@@ -1,9 +1,11 @@
 import { FC, PropsWithChildren } from 'react';
 import clsx from 'clsx';
-import { CollapseBuilderHeaderProps } from './types';
-import { useCollapseController } from './CollapseController';
-import { CollapseBuilderButton } from './CollapseBuilderButton';
+
 import classes from './styles/index.module.css';
+
+import { CollapseBuilderButton } from './CollapseBuilderButton';
+import { useCollapseController } from './CollapseController';
+import { CollapseBuilderHeaderProps } from './types';
 
 export const CollapseBuilderHeader: FC<
   PropsWithChildren<CollapseBuilderHeaderProps>

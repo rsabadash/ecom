@@ -1,21 +1,22 @@
 import { FC } from 'react';
+
+import { Button } from '../../components/Button';
+import { DropdownItemObject } from '../../components/Fields/Dropdown';
 import { Form, FormContent } from '../../components/FormFields';
-import { GridRowBalancer } from '../../components/GridRowBalancer';
 import {
   DropdownAdapter,
   InputAdapter,
   TextboxAdapter,
 } from '../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../components/GridRowBalancer';
+import { useTranslation } from '../../components/IntlProvider';
 import {
   warehouseFormFields,
   warehouseTypeKeys,
   warehouseTypeTranslationPrefix,
 } from './constants';
-import { useTranslation } from '../../components/IntlProvider';
 import { useWarehouseForm, useWarehouseFormSubmit } from './hooks';
 import { WarehouseFormProps, WarehouseType } from './types';
-import { DropdownItemObject } from '../../components/Fields/Dropdown';
-import { Button } from '../../components/Button';
 
 export const WarehouseForm: FC<WarehouseFormProps> = ({
   id,

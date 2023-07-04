@@ -1,10 +1,12 @@
-import { FC, PropsWithChildren, MouseEvent, KeyboardEvent } from 'react';
+import { FC, KeyboardEvent, MouseEvent, PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
-import { DEFAULT_BUTTON_VARIANT, DEFAULT_BUTTON_SIZE } from './constants';
-import { ButtonLinkProps } from './types';
+
 import classes from './styles/index.module.css';
+
 import { EventKeys } from '../../common/enums/events';
+import { DEFAULT_BUTTON_SIZE, DEFAULT_BUTTON_VARIANT } from './constants';
+import { ButtonLinkProps } from './types';
 
 export const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
   size = DEFAULT_BUTTON_SIZE,

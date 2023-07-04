@@ -1,14 +1,15 @@
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import { URL_SLUG } from '../../../../common/constants/regex';
+import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
-import { useCustomForm } from '../../../../common/hooks';
-import { VariantFormValues } from '../types';
 import { mainTranslationRequired } from '../../../../validations/translations';
-import { URL_SLUG } from '../../../../common/constants/regex';
+import { VariantFormValues } from '../types';
 
 type UseVariantFromProps = Pick<
   UseCustomFormProps<VariantFormValues>,

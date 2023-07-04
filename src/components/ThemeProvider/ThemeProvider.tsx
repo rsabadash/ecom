@@ -1,27 +1,28 @@
 import {
   FC,
   PropsWithChildren,
-  useState,
-  useMemo,
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
+  useState,
 } from 'react';
-import { usePreferredTheme } from './hooks';
-import { Theme, ThemeContextValue, ThemeProviderProps } from './types';
-import {
-  ROOT_ID,
-  THEMES,
-  THEME_STORAGE_KEY,
-  themeContextValuesDefault,
-  CONTEXT_NAME,
-} from './constants';
-import { createProvider } from '../../common/utils';
 
 import './styles/common.css';
 import './styles/darkTheme.css';
 import './styles/lightTheme.css';
 import './styles/index.css';
+
+import { createProvider } from '../../common/utils';
+import {
+  CONTEXT_NAME,
+  ROOT_ID,
+  THEME_STORAGE_KEY,
+  themeContextValuesDefault,
+  THEMES,
+} from './constants';
+import { usePreferredTheme } from './hooks';
+import { Theme, ThemeContextValue, ThemeProviderProps } from './types';
 
 const [Provider, useTheme] = createProvider<ThemeContextValue>({
   contextName: CONTEXT_NAME,

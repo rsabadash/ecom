@@ -1,5 +1,6 @@
-import { MouseEvent, KeyboardEvent } from 'react';
+import { KeyboardEvent, MouseEvent } from 'react';
 import { LinkProps } from 'react-router-dom';
+
 import { BUTTON_SIZE, BUTTON_TYPE, BUTTON_VARIANT } from './constants';
 
 export type ButtonProps = {

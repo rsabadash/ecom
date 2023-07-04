@@ -1,6 +1,6 @@
-import { NavigationItems } from './types';
 import { routes } from '../../common/constants/routes';
 import { TranslateFn } from '../IntlProvider';
+import { NavigationItems } from './types';
 // import { Role } from '../UserProvider/enums';
 
 export const getMenuItems = (translateFn: TranslateFn): NavigationItems => {

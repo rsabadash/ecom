@@ -1,7 +1,9 @@
 import { FC, PropsWithChildren } from 'react';
 import clsx from 'clsx';
-import { ForegroundProps } from './types';
+
 import classes from './styles/index.module.css';
+
+import { ForegroundProps } from './types';
 
 export const Foreground: FC<PropsWithChildren<ForegroundProps>> = ({
   children,

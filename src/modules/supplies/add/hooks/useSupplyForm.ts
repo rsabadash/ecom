@@ -1,21 +1,22 @@
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SupplyFormValues, SupplyProduct } from '../types';
+import * as yup from 'yup';
+
+import {
+  DECIMAL_POSITIVE,
+  DECIMAL_ZERO_ENDS,
+} from '../../../../common/constants/regex';
+import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
-import { useCustomForm } from '../../../../common/hooks';
-import { supplyFormFields, supplyFormProductsSubfields } from '../constants';
-import { dropdownItem } from '../../../../validations/dropdown';
 import { DropdownItemObject } from '../../../../components/Fields/Dropdown';
 import { objectErrorMessage } from '../../../../components/FormFieldsAdapter/utils';
+import { dropdownItem } from '../../../../validations/dropdown';
+import { supplyFormFields, supplyFormProductsSubfields } from '../constants';
+import { SupplyFormValues, SupplyProduct } from '../types';
 import { isUnitSupportDecimal, parseToDecimal } from '../utils';
-import {
-  DECIMAL_POSITIVE,
-  DECIMAL_ZERO_ENDS,
-} from '../../../../common/constants/regex';
 
 type UseSupplyFormProps = Pick<
   UseCustomFormProps<SupplyFormValues>,

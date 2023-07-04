@@ -1,8 +1,8 @@
 export { InputFormField } from './Input';
-export { InputWithTooltipFormField } from './InputWithTooltip';
 export { InputWithCollapseFormField } from './InputWithCollapse';
+export { InputWithTooltipFormField } from './InputWithTooltip';
 export type {
   InputFormFieldProps,
-  InputWithTooltipFormFieldProps,
   InputWithCollapseFormFieldProps,
+  InputWithTooltipFormFieldProps,
 } from './types';

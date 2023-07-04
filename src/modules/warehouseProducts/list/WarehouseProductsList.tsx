@@ -1,24 +1,26 @@
 import { useEffect, useRef } from 'react';
-import { useCachedAPI } from '../../../common/hooks';
+
+import classes from './styles/index.module.css';
+
 import { endpoints } from '../../../common/constants/api';
-import { useWarehouseProductsTableColumns } from './hooks';
-import {
-  RowCustomRenderProps,
-  Table,
-  TableColumnGeneric,
-  TablePagination,
-} from '../../../components/Table';
-import { WarehouseProduct, WarehouseProductTable } from './types';
-import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
-import { WarehouseProductsListItem } from './WarehouseProductsListItem';
-import { tableRoles } from '../../../components/Table/constants';
+import { useCachedAPI } from '../../../common/hooks';
 import { PaginationData } from '../../../common/types/pagination';
 import { getPaginationData } from '../../../common/utils';
 import {
   usePaginationLimit,
   usePaginationUrl,
 } from '../../../components/Pagination/hooks';
-import classes from './styles/index.module.css';
+import {
+  RowCustomRenderProps,
+  Table,
+  TableColumnGeneric,
+  TablePagination,
+} from '../../../components/Table';
+import { tableRoles } from '../../../components/Table/constants';
+import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
+import { useWarehouseProductsTableColumns } from './hooks';
+import { WarehouseProduct, WarehouseProductTable } from './types';
+import { WarehouseProductsListItem } from './WarehouseProductsListItem';
 
 export const WarehouseProductsList = () => {
   const isLoadedRef = useRef<boolean>(false);

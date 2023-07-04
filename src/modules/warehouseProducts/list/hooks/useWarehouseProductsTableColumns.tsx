@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
+
+import { Unit } from '../../../../common/types/unit';
+import { CollapseBuilderButton } from '../../../../components/Collapse';
 import {
   Translations,
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { WarehouseProductsAttribute, WarehouseProductTable } from '../types';
-import { CollapseBuilderButton } from '../../../../components/Collapse';
 import { horizontalAlignment } from '../../../../components/Table/constants';
-import { Unit } from '../../../../common/types/unit';
+import { WarehouseProductsAttribute, WarehouseProductTable } from '../types';
 
 type UseWarehouseProductsTableColumnsReturn =
   TableColumnGeneric<WarehouseProductTable>[];

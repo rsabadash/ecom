@@ -1,8 +1,10 @@
 import { ChangeEvent, FC, useEffect, useRef } from 'react';
 import clsx from 'clsx';
+
+import classes from './styles/index.module.css';
+
 import { TextboxProps } from './types';
 import { commonFormatValue, serializeValue } from './utils';
-import classes from './styles/index.module.css';
 
 export const Textbox: FC<TextboxProps> = ({
   id,

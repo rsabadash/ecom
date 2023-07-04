@@ -1,12 +1,14 @@
 import { FC, MouseEvent } from 'react';
 import clsx from 'clsx';
-import { useCollapseController } from './CollapseController';
-import { Button } from '../Button';
+
+import classes from './styles/index.module.css';
+
 import { ReactComponent as ChevronDownIcon } from '../../assets/icons/ChevronDown.svg';
 import { ReactComponent as ChevronUpIcon } from '../../assets/icons/ChevronUp.svg';
-import { CollapseBuilderButtonProps } from './types';
+import { Button } from '../Button';
+import { useCollapseController } from './CollapseController';
 import { DEFAULT_ICON_SIZE } from './constants';
-import classes from './styles/index.module.css';
+import { CollapseBuilderButtonProps } from './types';
 
 export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
   iconSize = DEFAULT_ICON_SIZE,

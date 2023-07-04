@@ -1,6 +1,6 @@
-import { getSystemColorSchema } from '../getSystemColorSchema';
-import { DARK_SCHEMA_QUERY, LIGHT_SCHEMA_QUERY, THEMES } from '../../constants';
 import { matchMediaMock } from '../../../../test/mocks/matchMedia.mock';
+import { DARK_SCHEMA_QUERY, LIGHT_SCHEMA_QUERY, THEMES } from '../../constants';
+import { getSystemColorSchema } from '../getSystemColorSchema';
 
 const defineMediaMockQuery = matchMediaMock();
 

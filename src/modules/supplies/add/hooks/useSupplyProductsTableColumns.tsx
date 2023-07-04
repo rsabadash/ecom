@@ -1,16 +1,17 @@
 import { useMemo } from 'react';
 import { Control, UseFormGetValues, UseFormSetValue } from 'react-hook-form';
-import { TableColumnGeneric } from '../../../../components/Table';
-import { SupplyFormValues, SupplyProductListColumn } from '../types';
+
 import { useTranslation } from '../../../../components/IntlProvider';
-import { SupplyProductNameCell } from '../SupplyProductNameCell';
+import { TableColumnGeneric } from '../../../../components/Table';
 import { supplyFormArrayFields } from '../constants';
-import { SupplyProductQuantityCell } from '../SupplyProductQuantityCell';
-import { SupplyProductPriceCell } from '../SupplyProductPriceCell';
-import { SupplyProductTotalCostCell } from '../SupplyProductTotalCostCell';
 import { SupplyProductActions } from '../SupplyProductActions';
-import { SupplyProductUnitCell } from '../SupplyProductUnitCell';
+import { SupplyProductNameCell } from '../SupplyProductNameCell';
 import { SupplyProductOrderCell } from '../SupplyProductOrderCell';
+import { SupplyProductPriceCell } from '../SupplyProductPriceCell';
+import { SupplyProductQuantityCell } from '../SupplyProductQuantityCell';
+import { SupplyProductTotalCostCell } from '../SupplyProductTotalCostCell';
+import { SupplyProductUnitCell } from '../SupplyProductUnitCell';
+import { SupplyFormValues, SupplyProductListColumn } from '../types';
 
 type UseSupplyProductsTableColumnsProps = {
   control: Control<SupplyFormValues>;

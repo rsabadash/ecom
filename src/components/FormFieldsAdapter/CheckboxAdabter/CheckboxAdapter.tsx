@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 import { FieldValues, useController } from 'react-hook-form';
-import { CheckboxFormField } from '../../FormFields';
-import { CheckboxAdapterProps } from './types';
+
 import { CheckboxValue } from '../../Fields/Checkbox/types';
+import { CheckboxFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { CheckboxAdapterProps } from './types';
 
 export const CheckboxAdapter = <FormValues extends FieldValues>({
   name,
