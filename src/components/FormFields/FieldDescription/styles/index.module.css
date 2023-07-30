@@ -1,7 +1,7 @@
 .fieldDescription {
   font-size: var(--font-size-xs);
   color: var(--text-color-secondary);
-  margin-top: 0.5rem;
+  margin-top: var(--gap-quater);
 }
 
 .fieldDescription_error {

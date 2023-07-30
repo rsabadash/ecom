@@ -1,6 +1,7 @@
 import { ElementType } from 'react';
 
-import { INPUT_TYPE, SIZE } from './constants';
+import { ElementSize } from '../../../common/types/size';
+import { INPUT_TYPE } from './constants';
 
 export type InputValue = string;
 
@@ -12,7 +13,7 @@ export type InputProps = {
   id?: string;
   name: string;
   type?: InputType;
-  size?: ValuesOfObject<typeof SIZE>;
+  size?: ElementSize;
   value?: null | InputValue;
   placeholder?: string;
   isValid?: boolean;

@@ -1,6 +1,9 @@
 import { FieldLabelProps } from '../FieldLabel';
 
-export type CommonFormFieldWrapperProps = Pick<FieldLabelProps, 'label'> & {
+export type CommonFormFieldWrapperProps = Pick<
+  FieldLabelProps,
+  'label' | 'size'
+> & {
   name: string;
   placeholder?: string;
   isValid?: boolean;

@@ -10,6 +10,7 @@
   height: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
+  font-size: 1rem;
 }
 
 .aside {
@@ -18,13 +19,13 @@
   background-color: var(--foreground);
   box-shadow: var(--shadow-5);
   height: 100%;
-  padding-block: 2.5rem;
-  padding-inline: 1rem;
+  padding-block: var(--gap-double);
+  padding-inline: var(--gap);
   grid-area: aside;
 }
 
 .main {
-  padding: 2.5rem;
+  padding: var(--gap-double);
   grid-area: main;
   border-right: 1px solid var(--border-color);
   display: flex;

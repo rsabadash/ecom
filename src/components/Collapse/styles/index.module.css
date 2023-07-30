@@ -1,7 +1,7 @@
 .collapseHeader {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--gap);
 }
 
 .collapseHeader_toggleable {

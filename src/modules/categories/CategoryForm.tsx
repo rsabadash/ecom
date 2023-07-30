@@ -46,7 +46,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   return (
     <Form onSubmit={handleSubmit}>
       <FormContent>
-        <GridRowBalancer columns={2} elementRows={4}>
+        <GridRowBalancer columns={3} elementRows={4}>
           <MultiLanguageInputAdapter
             isRequired
             isReadOnly={isReadOnly}

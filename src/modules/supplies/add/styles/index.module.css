@@ -12,7 +12,7 @@
 }
 
 .supplyProducts__list_buttonAddWrapper {
-  margin-top: 1.5rem;
+  margin-top: var(--gap);
   width: 100%;
 }
 

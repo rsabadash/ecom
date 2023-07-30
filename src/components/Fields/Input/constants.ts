@@ -1,3 +1,5 @@
+import { DEFAULT_ELEMENT_SIZE } from '../../../common/constants/sizes';
+
 export const INPUT_TYPE = {
   TEXT: 'text',
   NUMBER: 'number',
@@ -5,10 +7,5 @@ export const INPUT_TYPE = {
   EMAIL: 'email',
 };
 
+export const DEFAULT_INPUT_SIZE = DEFAULT_ELEMENT_SIZE;
 export const DEFAULT_INPUT_TYPE = INPUT_TYPE.TEXT;
-
-export const SIZE = {
-  M: 'm',
-  S: 's',
-  XS: 'xs',
-} as const;

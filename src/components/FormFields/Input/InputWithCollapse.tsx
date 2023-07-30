@@ -45,6 +45,7 @@ export const InputWithCollapseFormField: FC<
   return (
     <CommonFormFieldsWrapper
       name={name}
+      size={size}
       label={label}
       placeholder={placeholder}
       isValid={isValid}
@@ -76,6 +77,7 @@ export const InputWithCollapseFormField: FC<
       />
       {!isToggleHidden && (
         <CollapseBuilderButton
+          size={size}
           collapseButtonClassName={collapseButtonClassName}
         />
       )}

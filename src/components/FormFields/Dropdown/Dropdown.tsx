@@ -35,6 +35,7 @@ export const DropdownFormField: FC<DropdownFormFieldProps> = ({
   return (
     <CommonFormFieldsWrapper
       name={name}
+      size={size}
       label={label}
       placeholder={placeholder}
       isValid={isValid}

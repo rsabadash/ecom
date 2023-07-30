@@ -2,8 +2,24 @@
   padding: 0;
 }
 
-.table {
+.table_xs {
+  font-size: var(--font-size-xs);
+}
+
+.table_s {
+  font-size: var(--font-size-s);
+}
+
+.table_m {
   font-size: var(--font-size-m);
+}
+
+.table_l {
+  font-size: var(--font-size-l);
+}
+
+.table_xl {
+  font-size: var(--font-size-xl);
 }
 
 .table__header {
@@ -17,19 +33,19 @@
 }
 
 .table__headerItem {
-  padding-block: 1em;
-  padding-inline: 0.5em;
+  padding-block: var(--gap);
+  padding-inline: var(--gap-half);
   box-sizing: content-box;
 }
 
 .table__headerItem:first-child {
-  padding-inline-start: 1em;
-  padding-inline-end: 0.5em;
+  padding-inline-start: var(--gap);
+  padding-inline-end: var(--gap-half);
 }
 
 .table__headerItem:last-child {
-  padding-inline-start: 0.5em;
-  padding-inline-end: 1em;
+  padding-inline-start: var(--gap-half);
+  padding-inline-end: var(--gap);
 }
 
 .table__body a {
@@ -67,25 +83,25 @@
 
 .table__cell {
   display: flex;
-  padding-block: 1em;
-  padding-inline: 0.5em;
+  padding-block: var(--gap);
+  padding-inline: var(--gap-half);
   box-sizing: content-box;
 }
 
 .table__cell:first-child {
-  padding-inline-start: 1em;
-  padding-inline-end: 0.5em;
+  padding-inline-start: var(--gap);
+  padding-inline-end: var(--gap-half);
 }
 
 .table__cell:last-child {
-  padding-inline-start: 0.5em;
-  padding-inline-end: 1em;
+  padding-inline-start: var(--gap-half);
+  padding-inline-end: var(--gap);
 }
 
 .tableBottomPanel {
   display: flex;
   align-items: center;
-  padding: 1em;
+  padding: var(--gap);
 }
 
 .table__paginationBlock {

@@ -16,7 +16,7 @@ export const useGridInlineStyles = (
   const { rowIndex, currentColumnIndex, elementRowIndexes } =
     useElementColumnRowIndexes(columnIndex);
 
-  const marginTop = rowIndex === 0 || rowIndex > 1 ? '1.5rem' : undefined;
+  const marginTop = rowIndex === 0 || rowIndex > 1 ? '1.5em' : undefined;
 
   return useMemo(
     () =>

@@ -5,12 +5,13 @@ import { ReactComponent as ChevronDownIcon } from '../../assets/icons/ChevronDow
 import { ReactComponent as ChevronUpIcon } from '../../assets/icons/ChevronUp.svg';
 import { Button } from '../Button';
 import { useCollapseController } from './CollapseController';
-import { DEFAULT_ICON_SIZE } from './constants';
+import { DEFAULT_COLLAPSE_BUTTON_SIZE, DEFAULT_ICON_SIZE } from './constants';
 import { CollapseBuilderButtonProps } from './types';
 
 import classes from './styles/index.module.css';
 
 export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
+  size = DEFAULT_COLLAPSE_BUTTON_SIZE,
   iconSize = DEFAULT_ICON_SIZE,
   isCollapseDisabled,
   collapseButtonClassName,
@@ -30,6 +31,7 @@ export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
 
   return (
     <Button
+      size={size}
       onClick={handleButtonClick}
       ariaLabel={ariaLabel}
       ariaExpanded={isExpand}

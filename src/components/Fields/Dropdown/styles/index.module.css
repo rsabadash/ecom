@@ -8,7 +8,6 @@
   background-color: var(--input-background);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-regular);
-  font-size: var(--font-size-m);
   padding: 0.85em;
   color: var(--text-color);
   outline: none;
@@ -18,12 +17,24 @@
   cursor: pointer;
 }
 
+.dropdown_xs {
+  font-size: var(--font-size-xs);
+}
+
 .dropdown_s {
   font-size: var(--font-size-s);
 }
 
-.dropdown_xs {
-  font-size: var(--font-size-xs);
+.dropdown_m {
+  font-size: var(--font-size-m);
+}
+
+.dropdown_l {
+  font-size: var(--font-size-l);
+}
+
+.dropdown_xl {
+  font-size: var(--font-size-xl);
 }
 
 .dropdown:focus-visible {

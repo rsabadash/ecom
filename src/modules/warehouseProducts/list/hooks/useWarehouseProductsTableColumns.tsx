@@ -7,7 +7,7 @@ import {
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { horizontalAlignment } from '../../../../components/Table/constants';
+import { HORIZONTAL_ALIGNMENT } from '../../../../components/Table/constants';
 import { WarehouseProductsAttribute, WarehouseProductTable } from '../types';
 
 type UseWarehouseProductsTableColumnsReturn =
@@ -67,7 +67,7 @@ export const useWarehouseProductsTableColumns =
           title: '',
           key: 'button',
           width: '10%',
-          align: horizontalAlignment.end,
+          align: HORIZONTAL_ALIGNMENT.END,
           valueGetter: ({ item }: { item: WarehouseProductTable }) => {
             if (item.attributes?.length) {
               return (

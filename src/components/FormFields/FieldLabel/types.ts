@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 
-export type FieldLabelProps = {
+import { LabelProps } from '../../Label/types';
+
+export type FieldLabelProps = Pick<LabelProps, 'size'> & {
   label: ReactNode;
   htmlFor: string;
   isValid?: boolean;

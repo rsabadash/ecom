@@ -1,6 +1,6 @@
 .fieldLabel {
   cursor: pointer;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--gap-half);
 }
 
 .fieldLabel_error {

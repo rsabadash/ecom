@@ -2,7 +2,11 @@ import { ChangeEvent, FC, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
 import { EventKeys } from '../../../common/enums/events';
-import { DEFAULT_INPUT_TYPE, INPUT_TYPE, SIZE } from './constants';
+import {
+  DEFAULT_INPUT_SIZE,
+  DEFAULT_INPUT_TYPE,
+  INPUT_TYPE,
+} from './constants';
 import { InputProps } from './types';
 import { commonFormatValue, serializeValue } from './utils';
 
@@ -12,7 +16,7 @@ export const Input: FC<InputProps> = ({
   id,
   name,
   type = DEFAULT_INPUT_TYPE,
-  size = SIZE.M,
+  size = DEFAULT_INPUT_SIZE,
   value,
   placeholder,
   isValid,
@@ -100,7 +104,7 @@ export const Input: FC<InputProps> = ({
       [classes.input_readOnly]: isReadOnly,
       [classes.input_invalid]: !isValid,
       [classes.input_withIcon]: Icon,
-      [classes[`input_${size}`]]: size !== SIZE.M,
+      [classes[`input_${size}`]]: size,
     },
     inputClassName,
   );

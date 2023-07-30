@@ -38,6 +38,7 @@ export const InputFormField: FC<InputFormFieldProps> = ({
   return (
     <CommonFormFieldsWrapper
       name={name}
+      size={size}
       label={label}
       placeholder={placeholder}
       isValid={isValid}

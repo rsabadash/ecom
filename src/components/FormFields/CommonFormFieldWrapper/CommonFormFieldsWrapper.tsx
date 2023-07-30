@@ -11,6 +11,7 @@ export const CommonFormFieldsWrapper: FC<
   PropsWithChildren<CommonFormFieldWrapperProps>
 > = ({
   name,
+  size,
   label,
   placeholder,
   children,
@@ -40,6 +41,7 @@ export const CommonFormFieldsWrapper: FC<
       {!isLabelHidden && (
         <div style={row1}>
           <FieldLabel
+            size={size}
             label={label}
             htmlFor={name}
             isValid={isValid}

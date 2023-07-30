@@ -6,7 +6,7 @@ export type CheckboxFormFieldProps = Omit<
   CheckboxProps,
   'id' | 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'
 > &
-  Pick<FieldLabelProps, 'label'> &
+  Pick<FieldLabelProps, 'label' | 'size'> &
   Pick<
     CommonFormFieldWrapperProps,
     'errorMessage' | 'isDescriptionHidden' | 'columnIndex'

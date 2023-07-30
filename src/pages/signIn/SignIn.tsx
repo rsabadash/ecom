@@ -96,7 +96,7 @@ const SignIn = () => {
               />
             </GridFullWidth>
             <GridFullWidth>
-              <Button variant="primary" type="submit" size="l">
+              <Button variant="primary" type="submit">
                 {translate('signIn')}
               </Button>
             </GridFullWidth>

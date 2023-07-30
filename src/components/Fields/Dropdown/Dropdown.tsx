@@ -11,7 +11,7 @@ import clsx from 'clsx';
 import { EventKeys } from '../../../common/enums/events';
 import { useOutsideElementClick } from '../../../common/hooks';
 import { useTranslation } from '../../IntlProvider';
-import { INDEX_ABSENCE_FOCUS, SIZE } from './constants';
+import { DEFAULT_DROPDOWN_SIZE, INDEX_ABSENCE_FOCUS } from './constants';
 import {
   DropdownItem,
   DropdownItemId,
@@ -28,7 +28,7 @@ export const Dropdown: FC<DropdownProps> = ({
   id,
   name,
   value,
-  size = SIZE.M,
+  size = DEFAULT_DROPDOWN_SIZE,
   items = [],
   customItems,
   placeholder,
@@ -375,7 +375,7 @@ export const Dropdown: FC<DropdownProps> = ({
     [classes.dropdown_noValue]: !viewValue,
     [classes.dropdown_readOnly]: isReadOnly,
     [classes.dropdown_invalid]: isValid !== undefined && !isValid,
-    [classes[`dropdown_${size}`]]: size !== SIZE.M,
+    [classes[`dropdown_${size}`]]: size,
   });
 
   return (

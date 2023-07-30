@@ -12,10 +12,11 @@ import { EventKeys } from '../../common/enums/events';
 import { SectionForeground } from '../../layouts/Section';
 import { KeyIndexMap } from '../Navigation/types';
 import {
+  DEFAULT_TABLE_SIZE,
   INDEX_ABSENCE_FOCUS,
   INITIAL_FOCUS_INDEX,
-  tableRoles,
-  tableRowRoles,
+  TABLE_ROLES,
+  TABLE_ROW_ROLES,
 } from './constants';
 import { TableCell } from './TableCell';
 import { TableBodyRowProps, TableProps } from './types';
@@ -26,9 +27,10 @@ import classes from './styles/index.module.css';
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role
 
 export const Table: FC<TableProps> = ({
+  size = DEFAULT_TABLE_SIZE,
   items,
   columns,
-  tableRole = tableRoles.grid,
+  tableRole = TABLE_ROLES.GRID,
   tableLabeledBy,
   tableBodyClassName,
   tableRowClassName,
@@ -116,6 +118,7 @@ export const Table: FC<TableProps> = ({
     }
   };
 
+  const tableClassNames = clsx({ [classes[`table_${size}`]]: size });
   const tableBodyClassNames = clsx(classes.table__body, tableBodyClassName);
   const tableRowClassNames = clsx(classes.table__row, tableRowClassName);
 
@@ -124,7 +127,7 @@ export const Table: FC<TableProps> = ({
       {/* aria-rowcount is total number of items, not only visible */}
       <div
         role={tableRole}
-        className={classes.table}
+        className={tableClassNames}
         aria-rowcount={items.length}
         aria-labelledby={tableLabeledBy}
       >
@@ -167,7 +170,7 @@ export const Table: FC<TableProps> = ({
             const rowProps: TableBodyRowProps = {
               tabIndex,
               className: tableRowClassNames,
-              role: tableRowRoles[tableRole],
+              role: TABLE_ROW_ROLES[tableRole],
               // aria-rowindex to do exactly index from whole list length, not by current index
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
             };

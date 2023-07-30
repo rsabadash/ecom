@@ -14,7 +14,7 @@ import {
   TableColumnGeneric,
   TablePagination,
 } from '../../../components/Table';
-import { tableRoles } from '../../../components/Table/constants';
+import { TABLE_ROLES } from '../../../components/Table/constants';
 import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
 import { useWarehouseProductsTableColumns } from './hooks';
 import { WarehouseProduct, WarehouseProductTable } from './types';
@@ -57,7 +57,7 @@ export const WarehouseProductsList = () => {
         <Table
           items={list}
           columns={columns}
-          tableRole={tableRoles.treegrid}
+          tableRole={TABLE_ROLES.TREEGRID}
           tableLabeledBy={TABLE_WAREHOUSE_PRODUCTS_ID}
           tableBodyClassName={classes.warehouseList}
           rowCustomRender={({

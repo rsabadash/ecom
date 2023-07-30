@@ -40,7 +40,7 @@
 .modal__container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--gap);
   padding-block-start: calc(var(--modal-inner-padding) * 2);
   padding-block-end: var(--modal-inner-padding);
   padding-inline-start: var(--modal-inner-padding);
@@ -79,7 +79,7 @@
 
 .modal__footer {
   display: flex;
-  gap: 1rem;
+  gap: var(--gap);
   align-items: center;
   padding-inline-end: calc(var(--modal-inner-padding) / 2);
 }

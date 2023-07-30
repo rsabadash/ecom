@@ -9,7 +9,6 @@
   background-color: var(--input-background);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-regular);
-  font-size: var(--font-size-m);
   padding: 0.85em;
   color: var(--text-color);
   outline: none;
@@ -20,12 +19,24 @@
   grid-row: 1/2;
 }
 
+.input_xs {
+  font-size: var(--font-size-xs);
+}
+
 .input_s {
   font-size: var(--font-size-s);
 }
 
-.input_xs {
-  font-size: var(--font-size-xs);
+.input_m {
+  font-size: var(--font-size-m);
+}
+
+.input_l {
+  font-size: var(--font-size-l);
+}
+
+.input_xl {
+  font-size: var(--font-size-xl);
 }
 
 .input::-webkit-outer-spin-button,

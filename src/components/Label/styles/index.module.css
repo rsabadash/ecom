@@ -3,3 +3,23 @@
   color: var(--text-color-secondary);
   font-size: var(--font-size-m);
 }
+
+.label_xs {
+  font-size: var(--font-size-xs);
+}
+
+.label_s {
+  font-size: var(--font-size-s);
+}
+
+.label_m {
+  font-size: var(--font-size-m);
+}
+
+.label_l {
+  font-size: var(--font-size-l);
+}
+
+.label_xl {
+  font-size: var(--font-size-xl);
+}

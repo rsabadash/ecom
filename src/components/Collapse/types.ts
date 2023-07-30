@@ -1,5 +1,7 @@
 import { MutableRefObject, ReactNode } from 'react';
 
+import { ElementSize } from '../../common/types/size';
+
 export type CollapseControllerProps = {
   forceExpand?: boolean;
   isInitiallyExpand?: boolean;
@@ -22,6 +24,7 @@ export type CollapseProps = Omit<CollapseControllerProps, 'collapseBodyRef'> & {
 };
 
 export type CollapseBuilderButtonProps = {
+  size?: ElementSize;
   iconSize?: string;
   collapseButtonClassName?: string;
   isCollapseDisabled?: boolean;

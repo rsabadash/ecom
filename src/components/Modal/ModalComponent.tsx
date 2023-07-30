@@ -131,11 +131,10 @@ const ModalComponent: FC<PropsWithChildren<ModalComponentProps>> = ({
             </div>
             {!isModalFooterHidden && (
               <div className={classes.modal__footer}>
-                <Button size="s" variant="primary" onClick={onConfirm}>
+                <Button variant="primary" onClick={onConfirm}>
                   {confirmText || translate('approve')}
                 </Button>
                 <Button
-                  size="s"
                   variant="theme"
                   onClick={onClose}
                   onKeyDown={onKeyboardClose}
