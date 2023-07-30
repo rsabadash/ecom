@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { ThemeProvider } from '../ThemeProvider';
+
 import { themeStorageMock } from '../../../test/mocks/themeStorage.mock';
+import { ThemeProvider } from '../ThemeProvider';
 
 describe('ThemeProvider', () => {
   test('render ThemeProvider with children', () => {

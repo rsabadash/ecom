@@ -1,13 +1,15 @@
 import { FC, useEffect, useState } from 'react';
-import { PaginationProps } from './types';
-import { useTranslation } from '../IntlProvider';
-import { PaginationItem } from './PaginationItem';
-import { DOTS, INITIAL_PAGE } from './constants';
+
+import classes from './styles/pagination.module.css';
+
 import { ReactComponent as ChevronLeftIcon } from '../../assets/icons/ChevronLeft.svg';
 import { ReactComponent as ChevronRightIcon } from '../../assets/icons/ChevronRight.svg';
+import { usePreviousPersistent } from '../../common/hooks';
+import { useTranslation } from '../IntlProvider';
+import { DOTS, INITIAL_PAGE } from './constants';
 import { usePaginationRange } from './hooks';
-import { usePreviousPersistent } from '../../hooks';
-import classes from './styles/pagination.module.css';
+import { PaginationItem } from './PaginationItem';
+import { PaginationProps } from './types';
 
 export const Pagination: FC<PaginationProps> = ({
   limit,

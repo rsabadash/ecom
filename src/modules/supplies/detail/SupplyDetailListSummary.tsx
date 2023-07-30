@@ -1,7 +1,9 @@
 import { FC, useMemo } from 'react';
-import { SummaryRow, SupplyDetailListSummaryProps } from './types';
-import { useIntlCurrency } from '../../../hooks';
+
 import classes from './styles/index.module.css';
+
+import { useIntlCurrency } from '../../../common/hooks';
+import { SummaryRow, SupplyDetailListSummaryProps } from './types';
 
 export const SupplyDetailListSummary: FC<SupplyDetailListSummaryProps> = ({
   columns,

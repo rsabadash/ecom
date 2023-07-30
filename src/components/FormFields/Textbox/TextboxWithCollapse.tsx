@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import clsx from 'clsx';
-import { Textbox } from '../../Fields/Textbox';
-import { TextboxWithCollapseFormFieldProps } from './types';
-import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
-import { CollapseBuilderButton } from '../../Collapse';
+
 import classes from './styles/index.module.css';
+
+import { CollapseBuilderButton } from '../../Collapse';
+import { Textbox } from '../../Fields/Textbox';
+import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
+import { TextboxWithCollapseFormFieldProps } from './types';
 
 export const TextboxWithCollapseFormField: FC<
   TextboxWithCollapseFormFieldProps

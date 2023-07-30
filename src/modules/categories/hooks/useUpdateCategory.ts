@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+
 import { updateCategoryApi } from '../api';
 import { CategoryPatchData } from '../types';
 

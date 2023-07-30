@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
+
+import { endpoints } from '../../../common/constants/api';
+import { routes } from '../../../common/constants/routes';
+import { useCachedAPI } from '../../../common/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
 } from '../../../components/Table';
-import { routes } from '../../../common/constants/routes';
-import { useCachedAPI } from '../../../hooks';
-import { endpoints } from '../../../common/constants/api';
+import { TABLE_ATTRIBUTES_ID } from './constants';
 import { useAttributesTableColumns } from './hooks';
 import { Attribute } from './types';
-import { TABLE_ATTRIBUTES_ID } from './constants';
 import { AttributesListPlaceholder } from './AttributesListPlaceholder';
 
 export const AttributesList = () => {

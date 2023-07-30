@@ -1,24 +1,24 @@
-export const buttonVariant = {
-  regular: 'regular',
-  primary: 'primary',
-  success: 'success',
-  warning: 'warning',
-  danger: 'danger',
-  theme: 'theme',
+export const BUTTON_VARIANT = {
+  REGULAR: 'regular',
+  PRIMARY: 'primary',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  DANGER: 'danger',
+  THEME: 'theme',
 } as const;
 
-export const buttonSize = {
-  s: 's',
-  m: 'm',
-  l: 'l',
-  xl: 'xl',
+export const BUTTON_SIZE = {
+  S: 's',
+  M: 'm',
+  L: 'l',
+  XL: 'xl',
 } as const;
 
-export const buttonType = {
-  button: 'button',
-  submit: 'submit',
+export const BUTTON_TYPE = {
+  BUTTON: 'button',
+  SUBMIT: 'submit',
 } as const;
 
-export const DEFAULT_BUTTON_VARIANT = buttonVariant.regular;
-export const DEFAULT_BUTTON_SIZE = buttonSize.m;
-export const DEFAULT_BUTTON_TYPE = buttonType.button;
+export const DEFAULT_BUTTON_VARIANT = BUTTON_VARIANT.REGULAR;
+export const DEFAULT_BUTTON_SIZE = BUTTON_SIZE.M;
+export const DEFAULT_BUTTON_TYPE = BUTTON_TYPE.BUTTON;

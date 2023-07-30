@@ -8,16 +8,21 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import { Heading } from '../Heading';
-import { Button } from '../Button';
-import { useTranslation } from '../IntlProvider';
-import { Overlay } from '../../layouts/Overlay';
-import { ModalComponentProps } from './types';
-import { FocusTrap } from '../FocusTrap';
-import { useOutsideElementClick, usePreviousActiveElement } from '../../hooks';
+
+import classes from './styles/index.module.css';
+
 import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 import { EventKeys } from '../../common/enums/events';
-import classes from './styles/index.module.css';
+import {
+  useOutsideElementClick,
+  usePreviousActiveElement,
+} from '../../common/hooks';
+import { Overlay } from '../../layouts/Overlay';
+import { Button } from '../Button';
+import { FocusTrap } from '../FocusTrap';
+import { Heading } from '../Heading';
+import { useTranslation } from '../IntlProvider';
+import { ModalComponentProps } from './types';
 
 const MODAL_LABEL_ID = Date.now().toString();
 const MODAL_DESCRIPTION_ID = `${MODAL_LABEL_ID}Description`;
@@ -36,7 +41,7 @@ const ModalComponent: FC<PropsWithChildren<ModalComponentProps>> = ({
 }) => {
   const [isInitiated, setIsInitiated] = useState<boolean>(false);
 
-  const modalContentRef = useRef<HTMLDivElement | null>(null);
+  const modalContentRef = useRef<null | HTMLDivElement>(null);
 
   const { translate } = useTranslation();
 

@@ -1,22 +1,24 @@
 import { FC, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
-import {
-  useWarehouseProductsGeneratorProductsForm,
-  useWarehouseProductsGeneratorProductsFormSubmit,
-} from './hooks';
-import { WarehouseProductsGeneratorProductsFormProps } from './types';
+
+import classes from './styles/index.module.css';
+
+import { Button } from '../../../components/Button';
 import { Form, FormContent } from '../../../components/FormFields';
 import {
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
-import { Tag } from '../../../components/Tag';
 import { useTranslation } from '../../../components/IntlProvider';
+import { Tag } from '../../../components/Tag';
 import { GridAutoFit, GridFullWidth } from '../../../layouts/Grid';
-import { Button } from '../../../components/Button';
 import { warehouseProductsGeneratorProductsFormFields } from './constants';
+import {
+  useWarehouseProductsGeneratorProductsForm,
+  useWarehouseProductsGeneratorProductsFormSubmit,
+} from './hooks';
+import { WarehouseProductsGeneratorProductsFormProps } from './types';
 import { WarehouseProductUnitField } from './WarehouseProductUnitField';
-import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorProductsForm: FC<
   WarehouseProductsGeneratorProductsFormProps

@@ -1,7 +1,8 @@
 import { FC } from 'react';
+
 import { Input } from '../../Fields/Input';
-import { InputFormFieldProps } from './types';
 import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
+import { InputFormFieldProps } from './types';
 
 export const InputFormField: FC<InputFormFieldProps> = ({
   name,

@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useTranslation } from '../../../components/IntlProvider';
-import { ButtonLink } from '../../../components/Button';
+
 import { routes } from '../../../common/constants/routes';
+import { ButtonLink } from '../../../components/Button';
+import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { VariantForm } from './VariantForm';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { AttributeUrlParams } from '../attributes/types';
+import { VariantForm } from './VariantForm';
 
 const VariantAdd = () => {
   const { translate } = useTranslation();

@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
+
+import { routes } from '../../common/constants/routes';
+import { ButtonLink } from '../../components/Button';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
+import { useTranslation } from '../../components/IntlProvider';
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
 import { TABLE_SUPPLIERS_ID } from './constants';
-import { ButtonLink } from '../../components/Button';
-import { routes } from '../../common/constants/routes';
-import { useTranslation } from '../../components/IntlProvider';
 import { SuppliersList } from './SuppliersList';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
 
 const Suppliers = () => {
   const { translate } = useTranslation();

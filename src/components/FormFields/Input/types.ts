@@ -1,8 +1,8 @@
-import { InputProps } from '../../Fields/Input';
-import { FieldLabelProps } from '../FieldLabel';
-import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
 import { CollapseControllerProps } from '../../Collapse';
+import { InputProps } from '../../Fields/Input';
 import { TooltipProps } from '../../Tooltip/types';
+import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
+import { FieldLabelProps } from '../FieldLabel';
 
 export type InputFormFieldProps = Omit<
   InputProps,
@@ -41,4 +41,3 @@ export type InputWithTooltipFormFieldProps = Pick<
   Required<Pick<InputProps, 'ariaLabel'>> &
   Pick<CommonFormFieldWrapperProps, 'errorMessage'> &
   Pick<TooltipProps, 'position'>;
-

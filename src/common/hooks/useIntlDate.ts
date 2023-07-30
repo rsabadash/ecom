@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { useTranslation } from '../components/IntlProvider';
+
+import { useTranslation } from '../../components/IntlProvider';
 
 type UseIntlDateReturn = {
   formatDate: (value: string | Date, options?: FormatDateOptions) => string;

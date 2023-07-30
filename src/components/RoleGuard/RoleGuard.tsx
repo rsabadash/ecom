@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren, useMemo } from 'react';
-import { useUser } from '../UserProvider';
+
 import { SignedInRedirect } from '../Router/SignedInRedirect';
+import { useUser } from '../UserProvider';
 import { RoleGuardProps } from './types';
 
 export const RoleGuard: FC<PropsWithChildren<RoleGuardProps>> = ({

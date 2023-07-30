@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { Tooltip } from '../../Tooltip';
-import { Input } from '../../Fields/Input';
-import { InputWithTooltipFormFieldProps } from './types';
+
 import classes from './styles/index.module.css';
+
+import { Input } from '../../Fields/Input';
+import { Tooltip } from '../../Tooltip';
+import { InputWithTooltipFormFieldProps } from './types';
 
 export const InputWithTooltipFormField: FC<InputWithTooltipFormFieldProps> = ({
   name,

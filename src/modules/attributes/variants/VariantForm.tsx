@@ -1,18 +1,19 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from '../../../components/IntlProvider';
+
+import { Button } from '../../../components/Button';
+import { Form, FormContent } from '../../../components/FormFields';
 import {
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
-import { Button } from '../../../components/Button';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
-import { VariantFormProps } from './types';
-import { Form, FormContent } from '../../../components/FormFields';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
+import { useTranslation } from '../../../components/IntlProvider';
 import { AttributeUrlParams } from '../attributes/types';
-import { useVariantForm, useVariantFormSubmit } from './hooks';
 import { variantFormFields } from './constants';
+import { useVariantForm, useVariantFormSubmit } from './hooks';
+import { VariantFormProps } from './types';
 
 export const VariantForm: FC<VariantFormProps> = ({
   isReadOnly,

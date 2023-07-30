@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { AttributePostData, AttributePostResponse } from '../types';
+
 import { createAttributeApi } from '../api';
+import { AttributePostData, AttributePostResponse } from '../types';
 
 type UseCreateAttributeReturn = {
   createAttribute: (

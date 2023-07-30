@@ -1,6 +1,8 @@
 import { FC } from 'react';
-import { SupplyProductOrderCellProps } from './types';
+
 import classes from './styles/index.module.css';
+
+import { SupplyProductOrderCellProps } from './types';
 
 export const SupplyProductOrderCell: FC<SupplyProductOrderCellProps> = ({
   index,

@@ -1,14 +1,15 @@
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import { URL_SLUG } from '../../../../common/constants/regex';
+import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../../hooks/useCustomForm';
-import { useCustomForm } from '../../../../hooks';
-import { AttributeFormValues } from '../types';
+} from '../../../../common/hooks/useCustomForm';
 import { mainTranslationRequired } from '../../../../validations/translations';
-import { URL_SLUG } from '../../../../common/constants/regex';
+import { AttributeFormValues } from '../types';
 
 type UseAttributeFromProps = Pick<
   UseCustomFormProps<AttributeFormValues>,

@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
+
 import {
   DEFAULT_LANGUAGE,
   Translations,
   useTranslation,
-} from '../components/IntlProvider';
+} from '../../components/IntlProvider';
 
 type UseTranslationWithFallbackReturn = {
   translationWithFallback: (translations: Translations) => string;

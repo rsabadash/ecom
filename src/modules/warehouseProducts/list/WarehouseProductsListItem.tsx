@@ -1,4 +1,5 @@
 import { FC, PropsWithChildren, useRef } from 'react';
+
 import { CollapseController } from '../../../components/Collapse';
 import { WarehouseProductsListItemProps } from './types';
 import { WarehouseProductsListItemRow } from './WarehouseProductsListItemRow';

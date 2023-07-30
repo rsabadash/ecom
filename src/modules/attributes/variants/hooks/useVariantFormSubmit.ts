@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { VariantPatchData, VariantPostData, VariantFormValues } from '../types';
+
+import { VariantFormValues, VariantPatchData, VariantPostData } from '../types';
 import { useCreateVariant } from './useCreateVariant';
 import { useUpdateVariant } from './useUpdateVariant';
 

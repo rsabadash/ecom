@@ -1,12 +1,12 @@
 import {
+  DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
+} from '../../../components/IntlProvider';
+import {
   DataToGenerateProducts,
   GeneratedProduct,
   GeneratedVariant,
 } from './types';
-import {
-  DEFAULT_LANGUAGE,
-  SUPPORTED_LANGUAGES,
-} from '../../../components/IntlProvider';
 
 export const transformProductBasedOnVariants = (
   initial: GeneratedProduct,

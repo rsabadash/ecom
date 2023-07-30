@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import { Menu, MenuItem } from '../../../components/Menu';
-import { ReactComponent as VerticalDotsIcon } from '../../../assets/icons/VerticalDots.svg';
-import { SupplyProductActionsProps } from './types';
-import { useTranslation } from '../../../components/IntlProvider';
+
 import classes from './styles/index.module.css';
+
+import { ReactComponent as VerticalDotsIcon } from '../../../assets/icons/VerticalDots.svg';
+import { useTranslation } from '../../../components/IntlProvider';
+import { Menu, MenuItem } from '../../../components/Menu';
+import { SupplyProductActionsProps } from './types';
 
 export const SupplyProductActions: FC<SupplyProductActionsProps> = ({
   rowIndex,

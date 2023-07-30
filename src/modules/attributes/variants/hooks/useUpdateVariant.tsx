@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { VariantPatchData } from '../types';
+
 import { updateVariantApi } from '../api';
+import { VariantPatchData } from '../types';
 
 type UseUpdateAttributeReturn = {
   updateVariant: (data: VariantPatchData) => Promise<void>;

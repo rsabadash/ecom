@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+
 import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 

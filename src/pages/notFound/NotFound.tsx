@@ -1,6 +1,7 @@
-import { useTranslation } from '../../components/IntlProvider';
-import { Heading } from '../../components/Heading';
 import classes from './styles/index.module.css';
+
+import { Heading } from '../../components/Heading';
+import { useTranslation } from '../../components/IntlProvider';
 
 const NotFound = () => {
   const { translate } = useTranslation();

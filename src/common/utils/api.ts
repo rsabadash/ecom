@@ -1,22 +1,22 @@
+import { refreshTokenApi } from '../../components/AuthProvider/api';
+import {
+  ACCESS_TOKEN_KEY,
+  PERSIST_USER_KEY,
+} from '../../components/AuthProvider/constants';
+import { PERSIST_STATE } from '../../components/AuthProvider/enums';
+import {
+  DEFAULT_LANGUAGE,
+  Language,
+  LOCALE_STORAGE_KEY,
+} from '../../components/IntlProvider';
+import { API_HOST } from '../constants/api';
+import { messages } from '../constants/errors';
 import {
   ApiService,
   LocalStorageService,
   SessionStorageService,
 } from '../services';
-import { API_HOST } from '../common/constants/api';
-import {
-  DEFAULT_LANGUAGE,
-  Language,
-  LOCALE_STORAGE_KEY,
-} from '../components/IntlProvider';
-import {
-  ACCESS_TOKEN_KEY,
-  PERSIST_USER_KEY,
-} from '../components/AuthProvider/constants';
-import { refreshTokenApi } from '../components/AuthProvider/api';
-import { messages } from '../common/constants/errors';
 import { sharedBus } from './sharedBus';
-import { PERSIST_STATE } from '../components/AuthProvider/enums';
 
 const apiService = new ApiService(API_HOST);
 
@@ -57,4 +57,4 @@ apiService.setGlobalOptions(() => {
 
 const { GET, POST, PATCH, DELETE } = apiService;
 
-export { GET, POST, PATCH, DELETE };
+export { DELETE, GET, PATCH, POST };

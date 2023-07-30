@@ -1,4 +1,5 @@
 import { ElementType } from 'react';
+
 import { EventKeys } from '../../common/enums/events';
 import { MENU_ALIGNMENT, MENU_POSITION } from './constants';
 

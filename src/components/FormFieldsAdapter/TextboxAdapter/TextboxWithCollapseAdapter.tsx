@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { TextboxWithCollapseAdapterProps } from './types';
-import { TextboxWithCollapseFormField } from '../../FormFields';
+
 import { TextboxValue } from '../../Fields/Textbox';
+import { TextboxWithCollapseFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { TextboxWithCollapseAdapterProps } from './types';
 
 export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
   name,

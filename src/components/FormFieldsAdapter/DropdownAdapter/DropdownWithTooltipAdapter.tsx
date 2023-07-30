@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { DropdownWitTooltipFormField } from '../../FormFields';
-import { DropdownWithTooltipAdapterProps } from './types';
+
 import { DropdownItem, DropdownValue } from '../../Fields/Dropdown';
+import { DropdownWitTooltipFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { DropdownWithTooltipAdapterProps } from './types';
 
 export const DropdownWithTooltipAdapter = <FormValues extends FieldValues>({
   name,

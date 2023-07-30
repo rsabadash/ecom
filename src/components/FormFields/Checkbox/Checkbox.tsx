@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import { Checkbox } from '../../Fields/Checkbox';
-import { CheckboxFormFieldProps } from './types';
-import { FieldLabel } from '../FieldLabel';
-import { FieldDescription } from '../FieldDescription';
-import { useGridInlineStyles } from '../../GridRowBalancer';
+
 import classes from './styles/index.module.css';
+
+import { Checkbox } from '../../Fields/Checkbox';
+import { useGridInlineStyles } from '../../GridRowBalancer';
+import { FieldDescription } from '../FieldDescription';
+import { FieldLabel } from '../FieldLabel';
+import { CheckboxFormFieldProps } from './types';
 
 export const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
   name,

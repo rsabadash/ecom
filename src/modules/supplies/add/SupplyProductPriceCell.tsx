@@ -1,14 +1,14 @@
-import { FC, useRef } from 'react';
+import { FC } from 'react';
 import { useFormState } from 'react-hook-form';
+import bigDecimal from 'js-big-decimal';
+
+import { InputFormValue } from '../../../components/Fields/Input';
 import { InputWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
+import { supplyFormFields, supplyFormProductsSubfields } from './constants';
 import { SupplyFormValues, SupplyProductCellProps } from './types';
 import { DECIMAL_TWO_SIGN } from '../../../common/constants/regex';
 import { calculateSummary, parseToDecimal } from './utils';
-import { supplyFormFields, supplyFormProductsSubfields } from './constants';
-import { InputFormValue } from '../../../components/Fields/Input';
-
-import bigDecimal from 'js-big-decimal';
 
 const ZERO_VALUE = parseToDecimal('0');
 const { price: priceSubfield, totalCost: totalCostSubfield } =

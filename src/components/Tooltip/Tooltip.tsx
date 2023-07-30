@@ -10,17 +10,19 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import { Position, TooltipProps } from './types';
+
+import classes from './styles/index.module.css';
+
+import { EventKeys } from '../../common/enums/events';
+import { useOutsideElementClick } from '../../common/hooks';
+import { debounce } from '../../common/utils';
 import {
+  CONTENT_DIMENSION,
   DEFAULT_TOOLTIP_POSITION,
   OPPOSITE_POSITION,
   TOOLTIP_POSITION,
-  CONTENT_DIMENSION,
 } from './constants';
-import { useOutsideElementClick } from '../../hooks';
-import { EventKeys } from '../../common/enums/events';
-import { debounce } from '../../utils';
-import classes from './styles/index.module.css';
+import { Position, TooltipProps } from './types';
 
 const root = document.getElementById('root');
 

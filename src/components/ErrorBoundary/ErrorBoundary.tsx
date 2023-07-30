@@ -1,6 +1,7 @@
 import { Component, lazy, PropsWithChildren, Suspense } from 'react';
-import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
+
 import { messages } from '../../common/constants/errors';
+import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
 const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 

@@ -1,11 +1,12 @@
 import { Suspense, useState } from 'react';
+
 import { ErrorBoundary } from '../../../components/ErrorBoundary';
+import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopHeading } from '../../../layouts/Top';
+import { GeneratedProduct } from './types';
 import { WarehouseProductsGeneratorForm } from './WarehouseProductsGeneratorForm';
 import { WarehouseProductsGeneratorProductsForm } from './WarehouseProductsGeneratorProductsForm';
-import { GeneratedProduct } from './types';
-import { useTranslation } from '../../../components/IntlProvider';
 
 const WarehouseProductsGenerator = () => {
   const [generatedProducts, setGeneratedProducts] = useState<

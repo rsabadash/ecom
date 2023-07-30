@@ -10,21 +10,23 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import { MenuProps, KeyIndexMap, Position, Alignment } from './types';
-import { useOutsideElementClick } from '../../hooks';
-import {
-  INDEX_ABSENCE_FOCUS,
-  DEFAULT_MENU_POSITION,
-  MENU_POSITION,
-  MENU_ALIGNMENT,
-  OPPOSITE_POSITION,
-  OPPOSITE_ALIGNMENT,
-  CONTENT_POSITION_DIMENSION,
-  CONTENT_ALIGNMENT_DIMENSION,
-} from './constants';
-import { EventKeys } from '../../common/enums/events';
+
 import classes from './styles/index.module.css';
-import { debounce } from '../../utils';
+
+import { EventKeys } from '../../common/enums/events';
+import { useOutsideElementClick } from '../../common/hooks';
+import { debounce } from '../../common/utils';
+import {
+  CONTENT_ALIGNMENT_DIMENSION,
+  CONTENT_POSITION_DIMENSION,
+  DEFAULT_MENU_POSITION,
+  INDEX_ABSENCE_FOCUS,
+  MENU_ALIGNMENT,
+  MENU_POSITION,
+  OPPOSITE_ALIGNMENT,
+  OPPOSITE_POSITION,
+} from './constants';
+import { Alignment, KeyIndexMap, MenuProps, Position } from './types';
 
 const root = document.getElementById('root');
 
@@ -48,8 +50,8 @@ export const Menu: FC<PropsWithChildren<MenuProps>> = ({
     undefined,
   );
 
-  const menuButtonRef = useRef<HTMLDivElement | null>(null);
-  const menuListRef = useRef<HTMLUListElement | null>(null);
+  const menuButtonRef = useRef<null | HTMLDivElement>(null);
+  const menuListRef = useRef<null | HTMLUListElement>(null);
 
   const getPositionFormulaInitiator = useCallback(
     (elementPosition: Position): number => {

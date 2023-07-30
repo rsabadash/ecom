@@ -1,5 +1,6 @@
 import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
-import { EventKeys } from '../common/enums/events';
+
+import { EventKeys } from '../enums/events';
 
 type HandleClickCallback = () => void;
 
@@ -67,5 +68,11 @@ export const useOutsideElementClick = ({
         }
       }
     };
-  }, [dependency, handleKeyDown, handleOutsideAction, listenKeyboard]);
+  }, [
+    dependency,
+    handleKeyDown,
+    handleOutsideAction,
+    listenInteraction,
+    listenKeyboard,
+  ]);
 };

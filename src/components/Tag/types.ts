@@ -1,5 +1,5 @@
-import { tagVariant } from './constants';
+import { TAG_VARIANT } from './constants';
 
 export type TagProps = {
-  variant?: ValuesOfObject<typeof tagVariant>;
+  variant?: ValuesOfObject<typeof TAG_VARIANT>;
 };

@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { DropdownFormField } from '../../FormFields';
-import { DropdownAdapterProps } from './types';
+
 import { DropdownItem, DropdownValue } from '../../Fields/Dropdown';
+import { DropdownFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { DropdownAdapterProps } from './types';
 
 export const DropdownAdapter = <FormValues extends FieldValues>({
   name,

@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { InputWithTooltipFormField } from '../../FormFields';
-import { InputWithTooltipAdapterProps } from './types';
+
 import { InputFormValue, InputValue } from '../../Fields/Input';
+import { InputWithTooltipFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { InputWithTooltipAdapterProps } from './types';
 
 export const InputWithTooltipAdapter = <FormValues extends FieldValues>({
   name,
@@ -49,12 +50,12 @@ export const InputWithTooltipAdapter = <FormValues extends FieldValues>({
 
   const fieldValue = value as InputValue;
 
-  const handleOnChange = (value: InputFormValue) => {
+  const handleOnChange = (value: InputFormValue): void => {
     onChange && onChange(value);
     onChangeField(value);
   };
 
-  const handleOnBlur = (value: InputFormValue) => {
+  const handleOnBlur = (value: InputFormValue): void => {
     onBlur && onBlur(value);
     onBlurField();
   };

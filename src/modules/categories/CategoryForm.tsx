@@ -1,20 +1,21 @@
 import { FC } from 'react';
-import { useCachedAPI } from '../../hooks';
-import { useTranslation } from '../../components/IntlProvider';
+
+import { endpoints, path } from '../../common/constants/api';
+import { useCachedAPI } from '../../common/hooks';
+import { Button } from '../../components/Button';
+import { DropdownItem } from '../../components/Fields/Dropdown';
+import { Form, FormContent } from '../../components/FormFields';
 import {
   DropdownAdapter,
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../components/FormFieldsAdapter';
-import { categoryFormFields } from './constants';
-import { Button } from '../../components/Button';
 import { CheckboxAdapter } from '../../components/FormFieldsAdapter';
-import { CategoryFormProps } from './types';
-import { endpoints, path } from '../../common/constants/api';
-import { DropdownItem } from '../../components/Fields/Dropdown';
-import { Form, FormContent } from '../../components/FormFields';
-import { useCategoryForm, useCategoryFormSubmit } from './hooks';
 import { GridRowBalancer } from '../../components/GridRowBalancer';
+import { useTranslation } from '../../components/IntlProvider';
+import { categoryFormFields } from './constants';
+import { useCategoryForm, useCategoryFormSubmit } from './hooks';
+import { CategoryFormProps } from './types';
 
 export const CategoryForm: FC<CategoryFormProps> = ({
   id,

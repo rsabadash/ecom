@@ -1,20 +1,21 @@
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
-import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
-import { routes } from '../../common/constants/routes';
-import { SectionForeground } from '../../layouts/Section';
 import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from '../../components/IntlProvider';
-import { useCachedAPI } from '../../hooks';
+
 import { endpoints } from '../../common/constants/api';
+import { routes } from '../../common/constants/routes';
+import { useCachedAPI } from '../../common/hooks';
+import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
+import { useTranslation } from '../../components/IntlProvider';
+import { SectionForeground } from '../../layouts/Section';
+import { Top, TopButtons, TopHeading } from '../../layouts/Top';
+import { useDeleteSupplier } from './hooks';
+import { SupplierForm } from './SupplierForm';
 import {
   SupplierDetailEntry,
   SupplierFormValues,
   SupplierUrlParams,
 } from './types';
-import { SupplierForm } from './SupplierForm';
 import { matchSupplierDataToFormValues } from './utils';
-import { useDeleteSupplier } from './hooks';
 
 const SupplierDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

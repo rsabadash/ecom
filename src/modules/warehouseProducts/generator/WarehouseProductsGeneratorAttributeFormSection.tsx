@@ -1,16 +1,18 @@
 import { FC, useCallback } from 'react';
+
+import classes from './styles/index.module.css';
+
 import { Collapse } from '../../../components/Collapse';
-import {
-  WarehouseProductsGeneratorAttributeFormSectionProps,
-  VariantVirtualFieldValue,
-  AttributeVirtualFieldValue,
-} from './types';
 import { CheckboxValue } from '../../../components/Fields/Checkbox/types';
-import { warehouseProductsGeneratorFormFields } from './constants';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Variant } from '../../attributes/variants/types';
-import classes from './styles/index.module.css';
+import { warehouseProductsGeneratorFormFields } from './constants';
+import {
+  AttributeVirtualFieldValue,
+  VariantVirtualFieldValue,
+  WarehouseProductsGeneratorAttributeFormSectionProps,
+} from './types';
 
 export const WarehouseProductsGeneratorAttributeFormSection: FC<
   WarehouseProductsGeneratorAttributeFormSectionProps

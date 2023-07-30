@@ -1,5 +1,6 @@
-import { routes } from '../../../common/constants/routes';
 import { lazy, Suspense } from 'react';
+
+import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
 const Warehouses = lazy(() => import('../../../modules/warehouses/Warehouses'));

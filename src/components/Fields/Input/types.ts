@@ -1,4 +1,5 @@
 import { ElementType } from 'react';
+
 import { INPUT_TYPE, SIZE } from './constants';
 
 export type InputValue = string;

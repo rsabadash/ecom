@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react';
+
 import { DOTS } from '../constants';
 
 type UsePaginationRangeProps = {

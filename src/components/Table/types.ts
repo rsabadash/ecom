@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { horizontalAlignment, tableRoles, tableRowRoles } from './constants';
+
 import { Limit } from '../Pagination/types';
+import { horizontalAlignment, tableRoles, tableRowRoles } from './constants';
 
 type TableCellValueGetterProps<K> = {
   index: number;

@@ -1,16 +1,17 @@
 import { FC } from 'react';
-import { useTranslation } from '../../../components/IntlProvider';
+
+import { Button } from '../../../components/Button';
+import { Form, FormContent } from '../../../components/FormFields';
 import {
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
-import { Button } from '../../../components/Button';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
-import { AttributeFormProps } from './types';
-import { Form, FormContent } from '../../../components/FormFields';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
-import { useAttributeForm, useAttributeFormSubmit } from './hooks';
+import { useTranslation } from '../../../components/IntlProvider';
 import { attributesFormFields } from './constants';
+import { useAttributeForm, useAttributeFormSubmit } from './hooks';
+import { AttributeFormProps } from './types';
 
 export const AttributeForm: FC<AttributeFormProps> = ({
   id,

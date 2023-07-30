@@ -1,4 +1,4 @@
-import { PaginationData } from '../common/types/pagination';
+import { PaginationData } from '../types/pagination';
 
 type GetPaginationDataReturn<D> = {
   data: D[];

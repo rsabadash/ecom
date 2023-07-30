@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { InputWithCollapseFormField } from '../../FormFields';
-import { InputWithCollapseAdapterProps } from './types';
+
 import { InputFormValue, InputValue } from '../../Fields/Input';
+import { InputWithCollapseFormField } from '../../FormFields';
 import { useFieldErrorMessage } from '../hooks';
+import { InputWithCollapseAdapterProps } from './types';
 
 export const InputWithCollapseAdapter = <FormValues extends FieldValues>({
   name,
@@ -48,12 +49,12 @@ export const InputWithCollapseAdapter = <FormValues extends FieldValues>({
 
   const fieldValue = value as InputValue;
 
-  const handleOnChange = (value: InputFormValue) => {
+  const handleOnChange = (value: InputFormValue): void => {
     onChange && onChange(value);
     onChangeField(value);
   };
 
-  const handleOnBlur = (value: InputFormValue) => {
+  const handleOnBlur = (value: InputFormValue): void => {
     onBlur && onBlur(value);
     onBlurField();
   };

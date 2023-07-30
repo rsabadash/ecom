@@ -3,13 +3,14 @@ import { generatePath, useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
 import { Variant, VariantFormValues, VariantUrlParams } from './types';
+
+import { endpoints } from '../../../common/constants/api';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { endpoints } from '../../../common/constants/api';
-import { VariantForm } from './VariantForm';
 import { useDeleteVariant } from './hooks';
 import { matchVariantDataToFormValues } from './utils';
+import { VariantForm } from './VariantForm';
 
 const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

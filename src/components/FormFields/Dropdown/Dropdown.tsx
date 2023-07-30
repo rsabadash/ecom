@@ -1,7 +1,8 @@
 import { FC } from 'react';
+
 import { Dropdown } from '../../Fields/Dropdown';
-import { DropdownFormFieldProps } from './types';
 import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
+import { DropdownFormFieldProps } from './types';
 
 export const DropdownFormField: FC<DropdownFormFieldProps> = ({
   name,

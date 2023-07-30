@@ -1,23 +1,24 @@
 import { FC } from 'react';
+
+import { endpoints } from '../../../common/constants/api';
+import { useCachedAPI } from '../../../common/hooks';
+import { Button, ButtonsGroup } from '../../../components/Button';
 import {
   Form,
   FormContent,
   FormDescription,
 } from '../../../components/FormFields';
+import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../../components/GridRowBalancer';
+import { useTranslation } from '../../../components/IntlProvider';
+import { Attribute } from '../../attributes/attributes/types';
+import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
 import {
   useWarehouseProductsGeneratorForm,
   useWarehouseProductsGeneratorFormSubmit,
 } from './hooks';
-import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter';
-import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
-import { useCachedAPI } from '../../../hooks';
-import { endpoints } from '../../../common/constants/api';
 import { WarehouseProductsGeneratorFormProps } from './types';
 import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProductsGeneratorAttributeFormSection';
-import { Button, ButtonsGroup } from '../../../components/Button';
-import { useTranslation } from '../../../components/IntlProvider';
-import { Attribute } from '../../attributes/attributes/types';
-import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { WarehouseProductUnitField } from './WarehouseProductUnitField';
 
 export const WarehouseProductsGeneratorForm: FC<

@@ -6,8 +6,15 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { createProvider } from '../../utils';
-import { AuthContextValue, SignInDataExtended } from './types';
+
+import { routes } from '../../common/constants/routes';
+import {
+  useCustomNavigate,
+  useLocalStorage,
+  useSessionStorage,
+} from '../../common/hooks';
+import { createProvider } from '../../common/utils';
+import { sharedBus } from '../../common/utils/sharedBus';
 import {
   ACCESS_TOKEN_KEY,
   authContextValueDefault,
@@ -15,15 +22,9 @@ import {
   PERSIST_USER_KEY,
   REFRESH_TOKEN_KEY,
 } from './constants';
-import {
-  useCustomNavigate,
-  useLocalStorage,
-  useSessionStorage,
-} from '../../hooks';
-import { useSignIn } from './hooks';
-import { sharedBus } from '../../utils/sharedBus';
-import { routes } from '../../common/constants/routes';
 import { PERSIST_STATE } from './enums';
+import { useSignIn } from './hooks';
+import { AuthContextValue, SignInDataExtended } from './types';
 
 const [Provider, useAuth] = createProvider<AuthContextValue>({
   contextName: CONTEXT_NAME,
@@ -50,10 +51,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const setStorageItem = useCallback(
     (key: string, value: string, isPersistUser: boolean): void => {
       if (isPersistUser) {
-        setLocalStorageItem<PERSIST_STATE>(
-          PERSIST_USER_KEY,
-          PERSIST_STATE.EXIST,
-        );
         setLocalStorageItem(key, value);
       } else {
         setSessionStorageItem(key, value);
@@ -70,7 +67,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     [removeLocalStorageItem, removeSessionStorageItem],
   );
 
-  const [isAuthenticated, setIsAuthenticated] = useState(
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     () => !!getStorageItem(ACCESS_TOKEN_KEY),
   );
 
@@ -82,6 +79,13 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       const response = await signIn(restData);
       const { accessToken, refreshToken } = response || {};
 
+      if (isPersistUser) {
+        setLocalStorageItem<PERSIST_STATE>(
+          PERSIST_USER_KEY,
+          PERSIST_STATE.EXIST,
+        );
+      }
+
       // TODO Error handling
       if (accessToken) {
         setStorageItem(ACCESS_TOKEN_KEY, accessToken, isPersistUser);
@@ -92,7 +96,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         setStorageItem(REFRESH_TOKEN_KEY, refreshToken, isPersistUser);
       }
     },
-    [setStorageItem, signIn],
+    [setLocalStorageItem, setStorageItem, signIn],
   );
 
   const signOutUser = useCallback(() => {

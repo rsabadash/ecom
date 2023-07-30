@@ -1,22 +1,24 @@
-import { TranslationContextValue } from './types';
 import { APPLICATION_NAME } from '../../common/constants/application';
+import { TranslationContextValue } from './types';
+
+export const CONTEXT_NAME = 'TranslationContext';
 
 export const LOCALE_STORAGE_KEY = `${APPLICATION_NAME}.locale`;
 
-export const languages = {
+export const LANGUAGES = {
   uk: 'uk',
   en: 'en',
 } as const;
 
-export const SUPPORTED_LANGUAGES = Object.values(languages);
+export const SUPPORTED_LANGUAGES = Object.values(LANGUAGES);
 
-export const DEFAULT_LANGUAGE = languages.uk;
+export const DEFAULT_LANGUAGE = LANGUAGES.uk;
 
-export const localeToLanguageMap = {
-  uk: languages.uk,
-  'uk-UA': languages.uk,
-  en: languages.en,
-  'en-US': languages.en,
+export const LOCALE_TO_LANGUAGE_MAP = {
+  uk: LANGUAGES.uk,
+  'uk-UA': LANGUAGES.uk,
+  en: LANGUAGES.en,
+  'en-US': LANGUAGES.en,
 } as const;
 
 export const translationContextValuesDefault: TranslationContextValue = {

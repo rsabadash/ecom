@@ -1,12 +1,13 @@
 import { useMemo } from 'react';
+
+import { routes } from '../../../../common/constants/routes';
+import { useCustomNavigate } from '../../../../common/hooks';
 import {
   Translations,
   useTranslation,
 } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
 import { Variant, VariantWithAttribute } from '../types';
-import { routes } from '../../../../common/constants/routes';
-import { useCustomNavigate } from '../../../../hooks';
 
 type UseVariantsTableColumnsReturn = TableColumnGeneric<VariantWithAttribute>[];
 

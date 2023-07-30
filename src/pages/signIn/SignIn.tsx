@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
-import { SectionForeground } from '../../layouts/Section';
-import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
+
+import classes from './styles/index.module.css';
+
+import { ReactComponent as EyeIcon } from '../../assets/icons/Eye.svg';
+import { HiddenPoliteNotification } from '../../components/Accessibility';
+import { useAuth } from '../../components/AuthProvider';
+import { Button } from '../../components/Button';
+import { INPUT_TYPE } from '../../components/Fields/Input';
 import { Form } from '../../components/FormFields';
 import {
   CheckboxAdapter,
   InputAdapter,
 } from '../../components/FormFieldsAdapter';
 import { useTranslation } from '../../components/IntlProvider';
-import { useSignInForm, useSignInFormSubmit } from './hooks';
-import { PASSWORD_ICON_ID, signInFormFields } from './constants';
-import { Button } from '../../components/Button';
+import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
+import { SectionForeground } from '../../layouts/Section';
 import { Top, TopHeading } from '../../layouts/Top';
-import { useAuth } from '../../components/AuthProvider';
-import { ReactComponent as EyeIcon } from '../../assets/icons/Eye.svg';
-import { INPUT_TYPE } from '../../components/Fields/Input';
-import classes from './styles/index.module.css';
-import { HiddenPoliteNotification } from '../../components/Accessibility';
+import { PASSWORD_ICON_ID, signInFormFields } from './constants';
+import { useSignInForm, useSignInFormSubmit } from './hooks';
 
 const SignIn = () => {
   const [type, setType] = useState<

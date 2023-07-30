@@ -1,10 +1,12 @@
 import { ChangeEvent, FC, KeyboardEvent } from 'react';
 import clsx from 'clsx';
+
+import classes from './styles/index.module.css';
+
+import { EventKeys } from '../../../common/enums/events';
+import { DEFAULT_INPUT_TYPE, INPUT_TYPE, SIZE } from './constants';
 import { InputProps } from './types';
 import { commonFormatValue, serializeValue } from './utils';
-import { DEFAULT_INPUT_TYPE, INPUT_TYPE, SIZE } from './constants';
-import { EventKeys } from '../../../common/enums/events';
-import classes from './styles/index.module.css';
 
 export const Input: FC<InputProps> = ({
   id,
@@ -34,7 +36,7 @@ export const Input: FC<InputProps> = ({
   const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
   const isIconFocusable = onIconClick && !isReadOnly && !isDisabled;
 
-  const handleOnBlur = () => {
+  const handleOnBlur = (): void => {
     if (onBlur) {
       const formattedValue = formatValue
         ? formatValue(currentValue, currentValue)
@@ -44,7 +46,7 @@ export const Input: FC<InputProps> = ({
     }
   };
 
-  const handleOnFocus = () => {
+  const handleOnFocus = (): void => {
     if (onFocus) {
       const formattedValue = formatValue
         ? formatValue(currentValue, currentValue)
@@ -54,7 +56,7 @@ export const Input: FC<InputProps> = ({
     }
   };
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (onChange && !isDisabled) {
       const value = e.target.value;
       const formattedValue = formatValue
@@ -71,7 +73,7 @@ export const Input: FC<InputProps> = ({
     }
   };
 
-  const handleOnKeydown = (event: KeyboardEvent) => {
+  const handleOnKeydown = (event: KeyboardEvent): void => {
     if (type === INPUT_TYPE.NUMBER) {
       const key = event.key as EventKeys;
 

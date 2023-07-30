@@ -1,7 +1,9 @@
 import { FC, PropsWithChildren } from 'react';
+
+import classes from './styles/index.module.css';
+
 import { Heading } from '../../components/Heading';
 import { TopHeadingProps } from './types';
-import classes from './styles/index.module.css';
 
 export const TopHeading: FC<PropsWithChildren<TopHeadingProps>> = ({
   id,

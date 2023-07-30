@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { useTranslation } from '../components/IntlProvider';
+
+import { useTranslation } from '../../components/IntlProvider';
 
 type UseIntlCurrencyReturn = {
   formatCurrency: (value: string | number) => string;

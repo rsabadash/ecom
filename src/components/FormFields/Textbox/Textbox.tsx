@@ -1,7 +1,8 @@
 import { FC } from 'react';
+
 import { Textbox } from '../../Fields/Textbox';
-import { TextboxFormFieldProps } from './types';
 import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
+import { TextboxFormFieldProps } from './types';
 
 export const TextboxFormField: FC<TextboxFormFieldProps> = ({
   name,

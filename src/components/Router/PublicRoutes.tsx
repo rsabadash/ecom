@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useAuth } from '../AuthProvider';
+
 import { MainPublic } from '../../layouts/Main';
+import { useAuth } from '../AuthProvider';
 import { SignedInRedirect } from './SignedInRedirect';
 
 export const PublicRoutes: FC = () => {

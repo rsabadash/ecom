@@ -1,8 +1,10 @@
 import { FC } from 'react';
+
+import classes from './styles/index.module.css';
+
+import { useTranslation } from '../../../components/IntlProvider';
 import { Modal } from '../../../components/Modal';
 import { SupplyProductsDuplicationsModalProps } from './types';
-import { useTranslation } from '../../../components/IntlProvider';
-import classes from './styles/index.module.css';
 
 export const SupplyProductsDuplicationsModal: FC<
   SupplyProductsDuplicationsModalProps
