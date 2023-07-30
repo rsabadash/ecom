@@ -1,18 +1,24 @@
 import { useCallback } from 'react';
 import { deleteVariantApi } from '../api';
 
+type UseDeleteVariantProps = {
+  attributeId: string | undefined;
+  variantId: string | undefined;
+};
+
 type UseDeleteVariantReturn = {
   deleteVariant: () => Promise<void>;
 };
 
-export const useDeleteVariant = (
-  variantId: string | undefined,
-): UseDeleteVariantReturn => {
+export const useDeleteVariant = ({
+  attributeId,
+  variantId,
+}: UseDeleteVariantProps): UseDeleteVariantReturn => {
   const deleteVariant = useCallback(async () => {
-    if (variantId) {
-      await deleteVariantApi(variantId);
+    if (attributeId && variantId) {
+      await deleteVariantApi({ attributeId, variantId });
     }
-  }, [variantId]);
+  }, [attributeId, variantId]);
 
   return { deleteVariant };
 };

@@ -15,8 +15,6 @@ export const supplies = {
   'supply.product.quantity': 'Quantity',
   'supply.product.quantity.error.required': 'Quantity is required',
   'supply.product.totalQuantityProducts': 'Total quantity of products',
-  'supply.product.totalQuantityProducts.error.required':
-    'Total quantity of products is required',
   'supply.product.price': 'Price',
   'supply.product.price.error.required': 'Price is required',
   'supply.product.totalCost': 'Total cost',
@@ -39,4 +37,6 @@ export const supplies = {
     '{name}, numbers on the supply list {numbers}',
   'supply.productDuplication.fix':
     'Each product must be unique in the supply. Remove duplicates for each product. If you need to add several identical products with different data, add them as a separate supply.',
+  'supply.emptyList': "Supplies don't exist",
+  'supply.emptyList.callToAction': 'Add supply',
 };

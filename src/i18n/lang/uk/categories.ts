@@ -21,4 +21,6 @@ export const categories = {
   'category.parent': 'Батьківська категорія',
   'category.parent.description':
     'Оберіть одну або декілька батьківських категорій',
+  'category.emptyList': 'Категорії відсутні',
+  'category.emptyList.callToAction': 'Додайте категорію',
 };

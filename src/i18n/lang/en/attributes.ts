@@ -9,9 +9,9 @@ export const attributes = {
   'attribute.seoName': 'Attribute SEO name',
   'attribute.seoName.error.required': 'Attribute SEO name is required',
   'attribute.seoName.error.symbol':
-    'Attribute SEO name should contain letters of the Latin alphabet, numbers, and hyphens',
+    'Attribute SEO name should contain lower case letters of the Latin alphabet, numbers, and hyphens',
   'attribute.seoName.description':
-    'Enter the name that will be used in the attribute link. Valid characters: letters of the Latin alphabet, numbers, and hyphens',
+    'Enter the name that will be used in the attribute link. Valid characters: lower case letters of the Latin alphabet, numbers, and hyphens',
   'attribute.active': 'Attribute is active',
   'attribute.active.description':
     'Make attribute available for display on public pages',
@@ -39,4 +39,10 @@ export const attributes = {
   'attribute.variant.active.description':
     'Make variant available for display on public pages',
   'attribute.variant.list': 'Variants list',
+  'attribute.emptyList': "Attributes don't exist",
+  'attribute.emptyList.callToAction': 'Add attribute',
+  'attribute.variant.emptyList': "Variants don't exist",
+  'attribute.variant.emptyList.callToAction.attributeDetail': 'Add variant',
+  'attribute.variant.emptyList.callToAction':
+    'Add variant on the page of the relevant attribute',
 };

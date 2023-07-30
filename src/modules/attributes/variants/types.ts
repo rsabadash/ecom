@@ -26,7 +26,6 @@ export type VariantFormFields = Record<
 >;
 
 export type VariantFormProps = {
-  variantId?: string;
   isReadOnly?: boolean;
   defaultValues?: Partial<VariantFormValues>;
 };
@@ -39,7 +38,7 @@ export type VariantPostData = {
   attributeId?: string;
 };
 
-export type VariantPatchData = Omit<VariantPostData, 'attributeId'> & {
+export type VariantPatchData = VariantPostData & {
   variantId?: string;
 };
 
@@ -48,13 +47,11 @@ export type VariantPostResponse = VariantPostData & {
 };
 
 export type VariantDeleteData = {
+  attributeId: string;
   variantId: string;
 };
 
 export type VariantUrlParams = {
+  attributeId: string;
   variantId: string;
-};
-
-export type VariantsListProps = {
-  variants: VariantWithAttribute[];
 };

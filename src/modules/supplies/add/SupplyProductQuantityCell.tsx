@@ -6,7 +6,7 @@ import { supplyFormFields, supplyFormProductsSubfields } from './constants';
 import { SupplyFormValues, SupplyProductCellProps } from './types';
 import { calculateSummary, parseToDecimal } from './utils';
 import { InputFormValue } from '../../../components/Fields/Input';
-import { DECIMAL } from '../../../common/constants/regex';
+import { DECIMAL_TWO_SIGN } from '../../../common/constants/regex';
 
 import bigDecimal from 'js-big-decimal';
 
@@ -37,7 +37,7 @@ export const SupplyProductQuantityCell: FC<SupplyProductCellProps> = ({
   const totalCostFieldName = `${fieldNamePrefix}.${totalCostSubfield}` as const;
 
   const formatQuantityValue = (value: string, prevValue: string): string => {
-    if (DECIMAL.test(value) || !value) {
+    if (DECIMAL_TWO_SIGN.test(value) || !value) {
       return value;
     }
 

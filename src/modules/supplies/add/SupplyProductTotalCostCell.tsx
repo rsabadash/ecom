@@ -5,7 +5,7 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { SupplyFormValues, SupplyProductCellProps } from './types';
 import { supplyFormFields, supplyFormProductsSubfields } from './constants';
 import { calculateSummary, parseToDecimal } from './utils';
-import { DECIMAL } from '../../../common/constants/regex';
+import { DECIMAL_TWO_SIGN } from '../../../common/constants/regex';
 import { InputFormValue } from '../../../components/Fields/Input';
 
 import bigDecimal from 'js-big-decimal';
@@ -37,7 +37,7 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
   const quantityFieldName = `${fieldNamePrefix}.${quantitySubfield}` as const;
 
   const formatTotalCostValue = (value: string, prevValue: string): string => {
-    if (DECIMAL.test(value) || !value) {
+    if (DECIMAL_TWO_SIGN.test(value) || !value) {
       return value;
     }
 

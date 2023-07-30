@@ -106,13 +106,12 @@ export type SupplyPostProductData = {
   totalCost: string;
 };
 
-export type SupplyPostData = {
+export interface SupplyPostData {
   name: string;
   products: SupplyPostProductData[];
   productsTotalCost: string;
-  productsTotalQuantity: string;
   supplierId: string;
   warehouseId: string;
-};
+}
 
 export type SupplyPostResponse = any;

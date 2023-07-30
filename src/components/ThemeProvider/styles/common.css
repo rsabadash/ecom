@@ -74,11 +74,11 @@
   --font-size-xl: 1.15rem;
 
   --font-size-head-1: 1.75rem;
-  --font-size-head-2: 1.65rem;
-  --font-size-head-3: 1.55rem;
-  --font-size-head-4: 1.45rem;
-  --font-size-head-5: 1.35rem;
-  --font-size-head-6: 1.25rem;
+  --font-size-head-2: 1.55rem;
+  --font-size-head-3: 1.35rem;
+  --font-size-head-4: 1.15rem;
+  --font-size-head-5: 0.95rem;
+  --font-size-head-6: 0.75rem;
 
   --text-error: var(--danger-800);
   --border-error: var(--danger-900);

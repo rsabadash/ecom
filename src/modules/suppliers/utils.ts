@@ -7,11 +7,11 @@ export const matchSupplierDataToFormValues = (
     return undefined;
   }
 
-  const { name, note, phoneNumber } = data;
+  const { name, address, phoneNumber } = data;
 
   return {
     name,
-    note,
+    address,
     phoneNumber,
   };
 };

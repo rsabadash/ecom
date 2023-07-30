@@ -27,6 +27,8 @@
   padding: 2.5rem;
   grid-area: main;
   border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .mainPublicWrapper {

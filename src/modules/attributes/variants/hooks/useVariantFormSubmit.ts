@@ -21,10 +21,11 @@ export const useVariantFormSubmit = ({
 
   const handleFormSubmit = useCallback(
     async (values: VariantFormValues) => {
-      if (variantId) {
+      if (variantId && attributeId) {
         const patchData: VariantPatchData = {
           ...values,
           variantId,
+          attributeId,
         };
 
         return await updateVariant(patchData);

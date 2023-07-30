@@ -10,6 +10,7 @@ import { routes } from '../../common/constants/routes';
 import { useSuppliersTableColumns } from './hooks';
 import { useCachedAPI } from '../../hooks';
 import { endpoints } from '../../common/constants/api';
+import { SuppliersListPlaceholder } from './SuppliersListPlaceholder';
 
 export const SuppliersList = () => {
   const { data = [] } = useCachedAPI<Supplier[]>(`${endpoints.suppliers.root}`);
@@ -17,23 +18,29 @@ export const SuppliersList = () => {
   const columns: TableColumnGeneric<Supplier>[] = useSuppliersTableColumns();
 
   return (
-    <Table
-      items={data}
-      columns={columns}
-      tableLabeledBy={TABLE_SUPPLIERS_ID}
-      rowCustomRender={({
-        row,
-        item,
-        rowProps,
-      }: RowCustomRenderProps<Supplier>) => (
-        <Link
-          key={item._id}
-          to={`${routes.suppliers.root}/${item._id}`}
-          {...rowProps}
-        >
-          {row}
-        </Link>
+    <>
+      {data.length > 0 ? (
+        <Table
+          items={data}
+          columns={columns}
+          tableLabeledBy={TABLE_SUPPLIERS_ID}
+          rowCustomRender={({
+            row,
+            item,
+            rowProps,
+          }: RowCustomRenderProps<Supplier>) => (
+            <Link
+              key={item._id}
+              to={`${routes.suppliers.root}/${item._id}`}
+              {...rowProps}
+            >
+              {row}
+            </Link>
+          )}
+        />
+      ) : (
+        <SuppliersListPlaceholder />
       )}
-    />
+    </>
   );
 };

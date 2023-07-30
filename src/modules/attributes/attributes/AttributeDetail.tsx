@@ -12,9 +12,6 @@ import { useDeleteAttribute } from './hooks';
 import { matchAttributeDataToFormValues } from './utils';
 import { AttributeVariantsList } from './AttributeVariantsList';
 import { Attribute, AttributeFormValues, AttributeUrlParams } from './types';
-import { Heading } from '../../../components/Heading';
-import { TABLE_ATTRIBUTE_VARIANTS_ID } from './constants';
-import classes from './styles/index.module.css';
 
 const AttributeDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -35,8 +32,11 @@ const AttributeDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
-  const showAttributeVariantsList =
-    attributeDetail?.variants && attributeDetail.variants.length !== 0;
+  const variants = attributeDetail?.variants ? attributeDetail.variants : [];
+
+  const attributeTitle = `${translate('attribute')} "${
+    attributeDetail?.name[language]
+  }"`;
 
   const variantAddPath = generatePath(routes.attributes.variantAdd, {
     attributeId,
@@ -45,14 +45,9 @@ const AttributeDetail = () => {
   return (
     <>
       <Top>
-        <TopHeading>{attributeDetail?.name[language]}</TopHeading>
+        <TopHeading>{attributeTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            {isReadOnly && (
-              <ButtonLink variant="primary" to={routes.attributes.add}>
-                {translate('add')}
-              </ButtonLink>
-            )}
             {isReadOnly && (
               <ButtonLink variant="primary" to={variantAddPath}>
                 {translate('attribute.variant.add')}
@@ -74,32 +69,12 @@ const AttributeDetail = () => {
           defaultValues={formValues}
         />
       </SectionForeground>
-      <>
-        <Heading
-          id={TABLE_ATTRIBUTE_VARIANTS_ID}
-          level={2}
-          fontSize={6}
-          classNameHeading={classes.attributes__variantsTitle}
-        >
-          {translate('attribute.variants')}
-        </Heading>
-        {showAttributeVariantsList && isReadOnly && (
-          <AttributeVariantsList variants={attributeDetail.variants} />
-        )}
-        {/*TODO No data placeholder component*/}
-        {!showAttributeVariantsList && (
-          <div
-            style={{
-              border: '1px dashed #020202',
-              padding: '16px',
-              borderRadius: '0.6em',
-              textAlign: 'center',
-            }}
-          >
-            no data
-          </div>
-        )}
-      </>
+      {isReadOnly && (
+        <AttributeVariantsList
+          variants={variants}
+          addVariantLink={variantAddPath}
+        />
+      )}
     </>
   );
 };

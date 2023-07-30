@@ -1,13 +1,13 @@
 import { DropdownItemObject } from '../../components/Fields/Dropdown';
 
+export type WarehouseType = 'shop' | 'warehouse' | 'onlineStore';
+
 export type Warehouse = {
   _id: string;
   name: string;
   type: WarehouseType;
   address: string | null;
 };
-
-export type WarehouseType = 'shop' | 'warehouse' | 'onlineStore';
 
 export type WarehouseFormValues = {
   name: string;

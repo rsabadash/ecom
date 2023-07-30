@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { generatePath, useParams } from 'react-router-dom';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useCachedAPI } from '../../../hooks';
 import { Variant, VariantFormValues, VariantUrlParams } from './types';
@@ -14,12 +14,19 @@ import { matchVariantDataToFormValues } from './utils';
 const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
-  const { variantId } = useParams<VariantUrlParams>();
+  const { attributeId, variantId } = useParams<VariantUrlParams>();
   const { language, translate } = useTranslation();
-  const { deleteVariant } = useDeleteVariant(variantId);
+  const { deleteVariant } = useDeleteVariant({ attributeId, variantId });
+
+  const variantLinkWithAttributeId = generatePath(
+    endpoints.attributes.getVariants,
+    {
+      attributeId,
+    },
+  );
 
   const { data: variantDetail } = useCachedAPI<Variant>(
-    `${endpoints.attributes.variants}/${variantId}`,
+    `${variantLinkWithAttributeId}/${variantId}`,
   );
 
   const handleButtonClick = (): void => {
@@ -29,10 +36,14 @@ const VariantDetail = () => {
   const formValues: VariantFormValues | undefined =
     matchVariantDataToFormValues(variantDetail);
 
+  const variantTitle = `${translate('attribute.variant')} "${
+    variantDetail?.name[language]
+  }"`;
+
   return (
     <>
       <Top>
-        <TopHeading>{variantDetail?.name[language]}</TopHeading>
+        <TopHeading>{variantTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
             <Button variant="primary" onClick={handleButtonClick}>
@@ -45,11 +56,7 @@ const VariantDetail = () => {
         </TopButtons>
       </Top>
       <SectionForeground>
-        <VariantForm
-          variantId={variantDetail?.variantId}
-          isReadOnly={isReadOnly}
-          defaultValues={formValues}
-        />
+        <VariantForm isReadOnly={isReadOnly} defaultValues={formValues} />
       </SectionForeground>
     </>
   );

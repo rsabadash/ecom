@@ -26,14 +26,15 @@ export const updateVariantApi = async (
   });
 };
 
-export const deleteVariantApi = async (
-  variantId: string | undefined,
-): Promise<void> => {
+export const deleteVariantApi = async ({
+  attributeId,
+  variantId,
+}: VariantDeleteData): Promise<void> => {
   if (variantId) {
     return await DELETE<void, VariantDeleteData>(
       endpoints.attributes.variants,
       {
-        data: { variantId },
+        data: { attributeId, variantId },
       },
     );
   }

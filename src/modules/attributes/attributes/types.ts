@@ -1,5 +1,6 @@
 import { Translations } from '../../../components/IntlProvider';
 import { Variant } from '../variants/types';
+import { AttributeVariantsListPlaceholder } from './AttributeVariantsListPlaceholder';
 
 export type Attribute = {
   _id: string;
@@ -44,8 +45,14 @@ export type AttributeDeleteData = {
 
 export type AttributesVariantsListProps = {
   variants: Variant[];
+  addVariantLink: string;
 };
 
 export type AttributeUrlParams = {
   attributeId: string;
+  variantId: string;
+};
+
+export type AttributeVariantsListPlaceholderProps = {
+  addVariantLink: string;
 };

@@ -18,6 +18,7 @@ import {
 } from '../../../components/Table';
 import { TABLE_SUPPLIES_ID } from './constants';
 import { routes } from '../../../common/constants/routes';
+import { SuppliesListPlaceholder } from './SuppliesListPlaceholder';
 
 export const SuppliesList = () => {
   const isLoadedRef = useRef<boolean>(false);
@@ -44,32 +45,38 @@ export const SuppliesList = () => {
   const columns: TableColumnGeneric<Supply>[] = useSuppliesTableColumns();
 
   return (
-    <Table
-      items={list}
-      columns={columns}
-      tableLabeledBy={TABLE_SUPPLIES_ID}
-      rowCustomRender={({
-        row,
-        item,
-        rowProps,
-      }: RowCustomRenderProps<Supply>) => (
-        <Link
-          key={item._id}
-          to={`${routes.supplies.root}/${item._id}`}
-          {...rowProps}
-        >
-          {row}
-        </Link>
+    <>
+      {list.length > 0 ? (
+        <Table
+          items={list}
+          columns={columns}
+          tableLabeledBy={TABLE_SUPPLIES_ID}
+          rowCustomRender={({
+            row,
+            item,
+            rowProps,
+          }: RowCustomRenderProps<Supply>) => (
+            <Link
+              key={item._id}
+              to={`${routes.supplies.root}/${item._id}`}
+              {...rowProps}
+            >
+              {row}
+            </Link>
+          )}
+          bottomPanelNode={
+            total > limitValue && (
+              <TablePagination
+                total={total}
+                limitValue={limitValue}
+                setLimitValue={setLimitValue}
+              />
+            )
+          }
+        />
+      ) : (
+        <SuppliesListPlaceholder />
       )}
-      bottomPanelNode={
-        total > limitValue && (
-          <TablePagination
-            total={total}
-            limitValue={limitValue}
-            setLimitValue={setLimitValue}
-          />
-        )
-      }
-    />
+    </>
   );
 };

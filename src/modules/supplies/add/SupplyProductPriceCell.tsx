@@ -3,7 +3,7 @@ import { useFormState } from 'react-hook-form';
 import { InputWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SupplyFormValues, SupplyProductCellProps } from './types';
-import { DECIMAL } from '../../../common/constants/regex';
+import { DECIMAL_TWO_SIGN } from '../../../common/constants/regex';
 import { calculateSummary, parseToDecimal } from './utils';
 import { supplyFormFields, supplyFormProductsSubfields } from './constants';
 import { InputFormValue } from '../../../components/Fields/Input';
@@ -30,7 +30,7 @@ export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
   const totalCostFieldName = `${fieldNamePrefix}.${totalCostSubfield}` as const;
 
   const formatPriceValue = (value: string, prevValue: string): string => {
-    if (DECIMAL.test(value) || !value) {
+    if (DECIMAL_TWO_SIGN.test(value) || !value) {
       return value;
     }
 

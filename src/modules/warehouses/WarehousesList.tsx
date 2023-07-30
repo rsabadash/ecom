@@ -11,6 +11,7 @@ import { Warehouse } from './types';
 import { useTranslation } from '../../components/IntlProvider';
 import { warehouseTypeTranslationPrefix } from './constants';
 import classes from './styles/index.module.css';
+import { WarehousesListPlaceholder } from './WarehousesListPlaceholder';
 
 export const WarehousesList = () => {
   const { data = [] } = useCachedAPI<Warehouse[]>(
@@ -20,36 +21,42 @@ export const WarehousesList = () => {
   const { translate } = useTranslation();
 
   return (
-    <Section>
-      <GridAutoFit>
-        {data.map(({ _id, name, type, address }) => {
-          return (
-            <Link
-              key={_id}
-              to={`${routes.warehouses.root}/${_id}`}
-              className={classes.warehouseLink}
-            >
+    <>
+      {data.length > 0 ? (
+        <Section>
+          <GridAutoFit>
+            {data.map(({ _id, name, type, address }) => {
+              return (
+                <Link
+                  key={_id}
+                  to={`${routes.warehouses.root}/${_id}`}
+                  className={classes.warehouseLink}
+                >
+                  <Foreground foregroundClassName={classes.warehouseCard}>
+                    <Heading level={2} fontSize={6}>
+                      {name}
+                    </Heading>
+                    <div className={classes.warehouseInfo}>
+                      <div>
+                        {translate(`${warehouseTypeTranslationPrefix}${type}`)}
+                      </div>
+                      {address && <div>{address}</div>}
+                    </div>
+                  </Foreground>
+                </Link>
+              );
+            })}
+
+            <Link to={routes.warehouses.add} className={classes.warehouseLink}>
               <Foreground foregroundClassName={classes.warehouseCard}>
-                <Heading level={2} fontSize={6}>
-                  {name}
-                </Heading>
-                <div className={classes.warehouseInfo}>
-                  <div>
-                    {translate(`${warehouseTypeTranslationPrefix}${type}`)}
-                  </div>
-                  {address && <div>{address}</div>}
-                </div>
+                <PlusIcon width="2em" height="2em" />
               </Foreground>
             </Link>
-          );
-        })}
-
-        <Link to={routes.warehouses.add} className={classes.warehouseLink}>
-          <Foreground foregroundClassName={classes.warehouseCard}>
-            <PlusIcon width="2em" height="2em" />
-          </Foreground>
-        </Link>
-      </GridAutoFit>
-    </Section>
+          </GridAutoFit>
+        </Section>
+      ) : (
+        <WarehousesListPlaceholder />
+      )}
+    </>
   );
 };

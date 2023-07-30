@@ -26,4 +26,6 @@ export const warehouseProducts = {
   'warehouseProduct.attributes.noVariants':
     "The attribute doesn't have any variants",
   'warehouseProduct.attributes.quantity': 'Number of attributes',
+  'warehouseProduct.emptyList': "Warehouse products don't exist",
+  'warehouseProduct.emptyList.callToAction': 'Generate warehouse products',
 };

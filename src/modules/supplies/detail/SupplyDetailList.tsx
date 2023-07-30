@@ -18,7 +18,6 @@ import classes from './styles/index.module.css';
 export const SupplyDetailList: FC<SupplyDetailListProps> = ({
   products,
   productsTotalCost,
-  productsTotalQuantity,
 }) => {
   const { limitValue, setLimitValue } = usePaginationLimit();
   const page = usePaginationQueryPage();
@@ -43,7 +42,6 @@ export const SupplyDetailList: FC<SupplyDetailListProps> = ({
           <SupplyDetailListSummary
             columns={columns}
             productsTotalCost={productsTotalCost}
-            productsTotalQuantity={productsTotalQuantity}
           />
           {total > limitValue && (
             <TablePagination

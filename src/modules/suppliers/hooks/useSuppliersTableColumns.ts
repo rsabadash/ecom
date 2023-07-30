@@ -13,14 +13,14 @@ export const useSuppliersTableColumns = (): UseSuppliersTableColumnsReturn => {
       {
         title: translate('supplier.name'),
         key: 'name',
-        width: '30%',
+        width: '50%',
         valueGetter: ({ value }: { value: string }) => value,
       },
       {
         title: translate('supplier.phone'),
         key: 'phoneNumber',
-        width: '30%',
-        valueGetter: ({ value }: { value: boolean }) => (value ? value : '-'),
+        width: '50%',
+        valueGetter: ({ value }: { value: string }) => value,
       },
     ],
     [translate],

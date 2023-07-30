@@ -5,5 +5,7 @@ export const suppliers = {
   'supplier.name.error.required': 'Supplier name is required',
   'supplier.account': 'Account',
   'supplier.phone': 'Phone',
-  'supplier.note': 'Note',
+  'supplier.address': 'Address',
+  'supplier.emptyList': "Suppliers don't exist",
+  'supplier.emptyList.callToAction': 'Add supplier',
 };

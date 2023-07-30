@@ -1,20 +1,20 @@
 export type Supplier = {
   _id: string;
   name: string;
-  note: string;
+  address: string;
   phoneNumber: string;
 };
 
 export type SupplierDetailEntry = {
   _id: string;
   name: string;
-  note: string;
+  address: string;
   phoneNumber: string;
 };
 
 export type SupplierFormValues = {
   name: string;
-  note: string;
+  address: string;
   phoneNumber: string;
 };
 
@@ -31,20 +31,20 @@ export type SupplierFormProps = {
 
 export type SupplierPostData = {
   name: string;
-  note: string;
+  address: string;
   phoneNumber: string;
 };
 
 export type SupplierPostResponse = {
   name: string;
-  note: string;
+  address: string;
   phoneNumber: string;
 };
 
 export type SupplierPatchData = {
   id: string;
   name: string;
-  note: string;
+  address: string;
   phoneNumber: string;
 };
 

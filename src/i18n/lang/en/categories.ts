@@ -19,4 +19,6 @@ export const categories = {
   'category.state.inactive': 'Inactive',
   'category.parent': 'Parent category',
   'category.parent.description': 'Select either one or a few parent categories',
+  'category.emptyList': "Categories don't exist",
+  'category.emptyList.callToAction': 'Add category',
 };

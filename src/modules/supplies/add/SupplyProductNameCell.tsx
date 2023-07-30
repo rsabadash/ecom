@@ -10,7 +10,6 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { ProductNameDropdownMeta, SupplyProductCellProps } from './types';
 import { supplyFormProductsSubfields } from './constants';
 import { getDropdownMeta } from '../../../utils';
-import { useFormState } from 'react-hook-form';
 
 const { quantity: quantitySubfield, unit: unitSubfield } =
   supplyFormProductsSubfields;
@@ -28,8 +27,6 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
   );
 
   const { translate } = useTranslation();
-
-  const { errors } = useFormState({ control });
 
   const fieldNamePrefix = `${fieldCommonName}.${index}` as const;
   const unitFieldName = `${fieldNamePrefix}.${unitSubfield}` as const;
@@ -52,12 +49,9 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
 
         setValue(unitFieldName, { id: unit, value: translatedUnit });
 
-        const fieldArrayErrors = errors.products ? errors.products[index] : {};
-        const hasUnitError = !!fieldArrayErrors?.quantity;
-
-        if (quantity && unit !== prevUnit?.id && hasUnitError) {
+        if (quantity && unit !== prevUnit?.id) {
           setValue(quantityFieldName, quantity, {
-            shouldValidate: hasUnitError,
+            shouldValidate: true,
           });
         }
       }

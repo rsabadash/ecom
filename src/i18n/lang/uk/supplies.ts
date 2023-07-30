@@ -18,8 +18,6 @@ export const supplies = {
   'supply.product.quantity.error.onlyInteger':
     'Кількість товару може бути вказана лише цілим числом для одиниці продажу "{value}"',
   'supply.product.totalQuantityProducts': 'Загальна кількість товарів',
-  'supply.product.totalQuantityProducts.error.required':
-    "Загальна кількість товарів є обов'язковою",
   'supply.product.price': 'Ціна',
   'supply.product.price.error.required': "Ціна товару є обов'язковою",
   'supply.product.totalCost': 'Загальна вартість',
@@ -42,4 +40,6 @@ export const supplies = {
     '{name}, номери у списку постачання {numbers}',
   'supply.productDuplication.fix':
     'Кожен товар має бути унікальним у постачанні. Видаліть повтори для кожного товару. Якщо потрібно додати декілька однакових товарів з різними даними, додайте їх окремим постачанням.',
+  'supply.emptyList': 'Постачання відсутні',
+  'supply.emptyList.callToAction': 'Додати постачання',
 };

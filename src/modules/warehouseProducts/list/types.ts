@@ -18,9 +18,7 @@ export type WarehouseProduct = {
   name: Translations;
   sku: string;
   unit: Unit;
-  attributes: null | WarehouseProductsAttribute[];
-  groupId: null | string;
-  groupName: null | string;
+  attributes: WarehouseProductsAttribute[];
   createdDate: Date;
 };
 

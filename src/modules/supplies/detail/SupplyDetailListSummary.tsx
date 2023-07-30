@@ -6,7 +6,6 @@ import classes from './styles/index.module.css';
 export const SupplyDetailListSummary: FC<SupplyDetailListSummaryProps> = ({
   columns,
   productsTotalCost,
-  productsTotalQuantity,
 }) => {
   const { formatCurrency } = useIntlCurrency();
 
@@ -16,11 +15,8 @@ export const SupplyDetailListSummary: FC<SupplyDetailListSummaryProps> = ({
         value: productsTotalCost,
         valueGetter: (value: string) => formatCurrency(value),
       },
-      quantity: {
-        value: productsTotalQuantity,
-      },
     }),
-    [formatCurrency, productsTotalCost, productsTotalQuantity],
+    [formatCurrency, productsTotalCost],
   );
 
   return (

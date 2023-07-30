@@ -19,7 +19,7 @@ type UseSupplyFormSubmitReturn = {
 };
 
 const mapValueToPostData = (value: SupplyFormValues): SupplyPostData => {
-  const { products, supplier, warehouse, ...restValue } = value;
+  const { products, supplier, warehouse, productsTotalCost, name } = value;
 
   const preparedProducts = products.map<SupplyPostProductData>((product) => {
     // That hack is added as we have required validation for each field, so they can not be empty
@@ -36,7 +36,8 @@ const mapValueToPostData = (value: SupplyFormValues): SupplyPostData => {
   });
 
   return {
-    ...restValue,
+    name,
+    productsTotalCost,
     products: preparedProducts,
     supplierId: supplier.id,
     warehouseId: warehouse.id,

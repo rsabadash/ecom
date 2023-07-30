@@ -2,14 +2,13 @@ import { Translations } from '../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../components/Table';
 
 export type SupplyDetailData = {
+  _id: string;
   createdAt: string;
   name: null | string;
   products: SupplyDetailProduct[];
   productsTotalCost: string;
-  productsTotalQuantity: string;
   supplierId: string;
   warehouseId: string;
-  _id: string;
 };
 
 export type SupplyDetailProduct = {
@@ -25,12 +24,11 @@ export type SupplyDetailProduct = {
 export type SupplyDetailListProps = {
   products: SupplyDetailProduct[];
   productsTotalCost: string | undefined;
-  productsTotalQuantity: string | undefined;
 };
 
 export type SupplyDetailListSummaryProps = Pick<
   SupplyDetailListProps,
-  'productsTotalCost' | 'productsTotalQuantity'
+  'productsTotalCost'
 > & {
   columns: TableColumnGeneric<SupplyDetailProduct>[];
 };

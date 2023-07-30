@@ -17,13 +17,7 @@ const SupplyDetail = () => {
     `${endpoints.supplies.root}/${supplyId}`,
   );
 
-  const {
-    name,
-    products,
-    createdAt,
-    productsTotalCost,
-    productsTotalQuantity,
-  } = supplyDetail || {};
+  const { name, products, createdAt, productsTotalCost } = supplyDetail || {};
 
   const supplyName =
     name ||
@@ -37,7 +31,6 @@ const SupplyDetail = () => {
       <SupplyDetailList
         products={products || []}
         productsTotalCost={productsTotalCost}
-        productsTotalQuantity={productsTotalQuantity}
       />
     </>
   );

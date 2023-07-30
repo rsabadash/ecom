@@ -40,16 +40,16 @@ export const SupplierForm: FC<SupplierFormProps> = ({
         <InputAdapter
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
-          name={supplierFormFields.note}
-          label={translate('supplier.note')}
+          name={supplierFormFields.phoneNumber}
+          label={translate('supplier.phone')}
           control={control}
           columnIndex={2}
         />
         <InputAdapter
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
-          name={supplierFormFields.phoneNumber}
-          label={translate('supplier.phone')}
+          name={supplierFormFields.address}
+          label={translate('supplier.address')}
           control={control}
           columnIndex={3}
         />

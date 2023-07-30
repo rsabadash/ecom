@@ -17,6 +17,7 @@ export const endpoints = {
   },
   attributes: {
     root: `${PREFIX}/attributes`,
+    getVariants: `${PREFIX}/attributes/:attributeId/variants`,
     variants: `${PREFIX}/attributes/variants`,
   },
   authentication: {
@@ -24,7 +25,7 @@ export const endpoints = {
     refreshToken: `${PREFIX}/authentication/refresh-token`,
   },
   users: {
-    signIn: `${PREFIX}/users/sign-in`,
+    verification: `${PREFIX}/users/verification`,
   },
   warehouseProducts: {
     root: `${PREFIX}/warehouses-products`,

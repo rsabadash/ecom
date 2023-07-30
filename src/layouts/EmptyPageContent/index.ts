@@ -1,0 +1,1 @@
+export { EmptyPageContent } from './EmptyPageContent';

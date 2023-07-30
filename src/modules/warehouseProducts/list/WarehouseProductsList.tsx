@@ -18,6 +18,7 @@ import {
   usePaginationLimit,
   usePaginationUrl,
 } from '../../../components/Pagination/hooks';
+import { WarehouseProductsListPlaceholder } from './WarehouseProductsListPlaceholder';
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsList = () => {
@@ -49,34 +50,40 @@ export const WarehouseProductsList = () => {
     useWarehouseProductsTableColumns();
 
   return (
-    <Table
-      items={list}
-      columns={columns}
-      tableRole={tableRoles.treegrid}
-      tableLabeledBy={TABLE_WAREHOUSE_PRODUCTS_ID}
-      tableBodyClassName={classes.warehouseList}
-      rowCustomRender={({
-        row,
-        item,
-        rowProps,
-      }: RowCustomRenderProps<WarehouseProduct>) => (
-        <WarehouseProductsListItem
-          key={item._id}
-          item={item}
-          rowProps={rowProps}
-        >
-          {row}
-        </WarehouseProductsListItem>
+    <>
+      {list.length > 0 ? (
+        <Table
+          items={list}
+          columns={columns}
+          tableRole={tableRoles.treegrid}
+          tableLabeledBy={TABLE_WAREHOUSE_PRODUCTS_ID}
+          tableBodyClassName={classes.warehouseList}
+          rowCustomRender={({
+            row,
+            item,
+            rowProps,
+          }: RowCustomRenderProps<WarehouseProduct>) => (
+            <WarehouseProductsListItem
+              key={item._id}
+              item={item}
+              rowProps={rowProps}
+            >
+              {row}
+            </WarehouseProductsListItem>
+          )}
+          bottomPanelNode={
+            total > limitValue && (
+              <TablePagination
+                total={total}
+                limitValue={limitValue}
+                setLimitValue={setLimitValue}
+              />
+            )
+          }
+        />
+      ) : (
+        <WarehouseProductsListPlaceholder />
       )}
-      bottomPanelNode={
-        total > limitValue && (
-          <TablePagination
-            total={total}
-            limitValue={limitValue}
-            setLimitValue={setLimitValue}
-          />
-        )
-      }
-    />
+    </>
   );
 };

@@ -13,8 +13,8 @@ import { DropdownItemObject } from '../../../../components/Fields/Dropdown';
 import { objectErrorMessage } from '../../../../components/FormFieldsAdapter/utils';
 import { isUnitSupportDecimal, parseToDecimal } from '../utils';
 import {
-  DECIMAL_POSITIVE,
-  DECIMAL_ZERO_ENDS,
+  DECIMAL_TWO_SIGN_POSITIVE,
+  DECIMAL_TWO_SIGN_ZERO,
 } from '../../../../common/constants/regex';
 
 type UseSupplyFormProps = Pick<
@@ -61,10 +61,10 @@ const schema = yup.object().shape<YupSchemaKey<SupplyFormValues>>({
         const { id, value: unitValue } = unit || {};
         const isSupportDecimal =
           value === parseToDecimal('0') || isUnitSupportDecimal(id);
-
+        console.log(isSupportDecimal);
         const DECIMAL_REGEX = isSupportDecimal
-          ? DECIMAL_POSITIVE
-          : DECIMAL_ZERO_ENDS;
+          ? DECIMAL_TWO_SIGN_POSITIVE
+          : DECIMAL_TWO_SIGN_ZERO;
         const errorTranslation = isSupportDecimal
           ? 'supply.product.quantity.error.min'
           : 'supply.product.quantity.error.onlyInteger';
@@ -93,11 +93,7 @@ const schema = yup.object().shape<YupSchemaKey<SupplyFormValues>>({
         .required('supply.product.totalCost.error.required'),
     }),
   ),
-  [supplyFormFields.productsTotalQuantity]: yup
-    .string()
-    .nullable()
-    .required('supply.product.totalQuantityProducts.error.required'),
-  [supplyFormFields.productsTotalQuantity]: yup
+  [supplyFormFields.productsTotalCost]: yup
     .string()
     .nullable()
     .required('supply.product.totalCostProducts.error.required'),

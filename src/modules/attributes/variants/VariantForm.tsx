@@ -15,11 +15,10 @@ import { useVariantForm, useVariantFormSubmit } from './hooks';
 import { variantFormFields } from './constants';
 
 export const VariantForm: FC<VariantFormProps> = ({
-  variantId,
   isReadOnly,
   defaultValues,
 }) => {
-  const { attributeId } = useParams<AttributeUrlParams>();
+  const { attributeId, variantId } = useParams<AttributeUrlParams>();
 
   const { translate } = useTranslation();
   const { handleFormSubmit } = useVariantFormSubmit({ attributeId, variantId });

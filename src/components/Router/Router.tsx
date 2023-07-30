@@ -18,6 +18,16 @@ import {
 const SignIn = lazy(() => import('../../pages/signIn/SignIn'));
 const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 
+const PrivateError = (props: unknown) => {
+  console.log('PrivateError', props);
+  return <div>PrivateError</div>;
+};
+
+const PrivateErrorChildren = (props: unknown) => {
+  console.log('PrivateErrorChildren', props);
+  return <div>PrivateErrorChildren</div>;
+};
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -28,7 +38,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        errorElement: <NotFound />,
+        errorElement: <PrivateError />,
         element: (
           <Suspense fallback="Route Private">
             <PrivateRoutes />
@@ -46,6 +56,10 @@ export const router = createBrowserRouter([
           ...suppliesRoutes,
           ...warehouseProductsRoutes,
           ...warehousesRoutes,
+          {
+            path: '*',
+            element: <PrivateErrorChildren />,
+          },
         ],
       },
       {

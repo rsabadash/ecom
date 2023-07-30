@@ -27,8 +27,6 @@ export class ErrorBoundary extends Component<
   }
 
   get isEntityNotFound() {
-    // eslint-disable-next-line no-debugger
-    debugger;
     const { errorStatus, error } = this.state;
 
     return (

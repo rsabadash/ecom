@@ -10,6 +10,7 @@ import { endpoints } from '../../../common/constants/api';
 import { useAttributesTableColumns } from './hooks';
 import { Attribute } from './types';
 import { TABLE_ATTRIBUTES_ID } from './constants';
+import { AttributesListPlaceholder } from './AttributesListPlaceholder';
 
 export const AttributesList = () => {
   const { data = [] } = useCachedAPI<Attribute[]>(
@@ -19,23 +20,29 @@ export const AttributesList = () => {
   const columns: TableColumnGeneric<Attribute>[] = useAttributesTableColumns();
 
   return (
-    <Table
-      items={data}
-      columns={columns}
-      tableLabeledBy={TABLE_ATTRIBUTES_ID}
-      rowCustomRender={({
-        row,
-        item,
-        rowProps,
-      }: RowCustomRenderProps<Attribute>) => (
-        <Link
-          key={item._id}
-          to={`${routes.attributes.root}/${item._id}`}
-          {...rowProps}
-        >
-          {row}
-        </Link>
+    <>
+      {data.length > 0 ? (
+        <Table
+          items={data}
+          columns={columns}
+          tableLabeledBy={TABLE_ATTRIBUTES_ID}
+          rowCustomRender={({
+            row,
+            item,
+            rowProps,
+          }: RowCustomRenderProps<Attribute>) => (
+            <Link
+              key={item._id}
+              to={`${routes.attributes.root}/${item._id}`}
+              {...rowProps}
+            >
+              {row}
+            </Link>
+          )}
+        />
+      ) : (
+        <AttributesListPlaceholder />
       )}
-    />
+    </>
   );
 };

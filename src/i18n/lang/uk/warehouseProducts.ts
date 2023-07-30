@@ -25,4 +25,6 @@ export const warehouseProducts = {
   'warehouseProduct.sku.error.required': "SKU ідентифікатор є обов'язковим",
   'warehouseProduct.attributes.noVariants': 'Атрибут не має варіантів',
   'warehouseProduct.attributes.quantity': 'Кількість атрибутів',
+  'warehouseProduct.emptyList': 'Складські товари відсутні',
+  'warehouseProduct.emptyList.callToAction': 'Згенерувати складські товари',
 };

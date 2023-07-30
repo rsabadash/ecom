@@ -7,11 +7,10 @@ import {
   CategoryFormValues,
   CategoryUrlParams,
 } from './types';
-import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
+import { Button, ButtonsGroup } from '../../components/Button';
 import { useTranslation } from '../../components/IntlProvider';
 import { SectionForeground } from '../../layouts/Section';
 import { endpoints } from '../../common/constants/api';
-import { routes } from '../../common/constants/routes';
 import { CategoryForm } from './CategoryForm';
 import { matchCategoryDataToFormValues } from './utils';
 import { useDeleteCategory } from './hooks';
@@ -34,17 +33,16 @@ const CategoryDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
+  const categoryTitle = `${translate('category')} "${
+    categoryDetail?.name[language]
+  }"`;
+
   return (
     <>
       <Top>
-        <TopHeading>{categoryDetail?.name[language]}</TopHeading>
+        <TopHeading>{categoryTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            {isReadOnly && (
-              <ButtonLink variant="primary" to={routes.categories.add}>
-                {translate('add')}
-              </ButtonLink>
-            )}
             <Button variant="primary" onClick={handleButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
