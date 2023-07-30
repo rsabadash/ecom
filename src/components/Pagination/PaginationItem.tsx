@@ -2,10 +2,10 @@ import { FC, MouseEvent, PropsWithChildren } from 'react';
 import { createSearchParams, Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-import classes from './styles/pagination.module.css';
-
 import { PAGE } from '../../common/constants/filters';
 import { PaginationItemProps } from './types';
+
+import classes from './styles/pagination.module.css';
 
 export const PaginationItem: FC<PropsWithChildren<PaginationItemProps>> = ({
   disabled,

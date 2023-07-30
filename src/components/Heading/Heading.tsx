@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { DEFAULT_FONT_SIZE, DEFAULT_LEVEL, LEVEL_TAG_MAP } from './constatns';
 import { HeadingProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const Heading: FC<PropsWithChildren<HeadingProps>> = ({
   id,

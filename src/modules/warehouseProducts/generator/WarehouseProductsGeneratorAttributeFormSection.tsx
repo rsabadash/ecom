@@ -1,7 +1,5 @@
 import { FC, useCallback } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { Collapse } from '../../../components/Collapse';
 import { CheckboxValue } from '../../../components/Fields/Checkbox/types';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
@@ -13,6 +11,8 @@ import {
   VariantVirtualFieldValue,
   WarehouseProductsGeneratorAttributeFormSectionProps,
 } from './types';
+
+import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorAttributeFormSection: FC<
   WarehouseProductsGeneratorAttributeFormSectionProps

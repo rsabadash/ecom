@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { useGridInlineStyles } from '../../GridRowBalancer';
 import { FieldDescription } from '../FieldDescription';
 import { FieldLabel } from '../FieldLabel';
 import { CommonFormFieldWrapperProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const CommonFormFieldsWrapper: FC<
   PropsWithChildren<CommonFormFieldWrapperProps>

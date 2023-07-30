@@ -1,8 +1,8 @@
 import { FC, PropsWithChildren } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { TableCellProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const TableCell: FC<PropsWithChildren<TableCellProps>> = ({
   align,

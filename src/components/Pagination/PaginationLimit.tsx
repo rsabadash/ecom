@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import classes from './styles/paginationLimit.module.css';
-
 import { PAGE } from '../../common/constants/filters';
 import { useQueryParameters } from '../../common/hooks';
 import { Dropdown } from '../Fields/Dropdown';
@@ -9,6 +7,8 @@ import { useTranslation } from '../IntlProvider';
 import { Label } from '../Label';
 import { PAGINATION_LIMIT_NAME } from './constants';
 import { Limit, PaginationLimitProps } from './types';
+
+import classes from './styles/paginationLimit.module.css';
 
 export const PaginationLimit: FC<PaginationLimitProps> = ({
   items,

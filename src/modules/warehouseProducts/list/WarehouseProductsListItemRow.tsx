@@ -1,8 +1,6 @@
 import { forwardRef, KeyboardEvent, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { EventKeys } from '../../../common/enums/events';
 import {
   CollapseBuilderBody,
@@ -11,6 +9,8 @@ import {
 import { CollapseBuilderHeader } from '../../../components/Collapse/CollapseBuilderHeader';
 import { WarehouseProductsListItemRowProps } from './types';
 import { WarehouseProductsListAttributes } from './WarehouseProductsListAttributes';
+
+import classes from './styles/index.module.css';
 
 export const WarehouseProductsListItemRow = forwardRef<
   HTMLDivElement,

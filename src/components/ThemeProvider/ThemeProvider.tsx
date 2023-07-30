@@ -8,11 +8,6 @@ import {
   useState,
 } from 'react';
 
-import './styles/common.css';
-import './styles/darkTheme.css';
-import './styles/lightTheme.css';
-import './styles/index.css';
-
 import { createProvider } from '../../common/utils';
 import {
   CONTEXT_NAME,
@@ -23,6 +18,11 @@ import {
 } from './constants';
 import { usePreferredTheme } from './hooks';
 import { Theme, ThemeContextValue, ThemeProviderProps } from './types';
+
+import './styles/common.css';
+import './styles/darkTheme.css';
+import './styles/lightTheme.css';
+import './styles/index.css';
 
 const [Provider, useTheme] = createProvider<ThemeContextValue>({
   contextName: CONTEXT_NAME,

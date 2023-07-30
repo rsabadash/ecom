@@ -1,8 +1,8 @@
 import { FC, PropsWithChildren } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { Navigation } from '../../components/Navigation';
+
+import classes from './styles/index.module.css';
 
 export const Main: FC<PropsWithChildren> = ({ children }) => {
   return (

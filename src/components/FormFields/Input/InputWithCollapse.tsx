@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { CollapseBuilderButton } from '../../Collapse';
 import { Input } from '../../Fields/Input';
 import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
 import { InputWithCollapseFormFieldProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const InputWithCollapseFormField: FC<
   InputWithCollapseFormFieldProps

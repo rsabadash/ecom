@@ -1,10 +1,10 @@
 import { memo } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { useTranslation } from '../../../components/IntlProvider';
 import { Tag } from '../../../components/Tag';
 import { WarehouseProductsListAttributesProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const WarehouseProductsListAttributes =
   memo<WarehouseProductsListAttributesProps>(({ item }) => {

@@ -1,8 +1,8 @@
 import { FC, PropsWithChildren } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { HiddenPoliteNotificationProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const HiddenPoliteNotification: FC<
   PropsWithChildren<HiddenPoliteNotificationProps>

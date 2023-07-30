@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import classes from './styles/index.module.css';
-
 import {
   usePaginationLimit,
   usePaginationLocalData,
@@ -16,6 +14,8 @@ import { TABLE_SUPPLY_DETAIL_ID } from './constants';
 import { useSupplyDetailTableColumns } from './hooks';
 import { SupplyDetailListSummary } from './SupplyDetailListSummary';
 import { SupplyDetailListProps, SupplyDetailProduct } from './types';
+
+import classes from './styles/index.module.css';
 
 export const SupplyDetailList: FC<SupplyDetailListProps> = ({
   products,

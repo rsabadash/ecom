@@ -55,7 +55,7 @@ module.exports = {
           // // Parent imports. Put `..` last.
           // ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           // // Other relative imports. Put same-folder imports and `.` last.
-          // ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
           // // Style imports.
           ['^.+\\.?(css)$']
         ]

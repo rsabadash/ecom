@@ -1,10 +1,10 @@
 import { forwardRef, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { useCollapseController } from './CollapseController';
 import { CollapseBuilderBodyProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const CollapseBuilderBody = forwardRef<
   HTMLDivElement,

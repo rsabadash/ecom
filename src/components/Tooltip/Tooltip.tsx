@@ -11,8 +11,6 @@ import {
 } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { EventKeys } from '../../common/enums/events';
 import { useOutsideElementClick } from '../../common/hooks';
 import { debounce } from '../../common/utils';
@@ -23,6 +21,8 @@ import {
   TOOLTIP_POSITION,
 } from './constants';
 import { Position, TooltipProps } from './types';
+
+import classes from './styles/index.module.css';
 
 const root = document.getElementById('root');
 

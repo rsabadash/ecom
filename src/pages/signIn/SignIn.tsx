@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { ReactComponent as EyeIcon } from '../../assets/icons/Eye.svg';
 import { HiddenPoliteNotification } from '../../components/Accessibility';
 import { useAuth } from '../../components/AuthProvider';
@@ -18,6 +16,8 @@ import { SectionForeground } from '../../layouts/Section';
 import { Top, TopHeading } from '../../layouts/Top';
 import { PASSWORD_ICON_ID, signInFormFields } from './constants';
 import { useSignInForm, useSignInFormSubmit } from './hooks';
+
+import classes from './styles/index.module.css';
 
 const SignIn = () => {
   const [type, setType] = useState<

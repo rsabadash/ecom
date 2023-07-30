@@ -1,8 +1,6 @@
 import { FC, useCallback, useState } from 'react';
 import { useFieldArray } from 'react-hook-form';
 
-import classes from './styles/index.module.css';
-
 import { Button } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Modal } from '../../../components/Modal';
@@ -17,6 +15,8 @@ import {
 import { useSupplyProductsTableColumns } from './hooks';
 import { SupplyProductSummary } from './SupplyProductSummary';
 import { SupplyProductListColumn, SupplyProductsListProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const SupplyProductsList: FC<SupplyProductsListProps> = ({
   control,

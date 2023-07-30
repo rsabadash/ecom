@@ -1,8 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
 
-import classes from './styles/index.module.css';
-
 import { Button } from '../../../components/Button';
 import { Form, FormContent } from '../../../components/FormFields';
 import {
@@ -19,6 +17,8 @@ import {
 } from './hooks';
 import { WarehouseProductsGeneratorProductsFormProps } from './types';
 import { WarehouseProductUnitField } from './WarehouseProductUnitField';
+
+import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorProductsForm: FC<
   WarehouseProductsGeneratorProductsFormProps

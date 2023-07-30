@@ -11,8 +11,6 @@ import {
 } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { EventKeys } from '../../common/enums/events';
 import { useOutsideElementClick } from '../../common/hooks';
 import { debounce } from '../../common/utils';
@@ -27,6 +25,8 @@ import {
   OPPOSITE_POSITION,
 } from './constants';
 import { Alignment, KeyIndexMap, MenuProps, Position } from './types';
+
+import classes from './styles/index.module.css';
 
 const root = document.getElementById('root');
 

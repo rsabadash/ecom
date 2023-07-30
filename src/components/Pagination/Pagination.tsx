@@ -1,7 +1,5 @@
 import { FC, useEffect, useState } from 'react';
 
-import classes from './styles/pagination.module.css';
-
 import { ReactComponent as ChevronLeftIcon } from '../../assets/icons/ChevronLeft.svg';
 import { ReactComponent as ChevronRightIcon } from '../../assets/icons/ChevronRight.svg';
 import { usePreviousPersistent } from '../../common/hooks';
@@ -10,6 +8,8 @@ import { DOTS, INITIAL_PAGE } from './constants';
 import { usePaginationRange } from './hooks';
 import { PaginationItem } from './PaginationItem';
 import { PaginationProps } from './types';
+
+import classes from './styles/pagination.module.css';
 
 export const Pagination: FC<PaginationProps> = ({
   limit,

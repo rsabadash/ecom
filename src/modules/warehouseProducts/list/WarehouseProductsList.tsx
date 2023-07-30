@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 
-import classes from './styles/index.module.css';
-
 import { endpoints } from '../../../common/constants/api';
 import { useCachedAPI } from '../../../common/hooks';
 import { PaginationData } from '../../../common/types/pagination';
@@ -22,6 +20,8 @@ import { useWarehouseProductsTableColumns } from './hooks';
 import { WarehouseProduct, WarehouseProductTable } from './types';
 import { WarehouseProductsListItem } from './WarehouseProductsListItem';
 import { WarehouseProductsListPlaceholder } from './WarehouseProductsListPlaceholder';
+
+import classes from './styles/index.module.css';
 
 export const WarehouseProductsList = () => {
   const isLoadedRef = useRef<boolean>(false);

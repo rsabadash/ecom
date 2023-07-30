@@ -8,8 +8,6 @@ import {
 } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { EventKeys } from '../../../common/enums/events';
 import { useOutsideElementClick } from '../../../common/hooks';
 import { useTranslation } from '../../IntlProvider';
@@ -21,6 +19,8 @@ import {
   DropdownValue,
   KeyIndexMap,
 } from './types';
+
+import classes from './styles/index.module.css';
 
 const LIST_CONTROL_ID = Date.now().toString();
 

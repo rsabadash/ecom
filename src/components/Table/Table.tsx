@@ -8,8 +8,6 @@ import {
 } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { EventKeys } from '../../common/enums/events';
 import { SectionForeground } from '../../layouts/Section';
 import { KeyIndexMap } from '../Navigation/types';
@@ -21,6 +19,8 @@ import {
 } from './constants';
 import { TableCell } from './TableCell';
 import { TableBodyRowProps, TableProps } from './types';
+
+import classes from './styles/index.module.css';
 
 // TODO ARIA for sorting https://www.w3.org/WAI/ARIA/apg/practices/grid-and-table-properties/
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role

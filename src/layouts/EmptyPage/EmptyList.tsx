@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 
-import classes from './styles/index.module.css';
-
 import { ReactComponent as PlusIcon } from '../../assets/icons/Plus.svg';
 import { Foreground } from '../Foreground';
 import { EmptyListProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const EmptyList: FC<PropsWithChildren<EmptyListProps>> = ({
   link,

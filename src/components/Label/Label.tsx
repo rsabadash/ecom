@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 
-import classes from './styles/index.module.css';
-
 import { LabelProps } from './types';
+
+import classes from './styles/index.module.css';
 
 export const Label: FC<PropsWithChildren<LabelProps>> = ({
   labelId,
