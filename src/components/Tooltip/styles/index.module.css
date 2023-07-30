@@ -1,59 +1,63 @@
 .tooltip {
-    display: inline-block;
+  display: inline-block;
 }
 
 .tooltip:focus-visible {
-    border-radius: var(--radius-tiny);
-    outline: none;
-    box-shadow: var(--box-shadow-focus);
+  border-radius: var(--radius-tiny);
+  outline: none;
+  box-shadow: var(--box-shadow-focus);
 }
 
 .tooltip_open {
-    position: relative;
+  position: relative;
 }
 
 .tooltip__content {
-    position: absolute;
-    width: max-content;
-    height: max-content;
-    max-width: 320px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-regular);
-    background-color: var(--background-900);
-    padding: 0.75em;
-    font-size: var(--font-size-xs);
-    inset-inline-start: 0;
-    inset-block-start: 0;
-    visibility: hidden;
-    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.50);
-    z-index: 1;
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  max-width: 320px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-regular);
+  background-color: var(--background-900);
+  padding: 0.75em;
+  font-size: var(--font-size-xs);
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  visibility: hidden;
+  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .tooltip__content_start {
-    inset-inline-end: calc(100% + 0.5em); /* evaluates to right in ltr and left in rtl */
-    inset-inline-start: auto;
-    inset-block: calc(50%);
-    transform: translateY(-50%);
-    visibility: visible;
+  inset-inline-end: calc(
+    100% + 0.5em
+  ); /* evaluates to right in ltr and left in rtl */
+  inset-inline-start: auto;
+  inset-block: calc(50%);
+  transform: translateY(-50%);
+  visibility: visible;
 }
 
 .tooltip__content_end {
-    inset-inline-start: calc(100% + 0.5em); /* evaluates to left in ltr and right in rtl */
-    inset-block: calc(50%);
-    transform: translateY(-50%);
-    visibility: visible;
+  inset-inline-start: calc(
+    100% + 0.5em
+  ); /* evaluates to left in ltr and right in rtl */
+  inset-block: calc(50%);
+  transform: translateY(-50%);
+  visibility: visible;
 }
 
 .tooltip__content_top {
-    inset-block-end: calc(100% + 0.5em); /* evaluates to bottom */
-    inset-inline: calc(50%);
-    transform: translateX(-50%);
-    visibility: visible;
+  inset-block-end: calc(100% + 0.5em); /* evaluates to bottom */
+  inset-inline: calc(50%);
+  transform: translateX(-50%);
+  visibility: visible;
 }
 
 .tooltip__content_bottom {
-    inset-block-start: calc(100% + 0.5em); /* evaluates to top */
-    inset-inline: calc(50%);
-    transform: translateX(-50%);
-    visibility: visible;
+  inset-block-start: calc(100% + 0.5em); /* evaluates to top */
+  inset-inline: calc(50%);
+  transform: translateX(-50%);
+  visibility: visible;
 }

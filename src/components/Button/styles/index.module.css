@@ -4,7 +4,8 @@
   border-radius: var(--radius-regular);
   border: none;
   cursor: pointer;
-  transition: background-color var(--transition), border var(--transition) box-shadow var(--transition);
+  transition: background-color var(--transition),
+    border var(--transition) box-shadow var(--transition);
   outline: none;
   display: flex;
   align-items: center;

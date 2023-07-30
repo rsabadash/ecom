@@ -5,7 +5,7 @@
   transition: background-color var(--transition);
   display: inline-block;
   padding-block: 0.35em;
-  padding-inline: 0.70em;
+  padding-inline: 0.7em;
   font-size: var(--font-size-m);
 }
 

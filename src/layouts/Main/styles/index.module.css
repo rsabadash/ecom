@@ -37,8 +37,7 @@
   grid-template-areas:
     '. .... .'
     '. main .'
-    '. .... .'
-  ;
+    '. .... .';
   direction: ltr;
   height: 100%;
   max-width: var(--content-width);

@@ -10,8 +10,8 @@ import {
 } from '../../components/Table';
 import { TABLE_SUPPLIERS_ID } from './constants';
 import { useSuppliersTableColumns } from './hooks';
-import { Supplier } from './types';
 import { SuppliersListPlaceholder } from './SuppliersListPlaceholder';
+import { Supplier } from './types';
 
 export const SuppliersList = () => {
   const { data = [] } = useCachedAPI<Supplier[]>(`${endpoints.suppliers.root}`);

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 import classes from './styles/index.module.css';
-import { WarehousesListPlaceholder } from './WarehousesListPlaceholder';
 
 import { ReactComponent as PlusIcon } from '../../assets/icons/Plus.svg';
 import { endpoints } from '../../common/constants/api';
@@ -14,6 +13,7 @@ import { GridAutoFit } from '../../layouts/Grid';
 import { Section } from '../../layouts/Section';
 import { warehouseTypeTranslationPrefix } from './constants';
 import { Warehouse } from './types';
+import { WarehousesListPlaceholder } from './WarehousesListPlaceholder';
 
 export const WarehousesList = () => {
   const { data = [] } = useCachedAPI<Warehouse[]>(

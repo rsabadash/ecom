@@ -2,136 +2,140 @@
 }
 
 .menuWrapper_open {
-    position: relative;
+  position: relative;
 }
 
 .menuButton {
-    display: flex;
-    outline: none;
-    cursor: pointer;
-    border-radius: var(--radius-regular);
-    transition: box-shadow var(--transition);
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  border-radius: var(--radius-regular);
+  transition: box-shadow var(--transition);
 }
 
 .menuButton:focus-visible {
-    box-shadow: var(--box-shadow-focus);
+  box-shadow: var(--box-shadow-focus);
 }
 
 .menuListWrapper {
-    background-color: var(--input-background-absolute-hack);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-regular);
-    padding-block: 0.85em;
-    padding-inline-start: 0.85em;
-    padding-inline-end: 0.40em;
-    overflow: hidden;
-    position: absolute;
-    width: fit-content;
-    height: fit-content;
-    z-index: 1;
-    inset-inline-end: 0;
-    inset-block-end: 0;
-    visibility: hidden;
-    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.50);
-    font-size: var(--font-size-s);
+  background-color: var(--input-background-absolute-hack);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-regular);
+  padding-block: 0.85em;
+  padding-inline-start: 0.85em;
+  padding-inline-end: 0.4em;
+  overflow: hidden;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  visibility: hidden;
+  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.5);
+  font-size: var(--font-size-s);
 }
 
 .menuListWrapper_start {
-    inset-inline-end: calc(100% + 10px); /* evaluates to right in ltr and left in rtl */
-    inset-inline-start: auto;
-    inset-block: calc(50%);
-    transform: translateY(-50%);
-    visibility: visible;
+  inset-inline-end: calc(
+    100% + 10px
+  ); /* evaluates to right in ltr and left in rtl */
+  inset-inline-start: auto;
+  inset-block: calc(50%);
+  transform: translateY(-50%);
+  visibility: visible;
 }
 
 .menuListWrapper_start_pull {
-    inset-block: calc(100%);
-    transform: translateY(-100%);
+  inset-block: calc(100%);
+  transform: translateY(-100%);
 }
 
 .menuListWrapper_start_push {
-    inset-block: 0;
-    transform: none;
+  inset-block: 0;
+  transform: none;
 }
 
 .menuListWrapper_end {
-    inset-inline-start: calc(100% + 10px); /* evaluates to left in ltr and right in rtl */
-    inset-block: calc(50%);
-    transform: translateY(-50%);
-    visibility: visible;
+  inset-inline-start: calc(
+    100% + 10px
+  ); /* evaluates to left in ltr and right in rtl */
+  inset-block: calc(50%);
+  transform: translateY(-50%);
+  visibility: visible;
 }
 
 .menuListWrapper_end_pull {
-    inset-block: calc(100%);
-    transform: translateY(-100%);
+  inset-block: calc(100%);
+  transform: translateY(-100%);
 }
 
 .menuListWrapper_end_push {
-    inset-block: 0;
-    transform: none;
+  inset-block: 0;
+  transform: none;
 }
 
 .menuListWrapper_top {
-    inset-block-end: calc(100% + 10px); /* evaluates to bottom */
-    inset-inline: calc(50%);
-    transform: translateX(-50%);
-    visibility: visible;
+  inset-block-end: calc(100% + 10px); /* evaluates to bottom */
+  inset-inline: calc(50%);
+  transform: translateX(-50%);
+  visibility: visible;
 }
 
 .menuListWrapper_top_pull {
-    inset-inline: calc(100%);
-    transform: translateX(-100%);
+  inset-inline: calc(100%);
+  transform: translateX(-100%);
 }
 
 .menuListWrapper_top_push {
-    inset-inline: 0;
-    transform: none;
+  inset-inline: 0;
+  transform: none;
 }
 
 .menuListWrapper_bottom {
-    inset-block-start: calc(100% + 10px); /* evaluates to top */
-    inset-inline: calc(50%);
-    transform: translateX(-50%);
-    visibility: visible;
+  inset-block-start: calc(100% + 10px); /* evaluates to top */
+  inset-inline: calc(50%);
+  transform: translateX(-50%);
+  visibility: visible;
 }
 
 .menuListWrapper_bottom_pull {
-    inset-inline: calc(100%);
-    transform: translateX(-100%);
+  inset-inline: calc(100%);
+  transform: translateX(-100%);
 }
 
 .menuListWrapper_bottom_push {
-    inset-inline: 0;
-    transform: none;
+  inset-inline: 0;
+  transform: none;
 }
 
 .menuList {
-    padding-inline-end: 0.45em;
-    max-height: 200px;
-    overflow: auto;
+  padding-inline-end: 0.45em;
+  max-height: 200px;
+  overflow: auto;
 }
 
 .menuList::-webkit-scrollbar {
-    width: var(--scrollbar-width);
+  width: var(--scrollbar-width);
 }
 
 .menuList::-webkit-scrollbar-track {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .menuList::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb-color);
-    border-radius: 4px;
-    height: 64px;
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 4px;
+  height: 64px;
 }
 
 .menuList__item {
-    cursor: pointer;
-    padding: 0.85em;
-    border-radius: var(--radius-regular);
+  cursor: pointer;
+  padding: 0.85em;
+  border-radius: var(--radius-regular);
 }
 
 .menuList__item_focus,
 .menuList__item:hover {
-    background-color: var(--hover-color);
+  background-color: var(--hover-color);
 }

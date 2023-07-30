@@ -1,86 +1,85 @@
 .modal {
-    --modal-inner-padding: 1.5em;
-    min-width: 320px;
-    max-width: 50%;
-    max-height: 90%;
-    overflow: auto;
-    font-size: 0.75em;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3), 0 0 45px 0 rgba(0, 0, 0, 0.3);
-    border-radius: var(--radius-regular);
-    background-color: var(--input-background-absolute-hack);
-    position: relative;
-    cursor: default;
-    opacity: 0;
-    transform: scale(1.15);
-    will-change: transform, opacity;
+  --modal-inner-padding: 1.5em;
+  min-width: 320px;
+  max-width: 50%;
+  max-height: 90%;
+  overflow: auto;
+  font-size: 0.75em;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3), 0 0 45px 0 rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-regular);
+  background-color: var(--input-background-absolute-hack);
+  position: relative;
+  cursor: default;
+  opacity: 0;
+  transform: scale(1.15);
+  will-change: transform, opacity;
 }
 
 .modal_open {
-    opacity: 1;
-    transform: scale(1);
-    transition:
-        transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
-        opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
 }
 
 .modal__icon {
-    display: flex;
-    position: absolute;
-    inset-inline-end: calc(var(--modal-inner-padding) / 4);
-    inset-block-start: calc(var(--modal-inner-padding) / 4);
-    cursor: pointer;
+  display: flex;
+  position: absolute;
+  inset-inline-end: calc(var(--modal-inner-padding) / 4);
+  inset-block-start: calc(var(--modal-inner-padding) / 4);
+  cursor: pointer;
 }
 
 .modal__icon:focus-visible {
-    outline: none;
-    border-radius: var(--radius-regular);
-    box-shadow: var(--box-shadow-focus);
+  outline: none;
+  border-radius: var(--radius-regular);
+  box-shadow: var(--box-shadow-focus);
 }
 
 .modal__container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-block-start: calc(var(--modal-inner-padding) * 2);
-    padding-block-end: var(--modal-inner-padding);
-    padding-inline-start: var(--modal-inner-padding);
-    padding-inline-end: calc(var(--modal-inner-padding) / 2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block-start: calc(var(--modal-inner-padding) * 2);
+  padding-block-end: var(--modal-inner-padding);
+  padding-inline-start: var(--modal-inner-padding);
+  padding-inline-end: calc(var(--modal-inner-padding) / 2);
 }
 
 .modal__container_noFooter {
-    padding-block-end: calc(var(--modal-inner-padding) * 2);
+  padding-block-end: calc(var(--modal-inner-padding) * 2);
 }
 
 .modal__title {
-    padding-inline-end: calc(var(--modal-inner-padding) / 2);
+  padding-inline-end: calc(var(--modal-inner-padding) / 2);
 }
 
 .modal__content {
-    overflow-y: auto;
-    max-height: 50vh;
-    padding-inline-end: calc(var(--modal-inner-padding) / 2);
+  overflow-y: auto;
+  max-height: 50vh;
+  padding-inline-end: calc(var(--modal-inner-padding) / 2);
 }
 
 .modal::-webkit-scrollbar,
 .modal__content::-webkit-scrollbar {
-    width: var(--scrollbar-width);
+  width: var(--scrollbar-width);
 }
 
 .modal::-webkit-scrollbar-track,
 .modal__content::-webkit-scrollbar-track {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .modal::-webkit-scrollbar-thumb,
 .modal__content::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb-color);
-    border-radius: 4px;
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 4px;
 }
 
 .modal__footer {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding-inline-end: calc(var(--modal-inner-padding) / 2);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding-inline-end: calc(var(--modal-inner-padding) / 2);
 }

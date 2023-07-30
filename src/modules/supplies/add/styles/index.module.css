@@ -1,51 +1,52 @@
-.supplyProducts__listItem {}
+.supplyProducts__listItem {
+}
 
 .supplyProducts__listItem:hover {
-    background-color: transparent;
-    cursor: initial;
+  background-color: transparent;
+  cursor: initial;
 }
 
 .supplyProducts__listItemOrder {
-    color: var(--text-color-dimmed);
-    font-size: var(--font-size-s);
+  color: var(--text-color-dimmed);
+  font-size: var(--font-size-s);
 }
 
 .supplyProducts__list_buttonAddWrapper {
-    margin-top: 1.5rem;
-    width: 100%;
+  margin-top: 1.5rem;
+  width: 100%;
 }
 
 .supplyProducts__list_buttonAdd {
-    width: 100%;
+  width: 100%;
 }
 
 .supplyProducts__summary {
-    display: flex;
-    gap: 1em;
-    width: 100%;
+  display: flex;
+  gap: 1em;
+  width: 100%;
 }
 
 .supplyProducts__summaryItem {
-    box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .supplyProducts__duplications {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .supplyProducts__duplicationsList {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
-    padding: revert;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  padding: revert;
 }
 
 .supplyProducts__actionButton {
-    display: flex;
+  display: flex;
 }
 
 .supplyProducts__actionButton path {
-    fill: var(--text-color);
+  fill: var(--text-color);
 }

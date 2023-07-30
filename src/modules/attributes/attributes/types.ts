@@ -1,6 +1,5 @@
 import { Translations } from '../../../components/IntlProvider';
 import { Variant } from '../variants/types';
-import { AttributeVariantsListPlaceholder } from './AttributeVariantsListPlaceholder';
 
 export type Attribute = {
   _id: string;

@@ -17,7 +17,6 @@ import { PublicRoutes } from './PublicRoutes';
 import { SignedInRedirect } from './SignedInRedirect';
 
 const SignIn = lazy(() => import('../../pages/signIn/SignIn'));
-const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 
 const PrivateError = (props: unknown) => {
   console.log('PrivateError', props);

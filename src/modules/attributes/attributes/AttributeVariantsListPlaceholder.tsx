@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { Heading } from '../../../components/Heading';
 import { useTranslation } from '../../../components/IntlProvider';
 import { EmptyList } from '../../../layouts/EmptyPage';

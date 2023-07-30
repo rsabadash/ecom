@@ -10,8 +10,6 @@ import {
   usePaginationLimit,
   usePaginationUrl,
 } from '../../../components/Pagination/hooks';
-import { Supply } from './types';
-import { useSuppliesTableColumns } from './hooks';
 import {
   RowCustomRenderProps,
   Table,
@@ -19,7 +17,9 @@ import {
   TablePagination,
 } from '../../../components/Table';
 import { TABLE_SUPPLIES_ID } from './constants';
+import { useSuppliesTableColumns } from './hooks';
 import { SuppliesListPlaceholder } from './SuppliesListPlaceholder';
+import { Supply } from './types';
 
 export const SuppliesList = () => {
   const isLoadedRef = useRef<boolean>(false);

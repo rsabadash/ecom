@@ -8,10 +8,10 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../../components/Table';
+import { AttributesListPlaceholder } from './AttributesListPlaceholder';
 import { TABLE_ATTRIBUTES_ID } from './constants';
 import { useAttributesTableColumns } from './hooks';
 import { Attribute } from './types';
-import { AttributesListPlaceholder } from './AttributesListPlaceholder';
 
 export const AttributesList = () => {
   const { data = [] } = useCachedAPI<Attribute[]>(

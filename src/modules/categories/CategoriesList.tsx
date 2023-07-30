@@ -8,9 +8,9 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../components/Table';
+import { CategoriesListPlaceholder } from './CategoriesListPlaceholder';
 import { TABLE_CATEGORIES_ID } from './constants';
 import { useCategoriesTableColumns } from './hooks';
-import { CategoriesListPlaceholder } from './CategoriesListPlaceholder';
 import { Category } from './types';
 
 export const CategoriesList = () => {

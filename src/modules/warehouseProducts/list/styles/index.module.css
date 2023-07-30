@@ -1,42 +1,43 @@
-.warehouseList {}
+.warehouseList {
+}
 
 .warehouseListRow {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .warehouseListRowCollapseHeader {
-    width: 100%;
-    gap: 0;
+  width: 100%;
+  gap: 0;
 }
 
 .warehouseListRowCollapseBody {
-    width: 100%;
-    background-color: var(--background-900);
-    cursor: default;
+  width: 100%;
+  background-color: var(--background-900);
+  cursor: default;
 }
 
 .warehouseList > .warehouseListRow:last-of-type {
-    overflow: hidden;
-    border-bottom-right-radius: var(--radius-regular);
-    border-bottom-left-radius: var(--radius-regular);
+  overflow: hidden;
+  border-bottom-right-radius: var(--radius-regular);
+  border-bottom-left-radius: var(--radius-regular);
 }
 
 .warehouseListRowCollapseContent {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding-inline: 1rem;
-    padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
 }
 
 .warehouseListAttributes {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .warehouseListVariants {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
