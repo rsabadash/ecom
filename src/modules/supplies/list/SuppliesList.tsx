@@ -1,15 +1,9 @@
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
 import { routes } from '../../../common/constants/routes';
-import { useCachedAPI } from '../../../common/hooks';
-import { PaginationData } from '../../../common/types/pagination';
-import { getPaginationData } from '../../../common/utils';
-import {
-  usePaginationLimit,
-  usePaginationUrl,
-} from '../../../components/Pagination/hooks';
+import { useCachedPaginationAPI } from '../../../common/hooks';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
@@ -22,26 +16,12 @@ import { SuppliesListPlaceholder } from './SuppliesListPlaceholder';
 import { Supply } from './types';
 
 export const SuppliesList = () => {
-  const isLoadedRef = useRef<boolean>(false);
-
   const { limitValue, setLimitValue } = usePaginationLimit();
-  const GET_SUPPLIES_URL = usePaginationUrl({
+
+  const { list, total } = useCachedPaginationAPI<Supply>({
     url: endpoints.supplies.root,
     limit: limitValue,
   });
-
-  const { data } = useCachedAPI<PaginationData<Supply>>(GET_SUPPLIES_URL, {
-    // We have to disable "suspense" after first load
-    // as "keepPreviousData" does not work with it
-    suspense: !isLoadedRef.current,
-    keepPreviousData: true,
-  });
-
-  useEffect(() => {
-    isLoadedRef.current = true;
-  }, []);
-
-  const { data: list, total } = getPaginationData<Supply>(data);
 
   const columns: TableColumnGeneric<Supply>[] = useSuppliesTableColumns();
 
@@ -66,16 +46,15 @@ export const SuppliesList = () => {
             </Link>
           )}
           bottomPanelNode={
-            total > limitValue && (
-              <TablePagination
-                total={total}
-                limitValue={limitValue}
-                setLimitValue={setLimitValue}
-              />
-            )
+            <TablePagination
+              total={total}
+              limitValue={limitValue}
+              setLimitValue={setLimitValue}
+            />
           }
         />
       ) : (
+        // TODO if total > 0 we have to show 404 not the component bellow
         <SuppliesListPlaceholder />
       )}
     </>

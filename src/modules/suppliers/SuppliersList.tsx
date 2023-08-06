@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 
 import { endpoints } from '../../common/constants/api';
 import { routes } from '../../common/constants/routes';
-import { useCachedAPI } from '../../common/hooks';
+import { useCachedPaginationAPI } from '../../common/hooks';
+import { usePaginationLimit } from '../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
+  TablePagination,
 } from '../../components/Table';
 import { TABLE_SUPPLIERS_ID } from './constants';
 import { useSuppliersTableColumns } from './hooks';
@@ -14,15 +16,20 @@ import { SuppliersListPlaceholder } from './SuppliersListPlaceholder';
 import { Supplier } from './types';
 
 export const SuppliersList = () => {
-  const { data = [] } = useCachedAPI<Supplier[]>(`${endpoints.suppliers.root}`);
+  const { limitValue, setLimitValue } = usePaginationLimit();
+
+  const { list, total } = useCachedPaginationAPI<Supplier>({
+    url: endpoints.suppliers.root,
+    limit: limitValue,
+  });
 
   const columns: TableColumnGeneric<Supplier>[] = useSuppliersTableColumns();
 
   return (
     <>
-      {data.length > 0 ? (
+      {list.length > 0 ? (
         <Table
-          items={data}
+          items={list}
           columns={columns}
           tableLabeledBy={TABLE_SUPPLIERS_ID}
           rowCustomRender={({
@@ -38,8 +45,16 @@ export const SuppliersList = () => {
               {row}
             </Link>
           )}
+          bottomPanelNode={
+            <TablePagination
+              total={total}
+              limitValue={limitValue}
+              setLimitValue={setLimitValue}
+            />
+          }
         />
       ) : (
+        // TODO if total > 0 we have to show 404 not the component bellow
         <SuppliersListPlaceholder />
       )}
     </>

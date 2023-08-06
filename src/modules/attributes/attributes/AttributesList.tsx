@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
 import { routes } from '../../../common/constants/routes';
-import { useCachedAPI } from '../../../common/hooks';
+import { useCachedPaginationAPI } from '../../../common/hooks';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
+  TablePagination,
 } from '../../../components/Table';
 import { AttributesListPlaceholder } from './AttributesListPlaceholder';
 import { TABLE_ATTRIBUTES_ID } from './constants';
@@ -14,17 +16,20 @@ import { useAttributesTableColumns } from './hooks';
 import { Attribute } from './types';
 
 export const AttributesList = () => {
-  const { data = [] } = useCachedAPI<Attribute[]>(
-    `${endpoints.attributes.root}`,
-  );
+  const { limitValue, setLimitValue } = usePaginationLimit();
+
+  const { list, total } = useCachedPaginationAPI<Attribute>({
+    url: endpoints.attributes.root,
+    limit: limitValue,
+  });
 
   const columns: TableColumnGeneric<Attribute>[] = useAttributesTableColumns();
 
   return (
     <>
-      {data.length > 0 ? (
+      {list.length > 0 ? (
         <Table
-          items={data}
+          items={list}
           columns={columns}
           tableLabeledBy={TABLE_ATTRIBUTES_ID}
           rowCustomRender={({
@@ -40,8 +45,16 @@ export const AttributesList = () => {
               {row}
             </Link>
           )}
+          bottomPanelNode={
+            <TablePagination
+              total={total}
+              limitValue={limitValue}
+              setLimitValue={setLimitValue}
+            />
+          }
         />
       ) : (
+        // TODO if total > 0 we have to show 404 not the component bellow
         <AttributesListPlaceholder />
       )}
     </>

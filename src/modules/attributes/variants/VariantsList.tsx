@@ -2,11 +2,13 @@ import { generatePath, Link } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
 import { routes } from '../../../common/constants/routes';
-import { useCachedAPI } from '../../../common/hooks';
+import { useCachedPaginationAPI } from '../../../common/hooks';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
+  TablePagination,
 } from '../../../components/Table';
 import { TABLE_VARIANTS_ID } from './constants';
 import { useVariantsTableColumns } from './hooks';
@@ -14,18 +16,21 @@ import { VariantWithAttribute } from './types';
 import { VariantsListPlaceholder } from './VariantsListPlaceholder';
 
 export const VariantsList = () => {
-  const { data = [] } = useCachedAPI<VariantWithAttribute[]>(
-    `${endpoints.attributes.variants}`,
-  );
+  const { limitValue, setLimitValue } = usePaginationLimit();
+
+  const { list, total } = useCachedPaginationAPI<VariantWithAttribute>({
+    url: endpoints.attributes.variants,
+    limit: limitValue,
+  });
 
   const columns: TableColumnGeneric<VariantWithAttribute>[] =
     useVariantsTableColumns();
 
   return (
     <>
-      {data.length > 0 ? (
+      {list.length > 0 ? (
         <Table
-          items={data}
+          items={list}
           columns={columns}
           tableRowRenderKey="variantId"
           tableLabeledBy={TABLE_VARIANTS_ID}
@@ -48,8 +53,16 @@ export const VariantsList = () => {
               </Link>
             );
           }}
+          bottomPanelNode={
+            <TablePagination
+              total={total}
+              limitValue={limitValue}
+              setLimitValue={setLimitValue}
+            />
+          }
         />
       ) : (
+        // TODO if total > 0 we have to show 404 not the component bellow
         <VariantsListPlaceholder />
       )}
     </>

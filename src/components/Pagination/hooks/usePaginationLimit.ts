@@ -24,7 +24,7 @@ export const usePaginationLimit = ({
       ? initialLimit
       : (getQueryParameter(LIMIT) as unknown as Limit) || LIMIT_DEFAULT,
   );
-  console.log(limitValue);
+
   return {
     limitValue,
     setLimitValue,

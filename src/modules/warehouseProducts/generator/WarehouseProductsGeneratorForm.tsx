@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { endpoints } from '../../../common/constants/api';
-import { useCachedAPI } from '../../../common/hooks';
+import { useCachedPaginationAPI } from '../../../common/hooks';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import {
   Form,
@@ -11,6 +11,7 @@ import {
 import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import { Attribute } from '../../attributes/attributes/types';
 import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
 import {
@@ -28,9 +29,12 @@ export const WarehouseProductsGeneratorForm: FC<
 > = ({ onSuccessSubmit }) => {
   const { translate } = useTranslation();
 
-  const { data: attributes } = useCachedAPI<Attribute[]>(
-    endpoints.attributes.root,
-  );
+  const { limitValue } = usePaginationLimit();
+
+  const { list } = useCachedPaginationAPI<Attribute>({
+    url: endpoints.attributes.root,
+    limit: limitValue,
+  });
 
   const { handleFormSubmit } = useWarehouseProductsGeneratorFormSubmit({
     onSuccess: onSuccessSubmit,
@@ -67,7 +71,7 @@ export const WarehouseProductsGeneratorForm: FC<
       </FormContent>
       <FormContent>
         <div className={classes.generator__attributes}>
-          {attributes?.map((attribute) => {
+          {list?.map((attribute) => {
             return (
               <WarehouseProductsGeneratorAttributeFormSection
                 key={attribute._id}

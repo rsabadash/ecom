@@ -25,9 +25,9 @@
 .warehouseListRowCollapseContent {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  padding-inline: 1rem;
-  padding-block: 1rem;
+  row-gap: var(--gap);
+  column-gap: var(--gap-double);
+  padding: var(--gap);
 }
 
 .warehouseListAttributes {
