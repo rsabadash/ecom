@@ -15,10 +15,6 @@
   font-size: var(--font-size-s);
 }
 
-.supplyProducts__list_buttonAddWrapper {
-  padding-inline-start: var(--gap-half);
-}
-
 .supplyProducts__summary {
   display: flex;
   gap: 1em;

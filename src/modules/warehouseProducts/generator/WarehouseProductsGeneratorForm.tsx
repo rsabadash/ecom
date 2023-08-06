@@ -21,6 +21,8 @@ import { WarehouseProductsGeneratorFormProps } from './types';
 import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProductsGeneratorAttributeFormSection';
 import { WarehouseProductUnitField } from './WarehouseProductUnitField';
 
+import classes from './styles/index.module.css';
+
 export const WarehouseProductsGeneratorForm: FC<
   WarehouseProductsGeneratorFormProps
 > = ({ onSuccessSubmit }) => {
@@ -64,17 +66,19 @@ export const WarehouseProductsGeneratorForm: FC<
         </FormDescription>
       </FormContent>
       <FormContent>
-        {attributes?.map((attribute) => {
-          return (
-            <WarehouseProductsGeneratorAttributeFormSection
-              key={attribute._id}
-              control={control}
-              setValue={setValue}
-              getValues={getValues}
-              attribute={attribute}
-            />
-          );
-        })}
+        <div className={classes.generator__attributes}>
+          {attributes?.map((attribute) => {
+            return (
+              <WarehouseProductsGeneratorAttributeFormSection
+                key={attribute._id}
+                control={control}
+                setValue={setValue}
+                getValues={getValues}
+                attribute={attribute}
+              />
+            );
+          })}
+        </div>
       </FormContent>
       <FormContent>
         <ButtonsGroup>

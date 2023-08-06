@@ -29,7 +29,11 @@ export const SupplyDetailListSummary: FC<SupplyDetailListSummaryProps> = ({
         const rowValue = valueGetter ? valueGetter(value || '') : value;
 
         return (
-          <div key={key} style={{ width, justifyContent: align }}>
+          <div
+            key={key}
+            style={{ width, justifyContent: align }}
+            className={classes.supplyDetailListSummary__item}
+          >
             {rowValue || null}
           </div>
         );
