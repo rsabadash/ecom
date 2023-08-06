@@ -37,7 +37,7 @@ const CategoryDetail = () => {
   const categoryTitle = `${translate('category')} "${
     categoryDetail?.name[language]
   }"`;
-
+  console.log(formValues);
   return (
     <>
       <Top>

@@ -9,15 +9,15 @@ export const matchCategoryDataToFormValues = (
     return undefined;
   }
 
-  const { parents, name, isActive, seoName } = data;
+  const { parentIds, name, isActive, seoName } = data;
 
   return {
     name,
     seoName,
     isActive,
-    parentIds: parents.map((parent) => ({
-      id: parent._id,
-      value: parent.name[language] || '',
+    parentIds: parentIds.map((parentId) => ({
+      id: parentId,
+      value: name[language] || '',
     })),
   };
 };

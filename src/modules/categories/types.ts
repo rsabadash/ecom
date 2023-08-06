@@ -9,9 +9,7 @@ export type Category = {
   parentIds: string[];
 };
 
-export type CategoryDetailEntity = Omit<Category, 'parentIds'> & {
-  parents: Category[];
-};
+export type CategoryDetailEntity = Category;
 
 export type CategoryFormValues = {
   name: Translations;
