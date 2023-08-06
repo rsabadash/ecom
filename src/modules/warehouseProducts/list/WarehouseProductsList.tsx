@@ -1,13 +1,6 @@
-import { useEffect, useRef } from 'react';
-
 import { endpoints } from '../../../common/constants/api';
-import { useCachedAPI } from '../../../common/hooks';
-import { PaginationData } from '../../../common/types/pagination';
-import { getPaginationData } from '../../../common/utils';
-import {
-  usePaginationLimit,
-  usePaginationUrl,
-} from '../../../components/Pagination/hooks';
+import { useCachedPaginationAPI } from '../../../common/hooks';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
@@ -24,29 +17,12 @@ import { WarehouseProductsListPlaceholder } from './WarehouseProductsListPlaceho
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsList = () => {
-  const isLoadedRef = useRef<boolean>(false);
-
   const { limitValue, setLimitValue } = usePaginationLimit();
-  const GET_WAREHOUSE_PRODUCTS_URL = usePaginationUrl({
+
+  const { list, total } = useCachedPaginationAPI<WarehouseProduct>({
     url: endpoints.warehouseProducts.root,
     limit: limitValue,
   });
-
-  const { data } = useCachedAPI<PaginationData<WarehouseProduct>>(
-    GET_WAREHOUSE_PRODUCTS_URL,
-    {
-      // We have to disable "suspense" after first load
-      // as "keepPreviousData" does not work with it
-      suspense: !isLoadedRef.current,
-      keepPreviousData: true,
-    },
-  );
-
-  useEffect(() => {
-    isLoadedRef.current = true;
-  }, []);
-
-  const { data: list, total } = getPaginationData<WarehouseProduct>(data);
 
   const columns: TableColumnGeneric<WarehouseProductTable>[] =
     useWarehouseProductsTableColumns();
@@ -74,16 +50,15 @@ export const WarehouseProductsList = () => {
             </WarehouseProductsListItem>
           )}
           bottomPanelNode={
-            total > limitValue && (
-              <TablePagination
-                total={total}
-                limitValue={limitValue}
-                setLimitValue={setLimitValue}
-              />
-            )
+            <TablePagination
+              total={total}
+              limitValue={limitValue}
+              setLimitValue={setLimitValue}
+            />
           }
         />
       ) : (
+        // TODO if total > 0 we have to show 404 not the component bellow
         <WarehouseProductsListPlaceholder />
       )}
     </>

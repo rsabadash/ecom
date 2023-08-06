@@ -1,6 +1,6 @@
 import { PaginationData } from '../types/pagination';
 
-type GetPaginationDataReturn<D> = {
+export type GetPaginationDataReturn<D> = {
   data: D[];
   total: number;
 };

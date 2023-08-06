@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 
 import { endpoints } from '../../common/constants/api';
 import { routes } from '../../common/constants/routes';
-import { useCachedAPI } from '../../common/hooks';
+import { useCachedPaginationAPI } from '../../common/hooks';
+import { usePaginationLimit } from '../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
+  TablePagination,
 } from '../../components/Table';
 import { CategoriesListPlaceholder } from './CategoriesListPlaceholder';
 import { TABLE_CATEGORIES_ID } from './constants';
@@ -14,15 +16,20 @@ import { useCategoriesTableColumns } from './hooks';
 import { Category } from './types';
 
 export const CategoriesList = () => {
-  const { data = [] } = useCachedAPI<Category[]>(endpoints.categories.root);
+  const { limitValue, setLimitValue } = usePaginationLimit();
+
+  const { list, total } = useCachedPaginationAPI<Category>({
+    url: endpoints.categories.root,
+    limit: limitValue,
+  });
 
   const columns: TableColumnGeneric<Category>[] = useCategoriesTableColumns();
 
   return (
     <>
-      {data.length > 0 ? (
+      {list.length > 0 ? (
         <Table
-          items={data}
+          items={list}
           columns={columns}
           tableLabeledBy={TABLE_CATEGORIES_ID}
           rowCustomRender={({
@@ -38,8 +45,16 @@ export const CategoriesList = () => {
               {row}
             </Link>
           )}
+          bottomPanelNode={
+            <TablePagination
+              total={total}
+              limitValue={limitValue}
+              setLimitValue={setLimitValue}
+            />
+          }
         />
       ) : (
+        // TODO if total > 0 we have to show 404 not the component bellow
         <CategoriesListPlaceholder />
       )}
     </>

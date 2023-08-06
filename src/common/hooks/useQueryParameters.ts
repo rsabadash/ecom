@@ -7,8 +7,25 @@ type QueryParametersArgs = {
   [key: QueryParameterKey]: string;
 };
 
-export const useQueryParameters = () => {
+type UseQueryParametersReturn = {
+  queryParameters: string;
+  rawQueryParameters: URLSearchParams;
+  getQueryParameter: (key: QueryParameterKey) => string | null;
+  addQueryParameters: (parameters: QueryParametersArgs) => void;
+  deleteQueryParameters: (
+    parameters: QueryParametersArgs | QueryParameterKey,
+  ) => void;
+};
+
+export const useQueryParameters = (): UseQueryParametersReturn => {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const getQueryParameter = useCallback(
+    (key: QueryParameterKey): string | null => {
+      return searchParams.get(key);
+    },
+    [searchParams],
+  );
 
   const addQueryParameters = useCallback(
     (parameters: QueryParametersArgs): void => {
@@ -41,8 +58,9 @@ export const useQueryParameters = () => {
   );
 
   return {
-    rawQueryParameters: searchParams,
     queryParameters: searchParams.toString(),
+    rawQueryParameters: searchParams,
+    getQueryParameter,
     addQueryParameters,
     deleteQueryParameters,
   };

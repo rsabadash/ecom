@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { PAGE } from '../../common/constants/filters';
+import { LIMIT, PAGE } from '../../common/constants/filters';
 import { useQueryParameters } from '../../common/hooks';
 import { Dropdown } from '../Fields/Dropdown';
 import { useTranslation } from '../IntlProvider';
@@ -17,10 +17,11 @@ export const PaginationLimit: FC<PaginationLimitProps> = ({
 }) => {
   const { translate } = useTranslation();
 
-  const { deleteQueryParameters } = useQueryParameters();
+  const { deleteQueryParameters, addQueryParameters } = useQueryParameters();
 
   const handleLimitChange = (value: Limit): void => {
     onLimitChange(value);
+    addQueryParameters({ [LIMIT]: value.toString() });
     deleteQueryParameters(PAGE);
   };
 

@@ -19,7 +19,7 @@
 
 .pagination__listItem_disabled path,
 .pagination__listItem_disabled:hover path {
-  fill: var(--text-color-secondary);
+  fill: var(--text-color-disabled);
 }
 
 .pagination__listItemLink {
