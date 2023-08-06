@@ -1,17 +1,17 @@
 .navigation_xs {
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
 }
 
 .navigation_s {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
 }
 
 .navigation_m {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
 }
 
 .navigation_l {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-l);
 }
 
 .navigation_xl {

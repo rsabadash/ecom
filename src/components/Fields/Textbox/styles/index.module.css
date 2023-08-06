@@ -2,9 +2,9 @@
   background-color: var(--input-background);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-regular);
-  padding-block: 0.85em;
-  padding-inline-start: 0.85em;
-  padding-inline-end: 0.4em;
+  padding-block: var(--gap);
+  padding-inline-start: var(--gap);
+  padding-inline-end: var(--gap-half);
   width: 100%;
 }
 
@@ -36,7 +36,7 @@
   background-color: transparent;
   border: none;
   color: var(--text-color);
-  padding-inline-end: 0.45em;
+  padding-inline-end: var(--gap-half);
   outline: none;
   transition: box-shadow var(--transition);
   width: 100%;

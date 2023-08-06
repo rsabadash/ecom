@@ -21,9 +21,9 @@
   background-color: var(--input-background-absolute-hack);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-regular);
-  padding-block: 0.85em;
-  padding-inline-start: 0.85em;
-  padding-inline-end: 0.4em;
+  padding-block: var(--gap);
+  padding-inline-start: var(--gap);
+  padding-inline-end: var(--gap-half);
   overflow: hidden;
   position: absolute;
   width: fit-content;
@@ -131,7 +131,7 @@
 
 .menuList__item {
   cursor: pointer;
-  padding: 0.85em;
+  padding: var(--gap);
   border-radius: var(--radius-regular);
 }
 

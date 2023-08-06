@@ -9,7 +9,7 @@
   background-color: var(--input-background);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-regular);
-  padding: 0.85em;
+  padding: var(--gap);
   color: var(--text-color);
   outline: none;
   transition: box-shadow var(--transition);
@@ -90,7 +90,7 @@
   grid-column: 1/2;
   grid-row: 1/2;
   box-sizing: initial;
-  padding-inline: 0.85em;
+  padding-inline: var(--gap);
 }
 
 .input__iconInteractive {
@@ -98,7 +98,7 @@
   grid-column: 1/2;
   grid-row: 1/2;
   box-sizing: initial;
-  padding-inline: 0.85em;
+  padding-inline: var(--gap);
   cursor: pointer;
 }
 

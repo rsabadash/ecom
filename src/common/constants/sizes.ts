@@ -6,4 +6,4 @@ export const ELEMENT_SIZE = {
   XS: 'xs',
 } as const;
 
-export const DEFAULT_ELEMENT_SIZE = ELEMENT_SIZE.XS;
+export const DEFAULT_ELEMENT_SIZE = ELEMENT_SIZE.S;
