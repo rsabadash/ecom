@@ -4,6 +4,6 @@
 
 .gridRowBalancer {
   display: grid;
-  grid-column-gap: 1.5em;
+  grid-column-gap: var(--gap-double);
   grid-template-columns: repeat(var(--grid-column), 1fr);
 }

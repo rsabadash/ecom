@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { InputWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
 import { supplyFormFields, supplyFormProductsSubfields } from './constants';
+import { SupplyProductAddProductToListButton } from './SupplyProductAddProductToListButton';
 import { SupplyProductSummaryProps } from './types';
 
 import classes from './styles/index.module.css';
@@ -16,6 +17,8 @@ const columnKeyFieldNameMap = {
 export const SupplyProductSummary: FC<SupplyProductSummaryProps> = ({
   columns,
   control,
+  handleAddProduct,
+  isMaxProductsNumberReached,
 }) => {
   const { translate } = useTranslation();
 
@@ -39,6 +42,12 @@ export const SupplyProductSummary: FC<SupplyProductSummaryProps> = ({
             style={{ width }}
             className={classes.supplyProducts__summaryItem}
           >
+            {key === supplyFormFields.name && (
+              <SupplyProductAddProductToListButton
+                handleAddProduct={handleAddProduct}
+                isMaxProductsNumberReached={isMaxProductsNumberReached}
+              />
+            )}
             {fieldName && (
               <InputWithTooltipAdapter
                 isReadOnly

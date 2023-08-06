@@ -13,9 +13,7 @@ export const attributes = {
     'SEO назва атрибута може містити лише числа та латинські літери у нижньомі регістрі',
   'attribute.seoName.description':
     'Введіть назву, яка буде використана у посиланні на атрибут. Допустимі символи: літери латинського алфавіту у нижньому регістрі, цифри та дефіс',
-  'attribute.active': 'Атрибут активний',
-  'attribute.active.description':
-    'Зробити атрибут доступним для показу на публічних сторінках',
+  'attribute.active': 'Атрибут доступний для показу на публічних сторінках',
   'attribute.state': 'Статус',
   'attribute.state.active': 'Активний',
   'attribute.state.inactive': 'Не активний',
@@ -39,9 +37,8 @@ export const attributes = {
     'Введіть назву, яка буде використана у посиланні на варіант. Допустимі символи: літери латинського алфавіту, цифри та дефіс',
   'attribute.variant.sortOrder.description':
     'Порядок відображення варіантів атрибута в списку варіантів',
-  'attribute.variant.active': 'Варіант активний',
-  'attribute.variant.active.description':
-    'Зробити варіант доступним для показу на публічних сторінках',
+  'attribute.variant.active':
+    'Варіант доступний для показу на публічних сторінках',
   'attribute.variant.list': 'Список варіантів',
   'attribute.emptyList': 'Атрибути відсутні',
   'attribute.emptyList.callToAction': 'Додати атрибут',

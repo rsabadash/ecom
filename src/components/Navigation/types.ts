@@ -1,7 +1,12 @@
 import { KeyboardEvent, RefObject } from 'react';
 
 import { EventKeys } from '../../common/enums/events';
+import { ElementSize } from '../../common/types/size';
 import { Role } from '../UserProvider/enums';
+
+export type NavigationProps = {
+  size?: ElementSize;
+};
 
 export type NavigationItem = {
   title: string;

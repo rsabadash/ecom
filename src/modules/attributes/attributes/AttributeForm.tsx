@@ -68,7 +68,6 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           isDescriptionHidden={isReadOnly}
           name={attributesFormFields.isActive}
           label={translate('attribute.active')}
-          placeholder={translate('attribute.active.description')}
           control={control}
           columnIndex={4}
         />

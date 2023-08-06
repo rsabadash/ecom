@@ -8,6 +8,7 @@ import {
   MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
+import { Label } from '../../../components/Label';
 import { Tag } from '../../../components/Tag';
 import { GridAutoFit, GridFullWidth } from '../../../layouts/Grid';
 import { warehouseProductsGeneratorProductsFormFields } from './constants';
@@ -78,7 +79,16 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                 />
                 {!!attributes?.length && (
                   <GridFullWidth>
-                    <div className={classes.generatedProduct__tags}>
+                    <Label
+                      labelId={id}
+                      labelClassName={classes.generatedProduct__tagsTitle}
+                    >
+                      Атрибути
+                    </Label>
+                    <div
+                      aria-labelledby={id}
+                      className={classes.generatedProduct__tags}
+                    >
                       {attributes?.map((attribute) => {
                         return attribute.variants.map((variant) => {
                           return (

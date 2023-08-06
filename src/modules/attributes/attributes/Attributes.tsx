@@ -19,11 +19,11 @@ const Attributes = () => {
         </TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            <ButtonLink variant="regular" to={routes.attributes.variantsList}>
-              {translate('attribute.variant.list')}
-            </ButtonLink>
             <ButtonLink variant="primary" to={routes.attributes.add}>
               {translate('add')}
+            </ButtonLink>
+            <ButtonLink variant="regular" to={routes.attributes.variantsList}>
+              {translate('attribute.variant.list')}
             </ButtonLink>
           </ButtonsGroup>
         </TopButtons>

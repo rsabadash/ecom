@@ -1,12 +1,12 @@
 .tag {
   color: var(--text-color);
-  border-radius: var(--radius-large);
+  border-radius: var(--radius-regular);
   border: none;
   transition: background-color var(--transition);
   display: inline-block;
-  padding-block: 0.35em;
-  padding-inline: 0.7em;
-  font-size: var(--font-size-m);
+  padding-block: var(--gap-half);
+  padding-inline: var(--gap);
+  font-size: var(--font-size-s);
 }
 
 .tag_regular {

@@ -5,19 +5,19 @@
 }
 
 .label_xs {
-  font-size: var(--font-size-xs);
-}
-
-.label_s {
   font-size: var(--font-size-s);
 }
 
-.label_m {
+.label_s {
   font-size: var(--font-size-m);
 }
 
-.label_l {
+.label_m {
   font-size: var(--font-size-l);
+}
+
+.label_l {
+  font-size: var(--font-size-xl);
 }
 
 .label_xl {

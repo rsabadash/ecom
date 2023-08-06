@@ -11,9 +11,7 @@ export const categories = {
     'Category SEO name should contain letters of the Latin alphabet, numbers, and hyphens',
   'category.seoName.description':
     'Enter the name that will be used in the category link. Valid characters: letters of the Latin alphabet, numbers, and hyphens',
-  'category.active': 'Category is active',
-  'category.active.description':
-    'Make category available for display on public pages',
+  'category.active': 'Category is available for display on public pages',
   'category.state': 'State',
   'category.state.active': 'Active',
   'category.state.inactive': 'Inactive',

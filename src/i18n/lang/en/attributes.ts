@@ -12,9 +12,7 @@ export const attributes = {
     'Attribute SEO name should contain lower case letters of the Latin alphabet, numbers, and hyphens',
   'attribute.seoName.description':
     'Enter the name that will be used in the attribute link. Valid characters: lower case letters of the Latin alphabet, numbers, and hyphens',
-  'attribute.active': 'Attribute is active',
-  'attribute.active.description':
-    'Make attribute available for display on public pages',
+  'attribute.active': 'Attribute is available for display on public pages',
   'attribute.state': 'State',
   'attribute.state.active': 'Active',
   'attribute.state.inactive': 'Not active',
@@ -35,9 +33,8 @@ export const attributes = {
     'Enter the name that will be used in the variant link. Valid characters: letters of the Latin alphabet, numbers, and hyphens',
   'attribute.variant.sortOrder.description':
     'Variants display order in attribute variants list',
-  'attribute.variant.active': 'Variant is active',
-  'attribute.variant.active.description':
-    'Make variant available for display on public pages',
+  'attribute.variant.active':
+    'Variant is available for display on public pages',
   'attribute.variant.list': 'Variants list',
   'attribute.emptyList': "Attributes don't exist",
   'attribute.emptyList.callToAction': 'Add attribute',

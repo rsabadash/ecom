@@ -85,6 +85,8 @@ export type SupplyProductActionsProps = {
 export type SupplyProductSummaryProps = {
   columns: TableColumnGeneric<SupplyProductListColumn>[];
   control: Control<SupplyFormValues>;
+  isMaxProductsNumberReached: boolean;
+  handleAddProduct: () => void;
 };
 
 export type ProductDuplicate = {
@@ -93,6 +95,11 @@ export type ProductDuplicate = {
 };
 
 export type ProductDuplicateData = Record<string, ProductDuplicate>;
+
+export type SupplyProductAddProductToListButtonProps = Pick<
+  SupplyProductSummaryProps,
+  'handleAddProduct' | 'isMaxProductsNumberReached'
+>;
 
 export type SupplyProductsDuplicationsModalProps = {
   isOpen: boolean;

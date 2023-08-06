@@ -2,9 +2,8 @@ import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { endpoints } from '../../common/constants/api';
-import { routes } from '../../common/constants/routes';
 import { useCachedAPI } from '../../common/hooks';
-import { Button, ButtonLink, ButtonsGroup } from '../../components/Button';
+import { Button, ButtonsGroup } from '../../components/Button';
 import { useTranslation } from '../../components/IntlProvider';
 import { SectionForeground } from '../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../layouts/Top';
@@ -41,11 +40,6 @@ const SupplierDetail = () => {
         <TopHeading>{supplierDetail?.name}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            {isReadOnly && (
-              <ButtonLink variant="primary" to={routes.suppliers.add}>
-                {translate('add')}
-              </ButtonLink>
-            )}
             <Button variant="primary" onClick={handleButtonEditClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>

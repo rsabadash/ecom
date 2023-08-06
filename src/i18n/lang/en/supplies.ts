@@ -24,6 +24,7 @@ export const supplies = {
     'Total cost of products is required',
   'supply.product.totalCost.error.required': 'Total cost is required',
   'supply.product.unit': 'Storage unit',
+  'supply.products': 'Products in supply',
   'supply.addProduct': 'Add a product to the supply',
   'supply.warning.deleteOneProduct':
     'It is not possible to delete a product if it is the only one in the list',

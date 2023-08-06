@@ -1,11 +1,9 @@
 import { FC, useCallback, useState } from 'react';
 import { useFieldArray } from 'react-hook-form';
 
-import { Button } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Modal } from '../../../components/Modal';
 import { Table, TableColumnGeneric } from '../../../components/Table';
-import { Tooltip } from '../../../components/Tooltip';
 import {
   defaultProductValue,
   MAX_PRODUCTS_IN_SUPPLY,
@@ -72,28 +70,14 @@ export const SupplyProductsList: FC<SupplyProductsListProps> = ({
         tableRowRenderKey="id"
         tableRowClassName={classes.supplyProducts__listItem}
         bottomPanelNode={
-          <SupplyProductSummary columns={columns} control={control} />
+          <SupplyProductSummary
+            columns={columns}
+            control={control}
+            handleAddProduct={handleAddProductOnClick}
+            isMaxProductsNumberReached={isMaxProductsNumberReached}
+          />
         }
       />
-
-      <Tooltip
-        isDisabled={!isMaxProductsNumberReached}
-        isChildrenFocusable
-        content={translate('supply.products.maxNumber', {
-          value: MAX_PRODUCTS_IN_SUPPLY,
-        })}
-        position="bottom"
-        tooltipClassName={classes.supplyProducts__list_buttonAddWrapper}
-      >
-        <Button
-          isDisabled={isMaxProductsNumberReached}
-          variant="theme"
-          onClick={handleAddProductOnClick}
-          className={classes.supplyProducts__list_buttonAdd}
-        >
-          {translate('supply.addProduct')}
-        </Button>
-      </Tooltip>
 
       <Modal
         isModalFooterHidden

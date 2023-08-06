@@ -91,7 +91,6 @@ const SignIn = () => {
               <CheckboxAdapter
                 name={signInFormFields.isPersistUser}
                 label={translate('signIn.isPersistUser')}
-                placeholder={translate('signIn.isPersistUser.description')}
                 control={control}
               />
             </GridFullWidth>

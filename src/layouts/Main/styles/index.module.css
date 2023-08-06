@@ -34,7 +34,7 @@
 
 .mainPublicWrapper {
   display: grid;
-  grid-template-columns: 1fr minmax(320px, 650px) 1fr;
+  grid-template-columns: 1fr minmax(320px, 33vw) 1fr;
   grid-template-areas:
     '. .... .'
     '. main .'

@@ -32,7 +32,7 @@
   height: 100%;
 }
 
-.emptyListContent__link:focus-within {
+.emptyListContent__link:focus-visible {
   outline: none;
   background-color: var(--primary-400);
   border-radius: var(--radius-regular);

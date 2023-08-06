@@ -1,9 +1,28 @@
-.navigation__list {
+.navigation_xs {
+  font-size: var(--font-size-s);
+}
+
+.navigation_s {
   font-size: var(--font-size-m);
+}
+
+.navigation_m {
+  font-size: var(--font-size-l);
+}
+
+.navigation_l {
+  font-size: var(--font-size-xl);
+}
+
+.navigation_xl {
+  font-size: var(--font-size-xl);
+}
+
+.navigation__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.4em;
+  gap: var(--gap-half);
 }
 
 .navigation__item {
@@ -13,7 +32,7 @@
   width: 100%;
   display: block;
   border-radius: var(--radius-regular);
-  padding: 0.85em;
+  padding: var(--gap);
   cursor: pointer;
   text-decoration: none;
   color: var(--text-color);

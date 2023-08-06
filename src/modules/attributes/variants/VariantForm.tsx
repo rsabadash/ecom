@@ -71,7 +71,6 @@ export const VariantForm: FC<VariantFormProps> = ({
           isDescriptionHidden={isReadOnly}
           name={variantFormFields.isActive}
           label={translate('attribute.variant.active')}
-          placeholder={translate('attribute.variant.active.description')}
           control={control}
           columnIndex={4}
         />

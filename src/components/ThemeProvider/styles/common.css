@@ -83,7 +83,8 @@
   --text-error: var(--danger-800);
   --border-error: var(--danger-900);
 
-  --gap: 1em;
+  --gap-l: 1em;
+  --gap: 0.85em;
   --gap-double: calc(var(--gap) * 2);
   --gap-half: calc(var(--gap) / 2);
   --gap-quater: calc(var(--gap) / 4);
@@ -106,5 +107,5 @@
   --hover-color: var(--foreground-200);
 
   --input-background: var(--foreground-100);
-  --button-regular-background: var(--foreground-900);
+  --button-regular-background: var(--foreground-800);
 }

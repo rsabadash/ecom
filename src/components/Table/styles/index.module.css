@@ -3,19 +3,19 @@
 }
 
 .table_xs {
-  font-size: var(--font-size-xs);
-}
-
-.table_s {
   font-size: var(--font-size-s);
 }
 
-.table_m {
+.table_s {
   font-size: var(--font-size-m);
 }
 
-.table_l {
+.table_m {
   font-size: var(--font-size-l);
+}
+
+.table_l {
+  font-size: var(--font-size-xl);
 }
 
 .table_xl {
@@ -23,7 +23,8 @@
 }
 
 .table__header {
-  color: var(--text-color-dimmed);
+  font-size: var(--font-size-s);
+  color: var(--text-color-secondary);
   border-bottom: 1px solid var(--border-color);
 }
 

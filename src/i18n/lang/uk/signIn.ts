@@ -12,7 +12,6 @@ export const signIn = {
   'signIn.password.hide': 'Приховати пароль',
   'signIn.password.state.shown': 'Пароль показано',
   'signIn.password.state.hidden': 'Пароль приховано',
-  'signIn.isPersistUser': "Запам'ятати мене",
-  'signIn.isPersistUser.description':
+  'signIn.isPersistUser':
     'Не виходити з облікового запису після закриття браузера',
 };

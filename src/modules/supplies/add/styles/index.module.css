@@ -1,3 +1,7 @@
+.supplyProducts__title {
+  margin-top: var(--gap);
+}
+
 .supplyProducts__listItem {
 }
 
@@ -12,18 +16,14 @@
 }
 
 .supplyProducts__list_buttonAddWrapper {
-  margin-top: var(--gap);
-  width: 100%;
-}
-
-.supplyProducts__list_buttonAdd {
-  width: 100%;
+  padding-inline-start: var(--gap-half);
 }
 
 .supplyProducts__summary {
   display: flex;
   gap: 1em;
   width: 100%;
+  align-items: center;
 }
 
 .supplyProducts__summaryItem {

@@ -46,7 +46,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   return (
     <Form onSubmit={handleSubmit}>
       <FormContent>
-        <GridRowBalancer columns={3} elementRows={4}>
+        <GridRowBalancer columns={2} elementRows={4}>
           <MultiLanguageInputAdapter
             isRequired
             isReadOnly={isReadOnly}
@@ -83,7 +83,6 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             isDescriptionHidden={isReadOnly}
             name={categoryFormFields.isActive}
             label={translate('category.active')}
-            placeholder={translate('category.active.description')}
             control={control}
             columnIndex={4}
           />
