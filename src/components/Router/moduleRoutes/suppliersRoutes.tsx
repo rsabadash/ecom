@@ -3,12 +3,14 @@ import { lazy, Suspense } from 'react';
 import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
-const Suppliers = lazy(() => import('../../../modules/suppliers/Suppliers'));
+const Suppliers = lazy(
+  () => import('../../../modules/suppliers/list/Suppliers'),
+);
 const SuppliersDetail = lazy(
-  () => import('../../../modules/suppliers/SupplierDetail'),
+  () => import('../../../modules/suppliers/detail/SupplierDetail'),
 );
 const SuppliersAdd = lazy(
-  () => import('../../../modules/suppliers/SupplierAdd'),
+  () => import('../../../modules/suppliers/add/SupplierAdd'),
 );
 
 export const suppliersRoutes = [

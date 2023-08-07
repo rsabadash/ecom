@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
 
-import { endpoints } from '../../common/constants/api';
-import { routes } from '../../common/constants/routes';
-import { useCachedPaginationAPI } from '../../common/hooks';
-import { usePaginationLimit } from '../../components/Pagination/hooks';
+import { endpoints } from '../../../common/constants/api';
+import { routes } from '../../../common/constants/routes';
+import { useCachedPaginationAPI } from '../../../common/hooks';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
   TablePagination,
-} from '../../components/Table';
+} from '../../../components/Table';
+import { Supplier } from '../detail/types';
 import { TABLE_SUPPLIERS_ID } from './constants';
 import { useSuppliersTableColumns } from './hooks';
 import { SuppliersListPlaceholder } from './SuppliersListPlaceholder';
-import { Supplier } from './types';
 
 export const SuppliersList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();

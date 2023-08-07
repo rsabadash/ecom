@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
-import { Button } from '../../components/Button';
-import { Form, FormContent } from '../../components/FormFields';
-import { InputAdapter } from '../../components/FormFieldsAdapter';
-import { GridRowBalancer } from '../../components/GridRowBalancer';
-import { useTranslation } from '../../components/IntlProvider';
+import { Button } from '../../../components/Button';
+import { Form, FormContent } from '../../../components/FormFields';
+import { InputAdapter } from '../../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../../components/GridRowBalancer';
+import { useTranslation } from '../../../components/IntlProvider';
 import { supplierFormFields } from './constants';
 import { useSupplierForm, useSupplierFormSubmit } from './hooks';
 import { SupplierFormProps } from './types';

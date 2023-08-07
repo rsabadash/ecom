@@ -1,5 +1,5 @@
-import { endpoints } from '../../common/constants/api';
-import { DELETE, PATCH, POST } from '../../common/utils/api';
+import { endpoints } from '../../../common/constants/api';
+import { DELETE, PATCH, POST } from '../../../common/utils/api';
 import {
   SupplierDeleteData,
   SupplierPatchData,
