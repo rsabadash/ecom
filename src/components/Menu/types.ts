@@ -1,4 +1,4 @@
-import { ElementType } from 'react';
+import { ElementType, PropsWithChildren } from 'react';
 
 import { EventKeys } from '../../common/enums/events';
 import { MENU_ALIGNMENT, MENU_POSITION } from './constants';
@@ -13,12 +13,12 @@ export type MenuItem = {
   action: () => void;
 };
 
-export type MenuProps = {
+export type MenuProps = PropsWithChildren<{
   items: MenuItem[];
   position?: Position;
   alignment?: Alignment;
   isDisabled?: boolean;
   isObserveResize?: boolean;
-};
+}>;
 
 export type KeyIndexMap = Partial<{ [key in EventKeys]: number }>;

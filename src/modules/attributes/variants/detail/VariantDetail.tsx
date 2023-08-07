@@ -8,8 +8,9 @@ import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
 import { useDeleteVariant } from '../add/hooks';
-import { Variant, VariantFormValues, VariantUrlParams } from '../add/types';
+import { Variant, VariantFormValues } from '../add/types';
 import { VariantForm } from '../add/VariantForm';
+import { VariantUrlParams } from './types';
 import { matchVariantDataToFormValues } from './utils';
 
 const VariantDetail = () => {

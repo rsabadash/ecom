@@ -1,3 +1,5 @@
-export type TopHeadingProps = {
+import { PropsWithChildren } from 'react';
+
+export type TopHeadingProps = PropsWithChildren<{
   id?: string;
-};
+}>;

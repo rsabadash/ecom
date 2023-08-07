@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, MouseEvent, PropsWithChildren } from 'react';
+import { FC, KeyboardEvent, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
@@ -8,7 +8,7 @@ import { ButtonLinkProps } from './types';
 
 import classes from './styles/index.module.css';
 
-export const ButtonLink: FC<PropsWithChildren<ButtonLinkProps>> = ({
+export const ButtonLink: FC<ButtonLinkProps> = ({
   size = DEFAULT_BUTTON_SIZE,
   variant = DEFAULT_BUTTON_VARIANT,
   isDisabled,

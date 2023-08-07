@@ -1,7 +1,7 @@
-import { SupplierDetailEntry, SupplierFormValues } from '../add/types';
+import { Supplier, SupplierFormValues } from '../add/types';
 
 export const matchSupplierDataToFormValues = (
-  data: SupplierDetailEntry | undefined,
+  data: Supplier | undefined,
 ): SupplierFormValues | undefined => {
   if (!data) {
     return undefined;

@@ -8,12 +8,9 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useDeleteWarehouse } from '../add/hooks';
-import {
-  Warehouse,
-  WarehouseFormValues,
-  WarehouseUrlParams,
-} from '../add/types';
+import { Warehouse, WarehouseFormValues } from '../add/types';
 import { WarehouseForm } from '../add/WarehouseForm';
+import { WarehouseUrlParams } from './types';
 import { matchWarehouseDataToFormValues } from './utils';
 
 const WarehouseDetail = () => {

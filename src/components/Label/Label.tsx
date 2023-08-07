@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import clsx from 'clsx';
 
 import { DEFAULT_LABEL_SIZE } from './constants';
@@ -6,7 +6,7 @@ import { LabelProps } from './types';
 
 import classes from './styles/index.module.css';
 
-export const Label: FC<PropsWithChildren<LabelProps>> = ({
+export const Label: FC<LabelProps> = ({
   size = DEFAULT_LABEL_SIZE,
   labelId,
   htmlFor,

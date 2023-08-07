@@ -1,4 +1,4 @@
-import { forwardRef, PropsWithChildren } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 
 import { useCollapseController } from './CollapseController';
@@ -8,7 +8,7 @@ import classes from './styles/index.module.css';
 
 export const CollapseBuilderBody = forwardRef<
   HTMLDivElement,
-  PropsWithChildren<CollapseBuilderBodyProps>
+  CollapseBuilderBodyProps
 >(({ children, id, renderBodyOnExpand, collapseBodyClassName }, ref) => {
   const { isExpand, isOnceExpanded } = useCollapseController();
 

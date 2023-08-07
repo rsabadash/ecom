@@ -9,8 +9,6 @@ export type Category = {
   parentIds: string[];
 };
 
-export type CategoryDetailEntity = Category;
-
 export type CategoryFormValues = {
   name: Translations;
   seoName: string;
@@ -54,8 +52,4 @@ export type CategoryPatchData = {
 
 export type CategoryDeleteData = {
   id: string;
-};
-
-export type CategoryUrlParams = {
-  categoryId: string;
 };

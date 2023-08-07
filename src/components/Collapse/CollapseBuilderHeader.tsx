@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import clsx from 'clsx';
 
 import { CollapseBuilderButton } from './CollapseBuilderButton';
@@ -7,9 +7,7 @@ import { CollapseBuilderHeaderProps } from './types';
 
 import classes from './styles/index.module.css';
 
-export const CollapseBuilderHeader: FC<
-  PropsWithChildren<CollapseBuilderHeaderProps>
-> = ({
+export const CollapseBuilderHeader: FC<CollapseBuilderHeaderProps> = ({
   children,
   isToggleHidden,
   isToggleableHeader,

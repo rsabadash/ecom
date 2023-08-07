@@ -39,10 +39,6 @@ export type WarehouseDeleteData = {
   id: string;
 };
 
-export type WarehouseUrlParams = {
-  warehouseId: string;
-};
-
 export type WarehouseFormProps = {
   id?: string;
   isReadOnly?: boolean;

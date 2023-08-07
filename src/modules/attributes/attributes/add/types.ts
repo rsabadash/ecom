@@ -42,16 +42,7 @@ export type AttributeDeleteData = {
   id: string;
 };
 
-export type AttributesVariantsListProps = {
-  variants: Variant[];
-  addVariantLink: string;
-};
-
 export type AttributeUrlParams = {
   attributeId: string;
   variantId: string;
-};
-
-export type AttributeVariantsListPlaceholderProps = {
-  addVariantLink: string;
 };

@@ -11,9 +11,10 @@ import {
 } from '../../../../components/Table';
 import { Variant } from '../../variants/add/types';
 import { TABLE_ATTRIBUTE_VARIANTS_ID } from '../add/constants';
-import { AttributesVariantsListProps, AttributeUrlParams } from '../add/types';
+import { AttributeUrlParams } from '../add/types';
 import { AttributeVariantsListPlaceholder } from './AttributeVariantsListPlaceholder';
 import { useAttributeVariantsTableColumns } from './hooks';
+import { AttributesVariantsListProps } from './types';
 
 import classes from './styles/index.module.css';
 

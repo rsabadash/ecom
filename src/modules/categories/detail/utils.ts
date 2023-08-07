@@ -1,8 +1,8 @@
 import { DEFAULT_LANGUAGE, Language } from '../../../components/IntlProvider';
-import { CategoryDetailEntity, CategoryFormValues } from '../add/types';
+import { Category, CategoryFormValues } from '../add/types';
 
 export const matchCategoryDataToFormValues = (
-  data: CategoryDetailEntity | undefined,
+  data: Category | undefined,
   language: Language,
 ): CategoryFormValues | undefined => {
   if (!data) {

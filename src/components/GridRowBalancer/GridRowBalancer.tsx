@@ -1,4 +1,4 @@
-import { CSSProperties, FC, PropsWithChildren } from 'react';
+import { CSSProperties, FC } from 'react';
 
 import { createProvider } from '../../common/utils';
 import { CONTEXT_NAME, gridRowBalancerContextValueDefault } from './constants';
@@ -12,7 +12,7 @@ const [Provider, useGridRowBalancer] =
     contextDefaultValue: gridRowBalancerContextValueDefault,
   });
 
-const GridRowBalancer: FC<PropsWithChildren<GridRowBalancerProps>> = ({
+const GridRowBalancer: FC<GridRowBalancerProps> = ({
   children,
   columns,
   elementRows,

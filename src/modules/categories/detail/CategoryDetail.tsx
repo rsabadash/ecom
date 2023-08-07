@@ -9,11 +9,8 @@ import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { CategoryForm } from '../add/CategoryForm';
 import { useDeleteCategory } from '../add/hooks';
-import {
-  CategoryDetailEntity,
-  CategoryFormValues,
-  CategoryUrlParams,
-} from '../add/types';
+import { Category, CategoryFormValues } from '../add/types';
+import { CategoryUrlParams } from './types';
 import { matchCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {
@@ -22,7 +19,7 @@ const CategoryDetail = () => {
   const { categoryId } = useParams<CategoryUrlParams>();
   const { language, translate, getTranslationWithFallback } = useTranslation();
 
-  const { data: categoryDetail } = useCachedAPI<CategoryDetailEntity>(
+  const { data: categoryDetail } = useCachedAPI<Category>(
     `${endpoints.categories.root}/${categoryId}`,
   );
   const { deleteCategory } = useDeleteCategory(categoryDetail?._id);

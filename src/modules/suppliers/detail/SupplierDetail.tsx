@@ -9,11 +9,8 @@ import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { useDeleteSupplier } from '../add/hooks';
 import { SupplierForm } from '../add/SupplierForm';
-import {
-  SupplierDetailEntry,
-  SupplierFormValues,
-  SupplierUrlParams,
-} from '../add/types';
+import { Supplier, SupplierFormValues } from '../add/types';
+import { SupplierUrlParams } from './types';
 import { matchSupplierDataToFormValues } from './utils';
 
 const SupplierDetail = () => {
@@ -22,7 +19,7 @@ const SupplierDetail = () => {
   const { supplierId } = useParams<SupplierUrlParams>();
   const { translate } = useTranslation();
 
-  const { data: supplierDetail } = useCachedAPI<SupplierDetailEntry>(
+  const { data: supplierDetail } = useCachedAPI<Supplier>(
     `${endpoints.suppliers.root}/${supplierId}`,
   );
   const { deleteSupplier } = useDeleteSupplier(supplierDetail?._id);

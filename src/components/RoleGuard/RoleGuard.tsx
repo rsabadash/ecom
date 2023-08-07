@@ -1,13 +1,10 @@
-import { FC, PropsWithChildren, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 
 import { SignedInRedirect } from '../Router/SignedInRedirect';
 import { useUser } from '../UserProvider';
 import { RoleGuardProps } from './types';
 
-export const RoleGuard: FC<PropsWithChildren<RoleGuardProps>> = ({
-  children,
-  roles,
-}) => {
+export const RoleGuard: FC<RoleGuardProps> = ({ children, roles }) => {
   const { user, hasAllAccesses } = useUser();
 
   const hasAccess = useMemo(() => {

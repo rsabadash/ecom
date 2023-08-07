@@ -1,4 +1,4 @@
-import { forwardRef, KeyboardEvent, PropsWithChildren } from 'react';
+import { forwardRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
 import { EventKeys } from '../../../common/enums/events';
@@ -14,7 +14,7 @@ import classes from './styles/index.module.css';
 
 export const WarehouseProductsListItemRow = forwardRef<
   HTMLDivElement,
-  PropsWithChildren<WarehouseProductsListItemRowProps>
+  WarehouseProductsListItemRowProps
 >(({ children, item, rowProps }, ref) => {
   const { isExpand, toggleCollapse } = useCollapseController();
 

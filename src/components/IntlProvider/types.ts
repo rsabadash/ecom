@@ -3,6 +3,7 @@ import {
   LANGUAGES,
   LOCALE_TO_LANGUAGE_MAP,
 } from './constants';
+import { PropsWithChildren } from 'react';
 
 export type Language = ValuesOfObject<typeof LANGUAGES>;
 
@@ -22,10 +23,10 @@ export type Translations = TranslationRequired & TranslationsOptional;
 
 export type TranslationsAllRequired = Required<Translations>;
 
-export type TranslationProviderProps = {
+export type TranslationProviderProps = PropsWithChildren<{
   language: Language;
   setLanguage: (language: Language) => void;
-};
+}>;
 
 export type TranslateMessage = string;
 export type TranslatePlaceholders = Record<string, string | number>;
