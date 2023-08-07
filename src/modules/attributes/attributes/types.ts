@@ -1,5 +1,5 @@
 import { Translations } from '../../../components/IntlProvider';
-import { Variant } from '../variants/types';
+import { Variant } from '../variants/add/types';
 
 export type Attribute = {
   _id: string;

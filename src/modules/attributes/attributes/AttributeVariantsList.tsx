@@ -9,7 +9,7 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../../components/Table';
-import { Variant } from '../variants/types';
+import { Variant } from '../variants/add/types';
 import { AttributeVariantsListPlaceholder } from './AttributeVariantsListPlaceholder';
 import { TABLE_ATTRIBUTE_VARIANTS_ID } from './constants';
 import { useAttributeVariantsTableColumns } from './hooks';

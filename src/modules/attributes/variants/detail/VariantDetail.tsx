@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { generatePath, useParams } from 'react-router-dom';
 
-import { endpoints } from '../../../common/constants/api';
-import { useCachedAPI } from '../../../common/hooks';
-import { Button, ButtonsGroup } from '../../../components/Button';
-import { useTranslation } from '../../../components/IntlProvider';
-import { SectionForeground } from '../../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useDeleteVariant } from './hooks';
-import { Variant, VariantFormValues, VariantUrlParams } from './types';
+import { endpoints } from '../../../../common/constants/api';
+import { useCachedAPI } from '../../../../common/hooks';
+import { Button, ButtonsGroup } from '../../../../components/Button';
+import { useTranslation } from '../../../../components/IntlProvider';
+import { SectionForeground } from '../../../../layouts/Section';
+import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
+import { useDeleteVariant } from '../add/hooks';
+import { Variant, VariantFormValues, VariantUrlParams } from '../add/types';
+import { VariantForm } from '../add/VariantForm';
 import { matchVariantDataToFormValues } from './utils';
-import { VariantForm } from './VariantForm';
 
 const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

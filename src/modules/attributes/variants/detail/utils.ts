@@ -1,4 +1,4 @@
-import { Variant, VariantFormValues } from './types';
+import { Variant, VariantFormValues } from '../add/types';
 
 export const matchVariantDataToFormValues = (
   data: Variant | undefined,

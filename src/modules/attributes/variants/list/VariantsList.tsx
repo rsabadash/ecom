@@ -1,18 +1,18 @@
 import { generatePath, Link } from 'react-router-dom';
 
-import { endpoints } from '../../../common/constants/api';
-import { routes } from '../../../common/constants/routes';
-import { useCachedPaginationAPI } from '../../../common/hooks';
-import { usePaginationLimit } from '../../../components/Pagination/hooks';
+import { endpoints } from '../../../../common/constants/api';
+import { routes } from '../../../../common/constants/routes';
+import { useCachedPaginationAPI } from '../../../../common/hooks';
+import { usePaginationLimit } from '../../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
   TablePagination,
-} from '../../../components/Table';
+} from '../../../../components/Table';
+import { useVariantsTableColumns } from '../add/hooks';
+import { VariantWithAttribute } from '../add/types';
 import { TABLE_VARIANTS_ID } from './constants';
-import { useVariantsTableColumns } from './hooks';
-import { VariantWithAttribute } from './types';
 import { VariantsListPlaceholder } from './VariantsListPlaceholder';
 
 export const VariantsList = () => {

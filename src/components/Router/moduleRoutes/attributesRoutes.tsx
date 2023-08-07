@@ -13,13 +13,13 @@ const AttributeDetail = lazy(
   () => import('../../../modules/attributes/attributes/AttributeDetail'),
 );
 const Variants = lazy(
-  () => import('../../../modules/attributes/variants/Variants'),
+  () => import('../../../modules/attributes/variants/list/Variants'),
 );
 const VariantAdd = lazy(
-  () => import('../../../modules/attributes/variants/VariantAdd'),
+  () => import('../../../modules/attributes/variants/add/VariantAdd'),
 );
 const VariantDetail = lazy(
-  () => import('../../../modules/attributes/variants/VariantDetail'),
+  () => import('../../../modules/attributes/variants/detail/VariantDetail'),
 );
 
 export const attributesRoutes = [

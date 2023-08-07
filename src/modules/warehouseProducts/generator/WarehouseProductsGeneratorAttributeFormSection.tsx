@@ -4,7 +4,7 @@ import { Collapse } from '../../../components/Collapse';
 import { CheckboxValue } from '../../../components/Fields/Checkbox/types';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Variant } from '../../attributes/variants/types';
+import { Variant } from '../../attributes/variants/add/types';
 import { warehouseProductsGeneratorFormFields } from './constants';
 import {
   AttributeVirtualFieldValue,

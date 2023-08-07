@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Button } from '../../../components/Button';
-import { Form, FormContent } from '../../../components/FormFields';
+import { Button } from '../../../../components/Button';
+import { Form, FormContent } from '../../../../components/FormFields';
 import {
   InputAdapter,
   MultiLanguageInputAdapter,
-} from '../../../components/FormFieldsAdapter';
-import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
-import { GridRowBalancer } from '../../../components/GridRowBalancer';
-import { useTranslation } from '../../../components/IntlProvider';
-import { AttributeUrlParams } from '../attributes/types';
+} from '../../../../components/FormFieldsAdapter';
+import { CheckboxAdapter } from '../../../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../../../components/GridRowBalancer';
+import { useTranslation } from '../../../../components/IntlProvider';
+import { AttributeUrlParams } from '../../attributes/types';
 import { variantFormFields } from './constants';
 import { useVariantForm, useVariantFormSubmit } from './hooks';
 import { VariantFormProps } from './types';

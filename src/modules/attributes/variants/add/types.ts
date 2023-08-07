@@ -1,4 +1,4 @@
-import { Translations } from '../../../components/IntlProvider';
+import { Translations } from '../../../../components/IntlProvider';
 
 export type Variant = {
   variantId: string;
