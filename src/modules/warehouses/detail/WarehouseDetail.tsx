@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { endpoints } from '../../common/constants/api';
-import { useCachedAPI } from '../../common/hooks';
-import { Button, ButtonsGroup } from '../../components/Button';
-import { useTranslation } from '../../components/IntlProvider';
-import { SectionForeground } from '../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
-import { useDeleteWarehouse } from './hooks';
-import { Warehouse, WarehouseFormValues, WarehouseUrlParams } from './types';
+import { endpoints } from '../../../common/constants/api';
+import { useCachedAPI } from '../../../common/hooks';
+import { Button, ButtonsGroup } from '../../../components/Button';
+import { useTranslation } from '../../../components/IntlProvider';
+import { SectionForeground } from '../../../layouts/Section';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { useDeleteWarehouse } from '../add/hooks';
+import {
+  Warehouse,
+  WarehouseFormValues,
+  WarehouseUrlParams,
+} from '../add/types';
+import { WarehouseForm } from '../add/WarehouseForm';
 import { matchWarehouseDataToFormValues } from './utils';
-import { WarehouseForm } from './WarehouseForm';
 
 const WarehouseDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);

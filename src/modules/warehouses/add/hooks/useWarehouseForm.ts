@@ -1,14 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import * as yup from 'yup';
 
-import { useCustomForm } from '../../../common/hooks';
+import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../common/hooks/useCustomForm';
-import { DropdownItemObject } from '../../../components/Fields/Dropdown';
-import { dropdownItem } from '../../../validations/dropdown';
+} from '../../../../common/hooks/useCustomForm';
+import { DropdownItemObject } from '../../../../components/Fields/Dropdown';
+import { dropdownItem } from '../../../../validations/dropdown';
 import { WarehouseFormValues } from '../types';
 
 type UseWarehouseFormProps = Pick<

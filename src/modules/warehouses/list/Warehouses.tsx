@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
 
-import { routes } from '../../common/constants/routes';
-import { ButtonLink } from '../../components/Button';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
-import { useTranslation } from '../../components/IntlProvider';
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
-import { TABLE_WAREHOUSE_PRODUCTS_ID } from '../warehouseProducts/list/constants';
+import { routes } from '../../../common/constants/routes';
+import { ButtonLink } from '../../../components/Button';
+import { ErrorBoundary } from '../../../components/ErrorBoundary';
+import { useTranslation } from '../../../components/IntlProvider';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { SECTION_WAREHOUSES_ID } from './constants';
 import { WarehousesList } from './WarehousesList';
 
 const Warehouses = () => {
@@ -14,7 +14,7 @@ const Warehouses = () => {
   return (
     <>
       <Top>
-        <TopHeading id={TABLE_WAREHOUSE_PRODUCTS_ID}>
+        <TopHeading id={SECTION_WAREHOUSES_ID}>
           {translate('warehouses')}
         </TopHeading>
         <TopButtons>

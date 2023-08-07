@@ -1,4 +1,4 @@
-import { DropdownItemObject } from '../../components/Fields/Dropdown';
+import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 
 export type WarehouseType = 'shop' | 'warehouse' | 'onlineStore';
 

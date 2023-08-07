@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as PlusIcon } from '../../assets/icons/Plus.svg';
-import { endpoints } from '../../common/constants/api';
-import { routes } from '../../common/constants/routes';
-import { useCachedAPI } from '../../common/hooks';
-import { Heading } from '../../components/Heading';
-import { useTranslation } from '../../components/IntlProvider';
-import { Foreground } from '../../layouts/Foreground';
-import { GridAutoFit } from '../../layouts/Grid';
-import { Section } from '../../layouts/Section';
-import { warehouseTypeTranslationPrefix } from './constants';
-import { Warehouse } from './types';
+import { ReactComponent as PlusIcon } from '../../../assets/icons/Plus.svg';
+import { endpoints } from '../../../common/constants/api';
+import { routes } from '../../../common/constants/routes';
+import { useCachedAPI } from '../../../common/hooks';
+import { Heading } from '../../../components/Heading';
+import { useTranslation } from '../../../components/IntlProvider';
+import { Foreground } from '../../../layouts/Foreground';
+import { GridAutoFit } from '../../../layouts/Grid';
+import { Section } from '../../../layouts/Section';
+import { warehouseTypeTranslationPrefix } from '../add/constants';
+import { Warehouse } from '../add/types';
+import { SECTION_WAREHOUSES_ID } from './constants';
 import { WarehousesListPlaceholder } from './WarehousesListPlaceholder';
 
 import classes from './styles/index.module.css';
@@ -25,7 +26,7 @@ export const WarehousesList = () => {
   return (
     <>
       {data.length > 0 ? (
-        <Section>
+        <Section sectionLabeledBy={SECTION_WAREHOUSES_ID}>
           <GridAutoFit>
             {data.map(({ _id, name, type, address }) => {
               return (

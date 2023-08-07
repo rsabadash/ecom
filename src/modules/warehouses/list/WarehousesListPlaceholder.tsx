@@ -1,7 +1,7 @@
-import { routes } from '../../common/constants/routes';
-import { Heading } from '../../components/Heading';
-import { useTranslation } from '../../components/IntlProvider';
-import { EmptyList } from '../../layouts/EmptyPage';
+import { routes } from '../../../common/constants/routes';
+import { Heading } from '../../../components/Heading';
+import { useTranslation } from '../../../components/IntlProvider';
+import { EmptyList } from '../../../layouts/EmptyPage';
 
 export const WarehousesListPlaceholder = () => {
   const { translate } = useTranslation();

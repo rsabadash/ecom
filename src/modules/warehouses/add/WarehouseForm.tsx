@@ -1,15 +1,15 @@
 import { FC } from 'react';
 
-import { Button } from '../../components/Button';
-import { DropdownItemObject } from '../../components/Fields/Dropdown';
-import { Form, FormContent } from '../../components/FormFields';
+import { Button } from '../../../components/Button';
+import { DropdownItemObject } from '../../../components/Fields/Dropdown';
+import { Form, FormContent } from '../../../components/FormFields';
 import {
   DropdownAdapter,
   InputAdapter,
   TextboxAdapter,
-} from '../../components/FormFieldsAdapter';
-import { GridRowBalancer } from '../../components/GridRowBalancer';
-import { useTranslation } from '../../components/IntlProvider';
+} from '../../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../../components/GridRowBalancer';
+import { useTranslation } from '../../../components/IntlProvider';
 import {
   warehouseFormFields,
   warehouseTypeKeys,
