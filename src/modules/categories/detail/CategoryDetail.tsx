@@ -7,13 +7,13 @@ import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { CategoryForm } from './CategoryForm';
-import { useDeleteCategory } from './hooks';
+import { CategoryForm } from '../add/CategoryForm';
+import { useDeleteCategory } from '../add/hooks';
 import {
   CategoryDetailEntity,
   CategoryFormValues,
   CategoryUrlParams,
-} from './types';
+} from '../add/types';
 import { matchCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {

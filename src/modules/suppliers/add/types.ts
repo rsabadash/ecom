@@ -5,12 +5,7 @@ export type Supplier = {
   phoneNumber: string;
 };
 
-export type SupplierDetailEntry = {
-  _id: string;
-  name: string;
-  address: string;
-  phoneNumber: string;
-};
+export type SupplierDetailEntry = Supplier;
 
 export type SupplierFormValues = {
   name: string;

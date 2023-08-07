@@ -7,13 +7,13 @@ import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useDeleteSupplier } from './hooks';
-import { SupplierForm } from './SupplierForm';
+import { useDeleteSupplier } from '../add/hooks';
+import { SupplierForm } from '../add/SupplierForm';
 import {
   SupplierDetailEntry,
   SupplierFormValues,
   SupplierUrlParams,
-} from './types';
+} from '../add/types';
 import { matchSupplierDataToFormValues } from './utils';
 
 const SupplierDetail = () => {

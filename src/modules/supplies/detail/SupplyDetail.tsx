@@ -4,9 +4,10 @@ import { endpoints } from '../../../common/constants/api';
 import { useCachedAPI, useIntlDate } from '../../../common/hooks';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Top, TopHeading } from '../../../layouts/Top';
+import { Supply } from '../add/types';
 import { TABLE_SUPPLY_DETAIL_ID } from './constants';
 import { SupplyDetailList } from './SupplyDetailList';
-import { Supply, SupplyUrlParams } from './types';
+import { SupplyUrlParams } from './types';
 
 const SupplyDetail = () => {
   const { supplyId } = useParams<SupplyUrlParams>();

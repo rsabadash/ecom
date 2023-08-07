@@ -10,7 +10,7 @@ import {
   TableColumnGeneric,
   TablePagination,
 } from '../../../components/Table';
-import { Supply } from '../detail/types';
+import { Supply } from '../add/types';
 import { TABLE_SUPPLIES_ID } from './constants';
 import { useSuppliesTableColumns } from './hooks';
 import { SuppliesListPlaceholder } from './SuppliesListPlaceholder';

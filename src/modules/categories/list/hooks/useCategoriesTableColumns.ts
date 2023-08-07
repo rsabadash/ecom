@@ -5,7 +5,7 @@ import {
   TableCellValueGetterProps,
   TableColumnGeneric,
 } from '../../../../components/Table';
-import { Category } from '../../detail/types';
+import { Category } from '../../add/types';
 
 type UseCategoriesTableColumnsReturn = TableColumnGeneric<Category>[];
 

@@ -4,7 +4,18 @@ import { Control, UseFormGetValues, UseFormSetValue } from 'react-hook-form';
 import { Unit } from '../../../common/types/unit';
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { TableColumnGeneric } from '../../../components/Table';
+import { SupplyDetailProduct } from '../detail/types';
 import { supplyFormArrayFields } from './constants';
+
+export type Supply = {
+  _id: string;
+  createdAt: string;
+  name: null | string;
+  products: SupplyDetailProduct[];
+  productsTotalCost: string;
+  supplierId: string;
+  warehouseId: string;
+};
 
 export type SupplyFormValues = {
   name: string;
