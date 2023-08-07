@@ -8,9 +8,10 @@ import {
   TablePagination,
 } from '../../../components/Table';
 import { TABLE_ROLES } from '../../../components/Table/constants';
+import { WarehouseProduct } from '../generator/types';
 import { TABLE_WAREHOUSE_PRODUCTS_ID } from './constants';
 import { useWarehouseProductsTableColumns } from './hooks';
-import { WarehouseProduct, WarehouseProductTable } from './types';
+import { WarehouseProductTable } from './types';
 import { WarehouseProductsListItem } from './WarehouseProductsListItem';
 import { WarehouseProductsListPlaceholder } from './WarehouseProductsListPlaceholder';
 

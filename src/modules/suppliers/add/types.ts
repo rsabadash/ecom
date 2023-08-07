@@ -5,8 +5,6 @@ export type Supplier = {
   phoneNumber: string;
 };
 
-export type SupplierDetailEntry = Supplier;
-
 export type SupplierFormValues = {
   name: string;
   address: string;
@@ -45,8 +43,4 @@ export type SupplierPatchData = {
 
 export type SupplierDeleteData = {
   id: string;
-};
-
-export type SupplierUrlParams = {
-  supplierId: string;
 };

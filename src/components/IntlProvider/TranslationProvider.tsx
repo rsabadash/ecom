@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useCallback, useMemo } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { createProvider } from '../../common/utils';
@@ -20,7 +20,7 @@ const [Provider, useTranslation] = createProvider<TranslationContextValue>({
   contextDefaultValue: translationContextValuesDefault,
 });
 
-const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = ({
+const TranslationProvider: FC<TranslationProviderProps> = ({
   language,
   setLanguage,
   children,

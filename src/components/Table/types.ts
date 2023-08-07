@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 
 import { ElementSize } from '../../common/types/size';
 import { Limit } from '../Pagination/types';
@@ -51,7 +51,9 @@ export type TableProps = {
   tableRowRenderKey?: string;
 };
 
-export type TableCellProps = Pick<TableColumn<any>, 'width' | 'align'>;
+export type TableCellProps = PropsWithChildren<
+  Pick<TableColumn<any>, 'width' | 'align'>
+>;
 
 export type TablePaginationProps = {
   total: number;

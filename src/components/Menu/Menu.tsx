@@ -1,7 +1,6 @@
 import {
   FC,
   KeyboardEvent,
-  PropsWithChildren,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -32,7 +31,7 @@ const root = document.getElementById('root');
 
 const LIST_CONTROL_ID = Date.now().toString();
 
-export const Menu: FC<PropsWithChildren<MenuProps>> = ({
+export const Menu: FC<MenuProps> = ({
   items,
   children,
   position = DEFAULT_MENU_POSITION,

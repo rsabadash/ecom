@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, MouseEvent, PropsWithChildren } from 'react';
+import { FC, KeyboardEvent, MouseEvent } from 'react';
 import clsx from 'clsx';
 
 import { EventKeys } from '../../common/enums/events';
@@ -11,7 +11,7 @@ import { ButtonProps } from './types';
 
 import classes from './styles/index.module.css';
 
-export const Button: FC<PropsWithChildren<ButtonProps>> = ({
+export const Button: FC<ButtonProps> = ({
   name,
   type = DEFAULT_BUTTON_TYPE,
   size = DEFAULT_BUTTON_SIZE,

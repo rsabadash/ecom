@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Heading } from '../../../../components/Heading';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { EmptyList } from '../../../../layouts/EmptyPage';
-import { AttributeVariantsListPlaceholderProps } from '../add/types';
+import { AttributeVariantsListPlaceholderProps } from './types';
 
 export const AttributeVariantsListPlaceholder: FC<
   AttributeVariantsListPlaceholderProps

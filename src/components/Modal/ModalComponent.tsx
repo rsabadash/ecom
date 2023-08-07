@@ -1,7 +1,6 @@
 import {
   FC,
   KeyboardEvent,
-  PropsWithChildren,
   useCallback,
   useLayoutEffect,
   useRef,
@@ -27,7 +26,7 @@ import classes from './styles/index.module.css';
 const MODAL_LABEL_ID = Date.now().toString();
 const MODAL_DESCRIPTION_ID = `${MODAL_LABEL_ID}Description`;
 
-const ModalComponent: FC<PropsWithChildren<ModalComponentProps>> = ({
+const ModalComponent: FC<ModalComponentProps> = ({
   type = 'dialog',
   title,
   isOpen,

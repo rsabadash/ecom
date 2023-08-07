@@ -1,12 +1,13 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 
 import { Foreground } from '../Foreground';
 import { Section } from './Section';
 import { SectionForegroundProps } from './types';
 
-export const SectionForeground: FC<
-  PropsWithChildren<SectionForegroundProps>
-> = ({ children, foregroundClassName }) => {
+export const SectionForeground: FC<SectionForegroundProps> = ({
+  children,
+  foregroundClassName,
+}) => {
   return (
     <Section>
       <Foreground foregroundClassName={foregroundClassName}>

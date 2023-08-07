@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 
-export type ErrorBoundaryProps = {
+export type ErrorBoundaryProps = PropsWithChildren<{
   fallback?: ReactNode;
-};
+}>;
 
 export type ErrorBoundaryState = {
   hasError: boolean;

@@ -1,10 +1,10 @@
-import { FC, lazy, PropsWithChildren, Suspense } from 'react';
+import { FC, lazy, Suspense } from 'react';
 
 import { ModalProps } from './types';
 
 const ModalComponent = lazy(() => import('./ModalComponent'));
 
-export const Modal: FC<PropsWithChildren<ModalProps>> = ({
+export const Modal: FC<ModalProps> = ({
   type = 'dialog',
   title,
   isOpen,

@@ -1,11 +1,11 @@
-import { CSSProperties, FC, PropsWithChildren } from 'react';
+import { CSSProperties, FC } from 'react';
 
 import { DEFAULT_MIN_COLUMN_WIDTH } from './constants';
 import { GridAutoFitProps } from './types';
 
 import classes from './styles/index.module.css';
 
-export const GridAutoFit: FC<PropsWithChildren<GridAutoFitProps>> = ({
+export const GridAutoFit: FC<GridAutoFitProps> = ({
   children,
   gridColumnMinWidth = DEFAULT_MIN_COLUMN_WIDTH,
 }) => {

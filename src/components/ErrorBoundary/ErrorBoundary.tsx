@@ -1,4 +1,4 @@
-import { Component, lazy, PropsWithChildren, Suspense } from 'react';
+import { Component, lazy, Suspense } from 'react';
 
 import { messages } from '../../common/constants/errors';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
@@ -7,7 +7,7 @@ const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
 
 // https://blog.openreplay.com/catching-errors-in-react-with-error-boundaries/
 export class ErrorBoundary extends Component<
-  PropsWithChildren<ErrorBoundaryProps>,
+  ErrorBoundaryProps,
   ErrorBoundaryState
 > {
   constructor(props: ErrorBoundaryProps) {

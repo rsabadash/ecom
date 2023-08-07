@@ -133,4 +133,4 @@ export interface SupplyPostData {
   warehouseId: string;
 }
 
-export type SupplyPostResponse = any;
+export type SupplyPostResponse = void;

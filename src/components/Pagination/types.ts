@@ -1,4 +1,5 @@
 import { LIMIT_ITEMS_DEFAULT } from './constants';
+import { PropsWithChildren } from 'react';
 
 export type PaginationProps = {
   limit: number;
@@ -8,7 +9,7 @@ export type PaginationProps = {
   paginationClassName?: string;
 };
 
-export type PaginationItemProps = {
+export type PaginationItemProps = PropsWithChildren<{
   disabled?: boolean;
   pageNumber: undefined | number;
   isSelected?: boolean;
@@ -16,7 +17,7 @@ export type PaginationItemProps = {
   ariaCurrent?: undefined | 'page';
   onItemClick?: () => void;
   queryParameters: string;
-};
+}>;
 
 export type PaginationLimitProps = {
   items: readonly Limit[];

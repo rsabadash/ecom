@@ -1,6 +1,11 @@
-export type GridRowBalancerProps = {
+import { PropsWithChildren } from 'react';
+
+export type GridRowBalancerProps = PropsWithChildren<{
   columns: number;
   elementRows: number;
-};
+}>;
 
-export type GridRowBalancerContextValue = GridRowBalancerProps;
+export type GridRowBalancerContextValue = Omit<
+  GridRowBalancerProps,
+  'children'
+>;

@@ -1,8 +1,8 @@
-import { MutableRefObject, ReactNode } from 'react';
+import { MutableRefObject, PropsWithChildren, ReactNode } from 'react';
 
 import { ElementSize } from '../../common/types/size';
 
-export type CollapseControllerProps = {
+export type CollapseControllerProps = PropsWithChildren<{
   forceExpand?: boolean;
   isInitiallyExpand?: boolean;
   isToggleHidden?: boolean;
@@ -11,7 +11,7 @@ export type CollapseControllerProps = {
   ariaLabel?: string;
   ariaControls?: string;
   collapseBodyRef: MutableRefObject<HTMLDivElement | null>;
-};
+}>;
 
 export type CollapseProps = Omit<CollapseControllerProps, 'collapseBodyRef'> & {
   header: ReactNode;
@@ -30,18 +30,18 @@ export type CollapseBuilderButtonProps = {
   isCollapseDisabled?: boolean;
 };
 
-export type CollapseBuilderBodyProps = {
+export type CollapseBuilderBodyProps = PropsWithChildren<{
   id?: string;
   renderBodyOnExpand?: boolean;
   collapseBodyClassName?: string;
-};
+}>;
 
-export type CollapseBuilderHeaderProps = {
+export type CollapseBuilderHeaderProps = PropsWithChildren<{
   isToggleHidden?: boolean;
   isToggleableHeader?: boolean;
   isCollapseDisabled?: boolean;
   headerClassName?: string;
-};
+}>;
 
 export type CollapseControllerContextValue = {
   isExpand: boolean;

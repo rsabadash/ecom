@@ -1,15 +1,9 @@
-import {
-  FC,
-  FocusEvent,
-  PropsWithChildren,
-  useLayoutEffect,
-  useRef,
-} from 'react';
+import { FC, FocusEvent, useLayoutEffect, useRef } from 'react';
 
 import { FocusTrapProps } from './types';
 import { focusFirstDescendant, focusLastDescendant } from './utils';
 
-export const FocusTrap: FC<PropsWithChildren<FocusTrapProps>> = ({
+export const FocusTrap: FC<FocusTrapProps> = ({
   children,
   rootElement,
   onFocusTrapInit,

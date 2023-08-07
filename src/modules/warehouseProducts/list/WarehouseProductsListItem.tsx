@@ -1,12 +1,14 @@
-import { FC, PropsWithChildren, useRef } from 'react';
+import { FC, useRef } from 'react';
 
 import { CollapseController } from '../../../components/Collapse';
 import { WarehouseProductsListItemProps } from './types';
 import { WarehouseProductsListItemRow } from './WarehouseProductsListItemRow';
 
-export const WarehouseProductsListItem: FC<
-  PropsWithChildren<WarehouseProductsListItemProps>
-> = ({ children, item, rowProps }) => {
+export const WarehouseProductsListItem: FC<WarehouseProductsListItemProps> = ({
+  children,
+  item,
+  rowProps,
+}) => {
   const collapseBodyRef = useRef<HTMLDivElement | null>(null);
 
   return (

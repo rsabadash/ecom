@@ -2,7 +2,6 @@ import {
   FC,
   KeyboardEvent,
   MouseEvent,
-  PropsWithChildren,
   useCallback,
   useEffect,
   useMemo,
@@ -28,7 +27,7 @@ const root = document.getElementById('root');
 
 const TOOLTIP_ID = new Date().getTime().toString();
 
-export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
+export const Tooltip: FC<TooltipProps> = ({
   children,
   position = DEFAULT_TOOLTIP_POSITION,
   content,

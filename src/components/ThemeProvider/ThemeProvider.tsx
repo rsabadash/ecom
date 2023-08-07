@@ -1,6 +1,5 @@
 import {
   FC,
-  PropsWithChildren,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -29,7 +28,7 @@ const [Provider, useTheme] = createProvider<ThemeContextValue>({
   contextDefaultValue: themeContextValuesDefault,
 });
 
-const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
+const ThemeProvider: FC<ThemeProviderProps> = ({
   children,
   themeStorage,
   useUserAgentTheming,

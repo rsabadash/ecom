@@ -50,8 +50,3 @@ export type VariantDeleteData = {
   attributeId: string;
   variantId: string;
 };
-
-export type VariantUrlParams = {
-  attributeId: string;
-  variantId: string;
-};

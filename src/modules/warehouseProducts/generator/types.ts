@@ -3,7 +3,16 @@ import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
 import { Unit } from '../../../common/types/unit';
 import { Translations } from '../../../components/IntlProvider';
 import { Attribute } from '../../attributes/attributes/add/types';
-import { WarehouseProduct } from '../list/types';
+import { WarehouseProductsAttribute } from '../list/types';
+
+export type WarehouseProduct = {
+  _id: string;
+  name: Translations;
+  sku: string;
+  unit: Unit;
+  attributes: WarehouseProductsAttribute[];
+  createdDate: Date;
+};
 
 export type WarehouseProductsGeneratorFormProps = {
   onSuccessSubmit: (products: GeneratedProduct[]) => void;
