@@ -1,34 +1,36 @@
 import { useMemo } from 'react';
 
+import { useTranslation } from '../../../../components/IntlProvider';
 import {
-  Translations,
-  useTranslation,
-} from '../../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../../components/Table';
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../../components/Table';
 import { Variant } from '../../variants/types';
 
 type UseAttributeVariantsTableColumnsReturn = TableColumnGeneric<Variant>[];
+
+type VariantValueGetterProps = TableCellValueGetterProps<Variant>;
 
 export const useAttributeVariantsTableColumns =
   (): UseAttributeVariantsTableColumnsReturn => {
     const { translate, language } = useTranslation();
 
-    return useMemo(
+    return useMemo<TableColumnGeneric<Variant>[]>(
       () => [
         {
           title: translate('attribute.variant.name'),
           key: 'name',
           width: '25%',
-          valueGetter: ({ value }: { value: Translations }) => {
-            return value[language];
+          valueGetter: ({ item }: VariantValueGetterProps) => {
+            return item.name[language];
           },
         },
         {
           title: translate('attribute.state'),
           key: 'isActive',
           width: '25%',
-          valueGetter: ({ value }: { value: boolean }) => {
-            return value
+          valueGetter: ({ item }: VariantValueGetterProps) => {
+            return item.isActive
               ? translate('attribute.state.active')
               : translate('attribute.state.inactive');
           },
@@ -37,8 +39,8 @@ export const useAttributeVariantsTableColumns =
           title: translate('sortOrder'),
           key: 'sortOrder',
           width: '25%',
-          valueGetter: ({ value }: { value: number }) => {
-            return value;
+          valueGetter: ({ item }: VariantValueGetterProps) => {
+            return item.sortOrder;
           },
         },
       ],

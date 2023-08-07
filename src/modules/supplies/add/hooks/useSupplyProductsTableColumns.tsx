@@ -2,7 +2,10 @@ import { useMemo } from 'react';
 import { Control, UseFormGetValues, UseFormSetValue } from 'react-hook-form';
 
 import { useTranslation } from '../../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../../components/Table';
+import {
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../../components/Table';
 import { supplyFormArrayFields } from '../constants';
 import { SupplyProductActions } from '../SupplyProductActions';
 import { SupplyProductNameCell } from '../SupplyProductNameCell';
@@ -24,6 +27,9 @@ type UseSupplyProductsTableColumnsProps = {
 type UseSupplyProductsTableColumnsReturn =
   TableColumnGeneric<SupplyProductListColumn>[];
 
+type SupplyProductValueGetterProps =
+  TableCellValueGetterProps<SupplyProductListColumn>;
+
 export const useSupplyProductsTableColumns = ({
   control,
   setValue,
@@ -39,7 +45,7 @@ export const useSupplyProductsTableColumns = ({
         title: '№',
         key: 'ordinal',
         width: '24px',
-        valueGetter: ({ index }) => {
+        valueGetter: ({ index }: SupplyProductValueGetterProps) => {
           return <SupplyProductOrderCell index={index} />;
         },
       },
@@ -47,7 +53,7 @@ export const useSupplyProductsTableColumns = ({
         title: translate('supply.product.name'),
         key: 'name',
         width: '50%',
-        valueGetter: ({ index }) => {
+        valueGetter: ({ index }: SupplyProductValueGetterProps) => {
           return (
             <SupplyProductNameCell
               index={index}
@@ -63,7 +69,7 @@ export const useSupplyProductsTableColumns = ({
         title: translate('supply.product.unit'),
         key: 'unit',
         width: '15%',
-        valueGetter: ({ index }) => {
+        valueGetter: ({ index }: SupplyProductValueGetterProps) => {
           return (
             <SupplyProductUnitCell
               index={index}
@@ -77,7 +83,7 @@ export const useSupplyProductsTableColumns = ({
         title: translate('supply.product.quantity'),
         key: 'quantity',
         width: '10%',
-        valueGetter: ({ index }) => {
+        valueGetter: ({ index }: SupplyProductValueGetterProps) => {
           return (
             <SupplyProductQuantityCell
               index={index}
@@ -93,7 +99,7 @@ export const useSupplyProductsTableColumns = ({
         title: translate('supply.product.price'),
         key: 'price',
         width: '10%',
-        valueGetter: ({ index }) => {
+        valueGetter: ({ index }: SupplyProductValueGetterProps) => {
           return (
             <SupplyProductPriceCell
               index={index}
@@ -109,7 +115,7 @@ export const useSupplyProductsTableColumns = ({
         title: translate('supply.product.totalCost'),
         key: 'totalCost',
         width: '15%',
-        valueGetter: ({ index }) => {
+        valueGetter: ({ index }: SupplyProductValueGetterProps) => {
           return (
             <SupplyProductTotalCostCell
               index={index}
@@ -125,7 +131,7 @@ export const useSupplyProductsTableColumns = ({
         title: '',
         key: 'actions',
         width: '24px',
-        valueGetter: ({ index }) => {
+        valueGetter: ({ index }: SupplyProductValueGetterProps) => {
           return (
             <SupplyProductActions
               rowIndex={index}

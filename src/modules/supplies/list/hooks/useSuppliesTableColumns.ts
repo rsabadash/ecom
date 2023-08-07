@@ -2,10 +2,15 @@ import { useMemo } from 'react';
 
 import { useIntlCurrency, useIntlDate } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../../components/Table';
+import {
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../../components/Table';
 import { Supply } from '../types';
 
 type UseSuppliesTableColumnsReturn = TableColumnGeneric<Supply>[];
+
+type SupplyValueGetterProps = TableCellValueGetterProps<Supply>;
 
 export const useSuppliesTableColumns = (): UseSuppliesTableColumnsReturn => {
   const { translate } = useTranslation();
@@ -19,15 +24,9 @@ export const useSuppliesTableColumns = (): UseSuppliesTableColumnsReturn => {
         title: translate('supply.name'),
         key: 'name',
         width: '50%',
-        valueGetter: ({
-          value,
-          item,
-        }: {
-          value: null | string;
-          item: Supply;
-        }) => {
-          if (value) {
-            return value;
+        valueGetter: ({ item }: SupplyValueGetterProps) => {
+          if (item.name) {
+            return item.name;
           }
 
           const formattedDate = formatDate(item.createdAt);
@@ -40,16 +39,16 @@ export const useSuppliesTableColumns = (): UseSuppliesTableColumnsReturn => {
         title: translate('supply.product.totalCost'),
         key: 'productsTotalCost',
         width: '25%',
-        valueGetter: ({ value }: { value: string }) => {
-          return formatCurrency(value);
+        valueGetter: ({ item }: SupplyValueGetterProps) => {
+          return formatCurrency(item.productsTotalCost);
         },
       },
       {
         title: translate('supply.date'),
         key: 'createdAt',
         width: '25%',
-        valueGetter: ({ value }: { value: string }) => {
-          return formatDate(value, { showTime: true });
+        valueGetter: ({ item }: SupplyValueGetterProps) => {
+          return formatDate(item.createdAt, { showTime: true });
         },
       },
     ],

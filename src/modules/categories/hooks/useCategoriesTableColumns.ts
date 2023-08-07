@@ -1,10 +1,15 @@
 import { useMemo } from 'react';
 
-import { Translations, useTranslation } from '../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../components/Table';
+import { useTranslation } from '../../../components/IntlProvider';
+import {
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../components/Table';
 import { Category } from '../types';
 
 type UseCategoriesTableColumnsReturn = TableColumnGeneric<Category>[];
+
+type CategoryValueGetterProps = TableCellValueGetterProps<Category>;
 
 export const useCategoriesTableColumns =
   (): UseCategoriesTableColumnsReturn => {
@@ -16,16 +21,16 @@ export const useCategoriesTableColumns =
           title: translate('category.name'),
           key: 'name',
           width: '70%',
-          valueGetter: ({ value }: { value: Translations }) => {
-            return value[language];
+          valueGetter: ({ item }: CategoryValueGetterProps) => {
+            return item.name[language];
           },
         },
         {
           title: translate('category.state'),
           key: 'isActive',
           width: '30%',
-          valueGetter: ({ value }: { value: boolean }) => {
-            return value
+          valueGetter: ({ item }: CategoryValueGetterProps) => {
+            return item.isActive
               ? translate('category.state.active')
               : translate('category.state.inactive');
           },

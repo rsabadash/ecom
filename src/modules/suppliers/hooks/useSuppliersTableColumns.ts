@@ -15,13 +15,11 @@ export const useSuppliersTableColumns = (): UseSuppliersTableColumnsReturn => {
         title: translate('supplier.name'),
         key: 'name',
         width: '50%',
-        valueGetter: ({ value }: { value: string }) => value,
       },
       {
         title: translate('supplier.phone'),
         key: 'phoneNumber',
         width: '50%',
-        valueGetter: ({ value }: { value: string }) => value,
       },
     ],
     [translate],

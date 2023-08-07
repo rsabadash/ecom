@@ -4,51 +4,58 @@ import {
   useIntlCurrency,
   useTranslationWithFallback,
 } from '../../../../common/hooks';
+import { useTranslation } from '../../../../components/IntlProvider';
 import {
-  Translations,
-  useTranslation,
-} from '../../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../../components/Table';
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../../components/Table';
 import { SupplyDetailProduct } from '../types';
 
-export const useSupplyDetailTableColumns = () => {
-  const { translate } = useTranslation();
-  const { translationWithFallback } = useTranslationWithFallback();
+type UseSupplyDetailTableColumnsReturn =
+  TableColumnGeneric<SupplyDetailProduct>[];
 
-  const { formatCurrency } = useIntlCurrency();
+type SupplyDetailProductValueGetterProps =
+  TableCellValueGetterProps<SupplyDetailProduct>;
 
-  return useMemo<TableColumnGeneric<SupplyDetailProduct>[]>(
-    () => [
-      {
-        title: translate('supply.product.name'),
-        key: 'productName',
-        width: '55%',
-        valueGetter: ({ value }: { value: Translations }) => {
-          return translationWithFallback(value);
+export const useSupplyDetailTableColumns =
+  (): UseSupplyDetailTableColumnsReturn => {
+    const { translate } = useTranslation();
+    const { translationWithFallback } = useTranslationWithFallback();
+
+    const { formatCurrency } = useIntlCurrency();
+
+    return useMemo<TableColumnGeneric<SupplyDetailProduct>[]>(
+      () => [
+        {
+          title: translate('supply.product.name'),
+          key: 'productName',
+          width: '55%',
+          valueGetter: ({ item }: SupplyDetailProductValueGetterProps) => {
+            return translationWithFallback(item.productName);
+          },
         },
-      },
-      {
-        title: translate('supply.product.price'),
-        key: 'price',
-        width: '15%',
-        valueGetter: ({ value }: { value: string }) => {
-          return formatCurrency(value);
+        {
+          title: translate('supply.product.price'),
+          key: 'price',
+          width: '15%',
+          valueGetter: ({ item }: SupplyDetailProductValueGetterProps) => {
+            return formatCurrency(item.price);
+          },
         },
-      },
-      {
-        title: translate('supply.product.quantity'),
-        key: 'quantity',
-        width: '15%',
-      },
-      {
-        title: translate('supply.product.totalCost'),
-        key: 'totalCost',
-        width: '15%',
-        valueGetter: ({ value }: { value: string }) => {
-          return formatCurrency(value);
+        {
+          title: translate('supply.product.quantity'),
+          key: 'quantity',
+          width: '15%',
         },
-      },
-    ],
-    [formatCurrency, translate, translationWithFallback],
-  );
-};
+        {
+          title: translate('supply.product.totalCost'),
+          key: 'totalCost',
+          width: '15%',
+          valueGetter: ({ item }: SupplyDetailProductValueGetterProps) => {
+            return formatCurrency(item.totalCost);
+          },
+        },
+      ],
+      [formatCurrency, translate, translationWithFallback],
+    );
+  };

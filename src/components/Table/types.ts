@@ -8,9 +8,8 @@ import {
   TABLE_ROW_ROLES,
 } from './constants';
 
-type TableCellValueGetterProps<K> = {
+export type TableCellValueGetterProps<K> = {
   index: number;
-  value: any;
   item: Record<keyof K, any>;
 };
 

@@ -180,7 +180,7 @@ export const Table: FC<TableProps> = ({
                 if (isHidden) return;
 
                 const rowValue = valueGetter
-                  ? valueGetter({ value: item[key], item, index })
+                  ? valueGetter({ item, index })
                   : item[key];
 
                 return (

@@ -1,17 +1,19 @@
 import { useMemo } from 'react';
 
-import { Unit } from '../../../../common/types/unit';
 import { CollapseBuilderButton } from '../../../../components/Collapse';
+import { useTranslation } from '../../../../components/IntlProvider';
 import {
-  Translations,
-  useTranslation,
-} from '../../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../../components/Table';
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../../components/Table';
 import { HORIZONTAL_ALIGNMENT } from '../../../../components/Table/constants';
-import { WarehouseProductsAttribute, WarehouseProductTable } from '../types';
+import { WarehouseProductTable } from '../types';
 
 type UseWarehouseProductsTableColumnsReturn =
   TableColumnGeneric<WarehouseProductTable>[];
+
+type WarehouseProductTableValueGetterProps =
+  TableCellValueGetterProps<WarehouseProductTable>;
 
 export const useWarehouseProductsTableColumns =
   (): UseWarehouseProductsTableColumnsReturn => {
@@ -23,8 +25,8 @@ export const useWarehouseProductsTableColumns =
           title: translate('warehouseProduct.name'),
           key: 'name',
           width: '40%',
-          valueGetter: ({ value }: { value: Translations }) => {
-            return value[language];
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
+            return item.name[language];
           },
         },
         {
@@ -36,20 +38,18 @@ export const useWarehouseProductsTableColumns =
           title: translate('warehouseProduct.unit'),
           key: 'unit',
           width: '15%',
-          valueGetter: ({ value }: { value: Unit }) => {
-            return value ? translate(`unit.${value}`) : '';
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
+            return item.unit ? translate(`unit.${item.unit}`) : '';
           },
         },
         {
           title: translate('warehouseProduct.attributes.quantity'),
           key: 'attributes',
           width: '15%',
-          valueGetter: ({
-            value,
-          }: {
-            value: null | WarehouseProductsAttribute[];
-          }) => {
-            const quantity = value?.length ? value.length : '-';
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
+            const quantity = item.attributes?.length
+              ? item.attributes.length
+              : '-';
             const ariaValue = quantity === '-' ? 0 : quantity;
 
             return (
@@ -68,7 +68,7 @@ export const useWarehouseProductsTableColumns =
           key: 'button',
           width: '10%',
           align: HORIZONTAL_ALIGNMENT.END,
-          valueGetter: ({ item }: { item: WarehouseProductTable }) => {
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
             if (item.attributes?.length) {
               return (
                 <CollapseBuilderButton isCollapseDisabled iconSize="1rem" />

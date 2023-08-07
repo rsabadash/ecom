@@ -1,14 +1,15 @@
 import { useMemo } from 'react';
 
+import { useTranslation } from '../../../../components/IntlProvider';
 import {
-  Translations,
-  useTranslation,
-} from '../../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../../components/Table';
-import { Variant } from '../../variants/types';
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../../components/Table';
 import { Attribute } from '../types';
 
 type UseAttributeTableColumnsReturn = TableColumnGeneric<Attribute>[];
+
+type AttributeValueGetterProps = TableCellValueGetterProps<Attribute>;
 
 export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
   const { translate, language } = useTranslation();
@@ -19,16 +20,16 @@ export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
         title: translate('attribute.name'),
         key: 'name',
         width: '25%',
-        valueGetter: ({ value }: { value: Translations }) => {
-          return value[language];
+        valueGetter: ({ item }: AttributeValueGetterProps) => {
+          return item.name[language];
         },
       },
       {
         title: translate('attribute.state'),
         key: 'isActive',
         width: '25%',
-        valueGetter: ({ value }: { value: boolean }) => {
-          return value
+        valueGetter: ({ item }: AttributeValueGetterProps) => {
+          return item.isActive
             ? translate('attribute.state.active')
             : translate('attribute.state.inactive');
         },
@@ -37,16 +38,16 @@ export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
         title: translate('sortOrder'),
         key: 'sortOrder',
         width: '25%',
-        valueGetter: ({ value }: { value: number }) => {
-          return value;
+        valueGetter: ({ item }: AttributeValueGetterProps) => {
+          return item.sortOrder;
         },
       },
       {
         title: translate('attribute.variant.count'),
         key: 'variants',
         width: '25%',
-        valueGetter: ({ value }: { value: Variant[] }) => {
-          return value.length;
+        valueGetter: ({ item }: AttributeValueGetterProps) => {
+          return item.variants.length;
         },
       },
     ],
