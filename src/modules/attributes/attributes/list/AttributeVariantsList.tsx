@@ -1,19 +1,19 @@
 import { FC } from 'react';
 import { generatePath, Link, useParams } from 'react-router-dom';
 
-import { routes } from '../../../common/constants/routes';
-import { Heading } from '../../../components/Heading';
-import { useTranslation } from '../../../components/IntlProvider';
+import { routes } from '../../../../common/constants/routes';
+import { Heading } from '../../../../components/Heading';
+import { useTranslation } from '../../../../components/IntlProvider';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
-} from '../../../components/Table';
-import { Variant } from '../variants/add/types';
+} from '../../../../components/Table';
+import { Variant } from '../../variants/add/types';
+import { TABLE_ATTRIBUTE_VARIANTS_ID } from '../add/constants';
+import { AttributesVariantsListProps, AttributeUrlParams } from '../add/types';
 import { AttributeVariantsListPlaceholder } from './AttributeVariantsListPlaceholder';
-import { TABLE_ATTRIBUTE_VARIANTS_ID } from './constants';
 import { useAttributeVariantsTableColumns } from './hooks';
-import { AttributesVariantsListProps, AttributeUrlParams } from './types';
 
 import classes from './styles/index.module.css';
 

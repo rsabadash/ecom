@@ -13,7 +13,7 @@ import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { Heading } from '../../../components/Heading';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { TABLE_ATTRIBUTE_VARIANTS_ID } from '../../attributes/attributes/constants';
+import { TABLE_ATTRIBUTE_VARIANTS_ID } from '../../attributes/attributes/add/constants';
 import { initialDefaultValues, supplyFormFields } from './constants';
 import { useSupplyForm, useSupplyFormSubmit } from './hooks';
 import { SupplyProductsDuplicationsModal } from './SupplyProductsDuplicationsModal';

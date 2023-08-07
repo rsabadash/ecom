@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 
-import { useTranslation } from '../../../../components/IntlProvider';
+import { useTranslation } from '../../../../../components/IntlProvider';
 import {
   TableCellValueGetterProps,
   TableColumnGeneric,
-} from '../../../../components/Table';
-import { Attribute } from '../types';
+} from '../../../../../components/Table';
+import { Attribute } from '../../add/types';
 
 type UseAttributeTableColumnsReturn = TableColumnGeneric<Attribute>[];
 

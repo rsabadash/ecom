@@ -1,14 +1,14 @@
 import { FC } from 'react';
 
-import { Button } from '../../../components/Button';
-import { Form, FormContent } from '../../../components/FormFields';
+import { Button } from '../../../../components/Button';
+import { Form, FormContent } from '../../../../components/FormFields';
 import {
   InputAdapter,
   MultiLanguageInputAdapter,
-} from '../../../components/FormFieldsAdapter';
-import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
-import { GridRowBalancer } from '../../../components/GridRowBalancer';
-import { useTranslation } from '../../../components/IntlProvider';
+} from '../../../../components/FormFieldsAdapter';
+import { CheckboxAdapter } from '../../../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../../../components/GridRowBalancer';
+import { useTranslation } from '../../../../components/IntlProvider';
 import { attributesFormFields } from './constants';
 import { useAttributeForm, useAttributeFormSubmit } from './hooks';
 import { AttributeFormProps } from './types';

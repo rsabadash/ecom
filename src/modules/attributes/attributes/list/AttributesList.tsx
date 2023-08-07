@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
 
-import { endpoints } from '../../../common/constants/api';
-import { routes } from '../../../common/constants/routes';
-import { useCachedPaginationAPI } from '../../../common/hooks';
-import { usePaginationLimit } from '../../../components/Pagination/hooks';
+import { endpoints } from '../../../../common/constants/api';
+import { routes } from '../../../../common/constants/routes';
+import { useCachedPaginationAPI } from '../../../../common/hooks';
+import { usePaginationLimit } from '../../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
   TablePagination,
-} from '../../../components/Table';
+} from '../../../../components/Table';
+import { TABLE_ATTRIBUTES_ID } from '../add/constants';
+import { Attribute } from '../add/types';
 import { AttributesListPlaceholder } from './AttributesListPlaceholder';
-import { TABLE_ATTRIBUTES_ID } from './constants';
 import { useAttributesTableColumns } from './hooks';
-import { Attribute } from './types';
 
 export const AttributesList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();

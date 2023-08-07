@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import { Heading } from '../../../components/Heading';
-import { useTranslation } from '../../../components/IntlProvider';
-import { EmptyList } from '../../../layouts/EmptyPage';
-import { AttributeVariantsListPlaceholderProps } from './types';
+import { Heading } from '../../../../components/Heading';
+import { useTranslation } from '../../../../components/IntlProvider';
+import { EmptyList } from '../../../../layouts/EmptyPage';
+import { AttributeVariantsListPlaceholderProps } from '../add/types';
 
 export const AttributeVariantsListPlaceholder: FC<
   AttributeVariantsListPlaceholderProps

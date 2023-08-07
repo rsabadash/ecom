@@ -2,7 +2,7 @@ import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
 
 import { Unit } from '../../../common/types/unit';
 import { Translations } from '../../../components/IntlProvider';
-import { Attribute } from '../../attributes/attributes/types';
+import { Attribute } from '../../attributes/attributes/add/types';
 import { WarehouseProduct } from '../list/types';
 
 export type WarehouseProductsGeneratorFormProps = {

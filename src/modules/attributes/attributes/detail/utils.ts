@@ -1,4 +1,4 @@
-import { Attribute, AttributeFormValues } from './types';
+import { Attribute, AttributeFormValues } from '../add/types';
 
 export const matchAttributeDataToFormValues = (
   data: Attribute | undefined,
