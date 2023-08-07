@@ -17,7 +17,7 @@ type WarehouseProductTableValueGetterProps =
 
 export const useWarehouseProductsTableColumns =
   (): UseWarehouseProductsTableColumnsReturn => {
-    const { translate, language } = useTranslation();
+    const { translate, getTranslationWithFallback } = useTranslation();
 
     return useMemo<TableColumnGeneric<WarehouseProductTable>[]>(
       () => [
@@ -26,7 +26,7 @@ export const useWarehouseProductsTableColumns =
           key: 'name',
           width: '40%',
           valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
-            return item.name[language];
+            return getTranslationWithFallback(item.name);
           },
         },
         {
@@ -79,6 +79,6 @@ export const useWarehouseProductsTableColumns =
           },
         },
       ],
-      [translate, language],
+      [translate, getTranslationWithFallback],
     );
   };

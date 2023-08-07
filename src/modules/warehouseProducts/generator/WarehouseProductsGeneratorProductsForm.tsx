@@ -27,7 +27,7 @@ export const WarehouseProductsGeneratorProductsForm: FC<
   const { products: productsFieldName } =
     warehouseProductsGeneratorProductsFormFields;
 
-  const { language, translate } = useTranslation();
+  const { translate, getTranslationWithFallback } = useTranslation();
 
   const { handleFormSubmit } =
     useWarehouseProductsGeneratorProductsFormSubmit();
@@ -93,7 +93,7 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                         return attribute.variants.map((variant) => {
                           return (
                             <Tag key={variant.variantId} variant="theme">
-                              {variant.name[language]}
+                              {getTranslationWithFallback(variant.name)}
                             </Tag>
                           );
                         });

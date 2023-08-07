@@ -2,9 +2,9 @@ import { BaseSyntheticEvent, useCallback } from 'react';
 
 import { cartesian } from '../../../../common/utils/cartesian';
 import {
-  DEFAULT_LANGUAGE,
   SUPPORTED_LANGUAGES,
   Translations,
+  useTranslation,
 } from '../../../../components/IntlProvider';
 import { buttonNames } from '../constants';
 import {
@@ -31,6 +31,8 @@ type UseWarehouseProductsGeneratorFormSubmitReturn = {
 export const useWarehouseProductsGeneratorFormSubmit = ({
   onSuccess,
 }: UseWarehouseProductsGeneratorFormSubmitProps): UseWarehouseProductsGeneratorFormSubmitReturn => {
+  const { getTranslationWithFallback } = useTranslation();
+
   const getListToProductGeneration = useCallback(
     (attributes: AttributeVirtualFieldValue): VariantVirtualFieldValue[][] => {
       const sortedIds = Object.keys(attributes).sort();
@@ -68,17 +70,19 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
             let nextValue = '';
 
             attribute.variants.forEach((variant) => {
-              nextValue = variant.name[language]
-                ? `${nextValue} ${variant.name[language]} `
+              const variantNameTranslation = getTranslationWithFallback(
+                variant.name,
+              );
+
+              nextValue = variantNameTranslation
+                ? `${nextValue} ${variantNameTranslation} `
                 : nextValue;
             });
 
             return `${acc} ${nextValue}`.trim();
           }, '');
 
-          const translatedName = name[language]
-            ? name[language]
-            : name[DEFAULT_LANGUAGE];
+          const translatedName = getTranslationWithFallback(name);
 
           return {
             ...acc,
@@ -93,7 +97,7 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
 
       return generatedProduct.name;
     },
-    [],
+    [getTranslationWithFallback],
   );
 
   const generateProduct = useCallback(

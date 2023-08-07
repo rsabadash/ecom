@@ -1,9 +1,6 @@
 import { useMemo } from 'react';
 
-import {
-  useIntlCurrency,
-  useTranslationWithFallback,
-} from '../../../../common/hooks';
+import { useIntlCurrency } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import {
   TableCellValueGetterProps,
@@ -19,8 +16,7 @@ type SupplyDetailProductValueGetterProps =
 
 export const useSupplyDetailTableColumns =
   (): UseSupplyDetailTableColumnsReturn => {
-    const { translate } = useTranslation();
-    const { translationWithFallback } = useTranslationWithFallback();
+    const { translate, getTranslationWithFallback } = useTranslation();
 
     const { formatCurrency } = useIntlCurrency();
 
@@ -31,7 +27,7 @@ export const useSupplyDetailTableColumns =
           key: 'productName',
           width: '55%',
           valueGetter: ({ item }: SupplyDetailProductValueGetterProps) => {
-            return translationWithFallback(item.productName);
+            return getTranslationWithFallback(item.productName);
           },
         },
         {
@@ -56,6 +52,6 @@ export const useSupplyDetailTableColumns =
           },
         },
       ],
-      [formatCurrency, translate, translationWithFallback],
+      [formatCurrency, translate, getTranslationWithFallback],
     );
   };

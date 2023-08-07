@@ -25,4 +25,5 @@ export const translationContextValuesDefault: TranslationContextValue = {
   language: DEFAULT_LANGUAGE,
   translate: () => '',
   changeLanguage: () => undefined,
+  getTranslationWithFallback: () => '',
 };

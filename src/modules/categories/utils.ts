@@ -1,4 +1,4 @@
-import { Language } from '../../components/IntlProvider';
+import { DEFAULT_LANGUAGE, Language } from '../../components/IntlProvider';
 import { CategoryDetailEntity, CategoryFormValues } from './types';
 
 export const matchCategoryDataToFormValues = (
@@ -17,7 +17,7 @@ export const matchCategoryDataToFormValues = (
     isActive,
     parentIds: parentIds.map((parentId) => ({
       id: parentId,
-      value: name[language] || '',
+      value: name[language] || name[DEFAULT_LANGUAGE],
     })),
   };
 };

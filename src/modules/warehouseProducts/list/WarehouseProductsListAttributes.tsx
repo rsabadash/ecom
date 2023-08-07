@@ -8,7 +8,7 @@ import classes from './styles/index.module.css';
 
 export const WarehouseProductsListAttributes =
   memo<WarehouseProductsListAttributesProps>(({ item }) => {
-    const { language } = useTranslation();
+    const { getTranslationWithFallback } = useTranslation();
 
     return (
       <>
@@ -18,12 +18,12 @@ export const WarehouseProductsListAttributes =
               key={attribute.attributeId}
               className={classes.warehouseListAttributes}
             >
-              <div>{attribute.name[language]}</div>
+              <div>{getTranslationWithFallback(attribute.name)}</div>
               <div className={classes.warehouseListVariants}>
                 {attribute.variants.map((variant) => {
                   return (
                     <Tag key={variant.variantId} variant="theme">
-                      {variant.name[language]}
+                      {getTranslationWithFallback(variant.name)}
                     </Tag>
                   );
                 })}

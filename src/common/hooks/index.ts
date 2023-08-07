@@ -11,4 +11,3 @@ export { usePreviousActiveElement } from './usePreviousActiveElement';
 export { usePreviousPersistent } from './usePreviousPersistent';
 export { useQueryParameters } from './useQueryParameters';
 export { useSessionStorage } from './useSessionStorage';
-export { useTranslationWithFallback } from './useTranslationWithFallback';

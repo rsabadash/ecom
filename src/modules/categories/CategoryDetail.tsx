@@ -20,7 +20,7 @@ const CategoryDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { categoryId } = useParams<CategoryUrlParams>();
-  const { language, translate } = useTranslation();
+  const { language, translate, getTranslationWithFallback } = useTranslation();
 
   const { data: categoryDetail } = useCachedAPI<CategoryDetailEntity>(
     `${endpoints.categories.root}/${categoryId}`,
@@ -34,10 +34,10 @@ const CategoryDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
-  const categoryTitle = `${translate('category')} "${
-    categoryDetail?.name[language]
-  }"`;
-  console.log(formValues);
+  const categoryTitle = `${translate('category')} "${getTranslationWithFallback(
+    categoryDetail?.name,
+  )}"`;
+
   return (
     <>
       <Top>

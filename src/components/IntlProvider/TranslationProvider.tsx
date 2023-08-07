@@ -2,12 +2,17 @@ import { FC, PropsWithChildren, useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { createProvider } from '../../common/utils';
-import { CONTEXT_NAME, translationContextValuesDefault } from './constants';
+import {
+  CONTEXT_NAME,
+  DEFAULT_LANGUAGE,
+  translationContextValuesDefault,
+} from './constants';
 import {
   Language,
   TranslatePlaceholders,
   TranslationContextValue,
   TranslationProviderProps,
+  Translations,
 } from './types';
 
 const [Provider, useTranslation] = createProvider<TranslationContextValue>({
@@ -36,13 +41,23 @@ const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = ({
     [formatMessage],
   );
 
+  const getTranslationWithFallback = useCallback(
+    (translations: Translations | undefined): string => {
+      return translations
+        ? translations[language] || translations[DEFAULT_LANGUAGE]
+        : '';
+    },
+    [language],
+  );
+
   const contextValue = useMemo<TranslationContextValue>(
     () => ({
       language,
       translate,
       changeLanguage,
+      getTranslationWithFallback,
     }),
-    [language, translate, changeLanguage],
+    [language, translate, changeLanguage, getTranslationWithFallback],
   );
 
   return <Provider value={contextValue}>{children}</Provider>;
