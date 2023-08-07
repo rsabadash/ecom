@@ -6,7 +6,7 @@ import {
   TableCellValueGetterProps,
   TableColumnGeneric,
 } from '../../../../components/Table';
-import { Supply } from '../types';
+import { Supply } from '../../detail/types';
 
 type UseSuppliesTableColumnsReturn = TableColumnGeneric<Supply>[];
 

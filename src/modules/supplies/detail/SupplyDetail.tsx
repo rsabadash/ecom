@@ -6,7 +6,7 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { Top, TopHeading } from '../../../layouts/Top';
 import { TABLE_SUPPLY_DETAIL_ID } from './constants';
 import { SupplyDetailList } from './SupplyDetailList';
-import { SupplyDetailData, SupplyUrlParams } from './types';
+import { Supply, SupplyUrlParams } from './types';
 
 const SupplyDetail = () => {
   const { supplyId } = useParams<SupplyUrlParams>();
@@ -14,7 +14,7 @@ const SupplyDetail = () => {
 
   const { formatDate } = useIntlDate();
 
-  const { data: supplyDetail } = useCachedAPI<SupplyDetailData>(
+  const { data: supplyDetail } = useCachedAPI<Supply>(
     `${endpoints.supplies.root}/${supplyId}`,
   );
 
