@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
 
-import { endpoints } from '../../common/constants/api';
-import { routes } from '../../common/constants/routes';
-import { useCachedPaginationAPI } from '../../common/hooks';
-import { usePaginationLimit } from '../../components/Pagination/hooks';
+import { endpoints } from '../../../common/constants/api';
+import { routes } from '../../../common/constants/routes';
+import { useCachedPaginationAPI } from '../../../common/hooks';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import {
   RowCustomRenderProps,
   Table,
   TableColumnGeneric,
   TablePagination,
-} from '../../components/Table';
+} from '../../../components/Table';
+import { Category } from '../detail/types';
 import { CategoriesListPlaceholder } from './CategoriesListPlaceholder';
 import { TABLE_CATEGORIES_ID } from './constants';
 import { useCategoriesTableColumns } from './hooks';
-import { Category } from './types';
 
 export const CategoriesList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();

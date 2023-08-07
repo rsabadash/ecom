@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 
-import { useTranslation } from '../../../components/IntlProvider';
+import { useTranslation } from '../../../../components/IntlProvider';
 import {
   TableCellValueGetterProps,
   TableColumnGeneric,
-} from '../../../components/Table';
-import { Category } from '../types';
+} from '../../../../components/Table';
+import { Category } from '../../detail/types';
 
 type UseCategoriesTableColumnsReturn = TableColumnGeneric<Category>[];
 

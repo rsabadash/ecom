@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { endpoints } from '../../common/constants/api';
-import { useCachedAPI } from '../../common/hooks';
-import { Button, ButtonsGroup } from '../../components/Button';
-import { useTranslation } from '../../components/IntlProvider';
-import { SectionForeground } from '../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
+import { endpoints } from '../../../common/constants/api';
+import { useCachedAPI } from '../../../common/hooks';
+import { Button, ButtonsGroup } from '../../../components/Button';
+import { useTranslation } from '../../../components/IntlProvider';
+import { SectionForeground } from '../../../layouts/Section';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { CategoryForm } from './CategoryForm';
 import { useDeleteCategory } from './hooks';
 import {

@@ -6,5 +6,3 @@ export const categoryFormFields: CategoryFormFields = {
   isActive: 'isActive',
   parentIds: 'parentIds',
 };
-
-export const TABLE_CATEGORIES_ID = 'categoriesTable';

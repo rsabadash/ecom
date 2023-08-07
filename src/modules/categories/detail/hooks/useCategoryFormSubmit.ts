@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { DropdownItem } from '../../../components/Fields/Dropdown';
+import { DropdownItem } from '../../../../components/Fields/Dropdown';
 import {
   CategoryFormValues,
   CategoryPatchData,

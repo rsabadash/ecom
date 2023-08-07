@@ -1,9 +1,9 @@
-import { routes } from '../../common/constants/routes';
-import { ButtonLink } from '../../components/Button';
-import { useTranslation } from '../../components/IntlProvider';
-import { SectionForeground } from '../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../layouts/Top';
-import { CategoryForm } from './CategoryForm';
+import { routes } from '../../../common/constants/routes';
+import { ButtonLink } from '../../../components/Button';
+import { useTranslation } from '../../../components/IntlProvider';
+import { SectionForeground } from '../../../layouts/Section';
+import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { CategoryForm } from '../detail/CategoryForm';
 
 const CategoryAdd = () => {
   const { translate } = useTranslation();

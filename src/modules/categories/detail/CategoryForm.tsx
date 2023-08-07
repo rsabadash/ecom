@@ -1,18 +1,18 @@
 import { FC } from 'react';
 
-import { endpoints, path } from '../../common/constants/api';
-import { useCachedAPI } from '../../common/hooks';
-import { Button } from '../../components/Button';
-import { DropdownItem } from '../../components/Fields/Dropdown';
-import { Form, FormContent } from '../../components/FormFields';
+import { endpoints, path } from '../../../common/constants/api';
+import { useCachedAPI } from '../../../common/hooks';
+import { Button } from '../../../components/Button';
+import { DropdownItem } from '../../../components/Fields/Dropdown';
+import { Form, FormContent } from '../../../components/FormFields';
 import {
   DropdownAdapter,
   InputAdapter,
   MultiLanguageInputAdapter,
-} from '../../components/FormFieldsAdapter';
-import { CheckboxAdapter } from '../../components/FormFieldsAdapter';
-import { GridRowBalancer } from '../../components/GridRowBalancer';
-import { useTranslation } from '../../components/IntlProvider';
+} from '../../../components/FormFieldsAdapter';
+import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../../components/GridRowBalancer';
+import { useTranslation } from '../../../components/IntlProvider';
 import { categoryFormFields } from './constants';
 import { useCategoryForm, useCategoryFormSubmit } from './hooks';
 import { CategoryFormProps } from './types';
