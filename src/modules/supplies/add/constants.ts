@@ -1,8 +1,10 @@
+import { calculation } from '../../../common/utils';
 import { SupplyFormFields, SupplyFormSubFields, SupplyProduct } from './types';
-import { parseToDecimal } from './utils';
 
 export const MIN_PRODUCTS_IN_SUPPLY = 1;
 export const MAX_PRODUCTS_IN_SUPPLY = 50;
+
+export const ZERO_VALUE = calculation.round('0');
 
 export const supplyFormArrayFields = {
   products: 'products',
@@ -35,6 +37,6 @@ export const defaultProductValue: SupplyProduct = {
 
 export const initialDefaultValues = {
   products: [defaultProductValue],
-  productsTotalQuantity: parseToDecimal('0'),
-  productsTotalCost: parseToDecimal('0'),
+  productsTotalQuantity: calculation.round('0'),
+  productsTotalCost: calculation.round('0'),
 };

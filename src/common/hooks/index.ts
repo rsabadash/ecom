@@ -1,6 +1,7 @@
 export { useAPI } from './useAPI';
 export { useCachedAPI } from './useCachedAPI';
 export { useCachedPaginationAPI } from './useCachedPaginationAPI';
+export { useCalculation } from './useCalculation';
 export { useCustomForm } from './useCustomForm';
 export { useCustomNavigate } from './useCustomNavigate';
 export { useIntlCurrency } from './useIntlCurrency';

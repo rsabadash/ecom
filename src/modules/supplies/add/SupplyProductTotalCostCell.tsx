@@ -1,16 +1,18 @@
 import { FC, useRef } from 'react';
 import { useFormState } from 'react-hook-form';
-import bigDecimal from 'js-big-decimal';
 
 import { DECIMAL_TWO_SIGN } from '../../../common/constants/regex';
+import { useCalculation } from '../../../common/hooks';
 import { InputFormValue } from '../../../components/Fields/Input';
 import { InputWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { supplyFormFields, supplyFormProductsSubfields } from './constants';
+import {
+  supplyFormFields,
+  supplyFormProductsSubfields,
+  ZERO_VALUE,
+} from './constants';
 import { SupplyFormValues, SupplyProductCellProps } from './types';
-import { calculateSummary, parseToDecimal } from './utils';
-
-const ZERO_VALUE = parseToDecimal('0');
+import { calculateSummary } from './utils';
 
 const {
   quantity: quantitySubfield,
@@ -28,6 +30,7 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
   const prevSummaryTotalCostRef = useRef<string | null>(null);
 
   const { translate } = useTranslation();
+  const { divide, round } = useCalculation();
 
   const { errors } = useFormState({ control });
 
@@ -64,7 +67,7 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
 
   const handleInputBlur = (value: InputFormValue) => {
     if (typeof value === 'string') {
-      const decimalTotalCostValue = parseToDecimal(value);
+      const decimalTotalCostValue = round(value);
       const { quantity, price } = getValues(`products.${index}`) || {};
       const hasTotalCost = decimalTotalCostValue !== ZERO_VALUE;
       const hasQuantity = quantity && quantity !== ZERO_VALUE;
@@ -85,9 +88,7 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
       }
 
       if (hasQuantity && hasTotalCost) {
-        const newPrice = parseToDecimal(
-          bigDecimal.divide(decimalTotalCostValue, quantity, 2),
-        );
+        const newPrice = round(divide(decimalTotalCostValue, quantity));
 
         return setValue(priceFieldName, newPrice, {
           shouldValidate: !!fieldArrayErrors?.price,
@@ -97,9 +98,7 @@ export const SupplyProductTotalCostCell: FC<SupplyProductCellProps> = ({
       const hasPrice = price && price !== ZERO_VALUE;
 
       if (!hasQuantity && hasTotalCost && hasPrice) {
-        const newQuantity = parseToDecimal(
-          bigDecimal.divide(decimalTotalCostValue, price, 2),
-        );
+        const newQuantity = round(divide(decimalTotalCostValue, price));
 
         setValue(quantityFieldName, newQuantity, {
           shouldValidate: !!fieldArrayErrors?.price,

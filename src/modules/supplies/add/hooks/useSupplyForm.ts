@@ -11,12 +11,13 @@ import {
   UseCustomFormReturn,
   YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
+import { calculation } from '../../../../common/utils';
 import { DropdownItemObject } from '../../../../components/Fields/Dropdown';
 import { objectErrorMessage } from '../../../../components/FormFieldsAdapter/utils';
 import { dropdownItem } from '../../../../validations/dropdown';
 import { supplyFormFields, supplyFormProductsSubfields } from '../constants';
 import { SupplyFormValues, SupplyProduct } from '../types';
-import { isUnitSupportDecimal, parseToDecimal } from '../utils';
+import { isUnitSupportDecimal } from '../utils';
 
 type UseSupplyFormProps = Pick<
   UseCustomFormProps<SupplyFormValues>,
@@ -61,8 +62,8 @@ const schema = yup.object().shape<YupSchemaKey<SupplyFormValues>>({
 
         const { id, value: unitValue } = unit || {};
         const isSupportDecimal =
-          value === parseToDecimal('0') || isUnitSupportDecimal(id);
-        console.log(isSupportDecimal);
+          value === calculation.round('0') || isUnitSupportDecimal(id);
+
         const DECIMAL_REGEX = isSupportDecimal
           ? DECIMAL_TWO_SIGN_POSITIVE
           : DECIMAL_TWO_SIGN_ZERO;

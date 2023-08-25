@@ -1,16 +1,19 @@
 import { FC } from 'react';
 import { useFormState } from 'react-hook-form';
-import bigDecimal from 'js-big-decimal';
 
 import { DECIMAL_TWO_SIGN } from '../../../common/constants/regex';
+import { useCalculation } from '../../../common/hooks';
 import { InputFormValue } from '../../../components/Fields/Input';
 import { InputWithTooltipAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { supplyFormFields, supplyFormProductsSubfields } from './constants';
+import {
+  supplyFormFields,
+  supplyFormProductsSubfields,
+  ZERO_VALUE,
+} from './constants';
 import { SupplyFormValues, SupplyProductCellProps } from './types';
-import { calculateSummary, parseToDecimal } from './utils';
+import { calculateSummary } from './utils';
 
-const ZERO_VALUE = parseToDecimal('0');
 const { price: priceSubfield, totalCost: totalCostSubfield } =
   supplyFormProductsSubfields;
 
@@ -22,6 +25,7 @@ export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
   fieldCommonName,
 }) => {
   const { translate } = useTranslation();
+  const { multiply, round } = useCalculation();
 
   const { errors } = useFormState({ control });
 
@@ -57,7 +61,7 @@ export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
 
   const handleInputBlur = (value: InputFormValue): void => {
     if (typeof value === 'string') {
-      const decimalPriceValue = parseToDecimal(value);
+      const decimalPriceValue = round(value);
       const { quantity, totalCost } = getValues(`products.${index}`) || {};
       const hasPrice = decimalPriceValue !== ZERO_VALUE;
       const hasQuantity = quantity && quantity !== ZERO_VALUE;
@@ -70,7 +74,7 @@ export const SupplyProductPriceCell: FC<SupplyProductCellProps> = ({
       const prevTotalCostValue = hasTotalCost ? totalCost : ZERO_VALUE;
       const newTotalCost = avoidTotalCostCalculation
         ? ZERO_VALUE
-        : parseToDecimal(bigDecimal.multiply(value, quantity));
+        : round(multiply(value, quantity));
 
       initiateSummaryFieldValueCalculation(
         prevTotalCostValue,

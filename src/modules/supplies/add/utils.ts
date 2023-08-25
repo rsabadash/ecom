@@ -1,13 +1,6 @@
-import bigDecimal from 'js-big-decimal';
-
 import { UNIT_CODE } from '../../../common/constants/units';
 import { Unit } from '../../../common/types/unit';
-
-export const parseToDecimal = (value: string): string => {
-  const valueToParse = value.trim() ? value : '0';
-
-  return Number.parseFloat(valueToParse).toFixed(2);
-};
+import { calculation } from '../../../common/utils';
 
 export const calculateSummary = <T>(
   prev: T | null,
@@ -18,15 +11,15 @@ export const calculateSummary = <T>(
     let intermediateResult = String(summary);
 
     if (prev) {
-      intermediateResult = bigDecimal.subtract(summary, prev);
+      intermediateResult = calculation.subtract(summary, prev);
     }
 
-    return bigDecimal.add(intermediateResult, current);
+    return calculation.add(intermediateResult, current);
   }
 
   return String(summary);
 };
 
-export const isUnitSupportDecimal = (unit: Unit) => {
+export const isUnitSupportDecimal = (unit: Unit): boolean => {
   return unit !== UNIT_CODE.ITEM;
 };

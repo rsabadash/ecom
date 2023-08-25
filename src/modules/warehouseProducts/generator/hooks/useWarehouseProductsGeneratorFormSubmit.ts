@@ -1,6 +1,6 @@
 import { BaseSyntheticEvent, useCallback } from 'react';
 
-import { cartesian } from '../../../../common/utils/cartesian';
+import { cartesian } from '../../../../common/utils';
 import {
   SUPPORTED_LANGUAGES,
   Translations,
