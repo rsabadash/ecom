@@ -1,13 +1,16 @@
 import { lazy, Suspense } from 'react';
+
 import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
-const Categories = lazy(() => import('../../../modules/categories/Categories'));
+const Categories = lazy(
+  () => import('../../../modules/categories/list/Categories'),
+);
 const CategoryAdd = lazy(
-  () => import('../../../modules/categories/CategoryAdd'),
+  () => import('../../../modules/categories/add/CategoryAdd'),
 );
 const CategoryDetail = lazy(
-  () => import('../../../modules/categories/CategoryDetail'),
+  () => import('../../../modules/categories/detail/CategoryDetail'),
 );
 
 export const categoriesRoutes = [

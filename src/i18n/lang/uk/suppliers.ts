@@ -5,5 +5,7 @@ export const suppliers = {
   'supplier.name.error.required': "Назва постачальника є обов'язковою",
   'supplier.account': 'Рахунок постачальника',
   'supplier.phone': 'Телефон',
-  'supplier.note': 'Нотатки',
+  'supplier.address': 'Адреса',
+  'supplier.emptyList': 'Постачальники відсутні',
+  'supplier.emptyList.callToAction': 'Додайте постачальника',
 };

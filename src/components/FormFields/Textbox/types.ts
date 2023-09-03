@@ -1,16 +1,16 @@
-import { TextboxProps } from '../../Fields/Textbox';
-import { FieldLabelProps } from '../FieldLabel';
 import { CollapseControllerProps } from '../../Collapse';
+import { TextboxProps } from '../../Fields/Textbox';
 import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
+import { FieldLabelProps } from '../FieldLabel';
 
 export type TextboxFormFieldProps = Omit<
   TextboxProps,
-  'id' | 'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'
+  'id' | 'ariaLabelledBy' | 'ariaDescribedBy'
 > &
   Pick<FieldLabelProps, 'label'> &
   Pick<
     CommonFormFieldWrapperProps,
-    'errorMessage' | 'isDescriptionHidden' | 'columnIndex'
+    'errorMessage' | 'isLabelHidden' | 'isDescriptionHidden' | 'columnIndex'
   >;
 
 export type TextboxWithCollapseFormFieldProps = TextboxFormFieldProps &

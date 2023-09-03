@@ -1,5 +1,7 @@
-import { tagVariant } from './constants';
+import { PropsWithChildren } from 'react';
 
-export type TagProps = {
-  variant?: ValuesOfObject<typeof tagVariant>;
-};
+import { TAG_VARIANT } from './constants';
+
+export type TagProps = PropsWithChildren<{
+  variant?: ValuesOfObject<typeof TAG_VARIANT>;
+}>;

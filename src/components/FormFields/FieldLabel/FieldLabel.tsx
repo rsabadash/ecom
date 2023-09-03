@@ -1,11 +1,14 @@
 import { FC } from 'react';
 import clsx from 'clsx';
-import { Label } from '../../Label';
+
 import { useTranslation } from '../../IntlProvider';
+import { Label } from '../../Label';
 import { FieldLabelProps } from './types';
+
 import classes from './styles/index.module.css';
 
 export const FieldLabel: FC<FieldLabelProps> = ({
+  size,
   label,
   htmlFor,
   isValid,
@@ -29,7 +32,7 @@ export const FieldLabel: FC<FieldLabelProps> = ({
   );
 
   return (
-    <Label htmlFor={htmlFor} labelClassName={fieldLabelClassNames}>
+    <Label size={size} htmlFor={htmlFor} labelClassName={fieldLabelClassNames}>
       {itemLabel}
     </Label>
   );

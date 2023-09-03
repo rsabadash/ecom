@@ -1,8 +1,11 @@
-import { Control, FieldError, FieldValues, Path } from 'react-hook-form';
+import { Control, FieldValues, Path } from 'react-hook-form';
+
 import {
   InputFormFieldProps,
   InputWithCollapseFormFieldProps,
+  InputWithTooltipFormFieldProps,
 } from '../../FormFields';
+import { FormatError } from '../hooks';
 
 type AdapterProps<FormValues extends FieldValues> = {
   name: Path<FormValues>;
@@ -11,17 +14,25 @@ type AdapterProps<FormValues extends FieldValues> = {
 
 export type InputAdapterProps<FormValues extends FieldValues> = Omit<
   InputFormFieldProps,
-  'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
+  'value' | 'name' | 'isValid' | 'errorMessage' | 'ariaLabel'
 > &
   AdapterProps<FormValues> & {
-    formatError?: (error: FieldError) => undefined | string;
+    formatError?: FormatError;
   };
 
 export type InputWithCollapseAdapterProps<FormValues extends FieldValues> =
   Omit<
     InputWithCollapseFormFieldProps,
-    'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
+    'value' | 'name' | 'isValid' | 'errorMessage' | 'ariaLabel'
   > &
     AdapterProps<FormValues> & {
-      formatError?: (error: FieldError) => undefined | string;
+      formatError?: FormatError;
     };
+
+export type InputWithTooltipAdapterProps<FormValues extends FieldValues> = Omit<
+  InputWithTooltipFormFieldProps,
+  'value' | 'name' | 'isValid' | 'errorMessage'
+> &
+  AdapterProps<FormValues> & {
+    formatError?: FormatError;
+  };

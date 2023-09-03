@@ -1,6 +1,8 @@
-import { fieldDescriptionType } from './constatns';
+import { FIELD_DESCRIPTION_TYPE } from './constatns';
 
-export type FieldDescriptionType = ValuesOfObject<typeof fieldDescriptionType>;
+export type FieldDescriptionType = ValuesOfObject<
+  typeof FIELD_DESCRIPTION_TYPE
+>;
 
 export type FieldDescriptionProps = {
   id?: string;

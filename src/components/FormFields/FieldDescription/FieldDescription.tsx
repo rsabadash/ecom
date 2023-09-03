@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import clsx from 'clsx';
+
+import { TYPE_TO_ARIA_LIVE_MAPPER } from './constatns';
 import { FieldDescriptionProps } from './types';
-import { typeToAriaLiveMapper } from './constatns';
+
 import classes from './styles/index.module.css';
 
 export const FieldDescription: FC<FieldDescriptionProps> = ({
@@ -19,9 +21,9 @@ export const FieldDescription: FC<FieldDescriptionProps> = ({
   );
 
   const ariaLiveType =
-    type && typeToAriaLiveMapper[type]
-      ? typeToAriaLiveMapper[type]
-      : typeToAriaLiveMapper.default;
+    type && TYPE_TO_ARIA_LIVE_MAPPER[type]
+      ? TYPE_TO_ARIA_LIVE_MAPPER[type]
+      : TYPE_TO_ARIA_LIVE_MAPPER.default;
 
   return (
     <div

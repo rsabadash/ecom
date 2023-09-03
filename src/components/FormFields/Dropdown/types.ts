@@ -1,13 +1,36 @@
 import { DropdownProps } from '../../Fields/Dropdown';
-import { FieldLabelProps } from '../FieldLabel';
+import { TooltipProps } from '../../Tooltip/types';
 import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
+import { FieldLabelProps } from '../FieldLabel';
 
 export type DropdownFormFieldProps = Omit<
   DropdownProps,
-  'ariaLabel' | 'ariaLabelledBy' | 'ariaDescribedBy'
+  'ariaLabelledBy' | 'ariaDescribedBy'
 > &
   Pick<FieldLabelProps, 'label'> &
   Pick<
     CommonFormFieldWrapperProps,
-    'errorMessage' | 'isDescriptionHidden' | 'columnIndex'
+    'errorMessage' | 'isLabelHidden' | 'isDescriptionHidden' | 'columnIndex'
   >;
+
+export type DropdownWithTooltipFormFieldProps = Pick<
+  DropdownProps,
+  | 'name'
+  | 'size'
+  | 'value'
+  | 'items'
+  | 'customItems'
+  | 'placeholder'
+  | 'isValid'
+  | 'isRequired'
+  | 'isDisabled'
+  | 'isOpen'
+  | 'hasMultiselect'
+  | 'onBlur'
+  | 'onChange'
+  | 'itemValueGetter'
+  | 'isReadOnly'
+> &
+  Required<Pick<DropdownProps, 'ariaLabel'>> &
+  Pick<CommonFormFieldWrapperProps, 'errorMessage'> &
+  Pick<TooltipProps, 'position'>;

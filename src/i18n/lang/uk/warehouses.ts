@@ -12,4 +12,6 @@ export const warehouses = {
   'warehouse.type.error.required': "Тип складу є обов'язковим",
   'warehouse.address': 'Адреса складу',
   'warehouse.address.description': 'Введіть адресу складу',
+  'warehouse.emptyList': 'Склади відсутні',
+  'warehouse.emptyList.callToAction': 'Додати склад',
 };

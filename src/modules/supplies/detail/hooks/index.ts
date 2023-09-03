@@ -1,0 +1,1 @@
+export { useSupplyDetailTableColumns } from './useSupplyDetailTableColumns';

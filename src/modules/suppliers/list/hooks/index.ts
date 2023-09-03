@@ -1,0 +1,1 @@
+export { useSuppliersTableColumns } from './useSuppliersTableColumns';

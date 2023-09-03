@@ -1,0 +1,41 @@
+.warehouseCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: clamp(4em, 20vh + 1em, 10em);
+  text-align: center;
+  gap: 1em;
+  cursor: pointer;
+}
+
+.warehouseCard:hover {
+  background-color: var(--primary-400);
+  border: 1px solid var(--primary-900);
+  transition: background-color var(--transition), border var(--transition);
+}
+
+.warehouseCard path {
+  fill: var(--text-color);
+}
+
+.warehouseLink {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.warehouseLink:focus-within {
+  outline: none;
+  background-color: var(--primary-400);
+  border-radius: var(--radius-regular);
+  box-shadow: var(--box-shadow-focus);
+  transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+.warehouseName {
+  font-weight: bold;
+}
+
+.warehouseInfo {
+  font-size: var(--font-size-s);
+}

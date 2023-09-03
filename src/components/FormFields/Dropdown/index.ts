@@ -1,2 +1,6 @@
 export { DropdownFormField } from './Dropdown';
-export type { DropdownFormFieldProps } from './types';
+export { DropdownWitTooltipFormField } from './DropdownWithTooltip';
+export type {
+  DropdownFormFieldProps,
+  DropdownWithTooltipFormFieldProps,
+} from './types';

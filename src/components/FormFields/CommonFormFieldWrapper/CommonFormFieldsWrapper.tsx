@@ -1,21 +1,24 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
+
 import { useGridInlineStyles } from '../../GridRowBalancer';
-import { FieldLabel } from '../FieldLabel';
 import { FieldDescription } from '../FieldDescription';
+import { FieldLabel } from '../FieldLabel';
 import { CommonFormFieldWrapperProps } from './types';
+
 import classes from './styles/index.module.css';
 
-export const CommonFormFieldsWrapper: FC<
-  PropsWithChildren<CommonFormFieldWrapperProps>
-> = ({
+export const CommonFormFieldsWrapper: FC<CommonFormFieldWrapperProps> = ({
   name,
+  size,
   label,
   placeholder,
   children,
   isValid,
   isReadOnly,
   isRequired,
+  isLabelHidden,
   isDescriptionHidden,
+  describedById,
   errorMessage,
   columnIndex,
   row2ClassName,
@@ -24,23 +27,27 @@ export const CommonFormFieldsWrapper: FC<
 
   const descriptionType = errorMessage ? 'error' : undefined;
   const descriptionMessage = errorMessage ? errorMessage : placeholder;
-  const describedById = `${name}Description`;
 
   return (
     <div
       className={
-        columnIndex !== undefined ? classes.formFieldWrapper : undefined
+        columnIndex !== undefined
+          ? classes.formFieldWrapperWithColumnIndex
+          : classes.formFieldWrapper
       }
     >
-      <div style={row1}>
-        <FieldLabel
-          label={label}
-          htmlFor={name}
-          isValid={isValid}
-          isReadOnly={isReadOnly}
-          isRequired={isRequired}
-        />
-      </div>
+      {!isLabelHidden && (
+        <div style={row1}>
+          <FieldLabel
+            size={size}
+            label={label}
+            htmlFor={name}
+            isValid={isValid}
+            isReadOnly={isReadOnly}
+            isRequired={isRequired}
+          />
+        </div>
+      )}
       <div className={row2ClassName} style={row2}>
         {children}
       </div>

@@ -1,0 +1,6 @@
+.paginationLimit {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-half);
+  text-align: center;
+}

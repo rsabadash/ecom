@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import clsx from 'clsx';
-import { CheckboxProps } from './types';
+
 import { ReactComponent as CheckIcon } from '../../../assets/icons/Check.svg';
+import { CheckboxProps } from './types';
+
 import classes from './styles/index.module.css';
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -18,7 +20,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   onBlur,
   onChange,
 }) => {
-  const handleOnChange = () => {
+  const handleOnChange = (): void => {
     if (!isDisabled && !isReadOnly) {
       onChange(!isChecked);
     }
@@ -45,7 +47,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         aria-checked={isChecked} // could be avoidable, but in this case used, cause React doesn't show checked attribute and voice doesn't announce that field is isChecked
         aria-required={isRequired} // could be avoidable, but in this case used, cause React doesn't show require attribute and voice doesn't announce that field is isRequired
         aria-invalid={!isValid} // if value invalid
-        aria-label={ariaLabel} // if other description absent
+        aria-label={ariaLabel} //  if another description is absent
         aria-labelledby={ariaLabelledBy} // which element has a label for an input
         aria-describedby={ariaDescribedBy} // which element describe input
         className={checkboxClassNames}

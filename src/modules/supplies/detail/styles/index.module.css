@@ -1,0 +1,25 @@
+.bottomPanelSupplyDetailListSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+}
+
+.supplyDetailListSummary {
+  display: flex;
+}
+
+.supplyDetailListSummary__item {
+  display: flex;
+  padding-inline: var(--gap-half);
+}
+
+.supplyDetailListSummary__item:first-child {
+  padding-inline-start: var(--gap);
+  padding-inline-end: var(--gap-half);
+}
+
+.supplyDetailListSummary__item:last-child {
+  padding-inline-start: var(--gap-half);
+  padding-inline-end: var(--gap);
+}

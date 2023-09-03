@@ -1,5 +1,6 @@
-import { useElementColumnRowIndexes } from './useElementColumnRowIndexes';
 import { useMemo } from 'react';
+
+import { useElementColumnRowIndexes } from './useElementColumnRowIndexes';
 
 type GridInlineStyle = {
   gridRow?: number;
@@ -15,7 +16,7 @@ export const useGridInlineStyles = (
   const { rowIndex, currentColumnIndex, elementRowIndexes } =
     useElementColumnRowIndexes(columnIndex);
 
-  const marginTop = rowIndex === 0 || rowIndex > 1 ? '1.5rem' : undefined;
+  const marginTop = rowIndex === 0 || rowIndex > 1 ? '1.7em' : undefined;
 
   return useMemo(
     () =>

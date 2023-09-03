@@ -5,3 +5,5 @@ export const signInFormFields: SignInFormFields = {
   password: 'password',
   isPersistUser: 'isPersistUser',
 };
+
+export const PASSWORD_ICON_ID = 'passwordIcon';

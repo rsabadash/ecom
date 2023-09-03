@@ -1,14 +1,15 @@
-import { FC, PropsWithChildren, useMemo } from 'react';
+import { FC, useMemo } from 'react';
+
+import { createProvider } from '../../common/utils';
+import {
+  collapseControllerContextValueDefault,
+  CONTEXT_NAME,
+} from './constants';
+import { useCollapseControl } from './hooks';
 import {
   CollapseControllerContextValue,
   CollapseControllerProps,
 } from './types';
-import {
-  CONTEXT_NAME,
-  collapseControllerContextValueDefault,
-} from './constants';
-import { createProvider } from '../../utils';
-import { useCollapseControl } from './hooks';
 
 const [Provider, useCollapseController] =
   createProvider<CollapseControllerContextValue>({
@@ -16,7 +17,7 @@ const [Provider, useCollapseController] =
     contextDefaultValue: collapseControllerContextValueDefault,
   });
 
-const CollapseController: FC<PropsWithChildren<CollapseControllerProps>> = ({
+const CollapseController: FC<CollapseControllerProps> = ({
   children,
   forceExpand,
   isInitiallyExpand = false,

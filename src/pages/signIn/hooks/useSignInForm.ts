@@ -1,11 +1,12 @@
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import { useCustomForm } from '../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../hooks/useCustomForm';
-import { useCustomForm } from '../../../hooks';
+} from '../../../common/hooks/useCustomForm';
 import { SignInFormValues } from '../types';
 
 type UseCategoryFromProps = Pick<

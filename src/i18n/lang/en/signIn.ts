@@ -10,7 +10,7 @@ export const signIn = {
   'signIn.password.required': 'Password is required',
   'signIn.password.show': 'Show password',
   'signIn.password.hide': 'Hide password',
-  'signIn.isPersistUser': 'Remember me',
-  'signIn.isPersistUser.description':
-    'Do not sign out after closing the browser',
+  'signIn.password.state.shown': 'Password shown',
+  'signIn.password.state.hidden': 'Password hidden',
+  'signIn.isPersistUser': 'Do not sign out after closing the browser',
 };

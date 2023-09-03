@@ -1,3 +1,5 @@
+import { PropsWithChildren } from 'react';
+
 import { THEMES } from './constants';
 
 export type Theme = ValuesOfObject<typeof THEMES>;
@@ -13,10 +15,10 @@ export type ThemeStorage = {
   setTheme: SetThemeFunction;
 };
 
-export type ThemeProviderProps = {
+export type ThemeProviderProps = PropsWithChildren<{
   themeStorage: ThemeStorage;
   useUserAgentTheming?: boolean;
-};
+}>;
 
 export type ThemeContextValue = {
   switchTheme: () => void;

@@ -1,21 +1,23 @@
 import { FC, useCallback } from 'react';
+
 import { Collapse } from '../../../components/Collapse';
-import {
-  WarehouseProductsGeneratorAttributeFormSectionProps,
-  VariantVirtualFieldValue,
-  AttributeVirtualFieldValue,
-} from './types';
 import { CheckboxValue } from '../../../components/Fields/Checkbox/types';
-import { warehouseProductsGeneratorFormFields } from './constants';
 import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Variant } from '../../attributes/variants/types';
+import { Variant } from '../../attributes/variants/add/types';
+import { warehouseProductsGeneratorFormFields } from './constants';
+import {
+  AttributeVirtualFieldValue,
+  VariantVirtualFieldValue,
+  WarehouseProductsGeneratorAttributeFormSectionProps,
+} from './types';
+
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorAttributeFormSection: FC<
   WarehouseProductsGeneratorAttributeFormSectionProps
 > = ({ attribute, setValue, getValues, control }) => {
-  const { language, translate } = useTranslation();
+  const { translate, getTranslationWithFallback } = useTranslation();
   const { _id: attributeId, name, variants } = attribute;
   const hasVariants = variants?.length > 0;
 
@@ -73,7 +75,7 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
     <div className={classes.generator__attributesRow}>
       <Collapse
         headerClassName={classes.generator__attributesName}
-        header={name[language]}
+        header={getTranslationWithFallback(name)}
         isToggleableHeader
         body={
           <div className={classes.generator__variants}>
@@ -83,7 +85,7 @@ export const WarehouseProductsGeneratorAttributeFormSection: FC<
                   <CheckboxAdapter
                     key={variant.variantId}
                     name={`${warehouseProductsGeneratorFormFields.attributes}.${attributeId}.variants.${variant.variantId}`}
-                    label={variant.name[language]}
+                    label={getTranslationWithFallback(variant.name)}
                     onChange={(isChecked) => handleChange(isChecked, variant)}
                     control={control}
                   />

@@ -1,32 +1,32 @@
 import { useMemo } from 'react';
-import {
-  Translations,
-  useTranslation,
-} from '../../../../components/IntlProvider';
-import { TableColumnGeneric } from '../../../../components/Table';
-import {
-  WarehouseProduct,
-  WarehouseProductsAttribute,
-  WarehouseProductTable,
-} from '../types';
+
 import { CollapseBuilderButton } from '../../../../components/Collapse';
-import { horizontalAlignment } from '../../../../components/Table/constants';
+import { useTranslation } from '../../../../components/IntlProvider';
+import {
+  TableCellValueGetterProps,
+  TableColumnGeneric,
+} from '../../../../components/Table';
+import { HORIZONTAL_ALIGNMENT } from '../../../../components/Table/constants';
+import { WarehouseProductTable } from '../types';
 
-type UseWarehouseProductsTableColumns =
-  () => TableColumnGeneric<WarehouseProductTable>[];
+type UseWarehouseProductsTableColumnsReturn =
+  TableColumnGeneric<WarehouseProductTable>[];
 
-export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns =
-  () => {
-    const { translate, language } = useTranslation();
+type WarehouseProductTableValueGetterProps =
+  TableCellValueGetterProps<WarehouseProductTable>;
+
+export const useWarehouseProductsTableColumns =
+  (): UseWarehouseProductsTableColumnsReturn => {
+    const { translate, getTranslationWithFallback } = useTranslation();
 
     return useMemo<TableColumnGeneric<WarehouseProductTable>[]>(
       () => [
         {
           title: translate('warehouseProduct.name'),
           key: 'name',
-          width: '55%',
-          valueGetter: (value: Translations) => {
-            return value[language];
+          width: '40%',
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
+            return getTranslationWithFallback(item.name);
           },
         },
         {
@@ -35,11 +35,21 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           width: '20%',
         },
         {
+          title: translate('warehouseProduct.unit'),
+          key: 'unit',
+          width: '15%',
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
+            return item.unit ? translate(`unit.${item.unit}`) : '';
+          },
+        },
+        {
           title: translate('warehouseProduct.attributes.quantity'),
           key: 'attributes',
           width: '15%',
-          valueGetter: (value: null | WarehouseProductsAttribute[]) => {
-            const quantity = value?.length ? value.length : '-';
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
+            const quantity = item.attributes?.length
+              ? item.attributes.length
+              : '-';
             const ariaValue = quantity === '-' ? 0 : quantity;
 
             return (
@@ -57,8 +67,8 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           title: '',
           key: 'button',
           width: '10%',
-          align: horizontalAlignment.end,
-          valueGetter: (_: undefined, item: WarehouseProduct) => {
+          align: HORIZONTAL_ALIGNMENT.END,
+          valueGetter: ({ item }: WarehouseProductTableValueGetterProps) => {
             if (item.attributes?.length) {
               return (
                 <CollapseBuilderButton isCollapseDisabled iconSize="1rem" />
@@ -69,6 +79,6 @@ export const useWarehouseProductsTableColumns: UseWarehouseProductsTableColumns 
           },
         },
       ],
-      [translate, language],
+      [translate, getTranslationWithFallback],
     );
   };

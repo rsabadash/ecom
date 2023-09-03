@@ -7,22 +7,28 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
+
 import { EventKeys } from '../../../common/enums/events';
-import { LIST_CONTROL_ID, INDEX_ABSENCE_FOCUS } from './constants';
+import { useOutsideElementClick } from '../../../common/hooks';
+import { useTranslation } from '../../IntlProvider';
+import { DEFAULT_DROPDOWN_SIZE, INDEX_ABSENCE_FOCUS } from './constants';
 import {
-  DropdownItemId,
   DropdownItem,
+  DropdownItemId,
   DropdownProps,
   DropdownValue,
   KeyIndexMap,
 } from './types';
-import { useOutsideElementClick } from '../../../hooks';
-import { useTranslation } from '../../IntlProvider';
+
 import classes from './styles/index.module.css';
 
+const LIST_CONTROL_ID = Date.now().toString();
+
 export const Dropdown: FC<DropdownProps> = ({
+  id,
   name,
   value,
+  size = DEFAULT_DROPDOWN_SIZE,
   items = [],
   customItems,
   placeholder,
@@ -49,8 +55,13 @@ export const Dropdown: FC<DropdownProps> = ({
   const isActive = !isDisabled && !isReadOnly;
   const isListInitialized = isActive && hasItems;
 
-  const [isOpenInternal, setIsOpenInternal] = useState(() => isOpen || false);
-  const [isKeyboardControl, setIsKeyboardControl] = useState(false);
+  const listRef = useRef<null | HTMLUListElement>(null);
+  const dropdownButtonRef = useRef<null | HTMLDivElement>(null);
+
+  const [isOpenInternal, setIsOpenInternal] = useState<boolean>(
+    () => isOpen || false,
+  );
+  const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
 
   const { translate } = useTranslation();
 
@@ -58,8 +69,10 @@ export const Dropdown: FC<DropdownProps> = ({
     closeDropdown();
   };
 
-  const { setCurrentElement } = useOutsideElementClick({
+  useOutsideElementClick({
+    ref: listRef,
     dependency: isOpenInternal,
+    listenInteraction: true,
     handleClick: handleOutsideDropdownClick,
   });
 
@@ -89,7 +102,7 @@ export const Dropdown: FC<DropdownProps> = ({
       }, '');
     }
 
-    return getId ? dropdownItem.id : dropdownItem.value.toString();
+    return getId ? dropdownItem.id : dropdownItem.value?.toString();
   };
 
   const getInitialFocusIndex = (): number => {
@@ -120,21 +133,12 @@ export const Dropdown: FC<DropdownProps> = ({
   const [focusIndex, setFocusIndex] = useState<number>(INDEX_ABSENCE_FOCUS);
   const [focusItemId, setFocusItemId] = useState<DropdownItemId | null>(null);
 
-  const listRef = useRef<HTMLUListElement>(null);
-  const dropdownButtonRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (isListInitialized && isKeyboardControl) {
       setFocusIndex(() => getInitialFocusIndex());
       setFocusItemId(() => getInitialFocusId());
     }
   }, [isListInitialized, isKeyboardControl]);
-
-  useEffect(() => {
-    if (dropdownButtonRef.current) {
-      setCurrentElement(dropdownButtonRef.current);
-    }
-  }, [setCurrentElement]);
 
   useLayoutEffect(() => {
     if (isOpenInternal && focusIndex !== INDEX_ABSENCE_FOCUS) {
@@ -148,7 +152,7 @@ export const Dropdown: FC<DropdownProps> = ({
     setIsOpenInternal(true);
   };
 
-  const resetDropdownState = () => {
+  const resetDropdownState = (): void => {
     setIsKeyboardControl(false);
 
     if (value === undefined || value === null) {
@@ -187,17 +191,17 @@ export const Dropdown: FC<DropdownProps> = ({
   const initMultiSelection = (item: DropdownItem): void => {
     if (value) {
       if (Array.isArray(value)) {
-        return onChange([...value, item]);
+        return onChange && onChange([...value, item], true);
       } else {
-        return onChange([value, item]);
+        return onChange && onChange([value, item], true);
       }
     }
 
-    return onChange([item]);
+    return onChange && onChange([item], true);
   };
 
   const initSingleSelection = (item: DropdownItem): void => {
-    onChange(item);
+    onChange && onChange(item, true);
     closeDropdown();
   };
 
@@ -218,17 +222,17 @@ export const Dropdown: FC<DropdownProps> = ({
         (current) => getItemValue(current, true) !== idValue,
       );
 
-      return onChange(filteredValue);
+      return onChange && onChange(filteredValue, false);
     }
 
-    onChange([]);
+    onChange && onChange([], false);
   };
 
   const initSingleUnSelection = (): void => {
     if (!isRequired) {
       const emptyValue = hasMultiselect ? [] : null;
 
-      onChange(emptyValue);
+      onChange && onChange(emptyValue, false);
     }
 
     closeDropdown();
@@ -242,8 +246,11 @@ export const Dropdown: FC<DropdownProps> = ({
     }
   };
 
-  const handleListItemClick = (item: DropdownItem, selected: boolean): void => {
-    if (selected) {
+  const handleListItemClick = (
+    item: DropdownItem,
+    isSelected: boolean,
+  ): void => {
+    if (isSelected) {
       initUnSelection(item);
     } else {
       initSelection(item);
@@ -312,6 +319,7 @@ export const Dropdown: FC<DropdownProps> = ({
       return;
     }
 
+    e.stopPropagation();
     const key = e.key as EventKeys;
     const index = defineFocusIndexByKey(key);
 
@@ -366,12 +374,14 @@ export const Dropdown: FC<DropdownProps> = ({
   const dropdownClassName = clsx(classes.dropdown, {
     [classes.dropdown_noValue]: !viewValue,
     [classes.dropdown_readOnly]: isReadOnly,
-    [classes.dropdown_invalid]: !isValid,
+    [classes.dropdown_invalid]: isValid !== undefined && !isValid,
+    [classes[`dropdown_${size}`]]: size,
   });
 
   return (
     <div className={classes.dropdownWrapper}>
       <div
+        id={id || name}
         role="combobox"
         aria-disabled={isDisabled}
         aria-required={isRequired}
@@ -379,7 +389,7 @@ export const Dropdown: FC<DropdownProps> = ({
         aria-expanded={isOpenInternal}
         aria-controls={LIST_CONTROL_ID}
         aria-activedescendant={focusItemId || undefined}
-        aria-label={ariaLabel} // if other description absent
+        aria-label={ariaLabel} //  if another description is absent
         aria-labelledby={ariaLabelledBy} // which element has a label for an input
         aria-describedby={ariaDescribedBy || placeholder} // which element describe input
         aria-valuetext={viewValue || undefined}
@@ -387,7 +397,7 @@ export const Dropdown: FC<DropdownProps> = ({
         onKeyDown={handleDropdownKeyDown}
         ref={dropdownButtonRef}
         className={dropdownClassName}
-        tabIndex={isReadOnly ? -1 : 0}
+        tabIndex={isActive ? 0 : -1}
       >
         {viewValue || placeholderValue || emptyValue}
       </div>

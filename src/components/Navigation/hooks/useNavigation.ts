@@ -6,23 +6,24 @@ import {
   useRef,
   useState,
 } from 'react';
-import { INDEX_ABSENCE_FOCUS } from '../constants';
+
 import { EventKeys } from '../../../common/enums/events';
-import { KeyIndexMap, MenuItem, UseNavigationReturn } from '../types';
-import { getMenuItems } from '../utils';
 import { useTranslation } from '../../IntlProvider';
 import { useUser } from '../../UserProvider';
+import { INDEX_ABSENCE_FOCUS } from '../constants';
+import { KeyIndexMap, NavigationItem, UseNavigationReturn } from '../types';
+import { getMenuItems } from '../utils';
 
 export const useNavigation = (): UseNavigationReturn => {
   const { user, hasAllAccesses } = useUser();
   const { translate } = useTranslation();
 
-  const menuItems = useMemo<MenuItem[]>(
+  const menuItems = useMemo<NavigationItem[]>(
     () => getMenuItems(translate),
     [translate],
   );
 
-  const allowedItems = useMemo<MenuItem[]>(() => {
+  const allowedItems = useMemo<NavigationItem[]>(() => {
     if (!hasAllAccesses) {
       return menuItems.filter((item) => {
         return user?.roles.some((userRole) => {
@@ -39,7 +40,7 @@ export const useNavigation = (): UseNavigationReturn => {
   }, [hasAllAccesses, menuItems, user?.roles]);
 
   const initialIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
-  const itemsListRef = useRef<HTMLUListElement>(null);
+  const itemsListRef = useRef<null | HTMLUListElement>(null);
 
   const [focusIndex, setFocusIndex] = useState<number>(initialIndexRef.current);
   const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);

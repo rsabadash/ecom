@@ -1,20 +1,24 @@
 import { FieldValues, Path, useFormState } from 'react-hook-form';
+
 import { DEFAULT_LANGUAGE, useTranslation } from '../../IntlProvider';
-import { InputAdapter, InputWithCollapseAdapter } from '../InputAdapter';
 import { MultiLanguage } from '../../MultiLanguage';
-import { MultiLanguageInputAdapterProps } from './types';
 import { useAddLanguageToTranslation } from '../hooks';
+import { InputAdapter, InputWithCollapseAdapter } from '../InputAdapter';
+import { MultiLanguageInputAdapterProps } from './types';
 
 export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
+  size,
   name,
   placeholderTranslation,
   isReadOnly,
   isRequired,
   isDisabled,
+  onFocus,
   valueGetter,
   formatValue,
   isToggleHidden,
   isInitiallyExpand,
+  isLabelHidden,
   isDescriptionHidden,
   isRequiredAllLanguages,
   label,
@@ -39,10 +43,13 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
   });
 
   const commonProps = {
+    size,
     isReadOnly,
     isDisabled,
+    onFocus,
     valueGetter,
     formatValue,
+    isLabelHidden,
     isDescriptionHidden,
     control,
   };
@@ -64,9 +71,16 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
             translation: placeholderTranslation,
             language,
           })}
-          formatError={({ message }) =>
-            addLanguageToTranslation({ translation: message, language })
-          }
+          formatError={({ message }) => {
+            if (typeof message === 'string') {
+              return addLanguageToTranslation({
+                translation: message,
+                language,
+              });
+            }
+
+            return 'Message type is not supported';
+          }}
           label={`${label} (${translate(`${language}.adjective`)})`}
           columnIndex={columnIndex}
           isToggleHidden={isToggleHidden}
@@ -82,9 +96,16 @@ export const MultiLanguageInputAdapter = <FormValues extends FieldValues>({
             translation: placeholderTranslation,
             language,
           })}
-          formatError={({ message }) =>
-            addLanguageToTranslation({ translation: message, language })
-          }
+          formatError={({ message }) => {
+            if (typeof message === 'string') {
+              return addLanguageToTranslation({
+                translation: message,
+                language,
+              });
+            }
+
+            return 'Message type is not supported';
+          }}
           label={`${label} (${translate(`${language}.adjective`)})`}
           columnIndex={0}
         />

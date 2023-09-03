@@ -1,13 +1,15 @@
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import { UNITS_LIST } from '../../../../common/constants/units';
+import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
   YupSchemaKey,
-} from '../../../../hooks/useCustomForm';
-import { useCustomForm } from '../../../../hooks';
-import { WarehouseProductsGeneratorFormValues } from '../types';
+} from '../../../../common/hooks/useCustomForm';
 import { mainTranslationRequired } from '../../../../validations/translations';
+import { WarehouseProductsGeneratorFormValues } from '../types';
 
 type UseWarehouseProductsGeneratorFromProps = Pick<
   UseCustomFormProps<WarehouseProductsGeneratorFormValues>,
@@ -32,6 +34,11 @@ const schema = yup
         }),
       )
       .required(),
+    unit: yup
+      .string()
+      .nullable()
+      .oneOf(UNITS_LIST, 'error.dropdown.unsupportedValue')
+      .required('warehouseProduct.unit.error.required'),
   });
 
 export const useWarehouseProductsGeneratorForm = ({

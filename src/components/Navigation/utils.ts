@@ -1,9 +1,9 @@
-import { MenuItems } from './types';
 import { routes } from '../../common/constants/routes';
 import { TranslateFn } from '../IntlProvider';
+import { NavigationItems } from './types';
 // import { Role } from '../UserProvider/enums';
 
-export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
+export const getMenuItems = (translateFn: TranslateFn): NavigationItems => {
   return [
     {
       title: translateFn('menu.dashboard'),
@@ -21,6 +21,10 @@ export const getMenuItems = (translateFn: TranslateFn): MenuItems => {
     {
       title: translateFn('menu.suppliers'),
       path: routes.suppliers.root,
+    },
+    {
+      title: translateFn('menu.supplies'),
+      path: routes.supplies.root,
     },
     {
       title: translateFn('menu.warehouseProducts'),

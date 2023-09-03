@@ -1,5 +1,7 @@
-import { Control, FieldError, FieldValues, Path } from 'react-hook-form';
+import { Control, FieldValues, Path } from 'react-hook-form';
+
 import { CheckboxFormFieldProps } from '../../FormFields';
+import { FormatError } from '../hooks';
 
 type AdapterProps<FormValues extends FieldValues> = {
   name: Path<FormValues>;
@@ -12,5 +14,5 @@ export type CheckboxAdapterProps<FormValues extends FieldValues> = Omit<
 > &
   AdapterProps<FormValues> & {
     onChange?: CheckboxFormFieldProps['onChange'];
-    formatError?: (error: FieldError) => undefined | string;
+    formatError?: FormatError;
   };

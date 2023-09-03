@@ -1,24 +1,25 @@
 import { lazy, Suspense } from 'react';
+
 import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
 const Attributes = lazy(
-  () => import('../../../modules/attributes/attributes/Attributes'),
+  () => import('../../../modules/attributes/attributes/list/Attributes'),
 );
 const AttributeAdd = lazy(
-  () => import('../../../modules/attributes/attributes/AttributeAdd'),
+  () => import('../../../modules/attributes/attributes/add/AttributeAdd'),
 );
 const AttributeDetail = lazy(
-  () => import('../../../modules/attributes/attributes/AttributeDetail'),
+  () => import('../../../modules/attributes/attributes/detail/AttributeDetail'),
 );
 const Variants = lazy(
-  () => import('../../../modules/attributes/variants/Variants'),
+  () => import('../../../modules/attributes/variants/list/Variants'),
 );
 const VariantAdd = lazy(
-  () => import('../../../modules/attributes/variants/VariantAdd'),
+  () => import('../../../modules/attributes/variants/add/VariantAdd'),
 );
 const VariantDetail = lazy(
-  () => import('../../../modules/attributes/variants/VariantDetail'),
+  () => import('../../../modules/attributes/variants/detail/VariantDetail'),
 );
 
 export const attributesRoutes = [

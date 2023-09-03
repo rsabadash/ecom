@@ -1,18 +1,20 @@
-import { forwardRef, KeyboardEvent, PropsWithChildren } from 'react';
+import { forwardRef, KeyboardEvent } from 'react';
 import clsx from 'clsx';
-import { WarehouseProductsListItemRowProps } from './types';
+
+import { EventKeys } from '../../../common/enums/events';
 import {
   CollapseBuilderBody,
   useCollapseController,
 } from '../../../components/Collapse';
-import { EventKeys } from '../../../common/enums/events';
 import { CollapseBuilderHeader } from '../../../components/Collapse/CollapseBuilderHeader';
+import { WarehouseProductsListItemRowProps } from './types';
 import { WarehouseProductsListAttributes } from './WarehouseProductsListAttributes';
+
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsListItemRow = forwardRef<
   HTMLDivElement,
-  PropsWithChildren<WarehouseProductsListItemRowProps>
+  WarehouseProductsListItemRowProps
 >(({ children, item, rowProps }, ref) => {
   const { isExpand, toggleCollapse } = useCollapseController();
 

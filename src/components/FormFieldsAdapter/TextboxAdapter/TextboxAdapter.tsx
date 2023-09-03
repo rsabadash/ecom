@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { useTranslation } from '../../IntlProvider';
-import { TextboxFormField } from '../../FormFields';
-import { TextboxAdapterProps } from './types';
+
 import { TextboxValue } from '../../Fields/Textbox';
+import { TextboxFormField } from '../../FormFields';
+import { useFieldErrorMessage } from '../hooks';
+import { TextboxAdapterProps } from './types';
 
 export const TextboxAdapter = <FormValues extends FieldValues>({
   name,
@@ -13,6 +14,7 @@ export const TextboxAdapter = <FormValues extends FieldValues>({
   valueGetter,
   formatValue,
   formatError,
+  isLabelHidden,
   isDescriptionHidden,
   label,
   control,
@@ -29,13 +31,12 @@ export const TextboxAdapter = <FormValues extends FieldValues>({
     defaultValue: null,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
 
   const fieldValue = value as TextboxValue;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
 
   return (
     <TextboxFormField
@@ -51,6 +52,7 @@ export const TextboxAdapter = <FormValues extends FieldValues>({
       valueGetter={valueGetter}
       formatValue={formatValue}
       errorMessage={fieldErrorMessage}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
       columnIndex={columnIndex}

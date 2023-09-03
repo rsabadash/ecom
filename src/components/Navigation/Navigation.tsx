@@ -1,14 +1,19 @@
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { NavData } from './types';
-import { INDEX_ABSENCE_FOCUS } from './constants';
-import { useNavigation } from './hooks';
+
+import { useAuth } from '../AuthProvider';
 import { Button } from '../Button';
 import { useTranslation } from '../IntlProvider';
-import { useAuth } from '../AuthProvider';
+import { DEFAULT_NAVIGATION_SIZE, INDEX_ABSENCE_FOCUS } from './constants';
+import { useNavigation } from './hooks';
+import { NavData, NavigationProps } from './types';
+
 import classes from './styles/index.module.css';
 
-export const Navigation = () => {
+export const Navigation: FC<NavigationProps> = ({
+  size = DEFAULT_NAVIGATION_SIZE,
+}) => {
   const { translate } = useTranslation();
   const { signOut } = useAuth();
 
@@ -22,7 +27,7 @@ export const Navigation = () => {
   } = useNavigation();
 
   return (
-    <nav aria-label="Main">
+    <nav aria-label="Main" className={classes[`navigation_${size}`]}>
       <ul
         role="menubar"
         ref={itemsListRef}

@@ -54,12 +54,12 @@
 
   --scrollbar-width: 4px;
 
-  --input-box-shadow-focus: var(--primary-700) 0 0 0 0.2em;
   --input-box-shadow-error-focus: var(--danger-900) 0 0 0 0.2em;
   --checkboxSize: 1.65em;
 
   --transition: 0.15s ease-in-out 0s;
 
+  --radius-tiny: 0.2em;
   --radius-small: 0.4em;
   --radius-regular: 0.6em;
   --radius-large: 0.8em;
@@ -67,21 +67,27 @@
   --font-family-body: 'Inter', serif;
   --font-family-head: 'Montserrat Medium', serif;
 
-  --font-size-tiny: 0.65rem;
-  --font-size-small: 0.75rem;
-  --font-size-regular: 0.85rem;
-  --font-size-large: 1rem;
+  --font-size-xs: 0.65rem;
+  --font-size-s: 0.75rem;
+  --font-size-m: 0.85rem;
+  --font-size-l: 1rem;
   --font-size-xl: 1.15rem;
 
-  --font-size-head-1: 1.75rem;
-  --font-size-head-2: 1.65rem;
-  --font-size-head-3: 1.55rem;
-  --font-size-head-4: 1.45rem;
-  --font-size-head-5: 1.35rem;
-  --font-size-head-6: 1.25rem;
+  --font-size-head-1: 1.55em;
+  --font-size-head-2: 1.35em;
+  --font-size-head-3: 1.15em;
+  --font-size-head-4: 0.95em;
+  --font-size-head-5: 0.75em;
+  --font-size-head-6: 0.55em;
 
   --text-error: var(--danger-800);
   --border-error: var(--danger-900);
+
+  --gap-l: 1em;
+  --gap: 0.85em;
+  --gap-double: calc(var(--gap) * 2);
+  --gap-half: calc(var(--gap) / 2);
+  --gap-quater: calc(var(--gap) / 4);
 }
 
 [data-theme='dark'],
@@ -91,6 +97,7 @@
 
   --text-color: var(--foreground-900);
   --text-color-secondary: var(--foreground-800);
+  --text-color-dimmed: var(--foreground-700);
   --text-color-disabled: var(--foreground-600);
 
   --border-color: var(--foreground-400);
@@ -100,5 +107,5 @@
   --hover-color: var(--foreground-200);
 
   --input-background: var(--foreground-100);
-  --button-regular-background: var(--foreground-900);
+  --button-regular-background: var(--foreground-800);
 }

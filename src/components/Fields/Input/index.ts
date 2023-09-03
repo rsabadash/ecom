@@ -1,3 +1,3 @@
+export { INPUT_TYPE } from './constants';
 export { Input } from './Input';
-export type { InputProps, InputValue } from './types';
-export { inputType } from './constants';
+export type { InputFormValue, InputProps, InputValue } from './types';

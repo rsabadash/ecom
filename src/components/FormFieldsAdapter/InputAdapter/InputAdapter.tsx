@@ -1,30 +1,42 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { useTranslation } from '../../IntlProvider';
+
+import { InputFormValue, InputValue } from '../../Fields/Input';
 import { InputFormField } from '../../FormFields';
+import { useFieldErrorMessage } from '../hooks';
 import { InputAdapterProps } from './types';
-import { InputValue } from '../../Fields/Input';
 
 export const InputAdapter = <FormValues extends FieldValues>({
   name,
   type,
+  size,
   placeholder,
   isReadOnly,
   isRequired,
   isDisabled,
+  onBlur,
+  onFocus,
+  onChange,
   onIconClick,
   valueGetter,
   formatValue,
+  formatError,
   Icon,
+  iconId,
   iconAriaLabel,
   inputClassName,
-  formatError,
+  isLabelHidden,
   isDescriptionHidden,
   label,
   control,
   columnIndex,
 }: InputAdapterProps<FormValues>) => {
   const {
-    field: { onChange, onBlur, name: fieldName, value },
+    field: {
+      onChange: onChangeField,
+      onBlur: onBlurField,
+      name: fieldName,
+      value,
+    },
     fieldState: { error },
   } = useController<FormValues>({
     name,
@@ -34,33 +46,46 @@ export const InputAdapter = <FormValues extends FieldValues>({
     defaultValue: null,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
 
   const fieldValue = value as InputValue;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
+
+  const handleOnChange = (value: InputFormValue): void => {
+    onChange && onChange(value);
+    onChangeField(value);
+  };
+
+  const handleOnBlur = (value: InputFormValue): void => {
+    onBlur && onBlur(value);
+    onBlurField();
+  };
 
   return (
     <InputFormField
       name={fieldName}
       type={type}
+      size={size}
       value={fieldValue}
       placeholder={placeholder}
       isValid={!fieldErrorMessage}
       isReadOnly={isReadOnly}
       isRequired={isRequired}
       isDisabled={isDisabled}
-      onBlur={onBlur}
-      onChange={onChange}
+      onBlur={handleOnBlur}
+      onFocus={onFocus}
+      onChange={handleOnChange}
       onIconClick={onIconClick}
       valueGetter={valueGetter}
       formatValue={formatValue}
       Icon={Icon}
+      iconId={iconId}
       iconAriaLabel={iconAriaLabel}
       inputClassName={inputClassName}
       errorMessage={fieldErrorMessage}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
       columnIndex={columnIndex}

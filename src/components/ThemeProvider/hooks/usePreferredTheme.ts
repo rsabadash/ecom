@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { THEME_STORAGE_KEY } from '../constants';
 import { Theme, ThemeStorage } from '../types';
 import { getSystemColorSchema } from '../utils';

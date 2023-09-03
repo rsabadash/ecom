@@ -1,17 +1,19 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import clsx from 'clsx';
+
+import { DEFAULT_FONT_SIZE, DEFAULT_LEVEL, LEVEL_TAG_MAP } from './constatns';
 import { HeadingProps } from './types';
-import { DEFAULT_FONT_SIZE, DEFAULT_LEVEL, levelTagMap } from './constatns';
+
 import classes from './styles/index.module.css';
 
-export const Heading: FC<PropsWithChildren<HeadingProps>> = ({
+export const Heading: FC<HeadingProps> = ({
   id,
   level = DEFAULT_LEVEL,
   fontSize = DEFAULT_FONT_SIZE,
   classNameHeading,
   children,
 }) => {
-  const HeadingTag = levelTagMap[level];
+  const HeadingTag = LEVEL_TAG_MAP[level];
 
   return (
     <HeadingTag

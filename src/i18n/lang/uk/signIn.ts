@@ -10,7 +10,8 @@ export const signIn = {
   'signIn.password.required': "Пароль є обов'язковим",
   'signIn.password.show': 'Показати пароль',
   'signIn.password.hide': 'Приховати пароль',
-  'signIn.isPersistUser': "Запам'ятати мене",
-  'signIn.isPersistUser.description':
+  'signIn.password.state.shown': 'Пароль показано',
+  'signIn.password.state.hidden': 'Пароль приховано',
+  'signIn.isPersistUser':
     'Не виходити з облікового запису після закриття браузера',
 };

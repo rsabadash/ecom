@@ -6,6 +6,7 @@ import {
 export const warehouseProductsGeneratorFormFields: WarehouseProductsGeneratorFormFields =
   {
     name: 'name',
+    unit: 'unit',
     attributes: 'attributes',
     attributesVirtual: 'attributesVirtual',
   };

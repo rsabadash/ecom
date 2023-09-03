@@ -1,25 +1,28 @@
 import { useEffect, useState } from 'react';
-import { SectionForeground } from '../../layouts/Section';
-import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
+
+import { ReactComponent as EyeIcon } from '../../assets/icons/Eye.svg';
+import { HiddenPoliteNotification } from '../../components/Accessibility';
+import { useAuth } from '../../components/AuthProvider';
+import { Button } from '../../components/Button';
+import { INPUT_TYPE } from '../../components/Fields/Input';
 import { Form } from '../../components/FormFields';
 import {
   CheckboxAdapter,
   InputAdapter,
 } from '../../components/FormFieldsAdapter';
 import { useTranslation } from '../../components/IntlProvider';
-import { useSignInForm, useSignInFormSubmit } from './hooks';
-import { signInFormFields } from './constants';
-import { Button } from '../../components/Button';
+import { GridAutoFit, GridFullWidth } from '../../layouts/Grid';
+import { SectionForeground } from '../../layouts/Section';
 import { Top, TopHeading } from '../../layouts/Top';
-import { useAuth } from '../../components/AuthProvider';
-import { ReactComponent as EyeIcon } from '../../assets/icons/Eye.svg';
-import { inputType } from '../../components/Fields/Input';
+import { PASSWORD_ICON_ID, signInFormFields } from './constants';
+import { useSignInForm, useSignInFormSubmit } from './hooks';
+
 import classes from './styles/index.module.css';
 
 const SignIn = () => {
   const [type, setType] = useState<
-    typeof inputType.password | typeof inputType.text
-  >(inputType.password);
+    typeof INPUT_TYPE.PASSWORD | typeof INPUT_TYPE.TEXT
+  >(INPUT_TYPE.PASSWORD);
 
   const { signOut } = useAuth();
   const { translate } = useTranslation();
@@ -35,13 +38,13 @@ const SignIn = () => {
 
   const handleIconClick = () => {
     setType((prevState) => {
-      return prevState === inputType.password
-        ? inputType.text
-        : inputType.password;
+      return prevState === INPUT_TYPE.PASSWORD
+        ? INPUT_TYPE.TEXT
+        : INPUT_TYPE.PASSWORD;
     });
   };
 
-  const isPasswordType = type === inputType.password;
+  const isPasswordType = type === INPUT_TYPE.PASSWORD;
 
   const iconLabel = isPasswordType
     ? translate('signIn.password.show')
@@ -78,6 +81,7 @@ const SignIn = () => {
                 placeholder={translate('signIn.password.description')}
                 Icon={EyeIcon}
                 onIconClick={handleIconClick}
+                iconId={PASSWORD_ICON_ID}
                 iconAriaLabel={iconLabel}
                 inputClassName={inputPasswordClassName}
                 control={control}
@@ -87,17 +91,21 @@ const SignIn = () => {
               <CheckboxAdapter
                 name={signInFormFields.isPersistUser}
                 label={translate('signIn.isPersistUser')}
-                placeholder={translate('signIn.isPersistUser.description')}
                 control={control}
               />
             </GridFullWidth>
             <GridFullWidth>
-              <Button variant="primary" type="submit" size="l">
+              <Button variant="primary" type="submit">
                 {translate('signIn')}
               </Button>
             </GridFullWidth>
           </GridAutoFit>
         </Form>
+        <HiddenPoliteNotification id={PASSWORD_ICON_ID}>
+          {type === INPUT_TYPE.PASSWORD
+            ? translate('signIn.password.state.hidden')
+            : translate('signIn.password.state.shown')}
+        </HiddenPoliteNotification>
       </SectionForeground>
     </>
   );

@@ -1,31 +1,40 @@
 import { FC } from 'react';
+
+import { endpoints } from '../../../common/constants/api';
+import { useCachedPaginationAPI } from '../../../common/hooks';
+import { Button, ButtonsGroup } from '../../../components/Button';
 import {
   Form,
   FormContent,
   FormDescription,
 } from '../../../components/FormFields';
+import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter';
+import { GridRowBalancer } from '../../../components/GridRowBalancer';
+import { useTranslation } from '../../../components/IntlProvider';
+import { usePaginationLimit } from '../../../components/Pagination/hooks';
+import { Attribute } from '../../attributes/attributes/add/types';
+import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
 import {
   useWarehouseProductsGeneratorForm,
   useWarehouseProductsGeneratorFormSubmit,
 } from './hooks';
-import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter';
-import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
-import { useCachedAPI } from '../../../hooks';
-import { endpoints } from '../../../common/constants/api';
 import { WarehouseProductsGeneratorFormProps } from './types';
 import { WarehouseProductsGeneratorAttributeFormSection } from './WarehouseProductsGeneratorAttributeFormSection';
-import { Button, ButtonsGroup } from '../../../components/Button';
-import { useTranslation } from '../../../components/IntlProvider';
-import { Attribute } from '../../attributes/attributes/types';
+import { WarehouseProductUnitField } from './WarehouseProductUnitField';
+
+import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorForm: FC<
   WarehouseProductsGeneratorFormProps
 > = ({ onSuccessSubmit }) => {
   const { translate } = useTranslation();
 
-  const { data: attributes } = useCachedAPI<Attribute[]>(
-    endpoints.attributes.root,
-  );
+  const { limitValue } = usePaginationLimit();
+
+  const { list } = useCachedPaginationAPI<Attribute>({
+    url: endpoints.attributes.root,
+    limit: limitValue,
+  });
 
   const { handleFormSubmit } = useWarehouseProductsGeneratorFormSubmit({
     onSuccess: onSuccessSubmit,
@@ -40,13 +49,20 @@ export const WarehouseProductsGeneratorForm: FC<
   return (
     <Form onSubmit={handleSubmit}>
       <FormContent>
-        <MultiLanguageInputAdapter
-          isRequired
-          name={warehouseProductsGeneratorFormFields.name}
-          placeholderTranslation="warehouseProduct.name.description"
-          label={translate('warehouseProduct.name')}
-          control={control}
-        />
+        <GridRowBalancer columns={2} elementRows={4}>
+          <MultiLanguageInputAdapter
+            isRequired
+            name={warehouseProductsGeneratorFormFields.name}
+            placeholderTranslation="warehouseProduct.name.description"
+            label={translate('warehouseProduct.name')}
+            control={control}
+            columnIndex={1}
+          />
+          <WarehouseProductUnitField
+            name={warehouseProductsGeneratorFormFields.unit}
+            control={control}
+          />
+        </GridRowBalancer>
       </FormContent>
       <FormContent>
         <FormDescription>
@@ -54,17 +70,19 @@ export const WarehouseProductsGeneratorForm: FC<
         </FormDescription>
       </FormContent>
       <FormContent>
-        {attributes?.map((attribute) => {
-          return (
-            <WarehouseProductsGeneratorAttributeFormSection
-              key={attribute._id}
-              control={control}
-              setValue={setValue}
-              getValues={getValues}
-              attribute={attribute}
-            />
-          );
-        })}
+        <div className={classes.generator__attributes}>
+          {list?.map((attribute) => {
+            return (
+              <WarehouseProductsGeneratorAttributeFormSection
+                key={attribute._id}
+                control={control}
+                setValue={setValue}
+                getValues={getValues}
+                attribute={attribute}
+              />
+            );
+          })}
+        </div>
       </FormContent>
       <FormContent>
         <ButtonsGroup>

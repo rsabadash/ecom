@@ -1,10 +1,12 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import clsx from 'clsx';
-import { TagProps } from './types';
+
 import { DEFAULT_TAG_VARIANT } from './constants';
+import { TagProps } from './types';
+
 import classes from './styles/index.module.css';
 
-export const Tag: FC<PropsWithChildren<TagProps>> = ({
+export const Tag: FC<TagProps> = ({
   variant = DEFAULT_TAG_VARIANT,
   children,
 }) => {

@@ -12,4 +12,6 @@ export const warehouses = {
   'warehouse.type.error.required': 'Warehouse type is required',
   'warehouse.address': 'Warehouse address',
   'warehouse.address.description': 'Enter warehouse address',
+  'warehouse.emptyList': "Warehouses don't exist",
+  'warehouse.emptyList.callToAction': 'Add warehouse',
 };

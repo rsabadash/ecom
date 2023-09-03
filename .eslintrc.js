@@ -16,6 +16,7 @@ module.exports = {
   plugins: [
    '@typescript-eslint/eslint-plugin',
     'react',
+    'simple-import-sort',
     // 'jsx-a11y'
   ],
   extends: [
@@ -40,6 +41,28 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
     'react/prop-types': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'simple-import-sort/imports': [
+      'error',
+      {
+        'groups': [
+          // Packages `react` related packages come first.
+          ['^react', '^@?\\w'],
+          // // Internal packages.
+          // ["^(@|components)(/.*|$)"],
+          // // Side effect imports.
+          // ["^\\u0000"],
+          // // Parent imports. Put `..` last.
+          // ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          // // Other relative imports. Put same-folder imports and `.` last.
+          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+          // // Style imports.
+          ['^.+\\.?(css)$']
+        ]
+      }
+    ],
+    'simple-import-sort/exports': 'error',
   },
 };

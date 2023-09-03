@@ -1,8 +1,10 @@
-import { Control, FieldError, FieldValues, Path } from 'react-hook-form';
+import { Control, FieldValues, Path } from 'react-hook-form';
+
 import {
   TextboxFormFieldProps,
   TextboxWithCollapseFormFieldProps,
 } from '../../FormFields';
+import { FormatError } from '../hooks';
 
 type AdapterProps<FormValues extends FieldValues> = {
   name: Path<FormValues>;
@@ -11,17 +13,29 @@ type AdapterProps<FormValues extends FieldValues> = {
 
 export type TextboxAdapterProps<FormValues extends FieldValues> = Omit<
   TextboxFormFieldProps,
-  'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
+  | 'onChange'
+  | 'onBlur'
+  | 'value'
+  | 'name'
+  | 'isValid'
+  | 'errorMessage'
+  | 'ariaLabel'
 > &
   AdapterProps<FormValues> & {
-    formatError?: (error: FieldError) => undefined | string;
+    formatError?: FormatError;
   };
 
 export type TextboxWithCollapseAdapterProps<FormValues extends FieldValues> =
   Omit<
     TextboxWithCollapseFormFieldProps,
-    'onChange' | 'onBlur' | 'value' | 'name' | 'isValid' | 'errorMessage'
+    | 'onChange'
+    | 'onBlur'
+    | 'value'
+    | 'name'
+    | 'isValid'
+    | 'errorMessage'
+    | 'ariaLabel'
   > &
     AdapterProps<FormValues> & {
-      formatError?: (error: FieldError) => undefined | string;
+      formatError?: FormatError;
     };

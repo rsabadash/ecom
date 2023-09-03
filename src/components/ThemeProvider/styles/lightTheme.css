@@ -48,5 +48,6 @@
 
   --button-variant-text: var(--background-900);
 
+  --box-shadow-focus: var(--foreground-900) 0 0 0 0.2em;
   --input-background-absolute-hack: #f8f8f9; /*to avoid color transparency on absolutely positioned elements */
 }

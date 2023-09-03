@@ -1,27 +1,34 @@
 import {
   FC,
-  PropsWithChildren,
-  createContext,
-  useState,
-  useMemo,
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
+  useState,
 } from 'react';
+
+import { createProvider } from '../../common/utils';
+import {
+  CONTEXT_NAME,
+  ROOT_ID,
+  THEME_STORAGE_KEY,
+  themeContextValuesDefault,
+  THEMES,
+} from './constants';
 import { usePreferredTheme } from './hooks';
 import { Theme, ThemeContextValue, ThemeProviderProps } from './types';
-import { ROOT_ID, THEMES, THEME_STORAGE_KEY } from './constants';
 
 import './styles/common.css';
 import './styles/darkTheme.css';
 import './styles/lightTheme.css';
 import './styles/index.css';
 
-export const ThemeContext = createContext<ThemeContextValue>({
-  switchTheme: () => null,
+const [Provider, useTheme] = createProvider<ThemeContextValue>({
+  contextName: CONTEXT_NAME,
+  contextDefaultValue: themeContextValuesDefault,
 });
 
-export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
+const ThemeProvider: FC<ThemeProviderProps> = ({
   children,
   themeStorage,
   useUserAgentTheming,
@@ -29,11 +36,11 @@ export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
   const defaultTheme = usePreferredTheme(themeStorage);
   const [theme, setTheme] = useState<Theme>(() => defaultTheme);
 
-  useLayoutEffect((): void => {
+  useLayoutEffect(() => {
     document.body.dataset.theme = theme;
   }, [theme]);
 
-  useEffect((): void => {
+  useEffect(() => {
     const savedTheme = themeStorage.getTheme<Theme>(THEME_STORAGE_KEY);
 
     if (!savedTheme) {
@@ -57,13 +64,15 @@ export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({
   }, [switchTheme]);
 
   return (
-    <ThemeContext.Provider value={providerValue}>
+    <Provider value={providerValue}>
       <div
         id={ROOT_ID}
         style={useUserAgentTheming ? { colorScheme: theme } : undefined}
       >
         {children}
       </div>
-    </ThemeContext.Provider>
+    </Provider>
   );
 };
+
+export { ThemeProvider, useTheme };

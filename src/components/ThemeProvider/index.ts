@@ -1,2 +1,1 @@
-export { ThemeProvider } from './ThemeProvider';
-export { useTheme } from './hooks';
+export { ThemeProvider, useTheme } from './ThemeProvider';

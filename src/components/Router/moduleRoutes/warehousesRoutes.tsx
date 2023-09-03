@@ -1,13 +1,16 @@
-import { routes } from '../../../common/constants/routes';
 import { lazy, Suspense } from 'react';
+
+import { routes } from '../../../common/constants/routes';
 import { ErrorBoundary } from '../../ErrorBoundary';
 
-const Warehouses = lazy(() => import('../../../modules/warehouses/Warehouses'));
+const Warehouses = lazy(
+  () => import('../../../modules/warehouses/list/Warehouses'),
+);
 const WarehouseAdd = lazy(
-  () => import('../../../modules/warehouses/WarehouseAdd'),
+  () => import('../../../modules/warehouses/add/WarehouseAdd'),
 );
 const WarehouseDetail = lazy(
-  () => import('../../../modules/warehouses/WarehouseDetail'),
+  () => import('../../../modules/warehouses/detail/WarehouseDetail'),
 );
 
 export const warehousesRoutes = [

@@ -1,21 +1,32 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import { routes } from '../../common/constants/routes';
-import { PrivateRoutes } from './PrivateRoutes';
-import { PublicRoutes } from './PublicRoutes';
 import { Root } from '../../layouts/Root';
-import { SignedInRedirect } from './SignedInRedirect';
 import {
   attributesRoutes,
   categoriesRoutes,
   dashboardRoutes,
   suppliersRoutes,
+  suppliesRoutes,
   warehouseProductsRoutes,
   warehousesRoutes,
 } from './moduleRoutes';
+import { PrivateRoutes } from './PrivateRoutes';
+import { PublicRoutes } from './PublicRoutes';
+import { SignedInRedirect } from './SignedInRedirect';
 
 const SignIn = lazy(() => import('../../pages/signIn/SignIn'));
-const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
+
+const PrivateError = (props: unknown) => {
+  console.log('PrivateError', props);
+  return <div>PrivateError</div>;
+};
+
+const PrivateErrorChildren = (props: unknown) => {
+  console.log('PrivateErrorChildren', props);
+  return <div>PrivateErrorChildren</div>;
+};
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +38,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        errorElement: <NotFound />,
+        errorElement: <PrivateError />,
         element: (
           <Suspense fallback="Route Private">
             <PrivateRoutes />
@@ -42,8 +53,13 @@ export const router = createBrowserRouter([
           ...categoriesRoutes,
           ...dashboardRoutes,
           ...suppliersRoutes,
+          ...suppliesRoutes,
           ...warehouseProductsRoutes,
           ...warehousesRoutes,
+          {
+            path: '*',
+            element: <PrivateErrorChildren />,
+          },
         ],
       },
       {

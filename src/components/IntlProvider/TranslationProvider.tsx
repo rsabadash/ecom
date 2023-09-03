@@ -1,19 +1,26 @@
-import { FC, PropsWithChildren, useCallback, useMemo } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
+
+import { createProvider } from '../../common/utils';
+import {
+  CONTEXT_NAME,
+  DEFAULT_LANGUAGE,
+  translationContextValuesDefault,
+} from './constants';
 import {
   Language,
-  TranslationProviderProps,
+  TranslatePlaceholders,
   TranslationContextValue,
+  TranslationProviderProps,
+  Translations,
 } from './types';
-import { translationContextValuesDefault } from './constants';
-import { createProvider } from '../../utils';
 
 const [Provider, useTranslation] = createProvider<TranslationContextValue>({
-  contextName: 'TranslationContext',
+  contextName: CONTEXT_NAME,
   contextDefaultValue: translationContextValuesDefault,
 });
 
-const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = ({
+const TranslationProvider: FC<TranslationProviderProps> = ({
   language,
   setLanguage,
   children,
@@ -28,10 +35,19 @@ const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = ({
   );
 
   const translate = useCallback(
-    (value: string, placeholders?: Record<string, string>): string => {
+    (value: string, placeholders?: TranslatePlaceholders): string => {
       return formatMessage({ id: value }, placeholders);
     },
     [formatMessage],
+  );
+
+  const getTranslationWithFallback = useCallback(
+    (translations: Translations | undefined): string => {
+      return translations
+        ? translations[language] || translations[DEFAULT_LANGUAGE]
+        : '';
+    },
+    [language],
   );
 
   const contextValue = useMemo<TranslationContextValue>(
@@ -39,8 +55,9 @@ const TranslationProvider: FC<PropsWithChildren<TranslationProviderProps>> = ({
       language,
       translate,
       changeLanguage,
+      getTranslationWithFallback,
     }),
-    [language, translate, changeLanguage],
+    [language, translate, changeLanguage, getTranslationWithFallback],
   );
 
   return <Provider value={contextValue}>{children}</Provider>;

@@ -7,33 +7,40 @@ import {
   useState,
 } from 'react';
 import clsx from 'clsx';
+
+import { EventKeys } from '../../common/enums/events';
 import { SectionForeground } from '../../layouts/Section';
-import { TableBodyRowProps, TableProps } from './types';
+import { KeyIndexMap } from '../Navigation/types';
 import {
+  DEFAULT_TABLE_SIZE,
   INDEX_ABSENCE_FOCUS,
   INITIAL_FOCUS_INDEX,
-  tableRoles,
-  tableRowRoles,
+  TABLE_ROLES,
+  TABLE_ROW_ROLES,
 } from './constants';
-import { EventKeys } from '../../common/enums/events';
-import { KeyIndexMap } from '../Navigation/types';
+import { TableCell } from './TableCell';
+import { TableBodyRowProps, TableProps } from './types';
+
 import classes from './styles/index.module.css';
 
 // TODO ARIA for sorting https://www.w3.org/WAI/ARIA/apg/practices/grid-and-table-properties/
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role
 
 export const Table: FC<TableProps> = ({
+  size = DEFAULT_TABLE_SIZE,
   items,
   columns,
-  tableRole = tableRoles.grid,
+  tableRole = TABLE_ROLES.GRID,
   tableLabeledBy,
   tableBodyClassName,
+  tableRowClassName,
   rowCustomRender,
+  bottomPanelNode,
   tableRowRenderKey = '_id',
 }) => {
-  const tableBodyRef = useRef<HTMLDivElement>(null);
+  const tableBodyRef = useRef<null | HTMLDivElement>(null);
   const [focusIndex, setFocusIndex] = useState<number>(INITIAL_FOCUS_INDEX);
-  const [isKeyboardControl, setIsKeyboardControl] = useState(false);
+  const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
 
   const getRowElementByIndex = useCallback(
     (index: number): HTMLElement | undefined => {
@@ -44,7 +51,7 @@ export const Table: FC<TableProps> = ({
     [],
   );
 
-  const blurNavItem = (index: number) => {
+  const blurNavItem = (index: number): void => {
     const rowElement = getRowElementByIndex(index);
 
     if (rowElement) {
@@ -111,14 +118,16 @@ export const Table: FC<TableProps> = ({
     }
   };
 
+  const tableClassNames = clsx({ [classes[`table_${size}`]]: size });
   const tableBodyClassNames = clsx(classes.table__body, tableBodyClassName);
+  const tableRowClassNames = clsx(classes.table__row, tableRowClassName);
 
   return (
     <SectionForeground foregroundClassName={classes.tableForeground}>
       {/* aria-rowcount is total number of items, not only visible */}
       <div
         role={tableRole}
-        className={classes.table}
+        className={tableClassNames}
         aria-rowcount={items.length}
         aria-labelledby={tableLabeledBy}
       >
@@ -134,7 +143,7 @@ export const Table: FC<TableProps> = ({
               return (
                 <div
                   key={column.key}
-                  style={{ minWidth: column.width }}
+                  style={{ width: column.width }}
                   className={classes.table__headerItem}
                   role="columnheader"
                 >
@@ -152,6 +161,7 @@ export const Table: FC<TableProps> = ({
           ref={tableBodyRef}
         >
           {items.map((item, index) => {
+            const rowKey = item[tableRowRenderKey];
             const tabIndex =
               focusIndex === index || focusIndex === INDEX_ABSENCE_FOCUS
                 ? 0
@@ -159,8 +169,8 @@ export const Table: FC<TableProps> = ({
 
             const rowProps: TableBodyRowProps = {
               tabIndex,
-              className: classes.table__row,
-              role: tableRowRoles[tableRole],
+              className: tableRowClassNames,
+              role: TABLE_ROW_ROLES[tableRole],
               // aria-rowindex to do exactly index from whole list length, not by current index
               'aria-rowindex': index + 2, // start not from zero and the header is the 1st, so 0 + 1 + 1
             };
@@ -170,28 +180,32 @@ export const Table: FC<TableProps> = ({
                 if (isHidden) return;
 
                 const rowValue = valueGetter
-                  ? valueGetter(item[key], item)
+                  ? valueGetter({ item, index })
                   : item[key];
 
                 return (
-                  <div
-                    key={`${item[tableRowRenderKey]}${title}`}
-                    style={{ minWidth: width, justifyContent: align }}
-                    className={classes.table__cell}
-                    role="gridcell"
+                  <TableCell
+                    key={`${rowKey}${title}`}
+                    width={width}
+                    align={align}
                   >
                     {rowValue}
-                  </div>
+                  </TableCell>
                 );
               },
             );
 
             return rowCustomRender ? (
-              rowCustomRender({ row, item, rowProps })
+              rowCustomRender({ row, item, rowProps, rowIndex: index })
             ) : (
-              <div {...rowProps}>{row}</div>
+              <div key={rowKey} {...rowProps}>
+                {row}
+              </div>
             );
           })}
+          {bottomPanelNode && (
+            <div className={classes.tableBottomPanel}>{bottomPanelNode}</div>
+          )}
         </div>
       </div>
     </SectionForeground>

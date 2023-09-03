@@ -1,20 +1,24 @@
 import { FC, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
-import {
-  useWarehouseProductsGeneratorProductsForm,
-  useWarehouseProductsGeneratorProductsFormSubmit,
-} from './hooks';
-import { WarehouseProductsGeneratorProductsFormProps } from './types';
+
+import { Button } from '../../../components/Button';
 import { Form, FormContent } from '../../../components/FormFields';
 import {
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
-import { Tag } from '../../../components/Tag';
 import { useTranslation } from '../../../components/IntlProvider';
-import { GridAutoFit } from '../../../layouts/Grid';
-import { Button } from '../../../components/Button';
+import { Label } from '../../../components/Label';
+import { Tag } from '../../../components/Tag';
+import { GridAutoFit, GridFullWidth } from '../../../layouts/Grid';
 import { warehouseProductsGeneratorProductsFormFields } from './constants';
+import {
+  useWarehouseProductsGeneratorProductsForm,
+  useWarehouseProductsGeneratorProductsFormSubmit,
+} from './hooks';
+import { WarehouseProductsGeneratorProductsFormProps } from './types';
+import { WarehouseProductUnitField } from './WarehouseProductUnitField';
+
 import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorProductsForm: FC<
@@ -22,7 +26,8 @@ export const WarehouseProductsGeneratorProductsForm: FC<
 > = ({ generatedProducts }) => {
   const { products: productsFieldName } =
     warehouseProductsGeneratorProductsFormFields;
-  const { language, translate } = useTranslation();
+
+  const { translate, getTranslationWithFallback } = useTranslation();
 
   const { handleFormSubmit } =
     useWarehouseProductsGeneratorProductsFormSubmit();
@@ -48,14 +53,11 @@ export const WarehouseProductsGeneratorProductsForm: FC<
   return (
     <Form onSubmit={handleSubmit}>
       <FormContent>
-        {fields.map((field, index) => {
+        {fields.map(({ id, attributes }, index) => {
           return (
-            <div
-              key={field.id}
-              className={classes.generatedProduct__fieldGroup}
-            >
+            <div key={id} className={classes.generatedProduct__fieldGroup}>
               <GridAutoFit>
-                <div>
+                <GridFullWidth>
                   <MultiLanguageInputAdapter
                     isRequired
                     name={`${productsFieldName}.${index}.name`}
@@ -63,7 +65,11 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                     label={translate('warehouseProduct.generatedName')}
                     control={control}
                   />
-                </div>
+                </GridFullWidth>
+                <WarehouseProductUnitField
+                  name={`${productsFieldName}.${index}.unit`}
+                  control={control}
+                />
                 <InputAdapter
                   isRequired
                   name={`${productsFieldName}.${index}.sku`}
@@ -71,18 +77,31 @@ export const WarehouseProductsGeneratorProductsForm: FC<
                   label={translate('warehouseProduct.sku')}
                   control={control}
                 />
+                {!!attributes?.length && (
+                  <GridFullWidth>
+                    <Label
+                      labelId={id}
+                      labelClassName={classes.generatedProduct__tagsTitle}
+                    >
+                      Атрибути
+                    </Label>
+                    <div
+                      aria-labelledby={id}
+                      className={classes.generatedProduct__tags}
+                    >
+                      {attributes?.map((attribute) => {
+                        return attribute.variants.map((variant) => {
+                          return (
+                            <Tag key={variant.variantId} variant="theme">
+                              {getTranslationWithFallback(variant.name)}
+                            </Tag>
+                          );
+                        });
+                      })}
+                    </div>
+                  </GridFullWidth>
+                )}
               </GridAutoFit>
-              <div className={classes.generatedProduct__tags}>
-                {field.attributes?.map((attribute) => {
-                  return attribute.variants.map((variant) => {
-                    return (
-                      <Tag key={variant.variantId} variant="theme">
-                        {variant.name[language]}
-                      </Tag>
-                    );
-                  });
-                })}
-              </div>
             </div>
           );
         })}

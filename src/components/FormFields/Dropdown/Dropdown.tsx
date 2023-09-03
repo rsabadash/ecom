@@ -1,10 +1,12 @@
 import { FC } from 'react';
+
 import { Dropdown } from '../../Fields/Dropdown';
-import { DropdownFormFieldProps } from './types';
 import { CommonFormFieldsWrapper } from '../CommonFormFieldWrapper';
+import { DropdownFormFieldProps } from './types';
 
 export const DropdownFormField: FC<DropdownFormFieldProps> = ({
   name,
+  size,
   value,
   items,
   customItems,
@@ -19,26 +21,35 @@ export const DropdownFormField: FC<DropdownFormFieldProps> = ({
   itemValueGetter,
   isReadOnly,
   errorMessage,
+  isLabelHidden,
   isDescriptionHidden,
+  ariaLabel,
   label,
   columnIndex,
 }) => {
   const describedById = `${name}Description`;
+  const fieldAriaLabel = isLabelHidden
+    ? ariaLabel || (typeof label === 'string' ? label : undefined)
+    : undefined;
 
   return (
     <CommonFormFieldsWrapper
       name={name}
+      size={size}
       label={label}
       placeholder={placeholder}
       isValid={isValid}
       isReadOnly={isReadOnly}
       isRequired={isRequired}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
+      describedById={describedById}
       errorMessage={errorMessage}
       columnIndex={columnIndex}
     >
       <Dropdown
         name={name}
+        size={size}
         value={value}
         items={items}
         customItems={customItems}
@@ -48,6 +59,7 @@ export const DropdownFormField: FC<DropdownFormFieldProps> = ({
         isDisabled={isDisabled}
         isOpen={isOpen}
         hasMultiselect={hasMultiselect}
+        ariaLabel={fieldAriaLabel}
         ariaDescribedBy={describedById}
         onBlur={onBlur}
         onChange={onChange}

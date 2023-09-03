@@ -11,6 +11,10 @@ export const warehouseProducts = {
     'Enter general product name in {language}',
   'warehouseProduct.name.error.required':
     'General product name in {language} is required',
+  'warehouseProduct.unit': 'Storage unit',
+  'warehouseProduct.unit.description':
+    'Choose the unit in which the product will be sold',
+  'warehouseProduct.unit.error.required': 'Storage unit is required',
   'warehouseProduct.generatedName': 'Generated product name',
   'warehouseProduct.generatedName.description':
     'Enter or edit generated product name in {language}',
@@ -22,4 +26,6 @@ export const warehouseProducts = {
   'warehouseProduct.attributes.noVariants':
     "The attribute doesn't have any variants",
   'warehouseProduct.attributes.quantity': 'Number of attributes',
+  'warehouseProduct.emptyList': "Warehouse products don't exist",
+  'warehouseProduct.emptyList.callToAction': 'Generate warehouse products',
 };

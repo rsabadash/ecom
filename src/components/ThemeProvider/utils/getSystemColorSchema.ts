@@ -1,5 +1,5 @@
-import { Theme } from '../types';
 import { DARK_SCHEMA_QUERY, DEFAULT_THEME, THEMES } from '../constants';
+import { Theme } from '../types';
 
 export const getSystemColorSchema = (
   query: string = DARK_SCHEMA_QUERY,

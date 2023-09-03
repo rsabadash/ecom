@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { useGridRowBalancer } from '../GridRowBalancer';
 
 type UseElementColumnRowIndexesReturn = {

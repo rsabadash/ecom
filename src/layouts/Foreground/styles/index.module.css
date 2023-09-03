@@ -3,5 +3,5 @@
   box-shadow: var(--shadow-5);
   border-radius: var(--radius-regular);
   background-color: var(--foreground);
-  padding: 1.5em;
+  padding: var(--gap);
 }

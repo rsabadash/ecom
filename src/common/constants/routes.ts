@@ -12,6 +12,11 @@ export const routes = {
     add: '/suppliers/add',
     detail: '/suppliers/:supplierId',
   },
+  supplies: {
+    root: '/supplies',
+    add: '/supplies/add',
+    detail: '/supplies/:supplyId',
+  },
   attributes: {
     root: '/attributes',
     add: '/attributes/add',

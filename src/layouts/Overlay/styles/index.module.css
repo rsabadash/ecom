@@ -1,0 +1,23 @@
+.overlay {
+  background-color: var(--foreground);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  /*animation: blur-in 225ms 0s forwards; */
+}
+
+.overlay_pointer {
+  cursor: pointer;
+}
+
+/*@keyframes blur-in {*/
+/*    from {*/
+/*        backdrop-filter: blur(0px);*/
+/*    }*/
+/*    to {*/
+/*        backdrop-filter: blur(2px);*/
+/*    }*/
+/*}*/

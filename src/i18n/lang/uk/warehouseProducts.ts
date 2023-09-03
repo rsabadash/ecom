@@ -11,6 +11,10 @@ export const warehouseProducts = {
     'Введіть загальну назву товару {language} мовою',
   'warehouseProduct.name.error.required':
     "Загальна назва товару {language} мовою є обов'язковою",
+  'warehouseProduct.unit': 'Одиниця зберігання',
+  'warehouseProduct.unit.description':
+    'Виберіть одиницю, в якій буде продаватися товар',
+  'warehouseProduct.unit.error.required': "Одиниця зберігання є обов'язковою",
   'warehouseProduct.generatedName': 'Згенерована назва товару',
   'warehouseProduct.generatedName.description':
     'Введіть або відредагуйте згенеровану назву товару {language} мовою',
@@ -21,4 +25,6 @@ export const warehouseProducts = {
   'warehouseProduct.sku.error.required': "SKU ідентифікатор є обов'язковим",
   'warehouseProduct.attributes.noVariants': 'Атрибут не має варіантів',
   'warehouseProduct.attributes.quantity': 'Кількість атрибутів',
+  'warehouseProduct.emptyList': 'Складські товари відсутні',
+  'warehouseProduct.emptyList.callToAction': 'Згенерувати складські товари',
 };

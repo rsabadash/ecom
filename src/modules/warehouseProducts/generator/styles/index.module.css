@@ -1,39 +1,48 @@
-.generator__attributesRow {
-  border-bottom: 1px solid var(--border-color);
+.generator__attributes {
+  display: flex;
+  column-gap: var(--gap);
+  flex-wrap: wrap;
+  font-size: var(--font-size-s);
 }
 
-.generator__attributesRow:first-of-type {
-  border-top: 1px solid var(--border-color);
+.generator__attributesRow {
+  border-bottom: 1px solid var(--border-color);
+  flex: 1 0 calc(50% - var(--gap));
 }
 
 .generator__attributesName {
-  padding: 0.75rem;
-  font-size: var(--font-size-regular);
+  padding: var(--gap);
 }
 
 .generator__variants {
   display: flex;
   flex-wrap: wrap;
   gap: var(--checkboxSize);
-  padding: 0.75rem;
-  border-top: 1px solid var(--border-color);
+  padding-inline: var(--gap);
+  padding-block-end: var(--gap);
 }
 
 .generator__noVariants {
-  font-size: var(--font-size-regular);
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .generatedProduct__fieldGroup {
-  margin-top: 1.5rem;
+  padding: var(--gap) 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .generatedProduct__fieldGroup:first-of-type {
-  margin-top: 0;
+  padding-top: 0;
+}
+
+.generatedProduct__tagsTitle {
+  margin-bottom: var(--gap-half);
 }
 
 .generatedProduct__tags {
-  margin-top: 0.5rem;
   display: flex;
-  gap: 0.5rem;
+  gap: var(--gap-half);
 }

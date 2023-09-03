@@ -1,5 +1,8 @@
+import { PropsWithChildren } from 'react';
+
 import { Translations } from '../../../components/IntlProvider';
 import { TableBodyRowProps } from '../../../components/Table/types';
+import { WarehouseProduct } from '../generator/types';
 
 export type WarehouseProductsVariant = {
   variantId: string;
@@ -12,29 +15,22 @@ export type WarehouseProductsAttribute = {
   variants: WarehouseProductsVariant[];
 };
 
-export type WarehouseProduct = {
-  _id: string;
-  name: Translations;
-  sku: string;
-  attributes: null | WarehouseProductsAttribute[];
-  groupId: null | string;
-  groupName: null | string;
-  createdDate: Date;
-};
-
-export type WarehouseProductTable = WarehouseProduct & {
+export type WarehouseProductTable = Pick<
+  WarehouseProduct,
+  'name' | 'sku' | 'unit' | 'attributes'
+> & {
   button: JSX.Element;
 };
 
-export type WarehouseProductsListItemProps = {
+export type WarehouseProductsListItemProps = PropsWithChildren<{
   item: WarehouseProduct;
   rowProps: TableBodyRowProps;
-};
+}>;
 
-export type WarehouseProductsListItemRowProps = {
+export type WarehouseProductsListItemRowProps = PropsWithChildren<{
   item: WarehouseProduct;
   rowProps: TableBodyRowProps;
-};
+}>;
 
 export type WarehouseProductsListAttributesProps = {
   item: WarehouseProduct;

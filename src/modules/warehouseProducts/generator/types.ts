@@ -1,7 +1,18 @@
 import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
+
+import { Unit } from '../../../common/types/unit';
 import { Translations } from '../../../components/IntlProvider';
-import { Attribute } from '../../attributes/attributes/types';
-import { WarehouseProduct } from '../list/types';
+import { Attribute } from '../../attributes/attributes/add/types';
+import { WarehouseProductsAttribute } from '../list/types';
+
+export type WarehouseProduct = {
+  _id: string;
+  name: Translations;
+  sku: string;
+  unit: Unit;
+  attributes: WarehouseProductsAttribute[];
+  createdDate: Date;
+};
 
 export type WarehouseProductsGeneratorFormProps = {
   onSuccessSubmit: (products: GeneratedProduct[]) => void;
@@ -27,6 +38,7 @@ type AttributeWithVariantsCheckbox = {
 
 export type WarehouseProductsGeneratorFormValues = {
   name: Translations;
+  unit: Unit;
   attributes: AttributeWithVariantsCheckbox;
   attributesVirtual?: AttributeVirtualFieldValue;
 };
@@ -58,6 +70,7 @@ export type GeneratedAttribute = {
 
 export type GeneratedProduct = {
   name: Translations;
+  unit: Unit;
   attributes: null | GeneratedAttribute[];
 };
 
@@ -81,3 +94,8 @@ export type WarehouseProductsGeneratorProductsFormFields = Record<
 export type WarehouseProductsPostData = GeneratedProductFieldValue[];
 
 export type WarehouseProductsPostResponse = WarehouseProduct[];
+
+export type WarehouseProductUnitFieldProps = {
+  name: string;
+  control: Control<any>;
+};

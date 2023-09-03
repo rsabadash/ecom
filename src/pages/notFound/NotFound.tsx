@@ -1,5 +1,6 @@
-import { useTranslation } from '../../components/IntlProvider';
 import { Heading } from '../../components/Heading';
+import { useTranslation } from '../../components/IntlProvider';
+
 import classes from './styles/index.module.css';
 
 const NotFound = () => {

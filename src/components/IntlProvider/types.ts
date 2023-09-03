@@ -1,8 +1,13 @@
-import { DEFAULT_LANGUAGE, languages, localeToLanguageMap } from './constants';
+import {
+  DEFAULT_LANGUAGE,
+  LANGUAGES,
+  LOCALE_TO_LANGUAGE_MAP,
+} from './constants';
+import { PropsWithChildren } from 'react';
 
-export type Language = ValuesOfObject<typeof languages>;
+export type Language = ValuesOfObject<typeof LANGUAGES>;
 
-export type Locale = keyof typeof localeToLanguageMap;
+export type Locale = keyof typeof LOCALE_TO_LANGUAGE_MAP;
 
 export type DefaultLanguage = typeof DEFAULT_LANGUAGE;
 
@@ -18,13 +23,13 @@ export type Translations = TranslationRequired & TranslationsOptional;
 
 export type TranslationsAllRequired = Required<Translations>;
 
-export type TranslationProviderProps = {
+export type TranslationProviderProps = PropsWithChildren<{
   language: Language;
   setLanguage: (language: Language) => void;
-};
+}>;
 
 export type TranslateMessage = string;
-export type TranslatePlaceholders = Record<string, string>;
+export type TranslatePlaceholders = Record<string, string | number>;
 export type TranslateFn = (
   value: TranslateMessage,
   placeholders?: TranslatePlaceholders,
@@ -34,4 +39,7 @@ export type TranslationContextValue = {
   language: Language;
   translate: TranslateFn;
   changeLanguage: (language: Language) => void;
+  getTranslationWithFallback: (
+    translations: Translations | undefined,
+  ) => string;
 };

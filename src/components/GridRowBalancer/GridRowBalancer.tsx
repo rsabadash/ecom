@@ -1,7 +1,9 @@
-import { CSSProperties, FC, PropsWithChildren } from 'react';
-import { GridRowBalancerProps, GridRowBalancerContextValue } from './types';
-import { createProvider } from '../../utils';
+import { CSSProperties, FC } from 'react';
+
+import { createProvider } from '../../common/utils';
 import { CONTEXT_NAME, gridRowBalancerContextValueDefault } from './constants';
+import { GridRowBalancerContextValue, GridRowBalancerProps } from './types';
+
 import classes from './styles/index.module.css';
 
 const [Provider, useGridRowBalancer] =
@@ -10,7 +12,7 @@ const [Provider, useGridRowBalancer] =
     contextDefaultValue: gridRowBalancerContextValueDefault,
   });
 
-const GridRowBalancer: FC<PropsWithChildren<GridRowBalancerProps>> = ({
+const GridRowBalancer: FC<GridRowBalancerProps> = ({
   children,
   columns,
   elementRows,

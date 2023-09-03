@@ -1,7 +1,9 @@
 import { ChangeEvent, FC, useEffect, useRef } from 'react';
 import clsx from 'clsx';
+
 import { TextboxProps } from './types';
 import { commonFormatValue, serializeValue } from './utils';
+
 import classes from './styles/index.module.css';
 
 export const Textbox: FC<TextboxProps> = ({
@@ -23,7 +25,7 @@ export const Textbox: FC<TextboxProps> = ({
 }) => {
   const currentValue = valueGetter ? valueGetter(value) : serializeValue(value);
 
-  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     if (onChange) {
       const value = e.target.value;
       const formattedValue = formatValue
@@ -34,7 +36,7 @@ export const Textbox: FC<TextboxProps> = ({
     }
   };
 
-  const textBoxRef = useRef<HTMLTextAreaElement>(null);
+  const textBoxRef = useRef<null | HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (textBoxRef.current) {
@@ -68,7 +70,7 @@ export const Textbox: FC<TextboxProps> = ({
         placeholder={isReadOnly ? '' : placeholder}
         aria-required={isRequired} // could be avoidable, but in this case used, cause React doesn't show require attribute and voice doesn't announce that field is isRequired
         aria-invalid={!isValid} // if value invalid
-        aria-label={ariaLabel} // if other description absent
+        aria-label={ariaLabel} //  if another description is absent
         aria-labelledby={ariaLabelledBy} // which element has a label for an input
         aria-describedby={ariaDescribedBy || placeholder} // which element describe input
         onBlur={onBlur}

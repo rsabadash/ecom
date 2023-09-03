@@ -1,8 +1,9 @@
 import { FieldValues, useController } from 'react-hook-form';
-import { TextboxWithCollapseAdapterProps } from './types';
-import { TextboxWithCollapseFormField } from '../../FormFields';
+
 import { TextboxValue } from '../../Fields/Textbox';
-import { useTranslation } from '../../IntlProvider';
+import { TextboxWithCollapseFormField } from '../../FormFields';
+import { useFieldErrorMessage } from '../hooks';
+import { TextboxWithCollapseAdapterProps } from './types';
 
 export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
   name,
@@ -13,6 +14,7 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
   valueGetter,
   formatValue,
   formatError,
+  isLabelHidden,
   isDescriptionHidden,
   label,
   control,
@@ -30,13 +32,12 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
     defaultValue: null,
   });
 
-  const { translate } = useTranslation();
+  const fieldErrorMessage = useFieldErrorMessage({
+    error,
+    formatError,
+  });
 
   const fieldValue = value as TextboxValue;
-  const fieldErrorMessage =
-    error && formatError
-      ? formatError(error)
-      : error?.message && translate(error.message);
 
   return (
     <TextboxWithCollapseFormField
@@ -52,6 +53,7 @@ export const TextboxWithCollapseAdapter = <FormValues extends FieldValues>({
       valueGetter={valueGetter}
       formatValue={formatValue}
       errorMessage={fieldErrorMessage}
+      isLabelHidden={isLabelHidden}
       isDescriptionHidden={isDescriptionHidden}
       label={label}
       columnIndex={columnIndex}

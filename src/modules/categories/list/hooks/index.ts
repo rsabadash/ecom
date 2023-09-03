@@ -1,0 +1,1 @@
+export { useCategoriesTableColumns } from './useCategoriesTableColumns';

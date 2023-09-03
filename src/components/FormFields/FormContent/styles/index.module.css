@@ -1,5 +1,5 @@
 .formContent {
-  margin-top: 1.5rem;
+  margin-top: var(--gap);
 }
 
 .formContent:first-of-type {

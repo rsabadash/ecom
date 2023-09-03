@@ -1,13 +1,16 @@
 import { FC } from 'react';
+
 import { Checkbox } from '../../Fields/Checkbox';
-import { CheckboxFormFieldProps } from './types';
-import { FieldLabel } from '../FieldLabel';
-import { FieldDescription } from '../FieldDescription';
 import { useGridInlineStyles } from '../../GridRowBalancer';
+import { FieldDescription } from '../FieldDescription';
+import { FieldLabel } from '../FieldLabel';
+import { CheckboxFormFieldProps } from './types';
+
 import classes from './styles/index.module.css';
 
 export const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
   name,
+  size,
   isChecked,
   placeholder,
   isValid,
@@ -48,6 +51,7 @@ export const CheckboxFormField: FC<CheckboxFormFieldProps> = ({
             onChange={onChange}
           />
           <FieldLabel
+            size={size}
             label={label}
             htmlFor={name}
             isValid={isValid}
