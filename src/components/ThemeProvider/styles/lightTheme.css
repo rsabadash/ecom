@@ -36,6 +36,10 @@
   --background-200: rgba(255, 255, 255, 0.05);
   --background-100: rgba(255, 255, 255, 0.03);
 
+  --background-success: #e9f3f3;
+  --background-warning: #faf6ed;
+  --background-error: #faf1ee;
+
   --foreground-900: rgba(41, 45, 63, 1);
   --foreground-800: rgba(41, 45, 63, 0.72);
   --foreground-700: rgba(41, 45, 63, 0.48);

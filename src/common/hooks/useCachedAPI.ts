@@ -3,24 +3,25 @@ import { PublicConfiguration } from 'swr/_internal';
 
 import { useAPI } from './useAPI';
 
-type UseCachedAPIOptions = Partial<
+type UseCachedAPIOptions<D> = Partial<
   Pick<
-    PublicConfiguration,
-    'dedupingInterval' | 'suspense' | 'keepPreviousData'
+    PublicConfiguration<D>,
+    'dedupingInterval' | 'suspense' | 'keepPreviousData' | 'fallbackData'
   >
 > & {
   shouldFetch?: boolean;
 };
 
-const defaultOptions: UseCachedAPIOptions = {
+const defaultOptions: UseCachedAPIOptions<any> = {
   shouldFetch: true,
   suspense: true,
   keepPreviousData: false,
+  fallbackData: undefined,
 };
 
 export const useCachedAPI = <D>(
   url: string,
-  options: UseCachedAPIOptions = {},
+  options: UseCachedAPIOptions<D> = {},
 ) => {
   const { GET } = useAPI();
   const { shouldFetch, ...config } = { ...defaultOptions, ...options };

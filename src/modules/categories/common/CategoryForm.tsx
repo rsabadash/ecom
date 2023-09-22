@@ -1,47 +1,42 @@
 import { FC } from 'react';
 
-import { endpoints, path } from '../../../common/constants/api';
 import { useCachedAPI } from '../../../common/hooks';
 import { Button } from '../../../components/Button';
-import { DropdownItem } from '../../../components/Fields/Dropdown';
+import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { Form, FormContent } from '../../../components/FormFields';
 import {
+  CheckboxAdapter,
   DropdownAdapter,
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
-import { CheckboxAdapter } from '../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
 import { categoryFormFields } from './constants';
-import { useCategoryForm, useCategoryFormSubmit } from './hooks';
+import { useCategoryForm } from './hooks';
 import { CategoryFormProps } from './types';
 
 export const CategoryForm: FC<CategoryFormProps> = ({
-  id,
+  submitText,
   isReadOnly,
   defaultValues,
+  handleFormSubmit,
+  dropdownCategoriesUrl,
 }) => {
-  const dropdownCategoriesUrl = id
-    ? `${endpoints.categories.root}${path.dropdownList}?_id=${id}`
-    : `${endpoints.categories.root}${path.dropdownList}`;
-
-  const { data: categoriesDropdownList } = useCachedAPI<DropdownItem[]>(
+  const { data: categoriesDropdownList } = useCachedAPI<DropdownItemObject[]>(
     dropdownCategoriesUrl,
+    {
+      shouldFetch: !!dropdownCategoriesUrl,
+    },
   );
 
   const { translate } = useTranslation();
-
-  const { handleFormSubmit } = useCategoryFormSubmit({ id });
 
   const { control, handleSubmit } = useCategoryForm({
     defaultValues,
     shouldReset: isReadOnly,
     submitHandler: handleFormSubmit,
   });
-
-  const shouldUpdateCategory =
-    defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -91,7 +86,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
       {!isReadOnly && (
         <FormContent>
           <Button variant="primary" type="submit">
-            {shouldUpdateCategory ? translate('update') : translate('add')}
+            {submitText}
           </Button>
         </FormContent>
       )}

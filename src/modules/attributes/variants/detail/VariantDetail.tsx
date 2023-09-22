@@ -17,7 +17,7 @@ const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { attributeId, variantId } = useParams<VariantUrlParams>();
-  const { translate, getTranslationWithFallback } = useTranslation();
+  const { translate, getTranslationByLanguage } = useTranslation();
   const { deleteVariant } = useDeleteVariant({ attributeId, variantId });
 
   const variantLinkWithAttributeId = generatePath(
@@ -40,7 +40,7 @@ const VariantDetail = () => {
 
   const variantTitle = `${translate(
     'attribute.variant',
-  )} "${getTranslationWithFallback(variantDetail?.name)}"`;
+  )} "${getTranslationByLanguage(variantDetail?.name)}"`;
 
   return (
     <>

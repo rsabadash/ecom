@@ -36,7 +36,10 @@ apiService.setGlobalOptions(() => {
     },
     retry: 1,
     onRetry: async (error): Promise<boolean> => {
-      if (error.message.toLowerCase() === messages.jwt.expired) {
+      if (
+        typeof error.message === 'string' &&
+        error.message.toLowerCase() === messages.jwt.expired
+      ) {
         await refreshTokenApi();
         return true;
       }
@@ -44,12 +47,14 @@ apiService.setGlobalOptions(() => {
       return false;
     },
     onGlobalError: (error): void => {
-      if (error.message.toLowerCase() === messages.jwt.malformed) {
-        return sharedBus.methods.signOut();
-      }
+      if (typeof error.message === 'string') {
+        if (error.message.toLowerCase() === messages.jwt.malformed) {
+          return sharedBus.methods.signOut();
+        }
 
-      if (error.message.toLowerCase() === messages.access.forbidden) {
-        return sharedBus.methods.signedInRedirect();
+        if (error.message.toLowerCase() === messages.access.forbidden) {
+          return sharedBus.methods.signedInRedirect();
+        }
       }
     },
   };

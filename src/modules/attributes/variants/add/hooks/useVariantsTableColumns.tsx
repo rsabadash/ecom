@@ -16,7 +16,7 @@ type VariantWithAttributeValueGetterProps =
 
 export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
   const navigate = useCustomNavigate();
-  const { translate, getTranslationWithFallback } = useTranslation();
+  const { translate, getTranslationByLanguage } = useTranslation();
 
   return useMemo<
     (TableColumnGeneric<Variant> | TableColumnGeneric<VariantWithAttribute>)[]
@@ -27,7 +27,7 @@ export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
         key: 'name',
         width: '25%',
         valueGetter: ({ item }: VariantWithAttributeValueGetterProps) => {
-          return getTranslationWithFallback(item.name);
+          return getTranslationByLanguage(item.name);
         },
       },
       {
@@ -42,7 +42,7 @@ export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
                 navigate(`${routes.attributes.root}/${item.attributeId}`);
               }}
             >
-              {getTranslationWithFallback(item.attributeName)}
+              {getTranslationByLanguage(item.attributeName)}
             </span>
           );
         },
@@ -66,6 +66,6 @@ export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
         },
       },
     ],
-    [translate, getTranslationWithFallback, navigate],
+    [translate, getTranslationByLanguage, navigate],
   );
 };

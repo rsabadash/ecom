@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { updateCategoryApi } from '../api';
+import { updateCategoryApi } from '../../common/api';
 import { CategoryPatchData } from '../types';
 
 type UseUpdateCategoryReturn = {

@@ -41,7 +41,7 @@ const TranslationProvider: FC<TranslationProviderProps> = ({
     [formatMessage],
   );
 
-  const getTranslationWithFallback = useCallback(
+  const getTranslationByLanguage = useCallback(
     (translations: Translations | undefined): string => {
       return translations
         ? translations[language] || translations[DEFAULT_LANGUAGE]
@@ -55,9 +55,9 @@ const TranslationProvider: FC<TranslationProviderProps> = ({
       language,
       translate,
       changeLanguage,
-      getTranslationWithFallback,
+      getTranslationByLanguage,
     }),
-    [language, translate, changeLanguage, getTranslationWithFallback],
+    [language, translate, changeLanguage, getTranslationByLanguage],
   );
 
   return <Provider value={contextValue}>{children}</Provider>;

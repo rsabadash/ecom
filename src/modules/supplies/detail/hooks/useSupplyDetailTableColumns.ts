@@ -16,7 +16,7 @@ type SupplyDetailProductValueGetterProps =
 
 export const useSupplyDetailTableColumns =
   (): UseSupplyDetailTableColumnsReturn => {
-    const { translate, getTranslationWithFallback } = useTranslation();
+    const { translate, getTranslationByLanguage } = useTranslation();
 
     const { formatCurrency } = useIntlCurrency();
 
@@ -27,7 +27,7 @@ export const useSupplyDetailTableColumns =
           key: 'productName',
           width: '55%',
           valueGetter: ({ item }: SupplyDetailProductValueGetterProps) => {
-            return getTranslationWithFallback(item.productName);
+            return getTranslationByLanguage(item.productName);
           },
         },
         {
@@ -52,6 +52,6 @@ export const useSupplyDetailTableColumns =
           },
         },
       ],
-      [formatCurrency, translate, getTranslationWithFallback],
+      [formatCurrency, translate, getTranslationByLanguage],
     );
   };

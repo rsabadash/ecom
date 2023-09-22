@@ -19,4 +19,16 @@ export const categories = {
   'category.parent.description': 'Select either one or a few parent categories',
   'category.emptyList': "Categories don't exist",
   'category.emptyList.callToAction': 'Add category',
+  'category.creating': 'Category "{categoryName}" is being created',
+  'category.creating.error':
+    'An error occurred while creating category "{categoryName}"',
+  'category.created': 'Category "{categoryName}" was successfully created',
+  'category.updating': 'Category "{categoryName}" is being updated',
+  'category.updating.error':
+    'An error occurred while updating category "{categoryName}"',
+  'category.updated': 'Category "{categoryName}" was successfully updated',
+  'category.deleting': 'Category "{categoryName}" is being deleted',
+  'category.deleting.error':
+    'An error occurred while deleting category "{categoryName}"',
+  'category.deleted': 'Category "{categoryName}" was successfully deleted',
 };

@@ -39,7 +39,7 @@ export type TranslationContextValue = {
   language: Language;
   translate: TranslateFn;
   changeLanguage: (language: Language) => void;
-  getTranslationWithFallback: (
+  getTranslationByLanguage: (
     translations: Translations | undefined,
   ) => string;
 };

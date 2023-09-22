@@ -5,7 +5,7 @@ import {
   TableCellValueGetterProps,
   TableColumnGeneric,
 } from '../../../../components/Table';
-import { Category } from '../../add/types';
+import { Category } from '../../common/types';
 
 type UseCategoriesTableColumnsReturn = TableColumnGeneric<Category>[];
 
@@ -13,7 +13,7 @@ type CategoryValueGetterProps = TableCellValueGetterProps<Category>;
 
 export const useCategoriesTableColumns =
   (): UseCategoriesTableColumnsReturn => {
-    const { translate, getTranslationWithFallback } = useTranslation();
+    const { translate, getTranslationByLanguage } = useTranslation();
 
     return useMemo<TableColumnGeneric<Category>[]>(
       () => [
@@ -22,7 +22,7 @@ export const useCategoriesTableColumns =
           key: 'name',
           width: '70%',
           valueGetter: ({ item }: CategoryValueGetterProps) => {
-            return getTranslationWithFallback(item.name);
+            return getTranslationByLanguage(item.name);
           },
         },
         {
@@ -36,6 +36,6 @@ export const useCategoriesTableColumns =
           },
         },
       ],
-      [translate, getTranslationWithFallback],
+      [translate, getTranslationByLanguage],
     );
   };

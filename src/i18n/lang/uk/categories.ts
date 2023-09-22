@@ -21,4 +21,16 @@ export const categories = {
     'Оберіть одну або декілька батьківських категорій',
   'category.emptyList': 'Категорії відсутні',
   'category.emptyList.callToAction': 'Додайте категорію',
+  'category.creating': 'Створення категорії "{categoryName}"',
+  'category.creating.error':
+    'Під час створення категорії "{categoryName}" сталася помилка',
+  'category.created': 'Категорія "{categoryName}" була успішно створена',
+  'category.updating': 'Оновлення категорії "{categoryName}"',
+  'category.updating.error':
+    'Під час оновлення категорії "{categoryName}" сталася помилка',
+  'category.updated': 'Категорія "{categoryName}" успішно оновлена',
+  'category.deleting': 'Видалення категорії "{categoryName}"',
+  'category.deleting.error':
+    'Під час видалення категорії "{categoryName}" сталася помилка',
+  'category.deleted': 'Категорія "{categoryName}" успішно видалена',
 };

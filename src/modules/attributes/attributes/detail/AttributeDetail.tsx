@@ -26,7 +26,7 @@ const AttributeDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { attributeId } = useParams<AttributeUrlParams>();
-  const { translate, getTranslationWithFallback } = useTranslation();
+  const { translate, getTranslationByLanguage } = useTranslation();
 
   const { data: attributeDetail } = useCachedAPI<Attribute>(
     `${endpoints.attributes.root}/${attributeId}`,
@@ -43,9 +43,9 @@ const AttributeDetail = () => {
 
   const variants = attributeDetail?.variants ? attributeDetail.variants : [];
 
-  const attributeTitle = `${translate(
-    'attribute',
-  )} "${getTranslationWithFallback(attributeDetail?.name)}"`;
+  const attributeTitle = `${translate('attribute')} "${getTranslationByLanguage(
+    attributeDetail?.name,
+  )}"`;
 
   const variantAddPath = generatePath(routes.attributes.variantAdd, {
     attributeId,
