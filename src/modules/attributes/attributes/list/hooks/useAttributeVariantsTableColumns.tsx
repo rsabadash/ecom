@@ -13,7 +13,7 @@ type VariantValueGetterProps = TableCellValueGetterProps<Variant>;
 
 export const useAttributeVariantsTableColumns =
   (): UseAttributeVariantsTableColumnsReturn => {
-    const { translate, getTranslationWithFallback } = useTranslation();
+    const { translate, getTranslationByLanguage } = useTranslation();
 
     return useMemo<TableColumnGeneric<Variant>[]>(
       () => [
@@ -22,7 +22,7 @@ export const useAttributeVariantsTableColumns =
           key: 'name',
           width: '25%',
           valueGetter: ({ item }: VariantValueGetterProps) => {
-            return getTranslationWithFallback(item.name);
+            return getTranslationByLanguage(item.name);
           },
         },
         {
@@ -44,6 +44,6 @@ export const useAttributeVariantsTableColumns =
           },
         },
       ],
-      [translate],
+      [getTranslationByLanguage, translate],
     );
   };

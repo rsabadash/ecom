@@ -3,7 +3,7 @@ import { ButtonLink } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { CategoryForm } from './CategoryForm';
+import { CategoryAddForm } from './CategoryAddForm';
 
 const CategoryAdd = () => {
   const { translate } = useTranslation();
@@ -19,7 +19,7 @@ const CategoryAdd = () => {
         </TopButtons>
       </Top>
       <SectionForeground>
-        <CategoryForm />
+        <CategoryAddForm />
       </SectionForeground>
     </>
   );

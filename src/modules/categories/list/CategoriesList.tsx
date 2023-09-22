@@ -10,7 +10,7 @@ import {
   TableColumnGeneric,
   TablePagination,
 } from '../../../components/Table';
-import { Category } from '../add/types';
+import { Category } from '../common/types';
 import { CategoriesListPlaceholder } from './CategoriesListPlaceholder';
 import { TABLE_CATEGORIES_ID } from './constants';
 import { useCategoriesTableColumns } from './hooks';

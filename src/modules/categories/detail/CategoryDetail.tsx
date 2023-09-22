@@ -2,27 +2,39 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
-import { useCachedAPI } from '../../../common/hooks';
+import {
+  useCachedAPI,
+  useKeepDataBetweenNavigation,
+} from '../../../common/hooks';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { CategoryForm } from '../add/CategoryForm';
-import { useDeleteCategory } from '../add/hooks';
-import { Category, CategoryFormValues } from '../add/types';
-import { CategoryUrlParams } from './types';
+import { Category, CategoryFormValues } from '../common/types';
+import { CategoryEditForm } from './CategoryEditForm';
+import { useDeleteCategory } from './hooks';
+import { CategoryUrlParams, LocationStateFromRouter } from './types';
 import { matchCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { categoryId } = useParams<CategoryUrlParams>();
-  const { language, translate, getTranslationWithFallback } = useTranslation();
 
-  const { data: categoryDetail } = useCachedAPI<Category>(
+  const { language, translate, getTranslationByLanguage } = useTranslation();
+  const { getNavigationStateData } = useKeepDataBetweenNavigation();
+
+  const categoryDetailFromLocation =
+    getNavigationStateData<LocationStateFromRouter>();
+
+  const { data: categoryDetail, mutate } = useCachedAPI<Category>(
     `${endpoints.categories.root}/${categoryId}`,
+    {
+      fallbackData: categoryDetailFromLocation,
+    },
   );
-  const { deleteCategory } = useDeleteCategory(categoryDetail?._id);
+
+  const { deleteCategory } = useDeleteCategory(categoryDetail);
 
   const formValues: CategoryFormValues | undefined =
     matchCategoryDataToFormValues(categoryDetail, language);
@@ -31,7 +43,12 @@ const CategoryDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
-  const categoryTitle = `${translate('category')} "${getTranslationWithFallback(
+  const onFormUpdated = (): void => {
+    mutate();
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
+
+  const categoryTitle = `${translate('category')} "${getTranslationByLanguage(
     categoryDetail?.name,
   )}"`;
 
@@ -51,10 +68,11 @@ const CategoryDetail = () => {
         </TopButtons>
       </Top>
       <SectionForeground>
-        <CategoryForm
+        <CategoryEditForm
           id={categoryDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormUpdated={onFormUpdated}
         />
       </SectionForeground>
     </>

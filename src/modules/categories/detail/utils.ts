@@ -1,5 +1,5 @@
 import { DEFAULT_LANGUAGE, Language } from '../../../components/IntlProvider';
-import { Category, CategoryFormValues } from '../add/types';
+import { Category, CategoryFormValues } from '../common/types';
 
 export const matchCategoryDataToFormValues = (
   data: Category | undefined,

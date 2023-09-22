@@ -12,7 +12,7 @@ type UseAttributeTableColumnsReturn = TableColumnGeneric<Attribute>[];
 type AttributeValueGetterProps = TableCellValueGetterProps<Attribute>;
 
 export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
-  const { translate, getTranslationWithFallback } = useTranslation();
+  const { translate, getTranslationByLanguage } = useTranslation();
 
   return useMemo<TableColumnGeneric<Attribute>[]>(
     () => [
@@ -21,7 +21,7 @@ export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
         key: 'name',
         width: '25%',
         valueGetter: ({ item }: AttributeValueGetterProps) => {
-          return getTranslationWithFallback(item.name);
+          return getTranslationByLanguage(item.name);
         },
       },
       {
@@ -51,6 +51,6 @@ export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
         },
       },
     ],
-    [translate, getTranslationWithFallback],
+    [translate, getTranslationByLanguage],
   );
 };

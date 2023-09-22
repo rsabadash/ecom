@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { createCategoryApi } from '../api';
+import { createCategoryApi } from '../../common/api';
 import { CategoryPostData, CategoryPostResponse } from '../types';
 
 type UseCreateCategoryReturn = {

@@ -31,7 +31,7 @@ type UseWarehouseProductsGeneratorFormSubmitReturn = {
 export const useWarehouseProductsGeneratorFormSubmit = ({
   onSuccess,
 }: UseWarehouseProductsGeneratorFormSubmitProps): UseWarehouseProductsGeneratorFormSubmitReturn => {
-  const { getTranslationWithFallback } = useTranslation();
+  const { getTranslationByLanguage } = useTranslation();
 
   const getListToProductGeneration = useCallback(
     (attributes: AttributeVirtualFieldValue): VariantVirtualFieldValue[][] => {
@@ -70,7 +70,7 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
             let nextValue = '';
 
             attribute.variants.forEach((variant) => {
-              const variantNameTranslation = getTranslationWithFallback(
+              const variantNameTranslation = getTranslationByLanguage(
                 variant.name,
               );
 
@@ -82,7 +82,7 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
             return `${acc} ${nextValue}`.trim();
           }, '');
 
-          const translatedName = getTranslationWithFallback(name);
+          const translatedName = getTranslationByLanguage(name);
 
           return {
             ...acc,
@@ -97,7 +97,7 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
 
       return generatedProduct.name;
     },
-    [getTranslationWithFallback],
+    [getTranslationByLanguage],
   );
 
   const generateProduct = useCallback(

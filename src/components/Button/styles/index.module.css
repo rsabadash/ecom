@@ -80,20 +80,6 @@
   background-color: var(--primary-300);
 }
 
-.button_success {
-  color: var(--button-variant-text);
-  background-color: var(--success-600);
-}
-
-.button_success:hover {
-  background-color: var(--success-700);
-}
-
-.button_success:disabled,
-.button_success:disabled:hover {
-  background-color: var(--success-300);
-}
-
 .button_warning {
   color: var(--button-variant-text);
   background-color: var(--warning-600);
