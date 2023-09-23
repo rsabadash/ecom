@@ -1,11 +1,7 @@
 import { endpoints } from '../../../common/constants/api';
 import { DELETE, PATCH, POST } from '../../../common/utils/api';
-import {
-  WarehouseDeleteData,
-  WarehousePatchData,
-  WarehousePostData,
-  WarehousePostResponse,
-} from './types';
+import { WarehousePostData, WarehousePostResponse } from '../add/types';
+import { WarehouseDeleteData, WarehousePatchData } from '../detail/types';
 
 export const createWarehouseApi = async (
   data: WarehousePostData,

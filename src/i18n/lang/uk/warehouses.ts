@@ -14,4 +14,16 @@ export const warehouses = {
   'warehouse.address.description': 'Введіть адресу складу',
   'warehouse.emptyList': 'Склади відсутні',
   'warehouse.emptyList.callToAction': 'Додати склад',
+  'warehouse.creating': 'Створення складу "{warehouseName}"',
+  'warehouse.creating.error':
+    'Під час створення складу "{warehouseName}" сталася помилка',
+  'warehouse.created': 'Склад "{warehouseName}" був успішно створений',
+  'warehouse.updating': 'Оновлення складу "{warehouseName}"',
+  'warehouse.updating.error':
+    'Під час оновлення складу "{warehouseName}" сталася помилка',
+  'warehouse.updated': 'Склад "{warehouseName}" успішно оновлений',
+  'warehouse.deleting': 'Видалення складу "{warehouseName}"',
+  'warehouse.deleting.error':
+    'Під час видалення складу "{warehouseName}" сталася помилка',
+  'warehouse.deleted': 'Склад "{warehouseName}" успішно видалено',
 };

@@ -10,8 +10,6 @@ export type SupplierUrlParams = {
   supplierId: string;
 };
 
-export type SupplierStateFromRouter = Supplier | null;
-
 export type SupplierPatchData = Omit<Supplier, '_id'> & {
   id: string;
 };

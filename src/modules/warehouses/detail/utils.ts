@@ -1,6 +1,6 @@
 import { TranslateFn } from '../../../components/IntlProvider';
-import { warehouseTypeTranslationPrefix } from '../add/constants';
-import { Warehouse, WarehouseFormValues } from '../add/types';
+import { warehouseTypeTranslationPrefix } from '../common/constants';
+import { Warehouse, WarehouseFormValues } from '../common/types';
 
 export const matchWarehouseDataToFormValues = (
   data: Warehouse | undefined,

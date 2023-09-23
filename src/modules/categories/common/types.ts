@@ -32,3 +32,5 @@ export type CategoryFormProps = {
   handleFormSubmit: CategoryFormSubmitAction;
   dropdownCategoriesUrl: string;
 };
+
+export type CategoryStateFromRouter = Category | null;

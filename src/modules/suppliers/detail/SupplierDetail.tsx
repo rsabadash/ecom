@@ -10,10 +10,14 @@ import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { Supplier, SupplierFormValues } from '../common/types';
+import {
+  Supplier,
+  SupplierFormValues,
+  SupplierStateFromRouter,
+} from '../common/types';
 import { useDeleteSupplier } from './hooks';
 import { SupplierEditForm } from './SupplierEditForm';
-import { SupplierStateFromRouter, SupplierUrlParams } from './types';
+import { SupplierUrlParams } from './types';
 import { matchSupplierDataToFormValues } from './utils';
 
 const SupplierDetail = () => {

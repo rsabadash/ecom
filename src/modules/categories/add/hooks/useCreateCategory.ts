@@ -7,7 +7,8 @@ import {
 } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { createCategoryApi } from '../../common/api';
-import { CategoryPostData, CategoryPostResponse } from '../types';
+import { CategoryStateFromRouter } from '../../common/types';
+import { CategoryPostData } from '../types';
 
 type UseCreateCategoryReturn = {
   createCategory: (data: CategoryPostData) => Promise<void>;
@@ -37,7 +38,7 @@ export const useCreateCategory = (): UseCreateCategoryReturn => {
         });
 
         if (createdCategory) {
-          await navigateWithData<CategoryPostResponse>({
+          await navigateWithData<CategoryStateFromRouter>({
             to: `${routes.categories.root}/${createdCategory._id}`,
             data: createdCategory,
           });

@@ -3,10 +3,10 @@ import { FC } from 'react';
 import { Button } from '../../../../components/Button';
 import { Form, FormContent } from '../../../../components/FormFields';
 import {
+  CheckboxAdapter,
   InputAdapter,
   MultiLanguageInputAdapter,
 } from '../../../../components/FormFieldsAdapter';
-import { CheckboxAdapter } from '../../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../../components/GridRowBalancer';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { attributesFormFields } from './constants';

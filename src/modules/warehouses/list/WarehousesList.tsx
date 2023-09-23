@@ -9,8 +9,8 @@ import { useTranslation } from '../../../components/IntlProvider';
 import { Foreground } from '../../../layouts/Foreground';
 import { GridAutoFit } from '../../../layouts/Grid';
 import { Section } from '../../../layouts/Section';
-import { warehouseTypeTranslationPrefix } from '../add/constants';
-import { Warehouse } from '../add/types';
+import { warehouseTypeTranslationPrefix } from '../common/constants';
+import { Warehouse } from '../common/types';
 import { SECTION_WAREHOUSES_ID } from './constants';
 import { WarehousesListPlaceholder } from './WarehousesListPlaceholder';
 
@@ -36,7 +36,7 @@ export const WarehousesList = () => {
                   className={classes.warehouseLink}
                 >
                   <Foreground foregroundClassName={classes.warehouseCard}>
-                    <Heading level={2} fontSize={6}>
+                    <Heading level={2} fontSize={4}>
                       {name}
                     </Heading>
                     <div className={classes.warehouseInfo}>

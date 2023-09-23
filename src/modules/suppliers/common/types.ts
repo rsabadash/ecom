@@ -16,14 +16,12 @@ export type SupplierFormFields = Record<
   keyof SupplierFormValues
 >;
 
-export type SupplierFormSubmitAction = (
-  values: SupplierFormValues,
-) => Promise<void>;
-
 export type SupplierFormProps = {
   id?: string;
   submitText: string;
   isReadOnly?: boolean;
   defaultValues?: Partial<SupplierFormValues>;
-  handleFormSubmit: SupplierFormSubmitAction;
+  handleFormSubmit: (values: SupplierFormValues) => Promise<void>;
 };
+
+export type SupplierStateFromRouter = Supplier | null;

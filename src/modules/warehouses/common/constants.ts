@@ -10,7 +10,7 @@ export const warehouseTypes: Record<WarehouseType, WarehouseType> = {
   shop: 'shop',
   onlineStore: 'onlineStore',
   warehouse: 'warehouse',
-};
+} as const;
 
 export const warehouseTypeKeys = Object.keys(warehouseTypes) as WarehouseType[];
 

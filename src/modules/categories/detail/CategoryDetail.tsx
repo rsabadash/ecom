@@ -10,10 +10,14 @@ import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { Category, CategoryFormValues } from '../common/types';
+import {
+  Category,
+  CategoryFormValues,
+  CategoryStateFromRouter,
+} from '../common/types';
 import { CategoryEditForm } from './CategoryEditForm';
 import { useDeleteCategory } from './hooks';
-import { CategoryStateFromRouter, CategoryUrlParams } from './types';
+import { CategoryUrlParams } from './types';
 import { matchCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {

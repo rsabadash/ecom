@@ -7,7 +7,8 @@ import {
 } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { createSupplierApi } from '../../common/api';
-import { SupplierPostData, SupplierPostResponse } from '../types';
+import { SupplierStateFromRouter } from '../../common/types';
+import { SupplierPostData } from '../types';
 
 type UseCreateSupplierReturn = {
   createSupplier: (data: SupplierPostData) => Promise<void>;
@@ -37,7 +38,7 @@ export const useCreateSupplier = (): UseCreateSupplierReturn => {
         });
 
         if (createdSupplier) {
-          await navigateWithData<SupplierPostResponse>({
+          await navigateWithData<SupplierStateFromRouter>({
             to: `${routes.suppliers.root}/${createdSupplier._id}`,
             data: createdSupplier,
           });

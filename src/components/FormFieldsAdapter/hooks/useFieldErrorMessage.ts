@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 
-import { useParseErrorMessage } from './useParseErrorMessage';
-import { CustomError } from './useParseErrorMessage';
+import { CustomError, useParseErrorMessage } from './useParseErrorMessage';
 
 export type FormatError = (error: CustomError) => undefined | string;
 

@@ -15,17 +15,16 @@ import {
   warehouseTypeKeys,
   warehouseTypeTranslationPrefix,
 } from './constants';
-import { useWarehouseForm, useWarehouseFormSubmit } from './hooks';
+import { useWarehouseForm } from './hooks';
 import { WarehouseFormProps, WarehouseType } from './types';
 
 export const WarehouseForm: FC<WarehouseFormProps> = ({
-  id,
+  submitText,
   isReadOnly,
   defaultValues,
+  handleFormSubmit,
 }) => {
   const { translate } = useTranslation();
-
-  const { handleFormSubmit } = useWarehouseFormSubmit({ id });
 
   const { control, handleSubmit } = useWarehouseForm({
     defaultValues,
@@ -39,9 +38,6 @@ export const WarehouseForm: FC<WarehouseFormProps> = ({
         value: translate(`${warehouseTypeTranslationPrefix}${key}`),
       };
     });
-
-  const shouldUpdateCategory =
-    defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -82,7 +78,7 @@ export const WarehouseForm: FC<WarehouseFormProps> = ({
       {!isReadOnly && (
         <FormContent>
           <Button variant="primary" type="submit">
-            {shouldUpdateCategory ? translate('update') : translate('add')}
+            {submitText}
           </Button>
         </FormContent>
       )}
