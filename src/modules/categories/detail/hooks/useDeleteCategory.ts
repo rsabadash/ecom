@@ -1,23 +1,23 @@
 import { useCallback } from 'react';
 
 import { routes } from '../../../../common/constants/routes';
-import { useCustomNavigate, useNotifications } from '../../../../common/hooks';
+import { useCustomNavigate, useNotification } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { deleteCategoryApi } from '../../common/api';
 import { Category } from '../../common/types';
 
-type UseDeleteCategoryProps = Category;
+type UseDeleteCategoryProps = Category | undefined;
 
 type UseDeleteCategoryReturn = {
   deleteCategory: () => Promise<void>;
 };
 
 export const useDeleteCategory = (
-  props: UseDeleteCategoryProps | undefined,
+  props: UseDeleteCategoryProps,
 ): UseDeleteCategoryReturn => {
-  const navigate = useCustomNavigate();
-  const { promiseNotification } = useNotifications();
   const { translate, getTranslationByLanguage } = useTranslation();
+  const navigate = useCustomNavigate();
+  const { promiseNotification } = useNotification();
 
   const { _id, name } = props || {};
 

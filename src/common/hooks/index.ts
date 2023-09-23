@@ -8,7 +8,7 @@ export { useIntlCurrency } from './useIntlCurrency';
 export { useIntlDate } from './useIntlDate';
 export { useKeepDataBetweenNavigation } from './useKeepDataBetweenNavigation';
 export { useLocalStorage } from './useLocalStorage';
-export { useNotifications } from './useNotifications';
+export { useNotification } from './useNotification';
 export { useOutsideElementClick } from './useOutsideElementClick';
 export { usePreviousActiveElement } from './usePreviousActiveElement';
 export { usePreviousPersistent } from './usePreviousPersistent';

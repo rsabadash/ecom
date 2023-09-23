@@ -13,7 +13,7 @@ import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { Category, CategoryFormValues } from '../common/types';
 import { CategoryEditForm } from './CategoryEditForm';
 import { useDeleteCategory } from './hooks';
-import { CategoryUrlParams, LocationStateFromRouter } from './types';
+import { CategoryStateFromRouter, CategoryUrlParams } from './types';
 import { matchCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {
@@ -25,26 +25,24 @@ const CategoryDetail = () => {
   const { getNavigationStateData } = useKeepDataBetweenNavigation();
 
   const categoryDetailFromLocation =
-    getNavigationStateData<LocationStateFromRouter>();
+    getNavigationStateData<CategoryStateFromRouter>();
 
-  const { data: categoryDetail, mutate } = useCachedAPI<Category>(
-    `${endpoints.categories.root}/${categoryId}`,
-    {
+  const { data: categoryDetail, mutate: mutateCategory } =
+    useCachedAPI<Category>(`${endpoints.categories.root}/${categoryId}`, {
       fallbackData: categoryDetailFromLocation,
-    },
-  );
+    });
 
   const { deleteCategory } = useDeleteCategory(categoryDetail);
 
   const formValues: CategoryFormValues | undefined =
     matchCategoryDataToFormValues(categoryDetail, language);
 
-  const handleButtonClick = (): void => {
+  const handleButtonEditClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
   const onFormUpdated = (): void => {
-    mutate();
+    mutateCategory();
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -58,7 +56,7 @@ const CategoryDetail = () => {
         <TopHeading>{categoryTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            <Button variant="primary" onClick={handleButtonClick}>
+            <Button variant="primary" onClick={handleButtonEditClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
             <Button variant="danger" onClick={deleteCategory}>

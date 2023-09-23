@@ -31,19 +31,11 @@ const PrivateErrorChildren = (props: unknown) => {
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <Suspense fallback="Route Root">
-        <Root />
-      </Suspense>
-    ),
+    element: <Root />,
     children: [
       {
         errorElement: <PrivateError />,
-        element: (
-          <Suspense fallback="Route Private">
-            <PrivateRoutes />
-          </Suspense>
-        ),
+        element: <PrivateRoutes />,
         children: [
           {
             path: routes.home,

@@ -6,10 +6,10 @@ import { ErrorBoundary } from '../../ErrorBoundary';
 const Suppliers = lazy(
   () => import('../../../modules/suppliers/list/Suppliers'),
 );
-const SuppliersDetail = lazy(
+const SupplierDetail = lazy(
   () => import('../../../modules/suppliers/detail/SupplierDetail'),
 );
-const SuppliersAdd = lazy(
+const SupplierAdd = lazy(
   () => import('../../../modules/suppliers/add/SupplierAdd'),
 );
 
@@ -29,7 +29,7 @@ export const suppliersRoutes = [
     element: (
       <Suspense fallback="Route Suppliers detail">
         <ErrorBoundary fallback="Error boundary Suppliers detail">
-          <SuppliersDetail />
+          <SupplierDetail />
         </ErrorBoundary>
       </Suspense>
     ),
@@ -37,11 +37,9 @@ export const suppliersRoutes = [
   {
     path: routes.suppliers.add,
     element: (
-      <Suspense fallback="Route Suppliers add">
-        <ErrorBoundary fallback="Error boundary Suppliers add">
-          <SuppliersAdd />
-        </ErrorBoundary>
-      </Suspense>
+      <ErrorBoundary fallback="Error boundary Suppliers add">
+        <SupplierAdd />
+      </ErrorBoundary>
     ),
   },
 ];

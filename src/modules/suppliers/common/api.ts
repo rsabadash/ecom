@@ -1,11 +1,7 @@
 import { endpoints } from '../../../common/constants/api';
 import { DELETE, PATCH, POST } from '../../../common/utils/api';
-import {
-  SupplierDeleteData,
-  SupplierPatchData,
-  SupplierPostData,
-  SupplierPostResponse,
-} from './types';
+import { SupplierPostData, SupplierPostResponse } from '../add/types';
+import { SupplierDeleteData, SupplierPatchData } from '../detail/types';
 
 export const createSupplierApi = async (
   data: SupplierPostData,

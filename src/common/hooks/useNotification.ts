@@ -8,7 +8,7 @@ type PromiseNotificationArgs<R> = {
   errorContent: string;
 };
 
-export const useNotifications = () => {
+export const useNotification = () => {
   const successNotification = useCallback((content: ReactNode) => {
     return toast.success(content);
   }, []);

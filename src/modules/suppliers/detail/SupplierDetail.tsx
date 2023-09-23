@@ -2,27 +2,37 @@ import { Suspense, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
-import { useCachedAPI } from '../../../common/hooks';
+import {
+  useCachedAPI,
+  useKeepDataBetweenNavigation,
+} from '../../../common/hooks';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useDeleteSupplier } from '../add/hooks';
-import { SupplierForm } from '../add/SupplierForm';
-import { Supplier, SupplierFormValues } from '../add/types';
-import { SupplierUrlParams } from './types';
+import { Supplier, SupplierFormValues } from '../common/types';
+import { useDeleteSupplier } from './hooks';
+import { SupplierEditForm } from './SupplierEditForm';
+import { SupplierStateFromRouter, SupplierUrlParams } from './types';
 import { matchSupplierDataToFormValues } from './utils';
 
 const SupplierDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { supplierId } = useParams<SupplierUrlParams>();
-  const { translate } = useTranslation();
 
-  const { data: supplierDetail } = useCachedAPI<Supplier>(
-    `${endpoints.suppliers.root}/${supplierId}`,
-  );
-  const { deleteSupplier } = useDeleteSupplier(supplierDetail?._id);
+  const { translate } = useTranslation();
+  const { getNavigationStateData } = useKeepDataBetweenNavigation();
+
+  const supplierDetailFromLocation =
+    getNavigationStateData<SupplierStateFromRouter>();
+
+  const { data: supplierDetail, mutate: mutateSupplier } =
+    useCachedAPI<Supplier>(`${endpoints.suppliers.root}/${supplierId}`, {
+      fallbackData: supplierDetailFromLocation,
+    });
+
+  const { deleteSupplier } = useDeleteSupplier(supplierDetail);
 
   const formValues: SupplierFormValues | undefined =
     matchSupplierDataToFormValues(supplierDetail);
@@ -31,10 +41,17 @@ const SupplierDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
+  const onFormUpdated = (): void => {
+    mutateSupplier();
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
+
+  const supplierTitle = `${translate('supplier')} "${supplierDetail?.name}"`;
+
   return (
     <>
       <Top>
-        <TopHeading>{supplierDetail?.name}</TopHeading>
+        <TopHeading>{supplierTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
             <Button variant="primary" onClick={handleButtonEditClick}>
@@ -48,10 +65,11 @@ const SupplierDetail = () => {
       </Top>
       <SectionForeground>
         <Suspense>
-          <SupplierForm
+          <SupplierEditForm
             id={supplierDetail?._id}
-            defaultValues={formValues}
             isReadOnly={isReadOnly}
+            defaultValues={formValues}
+            onFormUpdated={onFormUpdated}
           />
         </Suspense>
       </SectionForeground>

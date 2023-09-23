@@ -6,7 +6,7 @@ export type CategoryEditFormProps = Pick<CategoryFormProps, 'defaultValues'> & {
   onFormUpdated: () => void;
 };
 
-export type LocationStateFromRouter = Category | null;
+export type CategoryStateFromRouter = Category | null;
 
 export type CategoryUrlParams = {
   categoryId: string;
