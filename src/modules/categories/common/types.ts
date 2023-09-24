@@ -21,6 +21,8 @@ export type CategoryFormFields = Record<
   keyof CategoryFormValues
 >;
 
+export type CategoryFormDefaultValues = Partial<CategoryFormValues>;
+
 export type CategoryFormSubmitAction = (
   values: CategoryFormValues,
 ) => Promise<void>;
@@ -28,7 +30,7 @@ export type CategoryFormSubmitAction = (
 export type CategoryFormProps = {
   submitText: string;
   isReadOnly?: boolean;
-  defaultValues?: Partial<CategoryFormValues>;
+  defaultValues?: CategoryFormDefaultValues;
   handleFormSubmit: CategoryFormSubmitAction;
   dropdownCategoriesUrl: string;
 };

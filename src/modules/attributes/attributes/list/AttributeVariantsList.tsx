@@ -10,8 +10,8 @@ import {
   TableColumnGeneric,
 } from '../../../../components/Table';
 import { Variant } from '../../variants/add/types';
-import { TABLE_ATTRIBUTE_VARIANTS_ID } from '../add/constants';
-import { AttributeUrlParams } from '../add/types';
+import { TABLE_ATTRIBUTE_VARIANTS_ID } from './constants';
+import { AttributeUrlParams } from '../detail/types';
 import { AttributeVariantsListPlaceholder } from './AttributeVariantsListPlaceholder';
 import { useAttributeVariantsTableColumns } from './hooks';
 import { AttributesVariantsListProps } from './types';

@@ -41,7 +41,7 @@ const SupplierDetail = () => {
   const formValues: SupplierFormValues | undefined =
     matchSupplierDataToFormValues(supplierDetail);
 
-  const handleButtonEditClick = (): void => {
+  const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -58,7 +58,7 @@ const SupplierDetail = () => {
         <TopHeading>{supplierTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            <Button variant="primary" onClick={handleButtonEditClick}>
+            <Button variant="primary" onClick={handleEditButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
             <Button variant="danger" onClick={deleteSupplier}>

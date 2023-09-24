@@ -41,7 +41,7 @@ const CategoryDetail = () => {
   const formValues: CategoryFormValues | undefined =
     matchCategoryDataToFormValues(categoryDetail, language);
 
-  const handleButtonEditClick = (): void => {
+  const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -60,7 +60,7 @@ const CategoryDetail = () => {
         <TopHeading>{categoryTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            <Button variant="primary" onClick={handleButtonEditClick}>
+            <Button variant="primary" onClick={handleEditButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
             <Button variant="danger" onClick={deleteCategory}>

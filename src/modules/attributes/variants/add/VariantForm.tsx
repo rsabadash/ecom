@@ -10,7 +10,7 @@ import {
 } from '../../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../../components/GridRowBalancer';
 import { useTranslation } from '../../../../components/IntlProvider';
-import { AttributeUrlParams } from '../../attributes/add/types';
+import { AttributeUrlParams } from '../../attributes/detail/types';
 import { variantFormFields } from './constants';
 import { useVariantForm, useVariantFormSubmit } from './hooks';
 import { VariantFormProps } from './types';

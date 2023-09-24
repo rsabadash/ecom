@@ -1,8 +1,9 @@
-import { Category, CategoryFormProps } from '../common/types';
+import { Category, CategoryFormDefaultValues } from '../common/types';
 
-export type CategoryEditFormProps = Pick<CategoryFormProps, 'defaultValues'> & {
+export type CategoryEditFormProps = {
   id?: string;
   isReadOnly: boolean;
+  defaultValues: CategoryFormDefaultValues | undefined;
   onFormUpdated: () => void;
 };
 

@@ -12,7 +12,7 @@ import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
 import { usePaginationLimit } from '../../../components/Pagination/hooks';
-import { Attribute } from '../../attributes/attributes/add/types';
+import { Attribute } from '../../attributes/attributes/common/types';
 import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
 import {
   useWarehouseProductsGeneratorForm,

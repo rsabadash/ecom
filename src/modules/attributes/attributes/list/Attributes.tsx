@@ -5,8 +5,8 @@ import { ButtonLink, ButtonsGroup } from '../../../../components/Button';
 import { ErrorBoundary } from '../../../../components/ErrorBoundary';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
-import { TABLE_ATTRIBUTES_ID } from '../add/constants';
 import { AttributesList } from './AttributesList';
+import { TABLE_ATTRIBUTES_ID } from './constants';
 
 const Attributes = () => {
   const { translate } = useTranslation();

@@ -19,9 +19,9 @@ export const suppliers = {
   'supplier.updating': 'Оновлення постачальника "{supplierName}"',
   'supplier.updating.error':
     'Під час оновлення постачальника "{supplierName}" сталася помилка',
-  'supplier.updated': 'Постачальник "{supplierName}" успішно оновлений',
+  'supplier.updated': 'Постачальник "{supplierName}" був успішно оновлений',
   'supplier.deleting': 'Видалення постачальника "{supplierName}"',
   'supplier.deleting.error':
     'Під час видалення постачальника "{supplierName}" сталася помилка',
-  'supplier.deleted': 'Постачальник "{supplierName}" успішно видалений',
+  'supplier.deleted': 'Постачальник "{supplierName}" був успішно видалений',
 };

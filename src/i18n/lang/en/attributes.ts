@@ -16,10 +16,24 @@ export const attributes = {
   'attribute.state': 'State',
   'attribute.state.active': 'Active',
   'attribute.state.inactive': 'Not active',
+  'attribute.sortOrder.description': 'Attributes display order in a list',
+  'attribute.emptyList': "Attributes don't exist",
+  'attribute.emptyList.callToAction': 'Add attribute',
+  'attribute.creating': 'Attribute "{attributeName}" is being created',
+  'attribute.creating.error':
+    'An error occurred while creating attribute "{attributeName}"',
+  'attribute.created': 'Attribute "{attributeName}" was successfully created',
+  'attribute.updating': 'Attribute "{attributeName}" is being updated',
+  'attribute.updating.error':
+    'An error occurred while updating attribute "{attributeName}"',
+  'attribute.updated': 'Attribute "{attributeName}" was successfully updated',
+  'attribute.deleting': 'Attribute "{attributeName}" is being deleted',
+  'attribute.deleting.error':
+    'An error occurred while deleting Attribute "{attributeName}"',
+  'attribute.deleted': 'Attribute "{attributeName}" was successfully deleted',
   'attribute.variant': 'Variant',
   'attribute.variants': 'Variants',
   'attribute.variant.add': 'Add variant',
-  'attribute.sortOrder.description': 'Attributes display order in a list',
   'attribute.variant.count': 'Variants count',
   'attribute.variant.name': 'Variant name',
   'attribute.variant.name.description': 'Enter variant name in {language}',
@@ -36,8 +50,6 @@ export const attributes = {
   'attribute.variant.active':
     'Variant is available for display on public pages',
   'attribute.variant.list': 'Variants list',
-  'attribute.emptyList': "Attributes don't exist",
-  'attribute.emptyList.callToAction': 'Add attribute',
   'attribute.variant.emptyList': "Variants don't exist",
   'attribute.variant.emptyList.callToAction.attributeDetail': 'Add variant',
   'attribute.variant.emptyList.callToAction':

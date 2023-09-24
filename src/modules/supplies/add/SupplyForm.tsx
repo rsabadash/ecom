@@ -13,8 +13,11 @@ import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { Heading } from '../../../components/Heading';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { TABLE_ATTRIBUTE_VARIANTS_ID } from '../../attributes/attributes/add/constants';
-import { initialDefaultValues, supplyFormFields } from './constants';
+import {
+  initialDefaultValues,
+  supplyFormFields,
+  TABLE_SUPPLY_PRODUCTS_ID,
+} from './constants';
 import { useSupplyForm, useSupplyFormSubmit } from './hooks';
 import { SupplyProductsDuplicationsModal } from './SupplyProductsDuplicationsModal';
 import { SupplyProductsList } from './SupplyProductsList';
@@ -104,7 +107,7 @@ export const SupplyForm: FC<SupplyFormProps> = ({
         </SectionForeground>
 
         <Heading
-          id={TABLE_ATTRIBUTE_VARIANTS_ID}
+          id={TABLE_SUPPLY_PRODUCTS_ID}
           level={2}
           fontSize={4}
           classNameHeading={classes.supplyProducts__title}

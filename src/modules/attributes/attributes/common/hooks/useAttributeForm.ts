@@ -9,13 +9,13 @@ import {
   YupSchemaKey,
 } from '../../../../../common/hooks/useCustomForm';
 import { mainTranslationRequired } from '../../../../../validations/translations';
-import { AttributeFormValues } from '../types';
+import { AttributeFormDefaultValues, AttributeFormValues } from '../types';
 
 type UseAttributeFromProps = Pick<
   UseCustomFormProps<AttributeFormValues>,
   'shouldReset' | 'submitHandler'
 > & {
-  defaultValues?: Partial<AttributeFormValues>;
+  defaultValues?: AttributeFormDefaultValues;
 };
 
 type UseAttributeFromReturn = Pick<

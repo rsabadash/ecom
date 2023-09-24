@@ -17,8 +17,8 @@ const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { attributeId, variantId } = useParams<VariantUrlParams>();
+
   const { translate, getTranslationByLanguage } = useTranslation();
-  const { deleteVariant } = useDeleteVariant({ attributeId, variantId });
 
   const variantLinkWithAttributeId = generatePath(
     endpoints.attributes.getVariants,
@@ -31,7 +31,9 @@ const VariantDetail = () => {
     `${variantLinkWithAttributeId}/${variantId}`,
   );
 
-  const handleButtonClick = (): void => {
+  const { deleteVariant } = useDeleteVariant({ attributeId, variantId });
+
+  const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -48,7 +50,7 @@ const VariantDetail = () => {
         <TopHeading>{variantTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            <Button variant="primary" onClick={handleButtonClick}>
+            <Button variant="primary" onClick={handleEditButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
             <Button variant="danger" onClick={deleteVariant}>

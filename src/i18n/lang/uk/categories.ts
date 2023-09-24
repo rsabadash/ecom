@@ -28,9 +28,9 @@ export const categories = {
   'category.updating': 'Оновлення категорії "{categoryName}"',
   'category.updating.error':
     'Під час оновлення категорії "{categoryName}" сталася помилка',
-  'category.updated': 'Категорія "{categoryName}" успішно оновлена',
+  'category.updated': 'Категорія "{categoryName}" була успішно оновлена',
   'category.deleting': 'Видалення категорії "{categoryName}"',
   'category.deleting.error':
     'Під час видалення категорії "{categoryName}" сталася помилка',
-  'category.deleted': 'Категорія "{categoryName}" успішно видалена',
+  'category.deleted': 'Категорія "{categoryName}" була успішно видалена',
 };

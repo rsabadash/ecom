@@ -27,7 +27,7 @@ const WarehouseDetail = () => {
   const formValues: WarehouseFormValues | undefined =
     matchWarehouseDataToFormValues(warehouseDetail, translate);
 
-  const handleButtonClick = (): void => {
+  const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -36,13 +36,15 @@ const WarehouseDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
+  const warehouseTitle = `${translate('warehouse')} "${warehouseDetail?.name}"`;
+
   return (
     <>
       <Top>
-        <TopHeading>{warehouseDetail?.name}</TopHeading>
+        <TopHeading>{warehouseTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            <Button variant="primary" onClick={handleButtonClick}>
+            <Button variant="primary" onClick={handleEditButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
             <Button variant="danger" onClick={deleteWarehouse}>

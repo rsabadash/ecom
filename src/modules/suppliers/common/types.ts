@@ -1,3 +1,5 @@
+import { CategoryFormSubmitAction } from '../../categories/common/types';
+
 export type Supplier = {
   _id: string;
   name: string;
@@ -16,12 +18,17 @@ export type SupplierFormFields = Record<
   keyof SupplierFormValues
 >;
 
+export type SupplierFormDefaultValues = Partial<SupplierFormValues>;
+
+export type SupplierFormSubmitAction = (
+  values: SupplierFormValues,
+) => Promise<void>;
+
 export type SupplierFormProps = {
-  id?: string;
   submitText: string;
   isReadOnly?: boolean;
-  defaultValues?: Partial<SupplierFormValues>;
-  handleFormSubmit: (values: SupplierFormValues) => Promise<void>;
+  defaultValues?: SupplierFormDefaultValues;
+  handleFormSubmit: SupplierFormSubmitAction;
 };
 
 export type SupplierStateFromRouter = Supplier | null;

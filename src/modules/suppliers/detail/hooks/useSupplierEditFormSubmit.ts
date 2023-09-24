@@ -1,6 +1,9 @@
 import { useCallback } from 'react';
 
-import { SupplierFormValues } from '../../common/types';
+import {
+  SupplierFormSubmitAction,
+  SupplierFormValues,
+} from '../../common/types';
 import { SupplierPatchData } from '../types';
 import { useUpdateSupplier } from './useUpdateSupplier';
 
@@ -10,7 +13,7 @@ type UseSupplierEditFormSubmitProps = {
 };
 
 type UseSupplierEditFormSubmitReturn = {
-  handleFormSubmit: (values: SupplierFormValues) => Promise<void>;
+  handleFormSubmit: SupplierFormSubmitAction;
 };
 
 export const useSupplierEditFormSubmit = ({

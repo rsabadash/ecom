@@ -1,5 +1,6 @@
 export const warehouses = {
   warehouses: 'Warehouses',
+  warehouse: 'Warehouse',
   'warehouse.add': 'Add warehouse',
   'warehouse.name': 'Warehouse name',
   'warehouse.name.description': 'Enter warehouse name',

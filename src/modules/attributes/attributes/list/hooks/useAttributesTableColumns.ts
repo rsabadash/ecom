@@ -5,7 +5,7 @@ import {
   TableCellValueGetterProps,
   TableColumnGeneric,
 } from '../../../../../components/Table';
-import { Attribute } from '../../add/types';
+import { Attribute } from '../../common/types';
 
 type UseAttributeTableColumnsReturn = TableColumnGeneric<Attribute>[];
 

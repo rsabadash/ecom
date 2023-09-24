@@ -17,8 +17,8 @@ export const SupplierEditForm: FC<SupplierEditFormProps> = ({
 
   return (
     <SupplierForm
-      isReadOnly={isReadOnly}
       submitText={translate('update')}
+      isReadOnly={isReadOnly}
       defaultValues={defaultValues}
       handleFormSubmit={handleFormSubmit}
     />

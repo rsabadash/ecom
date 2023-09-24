@@ -1,5 +1,6 @@
 export const warehouses = {
   warehouses: 'Склади',
+  warehouse: 'Склад',
   'warehouse.add': 'Додати склад',
   'warehouse.name': 'Назва складу',
   'warehouse.name.description': 'Введіть назву складу',
@@ -21,9 +22,9 @@ export const warehouses = {
   'warehouse.updating': 'Оновлення складу "{warehouseName}"',
   'warehouse.updating.error':
     'Під час оновлення складу "{warehouseName}" сталася помилка',
-  'warehouse.updated': 'Склад "{warehouseName}" успішно оновлений',
+  'warehouse.updated': 'Склад "{warehouseName}" був успішно оновлений',
   'warehouse.deleting': 'Видалення складу "{warehouseName}"',
   'warehouse.deleting.error':
     'Під час видалення складу "{warehouseName}" сталася помилка',
-  'warehouse.deleted': 'Склад "{warehouseName}" успішно видалено',
+  'warehouse.deleted': 'Склад "{warehouseName}" був успішно видалений',
 };

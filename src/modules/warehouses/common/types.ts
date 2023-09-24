@@ -20,12 +20,17 @@ export type WarehouseFormFields = Record<
   keyof WarehouseFormValues
 >;
 
+export type WarehouseFormDefaultValues = Partial<WarehouseFormValues>;
+
+export type WarehouseFormSubmitAction = (
+  values: WarehouseFormValues,
+) => Promise<void>;
+
 export type WarehouseFormProps = {
-  id?: string;
   submitText: string;
   isReadOnly?: boolean;
-  defaultValues?: Partial<WarehouseFormValues>;
-  handleFormSubmit: (values: WarehouseFormValues) => Promise<void>;
+  defaultValues?: WarehouseFormDefaultValues;
+  handleFormSubmit: WarehouseFormSubmitAction;
 };
 
 export type WarehouseStateFromRouter = Warehouse | null;

@@ -9,13 +9,13 @@ import {
 } from '../../../../common/hooks/useCustomForm';
 import { DropdownItemObject } from '../../../../components/Fields/Dropdown';
 import { dropdownItem } from '../../../../validations/dropdown';
-import { WarehouseFormValues } from '../types';
+import { WarehouseFormDefaultValues, WarehouseFormValues } from '../types';
 
 type UseWarehouseFormProps = Pick<
   UseCustomFormProps<WarehouseFormValues>,
   'shouldReset' | 'submitHandler'
 > & {
-  defaultValues?: Partial<WarehouseFormValues>;
+  defaultValues?: WarehouseFormDefaultValues;
 };
 
 type UseWarehouseFormReturn = Pick<

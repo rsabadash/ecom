@@ -8,13 +8,13 @@ import {
   YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
 import { supplierFormFields } from '../constants';
-import { SupplierFormValues } from '../types';
+import { SupplierFormDefaultValues, SupplierFormValues } from '../types';
 
 type UseSupplierFormProps = Pick<
   UseCustomFormProps<SupplierFormValues>,
   'shouldReset' | 'submitHandler'
 > & {
-  defaultValues?: Partial<SupplierFormValues>;
+  defaultValues?: SupplierFormDefaultValues;
 };
 
 type UseSupplierFormReturn = Pick<

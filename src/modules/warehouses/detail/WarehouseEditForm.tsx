@@ -20,9 +20,9 @@ export const WarehouseEditForm: FC<WarehouseEditFormProps> = ({
 
   return (
     <WarehouseForm
+      submitText={translate('update')}
       isReadOnly={isReadOnly}
       defaultValues={defaultValues}
-      submitText={translate('edit')}
       handleFormSubmit={handleFormSubmit}
     />
   );

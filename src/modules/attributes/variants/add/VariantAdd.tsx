@@ -5,7 +5,7 @@ import { ButtonLink } from '../../../../components/Button';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
-import { AttributeUrlParams } from '../../attributes/add/types';
+import { AttributeUrlParams } from '../../attributes/detail/types';
 import { VariantForm } from './VariantForm';
 
 const VariantAdd = () => {

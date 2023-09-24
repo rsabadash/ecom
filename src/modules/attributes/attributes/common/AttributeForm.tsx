@@ -10,25 +10,22 @@ import {
 import { GridRowBalancer } from '../../../../components/GridRowBalancer';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { attributesFormFields } from './constants';
-import { useAttributeForm, useAttributeFormSubmit } from './hooks';
+import { useAttributeForm } from './hooks';
 import { AttributeFormProps } from './types';
 
 export const AttributeForm: FC<AttributeFormProps> = ({
-  id,
+  submitText,
   isReadOnly,
   defaultValues,
+  handleFormSubmit,
 }) => {
   const { translate } = useTranslation();
-  const { handleFormSubmit } = useAttributeFormSubmit({ id });
 
   const { control, handleSubmit } = useAttributeForm({
     defaultValues,
     shouldReset: isReadOnly,
     submitHandler: handleFormSubmit,
   });
-
-  const shouldUpdateAttribute =
-    defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -75,7 +72,7 @@ export const AttributeForm: FC<AttributeFormProps> = ({
       {!isReadOnly && (
         <FormContent>
           <Button variant="primary" type="submit">
-            {shouldUpdateAttribute ? translate('update') : translate('add')}
+            {submitText}
           </Button>
         </FormContent>
       )}

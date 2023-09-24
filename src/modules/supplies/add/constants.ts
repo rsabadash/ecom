@@ -6,6 +6,8 @@ export const MAX_PRODUCTS_IN_SUPPLY = 50;
 
 export const ZERO_VALUE = calculation.round('0');
 
+export const TABLE_SUPPLY_PRODUCTS_ID = 'supplyProductsTable';
+
 export const supplyFormArrayFields = {
   products: 'products',
 } as const;

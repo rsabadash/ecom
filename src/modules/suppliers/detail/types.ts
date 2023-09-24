@@ -1,8 +1,9 @@
-import { Supplier, SupplierFormProps } from '../common/types';
+import { Supplier, SupplierFormDefaultValues } from '../common/types';
 
-export type SupplierEditFormProps = Pick<SupplierFormProps, 'defaultValues'> & {
+export type SupplierEditFormProps = {
   id?: string;
   isReadOnly: boolean;
+  defaultValues?: SupplierFormDefaultValues | undefined;
   onFormUpdated: () => void;
 };
 

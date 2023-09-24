@@ -1,11 +1,9 @@
-import { WarehouseFormProps, WarehouseType } from '../common/types';
+import { WarehouseFormDefaultValues, WarehouseType } from '../common/types';
 
-export type WarehouseEditFormProps = Pick<
-  WarehouseFormProps,
-  'defaultValues'
-> & {
+export type WarehouseEditFormProps = {
   id?: string;
   isReadOnly: boolean;
+  defaultValues: WarehouseFormDefaultValues | undefined;
   onFormUpdated: () => void;
 };
 

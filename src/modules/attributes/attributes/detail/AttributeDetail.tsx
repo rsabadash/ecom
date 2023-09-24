@@ -3,7 +3,10 @@ import { generatePath, useParams } from 'react-router-dom';
 
 import { endpoints } from '../../../../common/constants/api';
 import { routes } from '../../../../common/constants/routes';
-import { useCachedAPI } from '../../../../common/hooks';
+import {
+  useCachedAPI,
+  useKeepDataBetweenNavigation,
+} from '../../../../common/hooks';
 import {
   Button,
   ButtonLink,
@@ -12,32 +15,44 @@ import {
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
-import { AttributeForm } from '../add/AttributeForm';
-import { useDeleteAttribute } from '../add/hooks';
 import {
   Attribute,
   AttributeFormValues,
-  AttributeUrlParams,
-} from '../add/types';
+  AttributeStateFromRouter,
+} from '../common/types';
 import { AttributeVariantsList } from '../list/AttributeVariantsList';
+import { AttributeEditForm } from './AttributeEditForm';
+import { useDeleteAttribute } from './hooks';
+import { AttributeUrlParams } from './types';
 import { matchAttributeDataToFormValues } from './utils';
 
 const AttributeDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
 
   const { attributeId } = useParams<AttributeUrlParams>();
+
   const { translate, getTranslationByLanguage } = useTranslation();
+  const { getNavigationStateData } = useKeepDataBetweenNavigation();
 
-  const { data: attributeDetail } = useCachedAPI<Attribute>(
-    `${endpoints.attributes.root}/${attributeId}`,
-  );
+  const categoryDetailFromLocation =
+    getNavigationStateData<AttributeStateFromRouter>();
 
-  const { deleteAttribute } = useDeleteAttribute(attributeDetail?._id);
+  const { data: attributeDetail, mutate: mutateAttribute } =
+    useCachedAPI<Attribute>(`${endpoints.attributes.root}/${attributeId}`, {
+      fallbackData: categoryDetailFromLocation,
+    });
+
+  const { deleteAttribute } = useDeleteAttribute(attributeDetail);
 
   const formValues: AttributeFormValues | undefined =
     matchAttributeDataToFormValues(attributeDetail);
 
-  const handleButtonClick = (): void => {
+  const handleEditButtonClick = (): void => {
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
+
+  const onFormUpdated = (): void => {
+    mutateAttribute();
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -62,7 +77,7 @@ const AttributeDetail = () => {
                 {translate('attribute.variant.add')}
               </ButtonLink>
             )}
-            <Button variant="primary" onClick={handleButtonClick}>
+            <Button variant="primary" onClick={handleEditButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
             <Button variant="danger" onClick={deleteAttribute}>
@@ -72,10 +87,11 @@ const AttributeDetail = () => {
         </TopButtons>
       </Top>
       <SectionForeground>
-        <AttributeForm
+        <AttributeEditForm
           id={attributeDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormUpdated={onFormUpdated}
         />
       </SectionForeground>
       {isReadOnly && (

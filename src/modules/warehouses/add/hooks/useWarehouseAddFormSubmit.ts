@@ -1,11 +1,14 @@
 import { useCallback } from 'react';
 
-import { WarehouseFormValues } from '../../common/types';
+import {
+  WarehouseFormSubmitAction,
+  WarehouseFormValues,
+} from '../../common/types';
 import { WarehousePostData } from '../types';
 import { useCreateWarehouse } from './useCreateWarehouse';
 
 type UseWarehouseFormSubmitReturn = {
-  handleFormSubmit: (values: WarehouseFormValues) => Promise<void>;
+  handleFormSubmit: WarehouseFormSubmitAction;
 };
 
 export const useWarehouseAddFormSubmit = (): UseWarehouseFormSubmitReturn => {

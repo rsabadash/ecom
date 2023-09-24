@@ -17,11 +17,25 @@ export const attributes = {
   'attribute.state': 'Статус',
   'attribute.state.active': 'Активний',
   'attribute.state.inactive': 'Не активний',
+  'attribute.sortOrder.description':
+    'Порядок відображення атрибутів в списку атрибутів',
+  'attribute.emptyList': 'Атрибути відсутні',
+  'attribute.emptyList.callToAction': 'Додати атрибут',
+  'attribute.creating': 'Створення атрибуту "{attributeName}"',
+  'attribute.creating.error':
+    'Під час створення атрибуту "{attributeName}" сталася помилка',
+  'attribute.created': 'Атрибут "{attributeName}" був успішно створений',
+  'attribute.updating': 'Оновлення атрибуту "{attributeName}"',
+  'attribute.updating.error':
+    'Під час оновлення атрибуту "{attributeName}" сталася помилка',
+  'attribute.updated': 'Атрибут "{attributeName}" був успішно оновлений',
+  'attribute.deleting': 'Видалення атрибуту "{attributeName}"',
+  'attribute.deleting.error':
+    'Під час видалення атрибуту "{attributeName}" сталася помилка',
+  'attribute.deleted': 'Атрибут "{attributeName}" був успішно видалений',
   'attribute.variant': 'Варіант',
   'attribute.variants': 'Варіанти',
   'attribute.variant.add': 'Додати варіант',
-  'attribute.sortOrder.description':
-    'Порядок відображення атрибутів в списку атрибутів',
   'attribute.variant.count': 'Кількість варіантів',
   'attribute.variant.name': 'Назва варіанта',
   'attribute.variant.name.description':
@@ -40,8 +54,6 @@ export const attributes = {
   'attribute.variant.active':
     'Варіант доступний для показу на публічних сторінках',
   'attribute.variant.list': 'Список варіантів',
-  'attribute.emptyList': 'Атрибути відсутні',
-  'attribute.emptyList.callToAction': 'Додати атрибут',
   'attribute.variant.emptyList': 'Варіанти відсутні',
   'attribute.variant.emptyList.callToAction.attributeDetail': 'Додати варіант',
   'attribute.variant.emptyList.callToAction':

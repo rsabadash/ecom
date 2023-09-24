@@ -22,9 +22,9 @@ export const CategoryEditForm: FC<CategoryEditFormProps> = ({
 
   return (
     <CategoryForm
+      submitText={translate('update')}
       isReadOnly={isReadOnly}
       defaultValues={defaultValues}
-      submitText={translate('update')}
       handleFormSubmit={handleFormSubmit}
       dropdownCategoriesUrl={dropdownCategoriesUrl}
     />
