@@ -42,8 +42,6 @@ const AttributeDetail = () => {
       fallbackData: categoryDetailFromLocation,
     });
 
-  const { deleteAttribute } = useDeleteAttribute(attributeDetail);
-
   const formValues: AttributeFormValues | undefined =
     matchAttributeDataToFormValues(attributeDetail);
 
@@ -56,14 +54,23 @@ const AttributeDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
-  const variants = attributeDetail?.variants ? attributeDetail.variants : [];
+  const variants = attributeDetail?.variants || [];
 
-  const attributeTitle = `${translate('attribute')} "${getTranslationByLanguage(
+  const translatedAttributeName = getTranslationByLanguage(
     attributeDetail?.name,
-  )}"`;
+  );
+
+  const attributeTitle = `${translate(
+    'attribute',
+  )} "${translatedAttributeName}"`;
 
   const variantAddPath = generatePath(routes.attributes.variantAdd, {
     attributeId,
+  });
+
+  const { deleteAttribute } = useDeleteAttribute({
+    id: attributeDetail?._id,
+    name: translatedAttributeName,
   });
 
   return (
@@ -74,7 +81,7 @@ const AttributeDetail = () => {
           <ButtonsGroup>
             {isReadOnly && (
               <ButtonLink variant="primary" to={variantAddPath}>
-                {translate('attribute.variant.add')}
+                {translate('variant.add')}
               </ButtonLink>
             )}
             <Button variant="primary" onClick={handleEditButtonClick}>
@@ -92,6 +99,7 @@ const AttributeDetail = () => {
           isReadOnly={isReadOnly}
           defaultValues={formValues}
           onFormUpdated={onFormUpdated}
+          attributeName={translatedAttributeName}
         />
       </SectionForeground>
       {isReadOnly && (

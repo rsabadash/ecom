@@ -23,7 +23,7 @@ const Attributes = () => {
               {translate('add')}
             </ButtonLink>
             <ButtonLink variant="regular" to={routes.attributes.variantsList}>
-              {translate('attribute.variant.list')}
+              {translate('variant.list')}
             </ButtonLink>
           </ButtonsGroup>
         </TopButtons>

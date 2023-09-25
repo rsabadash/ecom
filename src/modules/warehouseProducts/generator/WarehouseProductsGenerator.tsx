@@ -24,7 +24,7 @@ const WarehouseProductsGenerator = () => {
         <Suspense fallback="Suspense Warehouse products generator">
           <SectionForeground>
             <WarehouseProductsGeneratorForm
-              onSuccessSubmit={setGeneratedProducts}
+              onGeneratedProductsCallback={setGeneratedProducts}
             />
           </SectionForeground>
           {generatedProducts && (

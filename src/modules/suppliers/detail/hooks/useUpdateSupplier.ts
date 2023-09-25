@@ -3,10 +3,10 @@ import { useCallback } from 'react';
 import { useNotification } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { updateSupplierApi } from '../../common/api';
-import { SupplierPatchData } from '../types';
+import { SupplierPatchData } from '../../common/types';
 
 type UseUpdateSupplierProps = {
-  onFormUpdated: () => void;
+  onSuccess: () => void;
 };
 
 type UseUpdateSupplierReturn = {
@@ -14,7 +14,7 @@ type UseUpdateSupplierReturn = {
 };
 
 export const useUpdateSupplier = ({
-  onFormUpdated,
+  onSuccess,
 }: UseUpdateSupplierProps): UseUpdateSupplierReturn => {
   const { translate } = useTranslation();
   const { promiseNotification } = useNotification();
@@ -37,13 +37,13 @@ export const useUpdateSupplier = ({
           }),
         });
 
-        onFormUpdated();
+        onSuccess();
       } catch (e) {
         // TODO common error logic
         console.log(e);
       }
     },
-    [onFormUpdated, promiseNotification, translate],
+    [onSuccess, promiseNotification, translate],
   );
 
   return { updateSupplier };

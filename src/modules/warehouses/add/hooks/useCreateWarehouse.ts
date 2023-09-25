@@ -7,8 +7,10 @@ import {
 } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { createWarehouseApi } from '../../common/api';
-import { WarehouseStateFromRouter } from '../../common/types';
-import { WarehousePostData } from '../types';
+import {
+  WarehousePostData,
+  WarehouseStateFromRouter,
+} from '../../common/types';
 
 type UseCreateWarehouseReturn = {
   createWarehouse: (data: WarehousePostData) => Promise<void>;

@@ -43,7 +43,7 @@ export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
         },
       },
       {
-        title: translate('attribute.variant.count'),
+        title: translate('variant.count'),
         key: 'variants',
         width: '25%',
         valueGetter: ({ item }: AttributeValueGetterProps) => {

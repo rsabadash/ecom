@@ -3,12 +3,13 @@ import { useCallback } from 'react';
 import {
   AttributeFormSubmitAction,
   AttributeFormValues,
+  AttributePatchData,
 } from '../../common/types';
 import { useUpdateAttribute } from '../../detail/hooks';
-import { AttributePatchData } from '../types';
 
 type UseAttributeEditFormSubmitProps = {
-  id?: string;
+  id: string | undefined;
+  name: string | undefined;
   onFormUpdated: () => void;
 };
 
@@ -18,9 +19,10 @@ type UseAttributeEditFormSubmitReturn = {
 
 export const useAttributeEditFormSubmit = ({
   id,
+  name,
   onFormUpdated,
 }: UseAttributeEditFormSubmitProps): UseAttributeEditFormSubmitReturn => {
-  const { updateAttribute } = useUpdateAttribute({ onFormUpdated });
+  const { updateAttribute } = useUpdateAttribute({ name, onSuccess: onFormUpdated });
 
   const handleFormSubmit = useCallback(
     async (values: AttributeFormValues) => {

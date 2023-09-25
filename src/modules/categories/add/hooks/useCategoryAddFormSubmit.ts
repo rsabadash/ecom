@@ -3,9 +3,9 @@ import { useCallback } from 'react';
 import {
   CategoryFormSubmitAction,
   CategoryFormValues,
+  CategoryPostData,
 } from '../../common/types';
 import { getCategoryIds } from '../../common/utils';
-import { CategoryPostData } from '../types';
 import { useCreateCategory } from './useCreateCategory';
 
 type UseCategoryAddFormSubmitReturn = {

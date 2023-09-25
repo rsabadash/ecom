@@ -26,7 +26,7 @@ import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorForm: FC<
   WarehouseProductsGeneratorFormProps
-> = ({ onSuccessSubmit }) => {
+> = ({ onGeneratedProductsCallback }) => {
   const { translate } = useTranslation();
 
   const { limitValue } = usePaginationLimit();
@@ -37,7 +37,7 @@ export const WarehouseProductsGeneratorForm: FC<
   });
 
   const { handleFormSubmit } = useWarehouseProductsGeneratorFormSubmit({
-    onSuccess: onSuccessSubmit,
+    onGeneratedProducts: onGeneratedProductsCallback,
   });
 
   const { control, setValue, getValues, handleSubmit } =

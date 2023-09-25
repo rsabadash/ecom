@@ -3,10 +3,10 @@ import { useCallback } from 'react';
 import { useNotification } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { updateCategoryApi } from '../../common/api';
-import { CategoryPatchData } from '../types';
+import { CategoryPatchData } from '../../common/types';
 
 type UseUpdateCategoryProps = {
-  onFormUpdated: () => void;
+  onSuccess: () => void;
 };
 
 type UseUpdateCategoryReturn = {
@@ -14,7 +14,7 @@ type UseUpdateCategoryReturn = {
 };
 
 export const useUpdateCategory = ({
-  onFormUpdated,
+  onSuccess,
 }: UseUpdateCategoryProps): UseUpdateCategoryReturn => {
   const { translate, getTranslationByLanguage } = useTranslation();
   const { promiseNotification } = useNotification();
@@ -37,13 +37,13 @@ export const useUpdateCategory = ({
           }),
         });
 
-        onFormUpdated();
+        onSuccess();
       } catch (e) {
         // TODO common error logic
         console.log(e);
       }
     },
-    [getTranslationByLanguage, onFormUpdated, promiseNotification, translate],
+    [getTranslationByLanguage, onSuccess, promiseNotification, translate],
   );
 
   return { updateCategory };

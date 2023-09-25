@@ -28,15 +28,15 @@ const schema = yup.object().shape<YupSchemaKey<VariantFormValues>>({
     .object()
     .shape(
       mainTranslationRequired({
-        uk: 'attribute.variant.name.error.required',
+        uk: 'variant.name.error.required',
       }),
     )
     .required(),
   seoName: yup
     .string()
     .nullable()
-    .matches(URL_SLUG, 'attribute.variant.seoName.error.symbol')
-    .required('attribute.variant.seoName.error.required'),
+    .matches(URL_SLUG, 'variant.seoName.error.symbol')
+    .required('variant.seoName.error.required'),
 });
 
 export const useVariantForm = ({

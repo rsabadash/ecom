@@ -15,7 +15,7 @@ const Variants = () => {
     <>
       <Top>
         <TopHeading id={TABLE_VARIANTS_ID}>
-          {translate('attribute.variants')}
+          {translate('variants')}
         </TopHeading>
         <TopButtons>
           <ButtonsGroup>

@@ -7,38 +7,39 @@ import {
 } from '../../../../../common/hooks';
 import { useTranslation } from '../../../../../components/IntlProvider';
 import { deleteAttributeApi } from '../../common/api';
-import { Attribute } from '../../common/types';
 
-type UseDeleteAttributeProps = Attribute | undefined;
+type UseDeleteAttributeProps = {
+  id: string | undefined;
+  name: string | undefined;
+};
 
 type UseDeleteAttributeReturn = {
   deleteAttribute: () => Promise<void>;
 };
 
-export const useDeleteAttribute = (
-  props: UseDeleteAttributeProps,
-): UseDeleteAttributeReturn => {
-  const { translate, getTranslationByLanguage } = useTranslation();
+export const useDeleteAttribute = ({
+  id,
+  name,
+}: UseDeleteAttributeProps): UseDeleteAttributeReturn => {
+  const { translate } = useTranslation();
   const navigate = useCustomNavigate();
   const { promiseNotification } = useNotification();
 
-  const { _id, name } = props || {};
-
   const deleteAttribute = useCallback(async () => {
-    if (_id) {
-      const translatedAttributeName = getTranslationByLanguage(name);
+    if (id) {
+      const attributeName = name || '';
 
       try {
         await promiseNotification({
-          fetch: () => deleteAttributeApi(_id),
+          fetch: () => deleteAttributeApi(id),
           pendingContent: translate('attribute.deleting', {
-            attributeName: translatedAttributeName,
+            attributeName,
           }),
           successContent: translate('attribute.deleted', {
-            attributeName: translatedAttributeName,
+            attributeName,
           }),
           errorContent: translate('attribute.deleting.error', {
-            attributeName: translatedAttributeName,
+            attributeName,
           }),
         });
 
@@ -48,14 +49,7 @@ export const useDeleteAttribute = (
         console.log(e);
       }
     }
-  }, [
-    _id,
-    getTranslationByLanguage,
-    name,
-    navigate,
-    promiseNotification,
-    translate,
-  ]);
+  }, [id, name, navigate, promiseNotification, translate]);
 
   return { deleteAttribute };
 };

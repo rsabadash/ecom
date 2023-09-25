@@ -10,12 +10,14 @@ export const AttributeEditForm: FC<AttributeEditFormProps> = ({
   isReadOnly,
   defaultValues,
   onFormUpdated,
+  attributeName,
 }) => {
   const { translate } = useTranslation();
 
   const { handleFormSubmit } = useAttributeEditFormSubmit({
     id,
     onFormUpdated,
+    name: attributeName,
   });
 
   return (

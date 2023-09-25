@@ -35,11 +35,9 @@ export const warehousesRoutes = [
   {
     path: routes.warehouses.detail,
     element: (
-      <Suspense fallback="Route Warehouses detail">
-        <ErrorBoundary fallback="Error boundary Warehouse detail">
-          <WarehouseDetail />
-        </ErrorBoundary>
-      </Suspense>
+      <ErrorBoundary fallback="Error boundary Warehouse detail">
+        <WarehouseDetail />
+      </ErrorBoundary>
     ),
   },
 ];

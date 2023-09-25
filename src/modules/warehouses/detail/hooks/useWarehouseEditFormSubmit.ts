@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import {
   WarehouseFormSubmitAction,
   WarehouseFormValues,
+  WarehousePatchData,
 } from '../../common/types';
-import { WarehousePatchData } from '../types';
 import { useUpdateWarehouse } from './useUpdateWarehouse';
 
 type UseWarehouseFormSubmitProps = {
@@ -20,7 +20,7 @@ export const useWarehouseEditFormSubmit = ({
   id,
   onFormUpdated,
 }: UseWarehouseFormSubmitProps): UseWarehouseFormSubmitReturn => {
-  const { updateWarehouse } = useUpdateWarehouse({ onFormUpdated });
+  const { updateWarehouse } = useUpdateWarehouse({ onSuccess: onFormUpdated });
 
   const handleFormSubmit = useCallback(
     async (values: WarehouseFormValues) => {

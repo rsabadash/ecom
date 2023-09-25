@@ -1,4 +1,4 @@
-import { Category, CategoryFormDefaultValues } from '../common/types';
+import { CategoryFormDefaultValues } from '../common/types';
 
 export type CategoryEditFormProps = {
   id?: string;
@@ -9,12 +9,4 @@ export type CategoryEditFormProps = {
 
 export type CategoryUrlParams = {
   categoryId: string;
-};
-
-export type CategoryPatchData = Omit<Category, '_id'> & {
-  id: string;
-};
-
-export type CategoryDeleteData = {
-  id: string;
 };

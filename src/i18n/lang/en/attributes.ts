@@ -19,6 +19,7 @@ export const attributes = {
   'attribute.sortOrder.description': 'Attributes display order in a list',
   'attribute.emptyList': "Attributes don't exist",
   'attribute.emptyList.callToAction': 'Add attribute',
+  'attribute.variant.emptyList.callToAction': 'Add variant',
   'attribute.creating': 'Attribute "{attributeName}" is being created',
   'attribute.creating.error':
     'An error occurred while creating attribute "{attributeName}"',
@@ -29,29 +30,38 @@ export const attributes = {
   'attribute.updated': 'Attribute "{attributeName}" was successfully updated',
   'attribute.deleting': 'Attribute "{attributeName}" is being deleted',
   'attribute.deleting.error':
-    'An error occurred while deleting Attribute "{attributeName}"',
+    'An error occurred while deleting attribute "{attributeName}"',
   'attribute.deleted': 'Attribute "{attributeName}" was successfully deleted',
-  'attribute.variant': 'Variant',
-  'attribute.variants': 'Variants',
-  'attribute.variant.add': 'Add variant',
-  'attribute.variant.count': 'Variants count',
-  'attribute.variant.name': 'Variant name',
-  'attribute.variant.name.description': 'Enter variant name in {language}',
-  'attribute.variant.name.error.required':
-    'Variant name in {language} is required',
-  'attribute.variant.seoName': 'Variant SEO name',
-  'attribute.variant.seoName.error.required': 'Variant SEO name is required',
-  'attribute.variant.seoName.error.symbol':
+  variant: 'Variant',
+  variants: 'Variants',
+  'variant.add': 'Add variant',
+  'variant.count': 'Variants count',
+  'variant.name': 'Variant name',
+  'variant.name.description': 'Enter variant name in {language}',
+  'variant.name.error.required': 'Variant name in {language} is required',
+  'variant.seoName': 'Variant SEO name',
+  'variant.seoName.error.required': 'Variant SEO name is required',
+  'variant.seoName.error.symbol':
     'Variant SEO name should contain letters of the Latin alphabet, numbers, and hyphens',
-  'attribute.variant.seoName.description':
+  'variant.seoName.description':
     'Enter the name that will be used in the variant link. Valid characters: letters of the Latin alphabet, numbers, and hyphens',
-  'attribute.variant.sortOrder.description':
+  'variant.sortOrder.description':
     'Variants display order in attribute variants list',
-  'attribute.variant.active':
-    'Variant is available for display on public pages',
-  'attribute.variant.list': 'Variants list',
-  'attribute.variant.emptyList': "Variants don't exist",
-  'attribute.variant.emptyList.callToAction.attributeDetail': 'Add variant',
-  'attribute.variant.emptyList.callToAction':
+  'variant.active': 'Variant is available for display on public pages',
+  'variant.list': 'Variants list',
+  'variant.emptyList': "Variants don't exist",
+  'variant.emptyList.callToAction':
     'Add variant on the page of the relevant attribute',
+  'variant.creating': 'Variant "{variantName}" is being created',
+  'variant.creating.error':
+    'An error occurred while creating variant "{variantName}"',
+  'variant.created': 'Variant "{variantName}" was successfully created',
+  'variant.updating': 'Variant "{variantName}" is being updated',
+  'variant.updating.error':
+    'An error occurred while updating variant "{variantName}"',
+  'variant.updated': 'Variant "{variantName}" was successfully updated',
+  'variant.deleting': 'Variant "{variantName}" is being deleted',
+  'variant.deleting.error':
+    'An error occurred while deleting variant "{variantName}"',
+  'variant.deleted': 'Variant "{variantName}" was successfully deleted',
 };

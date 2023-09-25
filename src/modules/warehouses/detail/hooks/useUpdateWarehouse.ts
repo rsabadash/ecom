@@ -3,10 +3,10 @@ import { useCallback } from 'react';
 import { useNotification } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { updateWarehouseApi } from '../../common/api';
-import { WarehousePatchData } from '../types';
+import { WarehousePatchData } from '../../common/types';
 
 type UseUpdateWarehouseProps = {
-  onFormUpdated: () => void;
+  onSuccess: () => void;
 };
 
 type UseUpdateWarehouseReturn = {
@@ -14,7 +14,7 @@ type UseUpdateWarehouseReturn = {
 };
 
 export const useUpdateWarehouse = ({
-  onFormUpdated,
+  onSuccess,
 }: UseUpdateWarehouseProps): UseUpdateWarehouseReturn => {
   const { translate } = useTranslation();
   const { promiseNotification } = useNotification();
@@ -37,13 +37,13 @@ export const useUpdateWarehouse = ({
           }),
         });
 
-        onFormUpdated();
+        onSuccess();
       } catch (e) {
         // TODO common error logic
         console.log(e);
       }
     },
-    [onFormUpdated, promiseNotification, translate],
+    [onSuccess, promiseNotification, translate],
   );
 
   return { updateWarehouse };

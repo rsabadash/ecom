@@ -32,3 +32,15 @@ export type SupplierFormProps = {
 };
 
 export type SupplierStateFromRouter = Supplier | null;
+
+export type SupplierPostData = Omit<Supplier, '_id'>;
+
+export type SupplierPostResponse = Supplier;
+
+export type SupplierPatchData = Omit<Supplier, '_id'> & {
+  id: string;
+};
+
+export type SupplierDeleteData = {
+  id: string;
+};

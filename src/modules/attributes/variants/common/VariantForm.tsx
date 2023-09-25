@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useParams } from 'react-router-dom';
 
 import { Button } from '../../../../components/Button';
 import { Form, FormContent } from '../../../../components/FormFields';
@@ -10,28 +9,23 @@ import {
 } from '../../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../../components/GridRowBalancer';
 import { useTranslation } from '../../../../components/IntlProvider';
-import { AttributeUrlParams } from '../../attributes/detail/types';
 import { variantFormFields } from './constants';
-import { useVariantForm, useVariantFormSubmit } from './hooks';
+import { useVariantForm } from './hooks';
 import { VariantFormProps } from './types';
 
 export const VariantForm: FC<VariantFormProps> = ({
+  submitText,
   isReadOnly,
   defaultValues,
+  handleFormSubmit,
 }) => {
-  const { attributeId, variantId } = useParams<AttributeUrlParams>();
-
   const { translate } = useTranslation();
-  const { handleFormSubmit } = useVariantFormSubmit({ attributeId, variantId });
 
   const { control, handleSubmit } = useVariantForm({
     defaultValues,
     shouldReset: isReadOnly,
     submitHandler: handleFormSubmit,
   });
-
-  const shouldUpdateAttribute =
-    defaultValues && Object.keys(defaultValues).length > 0;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -41,8 +35,8 @@ export const VariantForm: FC<VariantFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={variantFormFields.name}
-          placeholderTranslation="attribute.variant.name.description"
-          label={translate('attribute.variant.name')}
+          placeholderTranslation="variant.name.description"
+          label={translate('variant.name')}
           control={control}
           columnIndex={1}
         />
@@ -51,7 +45,7 @@ export const VariantForm: FC<VariantFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={variantFormFields.sortOrder}
-          placeholder={translate('attribute.variant.sortOrder.description')}
+          placeholder={translate('variant.sortOrder.description')}
           label={translate('sortOrder')}
           control={control}
           columnIndex={2}
@@ -61,8 +55,8 @@ export const VariantForm: FC<VariantFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={variantFormFields.seoName}
-          label={translate('attribute.variant.seoName')}
-          placeholder={translate('attribute.variant.seoName.description')}
+          label={translate('variant.seoName')}
+          placeholder={translate('variant.seoName.description')}
           control={control}
           columnIndex={3}
         />
@@ -70,7 +64,7 @@ export const VariantForm: FC<VariantFormProps> = ({
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={variantFormFields.isActive}
-          label={translate('attribute.variant.active')}
+          label={translate('variant.active')}
           control={control}
           columnIndex={4}
         />
@@ -78,7 +72,7 @@ export const VariantForm: FC<VariantFormProps> = ({
       {!isReadOnly && (
         <FormContent>
           <Button variant="primary" type="submit">
-            {shouldUpdateAttribute ? translate('update') : translate('add')}
+            {submitText}
           </Button>
         </FormContent>
       )}

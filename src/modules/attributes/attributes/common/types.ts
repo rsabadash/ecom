@@ -1,6 +1,5 @@
 import { Translations } from '../../../../components/IntlProvider';
-import { Variant } from '../../variants/add/types';
-import { SupplierFormValues } from '../../../suppliers/common/types';
+import { Variant } from '../../variants/common/types';
 
 export type Attribute = {
   _id: string;
@@ -37,3 +36,15 @@ export type AttributeFormProps = {
 };
 
 export type AttributeStateFromRouter = Attribute | null;
+
+export type AttributePostData = Omit<Attribute, '_id' | 'variants'>;
+
+export type AttributePostResponse = Attribute;
+
+export type AttributePatchData = Omit<Attribute, '_id' | 'variants'> & {
+  id: string;
+};
+
+export type AttributeDeleteData = {
+  id: string;
+};

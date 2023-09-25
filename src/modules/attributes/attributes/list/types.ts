@@ -1,4 +1,4 @@
-import { Variant } from '../../variants/add/types';
+import { Variant } from '../../variants/common/types';
 
 export type AttributesVariantsListProps = {
   variants: Variant[];

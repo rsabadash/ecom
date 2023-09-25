@@ -7,8 +7,7 @@ import {
 } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { createCategoryApi } from '../../common/api';
-import { CategoryStateFromRouter } from '../../common/types';
-import { CategoryPostData } from '../types';
+import { CategoryPostData, CategoryStateFromRouter } from '../../common/types';
 
 type UseCreateCategoryReturn = {
   createCategory: (data: CategoryPostData) => Promise<void>;

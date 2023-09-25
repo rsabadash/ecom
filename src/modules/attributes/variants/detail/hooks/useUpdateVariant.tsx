@@ -2,8 +2,8 @@ import { useCallback } from 'react';
 
 import { useNotification } from '../../../../../common/hooks';
 import { useTranslation } from '../../../../../components/IntlProvider';
-import { updateAttributeApi } from '../../common/api';
-import { AttributePatchData } from '../../common/types';
+import { updateVariantApi } from '../../common/api';
+import { VariantPatchData } from '../../common/types';
 
 type UseUpdateAttributeProps = {
   name: string | undefined;
@@ -11,31 +11,31 @@ type UseUpdateAttributeProps = {
 };
 
 type UseUpdateAttributeReturn = {
-  updateAttribute: (data: AttributePatchData) => Promise<void>;
+  updateVariant: (data: VariantPatchData) => Promise<void>;
 };
 
-export const useUpdateAttribute = ({
+export const useUpdateVariant = ({
   name,
   onSuccess,
 }: UseUpdateAttributeProps): UseUpdateAttributeReturn => {
   const { translate } = useTranslation();
   const { promiseNotification } = useNotification();
 
-  const updateAttribute = useCallback(
-    async (data: AttributePatchData) => {
-      const attributeName = name || '';
+  const updateVariant = useCallback(
+    async (data: VariantPatchData) => {
+      const variantName = name || '';
 
       try {
         await promiseNotification({
-          fetch: () => updateAttributeApi(data),
-          pendingContent: translate('attribute.updating', {
-            attributeName,
+          fetch: () => updateVariantApi(data),
+          pendingContent: translate('variant.updating', {
+            variantName,
           }),
-          successContent: translate('attribute.updated', {
-            attributeName,
+          successContent: translate('variant.updated', {
+            variantName,
           }),
-          errorContent: translate('attribute.updating.error', {
-            attributeName,
+          errorContent: translate('variant.updating.error', {
+            variantName,
           }),
         });
 
@@ -48,5 +48,5 @@ export const useUpdateAttribute = ({
     [name, onSuccess, promiseNotification, translate],
   );
 
-  return { updateAttribute };
+  return { updateVariant };
 };

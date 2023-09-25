@@ -9,10 +9,10 @@ import {
   Table,
   TableColumnGeneric,
 } from '../../../../components/Table';
-import { Variant } from '../../variants/add/types';
-import { TABLE_ATTRIBUTE_VARIANTS_ID } from './constants';
+import { Variant } from '../../variants/common/types';
 import { AttributeUrlParams } from '../detail/types';
 import { AttributeVariantsListPlaceholder } from './AttributeVariantsListPlaceholder';
+import { TABLE_ATTRIBUTE_VARIANTS_ID } from './constants';
 import { useAttributeVariantsTableColumns } from './hooks';
 import { AttributesVariantsListProps } from './types';
 
@@ -36,7 +36,7 @@ export const AttributeVariantsList: FC<AttributesVariantsListProps> = ({
         fontSize={4}
         classNameHeading={classes.attributes__variantsTitle}
       >
-        {translate('attribute.variants')}
+        {translate('variants')}
       </Heading>
       {variants.length > 0 ? (
         <Table

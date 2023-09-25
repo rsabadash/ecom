@@ -1,4 +1,4 @@
-import { WarehouseFormDefaultValues, WarehouseType } from '../common/types';
+import { WarehouseFormDefaultValues } from '../common/types';
 
 export type WarehouseEditFormProps = {
   id?: string;
@@ -9,15 +9,4 @@ export type WarehouseEditFormProps = {
 
 export type WarehouseUrlParams = {
   warehouseId: string;
-};
-
-export type WarehousePatchData = {
-  id: string;
-  name: string;
-  type: WarehouseType;
-  address: string | null;
-};
-
-export type WarehouseDeleteData = {
-  id: string;
 };

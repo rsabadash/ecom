@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import {
   SupplierFormSubmitAction,
   SupplierFormValues,
+  SupplierPatchData,
 } from '../../common/types';
-import { SupplierPatchData } from '../types';
 import { useUpdateSupplier } from './useUpdateSupplier';
 
 type UseSupplierEditFormSubmitProps = {
@@ -20,7 +20,7 @@ export const useSupplierEditFormSubmit = ({
   id,
   onFormUpdated,
 }: UseSupplierEditFormSubmitProps): UseSupplierEditFormSubmitReturn => {
-  const { updateSupplier } = useUpdateSupplier({ onFormUpdated });
+  const { updateSupplier } = useUpdateSupplier({ onSuccess: onFormUpdated });
 
   const handleFormSubmit = useCallback(
     async (values: SupplierFormValues) => {

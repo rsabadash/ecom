@@ -10,11 +10,3 @@ export type SupplierEditFormProps = {
 export type SupplierUrlParams = {
   supplierId: string;
 };
-
-export type SupplierPatchData = Omit<Supplier, '_id'> & {
-  id: string;
-};
-
-export type SupplierDeleteData = {
-  id: string;
-};

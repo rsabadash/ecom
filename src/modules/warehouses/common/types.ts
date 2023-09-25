@@ -34,3 +34,19 @@ export type WarehouseFormProps = {
 };
 
 export type WarehouseStateFromRouter = Warehouse | null;
+
+export type WarehousePostData = {
+  name: string;
+  type: WarehouseType;
+  address: string | null;
+};
+
+export type WarehousePostResponse = Warehouse;
+
+export type WarehousePatchData = Omit<Warehouse, '_id'> & {
+  id: string;
+};
+
+export type WarehouseDeleteData = {
+  id: string;
+};

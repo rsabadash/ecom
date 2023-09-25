@@ -7,8 +7,7 @@ import {
 } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { createSupplierApi } from '../../common/api';
-import { SupplierStateFromRouter } from '../../common/types';
-import { SupplierPostData } from '../types';
+import { SupplierPostData, SupplierStateFromRouter } from '../../common/types';
 
 type UseCreateSupplierReturn = {
   createSupplier: (data: SupplierPostData) => Promise<void>;

@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import {
   WarehouseFormSubmitAction,
   WarehouseFormValues,
+  WarehousePostData,
 } from '../../common/types';
-import { WarehousePostData } from '../types';
 import { useCreateWarehouse } from './useCreateWarehouse';
 
 type UseWarehouseFormSubmitReturn = {

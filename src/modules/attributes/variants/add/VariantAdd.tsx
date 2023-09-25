@@ -5,17 +5,18 @@ import { ButtonLink } from '../../../../components/Button';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
-import { AttributeUrlParams } from '../../attributes/detail/types';
-import { VariantForm } from './VariantForm';
+import { VariantAddUrlParams } from './types';
+import { VariantAddForm } from './VariantAddForm';
 
 const VariantAdd = () => {
   const { translate } = useTranslation();
-  const { attributeId } = useParams<AttributeUrlParams>();
+
+  const { attributeId } = useParams<VariantAddUrlParams>();
 
   return (
     <>
       <Top>
-        <TopHeading>{translate('attribute.variant.add')}</TopHeading>
+        <TopHeading>{translate('variant.add')}</TopHeading>
         {attributeId && (
           <TopButtons>
             <ButtonLink
@@ -28,7 +29,7 @@ const VariantAdd = () => {
         )}
       </Top>
       <SectionForeground>
-        <VariantForm />
+        <VariantAddForm attributeId={attributeId} />
       </SectionForeground>
     </>
   );

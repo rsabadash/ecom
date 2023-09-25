@@ -2,16 +2,23 @@ import { useState } from 'react';
 import { generatePath, useParams } from 'react-router-dom';
 
 import { endpoints } from '../../../../common/constants/api';
-import { useCachedAPI } from '../../../../common/hooks';
+import {
+  useCachedAPI,
+  useKeepDataBetweenNavigation,
+} from '../../../../common/hooks';
 import { Button, ButtonsGroup } from '../../../../components/Button';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
-import { useDeleteVariant } from '../add/hooks';
-import { Variant, VariantFormValues } from '../add/types';
-import { VariantForm } from '../add/VariantForm';
+import {
+  Variant,
+  VariantFormValues,
+  VariantStateFromRouter,
+} from '../common/types';
+import { useDeleteVariant } from './hooks';
 import { VariantUrlParams } from './types';
 import { matchVariantDataToFormValues } from './utils';
+import { VariantEditForm } from './VariantEditForm';
 
 const VariantDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -19,6 +26,10 @@ const VariantDetail = () => {
   const { attributeId, variantId } = useParams<VariantUrlParams>();
 
   const { translate, getTranslationByLanguage } = useTranslation();
+  const { getNavigationStateData } = useKeepDataBetweenNavigation();
+
+  const categoryDetailFromLocation =
+    getNavigationStateData<VariantStateFromRouter>();
 
   const variantLinkWithAttributeId = generatePath(
     endpoints.attributes.getVariants,
@@ -27,22 +38,34 @@ const VariantDetail = () => {
     },
   );
 
-  const { data: variantDetail } = useCachedAPI<Variant>(
+  const { data: variantDetail, mutate: mutateVariant } = useCachedAPI<Variant>(
     `${variantLinkWithAttributeId}/${variantId}`,
+    {
+      fallbackData: categoryDetailFromLocation,
+    },
   );
 
-  const { deleteVariant } = useDeleteVariant({ attributeId, variantId });
-
   const handleEditButtonClick = (): void => {
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
+
+  const onFormUpdated = (): void => {
+    mutateVariant();
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
   const formValues: VariantFormValues | undefined =
     matchVariantDataToFormValues(variantDetail);
 
-  const variantTitle = `${translate(
-    'attribute.variant',
-  )} "${getTranslationByLanguage(variantDetail?.name)}"`;
+  const translatedVariantName = getTranslationByLanguage(variantDetail?.name);
+
+  const variantTitle = `${translate('variant')} "${translatedVariantName}"`;
+
+  const { deleteVariant } = useDeleteVariant({
+    attributeId,
+    variantId,
+    name: translatedVariantName,
+  });
 
   return (
     <>
@@ -60,7 +83,14 @@ const VariantDetail = () => {
         </TopButtons>
       </Top>
       <SectionForeground>
-        <VariantForm isReadOnly={isReadOnly} defaultValues={formValues} />
+        <VariantEditForm
+          id={variantDetail?.variantId}
+          isReadOnly={isReadOnly}
+          defaultValues={formValues}
+          onFormUpdated={onFormUpdated}
+          variantName={translatedVariantName}
+          attributeId={attributeId}
+        />
       </SectionForeground>
     </>
   );

@@ -1,7 +1,11 @@
 import { endpoints } from '../../../common/constants/api';
 import { DELETE, PATCH, POST } from '../../../common/utils/api';
-import { CategoryPostData, CategoryPostResponse } from '../add/types';
-import { CategoryDeleteData, CategoryPatchData } from '../detail/types';
+import {
+  CategoryDeleteData,
+  CategoryPatchData,
+  CategoryPostData,
+  CategoryPostResponse,
+} from './types';
 
 export const createCategoryApi = async (
   data: CategoryPostData,

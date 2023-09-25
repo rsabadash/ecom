@@ -36,3 +36,15 @@ export type CategoryFormProps = {
 };
 
 export type CategoryStateFromRouter = Category | null;
+
+export type CategoryPostData = Omit<Category, '_id'>;
+
+export type CategoryPostResponse = Category;
+
+export type CategoryPatchData = Omit<Category, '_id'> & {
+  id: string;
+};
+
+export type CategoryDeleteData = {
+  id: string;
+};

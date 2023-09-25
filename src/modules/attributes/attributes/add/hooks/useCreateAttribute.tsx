@@ -7,8 +7,10 @@ import {
 } from '../../../../../common/hooks';
 import { useTranslation } from '../../../../../components/IntlProvider';
 import { createAttributeApi } from '../../common/api';
-import { AttributeStateFromRouter } from '../../common/types';
-import { AttributePostData } from '../types';
+import {
+  AttributePostData,
+  AttributeStateFromRouter,
+} from '../../common/types';
 
 type UseCreateAttributeReturn = {
   createAttribute: (data: AttributePostData) => Promise<void>;

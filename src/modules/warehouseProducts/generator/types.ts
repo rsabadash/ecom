@@ -15,7 +15,7 @@ export type WarehouseProduct = {
 };
 
 export type WarehouseProductsGeneratorFormProps = {
-  onSuccessSubmit: (products: GeneratedProduct[]) => void;
+  onGeneratedProductsCallback: (products: GeneratedProduct[]) => void;
 };
 
 export type VariantVirtualFieldValue = {

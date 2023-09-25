@@ -1,7 +1,11 @@
 import { endpoints } from '../../../../common/constants/api';
 import { DELETE, PATCH, POST } from '../../../../common/utils/api';
-import { AttributePostData, AttributePostResponse } from '../add/types';
-import { AttributeDeleteData, AttributePatchData } from '../detail/types';
+import {
+  AttributeDeleteData,
+  AttributePatchData,
+  AttributePostData,
+  AttributePostResponse,
+} from './types';
 
 export const createAttributeApi = async (
   data: AttributePostData,
