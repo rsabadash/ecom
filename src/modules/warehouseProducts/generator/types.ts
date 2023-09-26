@@ -11,7 +11,7 @@ export type WarehouseProduct = {
   sku: string;
   unit: Unit;
   attributes: WarehouseProductsAttribute[];
-  createdDate: Date;
+  createdAt: Date;
 };
 
 export type WarehouseProductsGeneratorFormProps = {

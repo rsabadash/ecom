@@ -37,9 +37,11 @@ export const suppliersRoutes = [
   {
     path: routes.suppliers.add,
     element: (
-      <ErrorBoundary fallback="Error boundary Suppliers add">
-        <SupplierAdd />
-      </ErrorBoundary>
+      <Suspense>
+        <ErrorBoundary fallback="Error boundary Suppliers add">
+          <SupplierAdd />
+        </ErrorBoundary>
+      </Suspense>
     ),
   },
 ];

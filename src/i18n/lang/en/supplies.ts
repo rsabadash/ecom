@@ -40,4 +40,8 @@ export const supplies = {
     'Each product must be unique in the supply. Remove duplicates for each product. If you need to add several identical products with different data, add them as a separate supply.',
   'supply.emptyList': "Supplies don't exist",
   'supply.emptyList.callToAction': 'Add supply',
+  'supply.creating': 'Supply "{supplyName}" is being created',
+  'supply.creating.error':
+    'An error occurred while creating supply "{supplyName}"',
+  'supply.created': 'Supply "{supplyName}" was successfully created',
 };

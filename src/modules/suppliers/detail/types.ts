@@ -1,4 +1,4 @@
-import { Supplier, SupplierFormDefaultValues } from '../common/types';
+import { SupplierFormDefaultValues } from '../common/types';
 
 export type SupplierEditFormProps = {
   id?: string;
