@@ -1,7 +1,7 @@
 import { WarehouseFormDefaultValues } from '../common/types';
 
 export type WarehouseEditFormProps = {
-  id?: string;
+  id: string | undefined;
   isReadOnly: boolean;
   defaultValues: WarehouseFormDefaultValues | undefined;
   onFormUpdated: () => void;

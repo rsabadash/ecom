@@ -7,7 +7,6 @@ import {
   TableCellValueGetterProps,
   TableColumnGeneric,
 } from '../../../../../components/Table';
-import { Variant } from '../../common/types';
 import { VariantWithAttribute } from '../types';
 
 type UseVariantsTableColumnsReturn = TableColumnGeneric<VariantWithAttribute>[];
@@ -19,9 +18,7 @@ export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
   const navigate = useCustomNavigate();
   const { translate, getTranslationByLanguage } = useTranslation();
 
-  return useMemo<
-    (TableColumnGeneric<Variant> | TableColumnGeneric<VariantWithAttribute>)[]
-  >(
+  return useMemo<TableColumnGeneric<VariantWithAttribute>[]>(
     () => [
       {
         title: translate('variant.name'),

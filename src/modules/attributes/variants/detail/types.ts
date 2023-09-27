@@ -1,7 +1,7 @@
 import { VariantFormDefaultValues } from '../common/types';
 
 export type VariantEditFormProps = {
-  id?: string;
+  id: string | undefined;
   isReadOnly: boolean;
   defaultValues: VariantFormDefaultValues | undefined;
   onFormUpdated: () => void;

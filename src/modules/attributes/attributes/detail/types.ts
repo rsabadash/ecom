@@ -1,7 +1,7 @@
 import { AttributeFormDefaultValues } from '../common/types';
 
 export type AttributeEditFormProps = {
-  id?: string;
+  id: string | undefined;
   isReadOnly: boolean;
   defaultValues: AttributeFormDefaultValues | undefined;
   onFormUpdated: () => void;

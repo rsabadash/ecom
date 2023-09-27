@@ -1,5 +1,3 @@
-import { CategoryFormSubmitAction } from '../../categories/common/types';
-
 export type Supplier = {
   _id: string;
   name: string;

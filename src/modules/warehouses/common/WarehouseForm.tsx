@@ -12,7 +12,7 @@ import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
 import {
   warehouseFormFields,
-  warehouseTypeKeys,
+  WAREHOUSE_TYPE_KEYS,
   warehouseTypeTranslationPrefix,
 } from './constants';
 import { useWarehouseForm } from './hooks';
@@ -32,7 +32,7 @@ export const WarehouseForm: FC<WarehouseFormProps> = ({
   });
 
   const warehouseTypeItems: DropdownItemObject<string, WarehouseType>[] =
-    warehouseTypeKeys.map((key) => {
+    WAREHOUSE_TYPE_KEYS.map((key) => {
       return {
         id: key,
         value: translate(`${warehouseTypeTranslationPrefix}${key}`),

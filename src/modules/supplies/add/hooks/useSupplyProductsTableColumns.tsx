@@ -39,7 +39,7 @@ export const useSupplyProductsTableColumns = ({
 }: UseSupplyProductsTableColumnsProps): UseSupplyProductsTableColumnsReturn => {
   const { translate } = useTranslation();
 
-  return useMemo(
+  return useMemo<TableColumnGeneric<SupplyProductListColumn>[]>(
     () => [
       {
         title: '№',

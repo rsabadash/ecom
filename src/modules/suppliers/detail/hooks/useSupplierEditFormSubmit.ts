@@ -8,7 +8,7 @@ import {
 import { useUpdateSupplier } from './useUpdateSupplier';
 
 type UseSupplierEditFormSubmitProps = {
-  id?: string;
+  id: string | undefined;
   onFormUpdated: () => void;
 };
 

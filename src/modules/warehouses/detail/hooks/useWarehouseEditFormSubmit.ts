@@ -8,7 +8,7 @@ import {
 import { useUpdateWarehouse } from './useUpdateWarehouse';
 
 type UseWarehouseFormSubmitProps = {
-  id?: string;
+  id: string | undefined;
   onFormUpdated: () => void;
 };
 

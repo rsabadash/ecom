@@ -1,7 +1,7 @@
 import { CategoryFormDefaultValues } from '../common/types';
 
 export type CategoryEditFormProps = {
-  id?: string;
+  id: string | undefined;
   isReadOnly: boolean;
   defaultValues: CategoryFormDefaultValues | undefined;
   onFormUpdated: () => void;

@@ -9,7 +9,7 @@ import { getCategoryIds } from '../../common/utils';
 import { useUpdateCategory } from './useUpdateCategory';
 
 type UseCategoryEditFormSubmitProps = {
-  id?: string;
+  id: string | undefined;
   onFormUpdated: () => void;
 };
 
