@@ -48,7 +48,10 @@ apiService.setGlobalOptions(() => {
     },
     onGlobalError: (error): void => {
       if (typeof error.message === 'string') {
-        if (error.message.toLowerCase() === messages.jwt.malformed) {
+        if (
+          error.message.toLowerCase() === messages.jwt.malformed ||
+          error.message.toLowerCase() === messages.jwt.expired
+        ) {
           return sharedBus.methods.signOut();
         }
 

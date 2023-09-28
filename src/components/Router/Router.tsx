@@ -18,8 +18,9 @@ import { SignedInRedirect } from './SignedInRedirect';
 
 const SignIn = lazy(() => import('../../pages/signIn/SignIn'));
 
-const PrivateError = (props: unknown) => {
+const PrivateError = (props: unknown, ...args: unknown[]) => {
   console.log('PrivateError', props);
+  console.log('PrivateError', args);
   return <div>PrivateError</div>;
 };
 
@@ -34,7 +35,7 @@ export const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        errorElement: <PrivateError />,
+        // errorElement: <PrivateError />,
         element: <PrivateRoutes />,
         children: [
           {
@@ -55,11 +56,7 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        element: (
-          <Suspense fallback="Rout Public">
-            <PublicRoutes />
-          </Suspense>
-        ),
+        element: <PublicRoutes />,
         children: [
           {
             path: routes.signIn,

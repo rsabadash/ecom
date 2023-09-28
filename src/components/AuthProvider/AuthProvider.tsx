@@ -2,8 +2,8 @@ import {
   FC,
   PropsWithChildren,
   useCallback,
-  useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 
@@ -33,8 +33,11 @@ const [Provider, useAuth] = createProvider<AuthContextValue>({
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const navigate = useCustomNavigate();
+  const isSharedBusMethodsRegistered = useRef<boolean>(false);
+
   const { setLocalStorageItem, getLocalStorageItem, removeLocalStorageItem } =
     useLocalStorage();
+
   const {
     setSessionStorageItem,
     getSessionStorageItem,
@@ -106,12 +109,17 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     setIsAuthenticated(false);
   }, [removeStorageItem]);
 
-  useEffect(() => {
+  const signedInUserRedirect = useCallback((): void => {
+    navigate(routes.dashboard, { replace: true });
+  }, [navigate]);
+
+  // We cannot wrap it in useEffect because one of the methods could be called before useEffect
+  if (!isSharedBusMethodsRegistered.current) {
     sharedBus.addMethod('signOut', signOutUser);
-    sharedBus.addMethod('signedInRedirect', () =>
-      navigate(routes.dashboard, { replace: true }),
-    );
-  }, [navigate, signOutUser]);
+    sharedBus.addMethod('signedInRedirect', signedInUserRedirect);
+
+    isSharedBusMethodsRegistered.current = true;
+  }
 
   const contextValue = useMemo<AuthContextValue>(() => {
     return {
