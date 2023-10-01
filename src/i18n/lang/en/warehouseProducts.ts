@@ -28,4 +28,8 @@ export const warehouseProducts = {
   'warehouseProduct.attributes.quantity': 'Number of attributes',
   'warehouseProduct.emptyList': "Warehouse products don't exist",
   'warehouseProduct.emptyList.callToAction': 'Generate warehouse products',
+  'warehouseProduct.creating': 'Warehouse products are being created',
+  'warehouseProduct.creating.error':
+    'An error occurred while creating warehouse products',
+  'warehouseProduct.created': 'Warehouse products were successfully created',
 };

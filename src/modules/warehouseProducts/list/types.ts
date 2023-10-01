@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 
 import { Translations } from '../../../components/IntlProvider';
 import { TableBodyRowProps } from '../../../components/Table/types';
-import { WarehouseProduct } from '../generator/types';
+import { WarehouseProduct } from '../common/types';
 
 export type WarehouseProductsVariant = {
   variantId: string;

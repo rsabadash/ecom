@@ -11,8 +11,8 @@ import {
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
 import {
-  warehouseFormFields,
   WAREHOUSE_TYPE_KEYS,
+  warehouseFormFields,
   warehouseTypeTranslationPrefix,
 } from './constants';
 import { useWarehouseForm } from './hooks';

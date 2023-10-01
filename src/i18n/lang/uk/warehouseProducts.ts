@@ -27,4 +27,8 @@ export const warehouseProducts = {
   'warehouseProduct.attributes.quantity': 'Кількість атрибутів',
   'warehouseProduct.emptyList': 'Складські товари відсутні',
   'warehouseProduct.emptyList.callToAction': 'Згенерувати складські товари',
+  'warehouseProduct.creating': 'Створення складських товарів',
+  'warehouseProduct.creating.error':
+    'Під час створення складських товарів сталася помилка',
+  'warehouseProduct.created': 'Складські товари успішно створені',
 };
