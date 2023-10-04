@@ -3,7 +3,7 @@ import { CollapseControllerContextValue } from './types';
 
 export const CONTEXT_NAME = 'CollapseControllerContext';
 
-export const DEFAULT_ICON_SIZE = '24px';
+export const DEFAULT_ICON_SIZE = '1.2rem';
 
 export const DEFAULT_COLLAPSE_BUTTON_SIZE = DEFAULT_ELEMENT_SIZE;
 

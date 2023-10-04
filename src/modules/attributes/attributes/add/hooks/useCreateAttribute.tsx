@@ -1,18 +1,62 @@
 import { useCallback } from 'react';
 
-import { createAttributeApi } from '../api';
-import { AttributePostData, AttributePostResponse } from '../types';
+import { routes } from '../../../../../common/constants/routes';
+import {
+  useKeepDataBetweenNavigation,
+  useNotification,
+} from '../../../../../common/hooks';
+import { useTranslation } from '../../../../../components/IntlProvider';
+import { createAttributeApi } from '../../common/api';
+import {
+  AttributePostData,
+  AttributeStateFromRouter,
+} from '../../common/types';
 
 type UseCreateAttributeReturn = {
-  createAttribute: (
-    data: AttributePostData,
-  ) => Promise<AttributePostResponse | undefined>;
+  createAttribute: (data: AttributePostData) => Promise<void>;
 };
 
 export const useCreateAttribute = (): UseCreateAttributeReturn => {
-  const createAttribute = useCallback(async (data: AttributePostData) => {
-    return await createAttributeApi(data);
-  }, []);
+  const { translate, getTranslationByLanguage } = useTranslation();
+  const { promiseNotification } = useNotification();
+  const { navigateWithData } = useKeepDataBetweenNavigation();
+
+  const createAttribute = useCallback(
+    async (data: AttributePostData) => {
+      const translatedAttributeName = getTranslationByLanguage(data.name);
+
+      try {
+        const createdAttribute = await promiseNotification({
+          fetch: () => createAttributeApi(data),
+          pendingContent: translate('attribute.creating', {
+            attributeName: translatedAttributeName,
+          }),
+          successContent: translate('attribute.created', {
+            attributeName: translatedAttributeName,
+          }),
+          errorContent: translate('attribute.creating.error', {
+            attributeName: translatedAttributeName,
+          }),
+        });
+
+        if (createdAttribute) {
+          await navigateWithData<AttributeStateFromRouter>({
+            to: `${routes.attributes.root}/${createdAttribute._id}`,
+            data: createdAttribute,
+          });
+        }
+      } catch (e) {
+        // TODO common error logic
+        console.log(e);
+      }
+    },
+    [
+      getTranslationByLanguage,
+      navigateWithData,
+      promiseNotification,
+      translate,
+    ],
+  );
 
   return { createAttribute };
 };

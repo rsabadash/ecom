@@ -1,6 +1,9 @@
 import { LocalStorageService } from '../../common/services';
-import { LOCALE_STORAGE_KEY } from './constants';
-import { DEFAULT_LANGUAGE, LOCALE_TO_LANGUAGE_MAP } from './constants';
+import {
+  DEFAULT_LANGUAGE,
+  LOCALE_STORAGE_KEY,
+  LOCALE_TO_LANGUAGE_MAP,
+} from './constants';
 import { Language, Locale } from './types';
 
 export const isLocaleSupported = (locale: string): boolean => {

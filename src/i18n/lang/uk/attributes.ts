@@ -17,33 +17,54 @@ export const attributes = {
   'attribute.state': 'Статус',
   'attribute.state.active': 'Активний',
   'attribute.state.inactive': 'Не активний',
-  'attribute.variant': 'Варіант',
-  'attribute.variants': 'Варіанти',
-  'attribute.variant.add': 'Додати варіант',
   'attribute.sortOrder.description':
     'Порядок відображення атрибутів в списку атрибутів',
-  'attribute.variant.count': 'Кількість варіантів',
-  'attribute.variant.name': 'Назва варіанта',
-  'attribute.variant.name.description':
-    'Введіть назву варіанта {language} мовою',
-  'attribute.variant.name.error.required':
-    "Назва варіата {language} мовою є обов'язковою",
-  'attribute.variant.seoName': 'SEO назва варіанта',
-  'attribute.variant.seoName.error.required':
-    "SEO назва варіанта є обов'язковою",
-  'attribute.variant.seoName.error.symbol':
-    'SEO назва варіанта може містити лише числа та латинські літери',
-  'attribute.variant.seoName.description':
-    'Введіть назву, яка буде використана у посиланні на варіант. Допустимі символи: літери латинського алфавіту, цифри та дефіс',
-  'attribute.variant.sortOrder.description':
-    'Порядок відображення варіантів атрибута в списку варіантів',
-  'attribute.variant.active':
-    'Варіант доступний для показу на публічних сторінках',
-  'attribute.variant.list': 'Список варіантів',
   'attribute.emptyList': 'Атрибути відсутні',
   'attribute.emptyList.callToAction': 'Додати атрибут',
-  'attribute.variant.emptyList': 'Варіанти відсутні',
-  'attribute.variant.emptyList.callToAction.attributeDetail': 'Додати варіант',
-  'attribute.variant.emptyList.callToAction':
+  'attribute.variant.emptyList.callToAction': 'Додати варіант',
+  'attribute.creating': 'Створення атрибуту "{attributeName}"',
+  'attribute.creating.error':
+    'Під час створення атрибуту "{attributeName}" сталася помилка',
+  'attribute.created': 'Атрибут "{attributeName}" був успішно створений',
+  'attribute.updating': 'Оновлення атрибуту "{attributeName}"',
+  'attribute.updating.error':
+    'Під час оновлення атрибуту "{attributeName}" сталася помилка',
+  'attribute.updated': 'Атрибут "{attributeName}" був успішно оновлений',
+  'attribute.deleting': 'Видалення атрибуту "{attributeName}"',
+  'attribute.deleting.error':
+    'Під час видалення атрибуту "{attributeName}" сталася помилка',
+  'attribute.deleted': 'Атрибут "{attributeName}" був успішно видалений',
+  variant: 'Варіант',
+  variants: 'Варіанти',
+  'variant.add': 'Додати варіант',
+  'variant.count': 'Кількість варіантів',
+  'variant.name': 'Назва варіанта',
+  'variant.name.description': 'Введіть назву варіанта {language} мовою',
+  'variant.name.error.required':
+    "Назва варіата {language} мовою є обов'язковою",
+  'variant.seoName': 'SEO назва варіанта',
+  'variant.seoName.error.required': "SEO назва варіанта є обов'язковою",
+  'variant.seoName.error.symbol':
+    'SEO назва варіанта може містити лише числа та латинські літери',
+  'variant.seoName.description':
+    'Введіть назву, яка буде використана у посиланні на варіант. Допустимі символи: літери латинського алфавіту, цифри та дефіс',
+  'variant.sortOrder.description':
+    'Порядок відображення варіантів атрибута в списку варіантів',
+  'variant.active': 'Варіант доступний для показу на публічних сторінках',
+  'variant.list': 'Список варіантів',
+  'variant.emptyList': 'Варіанти відсутні',
+  'variant.emptyList.callToAction':
     'Додайте варіант на сторінці відповідного атрибуту',
+  'variant.creating': 'Створення варіанту "{variantName}"',
+  'variant.creating.error':
+    'Під час створення варіанту "{variantName}" сталася помилка',
+  'variant.created': 'Варіант "{variantName}" був успішно створений',
+  'variant.updating': 'Оновлення варіанту "{variantName}"',
+  'variant.updating.error':
+    'Під час оновлення варіанту "{variantName}" сталася помилка',
+  'variant.updated': 'Варіант "{variantName}" був успішно оновлений',
+  'variant.deleting': 'Видалення варіанту "{variantName}"',
+  'variant.deleting.error':
+    'Під час видалення варіанту "{variantName}" сталася помилка',
+  'variant.deleted': 'Варіант "{variantName}" був успішно видалений',
 };

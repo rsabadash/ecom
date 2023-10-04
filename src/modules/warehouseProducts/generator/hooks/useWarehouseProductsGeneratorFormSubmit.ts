@@ -18,7 +18,7 @@ import {
 import { transformProductBasedOnVariants } from '../utils';
 
 type UseWarehouseProductsGeneratorFormSubmitProps = {
-  onSuccess: (products: GeneratedProduct[]) => void;
+  onGeneratedProducts: (products: GeneratedProduct[]) => void;
 };
 
 type UseWarehouseProductsGeneratorFormSubmitReturn = {
@@ -29,7 +29,7 @@ type UseWarehouseProductsGeneratorFormSubmitReturn = {
 };
 
 export const useWarehouseProductsGeneratorFormSubmit = ({
-  onSuccess,
+  onGeneratedProducts,
 }: UseWarehouseProductsGeneratorFormSubmitProps): UseWarehouseProductsGeneratorFormSubmitReturn => {
   const { getTranslationByLanguage } = useTranslation();
 
@@ -138,16 +138,16 @@ export const useWarehouseProductsGeneratorFormSubmit = ({
       if (submitButtonName === buttonNames.manyProducts) {
         const generatedProducts = generateProducts(values);
 
-        return onSuccess(generatedProducts);
+        return onGeneratedProducts(generatedProducts);
       }
 
       if (submitButtonName === buttonNames.oneProduct) {
         const generatedProduct = generateProduct(values);
 
-        return onSuccess([generatedProduct]);
+        return onGeneratedProducts([generatedProduct]);
       }
     },
-    [generateProduct, generateProducts, onSuccess],
+    [generateProduct, generateProducts, onGeneratedProducts],
   );
 
   return {

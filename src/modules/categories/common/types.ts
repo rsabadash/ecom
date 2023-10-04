@@ -1,5 +1,6 @@
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { Translations } from '../../../components/IntlProvider';
+import { CategoryDetailData } from '../detail/types';
 
 export type Category = {
   _id: string;
@@ -21,16 +22,30 @@ export type CategoryFormFields = Record<
   keyof CategoryFormValues
 >;
 
+export type CategoryFormDefaultValues = Partial<CategoryFormValues>;
+
 export type CategoryFormSubmitAction = (
   values: CategoryFormValues,
 ) => Promise<void>;
 
-export type CategoryFormDefaultValues = Partial<CategoryFormValues>;
-
 export type CategoryFormProps = {
-  isReadOnly?: boolean;
   submitText: string;
+  isReadOnly?: boolean;
   defaultValues?: CategoryFormDefaultValues;
   handleFormSubmit: CategoryFormSubmitAction;
   dropdownCategoriesUrl: string;
+};
+
+export type CategoryStateFromRouter = CategoryDetailData | null;
+
+export type CategoryPostData = Omit<Category, '_id'>;
+
+export type CategoryPostResponse = CategoryDetailData;
+
+export type CategoryPatchData = Omit<Category, '_id'> & {
+  id: string;
+};
+
+export type CategoryDeleteData = {
+  id: string;
 };

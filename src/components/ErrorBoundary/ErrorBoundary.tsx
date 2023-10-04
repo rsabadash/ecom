@@ -42,7 +42,6 @@ export class ErrorBoundary extends Component<
     console.log(errorInfo);
     //   logErrorToMyService(error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       if (this.isEntityNotFound) {

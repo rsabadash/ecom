@@ -1,12 +1,11 @@
 import { useCallback } from 'react';
 
+import { SupplyPostData, SupplyPostProductData } from '../../common/types';
 import {
   ProductDuplicate,
   ProductDuplicateData,
   RequiredSupplyProduct,
   SupplyFormValues,
-  SupplyPostData,
-  SupplyPostProductData,
   SupplyProduct,
 } from '../types';
 import { useCreateSupply } from './useCreateSupply';

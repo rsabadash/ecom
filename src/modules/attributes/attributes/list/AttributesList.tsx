@@ -10,9 +10,9 @@ import {
   TableColumnGeneric,
   TablePagination,
 } from '../../../../components/Table';
-import { TABLE_ATTRIBUTES_ID } from '../add/constants';
-import { Attribute } from '../add/types';
+import { Attribute } from '../common/types';
 import { AttributesListPlaceholder } from './AttributesListPlaceholder';
+import { TABLE_ATTRIBUTES_ID } from './constants';
 import { useAttributesTableColumns } from './hooks';
 
 export const AttributesList = () => {

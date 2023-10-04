@@ -2,20 +2,10 @@ import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
 
 import { Unit } from '../../../common/types/unit';
 import { Translations } from '../../../components/IntlProvider';
-import { Attribute } from '../../attributes/attributes/add/types';
-import { WarehouseProductsAttribute } from '../list/types';
-
-export type WarehouseProduct = {
-  _id: string;
-  name: Translations;
-  sku: string;
-  unit: Unit;
-  attributes: WarehouseProductsAttribute[];
-  createdDate: Date;
-};
+import { Attribute } from '../../attributes/attributes/common/types';
 
 export type WarehouseProductsGeneratorFormProps = {
-  onSuccessSubmit: (products: GeneratedProduct[]) => void;
+  onGeneratedProductsCallback: (products: GeneratedProduct[]) => void;
 };
 
 export type VariantVirtualFieldValue = {
@@ -90,10 +80,6 @@ export type WarehouseProductsGeneratorProductsFormFields = Record<
   keyof WarehouseProductsGeneratorProductsFormValues,
   keyof WarehouseProductsGeneratorProductsFormValues
 >;
-
-export type WarehouseProductsPostData = GeneratedProductFieldValue[];
-
-export type WarehouseProductsPostResponse = WarehouseProduct[];
 
 export type WarehouseProductUnitFieldProps = {
   name: string;

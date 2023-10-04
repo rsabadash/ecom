@@ -1,21 +1,16 @@
-import { Category, CategoryFormProps } from '../common/types';
+import { Category, CategoryFormDefaultValues } from '../common/types';
 
-export type CategoryEditFormProps = Pick<CategoryFormProps, 'defaultValues'> & {
-  id?: string;
+export type CategoryDetailData = Omit<Category, 'parentIds'> & {
+  parents: Category[];
+};
+
+export type CategoryEditFormProps = {
+  id: string | undefined;
   isReadOnly: boolean;
+  defaultValues: CategoryFormDefaultValues | undefined;
   onFormUpdated: () => void;
 };
 
-export type LocationStateFromRouter = Category | null;
-
 export type CategoryUrlParams = {
   categoryId: string;
-};
-
-export type CategoryPatchData = Omit<Category, '_id'> & {
-  id: string;
-};
-
-export type CategoryDeleteData = {
-  id: string;
 };

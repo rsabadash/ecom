@@ -9,6 +9,7 @@ import {
   MAX_PRODUCTS_IN_SUPPLY,
   MIN_PRODUCTS_IN_SUPPLY,
   supplyFormArrayFields,
+  TABLE_SUPPLY_PRODUCTS_ID,
 } from './constants';
 import { useSupplyProductsTableColumns } from './hooks';
 import { SupplyProductSummary } from './SupplyProductSummary';
@@ -68,6 +69,7 @@ export const SupplyProductsList: FC<SupplyProductsListProps> = ({
         items={fields}
         columns={columns}
         tableRowRenderKey="id"
+        tableLabeledBy={TABLE_SUPPLY_PRODUCTS_ID}
         tableRowClassName={classes.supplyProducts__listItem}
         bottomPanelNode={
           <SupplyProductSummary

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { useTranslation } from '../../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../../components/Table';
-import { Supplier } from '../../add/types';
+import { Supplier } from '../../common/types';
 
 type UseSuppliersTableColumnsReturn = TableColumnGeneric<Supplier>[];
 

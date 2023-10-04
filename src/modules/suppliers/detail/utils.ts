@@ -1,4 +1,4 @@
-import { Supplier, SupplierFormValues } from '../add/types';
+import { Supplier, SupplierFormValues } from '../common/types';
 
 export const matchSupplierDataToFormValues = (
   data: Supplier | undefined,

@@ -13,10 +13,10 @@ export const AttributeVariantsListPlaceholder: FC<
   return (
     <EmptyList link={addVariantLink}>
       <Heading level={2} fontSize={2}>
-        {translate('attribute.variant.emptyList')}
+        {translate('variant.emptyList')}
       </Heading>
       <Heading level={4} fontSize={4}>
-        {translate('attribute.variant.emptyList.callToAction.attributeDetail')}
+        {translate('attribute.variant.emptyList.callToAction')}
       </Heading>
     </EmptyList>
   );

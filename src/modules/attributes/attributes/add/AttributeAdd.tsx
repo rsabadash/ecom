@@ -3,7 +3,7 @@ import { ButtonLink } from '../../../../components/Button';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
-import { AttributeForm } from './AttributeForm';
+import { AttributeAddForm } from './AttributeAddForm';
 
 const AttributeAdd = () => {
   const { translate } = useTranslation();
@@ -19,7 +19,7 @@ const AttributeAdd = () => {
         </TopButtons>
       </Top>
       <SectionForeground>
-        <AttributeForm />
+        <AttributeAddForm />
       </SectionForeground>
     </>
   );

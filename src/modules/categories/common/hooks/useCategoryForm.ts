@@ -9,13 +9,13 @@ import {
   YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
 import { mainTranslationRequired } from '../../../../validations/translations';
-import { CategoryFormValues } from '../types';
+import { CategoryFormDefaultValues, CategoryFormValues } from '../types';
 
 type UseCategoryFromProps = Pick<
   UseCustomFormProps<CategoryFormValues>,
   'shouldReset' | 'submitHandler'
 > & {
-  defaultValues?: Partial<CategoryFormValues>;
+  defaultValues?: CategoryFormDefaultValues;
 };
 
 type UseCategoryFromReturn = Pick<

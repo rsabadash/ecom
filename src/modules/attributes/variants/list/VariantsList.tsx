@@ -10,9 +10,9 @@ import {
   TableColumnGeneric,
   TablePagination,
 } from '../../../../components/Table';
-import { useVariantsTableColumns } from '../add/hooks';
-import { VariantWithAttribute } from '../add/types';
 import { TABLE_VARIANTS_ID } from './constants';
+import { useVariantsTableColumns } from './hooks';
+import { VariantWithAttribute } from './types';
 import { VariantsListPlaceholder } from './VariantsListPlaceholder';
 
 export const VariantsList = () => {

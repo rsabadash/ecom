@@ -12,7 +12,7 @@ import { MultiLanguageInputAdapter } from '../../../components/FormFieldsAdapter
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
 import { usePaginationLimit } from '../../../components/Pagination/hooks';
-import { Attribute } from '../../attributes/attributes/add/types';
+import { Attribute } from '../../attributes/attributes/common/types';
 import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
 import {
   useWarehouseProductsGeneratorForm,
@@ -26,7 +26,7 @@ import classes from './styles/index.module.css';
 
 export const WarehouseProductsGeneratorForm: FC<
   WarehouseProductsGeneratorFormProps
-> = ({ onSuccessSubmit }) => {
+> = ({ onGeneratedProductsCallback }) => {
   const { translate } = useTranslation();
 
   const { limitValue } = usePaginationLimit();
@@ -37,7 +37,7 @@ export const WarehouseProductsGeneratorForm: FC<
   });
 
   const { handleFormSubmit } = useWarehouseProductsGeneratorFormSubmit({
-    onSuccess: onSuccessSubmit,
+    onGeneratedProducts: onGeneratedProductsCallback,
   });
 
   const { control, setValue, getValues, handleSubmit } =

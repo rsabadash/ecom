@@ -44,6 +44,7 @@ module.exports = {
     '@typescript-eslint/no-inferrable-types': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    'no-duplicate-imports': ['error', { includeExports: true }],
     'simple-import-sort/imports': [
       'error',
       {

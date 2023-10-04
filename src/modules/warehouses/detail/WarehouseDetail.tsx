@@ -7,11 +7,11 @@ import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { useDeleteWarehouse } from '../add/hooks';
-import { Warehouse, WarehouseFormValues } from '../add/types';
-import { WarehouseForm } from '../add/WarehouseForm';
+import { Warehouse, WarehouseFormValues } from '../common/types';
+import { useDeleteWarehouse } from './hooks';
 import { WarehouseUrlParams } from './types';
 import { matchWarehouseDataToFormValues } from './utils';
+import { WarehouseEditForm } from './WarehouseEditForm';
 
 const WarehouseDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -19,25 +19,32 @@ const WarehouseDetail = () => {
   const { warehouseId } = useParams<WarehouseUrlParams>();
   const { translate } = useTranslation();
 
-  const { data: warehouseDetail } = useCachedAPI<Warehouse>(
-    `${endpoints.warehouses.root}/${warehouseId}`,
-  );
-  const { deleteWarehouse } = useDeleteWarehouse(warehouseDetail?._id);
+  const { data: warehouseDetail, mutate: mutateWarehouse } =
+    useCachedAPI<Warehouse>(`${endpoints.warehouses.root}/${warehouseId}`);
+
+  const { deleteWarehouse } = useDeleteWarehouse(warehouseDetail);
 
   const formValues: WarehouseFormValues | undefined =
     matchWarehouseDataToFormValues(warehouseDetail, translate);
 
-  const handleButtonClick = (): void => {
+  const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
+
+  const onFormUpdated = (): void => {
+    mutateWarehouse();
+    setReadOnly((isReadOnly) => !isReadOnly);
+  };
+
+  const warehouseTitle = `${translate('warehouse')} "${warehouseDetail?.name}"`;
 
   return (
     <>
       <Top>
-        <TopHeading>{warehouseDetail?.name}</TopHeading>
+        <TopHeading>{warehouseTitle}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
-            <Button variant="primary" onClick={handleButtonClick}>
+            <Button variant="primary" onClick={handleEditButtonClick}>
               {!isReadOnly ? translate('cancel') : translate('edit')}
             </Button>
             <Button variant="danger" onClick={deleteWarehouse}>
@@ -47,10 +54,11 @@ const WarehouseDetail = () => {
         </TopButtons>
       </Top>
       <SectionForeground>
-        <WarehouseForm
+        <WarehouseEditForm
           id={warehouseDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormUpdated={onFormUpdated}
         />
       </SectionForeground>
     </>

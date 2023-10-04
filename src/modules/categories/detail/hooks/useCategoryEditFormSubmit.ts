@@ -1,17 +1,15 @@
 import { useCallback } from 'react';
 
-import { useNotifications } from '../../../../common/hooks';
-import { useTranslation } from '../../../../components/IntlProvider';
 import {
   CategoryFormSubmitAction,
   CategoryFormValues,
+  CategoryPatchData,
 } from '../../common/types';
 import { getCategoryIds } from '../../common/utils';
-import { CategoryPatchData } from '../types';
 import { useUpdateCategory } from './useUpdateCategory';
 
-type UseCategoriesEditFormSubmitProps = {
-  id?: string;
+type UseCategoryEditFormSubmitProps = {
+  id: string | undefined;
   onFormUpdated: () => void;
 };
 
@@ -22,10 +20,8 @@ type UseCategoryEditFormSubmitReturn = {
 export const useCategoryEditFormSubmit = ({
   id,
   onFormUpdated,
-}: UseCategoriesEditFormSubmitProps): UseCategoryEditFormSubmitReturn => {
-  const { updateCategory } = useUpdateCategory();
-  const { promiseNotification } = useNotifications();
-  const { translate, getTranslationByLanguage } = useTranslation();
+}: UseCategoryEditFormSubmitProps): UseCategoryEditFormSubmitReturn => {
+  const { updateCategory } = useUpdateCategory({ onSuccess: onFormUpdated });
 
   const handleFormSubmit = useCallback(
     async (values: CategoryFormValues) => {
@@ -36,37 +32,10 @@ export const useCategoryEditFormSubmit = ({
           parentIds: getCategoryIds(values.parentIds),
         };
 
-        const translatedCategoryName = getTranslationByLanguage(data.name);
-
-        try {
-          await promiseNotification({
-            fetch: () => updateCategory(data),
-            pendingContent: translate('category.updating', {
-              categoryName: translatedCategoryName,
-            }),
-            successContent: translate('category.updated', {
-              categoryName: translatedCategoryName,
-            }),
-            errorContent: translate('category.updating.error', {
-              categoryName: translatedCategoryName,
-            }),
-          });
-
-          onFormUpdated();
-        } catch (e) {
-          // TODO common error logic
-          console.log(e);
-        }
+        await updateCategory(data);
       }
     },
-    [
-      getTranslationByLanguage,
-      id,
-      onFormUpdated,
-      promiseNotification,
-      translate,
-      updateCategory,
-    ],
+    [id, updateCategory],
   );
 
   return {

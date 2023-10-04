@@ -1,23 +1,24 @@
 import { DEFAULT_LANGUAGE, Language } from '../../../components/IntlProvider';
-import { Category, CategoryFormValues } from '../common/types';
+import { CategoryFormValues } from '../common/types';
+import { CategoryDetailData } from './types';
 
 export const matchCategoryDataToFormValues = (
-  data: Category | undefined,
+  data: CategoryDetailData | undefined,
   language: Language,
 ): CategoryFormValues | undefined => {
   if (!data) {
     return undefined;
   }
 
-  const { parentIds, name, isActive, seoName } = data;
+  const { parents, name, isActive, seoName } = data;
 
   return {
     name,
     seoName,
     isActive,
-    parentIds: parentIds.map((parentId) => ({
-      id: parentId,
-      value: name[language] || name[DEFAULT_LANGUAGE],
+    parentIds: parents.map((parent) => ({
+      id: parent._id,
+      value: parent.name[language] || name[DEFAULT_LANGUAGE],
     })),
   };
 };
