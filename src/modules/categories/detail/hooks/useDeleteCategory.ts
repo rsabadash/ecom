@@ -4,9 +4,9 @@ import { routes } from '../../../../common/constants/routes';
 import { useCustomNavigate, useNotification } from '../../../../common/hooks';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { deleteCategoryApi } from '../../common/api';
-import { Category } from '../../common/types';
+import { CategoryDetailData } from '../types';
 
-type UseDeleteCategoryProps = Category | undefined;
+type UseDeleteCategoryProps = CategoryDetailData | undefined;
 
 type UseDeleteCategoryReturn = {
   deleteCategory: () => Promise<void>;

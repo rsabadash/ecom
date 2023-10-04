@@ -10,14 +10,10 @@ import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import {
-  Category,
-  CategoryFormValues,
-  CategoryStateFromRouter,
-} from '../common/types';
+import { CategoryFormValues, CategoryStateFromRouter } from '../common/types';
 import { CategoryEditForm } from './CategoryEditForm';
 import { useDeleteCategory } from './hooks';
-import { CategoryUrlParams } from './types';
+import { CategoryDetailData, CategoryUrlParams } from './types';
 import { matchCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {
@@ -32,9 +28,12 @@ const CategoryDetail = () => {
     getNavigationStateData<CategoryStateFromRouter>();
 
   const { data: categoryDetail, mutate: mutateCategory } =
-    useCachedAPI<Category>(`${endpoints.categories.root}/${categoryId}`, {
-      fallbackData: categoryDetailFromLocation,
-    });
+    useCachedAPI<CategoryDetailData>(
+      `${endpoints.categories.root}/${categoryId}`,
+      {
+        fallbackData: categoryDetailFromLocation,
+      },
+    );
 
   const { deleteCategory } = useDeleteCategory(categoryDetail);
 
