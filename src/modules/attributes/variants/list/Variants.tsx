@@ -14,9 +14,7 @@ const Variants = () => {
   return (
     <>
       <Top>
-        <TopHeading id={TABLE_VARIANTS_ID}>
-          {translate('variants')}
-        </TopHeading>
+        <TopHeading id={TABLE_VARIANTS_ID}>{translate('variants')}</TopHeading>
         <TopButtons>
           <ButtonsGroup>
             <ButtonLink variant="regular" to={routes.attributes.root}>

@@ -1,5 +1,6 @@
-import { LIMIT_ITEMS_DEFAULT } from './constants';
 import { PropsWithChildren } from 'react';
+
+import { LIMIT_ITEMS_DEFAULT } from './constants';
 
 export type PaginationProps = {
   limit: number;

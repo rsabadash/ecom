@@ -1,6 +1,7 @@
 import { Component, lazy, Suspense } from 'react';
 
 import { messages } from '../../common/constants/errors';
+import { INITIAL_STATE } from './constants';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
 const NotFound = lazy(() => import('../../pages/notFound/NotFound'));
@@ -12,11 +13,7 @@ export class ErrorBoundary extends Component<
 > {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = {
-      hasError: false,
-      errorStatus: null,
-      error: null,
-    };
+    this.state = INITIAL_STATE;
   }
 
   static getDerivedStateFromError(error: any) {
@@ -42,6 +39,23 @@ export class ErrorBoundary extends Component<
     console.log(errorInfo);
     //   logErrorToMyService(error, errorInfo);
   }
+
+  componentDidUpdate(
+    prevProps: ErrorBoundaryProps,
+    prevState: ErrorBoundaryState,
+  ) {
+    const { hasError } = this.state;
+    const { resetKey } = this.props;
+
+    if (
+      hasError &&
+      prevState.error !== null &&
+      prevProps.resetKey !== resetKey
+    ) {
+      this.setState(INITIAL_STATE);
+    }
+  }
+
   render() {
     if (this.state.hasError) {
       if (this.isEntityNotFound) {

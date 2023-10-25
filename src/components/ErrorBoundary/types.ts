@@ -2,6 +2,7 @@ import { PropsWithChildren, ReactNode } from 'react';
 
 export type ErrorBoundaryProps = PropsWithChildren<{
   fallback?: ReactNode;
+  resetKey?: string;
 }>;
 
 export type ErrorBoundaryState = {

@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 
 import {
-  VariantPostData,
   VariantFormSubmitAction,
   VariantFormValues,
+  VariantPostData,
 } from '../../common/types';
 import { useCreateVariant } from './useCreateVariant';
 

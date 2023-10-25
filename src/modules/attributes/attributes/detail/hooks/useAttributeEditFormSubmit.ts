@@ -22,7 +22,10 @@ export const useAttributeEditFormSubmit = ({
   name,
   onFormUpdated,
 }: UseAttributeEditFormSubmitProps): UseAttributeEditFormSubmitReturn => {
-  const { updateAttribute } = useUpdateAttribute({ name, onSuccess: onFormUpdated });
+  const { updateAttribute } = useUpdateAttribute({
+    name,
+    onSuccess: onFormUpdated,
+  });
 
   const handleFormSubmit = useCallback(
     async (values: AttributeFormValues) => {
