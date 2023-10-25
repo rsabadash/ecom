@@ -22,6 +22,8 @@
   padding-block: var(--gap-double);
   padding-inline: var(--gap);
   grid-area: aside;
+  position: fixed;
+  width: var(--sidebar-widh);
 }
 
 .main {

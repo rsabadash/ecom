@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import { themeStorage } from '../../common/utils';
 import { AuthProvider } from '../../components/AuthProvider';
@@ -8,8 +8,11 @@ import { Notifications } from '../../components/Notifications';
 import { ThemeProvider } from '../../components/ThemeProvider';
 
 export const Root = () => {
+  const { pathname } = useLocation();
+
   return (
-    <ErrorBoundary fallback="Error boundary Root">
+    // reset key is here to force the re-rendering of children inside ErrorBoundary when the location is changed
+    <ErrorBoundary fallback="Error boundary Root" resetKey={pathname}>
       <ThemeProvider themeStorage={themeStorage}>
         <IntlProvider>
           <AuthProvider>

@@ -1,9 +1,10 @@
+import { PropsWithChildren } from 'react';
+
 import {
   DEFAULT_LANGUAGE,
   LANGUAGES,
   LOCALE_TO_LANGUAGE_MAP,
 } from './constants';
-import { PropsWithChildren } from 'react';
 
 export type Language = ValuesOfObject<typeof LANGUAGES>;
 
@@ -39,7 +40,5 @@ export type TranslationContextValue = {
   language: Language;
   translate: TranslateFn;
   changeLanguage: (language: Language) => void;
-  getTranslationByLanguage: (
-    translations: Translations | undefined,
-  ) => string;
+  getTranslationByLanguage: (translations: Translations | undefined) => string;
 };
