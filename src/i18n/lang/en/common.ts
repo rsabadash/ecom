@@ -13,7 +13,6 @@ export const common = {
   generate: 'Generate',
   notSelected: 'Not selected',
   signOut: 'Sign out',
-  sortOrder: 'Sort order',
 
   pagination: 'Pagination',
   'pagination.limit': 'Items per page',

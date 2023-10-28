@@ -17,8 +17,6 @@ export const attributes = {
   'attribute.state': 'Статус',
   'attribute.state.active': 'Активний',
   'attribute.state.inactive': 'Не активний',
-  'attribute.sortOrder.description':
-    'Порядок відображення атрибутів в списку атрибутів',
   'attribute.emptyList': 'Атрибути відсутні',
   'attribute.emptyList.callToAction': 'Додати атрибут',
   'attribute.variant.emptyList.callToAction': 'Додати варіант',
@@ -48,8 +46,6 @@ export const attributes = {
     'SEO назва варіанта може містити лише числа та латинські літери',
   'variant.seoName.description':
     'Введіть назву, яка буде використана у посиланні на варіант. Допустимі символи: літери латинського алфавіту, цифри та дефіс',
-  'variant.sortOrder.description':
-    'Порядок відображення варіантів атрибута в списку варіантів',
   'variant.active': 'Варіант доступний для показу на публічних сторінках',
   'variant.list': 'Список варіантів',
   'variant.emptyList': 'Варіанти відсутні',

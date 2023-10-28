@@ -6,7 +6,6 @@ export type Attribute = {
   name: Translations;
   seoName: string;
   isActive: boolean;
-  sortOrder: number;
   variants: Variant[];
 };
 
@@ -14,7 +13,6 @@ export type AttributeFormValues = {
   name: Translations;
   seoName: string;
   isActive: boolean;
-  sortOrder: number;
 };
 
 export type AttributesFormFields = Record<

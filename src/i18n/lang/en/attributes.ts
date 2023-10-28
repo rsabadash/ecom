@@ -16,7 +16,6 @@ export const attributes = {
   'attribute.state': 'State',
   'attribute.state.active': 'Active',
   'attribute.state.inactive': 'Not active',
-  'attribute.sortOrder.description': 'Attributes display order in a list',
   'attribute.emptyList': "Attributes don't exist",
   'attribute.emptyList.callToAction': 'Add attribute',
   'attribute.variant.emptyList.callToAction': 'Add variant',
@@ -45,8 +44,6 @@ export const attributes = {
     'Variant SEO name should contain letters of the Latin alphabet, numbers, and hyphens',
   'variant.seoName.description':
     'Enter the name that will be used in the variant link. Valid characters: letters of the Latin alphabet, numbers, and hyphens',
-  'variant.sortOrder.description':
-    'Variants display order in attribute variants list',
   'variant.active': 'Variant is available for display on public pages',
   'variant.list': 'Variants list',
   'variant.emptyList': "Variants don't exist",

@@ -19,7 +19,7 @@ export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
       {
         title: translate('attribute.name'),
         key: 'name',
-        width: '25%',
+        width: '50%',
         valueGetter: ({ item }: AttributeValueGetterProps) => {
           return getTranslationByLanguage(item.name);
         },
@@ -32,14 +32,6 @@ export const useAttributesTableColumns = (): UseAttributeTableColumnsReturn => {
           return item.isActive
             ? translate('attribute.state.active')
             : translate('attribute.state.inactive');
-        },
-      },
-      {
-        title: translate('sortOrder'),
-        key: 'sortOrder',
-        width: '25%',
-        valueGetter: ({ item }: AttributeValueGetterProps) => {
-          return item.sortOrder;
         },
       },
       {

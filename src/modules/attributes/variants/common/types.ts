@@ -1,12 +1,10 @@
 import { Translations } from '../../../../components/IntlProvider';
-import { CategoryStateFromRouter } from '../../../categories/common/types';
 
 export type Variant = {
   variantId: string;
   name: Translations;
   seoName: string;
   isActive: boolean;
-  sortOrder: number;
 };
 
 export type VariantWithAttributeId = Variant & {
@@ -17,7 +15,6 @@ export type VariantFormValues = {
   name: Translations;
   seoName: string;
   isActive: boolean;
-  sortOrder: number;
 };
 
 export type VariantFormFields = Record<
