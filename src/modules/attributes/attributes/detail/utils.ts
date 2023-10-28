@@ -7,12 +7,11 @@ export const matchAttributeDataToFormValues = (
     return undefined;
   }
 
-  const { sortOrder, name, isActive, seoName } = data;
+  const { name, isActive, seoName } = data;
 
   return {
     name,
     seoName,
     isActive,
-    sortOrder,
   };
 };

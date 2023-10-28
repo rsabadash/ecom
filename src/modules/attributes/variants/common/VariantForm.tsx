@@ -41,16 +41,6 @@ export const VariantForm: FC<VariantFormProps> = ({
           columnIndex={1}
         />
         <InputAdapter
-          type="number"
-          isReadOnly={isReadOnly}
-          isDescriptionHidden={isReadOnly}
-          name={variantFormFields.sortOrder}
-          placeholder={translate('variant.sortOrder.description')}
-          label={translate('sortOrder')}
-          control={control}
-          columnIndex={2}
-        />
-        <InputAdapter
           isRequired
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
@@ -58,7 +48,7 @@ export const VariantForm: FC<VariantFormProps> = ({
           label={translate('variant.seoName')}
           placeholder={translate('variant.seoName.description')}
           control={control}
-          columnIndex={3}
+          columnIndex={2}
         />
         <CheckboxAdapter
           isReadOnly={isReadOnly}
@@ -66,7 +56,7 @@ export const VariantForm: FC<VariantFormProps> = ({
           name={variantFormFields.isActive}
           label={translate('variant.active')}
           control={control}
-          columnIndex={4}
+          columnIndex={3}
         />
       </GridRowBalancer>
       {!isReadOnly && (

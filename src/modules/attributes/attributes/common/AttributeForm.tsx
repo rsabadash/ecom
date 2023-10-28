@@ -41,16 +41,6 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           columnIndex={1}
         />
         <InputAdapter
-          type="number"
-          isReadOnly={isReadOnly}
-          isDescriptionHidden={isReadOnly}
-          name={attributesFormFields.sortOrder}
-          placeholder={translate('attribute.sortOrder.description')}
-          label={translate('sortOrder')}
-          control={control}
-          columnIndex={2}
-        />
-        <InputAdapter
           isRequired
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
@@ -58,7 +48,7 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           label={translate('attribute.seoName')}
           placeholder={translate('attribute.seoName.description')}
           control={control}
-          columnIndex={3}
+          columnIndex={2}
         />
         <CheckboxAdapter
           isReadOnly={isReadOnly}
@@ -66,7 +56,7 @@ export const AttributeForm: FC<AttributeFormProps> = ({
           name={attributesFormFields.isActive}
           label={translate('attribute.active')}
           control={control}
-          columnIndex={4}
+          columnIndex={3}
         />
       </GridRowBalancer>
       {!isReadOnly && (

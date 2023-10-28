@@ -23,7 +23,7 @@ export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
       {
         title: translate('variant.name'),
         key: 'name',
-        width: '25%',
+        width: '40%',
         valueGetter: ({ item }: VariantWithAttributeValueGetterProps) => {
           return getTranslationByLanguage(item.name);
         },
@@ -31,7 +31,7 @@ export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
       {
         title: translate('attribute.name'),
         key: 'attributeName',
-        width: '25%',
+        width: '35%',
         valueGetter: ({ item }: VariantWithAttributeValueGetterProps) => {
           return (
             <span
@@ -53,14 +53,6 @@ export const useVariantsTableColumns = (): UseVariantsTableColumnsReturn => {
           return item.isActive
             ? translate('attribute.state.active')
             : translate('attribute.state.inactive');
-        },
-      },
-      {
-        title: translate('sortOrder'),
-        key: 'sortOrder',
-        width: '25%',
-        valueGetter: ({ item }: VariantWithAttributeValueGetterProps) => {
-          return item.sortOrder;
         },
       },
     ],
