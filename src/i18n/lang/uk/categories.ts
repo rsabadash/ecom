@@ -17,8 +17,7 @@ export const categories = {
   'category.state.active': 'Активна',
   'category.state.inactive': 'Не активна',
   'category.parent': 'Батьківська категорія',
-  'category.parent.description':
-    'Оберіть одну або декілька батьківських категорій',
+  'category.parent.description': 'Оберіть одну батьківську категорію',
   'category.emptyList': 'Категорії відсутні',
   'category.emptyList.callToAction': 'Додайте категорію',
   'category.creating': 'Створення категорії "{categoryName}"',
