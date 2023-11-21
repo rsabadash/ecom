@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import clsx from 'clsx';
 
 import { CollapseBuilderButton } from './CollapseBuilderButton';
@@ -14,11 +14,17 @@ export const CollapseBuilderHeader: FC<CollapseBuilderHeaderProps> = ({
   isCollapseDisabled,
   headerClassName,
 }) => {
-  const { isExpand, toggleCollapse } = useCollapseController();
+  const { isExpand, expand, collapse } = useCollapseController();
 
-  const handleHeaderClick = () => {
-    if (isToggleableHeader && !isCollapseDisabled) {
-      toggleCollapse();
+  const handleHeaderClick = async (event: MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+
+    if (!isCollapseDisabled) {
+      if (isExpand) {
+        collapse();
+      } else {
+        expand();
+      }
     }
   };
 

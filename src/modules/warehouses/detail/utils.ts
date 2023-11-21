@@ -2,7 +2,7 @@ import { TranslateFn } from '../../../components/IntlProvider';
 import { warehouseTypeTranslationPrefix } from '../common/constants';
 import { Warehouse, WarehouseFormValues } from '../common/types';
 
-export const matchWarehouseDataToFormValues = (
+export const mapWarehouseDataToFormValues = (
   data: Warehouse | undefined,
   translateFn: TranslateFn,
 ): WarehouseFormValues | undefined => {

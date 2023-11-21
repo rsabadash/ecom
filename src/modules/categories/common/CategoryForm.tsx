@@ -55,7 +55,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
           <DropdownAdapter
             isReadOnly={isReadOnly}
             isDescriptionHidden={isReadOnly}
-            name={categoryFormFields.parentIds}
+            name={categoryFormFields.parent}
             items={categoriesDropdownList}
             placeholder={translate('category.parent.description')}
             label={translate('category.parent')}

@@ -18,7 +18,7 @@ import {
 import { useDeleteSupplier } from './hooks';
 import { SupplierEditForm } from './SupplierEditForm';
 import { SupplierUrlParams } from './types';
-import { matchSupplierDataToFormValues } from './utils';
+import { mapSupplierDataToFormValues } from './utils';
 
 const SupplierDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -39,7 +39,7 @@ const SupplierDetail = () => {
   const { deleteSupplier } = useDeleteSupplier(supplierDetail);
 
   const formValues: SupplierFormValues | undefined =
-    matchSupplierDataToFormValues(supplierDetail);
+    mapSupplierDataToFormValues(supplierDetail);
 
   const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);

@@ -18,10 +18,12 @@ import { useCategoriesTableColumns } from './hooks';
 export const CategoriesList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();
 
-  const { list, total } = useCachedPaginationAPI<Category>({
-    url: endpoints.categories.root,
-    limit: limitValue,
-  });
+  const { list, total } = useCachedPaginationAPI<Category>(
+    endpoints.categories.root,
+    {
+      limit: limitValue,
+    },
+  );
 
   const columns: TableColumnGeneric<Category>[] = useCategoriesTableColumns();
 

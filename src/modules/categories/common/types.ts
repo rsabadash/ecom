@@ -7,14 +7,15 @@ export type Category = {
   name: Translations;
   seoName: string;
   isActive: boolean;
-  parentIds: string[];
+  childrenIds: string[];
+  parentIdsHierarchy: string[];
 };
 
 export type CategoryFormValues = {
   name: Translations;
   seoName: string;
   isActive: boolean;
-  parentIds: DropdownItemObject[];
+  parent: DropdownItemObject | null;
 };
 
 export type CategoryFormFields = Record<
@@ -38,12 +39,21 @@ export type CategoryFormProps = {
 
 export type CategoryStateFromRouter = CategoryDetailData | null;
 
-export type CategoryPostData = Omit<Category, '_id'>;
+export type CategoryPostData = Omit<
+  Category,
+  '_id' | 'childrenIds' | 'parentIdsHierarchy'
+> & {
+  parentId: string | null;
+};
 
 export type CategoryPostResponse = CategoryDetailData;
 
-export type CategoryPatchData = Omit<Category, '_id'> & {
+export type CategoryPatchData = Omit<
+  Category,
+  '_id' | 'childrenIds' | 'parentIdsHierarchy'
+> & {
   id: string;
+  parentId: string | null;
 };
 
 export type CategoryDeleteData = {

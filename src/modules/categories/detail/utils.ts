@@ -1,8 +1,24 @@
+import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { DEFAULT_LANGUAGE, Language } from '../../../components/IntlProvider';
-import { CategoryFormValues } from '../common/types';
+import { Category, CategoryFormValues } from '../common/types';
 import { CategoryDetailData } from './types';
 
-export const matchCategoryDataToFormValues = (
+const getDirectParent = (
+  parents: Category[],
+  language: Language,
+): DropdownItemObject | null => {
+  // direct parent id always the last in hierarchy (index 0 - highest parent, last index - lowest (direct) parent)
+  const directParent = parents.length > 0 ? parents[parents.length - 1] : null;
+
+  return (
+    directParent && {
+      id: directParent._id,
+      value: directParent.name[language] || directParent.name[DEFAULT_LANGUAGE],
+    }
+  );
+};
+
+export const mapCategoryDataToFormValues = (
   data: CategoryDetailData | undefined,
   language: Language,
 ): CategoryFormValues | undefined => {
@@ -12,13 +28,12 @@ export const matchCategoryDataToFormValues = (
 
   const { parents, name, isActive, seoName } = data;
 
+  const parentValue = getDirectParent(parents, language);
+
   return {
     name,
     seoName,
     isActive,
-    parentIds: parents.map((parent) => ({
-      id: parent._id,
-      value: parent.name[language] || name[DEFAULT_LANGUAGE],
-    })),
+    parent: parentValue,
   };
 };

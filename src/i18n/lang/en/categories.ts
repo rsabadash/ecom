@@ -1,6 +1,7 @@
 export const categories = {
   category: 'Category',
   categories: 'Categories',
+  'categories.structure': 'Structure of categories',
   'category.add': 'Add category',
   'category.name': 'Category name',
   'category.name.description': 'Enter category name in {language}',

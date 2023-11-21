@@ -10,7 +10,7 @@ import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { Warehouse, WarehouseFormValues } from '../common/types';
 import { useDeleteWarehouse } from './hooks';
 import { WarehouseUrlParams } from './types';
-import { matchWarehouseDataToFormValues } from './utils';
+import { mapWarehouseDataToFormValues } from './utils';
 import { WarehouseEditForm } from './WarehouseEditForm';
 
 const WarehouseDetail = () => {
@@ -25,7 +25,7 @@ const WarehouseDetail = () => {
   const { deleteWarehouse } = useDeleteWarehouse(warehouseDetail);
 
   const formValues: WarehouseFormValues | undefined =
-    matchWarehouseDataToFormValues(warehouseDetail, translate);
+    mapWarehouseDataToFormValues(warehouseDetail, translate);
 
   const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);

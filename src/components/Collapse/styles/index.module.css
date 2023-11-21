@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: var(--gap);
+  justify-content: space-between;
 }
 
 .collapseHeader_toggleable {

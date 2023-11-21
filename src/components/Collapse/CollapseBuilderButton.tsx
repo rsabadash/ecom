@@ -16,7 +16,7 @@ export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
   isCollapseDisabled,
   collapseButtonClassName,
 }) => {
-  const { ariaControls, ariaLabel, isExpand, toggleCollapse } =
+  const { ariaControls, ariaLabel, isExpand, expand, collapse } =
     useCollapseController();
 
   const collapseButtonClassNames = clsx(
@@ -24,9 +24,16 @@ export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
     collapseButtonClassName,
   );
 
-  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleButtonClick = async (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    toggleCollapse();
+
+    if (!isCollapseDisabled) {
+      if (isExpand) {
+        collapse();
+      } else {
+        expand();
+      }
+    }
   };
 
   return (

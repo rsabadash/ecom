@@ -1,20 +1,68 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
 import {
   useCachedAPI,
+  useCachedPaginationAPI,
   useKeepDataBetweenNavigation,
 } from '../../../common/hooks';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
-import { CategoryFormValues, CategoryStateFromRouter } from '../common/types';
+import {
+  Category,
+  CategoryFormValues,
+  CategoryStateFromRouter,
+} from '../common/types';
 import { CategoryEditForm } from './CategoryEditForm';
+import { CategoryHierarchy } from './CategoryHierarchy';
 import { useDeleteCategory } from './hooks';
 import { CategoryDetailData, CategoryUrlParams } from './types';
-import { matchCategoryDataToFormValues } from './utils';
+import { mapCategoryDataToFormValues } from './utils';
+
+const Test = ({ category }: { category: Category }) => {
+  const isOpenPersistRef = useRef<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const { getTranslationByLanguage } = useTranslation();
+  const { childrenIds, name } = category;
+
+  const ids = childrenIds.toString();
+
+  const { list: categories } = useCachedPaginationAPI<Category>(
+    `${endpoints.categories.root}?ids=${ids}`,
+    {
+      limit: 50,
+      // it reduces number of calls on toggling isOpen
+      shouldFetch: isOpenPersistRef.current && !!ids,
+    },
+  );
+
+  const onCategoryClick = () => {
+    setIsOpen((preIsOpen) => !preIsOpen);
+
+    if (!isOpenPersistRef.current) {
+      isOpenPersistRef.current = true;
+    }
+  };
+
+  return (
+    <div>
+      <div
+        onClick={onCategoryClick}
+        style={{ borderBottom: '1px solid gray', cursor: 'pointer' }}
+      >
+        {getTranslationByLanguage(name)}
+      </div>
+      {isOpen &&
+        categories.map((category) => {
+          return <Test key={category._id} category={category} />;
+        })}
+    </div>
+  );
+};
 
 const CategoryDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -35,10 +83,17 @@ const CategoryDetail = () => {
       },
     );
 
+  const { list: categoriesRootList } = useCachedPaginationAPI<Category>(
+    `${endpoints.categories.root}?parentIds=root`,
+    {
+      limit: 50,
+    },
+  );
+
   const { deleteCategory } = useDeleteCategory(categoryDetail);
 
   const formValues: CategoryFormValues | undefined =
-    matchCategoryDataToFormValues(categoryDetail, language);
+    mapCategoryDataToFormValues(categoryDetail, language);
 
   const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
@@ -76,6 +131,7 @@ const CategoryDetail = () => {
           onFormUpdated={onFormUpdated}
         />
       </SectionForeground>
+      <CategoryHierarchy categories={categoriesRootList} />
     </>
   );
 };

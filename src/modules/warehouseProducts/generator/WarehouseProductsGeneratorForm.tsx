@@ -31,10 +31,12 @@ export const WarehouseProductsGeneratorForm: FC<
 
   const { limitValue } = usePaginationLimit();
 
-  const { list } = useCachedPaginationAPI<Attribute>({
-    url: endpoints.attributes.root,
-    limit: limitValue,
-  });
+  const { list } = useCachedPaginationAPI<Attribute>(
+    endpoints.attributes.root,
+    {
+      limit: limitValue,
+    },
+  );
 
   const { handleFormSubmit } = useWarehouseProductsGeneratorFormSubmit({
     onGeneratedProducts: onGeneratedProductsCallback,

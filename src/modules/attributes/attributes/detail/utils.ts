@@ -1,6 +1,6 @@
 import { Attribute, AttributeFormValues } from '../common/types';
 
-export const matchAttributeDataToFormValues = (
+export const mapAttributeDataToFormValues = (
   data: Attribute | undefined,
 ): AttributeFormValues | undefined => {
   if (!data) {

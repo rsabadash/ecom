@@ -2,10 +2,20 @@ import { MutableRefObject, PropsWithChildren, ReactNode } from 'react';
 
 import { ElementSize } from '../../common/types/size';
 
+export type BeforeExpandAction = () => void | Promise<void>;
+export type BeforeCollapseAction = () => void | Promise<void>;
+export type ExpandAction = () => void | Promise<void>;
+export type CollapseAction = () => void | Promise<void>;
+
 export type CollapseControllerProps = PropsWithChildren<{
   forceExpand?: boolean;
   isInitiallyExpand?: boolean;
-  isToggleHidden?: boolean;
+  isBodyLoaded?: boolean;
+  waitUntilBodyLoaded?: boolean;
+  onBeforeExpand?: BeforeExpandAction;
+  onBeforeCollapse?: BeforeCollapseAction;
+  onExpand?: ExpandAction;
+  onCollapse?: CollapseAction;
   onExpandFinished?: () => void;
   onCollapseFinished?: () => void;
   ariaLabel?: string;
@@ -18,6 +28,7 @@ export type CollapseProps = Omit<CollapseControllerProps, 'collapseBodyRef'> & {
   body: ReactNode;
   headerClassName?: string;
   bodyClassName?: string;
+  isToggleHidden?: boolean;
   isToggleableHeader?: boolean;
   isCollapseDisabled?: boolean;
   renderBodyOnExpand?: boolean;
@@ -46,7 +57,8 @@ export type CollapseBuilderHeaderProps = PropsWithChildren<{
 export type CollapseControllerContextValue = {
   isExpand: boolean;
   isOnceExpanded: boolean;
-  toggleCollapse: () => void;
+  expand: () => Promise<void>;
+  collapse: () => Promise<void>;
   ariaLabel?: string;
   ariaControls?: string;
 };

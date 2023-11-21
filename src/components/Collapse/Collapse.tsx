@@ -13,7 +13,13 @@ export const Collapse: FC<CollapseProps> = ({
   isToggleHidden,
   isToggleableHeader,
   isCollapseDisabled,
+  isBodyLoaded,
+  waitUntilBodyLoaded,
   renderBodyOnExpand,
+  onBeforeExpand,
+  onBeforeCollapse,
+  onExpand,
+  onCollapse,
   onExpandFinished,
   onCollapseFinished,
   ariaLabel,
@@ -26,7 +32,13 @@ export const Collapse: FC<CollapseProps> = ({
   return (
     <CollapseController
       forceExpand={forceExpand}
+      isBodyLoaded={isBodyLoaded}
+      waitUntilBodyLoaded={waitUntilBodyLoaded}
       isInitiallyExpand={isInitiallyExpand}
+      onBeforeExpand={onBeforeExpand}
+      onBeforeCollapse={onBeforeCollapse}
+      onExpand={onExpand}
+      onCollapse={onCollapse}
       onExpandFinished={onExpandFinished}
       onCollapseFinished={onCollapseFinished}
       ariaLabel={ariaLabel}

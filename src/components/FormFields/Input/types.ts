@@ -1,4 +1,4 @@
-import { CollapseControllerProps } from '../../Collapse';
+import { CollapseProps } from '../../Collapse';
 import { InputProps } from '../../Fields/Input';
 import { TooltipProps } from '../../Tooltip/types';
 import { CommonFormFieldWrapperProps } from '../CommonFormFieldWrapper/types';
@@ -15,7 +15,7 @@ export type InputFormFieldProps = Omit<
   >;
 
 export type InputWithCollapseFormFieldProps = InputFormFieldProps &
-  Pick<CollapseControllerProps, 'isToggleHidden'>;
+  Pick<CollapseProps, 'isToggleHidden'>;
 
 export type InputWithTooltipFormFieldProps = Pick<
   InputProps,

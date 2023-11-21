@@ -1,6 +1,6 @@
 import { Variant, VariantFormValues } from '../common/types';
 
-export const matchVariantDataToFormValues = (
+export const mapVariantDataToFormValues = (
   data: Variant | undefined,
 ): VariantFormValues | undefined => {
   if (!data) {
