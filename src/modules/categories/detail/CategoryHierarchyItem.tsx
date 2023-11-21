@@ -1,12 +1,15 @@
 import { CSSProperties, FC, useRef, useState } from 'react';
+import { generatePath, Link } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
+import { routes } from '../../../common/constants/routes';
 import { useCachedPaginationAPI } from '../../../common/hooks';
 import { Collapse } from '../../../components/Collapse';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Category } from '../common/types';
 import { CATEGORY_HIERARCHY_ITEM_ID } from './constants';
 import { CategoryHierarchyItemProps } from './types';
+import { preventEvent } from './utils';
 
 import classes from './styles/index.module.css';
 
@@ -45,9 +48,11 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
     '--hierarchy-level': level,
   } as CSSProperties;
 
-  const translatedCategoryName = `${getTranslationByLanguage(name)} ${
-    category._id
-  }`;
+  const categoryDetailPath = generatePath(routes.categories.detail, {
+    categoryId: category._id,
+  });
+
+  const translatedCategoryName = getTranslationByLanguage(name);
 
   // TODO improve loading state
   const header =
@@ -68,6 +73,13 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
         header={
           <>
             {header}
+            <Link
+              to={categoryDetailPath}
+              style={{ color: 'white' }}
+              onClick={preventEvent}
+            >
+              {category._id}
+            </Link>
             {category.parentIdsHierarchy.length > 0 && (
               <ul>
                 {category.parentIdsHierarchy.map((id) => {

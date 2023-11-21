@@ -1,3 +1,5 @@
+import { MouseEvent } from 'react';
+
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { DEFAULT_LANGUAGE, Language } from '../../../components/IntlProvider';
 import { Category, CategoryFormValues } from '../common/types';
@@ -36,4 +38,8 @@ export const mapCategoryDataToFormValues = (
     isActive,
     parent: parentValue,
   };
+};
+
+export const preventEvent = (event: MouseEvent<HTMLAnchorElement>) => {
+  event.stopPropagation();
 };
