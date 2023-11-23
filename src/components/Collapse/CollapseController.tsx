@@ -20,6 +20,7 @@ const [Provider, useCollapseController] =
 const CollapseController: FC<CollapseControllerProps> = ({
   children,
   forceExpand,
+  forceCollapse,
   isInitiallyExpand = false,
   isBodyLoaded,
   waitUntilBodyLoaded,
@@ -36,6 +37,7 @@ const CollapseController: FC<CollapseControllerProps> = ({
   const { isExpand, isOnceExpanded, expand, collapse } = useCollapseControl({
     collapseBodyRef,
     forceExpand,
+    forceCollapse,
     isInitiallyExpand,
     isBodyLoaded,
     waitUntilBodyLoaded,

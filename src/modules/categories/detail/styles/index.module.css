@@ -2,7 +2,10 @@
     --hierarchy-level: 1;
 }
 
-.hierarchyTitle {
+.hierarchyTopSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: var(--gap);
 }
 

@@ -9,6 +9,7 @@ export const Collapse: FC<CollapseProps> = ({
   header,
   body,
   forceExpand,
+  forceCollapse,
   isInitiallyExpand = false,
   isToggleHidden,
   isToggleableHeader,
@@ -32,6 +33,7 @@ export const Collapse: FC<CollapseProps> = ({
   return (
     <CollapseController
       forceExpand={forceExpand}
+      forceCollapse={forceCollapse}
       isBodyLoaded={isBodyLoaded}
       waitUntilBodyLoaded={waitUntilBodyLoaded}
       isInitiallyExpand={isInitiallyExpand}

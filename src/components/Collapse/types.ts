@@ -9,6 +9,7 @@ export type CollapseAction = () => void | Promise<void>;
 
 export type CollapseControllerProps = PropsWithChildren<{
   forceExpand?: boolean;
+  forceCollapse?: boolean;
   isInitiallyExpand?: boolean;
   isBodyLoaded?: boolean;
   waitUntilBodyLoaded?: boolean;

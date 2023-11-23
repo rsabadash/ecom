@@ -26,6 +26,7 @@ type UseCollapseControlReturn = {
 
 export const useCollapseControl = ({
   forceExpand,
+  forceCollapse,
   isInitiallyExpand,
   isBodyLoaded,
   waitUntilBodyLoaded,
@@ -172,6 +173,12 @@ export const useCollapseControl = ({
       handleExpand();
     }
   }, [forceExpand, handleExpand]);
+
+  useEffect(() => {
+    if (forceCollapse && isOnceExpandedRef.current) {
+      handleCollapse();
+    }
+  }, [forceCollapse, handleCollapse]);
 
   useEffect(() => {
     // do not trigger io first render

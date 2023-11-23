@@ -1,7 +1,9 @@
 export const categories = {
   category: 'Категорія',
   categories: 'Категорії',
-  'categories.structure': 'Структура категорій',
+  'categories.hierarchy': 'Ієрархія категорій',
+  'categories.hierarchy.collapse': 'Згорнути ієрархію',
+  'category.showInHierarchy': 'Показати категорію в ієрархії',
   'category.add': 'Додати категорію',
   'category.name': 'Назва категорії',
   'category.name.description': 'Введіть назву категорії {language} мовою',

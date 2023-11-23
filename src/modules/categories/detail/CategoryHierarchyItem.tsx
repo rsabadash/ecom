@@ -14,8 +14,13 @@ import { preventEvent } from './utils';
 import classes from './styles/index.module.css';
 
 export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
-  category,
   level,
+  category,
+  handleOnExpand,
+  handleOnCollapse,
+  categoryParenIdsMap,
+  isHierarchyCollapsed,
+  showCategoryInHierarchy,
 }) => {
   const isOpenPersistRef = useRef<boolean>(false);
   const [, setShouldFetch] = useState<boolean>(false);
@@ -37,7 +42,7 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
 
   const isChildrenCategoriesLoaded = categories.length > 0;
 
-  const onCategoryClick = () => {
+  const onBeforeCategoryExpand = () => {
     if (!isOpenPersistRef.current) {
       setShouldFetch(true);
       isOpenPersistRef.current = true;
@@ -64,11 +69,18 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
     <div className={classes.hierarchy__item} style={styleVariables}>
       <Collapse
         isToggleableHeader
+        forceExpand={
+          showCategoryInHierarchy && categoryParenIdsMap?.[category._id]
+        }
+        // TODO Discuss if we want to force auto close when category is being changed
+        forceCollapse={isHierarchyCollapsed}
         isCollapseDisabled={!hasChildren}
         isToggleHidden={!hasChildren}
         waitUntilBodyLoaded
         isBodyLoaded={isChildrenCategoriesLoaded}
-        onBeforeExpand={onCategoryClick}
+        onBeforeExpand={onBeforeCategoryExpand}
+        onExpand={handleOnExpand}
+        onCollapse={handleOnCollapse}
         headerClassName={classes.hierarchy__itemContent}
         header={
           <>
@@ -97,8 +109,13 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
                 return (
                   <CategoryHierarchyItem
                     key={category._id}
-                    category={category}
                     level={level + 1}
+                    category={category}
+                    handleOnExpand={handleOnExpand}
+                    handleOnCollapse={handleOnCollapse}
+                    categoryParenIdsMap={categoryParenIdsMap}
+                    isHierarchyCollapsed={isHierarchyCollapsed}
+                    showCategoryInHierarchy={showCategoryInHierarchy}
                   />
                 );
               })

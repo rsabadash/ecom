@@ -1,7 +1,9 @@
 export const categories = {
   category: 'Category',
   categories: 'Categories',
-  'categories.structure': 'Structure of categories',
+  'categories.hierarchy': 'Hierarchy of categories',
+  'categories.hierarchy.collapse': 'Collapse hierarchy',
+  'category.showInHierarchy': 'Show category in the hierarchy',
   'category.add': 'Add category',
   'category.name': 'Category name',
   'category.name.description': 'Enter category name in {language}',

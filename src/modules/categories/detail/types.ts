@@ -12,14 +12,23 @@ export type CategoryEditFormProps = {
 };
 
 export type CategoryHierarchyProps = {
-  categories: Category[];
+  categoryParents: Category[] | undefined;
 };
 
 export type CategoryHierarchyItemProps = {
-  category: Category;
   level: number;
+  category: Category;
+  handleOnExpand: () => void;
+  handleOnCollapse: () => void;
+  categoryParenIdsMap: CategoryParenIdsMap | undefined;
+  isHierarchyCollapsed: boolean;
+  showCategoryInHierarchy: boolean;
 };
 
 export type CategoryUrlParams = {
   categoryId: string;
+};
+
+export type CategoryParenIdsMap = {
+  [id: string]: boolean;
 };
