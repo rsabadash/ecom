@@ -1,6 +1,18 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import { CollapseControllerProps } from '../types';
+import {
+  BeforeCollapseAction,
+  BeforeExpandAction,
+  CollapseAction,
+  CollapseControllerProps,
+  ExpandAction,
+} from '../types';
 
 type UseCollapseControlProps = Omit<
   CollapseControllerProps,
@@ -13,21 +25,45 @@ type UseCollapseControlProps = Omit<
 
 type UseCollapseControlReturn = {
   isExpand: boolean;
-  toggleCollapse: () => void;
+  expand: () => Promise<void>;
+  collapse: () => Promise<void>;
   isOnceExpanded: boolean;
 };
 
 export const useCollapseControl = ({
   forceExpand,
+  forceCollapse,
   isInitiallyExpand,
+  isBodyLoaded,
+  waitUntilBodyLoaded,
+  onBeforeExpand,
+  onBeforeCollapse,
+  onExpand,
+  onCollapse,
   onExpandFinished,
   onCollapseFinished,
   collapseBodyRef,
 }: UseCollapseControlProps): UseCollapseControlReturn => {
   const [isExpand, setIsExpand] = useState<boolean>(() => !!isInitiallyExpand);
+  const [actionType, setActionType] = useState<'expand' | 'collapse'>(() =>
+    isInitiallyExpand ? 'expand' : 'collapse',
+  );
+
   const isOnceExpandedRef = useRef<boolean>(false);
+  // to prevent expand/collapse on initial render
+  const isActionTriggeredRef = useRef<boolean>(false);
   // To prevent bug when the transition delay has not ended but user collapse the body
   const isTransitioningRef = useRef<boolean>(false);
+  const isBodyLoadedRef = useRef<boolean>(false);
+
+  const onBeforeExpandRef = useRef<BeforeExpandAction | undefined>(
+    onBeforeExpand,
+  );
+  const onBeforeCollapseRef = useRef<BeforeCollapseAction | undefined>(
+    onBeforeCollapse,
+  );
+  const onExpandRef = useRef<ExpandAction | undefined>(onExpand);
+  const onCollapseRef = useRef<CollapseAction | undefined>(onCollapse);
 
   const expandFinishedCallback = useCallback((): void => {
     if (!isOnceExpandedRef.current) {
@@ -110,30 +146,84 @@ export const useCollapseControl = ({
     }
   }, [collapseBodyRef, collapseFinishedCallback]);
 
-  const toggleCollapse = useCallback((): void => {
+  const handleExpand = useCallback(async (): Promise<void> => {
     if (!isTransitioningRef.current) {
-      setIsExpand((prevIsOpen) => !prevIsOpen);
+      await onBeforeExpandRef.current?.();
+
+      if (!isActionTriggeredRef.current) {
+        isActionTriggeredRef.current = true;
+      }
+
+      setActionType('expand');
+
+      await onExpandRef.current?.();
     }
   }, []);
 
-  useLayoutEffect(() => {
-    if (forceExpand) {
-      setIsExpand(true);
-      expand();
+  const handleCollapse = useCallback(async (): Promise<void> => {
+    if (!isTransitioningRef.current) {
+      await onBeforeCollapseRef.current?.();
+
+      if (!isActionTriggeredRef.current) {
+        isActionTriggeredRef.current = true;
+      }
+
+      setActionType('collapse');
+
+      await onCollapseRef.current?.();
     }
-  }, [forceExpand, expand]);
+  }, []);
+
+  useEffect(() => {
+    if (forceExpand) {
+      handleExpand();
+    }
+  }, [forceExpand, handleExpand]);
+
+  useEffect(() => {
+    if (forceCollapse && isOnceExpandedRef.current) {
+      handleCollapse();
+    }
+  }, [forceCollapse, handleCollapse]);
+
+  useEffect(() => {
+    // do not trigger io first render
+    if (
+      isActionTriggeredRef.current &&
+      // if we need to wait until body is loaded do not react on action triggering
+      (!waitUntilBodyLoaded || (waitUntilBodyLoaded && isBodyLoadedRef.current))
+    ) {
+      if (actionType === 'expand') {
+        setIsExpand(true);
+        return expand();
+      }
+
+      if (actionType === 'collapse') {
+        setIsExpand(false);
+        return collapse();
+      }
+    }
+  }, [actionType, collapse, expand, waitUntilBodyLoaded]);
+
+  useEffect(() => {
+    if (isBodyLoaded && waitUntilBodyLoaded && !isBodyLoadedRef.current) {
+      isBodyLoadedRef.current = true;
+
+      if (actionType === 'expand') {
+        setIsExpand(true);
+        return expand();
+      }
+    }
+  }, [actionType, expand, handleExpand, isBodyLoaded, waitUntilBodyLoaded]);
 
   useLayoutEffect(() => {
-    if (isExpand) {
-      expand();
-    } else {
-      collapse();
-    }
-  }, [isExpand, collapse, expand]);
+    collapseBodyRef.current?.setAttribute('inert', '');
+  }, [collapseBodyRef]);
 
   return {
     isExpand,
-    toggleCollapse,
+    expand: handleExpand,
+    collapse: handleCollapse,
     isOnceExpanded: isOnceExpandedRef.current,
   };
 };

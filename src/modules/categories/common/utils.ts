@@ -1,7 +1,7 @@
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 
-export const getCategoryIds = (
-  categories: DropdownItemObject<string, string, undefined>[],
-): string[] => {
-  return categories.map((category) => category.id);
+export const getCategoryId = (
+  data: DropdownItemObject | null,
+): string | null => {
+  return data && 'id' in data ? data?.id : data;
 };

@@ -5,7 +5,7 @@ import {
   CategoryFormValues,
   CategoryPostData,
 } from '../../common/types';
-import { getCategoryIds } from '../../common/utils';
+import { getCategoryId } from '../../common/utils';
 import { useCreateCategory } from './useCreateCategory';
 
 type UseCategoryAddFormSubmitReturn = {
@@ -17,9 +17,11 @@ export const useCategoryAddFormSubmit = (): UseCategoryAddFormSubmitReturn => {
 
   const handleFormSubmit = useCallback(
     async (values: CategoryFormValues) => {
+      const { parent, ...restValues } = values;
+
       const data: CategoryPostData = {
-        ...values,
-        parentIds: getCategoryIds(values.parentIds),
+        ...restValues,
+        parentId: getCategoryId(parent),
       };
 
       await createCategory(data);

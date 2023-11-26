@@ -3,7 +3,7 @@ import { PublicConfiguration } from 'swr/_internal';
 
 import { useAPI } from './useAPI';
 
-type UseCachedAPIOptions<D> = Partial<
+export type UseCachedAPIOptions<D> = Partial<
   Pick<
     PublicConfiguration<D>,
     'dedupingInterval' | 'suspense' | 'keepPreviousData' | 'fallbackData'

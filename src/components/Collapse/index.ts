@@ -6,4 +6,4 @@ export {
   CollapseController,
   useCollapseController,
 } from './CollapseController';
-export type { CollapseControllerProps } from './types';
+export type { CollapseControllerProps, CollapseProps } from './types';

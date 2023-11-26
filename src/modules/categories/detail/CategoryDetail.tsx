@@ -12,9 +12,10 @@ import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { CategoryFormValues, CategoryStateFromRouter } from '../common/types';
 import { CategoryEditForm } from './CategoryEditForm';
+import { CategoryHierarchy } from './CategoryHierarchy';
 import { useDeleteCategory } from './hooks';
 import { CategoryDetailData, CategoryUrlParams } from './types';
-import { matchCategoryDataToFormValues } from './utils';
+import { mapCategoryDataToFormValues } from './utils';
 
 const CategoryDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -35,10 +36,12 @@ const CategoryDetail = () => {
       },
     );
 
+  const { parents } = categoryDetail || {};
+
   const { deleteCategory } = useDeleteCategory(categoryDetail);
 
   const formValues: CategoryFormValues | undefined =
-    matchCategoryDataToFormValues(categoryDetail, language);
+    mapCategoryDataToFormValues(categoryDetail, language);
 
   const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
@@ -52,6 +55,11 @@ const CategoryDetail = () => {
   const categoryTitle = `${translate('category')} "${getTranslationByLanguage(
     categoryDetail?.name,
   )}"`;
+
+  // TODO Discuss if we want to force auto close when category is being changed
+  // useEffect(() => {
+  //   setShowCategoryInHierarchy(false);
+  // }, [categoryId]);
 
   return (
     <>
@@ -76,6 +84,7 @@ const CategoryDetail = () => {
           onFormUpdated={onFormUpdated}
         />
       </SectionForeground>
+      <CategoryHierarchy categoryParents={parents} />
     </>
   );
 };

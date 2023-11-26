@@ -18,10 +18,12 @@ import { useAttributesTableColumns } from './hooks';
 export const AttributesList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();
 
-  const { list, total } = useCachedPaginationAPI<Attribute>({
-    url: endpoints.attributes.root,
-    limit: limitValue,
-  });
+  const { list, total } = useCachedPaginationAPI<Attribute>(
+    endpoints.attributes.root,
+    {
+      limit: limitValue,
+    },
+  );
 
   const columns: TableColumnGeneric<Attribute>[] = useAttributesTableColumns();
 

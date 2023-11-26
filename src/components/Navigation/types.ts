@@ -1,33 +1,51 @@
-import { KeyboardEvent, RefObject } from 'react';
-
 import { EventKeys } from '../../common/enums/events';
 import { ElementSize } from '../../common/types/size';
+import { NavigationItemTypeEnums } from '../../layouts/Main/enums';
 import { Role } from '../UserProvider/enums';
 
 export type NavigationProps = {
   size?: ElementSize;
+  navigationItems: NavigationItem[];
 };
 
-export type NavigationItem = {
-  title: string;
+export type NavigationListProps = {
+  nestedLevel: number;
+  navigationItems: NavigationItem[];
+};
+
+export type NavigationLinkItemProps = {
+  item: NavigationLinkItem;
+  index: number;
+  nestedLevel: number;
+  setActiveIndex: (index: number) => void;
+};
+
+export type NavigationActionItemProps = {
+  item: NavigationActionItem;
+  index: number;
+  nestedLevel: number;
+  setActiveIndex: (index: number) => void;
+};
+
+export type NavigationLinkItem = {
+  type: NavigationItemTypeEnums.Link;
+  titleKey: string;
   path: string;
   roles?: Role[];
-  items?: NavigationItems;
+  items?: NavigationItem[];
 };
 
-export type NavigationItems = NavigationItem[];
+export type NavigationActionItem = {
+  type: NavigationItemTypeEnums.Action;
+  titleKey: string;
+  roles?: Role[];
+  items?: NavigationItem[];
+};
+
+export type NavigationItem = NavigationLinkItem | NavigationActionItem;
 
 export type NavData = {
   isActive: boolean;
 };
 
 export type KeyIndexMap = Partial<{ [key in EventKeys]: number }>;
-
-export type UseNavigationReturn = {
-  menuItems: NavigationItems;
-  itemsListRef: RefObject<HTMLUListElement>;
-  handleNavigationKeyDown: (e: KeyboardEvent<HTMLUListElement>) => void;
-  handleNavigationMouseMove: () => void;
-  focusIndex: number;
-  setInitialIndex: (index: number) => void;
-};

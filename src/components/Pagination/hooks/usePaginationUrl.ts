@@ -14,7 +14,15 @@ export const usePaginationUrl = ({
 }: UsePaginationUrlProps): UsePaginationUrlReturn => {
   const { queryParameters } = useQueryParameters();
 
-  return queryParameters
-    ? `${url}/?${LIMIT}=${limit}&${queryParameters}`
-    : `${url}/?${LIMIT}=${limit}`;
+  // /api/v1/entity?key=value
+  const queryParamsFromUrl = url.split('?')[1];
+
+  // /api/v1/entity?key=value&limit=10
+  // or
+  // /api/v1/entity?limit=10
+  const urlWithLimit = queryParamsFromUrl
+    ? `${url}&${LIMIT}=${limit}`
+    : `${url}?${LIMIT}=${limit}`;
+
+  return queryParameters ? `${urlWithLimit}&${queryParameters}` : urlWithLimit;
 };

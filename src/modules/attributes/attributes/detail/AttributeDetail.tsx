@@ -24,7 +24,7 @@ import { AttributeVariantsList } from '../list/AttributeVariantsList';
 import { AttributeEditForm } from './AttributeEditForm';
 import { useDeleteAttribute } from './hooks';
 import { AttributeUrlParams } from './types';
-import { matchAttributeDataToFormValues } from './utils';
+import { mapAttributeDataToFormValues } from './utils';
 
 const AttributeDetail = () => {
   const [isReadOnly, setReadOnly] = useState<boolean>(true);
@@ -43,7 +43,7 @@ const AttributeDetail = () => {
     });
 
   const formValues: AttributeFormValues | undefined =
-    matchAttributeDataToFormValues(attributeDetail);
+    mapAttributeDataToFormValues(attributeDetail);
 
   const handleEditButtonClick = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);

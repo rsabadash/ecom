@@ -18,10 +18,12 @@ import { SuppliesListPlaceholder } from './SuppliesListPlaceholder';
 export const SuppliesList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();
 
-  const { list, total } = useCachedPaginationAPI<Supply>({
-    url: endpoints.supplies.root,
-    limit: limitValue,
-  });
+  const { list, total } = useCachedPaginationAPI<Supply>(
+    endpoints.supplies.root,
+    {
+      limit: limitValue,
+    },
+  );
 
   const columns: TableColumnGeneric<Supply>[] = useSuppliesTableColumns();
 

@@ -17,7 +17,7 @@ import {
 } from '../common/types';
 import { useDeleteVariant } from './hooks';
 import { VariantUrlParams } from './types';
-import { matchVariantDataToFormValues } from './utils';
+import { mapVariantDataToFormValues } from './utils';
 import { VariantEditForm } from './VariantEditForm';
 
 const VariantDetail = () => {
@@ -55,7 +55,7 @@ const VariantDetail = () => {
   };
 
   const formValues: VariantFormValues | undefined =
-    matchVariantDataToFormValues(variantDetail);
+    mapVariantDataToFormValues(variantDetail);
 
   const translatedVariantName = getTranslationByLanguage(variantDetail?.name);
 

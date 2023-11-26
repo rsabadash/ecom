@@ -1,6 +1,6 @@
 import { Supplier, SupplierFormValues } from '../common/types';
 
-export const matchSupplierDataToFormValues = (
+export const mapSupplierDataToFormValues = (
   data: Supplier | undefined,
 ): SupplierFormValues | undefined => {
   if (!data) {

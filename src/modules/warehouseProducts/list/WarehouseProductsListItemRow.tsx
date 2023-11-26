@@ -16,7 +16,7 @@ export const WarehouseProductsListItemRow = forwardRef<
   HTMLDivElement,
   WarehouseProductsListItemRowProps
 >(({ children, item, rowProps }, ref) => {
-  const { isExpand, toggleCollapse } = useCollapseController();
+  const { isExpand, expand, collapse } = useCollapseController();
 
   const { className, ...restRowProps } = rowProps;
   const tableRowClassNames = clsx(className, classes.warehouseListRow);
@@ -29,7 +29,11 @@ export const WarehouseProductsListItemRow = forwardRef<
       const key = event.key as EventKeys;
 
       if (key === EventKeys.Enter) {
-        toggleCollapse();
+        if (isExpanded) {
+          collapse();
+        } else {
+          expand();
+        }
       }
     }
   };

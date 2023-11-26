@@ -5,7 +5,7 @@ import {
   CategoryFormValues,
   CategoryPatchData,
 } from '../../common/types';
-import { getCategoryIds } from '../../common/utils';
+import { getCategoryId } from '../../common/utils';
 import { useUpdateCategory } from './useUpdateCategory';
 
 type UseCategoryEditFormSubmitProps = {
@@ -26,10 +26,12 @@ export const useCategoryEditFormSubmit = ({
   const handleFormSubmit = useCallback(
     async (values: CategoryFormValues) => {
       if (id) {
+        const { parent, ...restValues } = values;
+
         const data: CategoryPatchData = {
           id,
-          ...values,
-          parentIds: getCategoryIds(values.parentIds),
+          ...restValues,
+          parentId: getCategoryId(parent),
         };
 
         await updateCategory(data);

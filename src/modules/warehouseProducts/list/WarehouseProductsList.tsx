@@ -20,10 +20,12 @@ import classes from './styles/index.module.css';
 export const WarehouseProductsList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();
 
-  const { list, total } = useCachedPaginationAPI<WarehouseProduct>({
-    url: endpoints.warehouseProducts.root,
-    limit: limitValue,
-  });
+  const { list, total } = useCachedPaginationAPI<WarehouseProduct>(
+    endpoints.warehouseProducts.root,
+    {
+      limit: limitValue,
+    },
+  );
 
   const columns: TableColumnGeneric<WarehouseProductTable>[] =
     useWarehouseProductsTableColumns();

@@ -18,10 +18,12 @@ import { VariantsListPlaceholder } from './VariantsListPlaceholder';
 export const VariantsList = () => {
   const { limitValue, setLimitValue } = usePaginationLimit();
 
-  const { list, total } = useCachedPaginationAPI<VariantWithAttribute>({
-    url: endpoints.attributes.variants,
-    limit: limitValue,
-  });
+  const { list, total } = useCachedPaginationAPI<VariantWithAttribute>(
+    endpoints.attributes.variants,
+    {
+      limit: limitValue,
+    },
+  );
 
   const columns: TableColumnGeneric<VariantWithAttribute>[] =
     useVariantsTableColumns();
