@@ -23,6 +23,7 @@ export const Collapse: FC<CollapseProps> = ({
   onCollapse,
   onExpandFinished,
   onCollapseFinished,
+  tabIndex,
   ariaLabel,
   ariaControls,
   headerClassName,
@@ -48,6 +49,7 @@ export const Collapse: FC<CollapseProps> = ({
       collapseBodyRef={collapseBodyRef}
     >
       <CollapseBuilderHeader
+        tabIndex={tabIndex}
         isToggleHidden={isToggleHidden}
         isToggleableHeader={isToggleableHeader}
         isCollapseDisabled={isCollapseDisabled}

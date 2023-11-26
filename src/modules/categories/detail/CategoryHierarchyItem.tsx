@@ -49,10 +49,6 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
     }
   };
 
-  const styleVariables = {
-    '--hierarchy-level': level,
-  } as CSSProperties;
-
   const categoryDetailPath = generatePath(routes.categories.detail, {
     categoryId: category._id,
   });
@@ -64,6 +60,10 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
     isOpenPersistRef.current && !isChildrenCategoriesLoaded
       ? `${translatedCategoryName} loading...`
       : translatedCategoryName;
+
+  const styleVariables = {
+    '--hierarchy-level': level,
+  } as CSSProperties;
 
   return (
     <div className={classes.hierarchy__item} style={styleVariables}>

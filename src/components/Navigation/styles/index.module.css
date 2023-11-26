@@ -1,3 +1,7 @@
+:root {
+  --nested-level: 0;
+}
+
 .navigation_xs {
   font-size: var(--font-size-xs);
 }
@@ -23,14 +27,16 @@
   display: flex;
   flex-direction: column;
   gap: var(--gap-half);
+  padding-inline-start: calc(var(--gap) * var(--nested-level));
 }
 
-.navigation__item {
+.navigation__list_nested {
+  padding-block-start: var(--gap-half);
 }
 
 .navigation__itemLink {
   width: 100%;
-  display: block;
+  display: flex;
   border-radius: var(--radius-regular);
   padding: var(--gap);
   cursor: pointer;

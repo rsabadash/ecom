@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import {
   BeforeCollapseAction,
@@ -209,6 +215,10 @@ export const useCollapseControl = ({
       }
     }
   }, [actionType, expand, handleExpand, isBodyLoaded, waitUntilBodyLoaded]);
+
+  useLayoutEffect(() => {
+    collapseBodyRef.current?.setAttribute('inert', '');
+  }, [collapseBodyRef]);
 
   return {
     isExpand,
