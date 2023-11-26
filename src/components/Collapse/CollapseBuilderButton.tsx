@@ -13,16 +13,13 @@ import classes from './styles/index.module.css';
 export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
   size = DEFAULT_COLLAPSE_BUTTON_SIZE,
   iconSize = DEFAULT_ICON_SIZE,
+  tabIndex,
+  isFocusable = true,
   isCollapseDisabled,
   collapseButtonClassName,
 }) => {
   const { ariaControls, ariaLabel, isExpand, expand, collapse } =
     useCollapseController();
-
-  const collapseButtonClassNames = clsx(
-    classes.collapseButton,
-    collapseButtonClassName,
-  );
 
   const handleButtonClick = async (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -36,6 +33,18 @@ export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
     }
   };
 
+  const buttonTabIndex =
+    isCollapseDisabled || !isFocusable
+      ? -1
+      : tabIndex !== undefined
+      ? tabIndex
+      : 0;
+
+  const collapseButtonClassNames = clsx(
+    classes.collapseButton,
+    collapseButtonClassName,
+  );
+
   return (
     <Button
       size={size}
@@ -44,7 +53,7 @@ export const CollapseBuilderButton: FC<CollapseBuilderButtonProps> = ({
       ariaExpanded={isExpand}
       ariaControls={ariaControls}
       className={collapseButtonClassNames}
-      tabIndex={isCollapseDisabled ? -1 : 0}
+      tabIndex={buttonTabIndex}
     >
       {isExpand ? (
         <ChevronUpIcon width={iconSize} height={iconSize} />

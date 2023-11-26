@@ -19,6 +19,7 @@ export type CollapseControllerProps = PropsWithChildren<{
   onCollapse?: CollapseAction;
   onExpandFinished?: () => void;
   onCollapseFinished?: () => void;
+  tabIndex?: number;
   ariaLabel?: string;
   ariaControls?: string;
   collapseBodyRef: MutableRefObject<HTMLDivElement | null>;
@@ -38,6 +39,8 @@ export type CollapseProps = Omit<CollapseControllerProps, 'collapseBodyRef'> & {
 export type CollapseBuilderButtonProps = {
   size?: ElementSize;
   iconSize?: string;
+  tabIndex?: number;
+  isFocusable?: boolean;
   collapseButtonClassName?: string;
   isCollapseDisabled?: boolean;
 };
@@ -49,6 +52,7 @@ export type CollapseBuilderBodyProps = PropsWithChildren<{
 }>;
 
 export type CollapseBuilderHeaderProps = PropsWithChildren<{
+  tabIndex?: number;
   isToggleHidden?: boolean;
   isToggleableHeader?: boolean;
   isCollapseDisabled?: boolean;

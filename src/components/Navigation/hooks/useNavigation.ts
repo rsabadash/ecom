@@ -1,5 +1,6 @@
 import {
   KeyboardEvent,
+  RefObject,
   useCallback,
   useLayoutEffect,
   useMemo,
@@ -8,24 +9,31 @@ import {
 } from 'react';
 
 import { EventKeys } from '../../../common/enums/events';
-import { useTranslation } from '../../IntlProvider';
 import { useUser } from '../../UserProvider';
 import { INDEX_ABSENCE_FOCUS } from '../constants';
-import { KeyIndexMap, NavigationItem, UseNavigationReturn } from '../types';
-import { getMenuItems } from '../utils';
+import { KeyIndexMap, NavigationItem } from '../types';
 
-export const useNavigation = (): UseNavigationReturn => {
+type UseNavigationProps = {
+  items: NavigationItem[];
+};
+
+type UseNavigationReturn = {
+  focusIndex: number;
+  itemsListRef: RefObject<HTMLUListElement>;
+  setActiveIndex: (index: number) => void;
+  allowedNavigationItems: NavigationItem[];
+  handleNavigationKeyDown: (e: KeyboardEvent<HTMLUListElement>) => void;
+  handleNavigationMouseMove: () => void;
+};
+
+export const useNavigation = ({
+  items,
+}: UseNavigationProps): UseNavigationReturn => {
   const { user, hasAllAccesses } = useUser();
-  const { translate } = useTranslation();
 
-  const menuItems = useMemo<NavigationItem[]>(
-    () => getMenuItems(translate),
-    [translate],
-  );
-
-  const allowedItems = useMemo<NavigationItem[]>(() => {
+  const allowedNavigationItems = useMemo<NavigationItem[]>(() => {
     if (!hasAllAccesses) {
-      return menuItems.filter((item) => {
+      return items.filter((item) => {
         return user?.roles.some((userRole) => {
           if (item.roles) {
             return item.roles?.includes(userRole);
@@ -36,13 +44,13 @@ export const useNavigation = (): UseNavigationReturn => {
       });
     }
 
-    return menuItems;
-  }, [hasAllAccesses, menuItems, user?.roles]);
+    return items;
+  }, [hasAllAccesses, items, user?.roles]);
 
-  const initialIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
+  const activeIndexRef = useRef<number>(INDEX_ABSENCE_FOCUS);
   const itemsListRef = useRef<null | HTMLUListElement>(null);
 
-  const [focusIndex, setFocusIndex] = useState<number>(initialIndexRef.current);
+  const [focusIndex, setFocusIndex] = useState<number>(activeIndexRef.current);
   const [isKeyboardControl, setIsKeyboardControl] = useState<boolean>(false);
 
   const getLiElementByIndex = useCallback(
@@ -65,20 +73,31 @@ export const useNavigation = (): UseNavigationReturn => {
   };
 
   const defineFocusIndexByKey = (key: EventKeys): number | undefined => {
-    const itemsLength = allowedItems.length;
-    const isInitialIndex = focusIndex === INDEX_ABSENCE_FOCUS;
+    const itemsLength = allowedNavigationItems.length;
+    const currentFocusIndex =
+      focusIndex === INDEX_ABSENCE_FOCUS ? activeIndexRef.current : focusIndex;
+
+    const isInitialIndex = currentFocusIndex === INDEX_ABSENCE_FOCUS;
 
     const keyIndexPair: KeyIndexMap = {
       [EventKeys.Home]: 0,
       [EventKeys.End]: itemsLength - 1,
       [EventKeys.ArrowDown]:
-        isInitialIndex || focusIndex === itemsLength - 1 ? 0 : focusIndex + 1,
+        isInitialIndex || currentFocusIndex === itemsLength - 1
+          ? 0
+          : currentFocusIndex + 1,
       [EventKeys.ArrowUp]:
-        isInitialIndex || focusIndex === 0 ? itemsLength - 1 : focusIndex - 1,
+        isInitialIndex || currentFocusIndex === 0
+          ? itemsLength - 1
+          : currentFocusIndex - 1,
       [EventKeys.PageDown]:
-        isInitialIndex || focusIndex === itemsLength - 1 ? 0 : focusIndex + 1,
+        isInitialIndex || currentFocusIndex === itemsLength - 1
+          ? 0
+          : currentFocusIndex + 1,
       [EventKeys.PageUp]:
-        isInitialIndex || focusIndex === 0 ? itemsLength - 1 : focusIndex - 1,
+        isInitialIndex || currentFocusIndex === 0
+          ? itemsLength - 1
+          : currentFocusIndex - 1,
       [EventKeys.Tab]: INDEX_ABSENCE_FOCUS,
     };
 
@@ -88,12 +107,6 @@ export const useNavigation = (): UseNavigationReturn => {
 
     return undefined;
   };
-
-  useLayoutEffect(() => {
-    if (initialIndexRef.current !== null) {
-      setFocusIndex(initialIndexRef.current);
-    }
-  }, []);
 
   useLayoutEffect(() => {
     if (isKeyboardControl) {
@@ -111,15 +124,15 @@ export const useNavigation = (): UseNavigationReturn => {
   const handleNavigationMouseMove = (): void => {
     if (
       isKeyboardControl &&
-      initialIndexRef.current !== null &&
+      activeIndexRef.current !== null &&
       itemsListRef.current
     ) {
       const blurIndex =
-        initialIndexRef.current === focusIndex
-          ? initialIndexRef.current
+        activeIndexRef.current === focusIndex
+          ? activeIndexRef.current
           : focusIndex;
 
-      setFocusIndex(initialIndexRef.current);
+      setFocusIndex(activeIndexRef.current);
       blurNavItem(blurIndex);
 
       setIsKeyboardControl(false);
@@ -129,6 +142,7 @@ export const useNavigation = (): UseNavigationReturn => {
   const handleNavigationKeyDown = (
     e: KeyboardEvent<HTMLUListElement>,
   ): void => {
+    e.stopPropagation();
     const key = e.key as EventKeys;
     const index = defineFocusIndexByKey(key);
 
@@ -144,21 +158,21 @@ export const useNavigation = (): UseNavigationReturn => {
     }
 
     if (key === EventKeys.Tab) {
-      if (initialIndexRef.current !== null) {
-        setFocusIndex(initialIndexRef.current);
+      if (activeIndexRef.current !== null) {
+        setFocusIndex(activeIndexRef.current);
       }
     }
   };
 
-  const setInitialIndex = (index: number): void => {
-    initialIndexRef.current = index;
+  const setActiveIndex = (index: number): void => {
+    activeIndexRef.current = index;
   };
 
   return {
-    menuItems: allowedItems,
     focusIndex,
     itemsListRef,
-    setInitialIndex,
+    setActiveIndex,
+    allowedNavigationItems,
     handleNavigationKeyDown,
     handleNavigationMouseMove,
   };

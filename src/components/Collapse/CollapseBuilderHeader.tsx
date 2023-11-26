@@ -1,6 +1,7 @@
-import { FC, MouseEvent } from 'react';
+import { FC, KeyboardEvent, MouseEvent } from 'react';
 import clsx from 'clsx';
 
+import { EventKeys } from '../../common/enums/events';
 import { CollapseBuilderButton } from './CollapseBuilderButton';
 import { useCollapseController } from './CollapseController';
 import { CollapseBuilderHeaderProps } from './types';
@@ -9,6 +10,7 @@ import classes from './styles/index.module.css';
 
 export const CollapseBuilderHeader: FC<CollapseBuilderHeaderProps> = ({
   children,
+  tabIndex,
   isToggleHidden,
   isToggleableHeader,
   isCollapseDisabled,
@@ -16,8 +18,10 @@ export const CollapseBuilderHeader: FC<CollapseBuilderHeaderProps> = ({
 }) => {
   const { isExpand, expand, collapse } = useCollapseController();
 
-  const handleHeaderClick = async (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
+  const handleHeaderClick = async (
+    event: MouseEvent<HTMLDivElement> | undefined,
+  ) => {
+    event?.stopPropagation();
 
     if (!isCollapseDisabled) {
       if (isExpand) {
@@ -27,6 +31,17 @@ export const CollapseBuilderHeader: FC<CollapseBuilderHeaderProps> = ({
       }
     }
   };
+
+  const handleOnKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
+    const key = event.key as EventKeys;
+
+    if (key === EventKeys.Enter) {
+      handleHeaderClick(undefined);
+    }
+  };
+
+  const headerTabIndex =
+    isToggleableHeader && tabIndex !== undefined ? tabIndex : undefined;
 
   const headerClassNames = clsx(
     classes.collapseHeader,
@@ -40,11 +55,17 @@ export const CollapseBuilderHeader: FC<CollapseBuilderHeaderProps> = ({
     <div
       className={headerClassNames}
       onClick={handleHeaderClick}
+      onKeyDown={handleOnKeyDown}
       aria-expanded={isExpand}
+      tabIndex={headerTabIndex}
     >
       {children}
       {!isToggleHidden && (
-        <CollapseBuilderButton isCollapseDisabled={isCollapseDisabled} />
+        <CollapseBuilderButton
+          tabIndex={tabIndex}
+          isFocusable={!isToggleableHeader}
+          isCollapseDisabled={isCollapseDisabled}
+        />
       )}
     </div>
   );
