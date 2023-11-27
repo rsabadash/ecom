@@ -1,6 +1,6 @@
 export const suppliers = {
   supplier: 'Постачальник',
-  suppliers: 'Постачальники',
+  'suppliers.list': 'Список постачальників',
   'supplier.add': 'Додати постачальника',
   'supplier.name': 'Назва постачальника',
   'supplier.name.description': 'Введіть назву постачальника',

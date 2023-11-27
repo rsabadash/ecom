@@ -1,6 +1,6 @@
 export const categories = {
   category: 'Category',
-  categories: 'Categories',
+  'categories.list': 'Categories list',
   'categories.hierarchy': 'Categories hierarchy',
   'categories.hierarchy.collapse': 'Collapse hierarchy',
   'category.showInHierarchy': 'Show category in the hierarchy',

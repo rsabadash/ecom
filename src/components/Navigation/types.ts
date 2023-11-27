@@ -42,8 +42,9 @@ export type NavigationActionItem = {
   titleKey: string;
   roles?: Role[];
   items?: NavigationItem[];
-  // based on tht path is defined either shod we show nested links or not
-  mainPath: string;
+  // we use mainPath to determinate if any of subpages is active
+  // example "/categories", but navigation item for "/categories/id" (detail page) is absent, so we mark main link as active
+  mainPath?: string;
 };
 
 export type NavigationItem = NavigationLinkItem | NavigationActionItem;

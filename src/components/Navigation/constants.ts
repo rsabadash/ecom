@@ -36,14 +36,20 @@ export const navigationItems: NavigationItem[] = [
     path: routes.attributes.root,
   },
   {
-    type: NavigationItemTypeEnums.Link,
-    titleKey: 'menu.suppliers',
-    path: routes.suppliers.root,
-  },
-  {
-    type: NavigationItemTypeEnums.Link,
+    type: NavigationItemTypeEnums.Action,
     titleKey: 'menu.supplies',
-    path: routes.supplies.root,
+    items: [
+      {
+        type: NavigationItemTypeEnums.Link,
+        titleKey: 'menu.supplies.list',
+        path: routes.supplies.root,
+      },
+      {
+        type: NavigationItemTypeEnums.Link,
+        titleKey: 'menu.suppliers.list',
+        path: routes.suppliers.root,
+      },
+    ],
   },
   {
     type: NavigationItemTypeEnums.Link,

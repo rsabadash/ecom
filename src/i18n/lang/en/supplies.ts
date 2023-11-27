@@ -1,5 +1,5 @@
 export const supplies = {
-  supplies: 'Supplies',
+  'supplies.list': 'Supplies list',
   'supply.add': 'Add supply',
   'supply.name': 'Supply name',
   'supply.name.description':

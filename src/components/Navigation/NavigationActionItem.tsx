@@ -2,6 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 
+import { NavigationItemTypeEnums } from '../../layouts/Main/enums';
 import { Collapse } from '../Collapse';
 import { useTranslation } from '../IntlProvider';
 import { NavigationList } from './NavigationList';
@@ -21,12 +22,22 @@ export const NavigationActionItem: FC<NavigationActionItemProps> = ({
   const { titleKey, items, mainPath } = item;
 
   const forceExpandRef = useRef<boolean>(false);
+  const nestedItemsPathRef = useRef<(string | null)[] | undefined>(
+    items?.map((item) => {
+      return item.type === NavigationItemTypeEnums.Link ? item.path : null;
+    }),
+  );
 
   const hasSubItems = items && items.length > 0;
 
   useEffect(() => {
     if (hasSubItems) {
-      const isCurrentPathActive = pathname.includes(mainPath);
+      // we use mainPath to determinate if any of subpages is active
+      // example "/categories", but navigation item for "/categories/id" (detail page) is absent, so we mark main link as active
+      // for common case we just check if one of nested item path is equal to current pathname
+      const isCurrentPathActive =
+        (mainPath && pathname.includes(mainPath)) ||
+        !!nestedItemsPathRef.current?.includes(pathname);
 
       if (isCurrentPathActive) {
         forceExpandRef.current = true;
