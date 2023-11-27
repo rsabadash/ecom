@@ -11,24 +11,10 @@ export type CategoryEditFormProps = {
   onFormUpdated: () => void;
 };
 
-export type CategoryHierarchyProps = {
+export type CategoryHierarchySectionProps = {
   categoryParents: Category[] | undefined;
-};
-
-export type CategoryHierarchyItemProps = {
-  level: number;
-  category: Category;
-  handleOnExpand: () => void;
-  handleOnCollapse: () => void;
-  categoryParenIdsMap: CategoryParenIdsMap | undefined;
-  isHierarchyCollapsed: boolean;
-  showCategoryInHierarchy: boolean;
 };
 
 export type CategoryUrlParams = {
   categoryId: string;
-};
-
-export type CategoryParenIdsMap = {
-  [id: string]: boolean;
 };

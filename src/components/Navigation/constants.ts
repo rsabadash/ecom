@@ -3,8 +3,6 @@ import { DEFAULT_ELEMENT_SIZE } from '../../common/constants/sizes';
 import { NavigationItemTypeEnums } from '../../layouts/Main/enums';
 import { NavigationItem } from './types';
 
-export const INDEX_ABSENCE_FOCUS = -1;
-
 export const DEFAULT_NAVIGATION_SIZE = DEFAULT_ELEMENT_SIZE;
 
 export const navigationItems: NavigationItem[] = [
@@ -14,29 +12,24 @@ export const navigationItems: NavigationItem[] = [
     path: routes.dashboard,
   },
   {
-    type: NavigationItemTypeEnums.Link,
+    type: NavigationItemTypeEnums.Action,
     titleKey: 'menu.categories',
-    path: routes.categories.root,
+    mainPath: routes.categories.root,
     // roles: [Role.ContentManager],
+    items: [
+      {
+        type: NavigationItemTypeEnums.Link,
+        titleKey: 'menu.categories.list',
+        path: routes.categories.root,
+        excludeAsActive: [routes.categories.hierarchy, '/categories/test'],
+      },
+      {
+        type: NavigationItemTypeEnums.Link,
+        titleKey: 'menu.categories.hierarchy',
+        path: routes.categories.hierarchy,
+      },
+    ],
   },
-  // {
-  //   type: NavigationItemTypeEnums.Action,
-  //   titleKey: 'menu.categories',
-  // path: routes.categories.root,
-  // roles: [Role.ContentManager],
-  // items: [
-  //   {
-  //     type: NavigationItemTypeEnums.Link,
-  //     titleKey: 'menu.categories',
-  //     path: routes.categories.root,
-  //   },
-  //   {
-  //     type: NavigationItemTypeEnums.Link,
-  //     titleKey: 'menu.attributes',
-  //     path: routes.attributes.root,
-  //   },
-  // ],
-  // },
   {
     type: NavigationItemTypeEnums.Link,
     titleKey: 'menu.attributes',

@@ -7,13 +7,13 @@ import { useCachedPaginationAPI } from '../../../common/hooks';
 import { Collapse } from '../../../components/Collapse';
 import { useTranslation } from '../../../components/IntlProvider';
 import { Category } from '../common/types';
+import { preventEvent } from '../detail/utils';
 import { CATEGORY_HIERARCHY_ITEM_ID } from './constants';
-import { CategoryHierarchyItemProps } from './types';
-import { preventEvent } from './utils';
+import { CategoriesHierarchyItemProps } from './types';
 
 import classes from './styles/index.module.css';
 
-export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
+export const CategoriesHierarchyItem: FC<CategoriesHierarchyItemProps> = ({
   level,
   category,
   handleOnExpand,
@@ -107,7 +107,7 @@ export const CategoryHierarchyItem: FC<CategoryHierarchyItemProps> = ({
           isOpenPersistRef.current
             ? categories.map((category) => {
                 return (
-                  <CategoryHierarchyItem
+                  <CategoriesHierarchyItem
                     key={category._id}
                     level={level + 1}
                     category={category}

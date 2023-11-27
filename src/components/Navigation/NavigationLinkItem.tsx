@@ -10,17 +10,17 @@ import classes from './styles/index.module.css';
 
 export const NavigationLinkItem: FC<NavigationLinkItemProps> = ({
   item,
-  index,
   nestedLevel,
-  setActiveIndex,
 }) => {
   const { pathname } = useLocation();
 
   const { translate } = useTranslation();
 
-  const { path, titleKey, items } = item;
+  const { path, titleKey, items, excludeAsActive } = item;
 
   const hasSubItems = items && items.length > 0;
+
+  const isStrictPathEnd = !excludeAsActive?.includes(pathname);
 
   return (
     <>
@@ -28,15 +28,12 @@ export const NavigationLinkItem: FC<NavigationLinkItemProps> = ({
         to={path}
         role="menuitem"
         className={({ isActive }: NavData): string | undefined => {
-          if (isActive) {
-            setActiveIndex(index);
-          }
-
           return clsx(classes.navigation__itemLink, {
             [classes.navigation__itemLink_active]: isActive,
           });
         }}
-        tabIndex={path === pathname ? 0 : -1}
+        tabIndex={0}
+        end={!isStrictPathEnd}
       >
         {translate(titleKey)}
       </NavLink>

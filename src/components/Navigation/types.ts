@@ -15,16 +15,12 @@ export type NavigationListProps = {
 
 export type NavigationLinkItemProps = {
   item: NavigationLinkItem;
-  index: number;
   nestedLevel: number;
-  setActiveIndex: (index: number) => void;
 };
 
 export type NavigationActionItemProps = {
   item: NavigationActionItem;
-  index: number;
   nestedLevel: number;
-  setActiveIndex: (index: number) => void;
 };
 
 export type NavigationLinkItem = {
@@ -33,6 +29,12 @@ export type NavigationLinkItem = {
   path: string;
   roles?: Role[];
   items?: NavigationItem[];
+  // not to set nested path as active
+  // example: click on Categories link
+  // /categories -> active
+  // /categories/id => active
+  // excludeAsActive: [/categories/test] => not active
+  excludeAsActive?: string[];
 };
 
 export type NavigationActionItem = {
@@ -40,6 +42,8 @@ export type NavigationActionItem = {
   titleKey: string;
   roles?: Role[];
   items?: NavigationItem[];
+  // based on tht path is defined either shod we show nested links or not
+  mainPath: string;
 };
 
 export type NavigationItem = NavigationLinkItem | NavigationActionItem;
