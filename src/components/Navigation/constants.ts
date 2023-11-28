@@ -14,26 +14,47 @@ export const navigationItems: NavigationItem[] = [
   {
     type: NavigationItemTypeEnums.Action,
     titleKey: 'menu.categories',
-    mainPath: routes.categories.root,
     // roles: [Role.ContentManager],
     items: [
       {
         type: NavigationItemTypeEnums.Link,
         titleKey: 'menu.categories.list',
         path: routes.categories.root,
-        excludeAsActive: [routes.categories.hierarchy, '/categories/test'],
+        excludeAsActive: [routes.categories.hierarchy],
+        fallbackFor: [routes.categories.detail],
+        strictEnd: true,
       },
       {
         type: NavigationItemTypeEnums.Link,
         titleKey: 'menu.categories.hierarchy',
         path: routes.categories.hierarchy,
+        strictEnd: true,
       },
     ],
   },
   {
-    type: NavigationItemTypeEnums.Link,
+    type: NavigationItemTypeEnums.Action,
     titleKey: 'menu.attributes',
-    path: routes.attributes.root,
+    items: [
+      {
+        type: NavigationItemTypeEnums.Link,
+        titleKey: 'menu.attributes.list',
+        path: routes.attributes.root,
+        excludeAsActive: [routes.attributes.variantsList],
+        fallbackFor: [routes.attributes.detail],
+        strictEnd: true,
+      },
+      {
+        type: NavigationItemTypeEnums.Link,
+        titleKey: 'menu.variants.list',
+        path: routes.attributes.variantsList,
+        fallbackFor: [
+          routes.attributes.variantsList,
+          routes.attributes.variantDetail,
+        ],
+        strictEnd: true,
+      },
+    ],
   },
   {
     type: NavigationItemTypeEnums.Action,

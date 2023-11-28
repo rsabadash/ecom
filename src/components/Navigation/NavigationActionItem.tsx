@@ -19,7 +19,7 @@ export const NavigationActionItem: FC<NavigationActionItemProps> = ({
 
   const [isNestedItemActive, setIsNestedItemActive] = useState<boolean>(false);
 
-  const { titleKey, items, mainPath } = item;
+  const { titleKey, items } = item;
 
   const forceExpandRef = useRef<boolean>(false);
   const nestedItemsPathRef = useRef<(string | null)[] | undefined>(
@@ -32,12 +32,11 @@ export const NavigationActionItem: FC<NavigationActionItemProps> = ({
 
   useEffect(() => {
     if (hasSubItems) {
-      // we use mainPath to determinate if any of subpages is active
-      // example "/categories", but navigation item for "/categories/id" (detail page) is absent, so we mark main link as active
-      // for common case we just check if one of nested item path is equal to current pathname
-      const isCurrentPathActive =
-        (mainPath && pathname.includes(mainPath)) ||
-        !!nestedItemsPathRef.current?.includes(pathname);
+      // check if path contains one of nested prefix to set action item as active
+      const isCurrentPathActive = !!nestedItemsPathRef.current?.find(
+        (nestedPath) =>
+          nestedPath && new RegExp(`^${nestedPath}`).test(pathname),
+      );
 
       if (isCurrentPathActive) {
         forceExpandRef.current = true;
@@ -45,7 +44,7 @@ export const NavigationActionItem: FC<NavigationActionItemProps> = ({
 
       setIsNestedItemActive(isCurrentPathActive);
     }
-  }, [hasSubItems, mainPath, pathname]);
+  }, [hasSubItems, pathname]);
 
   const headerClassName = clsx(classes.navigation__itemLink, {
     [classes.navigation__itemLink_active]: isNestedItemActive,

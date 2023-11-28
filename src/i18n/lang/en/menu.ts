@@ -7,6 +7,8 @@ export const menu = {
   'menu.supplies.list': 'Supplies list',
   'menu.suppliers.list': 'Suppliers list',
   'menu.attributes': 'Attributes',
+  'menu.attributes.list': 'Attributes list',
+  'menu.variants.list': 'Variants list',
   'menu.warehouseProducts': 'Warehouse products',
   'menu.warehouses': 'Warehouses',
 };

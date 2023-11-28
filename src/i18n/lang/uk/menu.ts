@@ -7,6 +7,8 @@ export const menu = {
   'menu.supplies.list': 'Список постачань',
   'menu.suppliers.list': 'Список постачальників',
   'menu.attributes': 'Атрибути',
+  'menu.attributes.list': 'Список атрибутів',
+  'menu.variants.list': 'Список варіантів',
   'menu.warehouseProducts': 'Складські товари',
   'menu.warehouses': 'Склади',
 };
