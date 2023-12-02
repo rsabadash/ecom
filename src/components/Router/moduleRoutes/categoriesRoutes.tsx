@@ -12,6 +12,9 @@ const CategoryAdd = lazy(
 const CategoryDetail = lazy(
   () => import('../../../modules/categories/detail/CategoryDetail'),
 );
+const CategoriesHierarchy = lazy(
+  () => import('../../../modules/categories/hierarchy/CategoriesHierarchy'),
+);
 
 export const categoriesRoutes = [
   {
@@ -40,6 +43,16 @@ export const categoriesRoutes = [
       <Suspense fallback="Route Categories add">
         <ErrorBoundary fallback="Error boundary Categories add">
           <CategoryAdd />
+        </ErrorBoundary>
+      </Suspense>
+    ),
+  },
+  {
+    path: routes.categories.hierarchy,
+    element: (
+      <Suspense fallback="Route Categories hierarchy">
+        <ErrorBoundary fallback="Error boundary Categories hierarchy">
+          <CategoriesHierarchy />
         </ErrorBoundary>
       </Suspense>
     ),

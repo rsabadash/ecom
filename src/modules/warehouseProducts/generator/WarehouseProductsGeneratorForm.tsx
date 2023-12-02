@@ -13,7 +13,11 @@ import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
 import { usePaginationLimit } from '../../../components/Pagination/hooks';
 import { Attribute } from '../../attributes/attributes/common/types';
-import { buttonNames, warehouseProductsGeneratorFormFields } from './constants';
+import {
+  buttonNames,
+  WAREHOUSE_PRODUCTS_GENERATOR_DEFAULT_VALUES,
+  warehouseProductsGeneratorFormFields,
+} from './constants';
 import {
   useWarehouseProductsGeneratorForm,
   useWarehouseProductsGeneratorFormSubmit,
@@ -44,7 +48,7 @@ export const WarehouseProductsGeneratorForm: FC<
 
   const { control, setValue, getValues, handleSubmit } =
     useWarehouseProductsGeneratorForm({
-      defaultValues: {},
+      defaultValues: WAREHOUSE_PRODUCTS_GENERATOR_DEFAULT_VALUES,
       submitHandler: handleFormSubmit,
     });
 

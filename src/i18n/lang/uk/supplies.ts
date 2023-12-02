@@ -1,5 +1,5 @@
 export const supplies = {
-  supplies: 'Постачання',
+  'supplies.list': 'Список постачань',
   'supply.add': 'Додати постачання',
   'supply.name': 'Назва постачання',
   'supply.name.description':

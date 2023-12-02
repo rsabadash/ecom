@@ -15,7 +15,7 @@ const Categories = () => {
     <>
       <Top>
         <TopHeading id={TABLE_CATEGORIES_ID}>
-          {translate('categories')}
+          {translate('categories.list')}
         </TopHeading>
         <TopButtons>
           <ButtonLink variant="primary" to={routes.categories.add}>

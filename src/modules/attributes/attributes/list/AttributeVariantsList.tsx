@@ -36,7 +36,7 @@ export const AttributeVariantsList: FC<AttributesVariantsListProps> = ({
         fontSize={4}
         classNameHeading={classes.attributes__variantsTitle}
       >
-        {translate('variants')}
+        {translate('variants.list')}
       </Heading>
       {variants.length > 0 ? (
         <Table

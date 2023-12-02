@@ -1,8 +1,7 @@
 export const attributes = {
   attribute: 'Атрибут',
-  attributes: 'Атрибути',
+  'attributes.list': 'Список атрибутів',
   'attribute.add': 'Додати атрибут',
-  'attribute.attributes.list': 'Список атрибутів',
   'attribute.name': 'Назва атрибута',
   'attribute.name.description': 'Введіть назву атрибута {language} мовою',
   'attribute.name.error.required':
@@ -33,7 +32,7 @@ export const attributes = {
     'Під час видалення атрибуту "{attributeName}" сталася помилка',
   'attribute.deleted': 'Атрибут "{attributeName}" був успішно видалений',
   variant: 'Варіант',
-  variants: 'Варіанти',
+  'variants.list': 'Список варіантів',
   'variant.add': 'Додати варіант',
   'variant.count': 'Кількість варіантів',
   'variant.name': 'Назва варіанта',
@@ -47,7 +46,6 @@ export const attributes = {
   'variant.seoName.description':
     'Введіть назву, яка буде використана у посиланні на варіант. Допустимі символи: літери латинського алфавіту, цифри та дефіс',
   'variant.active': 'Варіант доступний для показу на публічних сторінках',
-  'variant.list': 'Список варіантів',
   'variant.emptyList': 'Варіанти відсутні',
   'variant.emptyList.callToAction':
     'Додайте варіант на сторінці відповідного атрибуту',

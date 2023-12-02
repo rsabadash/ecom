@@ -1,8 +1,7 @@
 export const attributes = {
   attribute: 'Attribute',
-  attributes: 'Attributes',
+  'attributes.list': 'Attributes list',
   'attribute.add': 'Add attribute',
-  'attribute.attributes.list': 'Attributes list',
   'attribute.name': 'Attribute name',
   'attribute.name.description': 'Enter attribute name in {language}',
   'attribute.name.error.required': 'Attribute name in {language} is required',
@@ -32,7 +31,7 @@ export const attributes = {
     'An error occurred while deleting attribute "{attributeName}"',
   'attribute.deleted': 'Attribute "{attributeName}" was successfully deleted',
   variant: 'Variant',
-  variants: 'Variants',
+  'variants.list': 'Variants list',
   'variant.add': 'Add variant',
   'variant.count': 'Variants count',
   'variant.name': 'Variant name',
@@ -45,7 +44,6 @@ export const attributes = {
   'variant.seoName.description':
     'Enter the name that will be used in the variant link. Valid characters: letters of the Latin alphabet, numbers, and hyphens',
   'variant.active': 'Variant is available for display on public pages',
-  'variant.list': 'Variants list',
   'variant.emptyList': "Variants don't exist",
   'variant.emptyList.callToAction':
     'Add variant on the page of the relevant attribute',

@@ -3,20 +3,22 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { endpoints } from '../../../common/constants/api';
 import { useCachedPaginationAPI } from '../../../common/hooks';
 import { Button, ButtonsGroup } from '../../../components/Button';
-import { Heading } from '../../../components/Heading';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { TopButtons } from '../../../layouts/Top';
-import { TABLE_ATTRIBUTE_VARIANTS_ID } from '../../attributes/attributes/list/constants';
 import { Category } from '../common/types';
-import { CategoryHierarchyItem } from './CategoryHierarchyItem';
-import { CategoryHierarchyProps, CategoryParenIdsMap } from './types';
+import { CategoriesHierarchyItem } from './CategoriesHierarchyItem';
+import { CATEGORY_HIERARCHY_ID } from './constants';
+import {
+  CategoriesHierarchyStructureProps,
+  CategoryParenIdsMap,
+} from './types';
 
 import classes from './styles/index.module.css';
 
-export const CategoryHierarchy: FC<CategoryHierarchyProps> = ({
-  categoryParents,
-}) => {
+export const CategoriesHierarchyStructure: FC<
+  CategoriesHierarchyStructureProps
+> = ({ categoryParents, showCategoryEnabled }) => {
   const { list: categoriesRootList } = useCachedPaginationAPI<Category>(
     `${endpoints.categories.root}?parentIds=root`,
     {
@@ -40,7 +42,7 @@ export const CategoryHierarchy: FC<CategoryHierarchyProps> = ({
   };
 
   useEffect(() => {
-    if (categoryParents && categoryParents.length > 0) {
+    if (showCategoryEnabled && categoryParents && categoryParents.length > 0) {
       parentIdsMapRef.current = categoryParents.reduce<CategoryParenIdsMap>(
         (acc, parent) => {
           return {
@@ -51,14 +53,11 @@ export const CategoryHierarchy: FC<CategoryHierarchyProps> = ({
         {},
       );
     }
-  }, [categoryParents]);
+  }, [categoryParents, showCategoryEnabled]);
 
   return (
     <>
       <div className={classes.hierarchyTopSection}>
-        <Heading id={TABLE_ATTRIBUTE_VARIANTS_ID} level={2} fontSize={4}>
-          {translate('categories.hierarchy')}
-        </Heading>
         <TopButtons>
           <ButtonsGroup>
             <Button
@@ -68,21 +67,26 @@ export const CategoryHierarchy: FC<CategoryHierarchyProps> = ({
             >
               {translate('categories.hierarchy.collapse')}
             </Button>
-            <Button
-              variant="primary"
-              size="xs"
-              onClick={() => setShowCategoryInHierarchy(true)}
-            >
-              {translate('category.showInHierarchy')}
-            </Button>
+            {showCategoryEnabled && (
+              <Button
+                variant="primary"
+                size="xs"
+                onClick={() => setShowCategoryInHierarchy(true)}
+              >
+                {translate('category.showInHierarchy')}
+              </Button>
+            )}
           </ButtonsGroup>
         </TopButtons>
       </div>
       <SectionForeground>
-        <div className={classes.hierarchy}>
+        <div
+          className={classes.hierarchy}
+          aria-labelledby={CATEGORY_HIERARCHY_ID}
+        >
           {categoriesRootList.map((category) => {
             return (
-              <CategoryHierarchyItem
+              <CategoriesHierarchyItem
                 key={category._id}
                 level={1}
                 category={category}
