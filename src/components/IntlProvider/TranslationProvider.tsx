@@ -20,6 +20,23 @@ const [Provider, useTranslation] = createProvider<TranslationContextValue>({
   contextDefaultValue: translationContextValuesDefault,
 });
 
+// TODO typed translations
+// export const useTranslationT = <K extends string>() => {
+//   const contextValues = useTranslation();
+//
+//   const translate = (
+//     value: K,
+//     placeholders?: TranslatePlaceholders,
+//   ): string => {
+//     return contextValues.translate(value, placeholders);
+//   };
+//
+//   return {
+//     ...contextValues,
+//     translate,
+//   };
+// };
+
 const TranslationProvider: FC<TranslationProviderProps> = ({
   language,
   setLanguage,

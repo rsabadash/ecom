@@ -1,6 +1,6 @@
 export const suppliers = {
   supplier: 'Supplier',
-  suppliers: 'Suppliers',
+  'suppliers.list': 'Suppliers list',
   'supplier.add': 'Add supplier',
   'supplier.name': 'Supplier name',
   'supplier.name.description': 'Enter supplier name',

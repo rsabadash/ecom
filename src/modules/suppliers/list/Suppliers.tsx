@@ -15,7 +15,7 @@ const Suppliers = () => {
     <>
       <Top>
         <TopHeading id={TABLE_SUPPLIERS_ID}>
-          {translate('suppliers')}
+          {translate('suppliers.list')}
         </TopHeading>
         <TopButtons>
           <ButtonLink variant="primary" to={routes.suppliers.add}>

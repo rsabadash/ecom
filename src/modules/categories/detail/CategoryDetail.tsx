@@ -12,7 +12,7 @@ import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
 import { CategoryFormValues, CategoryStateFromRouter } from '../common/types';
 import { CategoryEditForm } from './CategoryEditForm';
-import { CategoryHierarchy } from './CategoryHierarchy';
+import { CategoryHierarchySection } from './CategoryHierarchySection';
 import { useDeleteCategory } from './hooks';
 import { CategoryDetailData, CategoryUrlParams } from './types';
 import { mapCategoryDataToFormValues } from './utils';
@@ -56,11 +56,6 @@ const CategoryDetail = () => {
     categoryDetail?.name,
   )}"`;
 
-  // TODO Discuss if we want to force auto close when category is being changed
-  // useEffect(() => {
-  //   setShowCategoryInHierarchy(false);
-  // }, [categoryId]);
-
   return (
     <>
       <Top>
@@ -84,7 +79,7 @@ const CategoryDetail = () => {
           onFormUpdated={onFormUpdated}
         />
       </SectionForeground>
-      <CategoryHierarchy categoryParents={parents} />
+      <CategoryHierarchySection categoryParents={parents} />
     </>
   );
 };

@@ -15,15 +15,12 @@ const Attributes = () => {
     <>
       <Top>
         <TopHeading id={TABLE_ATTRIBUTES_ID}>
-          {translate('attributes')}
+          {translate('attributes.list')}
         </TopHeading>
         <TopButtons>
           <ButtonsGroup>
             <ButtonLink variant="primary" to={routes.attributes.add}>
               {translate('add')}
-            </ButtonLink>
-            <ButtonLink variant="regular" to={routes.attributes.variantsList}>
-              {translate('variant.list')}
             </ButtonLink>
           </ButtonsGroup>
         </TopButtons>

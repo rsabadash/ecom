@@ -20,3 +20,5 @@ export const buttonNames = {
   oneProduct: 'oneProduct',
   manyProducts: 'manyProducts',
 };
+
+export const WAREHOUSE_PRODUCTS_GENERATOR_DEFAULT_VALUES = {};

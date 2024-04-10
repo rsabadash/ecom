@@ -1,11 +1,11 @@
-import { CSSProperties, FC } from 'react';
+import { CSSProperties, FC, useMemo } from 'react';
 import { clsx } from 'clsx';
 
 import { NavigationItemTypeEnums } from '../../layouts/Main/enums';
-import { useNavigation } from './hooks';
+import { useUser } from '../UserProvider';
 import { NavigationActionItem } from './NavigationActionItem';
 import { NavigationLinkItem } from './NavigationLinkItem';
-import { NavigationListProps } from './types';
+import { NavigationItem, NavigationListProps } from './types';
 
 import classes from './styles/index.module.css';
 
@@ -13,13 +13,23 @@ export const NavigationList: FC<NavigationListProps> = ({
   nestedLevel,
   navigationItems,
 }) => {
-  const {
-    itemsListRef,
-    setActiveIndex,
-    allowedNavigationItems,
-    handleNavigationKeyDown,
-    handleNavigationMouseMove,
-  } = useNavigation({ items: navigationItems });
+  const { user, hasAllAccesses } = useUser();
+
+  const allowedNavigationItems = useMemo<NavigationItem[]>(() => {
+    if (!hasAllAccesses) {
+      return navigationItems.filter((item) => {
+        return user?.roles.some((userRole) => {
+          if (item.roles) {
+            return item.roles?.includes(userRole);
+          }
+
+          return true;
+        });
+      });
+    }
+
+    return navigationItems;
+  }, [hasAllAccesses, navigationItems, user?.roles]);
 
   const styleVariables = {
     '--nested-level': nestedLevel,
@@ -32,14 +42,11 @@ export const NavigationList: FC<NavigationListProps> = ({
   return (
     <ul
       role="menubar"
-      ref={itemsListRef}
       aria-orientation="vertical"
       style={styleVariables}
       className={navigationListClassNames}
-      onKeyDown={handleNavigationKeyDown}
-      onMouseMove={handleNavigationMouseMove}
     >
-      {allowedNavigationItems.map((navigationItem, index) => {
+      {allowedNavigationItems.map((navigationItem) => {
         const { titleKey, type } = navigationItem;
 
         return (
@@ -47,16 +54,12 @@ export const NavigationList: FC<NavigationListProps> = ({
             {type === NavigationItemTypeEnums.Link ? (
               <NavigationLinkItem
                 item={navigationItem}
-                index={index}
                 nestedLevel={nestedLevel}
-                setActiveIndex={setActiveIndex}
               />
             ) : (
               <NavigationActionItem
                 item={navigationItem}
-                index={index}
                 nestedLevel={nestedLevel}
-                setActiveIndex={setActiveIndex}
               />
             )}
           </li>

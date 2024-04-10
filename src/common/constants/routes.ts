@@ -6,6 +6,7 @@ export const routes = {
     root: '/categories',
     add: '/categories/add',
     detail: '/categories/:categoryId',
+    hierarchy: '/categories/hierarchy',
   },
   suppliers: {
     root: '/suppliers',
