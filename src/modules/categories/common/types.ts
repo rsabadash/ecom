@@ -33,6 +33,7 @@ export type CategoryFormProps = {
   submitText: string;
   isReadOnly?: boolean;
   defaultValues?: CategoryFormDefaultValues;
+  handleFormReset: () => void;
   handleFormSubmit: CategoryFormSubmitAction;
   dropdownCategoriesUrl: string;
 };

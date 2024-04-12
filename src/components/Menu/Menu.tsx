@@ -38,6 +38,7 @@ export const Menu: FC<MenuProps> = ({
   alignment,
   isDisabled,
   isObserveResize,
+  menuButtonClassName,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [focusIndex, setFocusIndex] = useState<number>(INDEX_ABSENCE_FOCUS);
@@ -249,7 +250,10 @@ export const Menu: FC<MenuProps> = ({
   const keyboardItemSelection = (): void => {
     const currentItem = items[focusIndex];
 
-    currentItem.action();
+    if (currentItem.action) {
+      currentItem?.action();
+    }
+
     closeMenu();
   };
 
@@ -303,6 +307,8 @@ export const Menu: FC<MenuProps> = ({
     [classes.menuWrapper_open]: isOpen,
   });
 
+  const menuButtonNames = clsx(classes.menuButton, menuButtonClassName);
+
   return (
     <div className={menuWrapperClassNames}>
       <div
@@ -315,7 +321,7 @@ export const Menu: FC<MenuProps> = ({
         onKeyDown={handleMenuKeyDown}
         ref={menuButtonRef}
         tabIndex={isDisabled ? -1 : 0}
-        className={classes.menuButton}
+        className={menuButtonNames}
       >
         {children}
       </div>
@@ -337,14 +343,24 @@ export const Menu: FC<MenuProps> = ({
             ref={menuListRef}
             className={classes.menuList}
           >
-            {items.map(({ id, Component, action }, index) => {
-              const menuListItemClass = clsx(classes.menuList__item, {
-                [classes.menuList__item_focus]:
-                  isKeyboardControl && focusIndex === index,
-              });
+            {items.map(({ id, Component, action, componentProps }, index) => {
+              const { itemClassName, ...restComponentProps } =
+                componentProps || {};
+
+              const menuListItemClass = clsx(
+                classes.menuList__item,
+                itemClassName,
+                {
+                  [classes.menuList__item_focus]:
+                    isKeyboardControl && focusIndex === index,
+                },
+              );
 
               const handleItemAction = () => {
-                action();
+                if (action) {
+                  action();
+                }
+
                 closeMenu();
               };
 
@@ -355,7 +371,7 @@ export const Menu: FC<MenuProps> = ({
                   role="menuitem"
                   className={menuListItemClass}
                 >
-                  <Component />
+                  <Component {...restComponentProps} />
                 </li>
               );
             })}

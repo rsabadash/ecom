@@ -1,16 +1,17 @@
 .top {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  flex-direction: column;
   gap: var(--gap);
 }
 
 .top__heading {
   display: flex;
-  align-self: flex-start;
 }
 
 .top__buttons {
   display: flex;
-  align-self: flex-end;
+  width: 100%;
+  justify-content: end;
 }

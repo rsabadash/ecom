@@ -6,11 +6,11 @@ import {
   useCachedAPI,
   useKeepDataBetweenNavigation,
 } from '../../../common/hooks';
-import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { Top, TopHeading } from '../../../layouts/Top';
 import { CategoryFormValues, CategoryStateFromRouter } from '../common/types';
+import { CategoryDetailActions } from './CategoryDetailActions';
 import { CategoryEditForm } from './CategoryEditForm';
 import { CategoryHierarchySection } from './CategoryHierarchySection';
 import { useDeleteCategory } from './hooks';
@@ -43,7 +43,7 @@ const CategoryDetail = () => {
   const formValues: CategoryFormValues | undefined =
     mapCategoryDataToFormValues(categoryDetail, language);
 
-  const handleEditButtonClick = (): void => {
+  const handleReadOnlyState = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -60,22 +60,18 @@ const CategoryDetail = () => {
     <>
       <Top>
         <TopHeading>{categoryTitle}</TopHeading>
-        <TopButtons>
-          <ButtonsGroup>
-            <Button variant="primary" onClick={handleEditButtonClick}>
-              {!isReadOnly ? translate('cancel') : translate('edit')}
-            </Button>
-            <Button variant="danger" onClick={deleteCategory}>
-              {translate('delete')}
-            </Button>
-          </ButtonsGroup>
-        </TopButtons>
+        <CategoryDetailActions
+          onEdit={handleReadOnlyState}
+          onDelete={deleteCategory}
+          isReadOnly={isReadOnly}
+        />
       </Top>
       <SectionForeground>
         <CategoryEditForm
           id={categoryDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormReset={handleReadOnlyState}
           onFormUpdated={onFormUpdated}
         />
       </SectionForeground>

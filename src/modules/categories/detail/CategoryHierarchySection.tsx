@@ -14,7 +14,7 @@ export const CategoryHierarchySection: FC<CategoryHierarchySectionProps> = ({
   const { translate } = useTranslation();
 
   return (
-    <div className={classes.hierarchySection}>
+    <div className={classes.categoryDetail__hierarchySection}>
       <Heading id={CATEGORY_HIERARCHY_ID} level={2} fontSize={4}>
         {translate('categories.hierarchy')}
       </Heading>
