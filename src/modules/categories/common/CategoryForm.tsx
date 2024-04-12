@@ -90,7 +90,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
             <Button variant="primary" type="submit">
               {submitText}
             </Button>
-            <Button variant="regular" onClick={handleFormReset}>
+            <Button variant="theme" onClick={handleFormReset}>
               {translate('cancel')}
             </Button>
           </GridAutoFit>

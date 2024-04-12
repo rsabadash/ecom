@@ -6,8 +6,9 @@ import { CategoryForm } from '../common/CategoryForm';
 import { useCategoryAddFormSubmit } from './hooks';
 
 export const CategoryAddForm = () => {
-  const navigate = useCustomNavigate();
   const { translate } = useTranslation();
+
+  const navigate = useCustomNavigate();
 
   const { handleFormSubmit } = useCategoryAddFormSubmit();
 

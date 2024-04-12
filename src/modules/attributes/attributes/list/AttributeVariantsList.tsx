@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { generatePath, Link, useParams } from 'react-router-dom';
 
 import { routes } from '../../../../common/constants/routes';
+import { ButtonLink } from '../../../../components/Button';
 import { Heading } from '../../../../components/Heading';
 import { useTranslation } from '../../../../components/IntlProvider';
 import {
@@ -30,14 +31,14 @@ export const AttributeVariantsList: FC<AttributesVariantsListProps> = ({
 
   return (
     <>
-      <Heading
-        id={TABLE_ATTRIBUTE_VARIANTS_ID}
-        level={2}
-        fontSize={4}
-        classNameHeading={classes.attributes__variantsTitle}
-      >
-        {translate('variants.list')}
-      </Heading>
+      <div className={classes.attributes__variantsTop}>
+        <Heading id={TABLE_ATTRIBUTE_VARIANTS_ID} level={2} fontSize={4}>
+          {translate('variants.list')}
+        </Heading>
+        <ButtonLink size="xs" variant="primary" to={addVariantLink}>
+          {translate('variant.add')}
+        </ButtonLink>
+      </div>
       {variants.length > 0 ? (
         <Table
           items={variants}

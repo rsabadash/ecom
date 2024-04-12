@@ -7,20 +7,16 @@ import {
   useCachedAPI,
   useKeepDataBetweenNavigation,
 } from '../../../../common/hooks';
-import {
-  Button,
-  ButtonLink,
-  ButtonsGroup,
-} from '../../../../components/Button';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
+import { Top, TopHeading } from '../../../../layouts/Top';
 import {
   Attribute,
   AttributeFormValues,
   AttributeStateFromRouter,
 } from '../common/types';
 import { AttributeVariantsList } from '../list/AttributeVariantsList';
+import { AttributeDetailActions } from './AttributeDetailActions';
 import { AttributeEditForm } from './AttributeEditForm';
 import { useDeleteAttribute } from './hooks';
 import { AttributeUrlParams } from './types';
@@ -45,7 +41,7 @@ const AttributeDetail = () => {
   const formValues: AttributeFormValues | undefined =
     mapAttributeDataToFormValues(attributeDetail);
 
-  const handleEditButtonClick = (): void => {
+  const toggleReadOnly = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -77,27 +73,18 @@ const AttributeDetail = () => {
     <>
       <Top>
         <TopHeading>{attributeTitle}</TopHeading>
-        <TopButtons>
-          <ButtonsGroup>
-            {isReadOnly && (
-              <ButtonLink variant="primary" to={variantAddPath}>
-                {translate('variant.add')}
-              </ButtonLink>
-            )}
-            <Button variant="primary" onClick={handleEditButtonClick}>
-              {!isReadOnly ? translate('cancel') : translate('edit')}
-            </Button>
-            <Button variant="danger" onClick={deleteAttribute}>
-              {translate('delete')}
-            </Button>
-          </ButtonsGroup>
-        </TopButtons>
+        <AttributeDetailActions
+          isReadOnly={isReadOnly}
+          onEdit={toggleReadOnly}
+          onDelete={deleteAttribute}
+        />
       </Top>
       <SectionForeground>
         <AttributeEditForm
           id={attributeDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormReset={toggleReadOnly}
           onFormUpdated={onFormUpdated}
           attributeName={translatedAttributeName}
         />

@@ -43,7 +43,7 @@ const CategoryDetail = () => {
   const formValues: CategoryFormValues | undefined =
     mapCategoryDataToFormValues(categoryDetail, language);
 
-  const handleReadOnlyState = (): void => {
+  const toggleReadOnly = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -61,7 +61,7 @@ const CategoryDetail = () => {
       <Top>
         <TopHeading>{categoryTitle}</TopHeading>
         <CategoryDetailActions
-          onEdit={handleReadOnlyState}
+          onEdit={toggleReadOnly}
           onDelete={deleteCategory}
           isReadOnly={isReadOnly}
         />
@@ -71,7 +71,7 @@ const CategoryDetail = () => {
           id={categoryDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
-          onFormReset={handleReadOnlyState}
+          onFormReset={toggleReadOnly}
           onFormUpdated={onFormUpdated}
         />
       </SectionForeground>

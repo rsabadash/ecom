@@ -9,6 +9,7 @@ export const AttributeEditForm: FC<AttributeEditFormProps> = ({
   id,
   isReadOnly,
   defaultValues,
+  onFormReset,
   onFormUpdated,
   attributeName,
 }) => {
@@ -25,6 +26,7 @@ export const AttributeEditForm: FC<AttributeEditFormProps> = ({
       isReadOnly={isReadOnly}
       submitText={translate('update')}
       defaultValues={defaultValues}
+      handleFormReset={onFormReset}
       handleFormSubmit={handleFormSubmit}
     />
   );
