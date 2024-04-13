@@ -6,10 +6,10 @@ import {
   useCachedAPI,
   useKeepDataBetweenNavigation,
 } from '../../../common/hooks';
-import { Button, ButtonsGroup } from '../../../components/Button';
+import { ModuleDetailActions } from '../../../components/Intermodular/ModuleDetailActions';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { Top, TopHeading } from '../../../layouts/Top';
 import {
   Supplier,
   SupplierFormValues,
@@ -41,7 +41,7 @@ const SupplierDetail = () => {
   const formValues: SupplierFormValues | undefined =
     mapSupplierDataToFormValues(supplierDetail);
 
-  const handleEditButtonClick = (): void => {
+  const toggleReadOnly = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -56,16 +56,11 @@ const SupplierDetail = () => {
     <>
       <Top>
         <TopHeading>{supplierTitle}</TopHeading>
-        <TopButtons>
-          <ButtonsGroup>
-            <Button variant="primary" onClick={handleEditButtonClick}>
-              {!isReadOnly ? translate('cancel') : translate('edit')}
-            </Button>
-            <Button variant="danger" onClick={deleteSupplier}>
-              {translate('delete')}
-            </Button>
-          </ButtonsGroup>
-        </TopButtons>
+        <ModuleDetailActions
+          isReadOnly={isReadOnly}
+          onEdit={toggleReadOnly}
+          onDelete={deleteSupplier}
+        />
       </Top>
       <SectionForeground>
         <Suspense>
@@ -73,6 +68,7 @@ const SupplierDetail = () => {
             id={supplierDetail?._id}
             isReadOnly={isReadOnly}
             defaultValues={formValues}
+            onFormReset={toggleReadOnly}
             onFormUpdated={onFormUpdated}
           />
         </Suspense>

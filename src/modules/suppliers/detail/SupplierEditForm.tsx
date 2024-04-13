@@ -9,6 +9,7 @@ export const SupplierEditForm: FC<SupplierEditFormProps> = ({
   id,
   isReadOnly,
   defaultValues,
+  onFormReset,
   onFormUpdated,
 }) => {
   const { translate } = useTranslation();
@@ -20,6 +21,7 @@ export const SupplierEditForm: FC<SupplierEditFormProps> = ({
       submitText={translate('update')}
       isReadOnly={isReadOnly}
       defaultValues={defaultValues}
+      handleFormReset={onFormReset}
       handleFormSubmit={handleFormSubmit}
     />
   );

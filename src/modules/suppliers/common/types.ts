@@ -26,6 +26,7 @@ export type SupplierFormProps = {
   submitText: string;
   isReadOnly?: boolean;
   defaultValues?: SupplierFormDefaultValues;
+  handleFormReset: () => void;
   handleFormSubmit: SupplierFormSubmitAction;
 };
 
