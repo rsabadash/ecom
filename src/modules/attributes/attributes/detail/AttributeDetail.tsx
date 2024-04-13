@@ -7,6 +7,7 @@ import {
   useCachedAPI,
   useKeepDataBetweenNavigation,
 } from '../../../../common/hooks';
+import { ModuleDetailActions } from '../../../../components/Intermodular/ModuleDetailActions';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
 import { Top, TopHeading } from '../../../../layouts/Top';
@@ -16,7 +17,6 @@ import {
   AttributeStateFromRouter,
 } from '../common/types';
 import { AttributeVariantsList } from '../list/AttributeVariantsList';
-import { AttributeDetailActions } from './AttributeDetailActions';
 import { AttributeEditForm } from './AttributeEditForm';
 import { useDeleteAttribute } from './hooks';
 import { AttributeUrlParams } from './types';
@@ -73,7 +73,7 @@ const AttributeDetail = () => {
     <>
       <Top>
         <TopHeading>{attributeTitle}</TopHeading>
-        <AttributeDetailActions
+        <ModuleDetailActions
           isReadOnly={isReadOnly}
           onEdit={toggleReadOnly}
           onDelete={deleteAttribute}

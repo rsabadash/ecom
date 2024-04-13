@@ -1,13 +1,13 @@
-.attributeDetail__menuButton path {
+.moduleDetail__menuButton path {
   fill: var(--text-color);
 }
 
-.attributeDetail__actionButton_delete {
+.moduleDetail__actionButton_delete {
   color: var(--button-variant-text);
   background-color: var(--danger-500);
   text-align: center;
 }
 
-.attributeDetail__actionButton_delete:hover {
+.moduleDetail__actionButton_delete:hover {
   background-color: var(--danger-600);
 }

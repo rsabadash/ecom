@@ -9,12 +9,6 @@ export type AttributeEditFormProps = {
   attributeName: string | undefined;
 };
 
-export type AttributeDetailActionsProps = {
-  onEdit: () => void;
-  onDelete: () => Promise<void>;
-  isReadOnly: boolean;
-};
-
 export type AttributeUrlParams = {
   attributeId: string;
 };

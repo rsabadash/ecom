@@ -1,0 +1,1 @@
+export { ModuleDetailActions } from './ModuleDetailActions';

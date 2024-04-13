@@ -6,11 +6,11 @@ import {
   useCachedAPI,
   useKeepDataBetweenNavigation,
 } from '../../../common/hooks';
+import { ModuleDetailActions } from '../../../components/Intermodular/ModuleDetailActions';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
 import { Top, TopHeading } from '../../../layouts/Top';
 import { CategoryFormValues, CategoryStateFromRouter } from '../common/types';
-import { CategoryDetailActions } from './CategoryDetailActions';
 import { CategoryEditForm } from './CategoryEditForm';
 import { CategoryHierarchySection } from './CategoryHierarchySection';
 import { useDeleteCategory } from './hooks';
@@ -60,7 +60,7 @@ const CategoryDetail = () => {
     <>
       <Top>
         <TopHeading>{categoryTitle}</TopHeading>
-        <CategoryDetailActions
+        <ModuleDetailActions
           onEdit={toggleReadOnly}
           onDelete={deleteCategory}
           isReadOnly={isReadOnly}

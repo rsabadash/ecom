@@ -1,13 +1,13 @@
 import { FC } from 'react';
 
-import { ReactComponent as VerticalDotsIcon } from '../../../../assets/icons/VerticalDots.svg';
-import { useTranslation } from '../../../../components/IntlProvider';
-import { Menu, MenuItem } from '../../../../components/Menu';
-import { AttributeDetailActionsProps } from './types';
+import { ReactComponent as VerticalDotsIcon } from '../../../assets/icons/VerticalDots.svg';
+import { useTranslation } from '../../IntlProvider';
+import { Menu, MenuItem } from '../../Menu';
+import { ModuleDetailActionsProps } from './types';
 
 import classes from './styles/index.module.css';
 
-export const AttributeDetailActions: FC<AttributeDetailActionsProps> = ({
+export const ModuleDetailActions: FC<ModuleDetailActionsProps> = ({
   onEdit,
   onDelete,
   isReadOnly,
@@ -29,7 +29,7 @@ export const AttributeDetailActions: FC<AttributeDetailActionsProps> = ({
       Component: () => <>{translate('delete')}</>,
       action: onDelete,
       componentProps: {
-        itemClassName: classes.attributeDetail__actionButton_delete,
+        itemClassName: classes.moduleDetail__actionButton_delete,
       },
     },
   ];
@@ -38,7 +38,7 @@ export const AttributeDetailActions: FC<AttributeDetailActionsProps> = ({
     <Menu
       items={items}
       alignment="pull"
-      menuButtonClassName={classes.attributeDetail__menuButton}
+      menuButtonClassName={classes.moduleDetail__menuButton}
     >
       <VerticalDotsIcon />
     </Menu>
