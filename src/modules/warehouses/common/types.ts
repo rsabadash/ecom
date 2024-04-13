@@ -30,6 +30,7 @@ export type WarehouseFormProps = {
   submitText: string;
   isReadOnly?: boolean;
   defaultValues?: WarehouseFormDefaultValues;
+  handleFormReset: () => void;
   handleFormSubmit: WarehouseFormSubmitAction;
 };
 

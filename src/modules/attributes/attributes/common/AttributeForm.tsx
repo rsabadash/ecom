@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Button } from '../../../../components/Button';
+import { Button, ButtonsGroup } from '../../../../components/Button';
 import { Form, FormContent } from '../../../../components/FormFields';
 import {
   CheckboxAdapter,
@@ -9,7 +9,6 @@ import {
 } from '../../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../../components/GridRowBalancer';
 import { useTranslation } from '../../../../components/IntlProvider';
-import { GridAutoFit } from '../../../../layouts/Grid';
 import { attributesFormFields } from './constants';
 import { useAttributeForm } from './hooks';
 import { AttributeFormProps } from './types';
@@ -63,14 +62,14 @@ export const AttributeForm: FC<AttributeFormProps> = ({
       </GridRowBalancer>
       {!isReadOnly && (
         <FormContent>
-          <GridAutoFit>
+          <ButtonsGroup>
             <Button variant="primary" type="submit">
               {submitText}
             </Button>
             <Button variant="theme" onClick={handleFormReset}>
               {translate('cancel')}
             </Button>
-          </GridAutoFit>
+          </ButtonsGroup>
         </FormContent>
       )}
     </Form>

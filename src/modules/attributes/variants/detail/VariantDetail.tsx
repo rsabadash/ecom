@@ -82,6 +82,7 @@ const VariantDetail = () => {
           id={variantDetail?.variantId}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormReset={toggleReadOnly}
           onFormUpdated={onFormUpdated}
           variantName={translatedVariantName}
           attributeId={attributeId}

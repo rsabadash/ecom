@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Button } from '../../../components/Button';
+import { Button, ButtonsGroup } from '../../../components/Button';
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
 import { Form, FormContent } from '../../../components/FormFields';
 import {
@@ -22,6 +22,7 @@ export const WarehouseForm: FC<WarehouseFormProps> = ({
   submitText,
   isReadOnly,
   defaultValues,
+  handleFormReset,
   handleFormSubmit,
 }) => {
   const { translate } = useTranslation();
@@ -77,9 +78,14 @@ export const WarehouseForm: FC<WarehouseFormProps> = ({
       </FormContent>
       {!isReadOnly && (
         <FormContent>
-          <Button variant="primary" type="submit">
-            {submitText}
-          </Button>
+          <ButtonsGroup>
+            <Button variant="primary" type="submit">
+              {submitText}
+            </Button>
+            <Button variant="theme" onClick={handleFormReset}>
+              {translate('cancel')}
+            </Button>
+          </ButtonsGroup>
         </FormContent>
       )}
     </Form>

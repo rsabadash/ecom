@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Button } from '../../../../components/Button';
+import { Button, ButtonsGroup } from '../../../../components/Button';
 import { Form, FormContent } from '../../../../components/FormFields';
 import {
   CheckboxAdapter,
@@ -17,6 +17,7 @@ export const VariantForm: FC<VariantFormProps> = ({
   submitText,
   isReadOnly,
   defaultValues,
+  handleFormReset,
   handleFormSubmit,
 }) => {
   const { translate } = useTranslation();
@@ -61,9 +62,14 @@ export const VariantForm: FC<VariantFormProps> = ({
       </GridRowBalancer>
       {!isReadOnly && (
         <FormContent>
-          <Button variant="primary" type="submit">
-            {submitText}
-          </Button>
+          <ButtonsGroup>
+            <Button variant="primary" type="submit">
+              {submitText}
+            </Button>
+            <Button variant="theme" onClick={handleFormReset}>
+              {translate('cancel')}
+            </Button>
+          </ButtonsGroup>
         </FormContent>
       )}
     </Form>

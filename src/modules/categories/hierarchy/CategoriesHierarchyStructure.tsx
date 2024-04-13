@@ -5,7 +5,6 @@ import { useCachedPaginationAPI } from '../../../common/hooks';
 import { Button, ButtonsGroup } from '../../../components/Button';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { TopButtons } from '../../../layouts/Top';
 import { Category } from '../common/types';
 import { CategoriesHierarchyItem } from './CategoriesHierarchyItem';
 import { CATEGORY_HIERARCHY_ID } from './constants';
@@ -58,26 +57,24 @@ export const CategoriesHierarchyStructure: FC<
   return (
     <>
       <div className={classes.hierarchyTopSection}>
-        <TopButtons>
-          <ButtonsGroup>
+        <ButtonsGroup>
+          <Button
+            variant="regular"
+            size="xs"
+            onClick={() => setIsHierarchyCollapsed(true)}
+          >
+            {translate('categories.hierarchy.collapse')}
+          </Button>
+          {showCategoryEnabled && (
             <Button
-              variant="regular"
+              variant="primary"
               size="xs"
-              onClick={() => setIsHierarchyCollapsed(true)}
+              onClick={() => setShowCategoryInHierarchy(true)}
             >
-              {translate('categories.hierarchy.collapse')}
+              {translate('category.showInHierarchy')}
             </Button>
-            {showCategoryEnabled && (
-              <Button
-                variant="primary"
-                size="xs"
-                onClick={() => setShowCategoryInHierarchy(true)}
-              >
-                {translate('category.showInHierarchy')}
-              </Button>
-            )}
-          </ButtonsGroup>
-        </TopButtons>
+          )}
+        </ButtonsGroup>
       </div>
       <SectionForeground>
         <div

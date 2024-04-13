@@ -32,6 +32,7 @@ export type VariantFormProps = {
   submitText: string;
   isReadOnly?: boolean;
   defaultValues?: VariantFormDefaultValues;
+  handleFormReset: () => void;
   handleFormSubmit: VariantFormSubmitAction;
 };
 
