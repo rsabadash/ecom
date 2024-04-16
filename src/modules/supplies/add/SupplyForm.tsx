@@ -1,10 +1,11 @@
 import { FC, useCallback, useState } from 'react';
 
 import { endpoints, path } from '../../../common/constants/api';
+import { routes } from '../../../common/constants/routes';
 import { useCachedAPI } from '../../../common/hooks';
-import { Button } from '../../../components/Button';
+import { Button, ButtonLink } from '../../../components/Button';
 import { DropdownItem } from '../../../components/Fields/Dropdown';
-import { Form, FormContent } from '../../../components/FormFields';
+import { Form } from '../../../components/FormFields';
 import {
   DropdownAdapter,
   InputAdapter,
@@ -12,6 +13,7 @@ import {
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { Heading } from '../../../components/Heading';
 import { useTranslation } from '../../../components/IntlProvider';
+import { GridAutoFit } from '../../../layouts/Grid';
 import { SectionForeground } from '../../../layouts/Section';
 import {
   initialDefaultValues,
@@ -121,11 +123,14 @@ export const SupplyForm: FC<SupplyFormProps> = ({
         />
 
         {!isReadOnly && (
-          <FormContent>
+          <GridAutoFit>
             <Button variant="primary" type="submit">
               {shouldUpdateProduct ? translate('update') : translate('add')}
             </Button>
-          </FormContent>
+            <ButtonLink variant="theme" to={routes.supplies.root}>
+              {translate('cancel')}
+            </ButtonLink>
+          </GridAutoFit>
         )}
       </Form>
 

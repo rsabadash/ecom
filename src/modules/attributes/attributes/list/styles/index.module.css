@@ -1,3 +1,6 @@
-.attributes__variantsTitle {
+.attributes__variantsTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: var(--gap);
 }

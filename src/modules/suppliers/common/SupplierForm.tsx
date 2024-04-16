@@ -8,6 +8,7 @@ import {
 } from '../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
+import { GridAutoFit } from '../../../layouts/Grid';
 import { supplierFormFields } from './constants';
 import { useSupplierForm } from './hooks';
 import { SupplierFormProps } from './types';
@@ -16,6 +17,7 @@ export const SupplierForm: FC<SupplierFormProps> = ({
   submitText,
   isReadOnly,
   defaultValues,
+  handleFormReset,
   handleFormSubmit,
 }) => {
   const { translate } = useTranslation();
@@ -60,9 +62,14 @@ export const SupplierForm: FC<SupplierFormProps> = ({
       </GridRowBalancer>
       {!isReadOnly && (
         <FormContent>
-          <Button variant="primary" type="submit">
-            {submitText}
-          </Button>
+          <GridAutoFit>
+            <Button variant="primary" type="submit">
+              {submitText}
+            </Button>
+            <Button variant="theme" onClick={handleFormReset}>
+              {translate('cancel')}
+            </Button>
+          </GridAutoFit>
         </FormContent>
       )}
     </Form>

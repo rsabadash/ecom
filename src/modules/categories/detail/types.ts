@@ -8,11 +8,18 @@ export type CategoryEditFormProps = {
   id: string | undefined;
   isReadOnly: boolean;
   defaultValues: CategoryFormDefaultValues | undefined;
+  onFormReset: () => void;
   onFormUpdated: () => void;
 };
 
 export type CategoryHierarchySectionProps = {
   categoryParents: Category[] | undefined;
+};
+
+export type CategoryDetailActionsProps = {
+  onEdit: () => void;
+  onDelete: () => Promise<void>;
+  isReadOnly: boolean;
 };
 
 export type CategoryUrlParams = {

@@ -4,7 +4,7 @@ import { routes } from '../../../common/constants/routes';
 import { ButtonLink } from '../../../components/Button';
 import { ErrorBoundary } from '../../../components/ErrorBoundary';
 import { useTranslation } from '../../../components/IntlProvider';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { Top, TopHeading } from '../../../layouts/Top';
 import { SECTION_WAREHOUSES_ID } from './constants';
 import { WarehousesList } from './WarehousesList';
 
@@ -17,11 +17,9 @@ const Warehouses = () => {
         <TopHeading id={SECTION_WAREHOUSES_ID}>
           {translate('warehouses')}
         </TopHeading>
-        <TopButtons>
-          <ButtonLink variant="primary" to={routes.warehouses.add}>
-            {translate('add')}
-          </ButtonLink>
-        </TopButtons>
+        <ButtonLink variant="primary" to={routes.warehouses.add}>
+          {translate('add')}
+        </ButtonLink>
       </Top>
       <ErrorBoundary fallback="Error boundary Warehouses list">
         <Suspense fallback="Suspense Warehouses list">

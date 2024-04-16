@@ -9,6 +9,7 @@ export const WarehouseEditForm: FC<WarehouseEditFormProps> = ({
   id,
   isReadOnly,
   defaultValues,
+  onFormReset,
   onFormUpdated,
 }) => {
   const { translate } = useTranslation();
@@ -23,6 +24,7 @@ export const WarehouseEditForm: FC<WarehouseEditFormProps> = ({
       submitText={translate('update')}
       isReadOnly={isReadOnly}
       defaultValues={defaultValues}
+      handleFormReset={onFormReset}
       handleFormSubmit={handleFormSubmit}
     />
   );

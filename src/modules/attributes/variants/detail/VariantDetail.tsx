@@ -6,10 +6,10 @@ import {
   useCachedAPI,
   useKeepDataBetweenNavigation,
 } from '../../../../common/hooks';
-import { Button, ButtonsGroup } from '../../../../components/Button';
+import { ModuleDetailActions } from '../../../../components/Intermodular/ModuleDetailActions';
 import { useTranslation } from '../../../../components/IntlProvider';
 import { SectionForeground } from '../../../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
+import { Top, TopHeading } from '../../../../layouts/Top';
 import {
   Variant,
   VariantFormValues,
@@ -45,7 +45,7 @@ const VariantDetail = () => {
     },
   );
 
-  const handleEditButtonClick = (): void => {
+  const toggleReadOnly = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -71,22 +71,18 @@ const VariantDetail = () => {
     <>
       <Top>
         <TopHeading>{variantTitle}</TopHeading>
-        <TopButtons>
-          <ButtonsGroup>
-            <Button variant="primary" onClick={handleEditButtonClick}>
-              {!isReadOnly ? translate('cancel') : translate('edit')}
-            </Button>
-            <Button variant="danger" onClick={deleteVariant}>
-              {translate('delete')}
-            </Button>
-          </ButtonsGroup>
-        </TopButtons>
+        <ModuleDetailActions
+          isReadOnly={isReadOnly}
+          onEdit={toggleReadOnly}
+          onDelete={deleteVariant}
+        />
       </Top>
       <SectionForeground>
         <VariantEditForm
           id={variantDetail?.variantId}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormReset={toggleReadOnly}
           onFormUpdated={onFormUpdated}
           variantName={translatedVariantName}
           attributeId={attributeId}

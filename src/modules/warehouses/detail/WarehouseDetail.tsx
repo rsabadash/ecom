@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 
 import { endpoints } from '../../../common/constants/api';
 import { useCachedAPI } from '../../../common/hooks';
-import { Button, ButtonsGroup } from '../../../components/Button';
+import { ModuleDetailActions } from '../../../components/Intermodular/ModuleDetailActions';
 import { useTranslation } from '../../../components/IntlProvider';
 import { SectionForeground } from '../../../layouts/Section';
-import { Top, TopButtons, TopHeading } from '../../../layouts/Top';
+import { Top, TopHeading } from '../../../layouts/Top';
 import { Warehouse, WarehouseFormValues } from '../common/types';
 import { useDeleteWarehouse } from './hooks';
 import { WarehouseUrlParams } from './types';
@@ -27,7 +27,7 @@ const WarehouseDetail = () => {
   const formValues: WarehouseFormValues | undefined =
     mapWarehouseDataToFormValues(warehouseDetail, translate);
 
-  const handleEditButtonClick = (): void => {
+  const toggleReadOnly = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
@@ -42,22 +42,18 @@ const WarehouseDetail = () => {
     <>
       <Top>
         <TopHeading>{warehouseTitle}</TopHeading>
-        <TopButtons>
-          <ButtonsGroup>
-            <Button variant="primary" onClick={handleEditButtonClick}>
-              {!isReadOnly ? translate('cancel') : translate('edit')}
-            </Button>
-            <Button variant="danger" onClick={deleteWarehouse}>
-              {translate('delete')}
-            </Button>
-          </ButtonsGroup>
-        </TopButtons>
+        <ModuleDetailActions
+          isReadOnly={isReadOnly}
+          onEdit={toggleReadOnly}
+          onDelete={deleteWarehouse}
+        />
       </Top>
       <SectionForeground>
         <WarehouseEditForm
           id={warehouseDetail?._id}
           isReadOnly={isReadOnly}
           defaultValues={formValues}
+          onFormReset={toggleReadOnly}
           onFormUpdated={onFormUpdated}
         />
       </SectionForeground>

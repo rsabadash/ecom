@@ -9,6 +9,7 @@ export const VariantEditForm: FC<VariantEditFormProps> = ({
   id,
   isReadOnly,
   defaultValues,
+  onFormReset,
   onFormUpdated,
   variantName,
   attributeId,
@@ -27,6 +28,7 @@ export const VariantEditForm: FC<VariantEditFormProps> = ({
       isReadOnly={isReadOnly}
       submitText={translate('edit')}
       defaultValues={defaultValues}
+      handleFormReset={onFormReset}
       handleFormSubmit={handleFormSubmit}
     />
   );

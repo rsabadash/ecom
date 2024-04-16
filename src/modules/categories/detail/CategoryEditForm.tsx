@@ -10,6 +10,7 @@ export const CategoryEditForm: FC<CategoryEditFormProps> = ({
   id,
   isReadOnly,
   defaultValues,
+  onFormReset,
   onFormUpdated,
 }) => {
   const { translate } = useTranslation();
@@ -25,6 +26,7 @@ export const CategoryEditForm: FC<CategoryEditFormProps> = ({
       submitText={translate('update')}
       isReadOnly={isReadOnly}
       defaultValues={defaultValues}
+      handleFormReset={onFormReset}
       handleFormSubmit={handleFormSubmit}
       dropdownCategoriesUrl={dropdownCategoriesUrl}
     />

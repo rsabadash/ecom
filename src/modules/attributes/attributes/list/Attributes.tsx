@@ -4,7 +4,7 @@ import { routes } from '../../../../common/constants/routes';
 import { ButtonLink, ButtonsGroup } from '../../../../components/Button';
 import { ErrorBoundary } from '../../../../components/ErrorBoundary';
 import { useTranslation } from '../../../../components/IntlProvider';
-import { Top, TopButtons, TopHeading } from '../../../../layouts/Top';
+import { Top, TopHeading } from '../../../../layouts/Top';
 import { AttributesList } from './AttributesList';
 import { TABLE_ATTRIBUTES_ID } from './constants';
 
@@ -17,13 +17,11 @@ const Attributes = () => {
         <TopHeading id={TABLE_ATTRIBUTES_ID}>
           {translate('attributes.list')}
         </TopHeading>
-        <TopButtons>
-          <ButtonsGroup>
-            <ButtonLink variant="primary" to={routes.attributes.add}>
-              {translate('add')}
-            </ButtonLink>
-          </ButtonsGroup>
-        </TopButtons>
+        <ButtonsGroup>
+          <ButtonLink variant="primary" to={routes.attributes.add}>
+            {translate('add')}
+          </ButtonLink>
+        </ButtonsGroup>
       </Top>
       <ErrorBoundary fallback="Error boundary Attributes list">
         <Suspense fallback="Suspense Attributes list">

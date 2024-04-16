@@ -12,6 +12,7 @@ import {
 } from '../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
+import { GridAutoFit } from '../../../layouts/Grid';
 import { categoryFormFields } from './constants';
 import { useCategoryForm } from './hooks';
 import { CategoryFormProps } from './types';
@@ -20,6 +21,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
   submitText,
   isReadOnly,
   defaultValues,
+  handleFormReset,
   handleFormSubmit,
   dropdownCategoriesUrl,
 }) => {
@@ -84,9 +86,14 @@ export const CategoryForm: FC<CategoryFormProps> = ({
       </FormContent>
       {!isReadOnly && (
         <FormContent>
-          <Button variant="primary" type="submit">
-            {submitText}
-          </Button>
+          <GridAutoFit>
+            <Button variant="primary" type="submit">
+              {submitText}
+            </Button>
+            <Button variant="theme" onClick={handleFormReset}>
+              {translate('cancel')}
+            </Button>
+          </GridAutoFit>
         </FormContent>
       )}
     </Form>

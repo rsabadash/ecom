@@ -4,6 +4,7 @@ export type WarehouseEditFormProps = {
   id: string | undefined;
   isReadOnly: boolean;
   defaultValues: WarehouseFormDefaultValues | undefined;
+  onFormReset: () => void;
   onFormUpdated: () => void;
 };
 

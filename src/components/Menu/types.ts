@@ -10,7 +10,11 @@ export type Alignment = ValuesOfObject<typeof MENU_ALIGNMENT>;
 export type MenuItem = {
   id: string;
   Component: ElementType;
-  action: () => void;
+  action?: () => void;
+  componentProps?: {
+    itemClassName?: string;
+    [key: string]: any;
+  };
 };
 
 export type MenuProps = PropsWithChildren<{
@@ -19,6 +23,7 @@ export type MenuProps = PropsWithChildren<{
   alignment?: Alignment;
   isDisabled?: boolean;
   isObserveResize?: boolean;
+  menuButtonClassName?: string;
 }>;
 
 export type KeyIndexMap = Partial<{ [key in EventKeys]: number }>;

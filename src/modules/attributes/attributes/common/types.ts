@@ -30,6 +30,7 @@ export type AttributeFormProps = {
   submitText: string;
   isReadOnly?: boolean;
   defaultValues?: AttributeFormDefaultValues;
+  handleFormReset: () => void;
   handleFormSubmit: AttributeFormSubmitAction;
 };
 

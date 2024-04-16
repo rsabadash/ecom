@@ -2,7 +2,6 @@
   color: var(--text-color);
   text-decoration: none;
   border-radius: var(--radius-regular);
-  border: none;
   cursor: pointer;
   transition: background-color var(--transition),
     border var(--transition) box-shadow var(--transition);
@@ -11,6 +10,8 @@
   align-items: center;
   justify-content: center;
   padding: var(--gap);
+  min-width: 4rem;
+  border: 1px solid transparent;
 }
 
 .button a {
@@ -71,6 +72,7 @@
   color: var(--button-variant-text);
   background-color: var(--primary-600);
 }
+
 .button_primary:hover {
   background-color: var(--primary-700);
 }
@@ -110,8 +112,8 @@
 
 .button_theme {
   color: var(--foreground-900);
-  background-color: var(--input-background);
   border: 1px solid var(--border-color);
+  background-color: var(--input-background);
   /*outline: 1px solid var(--border-color); !* avoid additional height by regular border property *!*/
 }
 
