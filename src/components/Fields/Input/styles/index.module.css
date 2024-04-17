@@ -113,7 +113,7 @@
 }
 
 .input__iconInteractive:focus-visible {
-  padding-block: 0.40em;
+  padding-block: 0.4em;
   border-radius: var(--radius-small);
   box-shadow: var(--box-shadow-focus);
 }

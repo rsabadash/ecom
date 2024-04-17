@@ -1,71 +1,70 @@
 :root {
-    --toastify-color-light: #fff;
-    --toastify-color-dark: #121212;
-    --toastify-color-info: #3498db;
-    --toastify-color-success: #285161;
-    --toastify-color-warning: #6d6047;
-    --toastify-color-error: #513e46;
-    --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #285161;
+  --toastify-color-warning: #6d6047;
+  --toastify-color-error: #513e46;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
 
-    --toastify-icon-color-info: var(--toastify-color-info);
-    --toastify-icon-color-success: var(--toastify-color-success);
-    --toastify-icon-color-warning: var(--toastify-color-warning);
-    --toastify-icon-color-error: var(--toastify-color-error);
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
 
-    --toastify-toast-width: 320px;
-    --toastify-toast-background: #fff;
-    --toastify-toast-max-height: 800px;
-    --toastify-z-index: 9999;
+  --toastify-toast-width: 320px;
+  --toastify-toast-background: #fff;
+  --toastify-toast-max-height: 800px;
+  --toastify-z-index: 9999;
 
-    --toastify-text-color-light: #757575;
-    --toastify-text-color-dark: #fff;
+  --toastify-text-color-light: #757575;
+  --toastify-text-color-dark: #fff;
 
-    --toastify-text-color-info: #fff;
-    --toastify-text-color-success: #fff;
-    --toastify-text-color-warning: #fff;
-    --toastify-text-color-error: #fff;
+  --toastify-text-color-info: #fff;
+  --toastify-text-color-success: #fff;
+  --toastify-text-color-warning: #fff;
+  --toastify-text-color-error: #fff;
 
-    --toastify-spinner-color: #616161;
-    --toastify-spinner-color-empty-area: #e0e0e0;
+  --toastify-spinner-color: #616161;
+  --toastify-spinner-color-empty-area: #e0e0e0;
 
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
 
-    --toastify-color-progress-light: linear-gradient(
-            to right,
-            #4cd964,
-            #5ac8fa,
-            #007aff,
-            #34aadc,
-            #5856d6,
-            #ff2d55
-    );
-
-    --toastify-color-progress-dark: #bb86fc;
-    --toastify-color-progress-info: var(--toastify-color-info);
-    --toastify-color-progress-success: var(--toastify-color-success);
-    --toastify-color-progress-warning: var(--toastify-color-warning);
-    --toastify-color-progress-error: var(--toastify-color-error);
+  --toastify-color-progress-dark: #bb86fc;
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: var(--toastify-color-success);
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
 }
 
 .Toastify__toast {
-    margin-bottom: var(--gap);
-    padding: 1.25em;
-    min-height: auto;
-    font-family: inherit;
-    font-size: var(--font-size-m);
-    display: flex;
-    gap: var(--gap);
+  margin-bottom: var(--gap);
+  padding: 1.25em;
+  min-height: auto;
+  font-family: inherit;
+  font-size: var(--font-size-m);
+  display: flex;
+  gap: var(--gap);
 }
 
 .Toastify__toast-body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .Toastify__toast-icon {
-    width: var(--gap-l);
+  width: var(--gap-l);
 }
 
 .Toastify__spinner {
-    width: var(--gap-l);
-    height: var(--gap-l);
+  width: var(--gap-l);
+  height: var(--gap-l);
 }
