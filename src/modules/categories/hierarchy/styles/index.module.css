@@ -1,28 +1,29 @@
 :root {
-    --hierarchy-level: 1;
+  --hierarchy-level: 1;
 }
 
 .hierarchyTopSection {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    margin-top: var(--gap);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: var(--gap);
 }
 
 .hierarchy > .hierarchy__item:first-of-type {
-    border-top: none;
+  border-top: none;
 }
 
 .hierarchy__item {
-    border-top: 1px solid var(--border-color);
-    font-size: var(--font-size-s);
+  border-top: 1px solid var(--border-color);
+  font-size: var(--font-size-s);
 }
 
 .hierarchy__itemContent {
-    padding: var(--gap-half) var(--gap) var(--gap-half) calc(var(--gap) * var(--hierarchy-level));
+  padding: var(--gap-half) var(--gap) var(--gap-half)
+    calc(var(--gap) * var(--hierarchy-level));
 }
 
 .hierarchy__itemContent:hover {
-    background-color: var(--hover-color);
-    cursor: pointer;
+  background-color: var(--hover-color);
+  cursor: pointer;
 }
