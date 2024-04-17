@@ -1,6 +1,5 @@
-import { BaseSyntheticEvent, useCallback, useEffect, useRef } from 'react';
+import { BaseSyntheticEvent, useCallback, useEffect } from 'react';
 import {
-  DefaultValues,
   SubmitHandler,
   useForm,
   UseFormProps,
@@ -30,19 +29,8 @@ export const useCustomForm = <V extends Record<string, any>>({
   const { formState, reset, clearErrors, handleSubmit, ...rest } =
     useForm<V>(formProps);
 
-  const isInitializedRef = useRef<boolean>(false);
   const { isDirty, isSubmitted, errors } = formState;
-  const { defaultValues } = formProps;
   const hasError = Object.keys(errors).length > 0;
-
-  useEffect(() => {
-    // isInitializedRef - prevent re-initializing the defaultValues on firs render
-    if (defaultValues && isInitializedRef.current) {
-      reset(defaultValues as DefaultValues<V>);
-    }
-
-    isInitializedRef.current = true;
-  }, [defaultValues, reset]);
 
   const handleFormSubmit = useCallback(
     async (e?: BaseSyntheticEvent): Promise<void> =>
