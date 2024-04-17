@@ -1,0 +1,1 @@
+export { useProductsTableColumns } from './useProductsTableColumns';

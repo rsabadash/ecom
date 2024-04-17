@@ -27,8 +27,8 @@ export const endpoints = {
   users: {
     verification: `${PREFIX}/users/verification`,
   },
-  warehouseProducts: {
-    root: `${PREFIX}/warehouses-products`,
+  products: {
+    root: `${PREFIX}/products`,
   },
   warehouses: {
     root: `${PREFIX}/warehouses`,

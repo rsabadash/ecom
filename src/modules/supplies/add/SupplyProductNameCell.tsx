@@ -22,8 +22,8 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
   getValues,
   fieldCommonName,
 }) => {
-  const { data: warehouseProductsDropdownList } = useCachedAPI<DropdownItem[]>(
-    `${endpoints.warehouseProducts.root}${path.dropdownList}`,
+  const { data: productsDropdownList } = useCachedAPI<DropdownItem[]>(
+    `${endpoints.products.root}${path.dropdownList}`,
     { dedupingInterval: 30000 },
   );
 
@@ -58,13 +58,13 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
       }
     }
   };
-
+  console.log(productsDropdownList);
   return (
     <DropdownWithTooltipAdapter
       isRequired
       size="xs"
       name={productNameFieldName}
-      items={warehouseProductsDropdownList}
+      items={productsDropdownList}
       onChange={handleDropdownChange}
       ariaLabel={translate('supply.product.name')}
       control={control}

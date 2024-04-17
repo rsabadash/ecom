@@ -74,8 +74,8 @@ export const navigationItems: NavigationItem[] = [
   },
   {
     type: NavigationItemTypeEnums.Link,
-    titleKey: 'menu.warehouseProducts',
-    path: routes.warehouseProducts.root,
+    titleKey: 'menu.products',
+    path: routes.products.root,
   },
   {
     type: NavigationItemTypeEnums.Link,

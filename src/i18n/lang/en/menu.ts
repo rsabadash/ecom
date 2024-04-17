@@ -9,6 +9,6 @@ export const menu = {
   'menu.attributes': 'Attributes',
   'menu.attributes.list': 'Attributes list',
   'menu.variants.list': 'Variants list',
-  'menu.warehouseProducts': 'Warehouse products',
+  'menu.products': 'Products',
   'menu.warehouses': 'Warehouses',
 };
