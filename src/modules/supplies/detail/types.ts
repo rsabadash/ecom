@@ -1,11 +1,10 @@
-import { Translations } from '../../../components/IntlProvider';
 import { TableColumnGeneric } from '../../../components/Table';
 
 export type SupplyDetailProduct = {
   attributeIds: string[];
   price: string;
   productId: string;
-  productName: Translations;
+  productName: string;
   quantity: string;
   totalCost: string;
   variantIds: string[];

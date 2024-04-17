@@ -9,6 +9,6 @@ export const menu = {
   'menu.attributes': 'Атрибути',
   'menu.attributes.list': 'Список атрибутів',
   'menu.variants.list': 'Список варіантів',
-  'menu.warehouseProducts': 'Складські товари',
+  'menu.products': 'Товари',
   'menu.warehouses': 'Склади',
 };

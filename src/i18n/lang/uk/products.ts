@@ -1,0 +1,30 @@
+export const products = {
+  products: 'Товари',
+  'products.generation': 'Генерація товарів',
+  'products.generate': 'Згенерувати товари',
+  'products.generate.form.description':
+    'На основі загальної назви та обраних варіантів атрибутів може бути згенеровано один або багато товарів. Генерація одного товару означає створення товару до якого будуть додані усі обрані варіанти атрибутів. Генерація багатьох товарів означає створення товарів з унікальними комбінаціями обраних варіантів атрибутів.',
+  'product.generateOne': 'Згенерувати один товар',
+  'product.generateMany': 'Згенерувати товари',
+  'product.name': 'Назва товару',
+  'product.name.description': 'Введіть загальну назву товару',
+  'product.name.error.required': "Загальна назва товару є обов'язковою",
+  'product.unit': 'Одиниця зберігання',
+  'product.unit.description': 'Виберіть одиницю, в якій буде продаватися товар',
+  'product.unit.error.required': "Одиниця зберігання є обов'язковою",
+  'product.generatedName': 'Згенерована назва товару',
+  'product.generatedName.description':
+    'Введіть або відредагуйте згенеровану назву товару {language} мовою',
+  'product.generatedName.error.required':
+    "Згенерована назва товару {language} мовою є обов'язковою",
+  'product.sku': 'SKU ідентифікатор',
+  'product.sku.description': 'Введіть унікальний артикул товару',
+  'product.sku.error.required': "SKU ідентифікатор є обов'язковим",
+  'product.attributes.noVariants': 'Атрибут не має варіантів',
+  'product.attributes.quantity': 'Кількість атрибутів',
+  'product.emptyList': 'Товари відсутні',
+  'product.emptyList.callToAction': 'Згенерувати товари',
+  'product.creating': 'Створення товарів',
+  'product.creating.error': 'Під час створення товарів сталася помилка',
+  'product.created': 'Товари успішно створені',
+};

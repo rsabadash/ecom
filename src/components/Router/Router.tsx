@@ -7,9 +7,9 @@ import {
   attributesRoutes,
   categoriesRoutes,
   dashboardRoutes,
+  productsRoutes,
   suppliersRoutes,
   suppliesRoutes,
-  warehouseProductsRoutes,
   warehousesRoutes,
 } from './moduleRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
@@ -43,9 +43,9 @@ export const router = createBrowserRouter([
           ...attributesRoutes,
           ...categoriesRoutes,
           ...dashboardRoutes,
+          ...productsRoutes,
           ...suppliersRoutes,
           ...suppliesRoutes,
-          ...warehouseProductsRoutes,
           ...warehousesRoutes,
           {
             path: '*',

@@ -27,7 +27,7 @@ export const useSupplyDetailTableColumns =
           key: 'productName',
           width: '55%',
           valueGetter: ({ item }: SupplyDetailProductValueGetterProps) => {
-            return getTranslationByLanguage(item.productName);
+            return item.productName;
           },
         },
         {

@@ -4,24 +4,24 @@ import { common } from './common';
 import { dashboard } from './dashboard';
 import { menu } from './menu';
 import { notFound } from './notFound';
+import { products } from './products';
 import { signIn } from './signIn';
 import { suppliers } from './suppliers';
 import { supplies } from './supplies';
-import { warehouseProducts } from './warehouseProducts';
 import { warehouses } from './warehouses';
 
 const translationEN = {
   en: {
+    ...attributes,
     ...categories,
     ...common,
     ...dashboard,
     ...menu,
     ...notFound,
+    ...products,
     ...signIn,
     ...suppliers,
     ...supplies,
-    ...attributes,
-    ...warehouseProducts,
     ...warehouses,
   },
 };
