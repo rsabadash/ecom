@@ -9,7 +9,7 @@ export const navigationItems: NavigationItem[] = [
   {
     type: NavigationItemTypeEnums.Link,
     titleKey: 'menu.dashboard',
-    path: routes.dashboard,
+    path: routes.dashboard.root,
   },
   {
     type: NavigationItemTypeEnums.Action,

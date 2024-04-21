@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 
+import { DEFAULT_ICON_SIZE } from '../../../common/constants/icons';
 import { EventKeys } from '../../../common/enums/events';
 import {
   DEFAULT_INPUT_SIZE,
@@ -136,8 +137,8 @@ export const Input: FC<InputProps> = ({
       {Icon && (
         <Icon
           id={iconId}
-          width="1.2em"
-          height="1.2em"
+          width={DEFAULT_ICON_SIZE}
+          height={DEFAULT_ICON_SIZE}
           className={
             isIconFocusable
               ? classes.input__iconInteractive

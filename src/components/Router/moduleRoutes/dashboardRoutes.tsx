@@ -6,7 +6,7 @@ const Dashboard = lazy(() => import('../../../modules/dashboard/Dashboard'));
 
 export const dashboardRoutes = [
   {
-    path: routes.dashboard,
+    path: routes.dashboard.root,
     element: (
       <Suspense fallback="Route Dashboard">
         <Dashboard />

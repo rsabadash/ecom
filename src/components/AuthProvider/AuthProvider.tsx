@@ -110,7 +110,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [removeStorageItem]);
 
   const signedInUserRedirect = useCallback((): void => {
-    navigate(routes.dashboard, { replace: true });
+    navigate(routes.dashboard.root, { replace: true });
   }, [navigate]);
 
   // We cannot wrap it in useEffect because one of the methods could be called before useEffect

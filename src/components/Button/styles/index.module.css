@@ -14,6 +14,11 @@
   border: 1px solid transparent;
 }
 
+.button_icon {
+  padding: 0;
+  border: none;
+}
+
 .button a {
   color: var(--text-color);
   text-decoration: none;

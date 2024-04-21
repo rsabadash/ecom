@@ -5,6 +5,7 @@ import { dashboard } from './dashboard';
 import { menu } from './menu';
 import { notFound } from './notFound';
 import { products } from './products';
+import { settings } from './settings';
 import { signIn } from './signIn';
 import { suppliers } from './suppliers';
 import { supplies } from './supplies';
@@ -19,6 +20,7 @@ const translationEN = {
     ...menu,
     ...notFound,
     ...products,
+    ...settings,
     ...signIn,
     ...suppliers,
     ...supplies,
