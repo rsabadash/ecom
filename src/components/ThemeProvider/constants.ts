@@ -14,10 +14,13 @@ export const THEMES = {
 
 export const DEFAULT_THEME = THEMES.LIGHT;
 
+export const SUPPORTED_THEMES = Object.values(THEMES);
+
 export const THEME_STORAGE_KEY = `${APPLICATION_NAME}.theme`;
 
 export const ROOT_ID = 'theme-root';
 
 export const themeContextValuesDefault: ThemeContextValue = {
+  theme: DEFAULT_THEME,
   switchTheme: () => undefined,
 };

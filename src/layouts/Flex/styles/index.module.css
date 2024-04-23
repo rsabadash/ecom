@@ -3,3 +3,9 @@
     align-items: center;
     gap: var(--gap);
 }
+
+.flexWrapper {
+    display: flex;
+    gap: var(--gap);
+    flex-direction: column;
+}

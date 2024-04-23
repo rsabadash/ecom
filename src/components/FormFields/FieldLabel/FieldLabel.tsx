@@ -11,7 +11,7 @@ export const FieldLabel: FC<FieldLabelProps> = ({
   size,
   label,
   htmlFor,
-  isValid,
+  isValid = true,
   isReadOnly,
   isRequired,
   fieldLabelClassName,

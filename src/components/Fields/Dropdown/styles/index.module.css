@@ -16,6 +16,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--gap-half);
 }
 
@@ -85,7 +86,7 @@
   padding-inline-end: var(--gap-half);
   overflow: hidden;
   position: absolute;
-  width: 100%;
+  min-width: 100%;
   z-index: 1;
   margin-top: var(--gap-half);
 }

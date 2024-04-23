@@ -1,7 +1,6 @@
 import { useTranslation } from '../../components/IntlProvider';
-import { SectionForeground } from '../../layouts/Section';
 import { Top, TopHeading } from '../../layouts/Top';
-import { SettingsLanguage } from './SettingsLanguage';
+import { SettingsPersonalization } from './SettingsPersonalization';
 
 const Settings = () => {
   const { translate } = useTranslation();
@@ -11,9 +10,7 @@ const Settings = () => {
       <Top>
         <TopHeading>{translate('settings')}</TopHeading>
       </Top>
-      <SectionForeground>
-        <SettingsLanguage />
-      </SectionForeground>
+      <SettingsPersonalization />
     </>
   );
 };

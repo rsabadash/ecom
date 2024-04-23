@@ -21,5 +21,6 @@ export type ThemeProviderProps = PropsWithChildren<{
 }>;
 
 export type ThemeContextValue = {
+  theme: Theme;
   switchTheme: () => void;
 };
