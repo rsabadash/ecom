@@ -59,9 +59,10 @@ const ThemeProvider: FC<ThemeProviderProps> = ({
 
   const providerValue = useMemo<ThemeContextValue>(() => {
     return {
+      theme,
       switchTheme,
     };
-  }, [switchTheme]);
+  }, [switchTheme, theme]);
 
   return (
     <Provider value={providerValue}>

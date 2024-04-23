@@ -8,6 +8,9 @@ import {
 } from 'react';
 import clsx from 'clsx';
 
+import { ReactComponent as ChevronDownIcon } from '../../../assets/icons/ChevronDown.svg';
+import { ReactComponent as ChevronUpIcon } from '../../../assets/icons/ChevronUp.svg';
+import { DEFAULT_ICON_SIZE } from '../../../common/constants/icons';
 import { EventKeys } from '../../../common/enums/events';
 import { useOutsideElementClick } from '../../../common/hooks';
 import { useTranslation } from '../../IntlProvider';
@@ -371,11 +374,15 @@ export const Dropdown: FC<DropdownProps> = ({
     </span>
   );
 
-  const dropdownClassName = clsx(classes.dropdown, {
+  const dropdownClassNames = clsx(classes.dropdown, {
     [classes.dropdown_noValue]: !viewValue,
     [classes.dropdown_readOnly]: isReadOnly,
     [classes.dropdown_invalid]: isValid !== undefined && !isValid,
     [classes[`dropdown_${size}`]]: size,
+  });
+
+  const dropdownListClassNames = clsx(classes.dropdownList, {
+    [classes[`dropdownList_${size}`]]: size,
   });
 
   return (
@@ -396,10 +403,23 @@ export const Dropdown: FC<DropdownProps> = ({
         onClick={handleDropdownClick}
         onKeyDown={handleDropdownKeyDown}
         ref={dropdownButtonRef}
-        className={dropdownClassName}
+        className={dropdownClassNames}
         tabIndex={isActive ? 0 : -1}
       >
-        {viewValue || placeholderValue || emptyValue}
+        <div>{viewValue || placeholderValue || emptyValue}</div>
+        <div className={classes.dropdownIcon}>
+          {isOpenInternal ? (
+            <ChevronUpIcon
+              width={DEFAULT_ICON_SIZE}
+              height={DEFAULT_ICON_SIZE}
+            />
+          ) : (
+            <ChevronDownIcon
+              width={DEFAULT_ICON_SIZE}
+              height={DEFAULT_ICON_SIZE}
+            />
+          )}
+        </div>
       </div>
       {isOpenInternal && isListInitialized && (
         <div className={classes.dropdownListWrapper}>
@@ -410,7 +430,7 @@ export const Dropdown: FC<DropdownProps> = ({
             aria-multiselectable={hasMultiselect}
             onMouseMove={handleListMouseMove}
             ref={listRef}
-            className={classes.dropdownList}
+            className={dropdownListClassNames}
           >
             {/*TODO keyboard navigation for empty item*/}
             {hasEmptyItem && (

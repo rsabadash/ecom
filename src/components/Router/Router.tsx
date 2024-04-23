@@ -8,6 +8,7 @@ import {
   categoriesRoutes,
   dashboardRoutes,
   productsRoutes,
+  settingsRoutes,
   suppliersRoutes,
   suppliesRoutes,
   warehousesRoutes,
@@ -25,7 +26,7 @@ const PrivateErrorChildren = (props: unknown) => {
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: routes.root,
     element: <Root />,
     children: [
       {
@@ -37,13 +38,14 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: routes.home,
+            path: routes.root,
             element: <SignedInRedirect />,
           },
           ...attributesRoutes,
           ...categoriesRoutes,
           ...dashboardRoutes,
           ...productsRoutes,
+          ...settingsRoutes,
           ...suppliersRoutes,
           ...suppliesRoutes,
           ...warehousesRoutes,

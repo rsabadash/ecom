@@ -5,15 +5,21 @@
 .mainWrapper {
   display: grid;
   grid-template-columns: var(--sidebar-widh) minmax(320px, auto);
-  grid-template-areas: 'aside main';
+  grid-template-areas:
+          'aside header'
+          'aside main';
   direction: ltr;
-  height: 100%;
   max-width: var(--content-width);
   margin: 0 auto;
   font-size: 1rem;
 }
 
+.header {
+  grid-area: header;
+}
+
 .aside {
+  grid-area: aside;
   border-right: 1px solid var(--border-color);
   border-left: 1px solid var(--border-color);
   background-color: var(--foreground);
@@ -21,7 +27,6 @@
   height: 100%;
   padding-block: var(--gap-double);
   padding-inline: var(--gap);
-  grid-area: aside;
   position: fixed;
   width: var(--sidebar-widh);
   display: flex;
@@ -30,8 +35,8 @@
 }
 
 .main {
-  padding: var(--gap-double);
   grid-area: main;
+  padding: var(--gap-double);
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;

@@ -6,10 +6,11 @@ import { SectionForegroundProps } from './types';
 
 export const SectionForeground: FC<SectionForegroundProps> = ({
   children,
+  sectionLabeledBy,
   foregroundClassName,
 }) => {
   return (
-    <Section>
+    <Section sectionLabeledBy={sectionLabeledBy}>
       <Foreground foregroundClassName={foregroundClassName}>
         {children}
       </Foreground>

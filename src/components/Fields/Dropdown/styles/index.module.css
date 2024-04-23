@@ -14,6 +14,10 @@
   width: 100%;
   font-family: var(--font-family-body);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-half);
 }
 
 .dropdown_xs {
@@ -67,6 +71,11 @@
   user-select: none;
 }
 
+.dropdownIcon {
+  display: flex;
+  align-items: center;
+}
+
 .dropdownListWrapper {
   background-color: var(--input-background-absolute-hack);
   border: 1px solid var(--border-color);
@@ -77,7 +86,7 @@
   padding-inline-end: var(--gap-half);
   overflow: hidden;
   position: absolute;
-  width: 100%;
+  min-width: 100%;
   z-index: 1;
   margin-top: var(--gap-half);
 }
@@ -86,6 +95,26 @@
   padding-inline-end: var(--gap-half);
   max-height: 200px;
   overflow: auto;
+}
+
+.dropdownList_xs {
+  font-size: var(--font-size-xs);
+}
+
+.dropdownList_s {
+  font-size: var(--font-size-s);
+}
+
+.dropdownList_m {
+  font-size: var(--font-size-m);
+}
+
+.dropdownList_l {
+  font-size: var(--font-size-l);
+}
+
+.dropdownList_xl {
+  font-size: var(--font-size-xl);
 }
 
 .dropdownList::-webkit-scrollbar {

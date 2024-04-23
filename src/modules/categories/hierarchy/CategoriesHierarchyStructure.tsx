@@ -76,11 +76,8 @@ export const CategoriesHierarchyStructure: FC<
           )}
         </ButtonsGroup>
       </div>
-      <SectionForeground>
-        <div
-          className={classes.hierarchy}
-          aria-labelledby={CATEGORY_HIERARCHY_ID}
-        >
+      <SectionForeground sectionLabeledBy={CATEGORY_HIERARCHY_ID}>
+        <div className={classes.hierarchy}>
           {categoriesRootList.map((category) => {
             return (
               <CategoriesHierarchyItem

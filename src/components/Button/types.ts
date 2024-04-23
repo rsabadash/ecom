@@ -22,3 +22,10 @@ export type ButtonProps = PropsWithChildren<{
 export type ButtonLinkProps = PropsWithChildren<
   LinkProps & Omit<ButtonProps, 'name' | 'type'>
 >;
+
+export type ButtonIconProps = PropsWithChildren<
+  Omit<ButtonProps, 'name' | 'type' | 'variant'> & {
+    onClick?: (event: MouseEvent<HTMLDivElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLDivElement>) => void;
+  }
+>;

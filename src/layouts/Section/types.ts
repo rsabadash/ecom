@@ -6,4 +6,4 @@ export type SectionProps = PropsWithChildren<{
   sectionLabeledBy?: string;
 }>;
 
-export type SectionForegroundProps = ForegroundProps;
+export type SectionForegroundProps = SectionProps & ForegroundProps;

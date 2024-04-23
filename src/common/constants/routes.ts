@@ -1,5 +1,4 @@
 export const routes = {
-  home: '/',
   attributes: {
     root: '/attributes',
     add: '/attributes/add',
@@ -8,16 +7,22 @@ export const routes = {
     variantAdd: '/attributes/:attributeId/variants/add',
     variantDetail: '/attributes/:attributeId/variants/:variantId',
   },
-  dashboard: '/dashboard',
   categories: {
     root: '/categories',
     add: '/categories/add',
     detail: '/categories/:categoryId',
     hierarchy: '/categories/hierarchy',
   },
+  dashboard: {
+    root: '/dashboard',
+  },
   products: {
     root: '/products',
     generate: '/products/generate',
+  },
+  root: '/',
+  settings: {
+    root: '/settings',
   },
   signIn: '/sign-in',
   suppliers: {
