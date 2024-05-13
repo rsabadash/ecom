@@ -24,9 +24,9 @@ export const supplies = {
   'supply.product.totalCost.error.required':
     "Загальна вартість товару є обов'язковою",
   'supply.product.totalCostProducts': 'Загальна вартість товарів',
-  'supply.product.totalCostProducts.error.required':
-    "Загальна вартість товарів є обов'язковою",
   'supply.product.unit': 'Одиниця зберігання',
+  'supply.product.unit.error.required':
+    "Одиниця зберігання товару є обов'язковою",
   'supply.products': 'Товари у постачанні',
   'supply.addProduct': 'Додати товар до постачання',
   'supply.warning.deleteOneProduct':

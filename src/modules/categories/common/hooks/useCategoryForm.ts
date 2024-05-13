@@ -1,14 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { boolean, object, ObjectSchema, string } from 'yup';
 
 import { URL_SLUG } from '../../../../common/constants/regex';
 import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
-  YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
-import { mainTranslationRequired } from '../../../../validations/translations';
+import { mainTranslationRequired } from '../../../../validations/schemas/translations';
 import { CategoryFormDefaultValues, CategoryFormValues } from '../types';
 
 type UseCategoryFromProps = Pick<
@@ -23,20 +22,22 @@ type UseCategoryFromReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-const schema = yup.object().shape<YupSchemaKey<CategoryFormValues>>({
-  name: yup
-    .object()
-    .shape(
-      mainTranslationRequired({
-        uk: 'category.name.error.required',
-      }),
-    )
-    .required(),
-  seoName: yup
-    .string()
-    .nullable()
+const schema: ObjectSchema<CategoryFormValues> = object({
+  name: object(
+    mainTranslationRequired({
+      uk: 'category.name.error.required',
+    }),
+  ).required(),
+  seoName: string()
     .matches(URL_SLUG, 'category.seoName.error.symbol')
     .required('category.seoName.error.required'),
+  isActive: boolean().required(),
+  parent: object({
+    id: string().required(),
+    value: string().required(),
+  })
+    .required()
+    .nullable(),
 });
 
 export const useCategoryForm = ({

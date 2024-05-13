@@ -1,14 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { boolean, object, ObjectSchema, string } from 'yup';
 
 import { URL_SLUG } from '../../../../../common/constants/regex';
 import { useCustomForm } from '../../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
-  YupSchemaKey,
 } from '../../../../../common/hooks/useCustomForm';
-import { mainTranslationRequired } from '../../../../../validations/translations';
+import { mainTranslationRequired } from '../../../../../validations/schemas/translations';
 import { VariantFormValues } from '../types';
 
 type UseVariantFromProps = Pick<
@@ -23,20 +22,16 @@ type UseVariantFromReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-const schema = yup.object().shape<YupSchemaKey<VariantFormValues>>({
-  name: yup
-    .object()
-    .shape(
-      mainTranslationRequired({
-        uk: 'variant.name.error.required',
-      }),
-    )
-    .required(),
-  seoName: yup
-    .string()
-    .nullable()
+const schema: ObjectSchema<VariantFormValues> = object({
+  name: object(
+    mainTranslationRequired({
+      uk: 'variant.name.error.required',
+    }),
+  ).required(),
+  seoName: string()
     .matches(URL_SLUG, 'variant.seoName.error.symbol')
     .required('variant.seoName.error.required'),
+  isActive: boolean().required(),
 });
 
 export const useVariantForm = ({

@@ -1,16 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { array, object, ObjectSchema, string } from 'yup';
 
+import { UNITS_LIST } from '../../../../common/constants/units';
 import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
-  YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
-import {
-  GeneratedProductFieldValue,
-  ProductsGeneratorProductsFormValues,
-} from '../types';
+import { Unit } from '../../../../common/types/unit';
+import { mainTranslationRequired } from '../../../../validations/schemas/translations';
+import { ProductsGeneratorProductsFormValues } from '../types';
 
 type UseProductsGeneratorProductsFromProps = Pick<
   UseCustomFormProps<ProductsGeneratorProductsFormValues>,
@@ -24,19 +23,39 @@ type UseProductsGeneratorProductsFromReturn = Pick<
   'control' | 'setValue' | 'clearErrors' | 'handleSubmit'
 >;
 
-const schema = yup
-  .object()
-  .shape<YupSchemaKey<ProductsGeneratorProductsFormValues>>({
-    products: yup.array().of(
-      yup.object().shape<YupSchemaKey<GeneratedProductFieldValue>>({
-        name: yup
-          .string()
-          .nullable()
-          .required('product.generatedName.error.required'),
-        sku: yup.string().nullable().required('product.sku.error.required'),
+const schema: ObjectSchema<ProductsGeneratorProductsFormValues> = object({
+  products: array()
+    .of(
+      object({
+        name: string().required('product.generatedName.error.required'),
+        unit: string<Unit>()
+          .oneOf(UNITS_LIST, 'error.dropdown.unsupportedValue')
+          .required(),
+        attributes: array()
+          .of(
+            object({
+              attributeId: string().required(),
+              variants: array()
+                .of(
+                  object({
+                    variantId: string().required(),
+                    name: object(
+                      mainTranslationRequired({
+                        uk: 'category.name.error.required',
+                      }),
+                    ).required(),
+                  }).required(),
+                )
+                .required(),
+            }).required(),
+          )
+          .required()
+          .nullable(),
+        sku: string().required('product.sku.error.required'),
       }),
-    ),
-  });
+    )
+    .required(),
+});
 
 export const useProductsGeneratorProductsForm = ({
   shouldReset,

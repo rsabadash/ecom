@@ -1,15 +1,17 @@
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
-import * as yup from 'yup';
+import { object, ObjectSchema, string } from 'yup';
 
 import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
-  YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
-import { DropdownItemObject } from '../../../../components/Fields/Dropdown';
-import { dropdownItem } from '../../../../validations/dropdown';
-import { WarehouseFormDefaultValues, WarehouseFormValues } from '../types';
+import { dropdownItem } from '../../../../validations/schemas/dropdown';
+import {
+  WarehouseFormDefaultValues,
+  WarehouseFormValues,
+  WarehouseType,
+} from '../types';
 
 type UseWarehouseFormProps = Pick<
   UseCustomFormProps<WarehouseFormValues>,
@@ -23,13 +25,13 @@ type UseWarehouseFormReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-const schema = yup.object().shape<YupSchemaKey<WarehouseFormValues>>({
-  name: yup.string().nullable().required('warehouse.name.error.required'),
-  type: yup
-    .object()
-    .nullable()
-    .shape<YupSchemaKey<DropdownItemObject>>(dropdownItem)
-    .required('warehouse.type.error.required'),
+const schema: ObjectSchema<WarehouseFormValues> = object({
+  name: string().required('warehouse.name.error.required'),
+  type: object({
+    ...dropdownItem,
+    id: string<WarehouseType>().required(),
+  }).required('warehouse.type.error.required'),
+  address: string().required().nullable(),
 });
 
 export const useWarehouseForm = ({

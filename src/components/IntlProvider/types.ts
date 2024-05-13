@@ -17,7 +17,7 @@ export type TranslationRequired = {
 };
 
 export type TranslationsOptional = {
-  [key in Language]?: string;
+  [key in Language]?: string | null;
 };
 
 export type Translations = TranslationRequired & TranslationsOptional;
