@@ -7,7 +7,7 @@ import { TableColumnGeneric } from '../../../components/Table';
 import { supplyFormArrayFields } from './constants';
 
 export type SupplyFormValues = {
-  name: string;
+  name: string | null;
   supplier: DropdownItemObject;
   warehouse: DropdownItemObject;
   products: SupplyProduct[];

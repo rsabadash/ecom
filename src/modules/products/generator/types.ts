@@ -18,18 +18,20 @@ export type AttributeVirtualFieldValue = {
   [attributeId: string]: VariantVirtualFieldValue[];
 };
 
-type AttributeWithVariantsCheckbox = {
-  [attributeId: string]: {
-    variants: {
-      [variantId: string]: boolean;
-    };
+export type ProductsGeneratorAttributeVariant = {
+  variants: {
+    [variantId: string]: boolean;
   };
+};
+
+type ProductsGeneratorAttribute = {
+  [attributeId: string]: ProductsGeneratorAttributeVariant;
 };
 
 export type ProductsGeneratorFormValues = {
   name: string;
   unit: Unit;
-  attributes: AttributeWithVariantsCheckbox;
+  attributes: ProductsGeneratorAttribute;
   attributesVirtual?: AttributeVirtualFieldValue;
 };
 
@@ -76,7 +78,7 @@ export type ProductsGeneratorProductsFormProps = {
 };
 
 export type GeneratedProductFieldValue = GeneratedProduct & {
-  sku?: string;
+  sku: string;
 };
 
 export type ProductsGeneratorProductsFormValues = {

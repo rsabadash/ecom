@@ -1,11 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { boolean, object, ObjectSchema, string } from 'yup';
 
 import { useCustomForm } from '../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
-  YupSchemaKey,
 } from '../../../common/hooks/useCustomForm';
 import { SignInFormValues } from '../types';
 
@@ -19,13 +18,12 @@ type UseCategoryFromReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-const schema = yup.object().shape<YupSchemaKey<SignInFormValues>>({
-  email: yup
-    .string()
+const schema: ObjectSchema<SignInFormValues> = object({
+  email: string()
     .email('signIn.email.invalid')
-    .nullable()
     .required('signIn.email.required'),
-  password: yup.string().nullable().required('signIn.password.required'),
+  password: string().required('signIn.password.required'),
+  isPersistUser: boolean().required(),
 });
 
 export const useSignInForm = ({

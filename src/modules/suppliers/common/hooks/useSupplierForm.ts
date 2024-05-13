@@ -1,13 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { object, ObjectSchema, string } from 'yup';
 
 import { useCustomForm } from '../../../../common/hooks';
 import {
   UseCustomFormProps,
   UseCustomFormReturn,
-  YupSchemaKey,
 } from '../../../../common/hooks/useCustomForm';
-import { supplierFormFields } from '../constants';
 import { SupplierFormDefaultValues, SupplierFormValues } from '../types';
 
 type UseSupplierFormProps = Pick<
@@ -22,11 +20,10 @@ type UseSupplierFormReturn = Pick<
   'control' | 'handleSubmit'
 >;
 
-const schema = yup.object().shape<YupSchemaKey<SupplierFormValues>>({
-  [supplierFormFields.name]: yup
-    .string()
-    .nullable()
-    .required('supplier.name.error.required'),
+const schema: ObjectSchema<SupplierFormValues> = object({
+  name: string().required('supplier.name.error.required'),
+  address: string().required().nullable(),
+  phoneNumber: string().required().nullable(),
 });
 
 export const useSupplierForm = ({

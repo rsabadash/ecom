@@ -1,6 +1,7 @@
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
+import { WAREHOUSE_TYPES } from './constants';
 
-export type WarehouseType = 'shop' | 'warehouse' | 'onlineStore';
+export type WarehouseType = ValuesOfObject<typeof WAREHOUSE_TYPES>;
 
 export type Warehouse = {
   _id: string;

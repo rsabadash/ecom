@@ -20,10 +20,9 @@ export const supplies = {
   'supply.product.totalCost': 'Total cost',
   'supply.product.totalCost.required': 'Total cost is required',
   'supply.product.totalCostProducts': 'Total cost of products',
-  'supply.product.totalCostProducts.error.required':
-    'Total cost of products is required',
   'supply.product.totalCost.error.required': 'Total cost is required',
   'supply.product.unit': 'Storage unit',
+  'supply.product.unit.error.required': 'Storage unit is required',
   'supply.products': 'Products in supply',
   'supply.addProduct': 'Add a product to the supply',
   'supply.warning.deleteOneProduct':
