@@ -7,7 +7,6 @@ import {
   UseCustomFormProps,
   UseCustomFormReturn,
 } from '../../../../../common/hooks/useCustomForm';
-import { mainTranslationRequired } from '../../../../../validations/schemas/translations';
 import { AttributeFormDefaultValues, AttributeFormValues } from '../types';
 
 type UseAttributeFromProps = Pick<
@@ -23,11 +22,7 @@ type UseAttributeFromReturn = Pick<
 >;
 
 const schema: ObjectSchema<AttributeFormValues> = object({
-  name: object(
-    mainTranslationRequired({
-      uk: 'attribute.name.error.required',
-    }),
-  ).required(),
+  name: string().required('attribute.name.error.required'),
   seoName: string()
     .matches(URL_SLUG, 'attribute.seoName.error.symbol')
     .required('attribute.seoName.error.required'),

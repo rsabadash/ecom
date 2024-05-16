@@ -25,7 +25,7 @@ const VariantDetail = () => {
 
   const { attributeId, variantId } = useParams<VariantUrlParams>();
 
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
   const { getNavigationStateData } = useKeepDataBetweenNavigation();
 
   const categoryDetailFromLocation =
@@ -57,14 +57,14 @@ const VariantDetail = () => {
   const formValues: VariantFormValues | undefined =
     mapVariantDataToFormValues(variantDetail);
 
-  const translatedVariantName = getTranslationByLanguage(variantDetail?.name);
+  const variantName = variantDetail?.name;
 
-  const variantTitle = `${translate('variant')} "${translatedVariantName}"`;
+  const variantTitle = `${translate('variant')} "${variantName}"`;
 
   const { deleteVariant } = useDeleteVariant({
     attributeId,
     variantId,
-    name: translatedVariantName,
+    name: variantName,
   });
 
   return (
@@ -84,7 +84,7 @@ const VariantDetail = () => {
           defaultValues={formValues}
           onFormReset={toggleReadOnly}
           onFormUpdated={onFormUpdated}
-          variantName={translatedVariantName}
+          variantName={variantName}
           attributeId={attributeId}
         />
       </SectionForeground>

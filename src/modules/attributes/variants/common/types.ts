@@ -1,8 +1,6 @@
-import { Translations } from '../../../../components/IntlProvider';
-
 export type Variant = {
   variantId: string;
-  name: Translations;
+  name: string;
   seoName: string;
   isActive: boolean;
 };
@@ -12,7 +10,7 @@ export type VariantWithAttributeId = Variant & {
 };
 
 export type VariantFormValues = {
-  name: Translations;
+  name: string;
   seoName: string;
   isActive: boolean;
 };

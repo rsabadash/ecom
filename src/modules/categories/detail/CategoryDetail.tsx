@@ -22,7 +22,7 @@ const CategoryDetail = () => {
 
   const { categoryId } = useParams<CategoryUrlParams>();
 
-  const { language, translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
   const { getNavigationStateData } = useKeepDataBetweenNavigation();
 
   const categoryDetailFromLocation =
@@ -41,7 +41,7 @@ const CategoryDetail = () => {
   const { deleteCategory } = useDeleteCategory(categoryDetail);
 
   const formValues: CategoryFormValues | undefined =
-    mapCategoryDataToFormValues(categoryDetail, language);
+    mapCategoryDataToFormValues(categoryDetail);
 
   const toggleReadOnly = (): void => {
     setReadOnly((isReadOnly) => !isReadOnly);
@@ -52,9 +52,7 @@ const CategoryDetail = () => {
     setReadOnly((isReadOnly) => !isReadOnly);
   };
 
-  const categoryTitle = `${translate('category')} "${getTranslationByLanguage(
-    categoryDetail?.name,
-  )}"`;
+  const categoryTitle = `${translate('category')} "${categoryDetail?.name}"`;
 
   return (
     <>

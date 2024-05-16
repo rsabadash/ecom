@@ -1,10 +1,9 @@
 import { DropdownItemObject } from '../../../components/Fields/Dropdown';
-import { Translations } from '../../../components/IntlProvider';
 import { CategoryDetailData } from '../detail/types';
 
 export type Category = {
   _id: string;
-  name: Translations;
+  name: string;
   seoName: string;
   isActive: boolean;
   childrenIds: string[];
@@ -12,7 +11,7 @@ export type Category = {
 };
 
 export type CategoryFormValues = {
-  name: Translations;
+  name: string;
   seoName: string;
   isActive: boolean;
   parent: DropdownItemObject | null;

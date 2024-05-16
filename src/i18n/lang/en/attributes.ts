@@ -3,8 +3,8 @@ export const attributes = {
   'attributes.list': 'Attributes list',
   'attribute.add': 'Add attribute',
   'attribute.name': 'Attribute name',
-  'attribute.name.description': 'Enter attribute name in {language}',
-  'attribute.name.error.required': 'Attribute name in {language} is required',
+  'attribute.name.description': 'Enter attribute name',
+  'attribute.name.error.required': 'Attribute name is required',
   'attribute.seoName': 'Attribute SEO name',
   'attribute.seoName.error.required': 'Attribute SEO name is required',
   'attribute.seoName.error.symbol':
@@ -35,8 +35,8 @@ export const attributes = {
   'variant.add': 'Add variant',
   'variant.count': 'Variants count',
   'variant.name': 'Variant name',
-  'variant.name.description': 'Enter variant name in {language}',
-  'variant.name.error.required': 'Variant name in {language} is required',
+  'variant.name.description': 'Enter variant name',
+  'variant.name.error.required': 'Variant name is required',
   'variant.seoName': 'Variant SEO name',
   'variant.seoName.error.required': 'Variant SEO name is required',
   'variant.seoName.error.symbol':

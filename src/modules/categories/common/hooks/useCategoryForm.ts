@@ -7,7 +7,6 @@ import {
   UseCustomFormProps,
   UseCustomFormReturn,
 } from '../../../../common/hooks/useCustomForm';
-import { mainTranslationRequired } from '../../../../validations/schemas/translations';
 import { CategoryFormDefaultValues, CategoryFormValues } from '../types';
 
 type UseCategoryFromProps = Pick<
@@ -23,11 +22,7 @@ type UseCategoryFromReturn = Pick<
 >;
 
 const schema: ObjectSchema<CategoryFormValues> = object({
-  name: object(
-    mainTranslationRequired({
-      uk: 'category.name.error.required',
-    }),
-  ).required(),
+  name: string().required('category.name.error.required'),
   seoName: string()
     .matches(URL_SLUG, 'category.seoName.error.symbol')
     .required('category.seoName.error.required'),

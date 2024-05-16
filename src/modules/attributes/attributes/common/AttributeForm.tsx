@@ -5,7 +5,6 @@ import { Form, FormContent } from '../../../../components/FormFields';
 import {
   CheckboxAdapter,
   InputAdapter,
-  MultiLanguageInputAdapter,
 } from '../../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../../components/GridRowBalancer';
 import { useTranslation } from '../../../../components/IntlProvider';
@@ -31,13 +30,13 @@ export const AttributeForm: FC<AttributeFormProps> = ({
   return (
     <Form onSubmit={handleSubmit}>
       <GridRowBalancer columns={2} elementRows={4}>
-        <MultiLanguageInputAdapter
+        <InputAdapter
           isRequired
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={attributesFormFields.name}
-          placeholderTranslation="attribute.name.description"
           label={translate('attribute.name')}
+          placeholder={translate('attribute.name.description')}
           control={control}
           columnIndex={1}
         />

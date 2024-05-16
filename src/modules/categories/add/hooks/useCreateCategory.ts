@@ -14,25 +14,25 @@ type UseCreateCategoryReturn = {
 };
 
 export const useCreateCategory = (): UseCreateCategoryReturn => {
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
   const { promiseNotification } = useNotification();
   const { navigateWithData } = useKeepDataBetweenNavigation();
 
   const createCategory = useCallback(
     async (data: CategoryPostData) => {
-      const translatedCategoryName = getTranslationByLanguage(data.name);
+      const categoryName = data.name;
 
       try {
         const createdCategory = await promiseNotification({
           fetch: () => createCategoryApi(data),
           pendingContent: translate('category.creating', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
           successContent: translate('category.created', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
           errorContent: translate('category.creating.error', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
         });
 
@@ -47,12 +47,7 @@ export const useCreateCategory = (): UseCreateCategoryReturn => {
         console.log(e);
       }
     },
-    [
-      getTranslationByLanguage,
-      navigateWithData,
-      promiseNotification,
-      translate,
-    ],
+    [navigateWithData, promiseNotification, translate],
   );
 
   return { createCategory };

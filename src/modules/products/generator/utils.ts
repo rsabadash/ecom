@@ -1,17 +1,16 @@
-import { DEFAULT_LANGUAGE } from '../../../components/IntlProvider';
 import {
   DataToGenerateProducts,
   GeneratedProduct,
   GeneratedVariant,
+  InitialDataToGenerateProducts,
 } from './types';
 
 export const transformProductBasedOnVariants = (
-  initial: GeneratedProduct,
+  initial: InitialDataToGenerateProducts | GeneratedProduct,
   data: DataToGenerateProducts,
 ): GeneratedProduct => {
-  const nextNameValue =
-    typeof data.name === 'string' ? data.name : data.name[DEFAULT_LANGUAGE];
-  const prevNameValue = initial.name ? `${initial.name} ` : '';
+  const nextNameValue = data.name;
+  const prevNameValue = 'name' in initial ? `${initial.name} ` : '';
 
   const intermediateResult = {
     ...initial,
@@ -24,8 +23,6 @@ export const transformProductBasedOnVariants = (
     data.variantId &&
     data.attributeId
   ) {
-    const { attributes } = initial;
-
     const newVariant: GeneratedVariant = {
       variantId: data.variantId,
       name: data.name,
@@ -36,10 +33,16 @@ export const transformProductBasedOnVariants = (
       variants: [newVariant],
     };
 
-    const updatedAttributes =
-      attributes && attributes.length > 0
-        ? [...attributes, newAttribute]
-        : [newAttribute];
+    let updatedAttributes = [newAttribute];
+
+    if ('attributes' in initial) {
+      const { attributes } = initial;
+
+      updatedAttributes =
+        attributes && attributes.length > 0
+          ? [...attributes, newAttribute]
+          : [newAttribute];
+    }
 
     return {
       ...intermediateResult,
@@ -47,5 +50,8 @@ export const transformProductBasedOnVariants = (
     };
   }
 
-  return intermediateResult;
+  return {
+    ...intermediateResult,
+    attributes: null,
+  };
 };

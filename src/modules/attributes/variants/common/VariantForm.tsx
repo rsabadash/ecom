@@ -5,7 +5,6 @@ import { Form, FormContent } from '../../../../components/FormFields';
 import {
   CheckboxAdapter,
   InputAdapter,
-  MultiLanguageInputAdapter,
 } from '../../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../../components/GridRowBalancer';
 import { useTranslation } from '../../../../components/IntlProvider';
@@ -31,12 +30,12 @@ export const VariantForm: FC<VariantFormProps> = ({
   return (
     <Form onSubmit={handleSubmit}>
       <GridRowBalancer columns={2} elementRows={4}>
-        <MultiLanguageInputAdapter
+        <InputAdapter
           isRequired
           isReadOnly={isReadOnly}
           isDescriptionHidden={isReadOnly}
           name={variantFormFields.name}
-          placeholderTranslation="variant.name.description"
+          placeholder={translate('variant.name.description')}
           label={translate('variant.name')}
           control={control}
           columnIndex={1}

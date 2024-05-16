@@ -58,7 +58,7 @@ export const SupplyProductNameCell: FC<SupplyProductCellProps> = ({
       }
     }
   };
-  console.log(productsDropdownList);
+
   return (
     <DropdownWithTooltipAdapter
       isRequired

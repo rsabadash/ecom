@@ -1,12 +1,12 @@
-export const cartesian = <A, R>(
-  handler: (initialValue: R, arg: A) => R,
-  initial: any,
+export const cartesian = <I, A, R>(
+  handler: (initialValue: I | R, arg: A) => R,
+  initial: I,
   ...args: A[][]
 ): R[] => {
   const result: R[] = [];
   const max = args.length - 1;
 
-  const helper = (initialValue: R, i: number) => {
+  const helper = (initialValue: I | R, i: number) => {
     for (let j = 0, l = args[i].length; j < l; j++) {
       const currentArg = args[i][j];
 

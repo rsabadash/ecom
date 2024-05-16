@@ -15,7 +15,7 @@ type UseDeleteCategoryReturn = {
 export const useDeleteCategory = (
   props: UseDeleteCategoryProps,
 ): UseDeleteCategoryReturn => {
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
   const navigate = useCustomNavigate();
   const { promiseNotification } = useNotification();
 
@@ -23,19 +23,19 @@ export const useDeleteCategory = (
 
   const deleteCategory = useCallback(async () => {
     if (_id) {
-      const translatedCategoryName = getTranslationByLanguage(name);
+      const categoryName = name || '';
 
       try {
         await promiseNotification({
           fetch: () => deleteCategoryApi(_id),
           pendingContent: translate('category.deleting', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
           successContent: translate('category.deleted', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
           errorContent: translate('category.deleting.error', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
         });
 
@@ -45,14 +45,7 @@ export const useDeleteCategory = (
         console.log(e);
       }
     }
-  }, [
-    _id,
-    getTranslationByLanguage,
-    name,
-    navigate,
-    promiseNotification,
-    translate,
-  ]);
+  }, [_id, name, navigate, promiseNotification, translate]);
 
   return { deleteCategory };
 };
