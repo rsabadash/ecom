@@ -43,7 +43,12 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
     'react/prop-types': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-unused-vars': ['error', {
+      vars: 'all',
+      caughtErrors: 'all',
+      args: 'all',
+      argsIgnorePattern: '^_',
+    }],
     'no-duplicate-imports': ['error', { includeExports: true }],
     'simple-import-sort/imports': [
       'error',
