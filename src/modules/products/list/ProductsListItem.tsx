@@ -10,7 +10,7 @@ export const ProductsListItem: FC<ProductsListItemProps> = ({
   rowProps,
 }) => {
   const collapseBodyRef = useRef<HTMLDivElement | null>(null);
-  console.log('collapseBodyRef', collapseBodyRef);
+
   return (
     <CollapseController collapseBodyRef={collapseBodyRef}>
       <ProductsListItemRow

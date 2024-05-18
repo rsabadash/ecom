@@ -16,7 +16,6 @@ export const Collapse: FC<CollapseProps> = ({
   isCollapseDisabled,
   isBodyLoaded,
   waitUntilBodyLoaded,
-  renderBodyOnExpand,
   onBeforeExpand,
   onBeforeCollapse,
   onExpand,
@@ -60,7 +59,6 @@ export const Collapse: FC<CollapseProps> = ({
       <CollapseBuilderBody
         id={ariaControls}
         ref={collapseBodyRef}
-        renderBodyOnExpand={renderBodyOnExpand}
         collapseBodyClassName={bodyClassName}
       >
         {body}
