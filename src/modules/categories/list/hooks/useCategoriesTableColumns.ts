@@ -13,7 +13,7 @@ type CategoryValueGetterProps = TableCellValueGetterProps<Category>;
 
 export const useCategoriesTableColumns =
   (): UseCategoriesTableColumnsReturn => {
-    const { translate, getTranslationByLanguage } = useTranslation();
+    const { translate } = useTranslation();
 
     return useMemo<TableColumnGeneric<Category>[]>(
       () => [
@@ -21,9 +21,7 @@ export const useCategoriesTableColumns =
           title: translate('category.name'),
           key: 'name',
           width: '70%',
-          valueGetter: ({ item }: CategoryValueGetterProps) => {
-            return getTranslationByLanguage(item.name);
-          },
+          valueGetter: ({ item }: CategoryValueGetterProps) => item.name,
         },
         {
           title: translate('category.state'),
@@ -36,6 +34,6 @@ export const useCategoriesTableColumns =
           },
         },
       ],
-      [translate, getTranslationByLanguage],
+      [translate],
     );
   };

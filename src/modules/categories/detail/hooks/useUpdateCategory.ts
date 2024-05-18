@@ -16,24 +16,24 @@ type UseUpdateCategoryReturn = {
 export const useUpdateCategory = ({
   onSuccess,
 }: UseUpdateCategoryProps): UseUpdateCategoryReturn => {
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
   const { promiseNotification } = useNotification();
 
   const updateCategory = useCallback(
     async (data: CategoryPatchData) => {
-      const translatedCategoryName = getTranslationByLanguage(data.name);
+      const categoryName = data.name;
 
       try {
         await promiseNotification({
           fetch: () => updateCategoryApi(data),
           pendingContent: translate('category.updating', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
           successContent: translate('category.updated', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
           errorContent: translate('category.updating.error', {
-            categoryName: translatedCategoryName,
+            categoryName,
           }),
         });
 
@@ -43,7 +43,7 @@ export const useUpdateCategory = ({
         console.log(e);
       }
     },
-    [getTranslationByLanguage, onSuccess, promiseNotification, translate],
+    [onSuccess, promiseNotification, translate],
   );
 
   return { updateCategory };

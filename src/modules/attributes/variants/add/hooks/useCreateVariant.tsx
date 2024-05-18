@@ -21,19 +21,19 @@ export const useCreateVariant = (): UseCreateAttributeVariantReturn => {
 
   const createVariant = useCallback(
     async (data: VariantPostData) => {
-      const translatedCategoryName = getTranslationByLanguage(data.name);
+      const variantName = data.name;
 
       try {
         const createdVariant = await promiseNotification({
           fetch: () => createVariantApi(data),
           pendingContent: translate('variant.creating', {
-            variantName: translatedCategoryName,
+            variantName,
           }),
           successContent: translate('variant.created', {
-            variantName: translatedCategoryName,
+            variantName,
           }),
           errorContent: translate('variant.creating.error', {
-            variantName: translatedCategoryName,
+            variantName,
           }),
         });
 

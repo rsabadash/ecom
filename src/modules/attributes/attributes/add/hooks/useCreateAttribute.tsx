@@ -23,19 +23,19 @@ export const useCreateAttribute = (): UseCreateAttributeReturn => {
 
   const createAttribute = useCallback(
     async (data: AttributePostData) => {
-      const translatedAttributeName = getTranslationByLanguage(data.name);
+      const attributeName = data.name;
 
       try {
         const createdAttribute = await promiseNotification({
           fetch: () => createAttributeApi(data),
           pendingContent: translate('attribute.creating', {
-            attributeName: translatedAttributeName,
+            attributeName,
           }),
           successContent: translate('attribute.created', {
-            attributeName: translatedAttributeName,
+            attributeName,
           }),
           errorContent: translate('attribute.creating.error', {
-            attributeName: translatedAttributeName,
+            attributeName,
           }),
         });
 

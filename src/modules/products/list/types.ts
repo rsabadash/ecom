@@ -1,17 +1,16 @@
 import { PropsWithChildren } from 'react';
 
-import { Translations } from '../../../components/IntlProvider';
 import { TableBodyRowProps } from '../../../components/Table/types';
 import { Product } from '../common/types';
 
 export type ProductsVariant = {
   variantId: string;
-  name: Translations;
+  name: string;
 };
 
 export type ProductsAttribute = {
   attributeId: string;
-  name: Translations;
+  name: string;
   variants: ProductsVariant[];
 };
 

@@ -1,16 +1,15 @@
-import { Translations } from '../../../../components/IntlProvider';
 import { Variant } from '../../variants/common/types';
 
 export type Attribute = {
   _id: string;
-  name: Translations;
+  name: string;
   seoName: string;
   isActive: boolean;
   variants: Variant[];
 };
 
 export type AttributeFormValues = {
-  name: Translations;
+  name: string;
   seoName: string;
   isActive: boolean;
 };

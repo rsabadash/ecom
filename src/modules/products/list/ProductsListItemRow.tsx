@@ -55,7 +55,6 @@ export const ProductsListItemRow = forwardRef<
       </CollapseBuilderHeader>
       <CollapseBuilderBody
         ref={ref}
-        renderBodyOnExpand
         collapseBodyClassName={classes.warehouseListRowCollapseBody}
       >
         <div className={classes.warehouseListRowCollapseContent}>

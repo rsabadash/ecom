@@ -8,7 +8,6 @@ import {
   UseCustomFormReturn,
 } from '../../../../common/hooks/useCustomForm';
 import { Unit } from '../../../../common/types/unit';
-import { mainTranslationRequired } from '../../../../validations/schemas/translations';
 import { ProductsGeneratorProductsFormValues } from '../types';
 
 type UseProductsGeneratorProductsFromProps = Pick<
@@ -39,11 +38,7 @@ const schema: ObjectSchema<ProductsGeneratorProductsFormValues> = object({
                 .of(
                   object({
                     variantId: string().required(),
-                    name: object(
-                      mainTranslationRequired({
-                        uk: 'category.name.error.required',
-                      }),
-                    ).required(),
+                    name: string().required(),
                   }).required(),
                 )
                 .required(),
@@ -51,7 +46,7 @@ const schema: ObjectSchema<ProductsGeneratorProductsFormValues> = object({
           )
           .required()
           .nullable(),
-        sku: string().required('product.sku.error.required'),
+        sku: string<''>().required('product.sku.error.required'),
       }),
     )
     .required(),

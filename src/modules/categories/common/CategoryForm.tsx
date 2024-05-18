@@ -8,7 +8,6 @@ import {
   CheckboxAdapter,
   DropdownAdapter,
   InputAdapter,
-  MultiLanguageInputAdapter,
 } from '../../../components/FormFieldsAdapter';
 import { GridRowBalancer } from '../../../components/GridRowBalancer';
 import { useTranslation } from '../../../components/IntlProvider';
@@ -44,13 +43,13 @@ export const CategoryForm: FC<CategoryFormProps> = ({
     <Form onSubmit={handleSubmit}>
       <FormContent>
         <GridRowBalancer columns={2} elementRows={4}>
-          <MultiLanguageInputAdapter
+          <InputAdapter
             isRequired
             isReadOnly={isReadOnly}
             isDescriptionHidden={isReadOnly}
             name={categoryFormFields.name}
-            placeholderTranslation="category.name.description"
             label={translate('category.name')}
+            placeholder={translate('category.name.description')}
             control={control}
             columnIndex={1}
           />

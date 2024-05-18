@@ -5,7 +5,6 @@ import { endpoints } from '../../../common/constants/api';
 import { routes } from '../../../common/constants/routes';
 import { useCachedPaginationAPI } from '../../../common/hooks';
 import { Collapse } from '../../../components/Collapse';
-import { useTranslation } from '../../../components/IntlProvider';
 import { Category } from '../common/types';
 import { preventEvent } from '../detail/utils';
 import { CATEGORY_HIERARCHY_ITEM_ID } from './constants';
@@ -25,7 +24,6 @@ export const CategoriesHierarchyItem: FC<CategoriesHierarchyItemProps> = ({
   const isOpenPersistRef = useRef<boolean>(false);
   const [, setShouldFetch] = useState<boolean>(false);
 
-  const { getTranslationByLanguage } = useTranslation();
   const { childrenIds, name } = category;
 
   const ids = childrenIds.toString();
@@ -53,13 +51,11 @@ export const CategoriesHierarchyItem: FC<CategoriesHierarchyItemProps> = ({
     categoryId: category._id,
   });
 
-  const translatedCategoryName = getTranslationByLanguage(name);
-
   // TODO improve loading state
   const header =
     isOpenPersistRef.current && !isChildrenCategoriesLoaded
-      ? `${translatedCategoryName} loading...`
-      : translatedCategoryName;
+      ? `${name} loading...`
+      : name;
 
   const styleVariables = {
     '--hierarchy-level': level,
@@ -101,7 +97,7 @@ export const CategoriesHierarchyItem: FC<CategoriesHierarchyItemProps> = ({
             )}
           </>
         }
-        ariaLabel={translatedCategoryName}
+        ariaLabel={name}
         ariaControls={`${CATEGORY_HIERARCHY_ITEM_ID}-${ids}`}
         body={
           isOpenPersistRef.current

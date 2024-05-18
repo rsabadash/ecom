@@ -33,7 +33,6 @@ export type CollapseProps = Omit<CollapseControllerProps, 'collapseBodyRef'> & {
   isToggleHidden?: boolean;
   isToggleableHeader?: boolean;
   isCollapseDisabled?: boolean;
-  renderBodyOnExpand?: boolean;
 };
 
 export type CollapseBuilderButtonProps = {
@@ -47,7 +46,6 @@ export type CollapseBuilderButtonProps = {
 
 export type CollapseBuilderBodyProps = PropsWithChildren<{
   id?: string;
-  renderBodyOnExpand?: boolean;
   collapseBodyClassName?: string;
 }>;
 

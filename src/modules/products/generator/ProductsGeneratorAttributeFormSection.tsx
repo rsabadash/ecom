@@ -17,7 +17,8 @@ import classes from './styles/index.module.css';
 export const ProductsGeneratorAttributeFormSection: FC<
   ProductsGeneratorAttributeFormSectionProps
 > = ({ attribute, setValue, getValues, control }) => {
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
+
   const { _id: attributeId, name, variants } = attribute;
   const hasVariants = variants?.length > 0;
 
@@ -75,7 +76,7 @@ export const ProductsGeneratorAttributeFormSection: FC<
     <div className={classes.generator__attributesRow}>
       <Collapse
         headerClassName={classes.generator__attributesName}
-        header={getTranslationByLanguage(name)}
+        header={name}
         isToggleableHeader
         body={
           <div className={classes.generator__variants}>
@@ -85,7 +86,7 @@ export const ProductsGeneratorAttributeFormSection: FC<
                   <CheckboxAdapter
                     key={variant.variantId}
                     name={`${productsGeneratorFormFields.attributes}.${attributeId}.variants.${variant.variantId}`}
-                    label={getTranslationByLanguage(variant.name)}
+                    label={variant.name}
                     onChange={(isChecked) => handleChange(isChecked, variant)}
                     control={control}
                   />

@@ -9,7 +9,6 @@ import {
 } from '../../../../common/hooks/useCustomForm';
 import { Unit } from '../../../../common/types/unit';
 import { dynamicObject } from '../../../../validations/methods/dynamicObject';
-import { mainTranslationRequired } from '../../../../validations/schemas/translations';
 import {
   ProductsGeneratorFormValues,
   VariantVirtualFieldValue,
@@ -31,7 +30,7 @@ const dynamicAttributesVirtual: Schema<VariantVirtualFieldValue[]> = array()
   .of(
     object({
       attributeId: string().required(),
-      name: object(mainTranslationRequired()),
+      name: string().required(),
       variantId: string().required(''),
     }),
   )
@@ -53,7 +52,7 @@ export const useProductsGeneratorForm = ({
   submitHandler,
   defaultValues,
 }: UseProductsGeneratorFromProps): UseProductsGeneratorFromReturn => {
-  const { control, handleSubmit, setValue, getValues, formState } =
+  const { control, handleSubmit, setValue, getValues } =
     useCustomForm<ProductsGeneratorFormValues>({
       formProps: {
         resolver: yupResolver(schema),
@@ -62,8 +61,6 @@ export const useProductsGeneratorForm = ({
       shouldReset,
       submitHandler,
     });
-
-  console.log(formState.errors);
 
   return {
     control,

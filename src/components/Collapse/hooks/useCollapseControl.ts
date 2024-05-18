@@ -52,7 +52,7 @@ export const useCollapseControl = ({
   const isOnceExpandedRef = useRef<boolean>(false);
   // to prevent expand/collapse on initial render
   const isActionTriggeredRef = useRef<boolean>(false);
-  // To prevent bug when the transition delay has not ended but user collapse the body
+  // To prevent bug when the transition delay has not ended but user toggle the body
   const isTransitioningRef = useRef<boolean>(false);
   const isBodyLoadedRef = useRef<boolean>(false);
 

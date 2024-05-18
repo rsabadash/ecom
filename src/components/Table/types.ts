@@ -8,14 +8,16 @@ import {
   TABLE_ROW_ROLES,
 } from './constants';
 
-export type TableCellValueGetterProps<K> = {
+export type TableCellValueGetterProps<V> = {
   index: number;
-  item: Record<keyof K, any>;
+  item: {
+    [K in keyof V]: V[K];
+  };
 };
 
 export type TableColumn<K> = {
   title: string;
-  key: keyof K;
+  key: K extends any ? string : keyof K;
   width: string;
   align?: ValuesOfObject<typeof HORIZONTAL_ALIGNMENT>;
   isHidden?: boolean;
@@ -45,7 +47,7 @@ export type TableProps = {
   tableRowClassName?: string;
   items: Record<string, any>[];
   tableRole?: ValuesOfObject<typeof TABLE_ROLES>;
-  columns: TableColumn<Record<string, any>>[];
+  columns: TableColumn<any>[];
   rowCustomRender?: (props: RowCustomRenderProps) => ReactNode;
   bottomPanelNode?: ReactNode;
   tableRowRenderKey?: string;

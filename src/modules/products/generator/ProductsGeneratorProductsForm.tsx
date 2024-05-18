@@ -23,7 +23,7 @@ export const ProductsGeneratorProductsForm: FC<
 > = ({ generatedProducts }) => {
   const { products: productsFieldName } = productsGeneratorProductsFormFields;
 
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
 
   const { handleFormSubmit } = useProductsGeneratorProductsFormSubmit();
 
@@ -88,7 +88,7 @@ export const ProductsGeneratorProductsForm: FC<
                         return attribute.variants.map((variant) => {
                           return (
                             <Tag key={variant.variantId} variant="theme">
-                              {getTranslationByLanguage(variant.name)}
+                              {variant.name}
                             </Tag>
                           );
                         });

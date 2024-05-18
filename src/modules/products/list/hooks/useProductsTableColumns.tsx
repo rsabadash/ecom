@@ -14,7 +14,7 @@ type UseProductsTableColumnsReturn = TableColumnGeneric<ProductTable>[];
 type ProductTableValueGetterProps = TableCellValueGetterProps<ProductTable>;
 
 export const useProductsTableColumns = (): UseProductsTableColumnsReturn => {
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
 
   return useMemo<TableColumnGeneric<ProductTable>[]>(
     () => [
@@ -22,9 +22,7 @@ export const useProductsTableColumns = (): UseProductsTableColumnsReturn => {
         title: translate('product.name'),
         key: 'name',
         width: '40%',
-        valueGetter: ({ item }: ProductTableValueGetterProps) => {
-          return item.name;
-        },
+        valueGetter: ({ item }: ProductTableValueGetterProps) => item.name,
       },
       {
         title: translate('product.sku'),
@@ -74,6 +72,6 @@ export const useProductsTableColumns = (): UseProductsTableColumnsReturn => {
         },
       },
     ],
-    [translate, getTranslationByLanguage],
+    [translate],
   );
 };

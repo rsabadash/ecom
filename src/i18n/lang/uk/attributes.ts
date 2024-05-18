@@ -3,9 +3,8 @@ export const attributes = {
   'attributes.list': 'Список атрибутів',
   'attribute.add': 'Додати атрибут',
   'attribute.name': 'Назва атрибута',
-  'attribute.name.description': 'Введіть назву атрибута {language} мовою',
-  'attribute.name.error.required':
-    "Назва атрибута {language} мовою є обов'язковою",
+  'attribute.name.description': 'Введіть назву атрибута',
+  'attribute.name.error.required': "Назва атрибута є обов'язковою",
   'attribute.seoName': 'SEO назва атрибута',
   'attribute.seoName.error.required': "SEO назва атрибута є обов'язковою",
   'attribute.seoName.error.symbol':
@@ -36,9 +35,8 @@ export const attributes = {
   'variant.add': 'Додати варіант',
   'variant.count': 'Кількість варіантів',
   'variant.name': 'Назва варіанта',
-  'variant.name.description': 'Введіть назву варіанта {language} мовою',
-  'variant.name.error.required':
-    "Назва варіата {language} мовою є обов'язковою",
+  'variant.name.description': 'Введіть назву варіанта',
+  'variant.name.error.required': "Назва варіата є обов'язковою",
   'variant.seoName': 'SEO назва варіанта',
   'variant.seoName.error.required': "SEO назва варіанта є обов'язковою",
   'variant.seoName.error.symbol':

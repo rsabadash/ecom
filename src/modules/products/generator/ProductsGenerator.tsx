@@ -12,7 +12,6 @@ const ProductsGenerator = () => {
   const [generatedProducts, setGeneratedProducts] = useState<
     undefined | GeneratedProduct[]
   >();
-
   const { translate } = useTranslation();
 
   return (

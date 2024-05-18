@@ -27,7 +27,7 @@ const AttributeDetail = () => {
 
   const { attributeId } = useParams<AttributeUrlParams>();
 
-  const { translate, getTranslationByLanguage } = useTranslation();
+  const { translate } = useTranslation();
   const { getNavigationStateData } = useKeepDataBetweenNavigation();
 
   const categoryDetailFromLocation =
@@ -52,13 +52,9 @@ const AttributeDetail = () => {
 
   const variants = attributeDetail?.variants || [];
 
-  const translatedAttributeName = getTranslationByLanguage(
-    attributeDetail?.name,
-  );
+  const attributeName = attributeDetail?.name;
 
-  const attributeTitle = `${translate(
-    'attribute',
-  )} "${translatedAttributeName}"`;
+  const attributeTitle = `${translate('attribute')} "${attributeName}"`;
 
   const variantAddPath = generatePath(routes.attributes.variantAdd, {
     attributeId,
@@ -66,7 +62,7 @@ const AttributeDetail = () => {
 
   const { deleteAttribute } = useDeleteAttribute({
     id: attributeDetail?._id,
-    name: translatedAttributeName,
+    name: attributeName,
   });
 
   return (
@@ -86,7 +82,7 @@ const AttributeDetail = () => {
           defaultValues={formValues}
           onFormReset={toggleReadOnly}
           onFormUpdated={onFormUpdated}
-          attributeName={translatedAttributeName}
+          attributeName={attributeName}
         />
       </SectionForeground>
       {isReadOnly && (

@@ -1,7 +1,6 @@
 import { Control, SetFieldValue, UseFormGetValues } from 'react-hook-form';
 
 import { Unit } from '../../../common/types/unit';
-import { Translations } from '../../../components/IntlProvider';
 import { Attribute } from '../../attributes/attributes/common/types';
 
 export type ProductsGeneratorFormProps = {
@@ -9,7 +8,7 @@ export type ProductsGeneratorFormProps = {
 };
 
 export type VariantVirtualFieldValue = {
-  name: Translations;
+  name: string;
   variantId: string;
   attributeId: string;
 };
@@ -47,18 +46,9 @@ export type ProductsGeneratorAttributeFormSectionProps = {
   control: Control<any>;
 };
 
-type DataVariantToGenerateProducts = Pick<VariantVirtualFieldValue, 'name'> &
-  Partial<Omit<VariantVirtualFieldValue, 'name'>>;
-
-type DataNameToGenerateProducts = Pick<ProductsGeneratorFormValues, 'name'>;
-
-export type DataToGenerateProducts =
-  | DataVariantToGenerateProducts
-  | DataNameToGenerateProducts;
-
 export type GeneratedVariant = {
   variantId: string;
-  name: Translations;
+  name: string;
 };
 
 export type GeneratedAttribute = {
@@ -71,6 +61,18 @@ export type GeneratedProduct = Pick<
   'name' | 'unit'
 > & {
   attributes: null | GeneratedAttribute[];
+  sku: '';
+};
+
+export type InitialDataToGenerateProducts = Pick<
+  GeneratedProduct,
+  'unit' | 'sku'
+>;
+
+export type DataToGenerateProducts = {
+  name: string;
+  variantId?: string;
+  attributeId?: string;
 };
 
 export type ProductsGeneratorProductsFormProps = {

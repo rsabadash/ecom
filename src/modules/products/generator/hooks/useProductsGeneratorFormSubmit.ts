@@ -1,13 +1,13 @@
 import { BaseSyntheticEvent, useCallback } from 'react';
 
 import { cartesian } from '../../../../common/utils';
-import { useTranslation } from '../../../../components/IntlProvider';
 import { buttonNames } from '../constants';
 import {
   AttributeVirtualFieldValue,
   DataToGenerateProducts,
   GeneratedAttribute,
   GeneratedProduct,
+  InitialDataToGenerateProducts,
   ProductsGeneratorFormValues,
   VariantVirtualFieldValue,
 } from '../types';
@@ -27,8 +27,6 @@ type UseProductsGeneratorFormSubmitReturn = {
 export const useProductsGeneratorFormSubmit = ({
   onGeneratedProducts,
 }: UseProductsGeneratorFormSubmitProps): UseProductsGeneratorFormSubmitReturn => {
-  const { getTranslationByLanguage } = useTranslation();
-
   const getListToProductGeneration = useCallback(
     (attributes: AttributeVirtualFieldValue): VariantVirtualFieldValue[][] => {
       const sortedIds = Object.keys(attributes).sort();
@@ -40,20 +38,29 @@ export const useProductsGeneratorFormSubmit = ({
 
   const generateProducts = useCallback(
     (values: ProductsGeneratorFormValues): GeneratedProduct[] => {
+      const initialProductValues: InitialDataToGenerateProducts = {
+        unit: values.unit,
+        sku: '',
+      };
+
       if (values.attributesVirtual) {
         const listToProductGeneration = getListToProductGeneration(
           values.attributesVirtual,
         );
 
-        return cartesian<DataToGenerateProducts, GeneratedProduct>(
+        return cartesian<
+          InitialDataToGenerateProducts,
+          DataToGenerateProducts,
+          GeneratedProduct
+        >(
           transformProductBasedOnVariants,
-          { unit: values.unit },
+          initialProductValues,
           [{ name: values.name }],
           ...listToProductGeneration,
         );
       }
 
-      return [{ name: values.name, attributes: null, unit: values.unit }];
+      return [{ name: values.name, attributes: null, ...initialProductValues }];
     },
     [getListToProductGeneration],
   );
@@ -64,10 +71,8 @@ export const useProductsGeneratorFormSubmit = ({
         let nextValue = '';
 
         attribute.variants.forEach((variant) => {
-          const variantNameTranslation = getTranslationByLanguage(variant.name);
-
-          nextValue = variantNameTranslation
-            ? `${nextValue} ${variantNameTranslation} `
+          nextValue = variant.name
+            ? `${nextValue} ${variant.name} `
             : nextValue;
         });
 
@@ -76,7 +81,7 @@ export const useProductsGeneratorFormSubmit = ({
 
       return `${name} ${variantsValue}`;
     },
-    [getTranslationByLanguage],
+    [],
   );
 
   const generateProduct = useCallback(
@@ -100,6 +105,7 @@ export const useProductsGeneratorFormSubmit = ({
         name: productName,
         unit,
         attributes,
+        sku: '',
       };
     },
     [generateSingleNameWithVariants],

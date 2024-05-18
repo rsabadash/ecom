@@ -6,9 +6,8 @@ export const categories = {
   'category.showInHierarchy': 'Показати категорію в ієрархії',
   'category.add': 'Додати категорію',
   'category.name': 'Назва категорії',
-  'category.name.description': 'Введіть назву категорії {language} мовою',
-  'category.name.error.required':
-    "Назва категорії {language} мовою є обов'язковою",
+  'category.name.description': 'Введіть назву категорії',
+  'category.name.error.required': "Назва категорії є обов'язковою",
   'category.seoName': 'SEO назва категорії',
   'category.seoName.error.required': "SEO назва категорії є обов'язковою",
   'category.seoName.error.symbol':

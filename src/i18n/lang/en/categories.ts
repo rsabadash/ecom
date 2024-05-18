@@ -6,8 +6,8 @@ export const categories = {
   'category.showInHierarchy': 'Show category in the hierarchy',
   'category.add': 'Add category',
   'category.name': 'Category name',
-  'category.name.description': 'Enter category name in {language}',
-  'category.name.error.required': 'Category name in {language} is required',
+  'category.name.description': 'Enter category name',
+  'category.name.error.required': 'Category name is required',
   'category.seoName': 'Category SEO name',
   'category.seoName.error.required': 'Category SEO name is required',
   'category.seoName.error.symbol':

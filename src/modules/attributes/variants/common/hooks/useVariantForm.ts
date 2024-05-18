@@ -7,7 +7,6 @@ import {
   UseCustomFormProps,
   UseCustomFormReturn,
 } from '../../../../../common/hooks/useCustomForm';
-import { mainTranslationRequired } from '../../../../../validations/schemas/translations';
 import { VariantFormValues } from '../types';
 
 type UseVariantFromProps = Pick<
@@ -23,11 +22,7 @@ type UseVariantFromReturn = Pick<
 >;
 
 const schema: ObjectSchema<VariantFormValues> = object({
-  name: object(
-    mainTranslationRequired({
-      uk: 'variant.name.error.required',
-    }),
-  ).required(),
+  name: string().required('variant.name.error.required'),
   seoName: string()
     .matches(URL_SLUG, 'variant.seoName.error.symbol')
     .required('variant.seoName.error.required'),
